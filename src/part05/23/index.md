@@ -1,8 +1,15 @@
 ---
 layout: part05
-title: "부록 02: Java UI - Swing"
+title: "Chapter 23. 부록"
+nav_order: 23
+has_children: true
+parent: "최신 자바"
 ---
 
-# 부록 02: Java UI - Swing
+# Chapter 23. 부록
 
-본 내용은 추후 업데이트 예정입니다.
+## 학습목표
+
+부록 학습: Java UI - Swing 기초를 학습합니다.
+
+## 목차

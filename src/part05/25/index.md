@@ -1,8 +1,15 @@
 ---
 layout: part05
-title: "부록 04: NIO 기반 입출력 및 네트워킹"
+title: "Chapter 25. 부록"
+nav_order: 25
+has_children: true
+parent: "최신 자바"
 ---
 
-# 부록 04: NIO 기반 입출력 및 네트워킹
+# Chapter 25. 부록
 
-본 내용은 추후 업데이트 예정입니다.
+## 학습목표
+
+부록 학습: NIO 기반 입출력 및 네트워킹을 학습합니다.
+
+## 목차

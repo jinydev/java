@@ -1,8 +1,15 @@
 ---
 layout: part05
-title: "부록 03: Java UI - JavaFX"
+title: "Chapter 24. 부록"
+nav_order: 24
+has_children: true
+parent: "최신 자바"
 ---
 
-# 부록 03: Java UI - JavaFX
+# Chapter 24. 부록
 
-본 내용은 추후 업데이트 예정입니다.
+## 학습목표
+
+부록 학습: Java UI - JavaFX 기초를 학습합니다.
+
+## 목차
