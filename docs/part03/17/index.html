@@ -1,0 +1,2315 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- 기본 메타데이터 --><meta name="description" content="Jiny linux"><meta name="author" content="HojinLee"><!-- 제목 설정 --><title>Chapter 17. 스트림 요소 처리</title>
+  <meta name="title" content="Chapter 17. 스트림 요소 처리" /><!-- 키워드 설정 --><!-- Open Graph 메타데이터 --><meta property="og:title" content="Chapter 17. 스트림 요소 처리"><meta property="og:description" content="Jiny linux"><meta property="og:type" content="website"><meta property="og:locale" content="ko">
+  <meta property="og:site_name" content="linux">
+  <meta property="og:url" content="https://java.jiny.dev/part03/17/">
+
+  <!-- Twitter 카드 메타데이터 --><meta name="twitter:card" content="summary"><meta property="twitter:title" content="Chapter 17. 스트림 요소 처리"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Chapter 17. 스트림 요소 처리" />
+<meta name="author" content="Hojin" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
+<meta property="og:description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
+<link rel="canonical" href="https://java.jiny.dev/part03/17/" />
+<meta property="og:url" content="https://java.jiny.dev/part03/17/" />
+<meta property="og:site_name" content="객체지향 자바 프로그래밍 (Object-Oriented Java Programming)" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Chapter 17. 스트림 요소 처리" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"Chapter 17. 스트림 요소 처리","url":"https://java.jiny.dev/part03/17/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="/assets/css/docs.css" rel="stylesheet" />
+  <link href="/assets/css/highlight.css" rel="stylesheet" />
+
+  <style>
+    blockquote {
+      border-left: solid 5px #dee2e6;
+      padding: 5px 10px;
+      background-color: #f8f9fa;
+    }
+  </style>
+
+  <style>
+    h1 a {
+      text-decoration: none;
+    }
+
+    h2 a {
+      text-decoration: none;
+    }
+
+    h3 a {
+      text-decoration: none;
+    }
+
+    h4 a {
+      text-decoration: none;
+    }
+
+    h5 a {
+      text-decoration: none;
+    }
+
+    h6 a {
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      vertical-align: top
+    }
+
+    strong a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* 스크롤바 커스텀 */
+    /* 임의의 영역 생성 */
+    .scrollBar {}
+
+    /* 아래의 모든 코드는 영역::코드로 사용 */
+    .scrollBar::-webkit-scrollbar {
+      width: 7px;
+      /* 스크롤바의 너비 */
+    }
+
+    .scrollBar::-webkit-scrollbar-thumb {
+      height: 30%;
+      /* 스크롤바의 길이 */
+      background: #cccccc;
+      /* 스크롤바의 색상 */
+
+      border-radius: 5px;
+    }
+
+    .scrollBar::-webkit-scrollbar-track {
+      background: rgba(33, 122, 244, .1);
+      /*스크롤바 뒷 배경 색상*/
+    }
+  </style>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4VBPCT3CR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-R4VBPCT3CR');
+  </script>
+
+
+</head>
+
+<body>
+  <header class="navbar navbar-expand-lg bd-navbar sticky-top">
+    <nav class="container bd-gutter flex-wrap flex-lg-nowrap position-relative" aria-label="Main navigation">
+
+      <!-- Mobile: Left Toggle (Browse) -->
+      <div class="bd-navbar-toggle d-lg-none">
+        <button class="navbar-toggler p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdSidebar"
+          aria-controls="bdSidebar" aria-label="Toggle docs navigation">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="bi" fill="currentColor"
+            viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+              d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z">
+            </path>
+          </svg>
+          <span class="d-none fs-6 pe-1">Browse</span>
+        </button>
+      </div>
+
+      <!-- Brand: Desktop (Static), Mobile (Absolute Center) -->
+      <a class="navbar-brand p-0 me-0 me-lg-2 ms-lg-0 d-none d-lg-inline-block" href="/" aria-label="jinydev">
+        <svg width="32" height="26" viewBox="0 0 32 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M24.2746 5.33377C25.8486 7.33981 25.1183 11.1792 24.3961 13.0177C24.4028 13.0199 24.4094 13.0221 24.4161 13.0243L24.4013 13.0248L22.649 12.9082C22.649 12.9053 22.6488 12.9013 22.649 12.8993C22.9902 8.93373 22.5975 7.34575 22.2147 7.07677C17.6316 10.3896 13.5379 9.33658 12.2725 9.01111C11.928 8.9225 11.7932 8.88781 11.9152 9.00988C12.2872 9.38185 13.1336 9.82821 13.7371 10.1465H13.7372L13.7376 10.1467C13.8743 10.2188 13.9985 10.2843 14.1019 10.3409C9.12673 10.3984 7.12659 8.00279 6.53855 7.29846C6.47859 7.22664 6.4333 7.1724 6.40105 7.14015C6.11408 6.85318 4.49961 5.87252 3.99256 7.74227C3.50142 9.55335 3.81246 11.6775 3.97665 12.7988C3.99089 12.896 3.99257 12.8981 3.99257 12.9298L2.37635 13.0248L2.37213 13.0247C0.223493 8.05534 1.83854 5.26971 3.29536 4.2246C3.29536 1.78444 6.27428 -0.592359 10.0455 0.263262C14.8768 1.64043 16.3468 1.18409 18.0759 0.647278C18.774 0.430562 19.5143 0.200726 20.5351 0.073124C25.2219 -0.512739 26.7993 2.56612 27 4.16122C26.2141 3.70487 24.8556 4.73165 24.2746 5.33377ZM12.3374 1.5872C11.1225 1.16466 7.99257 0.717209 6.3478 2.41116C5.98397 2.78587 5.55554 3.48864 5.55554 3.48864C5.55554 3.48864 4.82665 4.81961 4.25622 4.24919C3.68579 3.67878 5.0168 1.96749 6.06259 1.46044C7.10838 0.953388 9.70703 0.0660505 12.3374 1.5872Z"
+            fill="currentColor" />
+          <path
+            d="M10.078 13.5002H3.10601C2.2309 13.5002 1.52148 14.2097 1.52148 15.0848V18.3172C1.52148 19.1923 2.2309 19.9018 3.10601 19.9018H10.078C10.9531 19.9018 11.6625 19.1923 11.6625 18.3172V15.0848C11.6625 14.2097 10.9531 13.5002 10.078 13.5002Z"
+            stroke="currentColor" stroke-width="1.26763" />
+          <path
+            d="M0.823513 14.6094H0.379847C0.187322 14.6094 0.03125 14.7654 0.03125 14.958V15.9721C0.03125 16.1646 0.187322 16.3207 0.379847 16.3207H0.823513C1.01604 16.3207 1.17211 16.1646 1.17211 15.9721V14.958C1.17211 14.7654 1.01604 14.6094 0.823513 14.6094Z"
+            fill="currentColor" stroke="currentColor" stroke-width="0.0633813" />
+          <path
+            d="M16.7326 13.5002H23.7045C24.5796 13.5002 25.2891 14.2097 25.2891 15.0848V18.3172C25.2891 19.1923 24.5796 19.9018 23.7045 19.9018H16.7326C15.8575 19.9018 15.1481 19.1923 15.1481 18.3172V15.0848C15.1481 14.2097 15.8575 13.5002 16.7326 13.5002Z"
+            stroke="currentColor" stroke-width="1.26763" />
+          <path
+            d="M25.9861 14.6094H26.4297C26.6222 14.6094 26.7783 14.7654 26.7783 14.958V15.9721C26.7783 16.1646 26.6222 16.3207 26.4297 16.3207H25.9861C25.7935 16.3207 25.6375 16.1646 25.6375 15.9721V14.958C25.6375 14.7654 25.7935 14.6094 25.9861 14.6094Z"
+            fill="currentColor" stroke="currentColor" stroke-width="0.0633813" />
+          <path
+            d="M12.2954 15.5601H14.5137C14.7062 15.5601 14.8623 15.7161 14.8623 15.9087V16.9228C14.8623 17.1153 14.7062 17.2713 14.5137 17.2713H12.2954C12.1028 17.2713 11.9468 17.1153 11.9468 16.9228V15.9087C11.9468 15.7161 12.1028 15.5601 12.2954 15.5601Z"
+            fill="currentColor" stroke="currentColor" stroke-width="0.0633813" />
+          <path
+            d="M9.93343 16.3937C9.93343 16.7087 9.76317 16.9641 9.55314 16.9641C9.34311 16.9641 9.17285 16.7087 9.17285 16.3937C9.17285 16.0786 9.34311 15.8232 9.55314 15.8232C9.76317 15.8232 9.93343 16.0786 9.93343 16.3937Z"
+            fill="currentColor" />
+          <path
+            d="M16.9688 16.3937C16.9688 16.7087 17.139 16.9641 17.3491 16.9641C17.5591 16.9641 17.7293 16.7087 17.7293 16.3937C17.7293 16.0786 17.5591 15.8232 17.3491 15.8232C17.139 15.8232 16.9688 16.0786 16.9688 16.3937Z"
+            fill="currentColor" />
+          <path
+            d="M14.2758 20.1016C13.642 20.6086 12.7863 20.3551 12.5645 20.1016C12.6278 20.4185 12.8687 20.8622 13.4518 20.8622C14.0349 20.8622 14.2441 20.3551 14.2758 20.1016Z"
+            fill="currentColor" />
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M12.1312 22.411C12.1575 22.2914 12.2759 22.2157 12.3956 22.2421L14.6347 22.735C14.7544 22.7614 14.83 22.8797 14.8036 22.9994C14.7773 23.119 14.659 23.1947 14.5393 23.1683L12.3002 22.6753C12.1805 22.649 12.1049 22.5307 12.1312 22.411Z"
+            fill="currentColor" />
+          <path
+            d="M13.4203 27.6754C9.00897 27.7261 5.77228 23.6613 4.70536 21.6225C4.54691 21.3197 4.42016 21.2739 4.32509 21.3373C4.17297 21.4387 4.28282 21.6437 4.32507 21.7493C4.85747 22.9916 5.58213 24.0416 5.87791 24.4113C4.83846 26.1353 4.49409 27.855 4.45183 28.4994C6.1758 26.8008 7.91668 26.8832 8.57162 27.1367C13.7055 29.7987 16.5577 27.929 18.1739 27.1367C19.4669 26.5029 21.4803 27.7388 22.3254 28.436C22.224 26.8642 21.3747 25.1402 20.9627 24.4747C21.6282 23.5873 22.1669 22.5099 22.4522 21.9711C22.6803 21.5401 22.6106 21.369 22.5472 21.3373C22.3951 21.2613 22.2092 21.4958 22.1353 21.6225C21.6599 22.4148 18.9345 27.6121 13.4203 27.6754Z"
+            fill="currentColor" />
+        </svg>
+      </a>
+      <a class="navbar-brand p-0 me-0 position-absolute top-50 start-50 translate-middle d-lg-none" href="/"
+        aria-label="jinydev">
+        <svg width="100" height="26" viewBox="0 0 112 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M24.2746 5.33377C25.8486 7.33981 25.1183 11.1792 24.3961 13.0177C24.4028 13.0199 24.4094 13.0221 24.4161 13.0243L24.4013 13.0248L22.649 12.9082C22.649 12.9053 22.6488 12.9013 22.649 12.8993C22.9902 8.93373 22.5975 7.34575 22.2147 7.07677C17.6316 10.3896 13.5379 9.33658 12.2725 9.01111C11.928 8.9225 11.7932 8.88781 11.9152 9.00988C12.2872 9.38185 13.1336 9.82821 13.7371 10.1465H13.7372L13.7376 10.1467C13.8743 10.2188 13.9985 10.2843 14.1019 10.3409C9.12673 10.3984 7.12659 8.00279 6.53855 7.29846C6.47859 7.22664 6.4333 7.1724 6.40105 7.14015C6.11408 6.85318 4.49961 5.87252 3.99256 7.74227C3.50142 9.55335 3.81246 11.6775 3.97665 12.7988C3.99089 12.896 3.99257 12.8981 3.99257 12.9298L2.37635 13.0248L2.37213 13.0247C0.223493 8.05534 1.83854 5.26971 3.29536 4.2246C3.29536 1.78444 6.27428 -0.592359 10.0455 0.263262C14.8768 1.64043 16.3468 1.18409 18.0759 0.647278C18.774 0.430562 19.5143 0.200726 20.5351 0.073124C25.2219 -0.512739 26.7993 2.56612 27 4.16122C26.2141 3.70487 24.8556 4.73165 24.2746 5.33377ZM12.3374 1.5872C11.1225 1.16466 7.99257 0.717209 6.3478 2.41116C5.98397 2.78587 5.55554 3.48864 5.55554 3.48864C5.55554 3.48864 4.82665 4.81961 4.25622 4.24919C3.68579 3.67878 5.0168 1.96749 6.06259 1.46044C7.10838 0.953388 9.70703 0.0660505 12.3374 1.5872Z"
+            fill="currentColor" />
+          <path
+            d="M10.078 13.5002H3.10601C2.2309 13.5002 1.52148 14.2097 1.52148 15.0848V18.3172C1.52148 19.1923 2.2309 19.9018 3.10601 19.9018H10.078C10.9531 19.9018 11.6625 19.1923 11.6625 18.3172V15.0848C11.6625 14.2097 10.9531 13.5002 10.078 13.5002Z"
+            stroke="currentColor" stroke-width="1.26763" />
+          <path
+            d="M0.823513 14.6094H0.379847C0.187322 14.6094 0.03125 14.7654 0.03125 14.958V15.9721C0.03125 16.1646 0.187322 16.3207 0.379847 16.3207H0.823513C1.01604 16.3207 1.17211 16.1646 1.17211 15.9721V14.958C1.17211 14.7654 1.01604 14.6094 0.823513 14.6094Z"
+            fill="currentColor" stroke="currentColor" stroke-width="0.0633813" />
+          <path
+            d="M16.7326 13.5002H23.7045C24.5796 13.5002 25.2891 14.2097 25.2891 15.0848V18.3172C25.2891 19.1923 24.5796 19.9018 23.7045 19.9018H16.7326C15.8575 19.9018 15.1481 19.1923 15.1481 18.3172V15.0848C15.1481 14.2097 15.8575 13.5002 16.7326 13.5002Z"
+            stroke="currentColor" stroke-width="1.26763" />
+          <path
+            d="M25.9861 14.6094H26.4297C26.6222 14.6094 26.7783 14.7654 26.7783 14.958V15.9721C26.7783 16.1646 26.6222 16.3207 26.4297 16.3207H25.9861C25.7935 16.3207 25.6375 16.1646 25.6375 15.9721V14.958C25.6375 14.7654 25.7935 14.6094 25.9861 14.6094Z"
+            fill="currentColor" stroke="currentColor" stroke-width="0.0633813" />
+          <path
+            d="M12.2954 15.5601H14.5137C14.7062 15.5601 14.8623 15.7161 14.8623 15.9087V16.9228C14.8623 17.1153 14.7062 17.2713 14.5137 17.2713H12.2954C12.1028 17.2713 11.9468 17.1153 11.9468 16.9228V15.9087C11.9468 15.7161 12.1028 15.5601 12.2954 15.5601Z"
+            fill="currentColor" stroke="currentColor" stroke-width="0.0633813" />
+          <path
+            d="M9.93343 16.3937C9.93343 16.7087 9.76317 16.9641 9.55314 16.9641C9.34311 16.9641 9.17285 16.7087 9.17285 16.3937C9.17285 16.0786 9.34311 15.8232 9.55314 15.8232C9.76317 15.8232 9.93343 16.0786 9.93343 16.3937Z"
+            fill="currentColor" />
+          <path
+            d="M16.9688 16.3937C16.9688 16.7087 17.139 16.9641 17.3491 16.9641C17.5591 16.9641 17.7293 16.7087 17.7293 16.3937C17.7293 16.0786 17.5591 15.8232 17.3491 15.8232C17.139 15.8232 16.9688 16.0786 16.9688 16.3937Z"
+            fill="currentColor" />
+          <path
+            d="M14.2758 20.1016C13.642 20.6086 12.7863 20.3551 12.5645 20.1016C12.6278 20.4185 12.8687 20.8622 13.4518 20.8622C14.0349 20.8622 14.2441 20.3551 14.2758 20.1016Z"
+            fill="currentColor" />
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M12.1312 22.411C12.1575 22.2914 12.2759 22.2157 12.3956 22.2421L14.6347 22.735C14.7544 22.7614 14.83 22.8797 14.8036 22.9994C14.7773 23.119 14.659 23.1947 14.5393 23.1683L12.3002 22.6753C12.1805 22.649 12.1049 22.5307 12.1312 22.411Z"
+            fill="currentColor" />
+          <path
+            d="M13.4203 27.6754C9.00897 27.7261 5.77228 23.6613 4.70536 21.6225C4.54691 21.3197 4.42016 21.2739 4.32509 21.3373C4.17297 21.4387 4.28282 21.6437 4.32507 21.7493C4.85747 22.9916 5.58213 24.0416 5.87791 24.4113C4.83846 26.1353 4.49409 27.855 4.45183 28.4994C6.1758 26.8008 7.91668 26.8832 8.57162 27.1367C13.7055 29.7987 16.5577 27.929 18.1739 27.1367C19.4669 26.5029 21.4803 27.7388 22.3254 28.436C22.224 26.8642 21.3747 25.1402 20.9627 24.4747C21.6282 23.5873 22.1669 22.5099 22.4522 21.9711C22.6803 21.5401 22.6106 21.369 22.5472 21.3373C22.3951 21.2613 22.2092 21.4958 22.1353 21.6225C21.6599 22.4148 18.9345 27.6121 13.4203 27.6754Z"
+            fill="currentColor" />
+          <text x="32" y="21" font-family="Arial, sans-serif" font-weight="bold" font-size="22"
+            fill="currentColor">Jiny</text>
+        </svg>
+      </a>
+
+      <!-- Mobile: Right Toggle (Menu) -->
+      <div class="d-flex d-lg-none ms-auto">
+        <button class="navbar-toggler p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdNavbar"
+          aria-controls="bdNavbar" aria-label="Toggle navigation">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-grid"
+            viewBox="0 0 16 16">
+            <path
+              d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- OffCanvas -->
+      <div class="offcanvas-lg offcanvas-end flex-grow-1" tabindex="-1" id="bdNavbar"
+        aria-labelledby="bdNavbarOffcanvasLabel" data-bs-scroll="true">
+        <!-- OffCanver Header -->
+        <div class="offcanvas-header px-4 pb-0">
+          <h5 class="offcanvas-title text-white" id="bdNavbarOffcanvasLabel">Jiny</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"
+            data-bs-target="#bdNavbar">
+          </button>
+        </div>
+
+        <!-- OffCanver Body -->
+        <div class="offcanvas-body p-4 pt-0 p-lg-0">
+          <hr class="d-lg-none text-white-50">
+
+          <ul class="navbar-nav flex-column flex-lg-row bd-navbar-nav">
+            
+            <li class="nav-item">
+              <a class="nav-link py-2 px-0 px-lg-2" href="/part01/">자바 기초</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link py-2 px-0 px-lg-2" href="/part02/">객체지향</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link py-2 px-0 px-lg-2" href="/part03/">라이브러리</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link py-2 px-0 px-lg-2" href="/part04/">데이터 I/O</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link py-2 px-0 px-lg-2" href="/part05/">최신 자바</a>
+            </li>
+            
+          </ul>
+
+          <hr class="d-lg-none text-white-50">
+
+          <ul class="navbar-nav flex-row flex-wrap ms-md-auto">
+            <li class="nav-item col-6 col-lg-auto">
+              <a class="nav-link py-2 px-0 px-lg-2" href="https://github.com/jinydev/datas" target="_blank"
+                rel="noopener">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="navbar-nav-svg"
+                  viewBox="0 0 512 499.36" role="img">
+                  <title>GitHub</title>
+                  <path fill="currentColor" fill-rule="evenodd"
+                    d="M256 0C114.64 0 0 114.61 0 256c0 113.09 73.34 209 175.08 242.9 12.8 2.35 17.47-5.56 17.47-12.34 0-6.08-.22-22.18-.35-43.54-71.2 15.49-86.2-34.34-86.2-34.34-11.64-29.57-28.42-37.45-28.42-37.45-23.27-15.84 1.73-15.55 1.73-15.55 25.69 1.81 39.21 26.38 39.21 26.38 22.84 39.12 59.92 27.82 74.5 21.27 2.33-16.54 8.94-27.82 16.25-34.22-56.84-6.43-116.6-28.43-116.6-126.49 0-27.95 10-50.8 26.35-68.69-2.63-6.48-11.42-32.5 2.51-67.75 0 0 21.49-6.88 70.4 26.24a242.65 242.65 0 0 1 128.18 0c48.87-33.13 70.33-26.24 70.33-26.24 14 35.25 5.18 61.27 2.55 67.75 16.41 17.9 26.31 40.75 26.31 68.69 0 98.35-59.85 120-116.88 126.32 9.19 7.9 17.38 23.53 17.38 47.41 0 34.22-.31 61.83-.31 70.23 0 6.85 4.61 14.81 17.6 12.31C438.72 464.97 512 369.08 512 256.02 512 114.62 397.37 0 256 0z">
+                  </path>
+                </svg>
+                <small class="d-lg-none ms-2">GitHub</small>
+              </a>
+            </li>
+
+            <li class="nav-item py-2 py-lg-1 col-12 col-lg-auto">
+              <div class="vr d-none d-lg-flex h-100 mx-lg-2 text-white"></div>
+              <hr class="d-lg-none my-2 text-white-50">
+            </li>
+
+            <li class="nav-item col-6 col-lg-auto">
+              <a class="nav-link py-2 px-0 px-lg-2" href="https://jiny.dev" aria-label="Home">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="navbar-nav-svg"
+                  viewBox="0 0 16 16" role="img">
+                  <title>Home</title>
+                  <path fill="currentColor"
+                    d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z" />
+                </svg>
+                <small class="d-lg-none ms-2">Home</small>
+              </a>
+            </li>
+          </ul>
+
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container bd-gutter mt-3 my-md-4 bd-layout">
+    <aside class="bd-sidebar scrollBar">
+        <div class="offcanvas-lg offcanvas-start" tabindex="-1" id="bdSidebar"
+            aria-labelledby="bdSidebarOffcanvasLabel">
+            <div class="offcanvas-header border-bottom">
+                <h5 class="offcanvas-title" id="bdSidebarOffcanvasLabel">학습목차</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"
+                    data-bs-target="#bdSidebar"></button>
+            </div>
+
+            <div class="offcanvas-body">
+                <!-- 네비게이션 -->
+                <nav class="bd-links w-100" id="bd-docs-nav" aria-label="Docs navigation">
+  <ul class="bd-links-nav list-unstyled mb-0 pb-3 pb-md-2 pe-lg-2">
+    <li class="bd-links-group py-2">
+      <strong class="bd-links-heading d-flex w-100 align-items-center fw-semibold">
+        강의 목차
+      </strong>
+      <ul class="list-unstyled fw-normal pb-2 small">
+        
+        
+
+        
+        <li>
+          
+          
+          
+          <button
+            class="bd-links-link bd-links-btn btn d-inline-flex align-items-center rounded border-0 collapsed w-100"
+            data-bs-toggle="collapse" data-bs-target="#collapse-1"
+            aria-expanded="false">
+            12. java.base 모듈
+            <svg class="bi ms-auto" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+            </svg>
+          </button>
+          <div class="collapse " id="collapse-1">
+            <ul class="list-unstyled fw-normal pb-1 small ms-3">
+              
+              <li>
+                <a href="/part03/12/"
+                  class="bd-links-link d-inline-block rounded ">
+                  12. java.base 모듈
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/12/#121-API-도큐먼트"
+                  class="bd-links-link d-inline-block rounded ">
+                  12.1 API 도큐먼트
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/12/#122-javabase-모듈"
+                  class="bd-links-link d-inline-block rounded ">
+                  12.2 java.base 모듈
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/12/#123-Object-클래스"
+                  class="bd-links-link d-inline-block rounded ">
+                  12.3 Object 클래스
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/12/#124-System-클래스"
+                  class="bd-links-link d-inline-block rounded ">
+                  12.4 System 클래스
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/12/#125-문자열-클래스"
+                  class="bd-links-link d-inline-block rounded ">
+                  12.5 문자열 클래스
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/12/#126-포장-클래스"
+                  class="bd-links-link d-inline-block rounded ">
+                  12.6 포장 클래스
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/12/#127-수학-클래스"
+                  class="bd-links-link d-inline-block rounded ">
+                  12.7 수학 클래스
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/12/#128-날짜와-시간-클래스"
+                  class="bd-links-link d-inline-block rounded ">
+                  12.8 날짜와 시간 클래스
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/12/#129-형식-클래스"
+                  class="bd-links-link d-inline-block rounded ">
+                  12.9 형식 클래스
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/12/#1210-정규-표현식-클래스"
+                  class="bd-links-link d-inline-block rounded ">
+                  12.10 정규 표현식 클래스
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/12/#1211-리플렉션"
+                  class="bd-links-link d-inline-block rounded ">
+                  12.11 리플렉션
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/12/#1212-어노테이션"
+                  class="bd-links-link d-inline-block rounded ">
+                  12.12 어노테이션
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+          
+        </li>
+        
+        <li>
+          
+          
+          
+          <button
+            class="bd-links-link bd-links-btn btn d-inline-flex align-items-center rounded border-0 collapsed w-100"
+            data-bs-toggle="collapse" data-bs-target="#collapse-2"
+            aria-expanded="false">
+            13. 제네릭
+            <svg class="bi ms-auto" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+            </svg>
+          </button>
+          <div class="collapse " id="collapse-2">
+            <ul class="list-unstyled fw-normal pb-1 small ms-3">
+              
+              <li>
+                <a href="/part03/13/"
+                  class="bd-links-link d-inline-block rounded ">
+                  13. 제네릭
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/13/#131-제네릭이란"
+                  class="bd-links-link d-inline-block rounded ">
+                  13.1 제네릭이란?
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/13/#132-제네릭-타입"
+                  class="bd-links-link d-inline-block rounded ">
+                  13.2 제네릭 타입
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/13/#133-제네릭-메소드"
+                  class="bd-links-link d-inline-block rounded ">
+                  13.3 제네릭 메소드
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/13/#134-제한된-타입-파라미터"
+                  class="bd-links-link d-inline-block rounded ">
+                  13.4 제한된 타입 파라미터
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/13/#135-와일드카드-타입-파라미터"
+                  class="bd-links-link d-inline-block rounded ">
+                  13.5 와일드카드 타입 파라미터
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+          
+        </li>
+        
+        <li>
+          
+          
+          
+          <button
+            class="bd-links-link bd-links-btn btn d-inline-flex align-items-center rounded border-0 collapsed w-100"
+            data-bs-toggle="collapse" data-bs-target="#collapse-3"
+            aria-expanded="false">
+            14. 멀티 스레드
+            <svg class="bi ms-auto" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+            </svg>
+          </button>
+          <div class="collapse " id="collapse-3">
+            <ul class="list-unstyled fw-normal pb-1 small ms-3">
+              
+              <li>
+                <a href="/part03/14/"
+                  class="bd-links-link d-inline-block rounded ">
+                  14. 멀티 스레드
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/14/#141-멀티-스레드-개념"
+                  class="bd-links-link d-inline-block rounded ">
+                  14.1 멀티 스레드 개념
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/14/#142-메인-스레드"
+                  class="bd-links-link d-inline-block rounded ">
+                  14.2 메인 스레드
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/14/#143-작업-스레드-생성과-실행"
+                  class="bd-links-link d-inline-block rounded ">
+                  14.3 작업 스레드 생성과 실행
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/14/#144-스레드-이름"
+                  class="bd-links-link d-inline-block rounded ">
+                  14.4 스레드 이름
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/14/#145-스레드-상태"
+                  class="bd-links-link d-inline-block rounded ">
+                  14.5 스레드 상태
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/14/#146-스레드-동기화"
+                  class="bd-links-link d-inline-block rounded ">
+                  14.6 스레드 동기화
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/14/#147-스레드-안전-종료"
+                  class="bd-links-link d-inline-block rounded ">
+                  14.7 스레드 안전 종료
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/14/#148-데몬-스레드"
+                  class="bd-links-link d-inline-block rounded ">
+                  14.8 데몬 스레드
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/14/#149-스레드풀"
+                  class="bd-links-link d-inline-block rounded ">
+                  14.9 스레드풀
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+          
+        </li>
+        
+        <li>
+          
+          
+          
+          <button
+            class="bd-links-link bd-links-btn btn d-inline-flex align-items-center rounded border-0 collapsed w-100"
+            data-bs-toggle="collapse" data-bs-target="#collapse-4"
+            aria-expanded="false">
+            15. 컬렉션 자료구조
+            <svg class="bi ms-auto" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+            </svg>
+          </button>
+          <div class="collapse " id="collapse-4">
+            <ul class="list-unstyled fw-normal pb-1 small ms-3">
+              
+              <li>
+                <a href="/part03/15/"
+                  class="bd-links-link d-inline-block rounded ">
+                  15. 컬렉션 자료구조
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/15/#151-컬렉션-프레임워크"
+                  class="bd-links-link d-inline-block rounded ">
+                  15.1 컬렉션 프레임워크
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/15/#152-List-컬렉션"
+                  class="bd-links-link d-inline-block rounded ">
+                  15.2 List 컬렉션
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/15/#153-Set-컬렉션"
+                  class="bd-links-link d-inline-block rounded ">
+                  15.3 Set 컬렉션
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/15/#154-Map-컬렉션"
+                  class="bd-links-link d-inline-block rounded ">
+                  15.4 Map 컬렉션
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/15/#155-검색-기능을-강화시킨-컬렉션"
+                  class="bd-links-link d-inline-block rounded ">
+                  15.5 검색 기능을 강화시킨 컬렉션
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/15/#156-LIFO와-FIFO-컬렉션"
+                  class="bd-links-link d-inline-block rounded ">
+                  15.6 LIFO와 FIFO 컬렉션
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/15/#157-동기화된-컬렉션"
+                  class="bd-links-link d-inline-block rounded ">
+                  15.7 동기화된 컬렉션
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/15/#158-수정할-수-없는-컬렉션"
+                  class="bd-links-link d-inline-block rounded ">
+                  15.8 수정할 수 없는 컬렉션
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+          
+        </li>
+        
+        <li>
+          
+          
+          
+          <button
+            class="bd-links-link bd-links-btn btn d-inline-flex align-items-center rounded border-0 collapsed w-100"
+            data-bs-toggle="collapse" data-bs-target="#collapse-5"
+            aria-expanded="false">
+            16. 람다식
+            <svg class="bi ms-auto" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+            </svg>
+          </button>
+          <div class="collapse " id="collapse-5">
+            <ul class="list-unstyled fw-normal pb-1 small ms-3">
+              
+              <li>
+                <a href="/part03/16/"
+                  class="bd-links-link d-inline-block rounded ">
+                  16. 람다식
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/16/#161-람다식이란"
+                  class="bd-links-link d-inline-block rounded ">
+                  16.1 람다식이란?
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/16/#162-매개변수가-없는-람다식"
+                  class="bd-links-link d-inline-block rounded ">
+                  16.2 매개변수가 없는 람다식
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/16/#163-매개변수가-있는-람다식"
+                  class="bd-links-link d-inline-block rounded ">
+                  16.3 매개변수가 있는 람다식
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/16/#164-리턴값이-있는-람다식"
+                  class="bd-links-link d-inline-block rounded ">
+                  16.4 리턴값이 있는 람다식
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/16/#165-메소드-참조"
+                  class="bd-links-link d-inline-block rounded ">
+                  16.5 메소드 참조
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/16/#166-생성자-참조"
+                  class="bd-links-link d-inline-block rounded ">
+                  16.6 생성자 참조
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+          
+        </li>
+        
+        <li>
+          
+          
+          
+          <button
+            class="bd-links-link bd-links-btn btn d-inline-flex align-items-center rounded border-0  w-100"
+            data-bs-toggle="collapse" data-bs-target="#collapse-6"
+            aria-expanded="true">
+            17. 스트림 요소 처리
+            <svg class="bi ms-auto" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+            </svg>
+          </button>
+          <div class="collapse show" id="collapse-6">
+            <ul class="list-unstyled fw-normal pb-1 small ms-3">
+              
+              <li>
+                <a href="/part03/17/"
+                  class="bd-links-link d-inline-block rounded active">
+                  17. 스트림 요소 처리
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/17/#171-스트림이란"
+                  class="bd-links-link d-inline-block rounded ">
+                  17.1 스트림이란?
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/17/#172-내부-반복자"
+                  class="bd-links-link d-inline-block rounded ">
+                  17.2 내부 반복자
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/17/#173-중간-처리와-최종-처리"
+                  class="bd-links-link d-inline-block rounded ">
+                  17.3 중간 처리와 최종 처리
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/17/#174-리소스로부터-스트림-얻기"
+                  class="bd-links-link d-inline-block rounded ">
+                  17.4 리소스로부터 스트림 얻기
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/17/#175-요소-걸러내기필터링"
+                  class="bd-links-link d-inline-block rounded ">
+                  17.5 요소 걸러내기(필터링)
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/17/#176-요소-변환매핑"
+                  class="bd-links-link d-inline-block rounded ">
+                  17.6 요소 변환(매핑)
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/17/#177-요소-정렬"
+                  class="bd-links-link d-inline-block rounded ">
+                  17.7 요소 정렬
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/17/#178-요소를-하나씩-처리루핑"
+                  class="bd-links-link d-inline-block rounded ">
+                  17.8 요소를 하나씩 처리(루핑)
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/17/#179-요소-조건-만족-여부매칭"
+                  class="bd-links-link d-inline-block rounded ">
+                  17.9 요소 조건 만족 여부(매칭)
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/17/#1710-요소-기본-집계"
+                  class="bd-links-link d-inline-block rounded ">
+                  17.10 요소 기본 집계
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/17/#1711-요소-커스텀-집계"
+                  class="bd-links-link d-inline-block rounded ">
+                  17.11 요소 커스텀 집계
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/17/#1712-요소-수집"
+                  class="bd-links-link d-inline-block rounded ">
+                  17.12 요소 수집
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/17/#1713-요소-병렬-처리"
+                  class="bd-links-link d-inline-block rounded ">
+                  17.13 요소 병렬 처리
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+          
+        </li>
+        
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+        </div>
+    </aside>
+
+    <main class="bd-main order-1">
+        <nav aria-label="breadcrumb" class="mt-3">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <li class="breadcrumb-item"><a href="/part03/">Part03</a></li>
+        
+        
+        
+        
+        
+        
+        <li class="breadcrumb-item active" aria-current="page">Chapter 17. 스트림 요소 처리</li>
+        
+        
+        
+    </ol>
+</nav>
+        <div class="bd-content ps-lg-2">
+            <h1 id="chapter-17-스트림-요소-처리">Chapter 17. 스트림 요소 처리</h1>
+
+<h2 id="171-스트림이란">17.1 스트림이란?</h2>
+
+<p>지금까지 컬렉션 및 배열에 저장된 요소를 반복 처리하기 위해서는 for 문을 이용하거나 Iterator(반복자)를 이용했다. 다음은 List 컬렉션에서 요소를 하나씩 처리하는 for 문이다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="o">...;</span>
+<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">list</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+	<span class="nc">String</span> <span class="n">item</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+	<span class="c1">// item 처리</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>그리고 Set에서 요소를 하나씩 처리하기 위해 Iterator를 다음과 같이 사용했다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Set</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">set</span> <span class="o">=</span> <span class="o">...;</span>
+<span class="nc">Iterator</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">iterator</span> <span class="o">=</span> <span class="n">set</span><span class="o">.</span><span class="na">iterator</span><span class="o">();</span>
+<span class="k">while</span> <span class="o">(</span><span class="n">iterator</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span>
+	<span class="nc">String</span> <span class="n">item</span> <span class="o">=</span> <span class="n">iterator</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+	<span class="c1">// 요소 처리</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Java 8부터는 또 다른 방법으로 컬렉션 및 배열의 요소를 반복 처리하기 위해 <strong>스트림(Stream)</strong>을 사용할 수 있다. 스트림은 요소들이 하나씩 흘러가면서 처리된다는 의미를 가지고 있다. List 컬렉션에서 요소를 반복 처리하기 위해 스트림을 사용하면 다음과 같다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Stream</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">stream</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="na">stream</span><span class="o">();</span>
+<span class="n">stream</span><span class="o">.</span><span class="na">forEach</span><span class="o">(</span> <span class="n">item</span> <span class="o">-&gt;</span> <span class="cm">/* item 처리 */</span> <span class="o">);</span>
+</code></pre></div></div>
+
+<p>List 컬렉션의 <code class="language-plaintext highlighter-rouge">stream()</code> 메소드로 Stream 객체를 얻고, <code class="language-plaintext highlighter-rouge">forEach()</code> 메소드로 요소를 어떻게 처리할지를 람다식으로 제공한다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch17.sec01.exam01</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.HashSet</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Iterator</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Set</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.stream.Stream</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">StreamExample</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="c1">// Set 컬렉션 생성</span>
+		<span class="nc">Set</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">set</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashSet</span><span class="o">&lt;&gt;();</span>
+		<span class="n">set</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"홍길동"</span><span class="o">);</span>
+		<span class="n">set</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"신용권"</span><span class="o">);</span>
+		<span class="n">set</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"감자바"</span><span class="o">);</span>
+
+		<span class="c1">// Stream을 이용한 요소 반복 처리</span>
+		<span class="nc">Stream</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">stream</span> <span class="o">=</span> <span class="n">set</span><span class="o">.</span><span class="na">stream</span><span class="o">();</span>
+		<span class="n">stream</span><span class="o">.</span><span class="na">forEach</span><span class="o">(</span><span class="n">name</span> <span class="o">-&gt;</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">name</span><span class="o">));</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>실행 결과</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>홍길동
+신용권
+감자바
+</code></pre></div></div>
+
+<p>Stream은 Iterator와 비슷한 반복자이지만, 다음과 같은 차이점을 가지고 있다.</p>
+<ol>
+  <li>내부 반복자이므로 처리 속도가 빠르고 병렬 처리에 효율적이다.</li>
+  <li>람다식으로 다양한 요소 처리를 정의할 수 있다.</li>
+  <li>중간 처리와 최종 처리를 수행하도록 파이프라인을 형성할 수 있다.</li>
+</ol>
+
+<h2 id="172-내부-반복자">17.2 내부 반복자</h2>
+
+<p>for 문과 Iterator는 컬렉션의 요소를 컬렉션 바깥쪽으로 반복해서 가져와 처리하는데, 이것을 <strong>외부 반복자(external iterator)</strong>라고 한다. 반면 스트림은 요소 처리 방법을 컬렉션 내부로 주입시켜서 요소를 반복 처리하는데, 이것을 <strong>내부 반복자(internal iterator)</strong>라고 한다.</p>
+
+<p>외부 반복자일 경우는 컬렉션의 요소를 외부로 가져오는 코드와 처리하는 코드를 모두 개발자 코드가 가지고 있어야 한다. 반면 내부 반복자일 경우는 개발자 코드에서 제공한 데이터 처리 코드(람다식)를 가지고 컬렉션 내부에서 요소를 반복 처리한다.</p>
+
+<p>내부 반복자는 멀티 코어 CPU를 최대한 활용하기 위해 요소들을 분배시켜 병렬 작업을 할 수 있다. 하나씩 처리하는 순차적 외부 반복자보다는 효율적으로 요소를 반복시킬 수 있는 장점이 있다.</p>
+
+<p>다음 예제는 List 컬렉션의 내부 반복자를 이용해서 병렬 처리하는 방법을 보여준다. <code class="language-plaintext highlighter-rouge">parallelStream()</code> 메소드로 병렬 처리 스트림을 얻고, <code class="language-plaintext highlighter-rouge">forEach()</code> 메소드를 호출할 때 요소 처리 방법인 람다식을 제공한다. 람다식은 처리되는 요소가 무엇이고, 어떤 스레드가 처리하는지를 출력한다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch17.sec02</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.stream.Stream</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ParallelStreamExample</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="c1">// List 컬렉션 생성</span>
+		<span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+		<span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"홍길동"</span><span class="o">);</span>
+		<span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"신용권"</span><span class="o">);</span>
+		<span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"감자바"</span><span class="o">);</span>
+		<span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"람다식"</span><span class="o">);</span>
+		<span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"박병렬"</span><span class="o">);</span>
+
+		<span class="c1">// 병렬 처리</span>
+		<span class="nc">Stream</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">parallelStream</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="na">parallelStream</span><span class="o">();</span>
+		<span class="n">parallelStream</span><span class="o">.</span><span class="na">forEach</span><span class="o">(</span><span class="n">name</span> <span class="o">-&gt;</span> <span class="o">{</span>
+			<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">name</span> <span class="o">+</span> <span class="s">": "</span> <span class="o">+</span> <span class="nc">Thread</span><span class="o">.</span><span class="na">currentThread</span><span class="o">().</span><span class="na">getName</span><span class="o">());</span>
+		<span class="o">});</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>실행 결과</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>감자바: main
+람다식: ForkJoinPool.commonPool-worker-2
+홍길동: ForkJoinPool.commonPool-worker-2
+박병렬: main
+신용권: ForkJoinPool.commonPool-worker-1
+</code></pre></div></div>
+
+<h2 id="173-중간-처리와-최종-처리">17.3 중간 처리와 최종 처리</h2>
+
+<p>스트림은 하나 이상 연결될 수 있다. 컬렉션의 오리지널 스트림 뒤에 필터링 중간 스트림이 연결될 수 있고, 그 뒤에 매핑 중간 스트림이 연결될 수 있다. 이와 같이 스트림이 연결되어 있는 것을 <strong>스트림 파이프라인(stream pipelines)</strong>이라고 한다.</p>
+
+<p>오리지널 스트림과 집계 처리 사이의 중간 스트림들은 최종 처리를 위해 요소를 걸러내거나(필터링), 요소를 변환시키거나(매핑), 정렬하는 작업을 수행한다. 최종 처리는 중간 처리에서 정제된 요소들을 반복하거나, 집계(카운팅, 총합, 평균) 작업을 수행한다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Student 스트림</span>
+<span class="nc">Stream</span><span class="o">&lt;</span><span class="nc">Student</span><span class="o">&gt;</span> <span class="n">studentStream</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="na">stream</span><span class="o">();</span>
+
+<span class="c1">// score 스트림</span>
+<span class="nc">IntStream</span> <span class="n">scoreStream</span> <span class="o">=</span> <span class="n">studentStream</span><span class="o">.</span><span class="na">mapToInt</span><span class="o">(</span> <span class="n">student</span> <span class="o">-&gt;</span> <span class="n">student</span><span class="o">.</span><span class="na">getScore</span><span class="o">()</span> <span class="o">);</span>
+
+<span class="c1">// 평균 계산</span>
+<span class="kt">double</span> <span class="n">avg</span> <span class="o">=</span> <span class="n">scoreStream</span><span class="o">.</span><span class="na">average</span><span class="o">().</span><span class="na">getAsDouble</span><span class="o">();</span>
+</code></pre></div></div>
+
+<p>메소드 체이닝 패턴을 이용하면 앞의 코드를 다음과 같이 더 간결하게 작성할 수 있다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">double</span> <span class="n">avg</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span>
+	<span class="o">.</span><span class="na">mapToInt</span><span class="o">(</span><span class="n">student</span> <span class="o">-&gt;</span> <span class="n">student</span><span class="o">.</span><span class="na">getScore</span><span class="o">())</span>
+	<span class="o">.</span><span class="na">average</span><span class="o">()</span>
+	<span class="o">.</span><span class="na">getAsDouble</span><span class="o">();</span>
+</code></pre></div></div>
+
+<p>스트림 파이프라인으로 구성할 때 주의할 점은 파이프라인의 맨 끝에는 반드시 최종 처리 부분이 있어야 한다는 것이다. 최종 처리가 없다면 오리지널 및 중간 처리 스트림은 동작하지 않는다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch17.sec03</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Student</span> <span class="o">{</span>
+	<span class="kd">private</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="kt">int</span> <span class="n">score</span><span class="o">;</span>
+
+	<span class="kd">public</span> <span class="nf">Student</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">,</span> <span class="kt">int</span> <span class="n">score</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">score</span> <span class="o">=</span> <span class="n">score</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="nc">String</span> <span class="nf">getName</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="n">name</span><span class="o">;</span> <span class="o">}</span>
+	<span class="kd">public</span> <span class="kt">int</span> <span class="nf">getScore</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="n">score</span><span class="o">;</span> <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch17.sec03</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">StreamPipeLineExample</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">List</span><span class="o">&lt;</span><span class="nc">Student</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span>
+			<span class="k">new</span> <span class="nf">Student</span><span class="o">(</span><span class="s">"홍길동"</span><span class="o">,</span> <span class="mi">10</span><span class="o">),</span>
+			<span class="k">new</span> <span class="nf">Student</span><span class="o">(</span><span class="s">"신용권"</span><span class="o">,</span> <span class="mi">20</span><span class="o">),</span>
+			<span class="k">new</span> <span class="nf">Student</span><span class="o">(</span><span class="s">"유미선"</span><span class="o">,</span> <span class="mi">30</span><span class="o">)</span>
+		<span class="o">);</span>
+
+		<span class="c1">// 방법1</span>
+		<span class="cm">/*
+		Stream&lt;Student&gt; studentStream = list.stream();
+		// 중간 처리(학생 객체를 점수로 매핑)
+		IntStream scoreStream = studentStream.mapToInt(student -&gt; student.getScore());
+		// 최종 처리(평균 점수)
+		double avg = scoreStream.average().getAsDouble();
+		*/</span>
+
+		<span class="c1">// 방법2</span>
+		<span class="kt">double</span> <span class="n">avg</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span>
+			<span class="o">.</span><span class="na">mapToInt</span><span class="o">(</span><span class="n">student</span> <span class="o">-&gt;</span> <span class="n">student</span><span class="o">.</span><span class="na">getScore</span><span class="o">())</span>
+			<span class="o">.</span><span class="na">average</span><span class="o">()</span>
+			<span class="o">.</span><span class="na">getAsDouble</span><span class="o">();</span>
+
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"평균 점수: "</span> <span class="o">+</span> <span class="n">avg</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>실행 결과</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>평균 점수: 20.0
+</code></pre></div></div>
+
+<h2 id="174-리소스로부터-스트림-얻기">17.4 리소스로부터 스트림 얻기</h2>
+
+<p><code class="language-plaintext highlighter-rouge">java.util.stream</code> 패키지에는 스트림 인터페이스들이 있다. <code class="language-plaintext highlighter-rouge">BaseStream</code> 인터페이스를 부모로 한 자식 인터페이스들은 <code class="language-plaintext highlighter-rouge">Stream</code>, <code class="language-plaintext highlighter-rouge">IntStream</code>, <code class="language-plaintext highlighter-rouge">LongStream</code>, <code class="language-plaintext highlighter-rouge">DoubleStream</code>이다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">BaseStream</code>에는 모든 스트림에서 사용할 수 있는 공통 메소드들이 정의되어 있다. <code class="language-plaintext highlighter-rouge">Stream</code>은 객체 요소를 처리하는 스트림이고, <code class="language-plaintext highlighter-rouge">IntStream</code>, <code class="language-plaintext highlighter-rouge">LongStream</code>, <code class="language-plaintext highlighter-rouge">DoubleStream</code>은 각각 기본 타입인 <code class="language-plaintext highlighter-rouge">int</code>, <code class="language-plaintext highlighter-rouge">long</code>, <code class="language-plaintext highlighter-rouge">double</code> 요소를 처리하는 스트림이다.</p>
+
+<h3 id="컬렉션으로부터-스트림-얻기">컬렉션으로부터 스트림 얻기</h3>
+
+<p><code class="language-plaintext highlighter-rouge">java.util.Collection</code> 인터페이스는 <code class="language-plaintext highlighter-rouge">stream()</code>과 <code class="language-plaintext highlighter-rouge">parallelStream()</code> 메소드를 가지고 있기 때문에 자식 인터페이스인 List와 Set 인터페이스를 구현한 모든 컬렉션에서 객체 스트림을 얻을 수 있다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch17.sec04.exam01</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Product</span> <span class="o">{</span>
+	<span class="kd">private</span> <span class="kt">int</span> <span class="n">pno</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="nc">String</span> <span class="n">company</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="kt">int</span> <span class="n">price</span><span class="o">;</span>
+
+	<span class="kd">public</span> <span class="nf">Product</span><span class="o">(</span><span class="kt">int</span> <span class="n">pno</span><span class="o">,</span> <span class="nc">String</span> <span class="n">name</span><span class="o">,</span> <span class="nc">String</span> <span class="n">company</span><span class="o">,</span> <span class="kt">int</span> <span class="n">price</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">pno</span> <span class="o">=</span> <span class="n">pno</span><span class="o">;</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">company</span> <span class="o">=</span> <span class="n">company</span><span class="o">;</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">price</span> <span class="o">=</span> <span class="n">price</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kt">int</span> <span class="nf">getPno</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="n">pno</span><span class="o">;</span> <span class="o">}</span>
+	<span class="kd">public</span> <span class="nc">String</span> <span class="nf">getName</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="n">name</span><span class="o">;</span> <span class="o">}</span>
+	<span class="kd">public</span> <span class="nc">String</span> <span class="nf">getCompany</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="n">company</span><span class="o">;</span> <span class="o">}</span>
+	<span class="kd">public</span> <span class="kt">int</span> <span class="nf">getPrice</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="n">price</span><span class="o">;</span> <span class="o">}</span>
+
+	<span class="nd">@Override</span>
+	<span class="kd">public</span> <span class="nc">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="k">new</span> <span class="nf">StringBuilder</span><span class="o">()</span>
+			<span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"{"</span><span class="o">)</span>
+			<span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"pno:"</span> <span class="o">+</span> <span class="n">pno</span> <span class="o">+</span> <span class="s">", "</span><span class="o">)</span>
+			<span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"name:"</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s">", "</span><span class="o">)</span>
+			<span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"company:"</span> <span class="o">+</span> <span class="n">company</span> <span class="o">+</span> <span class="s">", "</span><span class="o">)</span>
+			<span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"price:"</span> <span class="o">+</span> <span class="n">price</span><span class="o">)</span>
+			<span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"}"</span><span class="o">)</span>
+			<span class="o">.</span><span class="na">toString</span><span class="o">();</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch17.sec04.exam01</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.stream.Stream</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">StreamExample</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="c1">// List 컬렉션 생성</span>
+		<span class="nc">List</span><span class="o">&lt;</span><span class="nc">Product</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+		<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="mi">5</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+			<span class="nc">Product</span> <span class="n">product</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Product</span><span class="o">(</span><span class="n">i</span><span class="o">,</span> <span class="s">"상품"</span><span class="o">+</span><span class="n">i</span><span class="o">,</span> <span class="s">"멋진 회사"</span><span class="o">,</span> <span class="o">(</span><span class="kt">int</span><span class="o">)(</span><span class="mi">10000</span><span class="o">*</span><span class="nc">Math</span><span class="o">.</span><span class="na">random</span><span class="o">()));</span>
+			<span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">product</span><span class="o">);</span>
+		<span class="o">}</span>
+
+		<span class="c1">// 객체 스트림 얻기</span>
+		<span class="nc">Stream</span><span class="o">&lt;</span><span class="nc">Product</span><span class="o">&gt;</span> <span class="n">stream</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="na">stream</span><span class="o">();</span>
+		<span class="n">stream</span><span class="o">.</span><span class="na">forEach</span><span class="o">(</span><span class="n">p</span> <span class="o">-&gt;</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">p</span><span class="o">));</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>실행 결과</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{pno:1, name:상품1, company:멋진 회사, price:2029}
+{pno:2, name:상품2, company:멋진 회사, price:2534}
+{pno:3, name:상품3, company:멋진 회사, price:8886}
+{pno:4, name:상품4, company:멋진 회사, price:9298}
+{pno:5, name:상품5, company:멋진 회사, price:1333}
+</code></pre></div></div>
+
+<h3 id="배열로부터-스트림-얻기">배열로부터 스트림 얻기</h3>
+
+<p><code class="language-plaintext highlighter-rouge">java.util.Arrays</code> 클래스를 이용하면 다양한 종류의 배열로부터 스트림을 얻을 수 있다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch17.sec04.exam02</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.stream.IntStream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.stream.Stream</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">StreamExample</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">String</span><span class="o">[]</span> <span class="n">strArray</span> <span class="o">=</span> <span class="o">{</span> <span class="s">"홍길동"</span><span class="o">,</span> <span class="s">"신용권"</span><span class="o">,</span> <span class="s">"김미나"</span> <span class="o">};</span>
+		<span class="nc">Stream</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">strStream</span> <span class="o">=</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">stream</span><span class="o">(</span><span class="n">strArray</span><span class="o">);</span>
+		<span class="n">strStream</span><span class="o">.</span><span class="na">forEach</span><span class="o">(</span><span class="n">item</span> <span class="o">-&gt;</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">item</span> <span class="o">+</span> <span class="s">","</span><span class="o">));</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
+
+		<span class="kt">int</span><span class="o">[]</span> <span class="n">intArray</span> <span class="o">=</span> <span class="o">{</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">5</span> <span class="o">};</span>
+		<span class="nc">IntStream</span> <span class="n">intStream</span> <span class="o">=</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">stream</span><span class="o">(</span><span class="n">intArray</span><span class="o">);</span>
+		<span class="n">intStream</span><span class="o">.</span><span class="na">forEach</span><span class="o">(</span><span class="n">item</span> <span class="o">-&gt;</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">item</span> <span class="o">+</span> <span class="s">","</span><span class="o">));</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>실행 결과</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>홍길동,신용권,김미나,
+1,2,3,4,5,
+</code></pre></div></div>
+
+<h3 id="숫자-범위로부터-스트림-얻기">숫자 범위로부터 스트림 얻기</h3>
+
+<p><code class="language-plaintext highlighter-rouge">IntStream</code> 또는 <code class="language-plaintext highlighter-rouge">LongStream</code>의 정적 메소드인 <code class="language-plaintext highlighter-rouge">range()</code>와 <code class="language-plaintext highlighter-rouge">rangeClosed()</code> 메소드를 이용하면 특정 범위의 정수 스트림을 얻을 수 있다. 첫 번째 매개값은 시작 수이고 두 번째 매개값은 끝 수인데, 끝 수를 포함하지 않으면 <code class="language-plaintext highlighter-rouge">range()</code>, 포함하면 <code class="language-plaintext highlighter-rouge">rangeClosed()</code>를 사용한다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch17.sec04.exam03</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.stream.IntStream</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">StreamExample</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="n">sum</span><span class="o">;</span>
+
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">IntStream</span> <span class="n">stream</span> <span class="o">=</span> <span class="nc">IntStream</span><span class="o">.</span><span class="na">rangeClosed</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">100</span><span class="o">);</span>
+		<span class="n">stream</span><span class="o">.</span><span class="na">forEach</span><span class="o">(</span><span class="n">a</span> <span class="o">-&gt;</span> <span class="n">sum</span> <span class="o">+=</span> <span class="n">a</span><span class="o">);</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"총합: "</span> <span class="o">+</span> <span class="n">sum</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>실행 결과</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>총합: 5050
+</code></pre></div></div>
+
+<h3 id="파일로부터-스트림-얻기">파일로부터 스트림 얻기</h3>
+
+<p><code class="language-plaintext highlighter-rouge">java.nio.file.Files</code>의 <code class="language-plaintext highlighter-rouge">lines()</code> 메소드를 이용하면 텍스트 파일의 행 단위 스트림을 얻을 수 있다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">data.txt</code> 파일 내용:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{"pno":1, "name":"상품1", "company":"멋진 회사", "price":1558}
+{"pno":2, "name":"상품2", "company":"멋진 회사", "price":4671}
+{"pno":3, "name":"상품3", "company":"멋진 회사", "price":470}
+{"pno":4, "name":"상품4", "company":"멋진 회사", "price":9584}
+{"pno":5, "name":"상품5", "company":"멋진 회사", "price":6868}
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch17.sec04.exam04</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.nio.charset.Charset</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.nio.file.Files</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.nio.file.Path</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.nio.file.Paths</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.stream.Stream</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">StreamExample</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+		<span class="nc">Path</span> <span class="n">path</span> <span class="o">=</span> <span class="nc">Paths</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="nc">StreamExample</span><span class="o">.</span><span class="na">class</span><span class="o">.</span><span class="na">getResource</span><span class="o">(</span><span class="s">"data.txt"</span><span class="o">).</span><span class="na">toURI</span><span class="o">());</span>
+		<span class="nc">Stream</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">stream</span> <span class="o">=</span> <span class="nc">Files</span><span class="o">.</span><span class="na">lines</span><span class="o">(</span><span class="n">path</span><span class="o">,</span> <span class="nc">Charset</span><span class="o">.</span><span class="na">defaultCharset</span><span class="o">());</span>
+		<span class="n">stream</span><span class="o">.</span><span class="na">forEach</span><span class="o">(</span><span class="n">line</span> <span class="o">-&gt;</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">line</span><span class="o">));</span>
+		<span class="n">stream</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>실행 결과</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{"pno":1, "name":"상품1", "company":"멋진 회사", "price":1558}
+{"pno":2, "name":"상품2", "company":"멋진 회사", "price":4671}
+{"pno":3, "name":"상품3", "company":"멋진 회사", "price":470}
+{"pno":4, "name":"상품4", "company":"멋진 회사", "price":9584}
+{"pno":5, "name":"상품5", "company":"멋진 회사", "price":6868}
+</code></pre></div></div>
+
+<h2 id="175-요소-걸러내기필터링">17.5 요소 걸러내기(필터링)</h2>
+
+<p>필터링은 요소를 걸러내는 중간 처리 기능이다. 필터링 메소드에는 <code class="language-plaintext highlighter-rouge">distinct()</code>와 <code class="language-plaintext highlighter-rouge">filter()</code>가 있다.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">distinct()</code>: 중복 제거</li>
+  <li><code class="language-plaintext highlighter-rouge">filter(Predicate&lt;T&gt;)</code>: 조건 필터링. 매개값으로 주어진 Predicate가 true를 리턴하는 요소만 필터링한다.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch17.sec05</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">FilteringExample</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="c1">// List 컬렉션 생성</span>
+		<span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+		<span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"홍길동"</span><span class="o">);</span>
+		<span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"신용권"</span><span class="o">);</span>
+		<span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"감자바"</span><span class="o">);</span>
+		<span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"신용권"</span><span class="o">);</span>
+		<span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"신민철"</span><span class="o">);</span>
+
+		<span class="c1">// 중복 요소 제거</span>
+		<span class="n">list</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span>
+			<span class="o">.</span><span class="na">distinct</span><span class="o">()</span>
+			<span class="o">.</span><span class="na">forEach</span><span class="o">(</span><span class="n">n</span> <span class="o">-&gt;</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">n</span><span class="o">));</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
+
+		<span class="c1">// 신으로 시작하는 요소만 필터링</span>
+		<span class="n">list</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span>
+			<span class="o">.</span><span class="na">filter</span><span class="o">(</span><span class="n">n</span> <span class="o">-&gt;</span> <span class="n">n</span><span class="o">.</span><span class="na">startsWith</span><span class="o">(</span><span class="s">"신"</span><span class="o">))</span>
+			<span class="o">.</span><span class="na">forEach</span><span class="o">(</span><span class="n">n</span> <span class="o">-&gt;</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">n</span><span class="o">));</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
+
+		<span class="c1">// 중복 요소를 먼저 제거하고, 신으로 시작하는 요소만 필터링</span>
+		<span class="n">list</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span>
+			<span class="o">.</span><span class="na">distinct</span><span class="o">()</span>
+			<span class="o">.</span><span class="na">filter</span><span class="o">(</span><span class="n">n</span> <span class="o">-&gt;</span> <span class="n">n</span><span class="o">.</span><span class="na">startsWith</span><span class="o">(</span><span class="s">"신"</span><span class="o">))</span>
+			<span class="o">.</span><span class="na">forEach</span><span class="o">(</span><span class="n">n</span> <span class="o">-&gt;</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">n</span><span class="o">));</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>실행 결과</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>홍길동
+신용권
+감자바
+신민철
+
+신용권
+신용권
+신민철
+
+신용권
+신민철
+</code></pre></div></div>
+
+<h2 id="176-요소-변환매핑">17.6 요소 변환(매핑)</h2>
+
+<p>매핑(mapping)은 스트림의 요소를 다른 요소로 변환하는 중간 처리 기능이다. 매핑 메소드는 <code class="language-plaintext highlighter-rouge">mapXxx()</code>, <code class="language-plaintext highlighter-rouge">asDoubleStream()</code>, <code class="language-plaintext highlighter-rouge">asLongStream()</code>, <code class="language-plaintext highlighter-rouge">boxed()</code>, <code class="language-plaintext highlighter-rouge">flatMapXxx()</code> 등이 있다.</p>
+
+<h3 id="요소를-다른-요소로-변환">요소를 다른 요소로 변환</h3>
+
+<p><code class="language-plaintext highlighter-rouge">mapXxx()</code> 메소드는 요소를 다른 요소로 변환한 새로운 스트림을 리턴한다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch17.sec06.exam01</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Student</span> <span class="o">{</span>
+	<span class="kd">private</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="kt">int</span> <span class="n">score</span><span class="o">;</span>
+
+	<span class="kd">public</span> <span class="nf">Student</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">,</span> <span class="kt">int</span> <span class="n">score</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">score</span> <span class="o">=</span> <span class="n">score</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="nc">String</span> <span class="nf">getName</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="n">name</span><span class="o">;</span> <span class="o">}</span>
+	<span class="kd">public</span> <span class="kt">int</span> <span class="nf">getScore</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="n">score</span><span class="o">;</span> <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch17.sec06.exam01</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MapExample</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="c1">// List 컬렉션 생성</span>
+		<span class="nc">List</span><span class="o">&lt;</span><span class="nc">Student</span><span class="o">&gt;</span> <span class="n">studentList</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+		<span class="n">studentList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Student</span><span class="o">(</span><span class="s">"홍길동"</span><span class="o">,</span> <span class="mi">85</span><span class="o">));</span>
+		<span class="n">studentList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Student</span><span class="o">(</span><span class="s">"홍길동"</span><span class="o">,</span> <span class="mi">92</span><span class="o">));</span>
+		<span class="n">studentList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Student</span><span class="o">(</span><span class="s">"홍길동"</span><span class="o">,</span> <span class="mi">87</span><span class="o">));</span>
+
+		<span class="c1">// Student를 score 스트림으로 변환</span>
+		<span class="n">studentList</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span>
+			<span class="o">.</span><span class="na">mapToInt</span><span class="o">(</span><span class="n">s</span> <span class="o">-&gt;</span> <span class="n">s</span><span class="o">.</span><span class="na">getScore</span><span class="o">())</span>
+			<span class="o">.</span><span class="na">forEach</span><span class="o">(</span><span class="n">score</span> <span class="o">-&gt;</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">score</span><span class="o">));</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>실행 결과</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>85
+92
+87
+</code></pre></div></div>
+
+<p>기본 타입 간의 변환이거나 기본 타입 요소를 래퍼(Wrapper) 객체 요소로 변환하려면 다음과 같은 간편화 메소드를 사용할 수도 있다.</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">asLongStream()</code>: int -&gt; long</li>
+  <li><code class="language-plaintext highlighter-rouge">asDoubleStream()</code>: int -&gt; double, long -&gt; double</li>
+  <li><code class="language-plaintext highlighter-rouge">boxed()</code>: int -&gt; Integer, long -&gt; Long, double -&gt; Double</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch17.sec06.exam02</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.stream.IntStream</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MapExample</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="kt">int</span><span class="o">[]</span> <span class="n">intArray</span> <span class="o">=</span> <span class="o">{</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">5</span> <span class="o">};</span>
+
+		<span class="nc">IntStream</span> <span class="n">intStream</span> <span class="o">=</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">stream</span><span class="o">(</span><span class="n">intArray</span><span class="o">);</span>
+		<span class="n">intStream</span>
+			<span class="o">.</span><span class="na">asDoubleStream</span><span class="o">()</span>
+			<span class="o">.</span><span class="na">forEach</span><span class="o">(</span><span class="n">d</span> <span class="o">-&gt;</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">d</span><span class="o">));</span>
+
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
+
+		<span class="n">intStream</span> <span class="o">=</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">stream</span><span class="o">(</span><span class="n">intArray</span><span class="o">);</span>
+		<span class="n">intStream</span>
+			<span class="o">.</span><span class="na">boxed</span><span class="o">()</span>
+			<span class="o">.</span><span class="na">forEach</span><span class="o">(</span><span class="n">obj</span> <span class="o">-&gt;</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">obj</span><span class="o">.</span><span class="na">intValue</span><span class="o">()));</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>실행 결과</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.0
+2.0
+3.0
+4.0
+5.0
+
+1
+2
+3
+4
+5
+</code></pre></div></div>
+
+<h3 id="요소를-복수-개의-요소로-변환">요소를 복수 개의 요소로 변환</h3>
+
+<p><code class="language-plaintext highlighter-rouge">flatMapXxx()</code> 메소드는 하나의 요소를 복수 개의 요소들로 변환한 새로운 스트림을 리턴한다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch17.sec06.exam03</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">FlatMappingExample</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="c1">// 문장 스트림을 단어 스트림으로 변환</span>
+		<span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">list1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+		<span class="n">list1</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"this is java"</span><span class="o">);</span>
+		<span class="n">list1</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"i am a best developer"</span><span class="o">);</span>
+		<span class="n">list1</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span>
+			<span class="o">.</span><span class="na">flatMap</span><span class="o">(</span><span class="n">data</span> <span class="o">-&gt;</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">stream</span><span class="o">(</span><span class="n">data</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">" "</span><span class="o">)))</span>
+			<span class="o">.</span><span class="na">forEach</span><span class="o">(</span><span class="n">word</span> <span class="o">-&gt;</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">word</span><span class="o">));</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
+
+		<span class="c1">// 문자열 숫자 목록 스트림을 숫자 스트림으로 변환</span>
+		<span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">list2</span> <span class="o">=</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="s">"10, 20, 30"</span><span class="o">,</span> <span class="s">"40, 50"</span><span class="o">);</span>
+		<span class="n">list2</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span>
+			<span class="o">.</span><span class="na">flatMapToInt</span><span class="o">(</span><span class="n">data</span> <span class="o">-&gt;</span> <span class="o">{</span>
+				<span class="nc">String</span><span class="o">[]</span> <span class="n">strArr</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">","</span><span class="o">);</span>
+				<span class="kt">int</span><span class="o">[]</span> <span class="n">intArr</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">strArr</span><span class="o">.</span><span class="na">length</span><span class="o">];</span>
+				<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">strArr</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+					<span class="n">intArr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">strArr</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">trim</span><span class="o">());</span>
+				<span class="o">}</span>
+				<span class="k">return</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">stream</span><span class="o">(</span><span class="n">intArr</span><span class="o">);</span>
+			<span class="o">})</span>
+			<span class="o">.</span><span class="na">forEach</span><span class="o">(</span><span class="n">number</span> <span class="o">-&gt;</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">number</span><span class="o">));</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>실행 결과</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>this
+is
+java
+i
+am
+a
+best
+developer
+
+10
+20
+30
+40
+50
+</code></pre></div></div>
+
+<h2 id="177-요소-정렬">17.7 요소 정렬</h2>
+
+<p>정렬은 요소를 오름차순 또는 내림차순으로 정렬하는 중간 처리 기능이다.</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">sorted()</code>: Comparable 요소를 정렬한 새로운 스트림 생성</li>
+  <li><code class="language-plaintext highlighter-rouge">sorted(Comparator&lt;T&gt;)</code>: 요소를 Comparator에 따라 정렬한 새 스트림 생성</li>
+</ul>
+
+<h3 id="comparable-구현-객체의-정렬">Comparable 구현 객체의 정렬</h3>
+
+<p>스트림의 요소가 객체일 경우 객체가 Comparable을 구현하고 있어야만 <code class="language-plaintext highlighter-rouge">sorted()</code> 메소드를 사용하여 정렬할 수 있다. 그렇지 않다면 <code class="language-plaintext highlighter-rouge">ClassCastException</code>이 발생한다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch17.sec07.exam01</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Student</span> <span class="kd">implements</span> <span class="nc">Comparable</span><span class="o">&lt;</span><span class="nc">Student</span><span class="o">&gt;</span> <span class="o">{</span>
+	<span class="kd">private</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="kt">int</span> <span class="n">score</span><span class="o">;</span>
+
+	<span class="kd">public</span> <span class="nf">Student</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">,</span> <span class="kt">int</span> <span class="n">score</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">score</span> <span class="o">=</span> <span class="n">score</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="nc">String</span> <span class="nf">getName</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="n">name</span><span class="o">;</span> <span class="o">}</span>
+	<span class="kd">public</span> <span class="kt">int</span> <span class="nf">getScore</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="n">score</span><span class="o">;</span> <span class="o">}</span>
+
+	<span class="nd">@Override</span>
+	<span class="kd">public</span> <span class="kt">int</span> <span class="nf">compareTo</span><span class="o">(</span><span class="nc">Student</span> <span class="n">o</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">compare</span><span class="o">(</span><span class="n">score</span><span class="o">,</span> <span class="n">o</span><span class="o">.</span><span class="na">score</span><span class="o">);</span> <span class="c1">// score와 o.score가 같을 경우 0, 작을 경우 음수, 클 경우 양수 리턴</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch17.sec07.exam01</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Comparator</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SortingExample</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="c1">// List 컬렉션 생성</span>
+		<span class="nc">List</span><span class="o">&lt;</span><span class="nc">Student</span><span class="o">&gt;</span> <span class="n">studentList</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+		<span class="n">studentList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Student</span><span class="o">(</span><span class="s">"홍길동"</span><span class="o">,</span> <span class="mi">30</span><span class="o">));</span>
+		<span class="n">studentList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Student</span><span class="o">(</span><span class="s">"신용권"</span><span class="o">,</span> <span class="mi">10</span><span class="o">));</span>
+		<span class="n">studentList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Student</span><span class="o">(</span><span class="s">"유미선"</span><span class="o">,</span> <span class="mi">20</span><span class="o">));</span>
+
+		<span class="c1">// 점수를 기준으로 오름차순으로 정렬한 새 스트림 얻기</span>
+		<span class="n">studentList</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span>
+			<span class="o">.</span><span class="na">sorted</span><span class="o">()</span>
+			<span class="o">.</span><span class="na">forEach</span><span class="o">(</span><span class="n">s</span> <span class="o">-&gt;</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">s</span><span class="o">.</span><span class="na">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">": "</span> <span class="o">+</span> <span class="n">s</span><span class="o">.</span><span class="na">getScore</span><span class="o">()));</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
+
+		<span class="c1">// 점수를 기준으로 내림차순으로 정렬한 새 스트림 얻기</span>
+		<span class="n">studentList</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span>
+			<span class="o">.</span><span class="na">sorted</span><span class="o">(</span><span class="nc">Comparator</span><span class="o">.</span><span class="na">reverseOrder</span><span class="o">())</span>
+			<span class="o">.</span><span class="na">forEach</span><span class="o">(</span><span class="n">s</span> <span class="o">-&gt;</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">s</span><span class="o">.</span><span class="na">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">": "</span> <span class="o">+</span> <span class="n">s</span><span class="o">.</span><span class="na">getScore</span><span class="o">()));</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>실행 결과</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>신용권: 10
+유미선: 20
+홍길동: 30
+
+홍길동: 30
+유미선: 20
+신용권: 10
+</code></pre></div></div>
+
+<h3 id="comparator를-이용한-정렬">Comparator를 이용한 정렬</h3>
+
+<p>요소 객체가 Comparable을 구현하고 있지 않다면, 비교자를 제공하면 요소를 정렬시킬 수 있다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch17.sec07.exam02</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Student</span> <span class="o">{</span>
+	<span class="kd">private</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="kt">int</span> <span class="n">score</span><span class="o">;</span>
+
+	<span class="kd">public</span> <span class="nf">Student</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">,</span> <span class="kt">int</span> <span class="n">score</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">score</span> <span class="o">=</span> <span class="n">score</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="nc">String</span> <span class="nf">getName</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="n">name</span><span class="o">;</span> <span class="o">}</span>
+	<span class="kd">public</span> <span class="kt">int</span> <span class="nf">getScore</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="n">score</span><span class="o">;</span> <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch17.sec07.exam02</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SortingExample</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="c1">// List 컬렉션 생성</span>
+		<span class="nc">List</span><span class="o">&lt;</span><span class="nc">Student</span><span class="o">&gt;</span> <span class="n">studentList</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+		<span class="n">studentList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Student</span><span class="o">(</span><span class="s">"홍길동"</span><span class="o">,</span> <span class="mi">30</span><span class="o">));</span>
+		<span class="n">studentList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Student</span><span class="o">(</span><span class="s">"신용권"</span><span class="o">,</span> <span class="mi">10</span><span class="o">));</span>
+		<span class="n">studentList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Student</span><span class="o">(</span><span class="s">"유미선"</span><span class="o">,</span> <span class="mi">20</span><span class="o">));</span>
+
+		<span class="c1">// 점수를 기준으로 오름차순으로 정렬한 새 스트림 얻기</span>
+		<span class="n">studentList</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span>
+			<span class="o">.</span><span class="na">sorted</span><span class="o">((</span><span class="n">s1</span><span class="o">,</span> <span class="n">s2</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">compare</span><span class="o">(</span><span class="n">s1</span><span class="o">.</span><span class="na">getScore</span><span class="o">(),</span> <span class="n">s2</span><span class="o">.</span><span class="na">getScore</span><span class="o">()))</span>
+			<span class="o">.</span><span class="na">forEach</span><span class="o">(</span><span class="n">s</span> <span class="o">-&gt;</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">s</span><span class="o">.</span><span class="na">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">": "</span> <span class="o">+</span> <span class="n">s</span><span class="o">.</span><span class="na">getScore</span><span class="o">()));</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
+
+		<span class="c1">// 점수를 기준으로 내림차순으로 정렬한 새 스트림 얻기</span>
+		<span class="n">studentList</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span>
+			<span class="o">.</span><span class="na">sorted</span><span class="o">((</span><span class="n">s1</span><span class="o">,</span> <span class="n">s2</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">compare</span><span class="o">(</span><span class="n">s2</span><span class="o">.</span><span class="na">getScore</span><span class="o">(),</span> <span class="n">s1</span><span class="o">.</span><span class="na">getScore</span><span class="o">()))</span>
+			<span class="o">.</span><span class="na">forEach</span><span class="o">(</span><span class="n">s</span> <span class="o">-&gt;</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">s</span><span class="o">.</span><span class="na">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">": "</span> <span class="o">+</span> <span class="n">s</span><span class="o">.</span><span class="na">getScore</span><span class="o">()));</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>실행 결과</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>신용권: 10
+유미선: 20
+홍길동: 30
+
+홍길동: 30
+유미선: 20
+신용권: 10
+</code></pre></div></div>
+
+<h2 id="178-요소를-하나씩-처리루핑">17.8 요소를 하나씩 처리(루핑)</h2>
+
+<p>루핑(looping)은 스트림에서 요소를 하나씩 반복해서 가져와 처리하는 것을 말한다. 루핑 메소드에는 <code class="language-plaintext highlighter-rouge">peek()</code>과 <code class="language-plaintext highlighter-rouge">forEach()</code>가 있다.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">peek()</code>: 중간 처리 메소드. 최종 처리가 뒤에 붙지 않으면 동작하지 않는다.</li>
+  <li><code class="language-plaintext highlighter-rouge">forEach()</code>: 최종 처리 메소드.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch17.sec08</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">LoopingExample</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="kt">int</span><span class="o">[]</span> <span class="n">intArr</span> <span class="o">=</span> <span class="o">{</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">5</span> <span class="o">};</span>
+
+		<span class="c1">// 잘못 작성한 경우</span>
+		<span class="nc">Arrays</span><span class="o">.</span><span class="na">stream</span><span class="o">(</span><span class="n">intArr</span><span class="o">)</span>
+			<span class="o">.</span><span class="na">filter</span><span class="o">(</span><span class="n">a</span> <span class="o">-&gt;</span> <span class="n">a</span><span class="o">%</span><span class="mi">2</span><span class="o">==</span><span class="mi">0</span><span class="o">)</span>
+			<span class="o">.</span><span class="na">peek</span><span class="o">(</span><span class="n">n</span> <span class="o">-&gt;</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">n</span><span class="o">));</span> <span class="c1">// 최종 처리가 없으므로 동작하지 않음</span>
+
+		<span class="c1">// 중간 처리 메소드 peek()을 이용해서 반복 처리</span>
+		<span class="kt">int</span> <span class="n">total</span> <span class="o">=</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">stream</span><span class="o">(</span><span class="n">intArr</span><span class="o">)</span>
+			<span class="o">.</span><span class="na">filter</span><span class="o">(</span><span class="n">a</span> <span class="o">-&gt;</span> <span class="n">a</span><span class="o">%</span><span class="mi">2</span><span class="o">==</span><span class="mi">0</span><span class="o">)</span>
+			<span class="o">.</span><span class="na">peek</span><span class="o">(</span><span class="n">n</span> <span class="o">-&gt;</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">n</span><span class="o">))</span> <span class="c1">// 동작함</span>
+			<span class="o">.</span><span class="na">sum</span><span class="o">();</span> <span class="c1">// 최종 처리</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"총합: "</span> <span class="o">+</span> <span class="n">total</span> <span class="o">+</span> <span class="s">"\n"</span><span class="o">);</span>
+
+		<span class="c1">// 최종 처리 메소드 forEach()를 이용해서 반복 처리</span>
+		<span class="nc">Arrays</span><span class="o">.</span><span class="na">stream</span><span class="o">(</span><span class="n">intArr</span><span class="o">)</span>
+			<span class="o">.</span><span class="na">filter</span><span class="o">(</span><span class="n">a</span> <span class="o">-&gt;</span> <span class="n">a</span><span class="o">%</span><span class="mi">2</span><span class="o">==</span><span class="mi">0</span><span class="o">)</span>
+			<span class="o">.</span><span class="na">forEach</span><span class="o">(</span><span class="n">n</span> <span class="o">-&gt;</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">n</span><span class="o">));</span> <span class="c1">// 최종 처리이므로 동작함</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>실행 결과</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2
+4
+총합: 6
+
+2
+4
+</code></pre></div></div>
+
+<h2 id="179-요소-조건-만족-여부매칭">17.9 요소 조건 만족 여부(매칭)</h2>
+
+<p>매칭은 요소들이 특정 조건에 만족하는지 여부를 조사하는 최종 처리 기능이다.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">allMatch()</code>: 모든 요소가 만족하는지 여부</li>
+  <li><code class="language-plaintext highlighter-rouge">anyMatch()</code>: 최소한 하나의 요소가 만족하는지 여부</li>
+  <li><code class="language-plaintext highlighter-rouge">noneMatch()</code>: 모든 요소가 만족하지 않는지 여부</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch17.sec09</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MatchingExample</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="kt">int</span><span class="o">[]</span> <span class="n">intArr</span> <span class="o">=</span> <span class="o">{</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">6</span> <span class="o">};</span>
+
+		<span class="kt">boolean</span> <span class="n">result</span> <span class="o">=</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">stream</span><span class="o">(</span><span class="n">intArr</span><span class="o">)</span>
+			<span class="o">.</span><span class="na">allMatch</span><span class="o">(</span><span class="n">a</span> <span class="o">-&gt;</span> <span class="n">a</span><span class="o">%</span><span class="mi">2</span><span class="o">==</span><span class="mi">0</span><span class="o">);</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"모두 2의 배수인가? "</span> <span class="o">+</span> <span class="n">result</span><span class="o">);</span>
+
+		<span class="n">result</span> <span class="o">=</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">stream</span><span class="o">(</span><span class="n">intArr</span><span class="o">)</span>
+			<span class="o">.</span><span class="na">anyMatch</span><span class="o">(</span><span class="n">a</span> <span class="o">-&gt;</span> <span class="n">a</span><span class="o">%</span><span class="mi">3</span><span class="o">==</span><span class="mi">0</span><span class="o">);</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"하나라도 3의 배수가 있는가? "</span> <span class="o">+</span> <span class="n">result</span><span class="o">);</span>
+
+		<span class="n">result</span> <span class="o">=</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">stream</span><span class="o">(</span><span class="n">intArr</span><span class="o">)</span>
+			<span class="o">.</span><span class="na">noneMatch</span><span class="o">(</span><span class="n">a</span> <span class="o">-&gt;</span> <span class="n">a</span><span class="o">%</span><span class="mi">3</span><span class="o">==</span><span class="mi">0</span><span class="o">);</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"3의 배수가 없는가? "</span> <span class="o">+</span> <span class="n">result</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>실행 결과</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>모두 2의 배수인가? true
+하나라도 3의 배수가 있는가? true
+3의 배수가 없는가? false
+</code></pre></div></div>
+
+<h2 id="1710-요소-기본-집계">17.10 요소 기본 집계</h2>
+
+<p>집계(Aggregate)는 최종 처리 기능으로 요소들을 처리해서 카운팅, 합계, 평균값, 최대값, 최소값 등과 같이 하나의 값으로 산출하는 것을 말한다.</p>
+
+<h3 id="스트림이-제공하는-기본-집계">스트림이 제공하는 기본 집계</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">count()</code>: 요소 개수</li>
+  <li><code class="language-plaintext highlighter-rouge">findFirst()</code>: 첫 번째 요소</li>
+  <li><code class="language-plaintext highlighter-rouge">max()</code>: 최대 요소</li>
+  <li><code class="language-plaintext highlighter-rouge">min()</code>: 최소 요소</li>
+  <li><code class="language-plaintext highlighter-rouge">average()</code>: 요소 평균</li>
+  <li><code class="language-plaintext highlighter-rouge">sum()</code>: 요소 총합</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch17.sec10</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">AggregateExample</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="c1">// 정수 배열</span>
+		<span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span> <span class="o">=</span> <span class="o">{</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">5</span> <span class="o">};</span>
+
+		<span class="c1">// 카운팅</span>
+		<span class="kt">long</span> <span class="n">count</span> <span class="o">=</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">stream</span><span class="o">(</span><span class="n">arr</span><span class="o">)</span>
+			<span class="o">.</span><span class="na">filter</span><span class="o">(</span><span class="n">n</span> <span class="o">-&gt;</span> <span class="n">n</span><span class="o">%</span><span class="mi">2</span><span class="o">==</span><span class="mi">0</span><span class="o">)</span>
+			<span class="o">.</span><span class="na">count</span><span class="o">();</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"2의 배수 개수: "</span> <span class="o">+</span> <span class="n">count</span><span class="o">);</span>
+
+		<span class="c1">// 총합</span>
+		<span class="kt">long</span> <span class="n">sum</span> <span class="o">=</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">stream</span><span class="o">(</span><span class="n">arr</span><span class="o">)</span>
+			<span class="o">.</span><span class="na">filter</span><span class="o">(</span><span class="n">n</span> <span class="o">-&gt;</span> <span class="n">n</span><span class="o">%</span><span class="mi">2</span><span class="o">==</span><span class="mi">0</span><span class="o">)</span>
+			<span class="o">.</span><span class="na">sum</span><span class="o">();</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"2의 배수의 합: "</span> <span class="o">+</span> <span class="n">sum</span><span class="o">);</span>
+
+		<span class="c1">// 평균</span>
+		<span class="kt">double</span> <span class="n">avg</span> <span class="o">=</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">stream</span><span class="o">(</span><span class="n">arr</span><span class="o">)</span>
+			<span class="o">.</span><span class="na">filter</span><span class="o">(</span><span class="n">n</span> <span class="o">-&gt;</span> <span class="n">n</span><span class="o">%</span><span class="mi">2</span><span class="o">==</span><span class="mi">0</span><span class="o">)</span>
+			<span class="o">.</span><span class="na">average</span><span class="o">()</span>
+			<span class="o">.</span><span class="na">getAsDouble</span><span class="o">();</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"2의 배수의 평균: "</span> <span class="o">+</span> <span class="n">avg</span><span class="o">);</span>
+
+		<span class="c1">// 최대값</span>
+		<span class="kt">int</span> <span class="n">max</span> <span class="o">=</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">stream</span><span class="o">(</span><span class="n">arr</span><span class="o">)</span>
+			<span class="o">.</span><span class="na">filter</span><span class="o">(</span><span class="n">n</span> <span class="o">-&gt;</span> <span class="n">n</span><span class="o">%</span><span class="mi">2</span><span class="o">==</span><span class="mi">0</span><span class="o">)</span>
+			<span class="o">.</span><span class="na">max</span><span class="o">()</span>
+			<span class="o">.</span><span class="na">getAsInt</span><span class="o">();</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"최대값: "</span> <span class="o">+</span> <span class="n">max</span><span class="o">);</span>
+
+		<span class="c1">// 최소값</span>
+		<span class="kt">int</span> <span class="n">min</span> <span class="o">=</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">stream</span><span class="o">(</span><span class="n">arr</span><span class="o">)</span>
+			<span class="o">.</span><span class="na">filter</span><span class="o">(</span><span class="n">n</span> <span class="o">-&gt;</span> <span class="n">n</span><span class="o">%</span><span class="mi">2</span><span class="o">==</span><span class="mi">0</span><span class="o">)</span>
+			<span class="o">.</span><span class="na">min</span><span class="o">()</span>
+			<span class="o">.</span><span class="na">getAsInt</span><span class="o">();</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"최소값: "</span> <span class="o">+</span> <span class="n">min</span><span class="o">);</span>
+
+		<span class="c1">// 첫 번째 요소</span>
+		<span class="kt">int</span> <span class="n">first</span> <span class="o">=</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">stream</span><span class="o">(</span><span class="n">arr</span><span class="o">)</span>
+			<span class="o">.</span><span class="na">filter</span><span class="o">(</span><span class="n">n</span> <span class="o">-&gt;</span> <span class="n">n</span><span class="o">%</span><span class="mi">3</span><span class="o">==</span><span class="mi">0</span><span class="o">)</span>
+			<span class="o">.</span><span class="na">findFirst</span><span class="o">()</span>
+			<span class="o">.</span><span class="na">getAsInt</span><span class="o">();</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"첫 번째 3의 배수: "</span> <span class="o">+</span> <span class="n">first</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>실행 결과</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2의 배수 개수: 2
+2의 배수의 합: 6
+2의 배수의 평균: 3.0
+최대값: 4
+최소값: 2
+첫 번째 3의 배수: 3
+</code></pre></div></div>
+
+<h3 id="optional-클래스">Optional 클래스</h3>
+
+<p>Optional, OptionalDouble, OptionalInt, OptionalLong 클래스는 집계값이 존재하지 않을 경우 디폴트 값을 설정하거나 집계값을 처리하는 Consumer를 등록할 수 있다.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">isPresent()</code>: 집계값이 있는지 여부</li>
+  <li><code class="language-plaintext highlighter-rouge">orElse()</code>: 집계값이 없을 경우 디폴트 값 설정</li>
+  <li><code class="language-plaintext highlighter-rouge">ifPresent()</code>: 집계값이 있을 경우 Consumer에서 처리</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch17.sec10</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.OptionalDouble</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">OptionalExample</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+
+		<span class="cm">/*
+		// 예외 발생(java.util.NoSuchElementException)
+		double avg = list.stream()
+			.mapToInt(Integer::intValue)
+			.average()
+			.getAsDouble();
+		*/</span>
+
+		<span class="c1">// 방법1</span>
+		<span class="nc">OptionalDouble</span> <span class="n">optional</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span>
+			<span class="o">.</span><span class="na">mapToInt</span><span class="o">(</span><span class="nl">Integer:</span><span class="o">:</span><span class="n">intValue</span><span class="o">)</span>
+			<span class="o">.</span><span class="na">average</span><span class="o">();</span>
+		<span class="k">if</span> <span class="o">(</span><span class="n">optional</span><span class="o">.</span><span class="na">isPresent</span><span class="o">())</span> <span class="o">{</span>
+			<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"방법1_평균: "</span> <span class="o">+</span> <span class="n">optional</span><span class="o">.</span><span class="na">getAsDouble</span><span class="o">());</span>
+		<span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+			<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"방법1_평균: 0.0"</span><span class="o">);</span>
+		<span class="o">}</span>
+
+		<span class="c1">// 방법2</span>
+		<span class="kt">double</span> <span class="n">avg</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span>
+			<span class="o">.</span><span class="na">mapToInt</span><span class="o">(</span><span class="nl">Integer:</span><span class="o">:</span><span class="n">intValue</span><span class="o">)</span>
+			<span class="o">.</span><span class="na">average</span><span class="o">()</span>
+			<span class="o">.</span><span class="na">orElse</span><span class="o">(</span><span class="mf">0.0</span><span class="o">);</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"방법2_평균: "</span> <span class="o">+</span> <span class="n">avg</span><span class="o">);</span>
+
+		<span class="c1">// 방법3</span>
+		<span class="n">list</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span>
+			<span class="o">.</span><span class="na">mapToInt</span><span class="o">(</span><span class="nl">Integer:</span><span class="o">:</span><span class="n">intValue</span><span class="o">)</span>
+			<span class="o">.</span><span class="na">average</span><span class="o">()</span>
+			<span class="o">.</span><span class="na">ifPresent</span><span class="o">(</span><span class="n">a</span> <span class="o">-&gt;</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"방법3_평균: "</span> <span class="o">+</span> <span class="n">a</span><span class="o">));</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>실행 결과</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>방법1_평균: 0.0
+방법2_평균: 0.0
+</code></pre></div></div>
+
+<h2 id="1711-요소-커스텀-집계">17.11 요소 커스텀 집계</h2>
+
+<p>스트림은 기본 집계 메소드 외에 다양한 집계 결과물을 만들 수 있도록 <code class="language-plaintext highlighter-rouge">reduce()</code> 메소드도 제공한다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">reduce()</code>는 스트림에 요소가 없을 경우 예외가 발생하지만, identity 매개값이 주어지면 이 값을 디폴트 값으로 리턴한다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch17.sec11</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Student</span> <span class="o">{</span>
+	<span class="kd">private</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="kt">int</span> <span class="n">score</span><span class="o">;</span>
+
+	<span class="kd">public</span> <span class="nf">Student</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">,</span> <span class="kt">int</span> <span class="n">score</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">score</span> <span class="o">=</span> <span class="n">score</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="nc">String</span> <span class="nf">getName</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="n">name</span><span class="o">;</span> <span class="o">}</span>
+	<span class="kd">public</span> <span class="kt">int</span> <span class="nf">getScore</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="n">score</span><span class="o">;</span> <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch17.sec11</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ReductionExample</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">List</span><span class="o">&lt;</span><span class="nc">Student</span><span class="o">&gt;</span> <span class="n">studentList</span> <span class="o">=</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span>
+			<span class="k">new</span> <span class="nf">Student</span><span class="o">(</span><span class="s">"홍길동"</span><span class="o">,</span> <span class="mi">92</span><span class="o">),</span>
+			<span class="k">new</span> <span class="nf">Student</span><span class="o">(</span><span class="s">"신용권"</span><span class="o">,</span> <span class="mi">95</span><span class="o">),</span>
+			<span class="k">new</span> <span class="nf">Student</span><span class="o">(</span><span class="s">"감자바"</span><span class="o">,</span> <span class="mi">88</span><span class="o">)</span>
+		<span class="o">);</span>
+
+		<span class="c1">// 방법1</span>
+		<span class="kt">int</span> <span class="n">sum1</span> <span class="o">=</span> <span class="n">studentList</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span>
+			<span class="o">.</span><span class="na">mapToInt</span><span class="o">(</span><span class="nl">Student:</span><span class="o">:</span><span class="n">getScore</span><span class="o">)</span>
+			<span class="o">.</span><span class="na">sum</span><span class="o">();</span>
+
+		<span class="c1">// 방법2</span>
+		<span class="kt">int</span> <span class="n">sum2</span> <span class="o">=</span> <span class="n">studentList</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span>
+			<span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="nl">Student:</span><span class="o">:</span><span class="n">getScore</span><span class="o">)</span>
+			<span class="o">.</span><span class="na">reduce</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="o">(</span><span class="n">a</span><span class="o">,</span> <span class="n">b</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="o">);</span>
+
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"sum1: "</span> <span class="o">+</span> <span class="n">sum1</span><span class="o">);</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"sum2: "</span> <span class="o">+</span> <span class="n">sum2</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>실행 결과</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sum1: 275
+sum2: 275
+</code></pre></div></div>
+
+<h2 id="1712-요소-수집">17.12 요소 수집</h2>
+
+<p>스트림은 요소들을 필터링 또는 매핑한 후 요소들을 수집하는 최종 처리 메소드인 <code class="language-plaintext highlighter-rouge">collect()</code>를 제공한다.</p>
+
+<h3 id="필터링한-요소-수집">필터링한 요소 수집</h3>
+
+<p><code class="language-plaintext highlighter-rouge">Stream</code>의 <code class="language-plaintext highlighter-rouge">collect(Collector&lt;T,A,R&gt; collector)</code> 메소드는 필터링 또는 매핑된 요소들을 새로운 컬렉션에 수집하고, 이 컬렉션을 리턴한다.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Collectors.toList()</code>: List에 저장</li>
+  <li><code class="language-plaintext highlighter-rouge">Collectors.toSet()</code>: Set에 저장</li>
+  <li><code class="language-plaintext highlighter-rouge">Collectors.toMap()</code>: Map에 저장</li>
+</ul>
+
+<p>Java 16부터는 <code class="language-plaintext highlighter-rouge">toList()</code> 메소드를 사용하여 List 컬렉션을 바로 얻을 수 있다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch17.sec12.exam01</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Student</span> <span class="o">{</span>
+	<span class="kd">private</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="nc">String</span> <span class="n">sex</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="kt">int</span> <span class="n">score</span><span class="o">;</span>
+
+	<span class="kd">public</span> <span class="nf">Student</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">,</span> <span class="nc">String</span> <span class="n">sex</span><span class="o">,</span> <span class="kt">int</span> <span class="n">score</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">sex</span> <span class="o">=</span> <span class="n">sex</span><span class="o">;</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">score</span> <span class="o">=</span> <span class="n">score</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="nc">String</span> <span class="nf">getName</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="n">name</span><span class="o">;</span> <span class="o">}</span>
+	<span class="kd">public</span> <span class="nc">String</span> <span class="nf">getSex</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="n">sex</span><span class="o">;</span> <span class="o">}</span>
+	<span class="kd">public</span> <span class="kt">int</span> <span class="nf">getScore</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="n">score</span><span class="o">;</span> <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch17.sec12.exam01</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Map</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.stream.Collectors</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CollectExample</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">List</span><span class="o">&lt;</span><span class="nc">Student</span><span class="o">&gt;</span> <span class="n">totalList</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+		<span class="n">totalList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Student</span><span class="o">(</span><span class="s">"홍길동"</span><span class="o">,</span> <span class="s">"남"</span><span class="o">,</span> <span class="mi">92</span><span class="o">));</span>
+		<span class="n">totalList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Student</span><span class="o">(</span><span class="s">"김수영"</span><span class="o">,</span> <span class="s">"여"</span><span class="o">,</span> <span class="mi">87</span><span class="o">));</span>
+		<span class="n">totalList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Student</span><span class="o">(</span><span class="s">"감자바"</span><span class="o">,</span> <span class="s">"남"</span><span class="o">,</span> <span class="mi">95</span><span class="o">));</span>
+		<span class="n">totalList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Student</span><span class="o">(</span><span class="s">"오해영"</span><span class="o">,</span> <span class="s">"여"</span><span class="o">,</span> <span class="mi">93</span><span class="o">));</span>
+
+		<span class="c1">// 남학생만 묶어 List 생성</span>
+		<span class="cm">/*
+		List&lt;Student&gt; maleList = totalList.stream()
+			.filter(s-&gt;s.getSex().equals("남"))
+			.collect(Collectors.toList());
+		*/</span>
+
+		<span class="nc">List</span><span class="o">&lt;</span><span class="nc">Student</span><span class="o">&gt;</span> <span class="n">maleList</span> <span class="o">=</span> <span class="n">totalList</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span>
+			<span class="o">.</span><span class="na">filter</span><span class="o">(</span><span class="n">s</span><span class="o">-&gt;</span><span class="n">s</span><span class="o">.</span><span class="na">getSex</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="s">"남"</span><span class="o">))</span>
+			<span class="o">.</span><span class="na">toList</span><span class="o">();</span>
+
+		<span class="n">maleList</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span>
+			<span class="o">.</span><span class="na">forEach</span><span class="o">(</span><span class="n">s</span> <span class="o">-&gt;</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">s</span><span class="o">.</span><span class="na">getName</span><span class="o">()));</span>
+
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
+
+		<span class="c1">// 학생 이름을 키, 학생의 점수를 값으로 갖는 Map 생성</span>
+		<span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="n">totalList</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span>
+			<span class="o">.</span><span class="na">collect</span><span class="o">(</span>
+				<span class="nc">Collectors</span><span class="o">.</span><span class="na">toMap</span><span class="o">(</span>
+					<span class="n">s</span> <span class="o">-&gt;</span> <span class="n">s</span><span class="o">.</span><span class="na">getName</span><span class="o">(),</span> <span class="c1">// Student 객체에서 키가 될 부분 리턴</span>
+					<span class="n">s</span> <span class="o">-&gt;</span> <span class="n">s</span><span class="o">.</span><span class="na">getScore</span><span class="o">()</span> <span class="c1">// Student 객체에서 값이 될 부분 리턴</span>
+				<span class="o">)</span>
+			<span class="o">);</span>
+
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">map</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>실행 결과</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>홍길동
+감자바
+
+{오해영=93, 홍길동=92, 감자바=95, 김수영=87}
+</code></pre></div></div>
+
+<h3 id="요소-그룹핑">요소 그룹핑</h3>
+
+<p><code class="language-plaintext highlighter-rouge">collect()</code> 메소드는 단순히 요소를 수집하는 기능 이외에 컬렉션의 요소들을 그룹핑해서 Map 객체를 생성하는 기능도 제공한다. <code class="language-plaintext highlighter-rouge">Collectors.groupingBy()</code> 메소드를 사용한다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch17.sec12.exam02</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Map</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.stream.Collectors</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CollectExample</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">List</span><span class="o">&lt;</span><span class="nc">Student</span><span class="o">&gt;</span> <span class="n">totalList</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+		<span class="n">totalList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Student</span><span class="o">(</span><span class="s">"홍길동"</span><span class="o">,</span> <span class="s">"남"</span><span class="o">,</span> <span class="mi">92</span><span class="o">));</span>
+		<span class="n">totalList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Student</span><span class="o">(</span><span class="s">"김수영"</span><span class="o">,</span> <span class="s">"여"</span><span class="o">,</span> <span class="mi">87</span><span class="o">));</span>
+		<span class="n">totalList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Student</span><span class="o">(</span><span class="s">"감자바"</span><span class="o">,</span> <span class="s">"남"</span><span class="o">,</span> <span class="mi">95</span><span class="o">));</span>
+		<span class="n">totalList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Student</span><span class="o">(</span><span class="s">"오해영"</span><span class="o">,</span> <span class="s">"여"</span><span class="o">,</span> <span class="mi">93</span><span class="o">));</span>
+
+		<span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Student</span><span class="o">&gt;&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="n">totalList</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span>
+			<span class="o">.</span><span class="na">collect</span><span class="o">(</span>
+				<span class="nc">Collectors</span><span class="o">.</span><span class="na">groupingBy</span><span class="o">(</span><span class="n">s</span> <span class="o">-&gt;</span> <span class="n">s</span><span class="o">.</span><span class="na">getSex</span><span class="o">())</span>
+			<span class="o">);</span>
+
+		<span class="nc">List</span><span class="o">&lt;</span><span class="nc">Student</span><span class="o">&gt;</span> <span class="n">maleList</span> <span class="o">=</span> <span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"남"</span><span class="o">);</span>
+		<span class="n">maleList</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">forEach</span><span class="o">(</span><span class="n">s</span> <span class="o">-&gt;</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">s</span><span class="o">.</span><span class="na">getName</span><span class="o">()));</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
+
+		<span class="nc">List</span><span class="o">&lt;</span><span class="nc">Student</span><span class="o">&gt;</span> <span class="n">femaleList</span> <span class="o">=</span> <span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"여"</span><span class="o">);</span>
+		<span class="n">femaleList</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">forEach</span><span class="o">(</span><span class="n">s</span> <span class="o">-&gt;</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">s</span><span class="o">.</span><span class="na">getName</span><span class="o">()));</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>실행 결과</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>홍길동
+감자바
+
+김수영
+오해영
+</code></pre></div></div>
+
+<h3 id="커스텀-집계-값">커스텀 집계 값</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch17.sec12.exam03</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Map</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.stream.Collectors</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CollectExample</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">List</span><span class="o">&lt;</span><span class="nc">Student</span><span class="o">&gt;</span> <span class="n">totalList</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+		<span class="n">totalList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Student</span><span class="o">(</span><span class="s">"홍길동"</span><span class="o">,</span> <span class="s">"남"</span><span class="o">,</span> <span class="mi">92</span><span class="o">));</span>
+		<span class="n">totalList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Student</span><span class="o">(</span><span class="s">"김수영"</span><span class="o">,</span> <span class="s">"여"</span><span class="o">,</span> <span class="mi">87</span><span class="o">));</span>
+		<span class="n">totalList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Student</span><span class="o">(</span><span class="s">"감자바"</span><span class="o">,</span> <span class="s">"남"</span><span class="o">,</span> <span class="mi">95</span><span class="o">));</span>
+		<span class="n">totalList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Student</span><span class="o">(</span><span class="s">"오해영"</span><span class="o">,</span> <span class="s">"여"</span><span class="o">,</span> <span class="mi">93</span><span class="o">));</span>
+
+		<span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Double</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="n">totalList</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span>
+			<span class="o">.</span><span class="na">collect</span><span class="o">(</span>
+				<span class="nc">Collectors</span><span class="o">.</span><span class="na">groupingBy</span><span class="o">(</span>
+					<span class="n">s</span> <span class="o">-&gt;</span> <span class="n">s</span><span class="o">.</span><span class="na">getSex</span><span class="o">(),</span>
+					<span class="nc">Collectors</span><span class="o">.</span><span class="na">averagingDouble</span><span class="o">(</span><span class="n">s</span> <span class="o">-&gt;</span> <span class="n">s</span><span class="o">.</span><span class="na">getScore</span><span class="o">())</span>
+				<span class="o">)</span>
+			<span class="o">);</span>
+
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">map</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>실행 결과</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{남=93.5, 여=90.0}
+</code></pre></div></div>
+
+<h2 id="1713-요소-병렬-처리">17.13 요소 병렬 처리</h2>
+
+<p>요소 병렬 처리(Parallel Operation)란 멀티 코어 CPU 환경에서 전체 요소를 분할해서 각각의 코어가 병렬적으로 처리하는 것을 말한다. 자바는 요소 병렬 처리를 위해 병렬 스트림을 제공한다.</p>
+
+<h3 id="동시성과-병렬성">동시성과 병렬성</h3>
+
+<ul>
+  <li><strong>동시성(Concurrency)</strong>: 멀티 작업을 위해 멀티 스레드가 하나의 코어에서 번갈아 가며 실행하는 것.</li>
+  <li><strong>병렬성(Parallelism)</strong>: 멀티 작업을 위해 멀티 코어를 각각 이용해서 병렬로 실행하는 것.</li>
+</ul>
+
+<h3 id="포크조인-프레임워크">포크조인 프레임워크</h3>
+
+<p>자바 병렬 스트림은 요소들을 병렬 처리하기 위해 포크조인 프레임워크(ForkJoin Framework)를 사용한다. 포크 단계에서 전체 요소들을 서브 요소셋으로 분할하고, 각각의 서브 요소셋을 멀티 코어에서 병렬로 처리한다. 조인 단계에서는 서브 결과를 결합해서 최종 결과를 만들어낸다.</p>
+
+<h3 id="병렬-스트림-사용">병렬 스트림 사용</h3>
+
+<p><code class="language-plaintext highlighter-rouge">parallelStream()</code> 메소드는 컬렉션(List, Set)으로부터 병렬 스트림을 바로 리턴한다. <code class="language-plaintext highlighter-rouge">parallel()</code> 메소드는 기존 스트림을 병렬 처리 스트림으로 변환한다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch17.sec13</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Random</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.stream.Stream</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ParallelExample</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">Random</span> <span class="n">random</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Random</span><span class="o">();</span>
+		<span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">scores</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+		<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">100000000</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+			<span class="n">scores</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">random</span><span class="o">.</span><span class="na">nextInt</span><span class="o">(</span><span class="mi">101</span><span class="o">));</span>
+		<span class="o">}</span>
+
+		<span class="kt">double</span> <span class="n">avg</span> <span class="o">=</span> <span class="mf">0.0</span><span class="o">;</span>
+		<span class="kt">long</span> <span class="n">startTime</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+		<span class="kt">long</span> <span class="n">endTime</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+		<span class="kt">long</span> <span class="n">time</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+
+		<span class="c1">// 일반 스트림으로 처리</span>
+		<span class="nc">Stream</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">stream</span> <span class="o">=</span> <span class="n">scores</span><span class="o">.</span><span class="na">stream</span><span class="o">();</span>
+		<span class="n">startTime</span> <span class="o">=</span> <span class="nc">System</span><span class="o">.</span><span class="na">nanoTime</span><span class="o">();</span>
+		<span class="n">avg</span> <span class="o">=</span> <span class="n">stream</span>
+			<span class="o">.</span><span class="na">mapToInt</span><span class="o">(</span><span class="n">i</span> <span class="o">-&gt;</span> <span class="n">i</span><span class="o">.</span><span class="na">intValue</span><span class="o">())</span>
+			<span class="o">.</span><span class="na">average</span><span class="o">()</span>
+			<span class="o">.</span><span class="na">getAsDouble</span><span class="o">();</span>
+		<span class="n">endTime</span> <span class="o">=</span> <span class="nc">System</span><span class="o">.</span><span class="na">nanoTime</span><span class="o">();</span>
+		<span class="n">time</span> <span class="o">=</span> <span class="n">endTime</span> <span class="o">-</span> <span class="n">startTime</span><span class="o">;</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"avg: "</span> <span class="o">+</span> <span class="n">avg</span> <span class="o">+</span> <span class="s">", 일반 스트림 처리 시간: "</span> <span class="o">+</span> <span class="n">time</span> <span class="o">+</span> <span class="s">"ns"</span><span class="o">);</span>
+
+		<span class="c1">// 병렬 스트림으로 처리</span>
+		<span class="nc">Stream</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">parallelStream</span> <span class="o">=</span> <span class="n">scores</span><span class="o">.</span><span class="na">parallelStream</span><span class="o">();</span>
+		<span class="n">startTime</span> <span class="o">=</span> <span class="nc">System</span><span class="o">.</span><span class="na">nanoTime</span><span class="o">();</span>
+		<span class="n">avg</span> <span class="o">=</span> <span class="n">parallelStream</span>
+			<span class="o">.</span><span class="na">mapToInt</span><span class="o">(</span><span class="n">i</span> <span class="o">-&gt;</span> <span class="n">i</span><span class="o">.</span><span class="na">intValue</span><span class="o">())</span>
+			<span class="o">.</span><span class="na">average</span><span class="o">()</span>
+			<span class="o">.</span><span class="na">getAsDouble</span><span class="o">();</span>
+		<span class="n">endTime</span> <span class="o">=</span> <span class="nc">System</span><span class="o">.</span><span class="na">nanoTime</span><span class="o">();</span>
+		<span class="n">time</span> <span class="o">=</span> <span class="n">endTime</span> <span class="o">-</span> <span class="n">startTime</span><span class="o">;</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"avg: "</span> <span class="o">+</span> <span class="n">avg</span> <span class="o">+</span> <span class="s">", 병렬 스트림 처리 시간: "</span> <span class="o">+</span> <span class="n">time</span> <span class="o">+</span> <span class="s">"ns"</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>실행 결과</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>avg: 50.00272852, 일반 스트림 처리 시간: 110984200ns
+avg: 50.00272852, 병렬 스트림 처리 시간: 45621500ns
+</code></pre></div></div>
+<p><em>(실행 결과는 환경에 따라 다를 수 있음)</em></p>
+
+<h3 id="병렬-처리-성능">병렬 처리 성능</h3>
+
+<p>병렬 처리에 영향을 미치는 3가지 요인:</p>
+<ol>
+  <li><strong>요소의 수와 요소당 처리 시간</strong>: 요소 수가 적고 처리 시간이 짧으면 일반 스트림이 빠를 수 있다.</li>
+  <li><strong>스트림 소스의 종류</strong>: ArrayList, 배열은 빠르지만 HashSet, TreeSet, LinkedList는 상대적으로 느리다.</li>
+  <li><strong>코어의 수</strong>: 코어 수가 많을수록 병렬 스트림 성능이 좋아진다.</li>
+</ol>
+
+<h2 id="확인문제">확인문제</h2>
+
+<ol>
+  <li>스트림에 대한 설명으로 틀린 것은 무엇입니까?
+    <ul>
+      <li>① 스트림은 내부 반복자를 사용하기 때문에 코드가 간결해진다.</li>
+      <li>② 스트림은 요소를 분리해서 병렬 처리시킬 수 있다.</li>
+      <li>③ 스트림은 람다식을 사용해서 요소 처리 내용을 기술한다.</li>
+      <li>④ 스트림은 요소를 모두 처리하고 나서 처음부터 요소를 다시 반복시킬 수 있다.
+        <blockquote>
+          <p><strong>정답</strong>: ④
+<strong>해설</strong>: 스트림은 일회용이므로 한 번 사용하면 재사용할 수 없다.</p>
+        </blockquote>
+      </li>
+    </ul>
+  </li>
+  <li>스트림을 얻을 수 있는 소스가 아닌 것은 무엇입니까?
+    <ul>
+      <li>① 컬렉션(List)</li>
+      <li>② int, long, double 범위</li>
+      <li>③ 디렉토리</li>
+      <li>④ 배열</li>
+      <li>⑤ Iterator
+        <blockquote>
+          <p><strong>정답</strong>: ⑤
+<strong>해설</strong>: Iterator로부터 바로 스트림을 얻는 메소드는 없다.</p>
+        </blockquote>
+      </li>
+    </ul>
+  </li>
+  <li>스트림 파이프라인에 대한 설명으로 틀린 것은 무엇입니까?
+    <ul>
+      <li>① 스트림을 연결해서 중간 처리와 최종 처리를 할 수 있다.</li>
+      <li>② 중간 처리 단계에서는 필터링, 매핑, 정렬, 그룹핑을 한다.</li>
+      <li>③ 최종 처리 단계에서는 합계, 평균, 카운팅, 최대값, 최소값 등을 얻을 수 있다.</li>
+      <li>④ 최종 처리가 없더라도 중간 처리를 할 수 있다.
+        <blockquote>
+          <p><strong>정답</strong>: ④
+<strong>해설</strong>: 최종 처리가 호출되어야 비로소 중간 처리가 동작한다(Lazy Evaluation).</p>
+        </blockquote>
+      </li>
+    </ul>
+  </li>
+  <li>스트림 병렬 처리에 대한 설명으로 틀린 것은 무엇입니까?
+    <ul>
+      <li>① 전체 요소를 분할해서 처리한다.</li>
+      <li>② 내부적으로 포크조인 프레임워크를 이용한다.</li>
+      <li>③ 병렬 처리는 순차적 처리보다 항상 빠른 처리를 한다.</li>
+      <li>④ 내부적으로 스레드풀을 이용해서 스레드를 관리한다.
+        <blockquote>
+          <p><strong>정답</strong>: ③
+<strong>해설</strong>: 요소 수가 적거나 처리 비용이 낮으면 오히려 느릴 수 있다.</p>
+        </blockquote>
+      </li>
+    </ul>
+  </li>
+  <li>List에 저장되어 있는 String 요소에서 대소문자와 상관없이 “java”라는 단어가 포함된 문자열만 필터링해서 출력하려고 합니다. 빈칸에 알맞은 코드를 작성해 보세요.
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ... main 내부 ...</span>
+<span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span>
+	<span class="s">"This is a java book"</span><span class="o">,</span>
+	<span class="s">"Lambda Expressions"</span><span class="o">,</span>
+	<span class="s">"Java8 supports lambda expressions"</span>
+<span class="o">);</span>
+<span class="n">list</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span>
+	<span class="o">.</span><span class="na">filter</span><span class="o">(</span><span class="n">a</span> <span class="o">-&gt;</span> <span class="n">a</span><span class="o">.</span><span class="na">toLowerCase</span><span class="o">().</span><span class="na">contains</span><span class="o">(</span><span class="s">"java"</span><span class="o">))</span>
+	<span class="o">.</span><span class="na">forEach</span><span class="o">(</span><span class="n">a</span> <span class="o">-&gt;</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">a</span><span class="o">));</span>
+</code></pre></div>    </div>
+  </li>
+  <li>List에 저장되어 있는 Member의 평균 나이를 출력하려고 합니다. 빈칸에 알맞은 코드를 작성해 보세요.
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ... main 내부 ...</span>
+<span class="kt">double</span> <span class="n">avg</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span>
+	<span class="o">.</span><span class="na">mapToInt</span><span class="o">(</span><span class="nl">Member:</span><span class="o">:</span><span class="n">getAge</span><span class="o">)</span>
+	<span class="o">.</span><span class="na">average</span><span class="o">()</span>
+	<span class="o">.</span><span class="na">getAsDouble</span><span class="o">();</span> <span class="c1">// 또는 orElse(0.0)</span>
+</code></pre></div>    </div>
+  </li>
+  <li>List에 저장되어 있는 Member 중에서 직업이 “개발자”인 사람만 별도의 List에 수집하려고 합니다. 빈칸에 알맞은 코드를 작성해 보세요.
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ... main 내부 ...</span>
+<span class="nc">List</span><span class="o">&lt;</span><span class="nc">Member</span><span class="o">&gt;</span> <span class="n">developers</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span>
+	<span class="o">.</span><span class="na">filter</span><span class="o">(</span><span class="n">m</span> <span class="o">-&gt;</span> <span class="n">m</span><span class="o">.</span><span class="na">getJob</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="s">"개발자"</span><span class="o">))</span>
+	<span class="o">.</span><span class="na">collect</span><span class="o">(</span><span class="nc">Collectors</span><span class="o">.</span><span class="na">toList</span><span class="o">());</span>
+<span class="c1">// 또는 .toList(); (Java 16+)</span>
+</code></pre></div>    </div>
+  </li>
+  <li>List에 저장되어 있는 Member를 직업별로 그룹핑해서 Map&lt;String, List<Member>&gt; 객체로 생성하려고 합니다. 키는 Member의 직업이고, 값은 해당 직업을 갖는 Member들을 저장하고 있는 List입니다. 실행 결과를 보고 빈칸에 알맞은 코드를 작성해 보세요.
+</Member>    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ... main 내부 ...</span>
+<span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Member</span><span class="o">&gt;&gt;</span> <span class="n">groupingMap</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span>
+	<span class="o">.</span><span class="na">collect</span><span class="o">(</span><span class="nc">Collectors</span><span class="o">.</span><span class="na">groupingBy</span><span class="o">(</span><span class="nl">Member:</span><span class="o">:</span><span class="n">getJob</span><span class="o">));</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+        </div>
+
+        <div class="bd-toc mt-3 mb-5 my-lg-0 ps-xl-3 mb-lg-5 text-body-secondary">
+
+  <button class="btn btn-link p-md-0 mb-2 mb-md-0 text-decoration-none bd-toc-toggle d-md-none" type="button"
+    data-bs-toggle="collapse" data-bs-target="#tocContents" aria-expanded="false" aria-controls="tocContents">
+    서브목차
+    <svg class="bi d-md-none ms-2" aria-hidden="true">
+      <use xlink:href="#chevron-expand"></use>
+    </svg>
+  </button>
+
+  <strong class="d-none d-md-block h6 my-2">서브목차</strong>
+
+  <div class="collapse bd-toc-collapse" id="tocContents">
+    <nav id="TableOfContents">
+      <!--
+      <ul>
+        <li><a href="#quick-start">Quick start</a></li>
+        <li><a href="#cdn-links">CDN links</a></li>
+        <li><a href="#next-steps">Next steps</a></li>
+        <li><a href="#js-components">JS components</a></li>
+        <li><a href="#important-globals">Important globals</a>
+          <ul>
+            <li><a href="#html5-doctype">HTML5 doctype</a></li>
+            <li><a href="#responsive-meta-tag">Responsive meta tag</a></li>
+            <li><a href="#box-sizing">Box-sizing</a></li>
+            <li><a href="#reboot">Reboot</a></li>
+          </ul>
+        </li>
+        <li><a href="#community">Community</a></li>
+      </ul>
+      -->
+    </nav>
+  </div>
+</div>
+    </main>
+</div>
+
+  <footer class="container">
+  <hr class="mt-5 mb-3">
+  <div class="row align-items-center pb-3">
+    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+      <p class="mb-0 text-secondary">Copyright 2017~2026 JinyDev. All Rights Reserved.</p>
+    </div>
+    <div class="col-md-6 text-center text-md-end">
+      
+      <a href="https://datas.jiny.dev" class="text-decoration-none text-secondary ms-3">빅데이터</a>
+      
+      <a href="https://mysql.jiny.dev" class="text-decoration-none text-secondary ms-3">MySQL</a>
+      
+      <a href="https://php.jiny.dev" class="text-decoration-none text-secondary ms-3">PHP</a>
+      
+      <a href="https://java.jiny.dev" class="text-decoration-none text-secondary ms-3">자바</a>
+      
+      <a href="https://git.jiny.dev" class="text-decoration-none text-secondary ms-3">깃&깃허브</a>
+      
+      <a href="https://linux.jiny.dev" class="text-decoration-none text-secondary ms-3">리눅스</a>
+      
+    </div>
+  </div>
+</footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+
+    window.addEventListener('load', async function () {
+      mermaid.initialize({ startOnLoad: false });
+
+      const mermaidCodes = document.querySelectorAll('pre code.language-mermaid');
+      const mermaidDivs = [];
+
+      mermaidCodes.forEach(codeBlock => {
+        const mermaidDefinition = codeBlock.textContent.trim();
+        const container = codeBlock.closest('div.highlighter-rouge');
+
+        const mermaidDiv = document.createElement('div');
+        mermaidDiv.className = 'mermaid';
+        mermaidDiv.textContent = mermaidDefinition;
+
+        if (container) {
+          container.replaceWith(mermaidDiv);
+        } else {
+          const pre = codeBlock.parentElement;
+          if (pre) pre.replaceWith(mermaidDiv);
+        }
+        mermaidDivs.push(mermaidDiv);
+      });
+
+      if (mermaidDivs.length > 0) {
+        await mermaid.run({ nodes: mermaidDivs });
+      }
+    });
+  </script>
+  <script src="/assets/js/toc.js"></script>
+
+</body>
+
+</html>

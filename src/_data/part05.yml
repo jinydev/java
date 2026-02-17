@@ -1,0 +1,43 @@
+main:
+- title: 21. 자바 21에서 강화된 언어 및 라이브러리
+  url: /part05/21/
+  subitems:
+  - title: 21. 자바 21에서 강화된 언어 및 라이브러리
+    url: /part05/21/
+  - title: 21.1 자바 21 버전에서 강화된 내용
+    url: /part05/21/#211-자바-21-버전에서-강화된-내용
+  - title: 21.2 로컬(지역) 변수 타입 추론
+    url: /part05/21/#212-로컬지역-변수-타입-추론
+  - title: 21.3 switch 문의 null 처리
+    url: /part05/21/#213-switch-문의-null-처리
+  - title: 21.4 switch 문의 패턴 매칭
+    url: /part05/21/#214-switch-문의-패턴-매칭
+  - title: 21.5 레코드 패턴
+    url: /part05/21/#215-레코드-패턴
+  - title: 21.6 가상 스레드
+    url: /part05/21/#216-가상-스레드
+  - title: 21.7 순차 컬렉션
+    url: /part05/21/#217-순차-컬렉션
+  - title: 21.8 기본 문자셋 변경
+    url: /part05/21/#218-기본-문자셋-변경
+
+- title: 22. 부록 (Appendix)
+  url: /part05/22/
+  subitems:
+  - title: 22. 부록 (Appendix)
+    url: /part05/22/
+- title: 23. 부록 (Swing)
+  url: /part05/23/
+  subitems:
+  - title: 23. 부록 (Swing)
+    url: /part05/23/
+- title: 24. 부록 (JavaFX)
+  url: /part05/24/
+  subitems:
+  - title: 24. 부록 (JavaFX)
+    url: /part05/24/
+- title: 25. 부록 (NIO)
+  url: /part05/25/
+  subitems:
+  - title: 25. 부록 (NIO)
+    url: /part05/25/

@@ -1,0 +1,51 @@
+main:
+  - title: "Chapter 01. 자바 시작하기"
+    url: /part01/01/
+  - title: "Chapter 02. 변수와 타입"
+    url: /part01/02/
+  - title: "Chapter 03. 연산자"
+    url: /part01/03/
+  - title: "Chapter 04. 조건문과 반복문"
+    url: /part01/04/
+  - title: "Chapter 05. 참조 타입"
+    url: /part02/05/
+  - title: "Chapter 06. 클래스"
+    url: /part02/06/
+  - title: "Chapter 07. 상속"
+    url: /part02/07/
+  - title: "Chapter 08. 인터페이스"
+    url: /part02/08/
+  - title: "Chapter 09. 중첩 선언과 익명 객체"
+    url: /part02/09/
+  - title: "Chapter 10. 라이브러리와 모듈"
+    url: /part02/10/
+  - title: "Chapter 11. 예외 처리"
+    url: /part02/11/
+  - title: "Chapter 12. java.base 모듈"
+    url: /part03/12/
+  - title: "Chapter 13. 제네릭"
+    url: /part03/13/
+  - title: "Chapter 14. 멀티 스레드"
+    url: /part03/14/
+  - title: "Chapter 15. 컬렉션 자료구조"
+    url: /part03/15/
+  - title: "Chapter 16. 람다식"
+    url: /part03/16/
+  - title: "Chapter 17. 스트림 요소 처리"
+    url: /part03/17/
+  - title: "Chapter 18. 데이터 입출력"
+    url: /part04/18/
+  - title: "Chapter 19. 네트워크 입출력"
+    url: /part04/19/
+  - title: "Chapter 20. 데이터베이스 입출력"
+    url: /part04/20/
+  - title: "Chapter 21. 자바 21에서 강화된 언어 및 라이브러리"
+    url: /part05/21/
+  - title: "Chapter 22. 부록 (Appendix)"
+    url: /part05/22/
+  - title: "Chapter 23. 부록 (Swing)"
+    url: /part05/23/
+  - title: "Chapter 24. 부록 (JavaFX)"
+    url: /part05/24/
+  - title: "Chapter 25. 부록 (NIO)"
+    url: /part05/25/
