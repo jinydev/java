@@ -18,6 +18,8 @@
         {% assign part_data = site.data.network.main %}
         {% elsif page.url contains '/gui/' %}
         {% assign part_data = site.data.gui.main %}
+        {% elsif page.url contains '/backend/' %}
+        {% assign part_data = site.data.backend.main %}
         {% endif %}
 
         {% for item in part_data %}

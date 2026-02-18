@@ -20,7 +20,7 @@ GUI(Graphical User Interface)는 사용자가 그래픽 요소를 통해 컴퓨�
 ## 1. AWT (Abstract Window Toolkit)
 자바 초창기(JDK 1.0)에 발표된 최초의 GUI 라이브러리입니다. OS의 네이티브 컴포넌트를 사용하여 속도가 빠르지만 디자인에 한계가 있습니다.
 
-### [AWT 상세 학습하기](/gui/1.awt/)
+### [AWT 상세 학습하기](/gui/1.awt)
 
 *   **[01. AWT 개요](1.awt/01_awt_intro/)**
 *   **[02. AWT 컴포넌트](1.awt/02_awt_components/)**
@@ -32,7 +32,7 @@ GUI(Graphical User Interface)는 사용자가 그래픽 요소를 통해 컴퓨�
 ## 2. Swing
 AWT의 단점을 보완하기 위해 JDK 1.2에서 발표된 순수 자바(Lightweight) GUI 라이브러리입니다. OS 독립적이며 풍부한 컴포넌트를 제공합니다.
 
-### [Swing 상세 학습하기](/gui/2.swing/)
+### [Swing 상세 학습하기](/gui/2.swing)
 
 *   **[01. Swing 소개](2.swing/01_Swing_소개/)**
 *   **[02. 이벤트 디스패칭 스레드](2.swing/02_event_dispatching_thread/)**
@@ -55,7 +55,7 @@ AWT의 단점을 보완하기 위해 JDK 1.2에서 발표된 순수 자바(Light
 ## 3. JavaFX
 RIA 시장을 겨냥한 차세대 GUI 플랫폼입니다. 하드웨어 가속, FXML, CSS 스타일링을 지원하여 화려하고 현대적인 UI를 개발할 수 있습니다.
 
-### [JavaFX 상세 학습하기](/gui/3.javafx/)
+### [JavaFX 상세 학습하기](/gui/3.javafx)
 
 *   **[01. JavaFX 개요](3.javafx/01_javafx_intro/)**
 *   **[02. JavaFX 프로젝트 생성 및 실행](3.javafx/02_javafx_project/)**

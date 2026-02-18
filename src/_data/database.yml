@@ -1,59 +1,59 @@
 main:
 - title: JDBC
-  url: /database/jdbc/
+  url: /database/jdbc
   subitems:
   - title: 학습목표
-    url: /database/jdbc/
+    url: /database/jdbc
   - title: 20.1 JDBC 개요
-    url: /database/jdbc/intro/
+    url: /database/jdbc/intro
   - title: 20.2 DBMS 설치
-    url: /database/jdbc/install-dbms/
+    url: /database/jdbc/install-dbms
   - title: 20.3 Client Tool 설치
-    url: /database/jdbc/install-tool/
+    url: /database/jdbc/install-tool
   - title: 20.4 DB 구성
-    url: /database/jdbc/config-db/
+    url: /database/jdbc/config-db
   - title: 20.5 DB 연결
-    url: /database/jdbc/connect-db/
+    url: /database/jdbc/connect-db
   - title: 20.6 데이터 저장
-    url: /database/jdbc/insert/
+    url: /database/jdbc/insert
   - title: 20.7 데이터 수정
-    url: /database/jdbc/update/
+    url: /database/jdbc/update
   - title: 20.8 데이터 삭제
-    url: /database/jdbc/delete/
+    url: /database/jdbc/delete
   - title: 20.9 데이터 읽기
-    url: /database/jdbc/select/
+    url: /database/jdbc/select
   - title: 20.10 프로시저와 함수 호출
-    url: /database/jdbc/procedure/
+    url: /database/jdbc/procedure
   - title: 20.11 트랜잭션 처리
-    url: /database/jdbc/transaction/
+    url: /database/jdbc/transaction
   - title: 20.12 게시판 구현
-    url: /database/jdbc/board/
+    url: /database/jdbc/board
   - title: 확인문제
-    url: /database/jdbc/quiz/
+    url: /database/jdbc/quiz
 - title: MySQL
-  url: /database/mysql/
+  url: /database/mysql
   subitems:
   - title: 학습목표
-    url: /database/mysql/
+    url: /database/mysql
   - title: 22.1 MySQL 개요
-    url: /database/mysql/intro/
+    url: /database/mysql/intro
   - title: 22.2 MySQL 설치
-    url: /database/mysql/install/
+    url: /database/mysql/install
   - title: 22.3 Client Tool 설치
-    url: /database/mysql/client-tool/
+    url: /database/mysql/client-tool
   - title: 22.4 DB 구성
-    url: /database/mysql/config/
+    url: /database/mysql/config
   - title: 22.5 DB 연결
-    url: /database/mysql/connect/
+    url: /database/mysql/connect
   - title: 22.6 데이터 저장
-    url: /database/mysql/insert/
+    url: /database/mysql/insert
   - title: 22.7 데이터 수정
-    url: /database/mysql/update/
+    url: /database/mysql/update
   - title: 22.8 데이터 삭제
-    url: /database/mysql/delete/
+    url: /database/mysql/delete
   - title: 22.9 데이터 읽기
-    url: /database/mysql/select/
+    url: /database/mysql/select
   - title: 22.10 트랜잭션 처리
-    url: /database/mysql/transaction/
+    url: /database/mysql/transaction
   - title: 22.11 게시판 구현
-    url: /database/mysql/board/
+    url: /database/mysql/board
