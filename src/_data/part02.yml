@@ -1,5 +1,5 @@
 main:
-- title: Chapter 05. 참조 타입
+- title: 05. 참조 타입
   url: /part02/05/
   subitems:
   - title: 학습목표
@@ -30,7 +30,7 @@ main:
     url: /part02/05/12/
   - title: 확인문제
     url: /part02/05/quiz/
-- title: Chapter 06. 클래스
+- title: 06. 클래스
   url: /part02/06/
   subitems:
   - title: 학습목표
@@ -67,7 +67,7 @@ main:
     url: /part02/06/15/
   - title: 확인문제
     url: /part02/06/quiz/
-- title: Chapter 07. 상속
+- title: 07. 상속
   url: /part02/07/
   subitems:
   - title: 학습목표
@@ -96,7 +96,7 @@ main:
     url: /part02/07/11/
   - title: 확인문제
     url: /part02/07/quiz/
-- title: Chapter 08. 인터페이스
+- title: 08. 인터페이스
   url: /part02/08/
   subitems:
   - title: 학습목표
@@ -129,7 +129,7 @@ main:
     url: /part02/08/13/
   - title: 확인문제
     url: /part02/08/quiz/
-- title: Chapter 09. 중첩 선언과 익명 객체
+- title: 09. 중첩 선언과 익명 객체
   url: /part02/09/
   subitems:
   - title: 학습목표
@@ -150,7 +150,7 @@ main:
     url: /part02/09/07/
   - title: 확인문제
     url: /part02/09/quiz/
-- title: Chapter 10. 라이브러리와 모듈
+- title: 10. 라이브러리와 모듈
   url: /part02/10/
   subitems:
   - title: 학습목표
@@ -175,7 +175,7 @@ main:
     url: /part02/10/09/
   - title: 확인문제
     url: /part02/10/quiz/
-- title: Chapter 11. 예외 처리
+- title: 11. 예외 처리
   url: /part02/11/
   subitems:
   - title: 학습목표

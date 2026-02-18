@@ -1,0 +1,37 @@
+main:
+- title: 20. 데이터베이스 입출력
+  url: /database/20/
+  subitems:
+  - title: 학습목표
+    url: /database/20/
+  - title: 20.1 JDBC 개요
+    url: /database/20/01
+  - title: 20.2 DBMS 설치
+    url: /database/20/02
+  - title: 20.3 Client Tool 설치
+    url: /database/20/03
+  - title: 20.4 DB 구성
+    url: /database/20/04
+  - title: 20.5 DB 연결
+    url: /database/20/05
+  - title: 20.6 데이터 저장
+    url: /database/20/06
+  - title: 20.7 데이터 수정
+    url: /database/20/07
+  - title: 20.8 데이터 삭제
+    url: /database/20/08
+  - title: 20.9 데이터 읽기
+    url: /database/20/09
+  - title: 20.10 프로시저와 함수 호출
+    url: /database/20/10
+  - title: 20.11 트랜잭션 처리
+    url: /database/20/11
+  - title: 20.12 게시판 구현
+    url: /database/20/12
+  - title: 확인문제
+    url: /database/20/quiz
+- title: 22. 부록 (PDF)
+  url: /database/22/
+  subitems:
+  - title: 학습목표
+    url: /database/22/

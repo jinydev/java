@@ -1,0 +1,80 @@
+main:
+- title: 1. AWT
+  url: /gui/1.awt/
+  subitems:
+  - title: 학습목표
+    url: /gui/1.awt/
+  - title: 01. AWT 개요
+    url: /gui/1.awt/01_AWT_개요.html
+  - title: 02. AWT 컴포넌트
+    url: /gui/1.awt/02_AWT_컴포넌트.html
+  - title: 03. AWT 배치관리자
+    url: /gui/1.awt/03_AWT_%EB%B0%B0%EC%B9%98%EA%B4%80%EB%A6%AC%EC%9E%90.html
+  - title: 04. AWT 이벤트처리
+    url: /gui/1.awt/04_AWT_%EC%9D%B4%EB%B2%A4%ED%8A%B8%EC%B2%98%EB%A6%AC.html
+- title: 2. Swing
+  url: /gui/2.swing/
+  subitems:
+  - title: 학습목표
+    url: /gui/2.swing/
+  - title: 01. Swing 소개
+    url: /gui/2.swing/01_swing_소개.html
+  - title: 02. 이벤트 디스패칭 스레드
+    url: /gui/2.swing/02_이벤트_디스패칭_스레드.html
+  - title: 03. Swing 컨테이너
+    url: /gui/2.swing/03_swing_컨테이너.html
+  - title: 04. 컴포넌트 배치
+    url: /gui/2.swing/04_컴포넌트_배치.html
+  - title: 05. 이벤트 처리
+    url: /gui/2.swing/05_이벤트_처리.html
+  - title: 06. 버튼 컴포넌트
+    url: /gui/2.swing/06_버튼_컴포넌트.html
+  - title: 07. 텍스트 컴포넌트
+    url: /gui/2.swing/07_텍스트_컴포넌트.html
+  - title: 08. 리스트 컴포넌트
+    url: /gui/2.swing/08_리스트_컴포넌트.html
+  - title: 09. 테이블 컴포넌트
+    url: /gui/2.swing/09_테이블_컴포넌트.html
+  - title: 10. 트리 컴포넌트
+    url: /gui/2.swing/10_트리_컴포넌트.html
+  - title: 11. 메뉴 컴포넌트
+    url: /gui/2.swing/11_메뉴_컴포넌트.html
+  - title: 12. 툴바 컴포넌트
+    url: /gui/2.swing/12_툴바_컴포넌트.html
+  - title: 13. 다이얼로그
+    url: /gui/2.swing/13_다이얼로그.html
+  - title: 14. 2D 그래픽스
+    url: /gui/2.swing/14_2d_그래픽스.html
+  - title: 15. Swing 과제
+    url: /gui/2.swing/15_swing_과제.html
+- title: 3. JavaFX
+  url: /gui/3.javafx/
+  subitems:
+  - title: 학습목표
+    url: /gui/3.javafx/
+  - title: 01. JavaFX 개요
+    url: /gui/3.javafx/01_JavaFX_개요.html
+  - title: 02. JavaFX 프로젝트 생성 및 실행
+    url: /gui/3.javafx/02_JavaFX_프로젝트_생성_및_실행.html
+  - title: 03. JavaFX 레이아웃
+    url: /gui/3.javafx/03_JavaFX_레이아웃.html
+  - title: 04. JavaFX 컨테이너
+    url: /gui/3.javafx/04_JavaFX_컨테이너.html
+  - title: 05. JavaFX 이벤트 처리
+    url: /gui/3.javafx/05_JavaFX_이벤트_처리.html
+  - title: 06. JavaFX 속성 감시와 바인딩
+    url: /gui/3.javafx/06_JavaFX_속성_감시와_바인딩.html
+  - title: 07. JavaFX 컨트롤
+    url: /gui/3.javafx/07_JavaFx_컨트롤.html
+  - title: 08. JavaFX 메뉴바와 툴바
+    url: /gui/3.javafx/08_JavaFX_메뉴바와_툴바.html
+  - title: 09. JavaFX 다이얼로그
+    url: /gui/3.javafx/09_JavaFX_다이얼로그.html
+  - title: 10. JavaFX CSS 스타일
+    url: /gui/3.javafx/10_JavaFX_CSS_스타일.html
+  - title: 11. JavaFX 스레드 UI 변경
+    url: /gui/3.javafx/11_JavaFX_스레드_UI_변경.html
+  - title: 12. 장면 이동과 애니메이션
+    url: /gui/3.javafx/12_장면_이동과_애니메이션.html
+  - title: 13. JavaFX 과제
+    url: /gui/3.javafx/13_JavaFX_과제.html

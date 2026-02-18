@@ -6,5 +6,9 @@
   url: /part03/
 - title: 데이터 I/O
   url: /part04/
+- title: 데이터베이스
+  url: /database/
 - title: 최신 자바
   url: /part05/
+- title: GUI 프로그래밍
+  url: /gui/

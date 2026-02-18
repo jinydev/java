@@ -1,5 +1,5 @@
 main:
-- title: Chapter 21. 스트림 심화
+- title: 21. 스트림 심화
   url: /part05/21/
   subitems:
   - title: 학습목표
@@ -20,24 +20,7 @@ main:
     url: /part05/21/07/
   - title: 21.8 기본 문자셋 변경
     url: /part05/21/08/
-- title: Chapter 22. 부록
-  url: /part05/22/
-  subitems:
-  - title: 학습목표
-    url: /part05/22/
-  - title: index_backup.md
-    url: /part05/22/index_backup/
-- title: Chapter 23. 부록
-  url: /part05/23/
-  subitems:
-  - title: 학습목표
-    url: /part05/23/
-- title: Chapter 24. 부록
-  url: /part05/24/
-  subitems:
-  - title: 학습목표
-    url: /part05/24/
-- title: Chapter 25. 부록
+- title: 25. 부록
   url: /part05/25/
   subitems:
   - title: 학습목표

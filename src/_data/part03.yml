@@ -1,5 +1,5 @@
 main:
-- title: Chapter 12. java.base 모듈
+- title: 12. java.base 모듈
   url: /part03/12/
   subitems:
   - title: 학습목표
@@ -30,7 +30,7 @@ main:
     url: /part03/12/12/
   - title: 확인문제
     url: /part03/12/quiz/
-- title: Chapter 13. 제네릭
+- title: 13. 제네릭
   url: /part03/13/
   subitems:
   - title: 학습목표
@@ -47,7 +47,7 @@ main:
     url: /part03/13/05/
   - title: 확인문제
     url: /part03/13/quiz/
-- title: Chapter 14. 멀티 스레드
+- title: 14. 멀티 스레드
   url: /part03/14/
   subitems:
   - title: 학습목표
@@ -72,7 +72,7 @@ main:
     url: /part03/14/09/
   - title: 확인문제
     url: /part03/14/quiz/
-- title: Chapter 15. 컬렉션 자료구조
+- title: 15. 컬렉션 자료구조
   url: /part03/15/
   subitems:
   - title: 학습목표
@@ -95,7 +95,7 @@ main:
     url: /part03/15/08/
   - title: 확인문제
     url: /part03/15/quiz/
-- title: Chapter 16. 스트림과 병렬 처리
+- title: 16. 스트림과 병렬 처리
   url: /part03/16/
   subitems:
   - title: 학습목표
@@ -114,7 +114,7 @@ main:
     url: /part03/16/06/
   - title: 확인문제
     url: /part03/16/quiz/
-- title: Chapter 17. 데이터 입출력
+- title: 17. 데이터 입출력
   url: /part03/17/
   subitems:
   - title: 학습목표
