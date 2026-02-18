@@ -1,14 +1,12 @@
-- title: 자바 기초
-  url: /part01/
+- title: 자바기초
+  url: /basic/
 - title: 객체지향
-  url: /part02/
-- title: 라이브러리
+  url: /oop/
+- title: 입출력
   url: /part03/
-- title: 데이터 I/O
-  url: /part04/
 - title: 데이터베이스
   url: /database/
-- title: 최신 자바
-  url: /part05/
-- title: GUI 프로그래밍
+- title: 네트워크
+  url: /network/
+- title: GUI
   url: /gui/

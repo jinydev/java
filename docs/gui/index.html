@@ -8,7 +8,7 @@
   <!-- 기본 메타데이터 --><meta name="description" content="Jiny linux"><meta name="author" content="HojinLee"><!-- 제목 설정 --><title>GUI 프로그래밍</title>
   <meta name="title" content="GUI 프로그래밍" /><!-- 키워드 설정 --><!-- Open Graph 메타데이터 --><meta property="og:title" content="GUI 프로그래밍"><meta property="og:description" content="Jiny linux"><meta property="og:type" content="website"><meta property="og:locale" content="ko">
   <meta property="og:site_name" content="linux">
-  <meta property="og:url" content="https://java.jiny.dev/gui/">
+  <meta property="og:url" content="http://localhost:4000/gui/">
 
   <!-- Twitter 카드 메타데이터 --><meta name="twitter:card" content="summary"><meta property="twitter:title" content="GUI 프로그래밍"><!-- Begin Jekyll SEO tag v2.8.0 -->
 <meta name="generator" content="Jekyll v4.4.1" />
@@ -17,14 +17,14 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
 <meta property="og:description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
-<link rel="canonical" href="https://java.jiny.dev/gui/" />
-<meta property="og:url" content="https://java.jiny.dev/gui/" />
+<link rel="canonical" href="http://localhost:4000/gui/" />
+<meta property="og:url" content="http://localhost:4000/gui/" />
 <meta property="og:site_name" content="객체지향 자바 프로그래밍 (Object-Oriented Java Programming)" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="GUI 프로그래밍" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"GUI 프로그래밍","url":"https://java.jiny.dev/gui/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"GUI 프로그래밍","url":"http://localhost:4000/gui/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -241,19 +241,15 @@
           <ul class="navbar-nav flex-column flex-lg-row bd-navbar-nav">
             
             <li class="nav-item">
-              <a class="nav-link py-2 px-0 px-lg-2" href="/part01/">자바 기초</a>
+              <a class="nav-link py-2 px-0 px-lg-2" href="/basic/">자바기초</a>
             </li>
             
             <li class="nav-item">
-              <a class="nav-link py-2 px-0 px-lg-2" href="/part02/">객체지향</a>
+              <a class="nav-link py-2 px-0 px-lg-2" href="/oop/">객체지향</a>
             </li>
             
             <li class="nav-item">
-              <a class="nav-link py-2 px-0 px-lg-2" href="/part03/">라이브러리</a>
-            </li>
-            
-            <li class="nav-item">
-              <a class="nav-link py-2 px-0 px-lg-2" href="/part04/">데이터 I/O</a>
+              <a class="nav-link py-2 px-0 px-lg-2" href="/part03/">입출력</a>
             </li>
             
             <li class="nav-item">
@@ -261,11 +257,11 @@
             </li>
             
             <li class="nav-item">
-              <a class="nav-link py-2 px-0 px-lg-2" href="/part05/">최신 자바</a>
+              <a class="nav-link py-2 px-0 px-lg-2" href="/network/">네트워크</a>
             </li>
             
             <li class="nav-item">
-              <a class="nav-link py-2 px-0 px-lg-2" href="/gui/">GUI 프로그래밍</a>
+              <a class="nav-link py-2 px-0 px-lg-2" href="/gui/">GUI</a>
             </li>
             
           </ul>
@@ -335,226 +331,315 @@
         
         <li>
           
-          <a href="/part01/01/"
-            class="bd-links-link d-inline-block rounded ">
-            Chapter 01. 자바 시작하기
-          </a>
+          
+          
+          <button
+            class="bd-links-link bd-links-btn btn d-inline-flex align-items-center rounded border-0 collapsed w-100"
+            data-bs-toggle="collapse" data-bs-target="#collapse-1"
+            aria-expanded="false">
+            1. AWT
+            <svg class="bi ms-auto" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+            </svg>
+          </button>
+          <div class="collapse " id="collapse-1">
+            <ul class="list-unstyled fw-normal pb-1 small ms-3">
+              
+              <li>
+                <a href="/gui/1.awt/"
+                  class="bd-links-link d-inline-block rounded ">
+                  학습목표
+                </a>
+              </li>
+              
+              <li>
+                <a href="/gui/1.awt/01_awt_intro/"
+                  class="bd-links-link d-inline-block rounded ">
+                  01. AWT 개요
+                </a>
+              </li>
+              
+              <li>
+                <a href="/gui/1.awt/02_awt_components/"
+                  class="bd-links-link d-inline-block rounded ">
+                  02. AWT 컴포넌트
+                </a>
+              </li>
+              
+              <li>
+                <a href="/gui/1.awt/03_AWT_%EB%B0%B0%EC%B9%98%EA%B4%80%EB%A6%AC%EC%9E%90/"
+                  class="bd-links-link d-inline-block rounded ">
+                  03. AWT 배치관리자
+                </a>
+              </li>
+              
+              <li>
+                <a href="/gui/1.awt/04_AWT_%EC%9D%B4%EB%B2%A4%ED%8A%B8%EC%B2%98%EB%A6%AC/"
+                  class="bd-links-link d-inline-block rounded ">
+                  04. AWT 이벤트처리
+                </a>
+              </li>
+              
+            </ul>
+          </div>
           
         </li>
         
         <li>
           
-          <a href="/part01/02/"
-            class="bd-links-link d-inline-block rounded ">
-            Chapter 02. 변수와 타입
-          </a>
+          
+          
+          <button
+            class="bd-links-link bd-links-btn btn d-inline-flex align-items-center rounded border-0 collapsed w-100"
+            data-bs-toggle="collapse" data-bs-target="#collapse-2"
+            aria-expanded="false">
+            2. Swing
+            <svg class="bi ms-auto" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+            </svg>
+          </button>
+          <div class="collapse " id="collapse-2">
+            <ul class="list-unstyled fw-normal pb-1 small ms-3">
+              
+              <li>
+                <a href="/gui/2.swing/"
+                  class="bd-links-link d-inline-block rounded ">
+                  학습목표
+                </a>
+              </li>
+              
+              <li>
+                <a href="/gui/2.swing/01_swing_intro/"
+                  class="bd-links-link d-inline-block rounded ">
+                  01. Swing 소개
+                </a>
+              </li>
+              
+              <li>
+                <a href="/gui/2.swing/02_event_dispatching_thread/"
+                  class="bd-links-link d-inline-block rounded ">
+                  02. 이벤트 디스패칭 스레드
+                </a>
+              </li>
+              
+              <li>
+                <a href="/gui/2.swing/03_swing_containers/"
+                  class="bd-links-link d-inline-block rounded ">
+                  03. Swing 컨테이너
+                </a>
+              </li>
+              
+              <li>
+                <a href="/gui/2.swing/04_component_layout/"
+                  class="bd-links-link d-inline-block rounded ">
+                  04. 컴포넌트 배치
+                </a>
+              </li>
+              
+              <li>
+                <a href="/gui/2.swing/05_event_handling/"
+                  class="bd-links-link d-inline-block rounded ">
+                  05. 이벤트 처리
+                </a>
+              </li>
+              
+              <li>
+                <a href="/gui/2.swing/06_button_component/"
+                  class="bd-links-link d-inline-block rounded ">
+                  06. 버튼 컴포넌트
+                </a>
+              </li>
+              
+              <li>
+                <a href="/gui/2.swing/07_text_component/"
+                  class="bd-links-link d-inline-block rounded ">
+                  07. 텍스트 컴포넌트
+                </a>
+              </li>
+              
+              <li>
+                <a href="/gui/2.swing/08_list_component/"
+                  class="bd-links-link d-inline-block rounded ">
+                  08. 리스트 컴포넌트
+                </a>
+              </li>
+              
+              <li>
+                <a href="/gui/2.swing/09_table_component/"
+                  class="bd-links-link d-inline-block rounded ">
+                  09. 테이블 컴포넌트
+                </a>
+              </li>
+              
+              <li>
+                <a href="/gui/2.swing/10_tree_component/"
+                  class="bd-links-link d-inline-block rounded ">
+                  10. 트리 컴포넌트
+                </a>
+              </li>
+              
+              <li>
+                <a href="/gui/2.swing/11_menu_component/"
+                  class="bd-links-link d-inline-block rounded ">
+                  11. 메뉴 컴포넌트
+                </a>
+              </li>
+              
+              <li>
+                <a href="/gui/2.swing/12_toolbar_component/"
+                  class="bd-links-link d-inline-block rounded ">
+                  12. 툴바 컴포넌트
+                </a>
+              </li>
+              
+              <li>
+                <a href="/gui/2.swing/13_dialog/"
+                  class="bd-links-link d-inline-block rounded ">
+                  13. 다이얼로그
+                </a>
+              </li>
+              
+              <li>
+                <a href="/gui/2.swing/14_2d_graphics/"
+                  class="bd-links-link d-inline-block rounded ">
+                  14. 2D 그래픽스
+                </a>
+              </li>
+              
+              <li>
+                <a href="/gui/2.swing/15_swing_assignment/"
+                  class="bd-links-link d-inline-block rounded ">
+                  15. Swing 과제
+                </a>
+              </li>
+              
+            </ul>
+          </div>
           
         </li>
         
         <li>
           
-          <a href="/part01/03/"
-            class="bd-links-link d-inline-block rounded ">
-            Chapter 03. 연산자
-          </a>
           
-        </li>
-        
-        <li>
           
-          <a href="/part01/04/"
-            class="bd-links-link d-inline-block rounded ">
-            Chapter 04. 조건문과 반복문
-          </a>
-          
-        </li>
-        
-        <li>
-          
-          <a href="/part02/05/"
-            class="bd-links-link d-inline-block rounded ">
-            Chapter 05. 참조 타입
-          </a>
-          
-        </li>
-        
-        <li>
-          
-          <a href="/part02/06/"
-            class="bd-links-link d-inline-block rounded ">
-            Chapter 06. 클래스
-          </a>
-          
-        </li>
-        
-        <li>
-          
-          <a href="/part02/07/"
-            class="bd-links-link d-inline-block rounded ">
-            Chapter 07. 상속
-          </a>
-          
-        </li>
-        
-        <li>
-          
-          <a href="/part02/08/"
-            class="bd-links-link d-inline-block rounded ">
-            Chapter 08. 인터페이스
-          </a>
-          
-        </li>
-        
-        <li>
-          
-          <a href="/part02/09/"
-            class="bd-links-link d-inline-block rounded ">
-            Chapter 09. 중첩 선언과 익명 객체
-          </a>
-          
-        </li>
-        
-        <li>
-          
-          <a href="/part02/10/"
-            class="bd-links-link d-inline-block rounded ">
-            Chapter 10. 라이브러리와 모듈
-          </a>
-          
-        </li>
-        
-        <li>
-          
-          <a href="/part02/11/"
-            class="bd-links-link d-inline-block rounded ">
-            Chapter 11. 예외 처리
-          </a>
-          
-        </li>
-        
-        <li>
-          
-          <a href="/part03/12/"
-            class="bd-links-link d-inline-block rounded ">
-            Chapter 12. java.base 모듈
-          </a>
-          
-        </li>
-        
-        <li>
-          
-          <a href="/part03/13/"
-            class="bd-links-link d-inline-block rounded ">
-            Chapter 13. 제네릭
-          </a>
-          
-        </li>
-        
-        <li>
-          
-          <a href="/part03/14/"
-            class="bd-links-link d-inline-block rounded ">
-            Chapter 14. 멀티 스레드
-          </a>
-          
-        </li>
-        
-        <li>
-          
-          <a href="/part03/15/"
-            class="bd-links-link d-inline-block rounded ">
-            Chapter 15. 컬렉션 자료구조
-          </a>
-          
-        </li>
-        
-        <li>
-          
-          <a href="/part03/16/"
-            class="bd-links-link d-inline-block rounded ">
-            Chapter 16. 람다식
-          </a>
-          
-        </li>
-        
-        <li>
-          
-          <a href="/part03/17/"
-            class="bd-links-link d-inline-block rounded ">
-            Chapter 17. 스트림 요소 처리
-          </a>
-          
-        </li>
-        
-        <li>
-          
-          <a href="/part04/18/"
-            class="bd-links-link d-inline-block rounded ">
-            Chapter 18. 데이터 입출력
-          </a>
-          
-        </li>
-        
-        <li>
-          
-          <a href="/part04/19/"
-            class="bd-links-link d-inline-block rounded ">
-            Chapter 19. 네트워크 입출력
-          </a>
-          
-        </li>
-        
-        <li>
-          
-          <a href="/part04/20/"
-            class="bd-links-link d-inline-block rounded ">
-            Chapter 20. 데이터베이스 입출력
-          </a>
-          
-        </li>
-        
-        <li>
-          
-          <a href="/part05/21/"
-            class="bd-links-link d-inline-block rounded ">
-            Chapter 21. 자바 21에서 강화된 언어 및 라이브러리
-          </a>
-          
-        </li>
-        
-        <li>
-          
-          <a href="/part05/22/"
-            class="bd-links-link d-inline-block rounded ">
-            Chapter 22. 부록 (Appendix)
-          </a>
-          
-        </li>
-        
-        <li>
-          
-          <a href="/part05/23/"
-            class="bd-links-link d-inline-block rounded ">
-            Chapter 23. 부록 (Swing)
-          </a>
-          
-        </li>
-        
-        <li>
-          
-          <a href="/part05/24/"
-            class="bd-links-link d-inline-block rounded ">
-            Chapter 24. 부록 (JavaFX)
-          </a>
-          
-        </li>
-        
-        <li>
-          
-          <a href="/part05/25/"
-            class="bd-links-link d-inline-block rounded ">
-            Chapter 25. 부록 (NIO)
-          </a>
+          <button
+            class="bd-links-link bd-links-btn btn d-inline-flex align-items-center rounded border-0 collapsed w-100"
+            data-bs-toggle="collapse" data-bs-target="#collapse-3"
+            aria-expanded="false">
+            3. JavaFX
+            <svg class="bi ms-auto" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+            </svg>
+          </button>
+          <div class="collapse " id="collapse-3">
+            <ul class="list-unstyled fw-normal pb-1 small ms-3">
+              
+              <li>
+                <a href="/gui/3.javafx/"
+                  class="bd-links-link d-inline-block rounded ">
+                  학습목표
+                </a>
+              </li>
+              
+              <li>
+                <a href="/gui/3.javafx/01_javafx_intro/"
+                  class="bd-links-link d-inline-block rounded ">
+                  01. JavaFX 개요
+                </a>
+              </li>
+              
+              <li>
+                <a href="/gui/3.javafx/02_javafx_project/"
+                  class="bd-links-link d-inline-block rounded ">
+                  02. JavaFX 프로젝트 생성 및 실행
+                </a>
+              </li>
+              
+              <li>
+                <a href="/gui/3.javafx/03_javafx_layout/"
+                  class="bd-links-link d-inline-block rounded ">
+                  03. JavaFX 레이아웃
+                </a>
+              </li>
+              
+              <li>
+                <a href="/gui/3.javafx/04_javafx_containers/"
+                  class="bd-links-link d-inline-block rounded ">
+                  04. JavaFX 컨테이너
+                </a>
+              </li>
+              
+              <li>
+                <a href="/gui/3.javafx/05_javafx_event_handling/"
+                  class="bd-links-link d-inline-block rounded ">
+                  05. JavaFX 이벤트 처리
+                </a>
+              </li>
+              
+              <li>
+                <a href="/gui/3.javafx/06_javafx_property_binding/"
+                  class="bd-links-link d-inline-block rounded ">
+                  06. JavaFX 속성 감시와 바인딩
+                </a>
+              </li>
+              
+              <li>
+                <a href="/gui/3.javafx/07_javafx_controls/"
+                  class="bd-links-link d-inline-block rounded ">
+                  07. JavaFX 컨트롤
+                </a>
+              </li>
+              
+              <li>
+                <a href="/gui/3.javafx/08_javafx_menubar_toolbar/"
+                  class="bd-links-link d-inline-block rounded ">
+                  08. JavaFX 메뉴바와 툴바
+                </a>
+              </li>
+              
+              <li>
+                <a href="/gui/3.javafx/09_javafx_dialog/"
+                  class="bd-links-link d-inline-block rounded ">
+                  09. JavaFX 다이얼로그
+                </a>
+              </li>
+              
+              <li>
+                <a href="/gui/3.javafx/10_javafx_css/"
+                  class="bd-links-link d-inline-block rounded ">
+                  10. JavaFX CSS 스타일
+                </a>
+              </li>
+              
+              <li>
+                <a href="/gui/3.javafx/11_javafx_thread_ui/"
+                  class="bd-links-link d-inline-block rounded ">
+                  11. JavaFX 스레드 UI 변경
+                </a>
+              </li>
+              
+              <li>
+                <a href="/gui/3.javafx/12_scene_transition_animation/"
+                  class="bd-links-link d-inline-block rounded ">
+                  12. 장면 이동과 애니메이션
+                </a>
+              </li>
+              
+              <li>
+                <a href="/gui/3.javafx/13_javafx_assignment/"
+                  class="bd-links-link d-inline-block rounded ">
+                  13. JavaFX 과제
+                </a>
+              </li>
+              
+            </ul>
+          </div>
           
         </li>
         
@@ -601,13 +686,13 @@
 <h2 id="1-awt-abstract-window-toolkit">1. AWT (Abstract Window Toolkit)</h2>
 <p>자바 초창기(JDK 1.0)에 발표된 최초의 GUI 라이브러리입니다. OS의 네이티브 컴포넌트를 사용하여 속도가 빠르지만 디자인에 한계가 있습니다.</p>
 
-<h3 id="awt-상세-학습하기"><a href="1.awt/index.md">AWT 상세 학습하기</a></h3>
+<h3 id="awt-상세-학습하기"><a href="/gui/1.awt/">AWT 상세 학습하기</a></h3>
 
 <ul>
-  <li><strong><a href="1.awt/01_AWT_개요.md">01. AWT 개요</a></strong></li>
-  <li><strong><a href="1.awt/02_AWT_컴포넌트.md">02. AWT 컴포넌트</a></strong></li>
-  <li><strong><a href="1.awt/03_AWT_배치관리자.md">03. AWT 배치관리자</a></strong></li>
-  <li><strong><a href="1.awt/04_AWT_이벤트처리.md">04. AWT 이벤트처리</a></strong></li>
+  <li><strong><a href="1.awt/01_awt_intro/">01. AWT 개요</a></strong></li>
+  <li><strong><a href="1.awt/02_awt_components/">02. AWT 컴포넌트</a></strong></li>
+  <li><strong><a href="1.awt/03_awt_layout/">03. AWT 배치관리자</a></strong></li>
+  <li><strong><a href="1.awt/04_awt_event/">04. AWT 이벤트처리</a></strong></li>
 </ul>
 
 <hr />
@@ -615,24 +700,24 @@
 <h2 id="2-swing">2. Swing</h2>
 <p>AWT의 단점을 보완하기 위해 JDK 1.2에서 발표된 순수 자바(Lightweight) GUI 라이브러리입니다. OS 독립적이며 풍부한 컴포넌트를 제공합니다.</p>
 
-<h3 id="swing-상세-학습하기"><a href="2.swing/index.md">Swing 상세 학습하기</a></h3>
+<h3 id="swing-상세-학습하기"><a href="/gui/2.swing/">Swing 상세 학습하기</a></h3>
 
 <ul>
-  <li><strong><a href="2.swing/01_Swing_소개.md">01. Swing 소개</a></strong></li>
-  <li><strong><a href="2.swing/02_이벤트_디스패칭_스레드.md">02. 이벤트 디스패칭 스레드</a></strong></li>
-  <li><strong><a href="2.swing/03_Swing_컨테이너.md">03. Swing 컨테이너</a></strong></li>
-  <li><strong><a href="2.swing/04_컴포넌트_배치.md">04. 컴포넌트 배치</a></strong></li>
-  <li><strong><a href="2.swing/05_이벤트_처리.md">05. 이벤트 처리</a></strong></li>
-  <li><strong><a href="2.swing/06_버튼_컴포넌트.md">06. 버튼 컴포넌트</a></strong></li>
-  <li><strong><a href="2.swing/07_텍스트_컴포넌트.md">07. 텍스트 컴포넌트</a></strong></li>
-  <li><strong><a href="2.swing/08_리스트_컴포넌트.md">08. 리스트 컴포넌트</a></strong></li>
-  <li><strong><a href="2.swing/09_테이블_컴포넌트.md">09. 테이블 컴포넌트</a></strong></li>
-  <li><strong><a href="2.swing/10_트리_컴포넌트.md">10. 트리 컴포넌트</a></strong></li>
-  <li><strong><a href="2.swing/11_메뉴_컴포넌트.md">11. 메뉴 컴포넌트</a></strong></li>
-  <li><strong><a href="2.swing/12_툴바_컴포넌트.md">12. 툴바 컴포넌트</a></strong></li>
-  <li><strong><a href="2.swing/13_다이얼로그.md">13. 다이얼로그</a></strong></li>
-  <li><strong><a href="2.swing/14_2D_그래픽스.md">14. 2D 그래픽스</a></strong></li>
-  <li><strong><a href="2.swing/15_Swing_과제.md">15. Swing 과제</a></strong></li>
+  <li><strong><a href="2.swing/01_Swing_소개/">01. Swing 소개</a></strong></li>
+  <li><strong><a href="2.swing/02_event_dispatching_thread/">02. 이벤트 디스패칭 스레드</a></strong></li>
+  <li><strong><a href="2.swing/03_Swing_컨테이너/">03. Swing 컨테이너</a></strong></li>
+  <li><strong><a href="2.swing/04_component_layout/">04. 컴포넌트 배치</a></strong></li>
+  <li><strong><a href="2.swing/05_event_handling/">05. 이벤트 처리</a></strong></li>
+  <li><strong><a href="2.swing/06_button_component/">06. 버튼 컴포넌트</a></strong></li>
+  <li><strong><a href="2.swing/07_text_component/">07. 텍스트 컴포넌트</a></strong></li>
+  <li><strong><a href="2.swing/08_list_component/">08. 리스트 컴포넌트</a></strong></li>
+  <li><strong><a href="2.swing/09_table_component/">09. 테이블 컴포넌트</a></strong></li>
+  <li><strong><a href="2.swing/10_tree_component/">10. 트리 컴포넌트</a></strong></li>
+  <li><strong><a href="2.swing/11_menu_component/">11. 메뉴 컴포넌트</a></strong></li>
+  <li><strong><a href="2.swing/12_toolbar_component/">12. 툴바 컴포넌트</a></strong></li>
+  <li><strong><a href="2.swing/13_dialog/">13. 다이얼로그</a></strong></li>
+  <li><strong><a href="2.swing/14_2d_graphics/">14. 2D 그래픽스</a></strong></li>
+  <li><strong><a href="2.swing/15_Swing_과제/">15. Swing 과제</a></strong></li>
 </ul>
 
 <hr />
@@ -640,22 +725,22 @@
 <h2 id="3-javafx">3. JavaFX</h2>
 <p>RIA 시장을 겨냥한 차세대 GUI 플랫폼입니다. 하드웨어 가속, FXML, CSS 스타일링을 지원하여 화려하고 현대적인 UI를 개발할 수 있습니다.</p>
 
-<h3 id="javafx-상세-학습하기"><a href="3.javafx/index.md">JavaFX 상세 학습하기</a></h3>
+<h3 id="javafx-상세-학습하기"><a href="/gui/3.javafx/">JavaFX 상세 학습하기</a></h3>
 
 <ul>
-  <li><strong><a href="3.javafx/01_JavaFX_개요.md">01. JavaFX 개요</a></strong></li>
-  <li><strong><a href="3.javafx/02_JavaFX_프로젝트_생성_및_실행.md">02. JavaFX 프로젝트 생성 및 실행</a></strong></li>
-  <li><strong><a href="3.javafx/03_JavaFX_레이아웃.md">03. JavaFX 레이아웃</a></strong></li>
-  <li><strong><a href="3.javafx/04_JavaFX_컨테이너.md">04. JavaFX 컨테이너</a></strong></li>
-  <li><strong><a href="3.javafx/05_JavaFX_이벤트_처리.md">05. JavaFX 이벤트 처리</a></strong></li>
-  <li><strong><a href="3.javafx/06_JavaFX_속성_감시와_바인딩.md">06. JavaFX 속성 감시와 바인딩</a></strong></li>
-  <li><strong><a href="3.javafx/07_JavaFx_컨트롤.md">07. JavaFX 컨트롤</a></strong></li>
-  <li><strong><a href="3.javafx/08_JavaFX_메뉴바와_툴바.md">08. JavaFX 메뉴바와 툴바</a></strong></li>
-  <li><strong><a href="3.javafx/09_JavaFX_다이얼로그.md">09. JavaFX 다이얼로그</a></strong></li>
-  <li><strong><a href="3.javafx/10_JavaFX_CSS_스타일.md">10. JavaFX CSS 스타일</a></strong></li>
-  <li><strong><a href="3.javafx/11_JavaFX_스레드_UI_변경.md">11. JavaFX 스레드 UI 변경</a></strong></li>
-  <li><strong><a href="3.javafx/12_장면_이동과_애니메이션.md">12. 장면 이동과 애니메이션</a></strong></li>
-  <li><strong><a href="3.javafx/13_JavaFX_과제.md">13. JavaFX 과제</a></strong></li>
+  <li><strong><a href="3.javafx/01_javafx_intro/">01. JavaFX 개요</a></strong></li>
+  <li><strong><a href="3.javafx/02_javafx_project/">02. JavaFX 프로젝트 생성 및 실행</a></strong></li>
+  <li><strong><a href="3.javafx/03_javafx_layout/">03. JavaFX 레이아웃</a></strong></li>
+  <li><strong><a href="3.javafx/04_javafx_containers/">04. JavaFX 컨테이너</a></strong></li>
+  <li><strong><a href="3.javafx/05_javafx_event_handling/">05. JavaFX 이벤트 처리</a></strong></li>
+  <li><strong><a href="3.javafx/06_javafx_property_binding/">06. JavaFX 속성 감시와 바인딩</a></strong></li>
+  <li><strong><a href="3.javafx/07_javafx_controls/">07. JavaFX 컨트롤</a></strong></li>
+  <li><strong><a href="3.javafx/08_javafx_menubar_toolbar/">08. JavaFX 메뉴바와 툴바</a></strong></li>
+  <li><strong><a href="3.javafx/09_javafx_dialog/">09. JavaFX 다이얼로그</a></strong></li>
+  <li><strong><a href="3.javafx/10_javafx_css/">10. JavaFX CSS 스타일</a></strong></li>
+  <li><strong><a href="3.javafx/11_javafx_thread_ui/">11. JavaFX 스레드 UI 변경</a></strong></li>
+  <li><strong><a href="3.javafx/12_scene_transition_animation/">12. 장면 이동과 애니메이션</a></strong></li>
+  <li><strong><a href="3.javafx/13_javafx_assignment/">13. JavaFX 과제</a></strong></li>
 </ul>
 
 <hr />

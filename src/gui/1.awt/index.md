@@ -1,3 +1,9 @@
+---
+layout: gui
+title: "AWT 강의 자료"
+permalink: /gui/1.awt/
+---
+
 # AWT 강의 자료
 
 ## 학습목표
@@ -8,14 +14,14 @@
 
 ## 목차
 
-### [01. AWT 개요](01_AWT_개요.md)
+### [01. AWT 개요](01_awt_intro/)
 AWT의 정의와 특징, Swing과의 차이점을 비교하고 간단한 AWT 애플리케이션 구조를 학습합니다.
 
-### [02. AWT 컴포넌트](02_AWT_컴포넌트.md)
+### [02. AWT 컴포넌트](02_awt_components/)
 `Frame`, `Panel`, `Button`, `Label`, `TextField` 등 AWT가 제공하는 주요 컴포넌트들의 종류와 사용법을 다룹니다.
 
-### [03. AWT 배치관리자](03_AWT_배치관리자.md)
+### [03. AWT 배치관리자](03_awt_layout/)
 컨테이너 내부에 컴포넌트를 배치하는 다양한 방법(`FlowLayout`, `BorderLayout`, `GridLayout`, `Null Layout`)을 학습합니다.
 
-### [04. AWT 이벤트처리](04_AWT_이벤트처리.md)
+### [04. AWT 이벤트처리](04_awt_event/)
 사용자의 동작(클릭, 키보드 입력 등)에 반응하는 이벤트 리스너(Listener)와 어댑터(Adapter) 클래스의 활용법을 익힙니다.

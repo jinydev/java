@@ -1,0 +1,133 @@
+---
+layout: oop
+title: "7.9 객체 타입 확인"
+nav_order: 9
+parent: "Chapter 07. 상속"
+grand_parent: "객체지향 자바 프로그래밍"
+---
+
+# 7.9 객체 타입 확인
+
+매개변수의 다형성에서 실제로 어떤 객체가 매개값으로 제공되었는지 확인하는 방법이 있다. 꼭 매개변수가 아니더라도 변수가 참조하는 객체의 타입을 확인하고자 할 때, instanceof 연산자를 사용할 수 있다.
+
+instanceof 연산자의 좌항에는 객체가 오고 우항에는 타입이 오는데, 좌항의 객체가 우항의 타입이면 true를 산출하고 그렇지 않으면 false를 산출한다.
+
+```java
+boolean result = 객체 instanceof 타입;
+```
+
+예를 들어 다음 코드는 Child 타입으로 강제 타입 변환하기 전에 매개값이 Child 타입인지 여부를 instanceof 연산자로 확인한다. Child 타입이 아니라면 강제 타입 변환을 할 수 없기 때문이다. 강제 타입 변환을 하는 이유는 Child 객체의 모든 멤버(필드, 메소드)에 접근하기 위해서이다.
+
+```java
+public void method(Parent parent) {
+    if (parent instanceof Child) {
+        Child child = (Child) parent;
+        // child 변수 사용
+    }
+}
+```
+
+Java 12부터는 instanceof 연산의 결과가 true일 경우, 우측 타입 변수를 사용할 수 있기 때문에 강제 타입 변환이 필요 없다.
+
+```java
+if (parent instanceof Child child) {
+    // child 변수 사용
+}
+```
+
+다음은 personInfo() 메소드의 매개값으로 Student를 제공했을 경우에만 studentNo를 출력하고 study() 메소드를 호출한다.
+
+**InstanceofExample.java**
+```java
+package ch07.sec09;
+
+public class InstanceofExample {
+	// main() 메소드에서 바로 호출하기 위해 정적 메소드 선언
+	public static void personInfo(Person person) {
+		System.out.println("name: " + person.name);
+		person.walk();
+		
+		// person이 참조하는 객체가 Student 타입인지 확인
+		/*
+		if (person instanceof Student) {
+			// Student 객체일 경우 강제 타입 변환
+			Student student = (Student) person;
+			// Student 객체만 가지고 있는 필드 및 메소드 사용
+			System.out.println("studentNo: " + student.studentNo);
+			student.study();
+		}
+		*/
+		
+		// person이 참조하는 객체가 Student 타입일 경우
+		// student 변수에 대입(타입 변환 발생)
+		if (person instanceof Student student) {
+			System.out.println("studentNo: " + student.studentNo);
+			student.study();
+		}
+	}
+	
+	public static void main(String[] args) {
+		// Person 객체를 매개값으로 제공하고 personInfo() 메소드 호출
+		Person p1 = new Person("홍길동");
+		personInfo(p1);
+		
+		System.out.println();
+		
+		// Student 객체를 매개값으로 제공하고 personInfo() 메소드 호출
+		Person p2 = new Student("김길동", 10);
+		personInfo(p2);
+	}
+}
+```
+
+**Person.java**
+```java
+package ch07.sec09;
+
+public class Person {
+	// 필드 선언
+	public String name;
+	
+	// 생성자 선언
+	public Person(String name) {
+		this.name = name;
+	}
+	
+	// 메소드 선언
+	public void walk() {
+		System.out.println("걷습니다.");
+	}
+}
+```
+
+**Student.java**
+```java
+package ch07.sec09;
+
+public class Student extends Person {
+	// 필드 선언
+	public int studentNo;
+	
+	// 생성자 선언
+	public Student(String name, int studentNo) {
+		super(name);
+		this.studentNo = studentNo;
+	}
+	
+	// 메소드 선언
+	public void study() {
+		System.out.println("공부를 합니다.");
+	}
+}
+```
+
+**실행 결과**
+```
+name: 홍길동
+걷습니다.
+
+name: 김길동
+걷습니다.
+studentNo: 10
+공부를 합니다.
+```

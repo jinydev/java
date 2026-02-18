@@ -1,0 +1,61 @@
+---
+layout: basic
+title: "5.3 do-while 문"
+nav_order: 3
+parent: "Chapter 05. 반복문"
+grand_parent: "객체지향 자바 프로그래밍"
+---
+
+# 5.3 do-while 문
+
+`do-while` 문은 조건식에 의해 반복 실행한다는 점에서는 `while` 문과 동일하다. `while` 문은 시작할 때부터 조건식을 평가하여 블록 내부를 실행할지 결정하지만, 경우에 따라서는 블록 내부를 먼저 실행시키고, 실행 결과에 따라서 반복 실행을 계속할지 결정하는 경우도 있다. 이때 `do-while` 문을 사용한다.
+
+```java
+do {
+    ①실행문;
+} while ( ②조건식 );
+```
+
+작성 시 주의할 점은 `while()` 뒤에 반드시 세미콜론(`;`)을 붙여야 한다. `do-while` 문이 처음 실행될 때 ①실행문을 우선 실행한다. ①실행문이 모두 실행되면 ②조건식을 평가하는데, 그 결과가 `true`이면 ① -> ②와 같이 반복 실행을 하고, 조건식의 결과가 `false`이면 `do-while` 문을 종료한다.
+
+다음 예제는 키보드로 입력받은 내용을 조사하여 계속 반복할 것인지를 판단한다. 조건식은 키보드로 입력받은 이후에 평가되어야 하므로 우선 키보드로부터 입력된 내용을 받아야 한다.
+
+**[예제: DoWhileExample.java]**
+```java
+package ch04.sec06;
+
+import java.util.Scanner;
+
+public class DoWhileExample {
+    public static void main(String[] args) {
+        System.out.println("메시지를 입력하세요.");
+        System.out.println("프로그램을 종료하려면 q를 입력하세요.");
+        
+        Scanner scanner = new Scanner(System.in);
+        String inputString;
+        
+        do {
+            System.out.print(">");
+            inputString = scanner.nextLine();
+            System.out.println(inputString);
+        } while( ! inputString.equals("q") );
+        
+        System.out.println();
+        System.out.println("프로그램 종료");
+    }
+}
+```
+
+**실행 결과**
+```
+메시지를 입력하세요.
+프로그램을 종료하려면 q를 입력하세요.
+>안녕하세요.
+안녕하세요.
+>반갑습니다.
+반갑습니다.
+>q
+q
+
+프로그램 종료
+```

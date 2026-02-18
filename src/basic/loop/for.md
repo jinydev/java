@@ -1,0 +1,133 @@
+---
+layout: basic
+title: "5.1 for 문"
+nav_order: 1
+parent: "Chapter 05. 반복문"
+grand_parent: "객체지향 자바 프로그래밍"
+---
+
+# 5.1 for 문
+
+프로그램을 작성하다 보면 똑같은 실행문을 반복적으로 실행해야 할 경우가 많이 발생한다. 예를 들어 1부터 100까지의 합을 구하는 코드를 작성한다면 코드 양이 엄청 늘어날 것이다. 이런 경우 `for` 문을 사용하면 코드를 획기적으로 줄일 수 있다.
+
+`for` 문은 실행문을 여러 번 반복 실행해주기 때문에 코드를 간결하게 만들어 준다.
+
+```java
+for( ①초기화식; ②조건식; ④증감식 ) {
+    ③실행문;
+}
+```
+
+`for` 문이 처음 실행될 때 ①초기화식이 제일 먼저 실행된다. 그런 다음 ②조건식을 평가해서 `true`이면 ③실행문을 실행시키고, `false`이면 `for` 문을 종료하고 블록을 건너뛴다. ②조건식이 `true`가 되어 ③실행문을 모두 실행하면 ④증감식이 실행된다. 그리고 다시 ②조건식을 평가하게 된다. 평가 결과가 다시 `true`이면 ③ -> ④ -> ②로 다시 진행하고, `false`이면 `for` 문이 끝나게 된다.
+
+다음은 가장 기본적인 `for` 문의 형태로 1부터 10까지 출력하는 코드이다.
+
+**[예제: PrintFrom1To10Example.java]**
+```java
+package ch04.sec04;
+
+public class PrintFrom1To10Example {
+    public static void main(String[] args) {
+        for(int i=1; i<=10; i++) {
+            System.out.print(i + " ");
+        }
+    }
+}
+```
+
+**실행 결과**
+```
+1 2 3 4 5 6 7 8 9 10 
+```
+
+초기화식은 조건식과 실행문, 증감식에서 사용할 변수를 초기화하는 역할을 한다. 어떤 경우에는 초기화식이 둘 이상 있을 수도 있고, 증감식도 둘 이상 있을 수 있다. 이런 경우에는 다음과 같이 쉼표(`,`)로 구분해서 작성한다.
+
+```java
+for (int i=0, j=100; i<=50 && j>=50; i++, j--) { ... }
+```
+
+초기화식에서 선언된 변수는 `for` 문 블록 안에서만 사용되는 로컬 변수다. `for` 문을 벗어나서도 사용하고 싶다면 초기화식에서 변수를 선언하지 말고 `for` 문 이전에 선언해야 한다.
+
+다음 예제는 1부터 100까지의 합을 구하는 코드이다. 변수 `sum`과 `i`를 `for` 문이 시작하기 전에 선언한 이유는 `for` 문을 끝내고 `sum`과 `i`를 사용하기 때문이다.
+
+**[예제: SumFrom1To100Example.java]**
+```java
+package ch04.sec04;
+
+public class SumFrom1To100Example {
+    public static void main(String[] args) {
+        int sum = 0;
+        int i;
+        
+        for(i=1; i<=100; i++) {
+            sum += i;
+        }
+        
+        System.out.println("1~" + (i-1) + " 합 : " + sum);
+    }
+}
+```
+
+**실행 결과**
+```
+1~100 합 : 5050
+```
+
+`for` 문을 작성할 때 주의할 점은 초기화식에서 부동 소수점을 쓰는 `float` 타입을 사용하지 말아야 한다는 것이다. 다음 예를 보자. 이론적으로 `for` 문은 10번 반복해야 한다.
+
+**[예제: FloatCounterExample.java]**
+```java
+package ch04.sec04;
+
+public class FloatCounterExample {
+    public static void main(String[] args) {
+        for(float x=0.1f; x<=1.0f; x+=0.1f) {
+            System.out.println(x);
+        }
+    }
+}
+```
+
+**실행 결과**
+```
+0.1
+0.2
+0.3
+0.4
+0.5
+0.6
+0.70000005
+0.8000001
+0.9000001
+```
+
+부동 소수점 방식의 `float` 타입은 연산 과정에서 정확히 0.1을 표현하지 못하기 때문에 증감식에서 `x`에 더해지는 실제 값은 0.1보다 약간 클 수 있다. 따라서 최종 반복 횟수는 9번이 된다.
+
+`for` 문은 또 다른 `for` 문을 내포할 수 있는데, 이것을 중첩된 `for` 문이라고 한다. 이 경우 바깥 `for` 문이 한 번 실행될 때마다 중첩된 `for` 문은 지정 횟수만큼 반복하고 다시 바깥 `for` 문으로 돌아간다. 중첩 `for` 문이 필요한 가장 간단한 예제는 구구단을 출력하는 코드이다.
+
+**[예제: MultiplicationTableExample.java]**
+```java
+package ch04.sec04;
+
+public class MultiplicationTableExample {
+    public static void main(String[] args) {
+        for (int m=2; m<=9; m++) {
+            System.out.println("*** " + m + "단 ***");
+            for (int n=1; n<=9; n++) {
+                System.out.println(m + " x " + n + " = " + (m*n));
+            }
+        }
+    }
+}
+```
+
+**실행 결과**
+```
+*** 2단 ***
+2 x 1 = 2
+2 x 2 = 4
+...
+*** 9단 ***
+9 x 8 = 72
+9 x 9 = 81
+```

@@ -1,0 +1,152 @@
+main:
+- title: 자바 언어 소개
+  url: /basic/java/
+  subitems:
+  - title: 학습목표
+    url: /basic/java/
+  - title: 1. 프로그래밍 언어와 자바
+    url: /basic/java/programming-language/
+  - title: 2. 자바의 역사와 제임스 고스링
+    url: /basic/java/history/
+  - title: 3. 자바의 특징
+    url: /basic/java/features/
+  - title: 4. 바이트코드 파일과 자바 가상 머신
+    url: /basic/java/jvm/
+- title: 개발 환경 구축
+  url: /basic/setup/
+  subitems:
+  - title: 학습목표
+    url: /basic/setup/
+  - title: 1. JDK 설치
+    url: /basic/setup/jdk-installation/
+  - title: 2. 환경 변수 설정
+    url: /basic/setup/environment-variable/
+  - title: 3. 이클립스 설치
+    url: /basic/setup/eclipse-installation/
+  - title: 4. 이클립스 프로젝트 생성
+    url: /basic/setup/eclipse-project/
+  - title: 5. 이클립스 소스 작성부터 실행
+    url: /basic/setup/eclipse-execution/
+  - title: 6. 인텔리제이 설치 및 소개
+    url: /basic/setup/intellij-installation/
+  - title: 7. VS Code 설치
+    url: /basic/setup/vscode-installation/
+  - title: 8. 안티그라비티 소개
+    url: /basic/setup/antigravity/
+- title: 01. 자바 시작하기
+  url: /basic/start/
+  subitems:
+  - title: 학습목표
+    url: /basic/start/
+  - title: 1.1 소스 작성부터 실행까지
+    url: /basic/start/execution-process/
+  - title: 1.2 코드 용어 이해
+    url: /basic/start/code-terminology/
+  - title: 1.3 코드 주석 달기
+    url: /basic/start/comments/
+  - title: 1.4 실행문과 세미콜론
+    url: /basic/start/statements/
+  - title: 1.5 자바 21 개요
+    url: /basic/start/java21-overview/
+  - title: 확인문제
+    url: /basic/start/quiz/
+- title: 02. 변수와 타입
+  url: /basic/variable/
+  subitems:
+  - title: 학습목표
+    url: /basic/variable/
+  - title: 2.1 변수 선언
+    url: /basic/variable/declaration/
+  - title: 2.2 정수 타입
+    url: /basic/variable/integer-type/
+  - title: 2.3 문자 타입
+    url: /basic/variable/char-type/
+  - title: 2.4 실수 타입
+    url: /basic/variable/float-type/
+  - title: 2.5 논리 타입
+    url: /basic/variable/boolean-type/
+  - title: 2.6 문자열 타입
+    url: /basic/variable/string-type/
+  - title: 2.7 자동 타입 변환
+    url: /basic/variable/promotion/
+  - title: 2.8 강제 타입 변환
+    url: /basic/variable/casting/
+  - title: 2.9 연산식에서 자동 타입 변환
+    url: /basic/variable/operation-promotion/
+  - title: 2.10 문자열을 기본 타입으로 변환
+    url: /basic/variable/string-conversion/
+  - title: 2.11 변수 사용 범위
+    url: /basic/variable/scope/
+  - title: 2.12 콘솔로 변수값 출력
+    url: /basic/variable/console-output/
+  - title: 2.13 키보드 입력 데이터를 변수에 저장
+    url: /basic/variable/keyboard-input/
+  - title: 2.14 로컬 변수 타입 추론
+    url: /basic/variable/local-type-inference/
+  - title: 확인문제
+    url: /basic/variable/quiz/
+- title: 03. 연산자
+  url: /basic/operator/
+  subitems:
+  - title: 학습목표
+    url: /basic/operator/
+  - title: 3.1 부호/증감 연산자
+    url: /basic/operator/sign-increment/
+  - title: 3.2 산술 연산자
+    url: /basic/operator/arithmetic/
+  - title: 3.3 오버플로우와 언더플로우
+    url: /basic/operator/overflow-underflow/
+  - title: 3.4 정확한 계산은 정수 연산으로
+    url: /basic/operator/accurate-calculation/
+  - title: 3.5 나눗셈 연산 후 NaN과 Infinity 처리
+    url: /basic/operator/nan-infinity/
+  - title: 3.6 비교 연산자
+    url: /basic/operator/comparison/
+  - title: 3.7 논리 연산자
+    url: /basic/operator/logical/
+  - title: 3.8 비트 논리 연산자
+    url: /basic/operator/bit-logical/
+  - title: 3.9 비트 이동 연산자
+    url: /basic/operator/bit-shift/
+  - title: 3.10 대입 연산자
+    url: /basic/operator/assignment/
+  - title: 3.11 삼항(조건) 연산자
+    url: /basic/operator/ternary/
+  - title: 3.12 연산의 방향과 우선순위
+    url: /basic/operator/precedence/
+  - title: 확인문제
+    url: /basic/operator/quiz/
+- title: 04. 조건문
+  url: /basic/condition/
+  subitems:
+  - title: 학습목표
+    url: /basic/condition/
+  - title: 4.1 코드 실행 흐름 제어
+    url: /basic/condition/flow-control/
+  - title: 4.2 if 문
+    url: /basic/condition/if/
+  - title: 4.3 switch 문
+    url: /basic/condition/switch/
+  - title: 4.4 switch 문의 null 처리
+    url: /basic/condition/switch-null/
+  - title: 4.5 switch 문의 패턴 매칭
+    url: /basic/condition/switch-pattern/
+  - title: 확인문제
+    url: /basic/condition/quiz/
+- title: 05. 반복문
+  url: /basic/loop/
+  subitems:
+  - title: 학습목표
+    url: /basic/loop/
+  - title: 5.1 for 문
+    url: /basic/loop/for/
+  - title: 5.2 while 문
+    url: /basic/loop/while/
+  - title: 5.3 do-while 문
+    url: /basic/loop/do-while/
+  - title: 5.4 break 문
+    url: /basic/loop/break/
+  - title: 5.5 continue 문
+    url: /basic/loop/continue/
+  - title: 확인문제
+    url: /basic/loop/quiz/

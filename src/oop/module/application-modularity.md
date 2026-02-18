@@ -1,0 +1,170 @@
+---
+layout: oop
+title: "10.3 응용프로그램 모듈화"
+nav_order: 3
+parent: "Chapter 10. 라이브러리와 모듈"
+grand_parent: "객체지향 자바 프로그래밍"
+---
+
+# 10.3 응용프로그램 모듈화
+
+응용프로그램은 하나의 프로젝트로도 개발이 가능하지만, 이것을 기능별로 서브 프로젝트(모듈)로 쪼갠 다음 조합해서 개발할 수도 있다. 예를 들어 `my_application_2` 응용프로그램은 2개의 서브 프로젝트(모듈)인 `my_module_a`와 `my_module_b`로 쪼개서 개발하고, 이들을 조합해서 완성할 수 있다.
+
+응용프로그램의 규모가 커질수록 협업과 유지보수 측면에서 서브 모듈로 쪼개서 개발하는 것이 유리하며, 이렇게 개발된 모듈들은 다른 응용프로그램에서도 재사용이 가능하다.
+
+## my_module_a 모듈 생성
+
+1.  이클립스 메뉴에서 [File] - [New] - [Java Project]를 선택한다. Create a Java Project 대화상자가 나타나면 다음과 같이 입력하고 [Finish] 버튼을 클릭한다.
+    *   Project name: `my_module_a`
+    *   Module: [체크] Create module-info.java file (중요)
+    *   Module name: `my_module_a`
+
+2.  `my_module_a` 모듈의 `src` 폴더에 `pack1`과 `pack2` 패키지를 생성한다. 그리고 각 패키지에 `A` 클래스와 `B` 클래스를 다음과 같이 생성한다.
+
+3.  `A`와 `B` 클래스에는 다음과 같이 각각 하나의 메소드를 선언한다.
+
+    **A.java**
+    ```java
+    package pack1;
+    
+    public class A {
+        // 메소드 선언
+        public void method() {
+            System.out.println("A-method 실행");
+        }
+    }
+    ```
+
+    **B.java**
+    ```java
+    package pack2;
+    
+    public class B {
+        // 메소드 선언
+        public void method() {
+            System.out.println("B-method 실행");
+        }
+    }
+    ```
+
+4.  `my_module_a` 모듈이 포함하고 있는 두 개의 `pack1`과 `pack2`를 외부에서 사용할 수 있도록 모듈 기술자(`module-info.java`)를 다음과 같이 작성한다. `exports` 키워드는 모듈이 가지고 있는 패키지를 외부에서 사용할 수 있도록 노출시키는 역할을 한다.
+
+    **module-info.java**
+    ```java
+    module my_module_a {
+        exports pack1;
+        exports pack2;
+    }
+    ```
+
+## my_module_b 모듈 생성
+
+1.  이클립스 메뉴에서 [File] - [New] - [Java Project]를 선택한다. Create a Java Project 대화상자가 나타나면 다음과 같이 입력하고 [Finish] 버튼을 클릭한다.
+    *   Project name: `my_module_b`
+    *   Module: [체크] Create module-info.java file (중요)
+    *   Module name: `my_module_b`
+
+2.  `my_module_b` 모듈의 `src` 폴더에 `pack3`과 `pack4` 패키지를 생성한다. 그리고 각 패키지에 `C` 클래스와 `D` 클래스를 다음과 같이 생성한다.
+
+3.  `C`와 `D` 클래스에는 다음과 같이 각각 하나의 메소드를 선언한다.
+
+    **C.java**
+    ```java
+    package pack3;
+    
+    public class C {
+        // 메소드 선언
+        public void method() {
+            System.out.println("C-method 실행");
+        }
+    }
+    ```
+
+    **D.java**
+    ```java
+    package pack4;
+    
+    public class D {
+        // 메소드 선언
+        public void method() {
+            System.out.println("D-method 실행");
+        }
+    }
+    ```
+
+4.  `my_module_b` 모듈이 포함하고 있는 두 개의 `pack3`과 `pack4`를 외부에서 사용할 수 있도록 모듈 기술자(`module-info.java`)를 다음과 같이 작성한다.
+
+    **module-info.java**
+    ```java
+    module my_module_b {
+        exports pack3;
+        exports pack4;
+    }
+    ```
+
+## my_application_2 프로젝트 생성
+
+이제 `my_module_a`와 `my_module_b`를 조합하는 `my_application_2` 프로젝트를 생성해 보자.
+
+1.  이클립스 메뉴에서 [File] - [New] - [Java Project]를 선택한다. Create a Java Project 대화상자가 나타나면 다음과 같이 입력하고 [Finish] 버튼을 클릭한다.
+    *   Project name: `my_application_2`
+    *   Module: [체크] Create module-info.java file (중요)
+    *   Module name: `my_application_2`
+
+    > **응용프로그램도 하나의 모듈**
+    >
+    > `my_application_2`는 모듈로 개발하는 것이 아니라 다른 모듈을 조합하는 응용프로그램을 위한 프로젝트이다. 그럼에도 불구하고 모듈 기술자(`module-info.java`)가 필요하다. 그 이유는 어떤 모듈을 가져와 사용할 것인지를 기술해야 하기 때문이다.
+    >
+    > 일반적으로 모듈 기술자(`module-info.java`)가 포함된 프로젝트를 모듈이라고 한다. 따라서 `my_application_2`도 하나의 모듈이다. 따라서 명칭 통일을 위해 `my_application_2` 프로젝트라는 용어 대신 `my_application_2` 모듈이라고 부르겠다.
+
+2.  `my_application_2` 모듈은 `my_module_a`와 `my_module_b` 모듈에서 제공하는 패키지를 사용해야 하므로 두 모듈에 대한 의존 설정이 필요하다. `my_application_2`의 모듈 기술자(`module-info.java`)를 열고 다음과 같이 작성한다.
+
+    **module-info.java**
+    ```java
+    module my_application_2 {
+        requires my_module_a;
+        requires my_module_b;
+    }
+    ```
+
+    `requires` 키워드는 `my_application_2` 모듈을 컴파일하거나 실행할 때 필요한 의존 모듈을 지정한다. 실행하면 컴파일 에러가 발생하는데, 아직 `my_application_2` 모듈은 `my_module_a`와 `my_module_b` 모듈이 있는 경로를 모르기 때문이다.
+
+3.  Package Explorer 뷰에서 `my_application_2`를 선택하고 마우스 오른쪽 버튼으로 클릭하여 [Build Path] - [Configure Build Path] 버튼을 클릭 후 [Projects] 탭을 선택한다. 그리고 Required projects on the build path에서 Modulepath 항목을 선택하고 [Add] 버튼을 클릭한다.
+
+4.  [Required Projects Selection] 대화상자가 나타나면 `my_module_a`와 `my_module_b` 모듈의 체크박스에 체크하고 [OK] 버튼을 클릭한다.
+
+5.  [Projects] 탭에 두 모듈이 추가된 것을 확인하고 [Apply and Close] 버튼을 클릭한다.
+
+6.  `my_application_2` 모듈의 `src` 폴더에서 `app` 패키지를 생성한다. 그리고 `Main` 클래스를 생성하고 다음과 같이 작성한 후 실행해 보자.
+
+    **Main.java**
+    ```java
+    package app;
+    
+    import pack1.A;
+    import pack2.B;
+    import pack3.C;
+    
+    public class Main {
+        public static void main(String[] args) {
+            // my_module_a 패키지에 포함된 A 클래스 이용
+            A a = new A();
+            a.method();
+            
+            // my_module_a 패키지에 포함된 B 클래스 이용
+            B b = new B();
+            b.method();
+            
+            // my_module_b 패키지에 포함된 C 클래스 이용
+            C c = new C();
+            c.method();
+        }
+    }
+    ```
+
+    **실행 결과**
+    ```
+    A-method 실행
+    B-method 실행
+    C-method 실행
+    ```

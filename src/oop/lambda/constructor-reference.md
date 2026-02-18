@@ -1,0 +1,112 @@
+---
+layout: oop
+title: "16.6 생성자 참조"
+nav_order: 6
+parent: "Chapter 16. 스트림과 병렬 처리"
+grand_parent: "객체지향 프로그래밍"
+---
+
+# 16.6 생성자 참조
+
+생성자를 참조한다는 것은 객체를 생성하는 것을 의미한다. 람다식이 단순히 객체를 생성하고 리턴하도록 구성된다면 람다식을 생성자 참조로 대치할 수 있다.
+
+```java
+(a, b) -> { return new 클래스(a, b); }
+```
+
+이것을 생성자 참조로 표현하면 다음과 같다.
+
+```java
+클래스 :: new
+```
+
+생성자가 오버로딩되어 여러 개가 있을 경우, 컴파일러는 함수형 인터페이스의 추상 메소드와 동일한 매개변수 타입과 개수를 가지고 있는 생성자를 찾아 실행한다.
+
+```java
+package ch16.sec05.exam03;
+
+@FunctionalInterface
+public interface Creatable1 {
+	public Member create(String id);
+}
+```
+
+```java
+package ch16.sec05.exam03;
+
+@FunctionalInterface
+public interface Creatable2 {
+	public Member create(String id, String name);
+}
+```
+
+```java
+package ch16.sec05.exam03;
+
+public class Member {
+	private String id;
+	private String name;
+
+	public Member(String id) {
+		this.id = id;
+		System.out.println("Member(String id)");
+	}
+
+	public Member(String id, String name) {
+		this.id = id;
+		this.name = name;
+		System.out.println("Member(String id, String name)");
+	}
+
+	@Override
+	public String toString() {
+		String info = "{ id: " + id + ", name: " + name + " }";
+		return info;
+	}
+}
+```
+
+```java
+package ch16.sec05.exam03;
+
+public class Person {
+	public Member getMember1(Creatable1 creatable) {
+		String id = "winter";
+		Member member = creatable.create(id);
+		return member;
+	}
+
+	public Member getMember2(Creatable2 creatable) {
+		String id = "winter";
+		String name = "한겨울";
+		Member member = creatable.create(id, name);
+		return member;
+	}
+}
+```
+
+```java
+package ch16.sec05.exam03;
+
+public class ConstructorReferenceExample {
+	public static void main(String[] args) {
+		Person person = new Person();
+
+		Member m1 = person.getMember1(Member :: new);
+		System.out.println(m1);
+		System.out.println();
+
+		Member m2 = person.getMember2(Member :: new);
+		System.out.println(m2);
+	}
+}
+```
+
+**실행 결과**
+```
+Member(String id)
+{ id: winter, name: null }
+
+Member(String id, String name)
+{ id: winter, name: 한겨울 }
+```

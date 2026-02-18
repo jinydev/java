@@ -1,0 +1,1324 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- 기본 메타데이터 --><meta name="description" content="Jiny linux"><meta name="author" content="HojinLee"><!-- 제목 설정 --><title>20.9 데이터 읽기</title>
+  <meta name="title" content="20.9 데이터 읽기" /><!-- 키워드 설정 --><!-- Open Graph 메타데이터 --><meta property="og:title" content="20.9 데이터 읽기"><meta property="og:description" content="Jiny linux"><meta property="og:type" content="website"><meta property="og:locale" content="ko">
+  <meta property="og:site_name" content="linux">
+  <meta property="og:url" content="http://localhost:4000/database/mysql/select.html">
+
+  <!-- Twitter 카드 메타데이터 --><meta name="twitter:card" content="summary"><meta property="twitter:title" content="20.9 데이터 읽기"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="20.9 데이터 읽기" />
+<meta name="author" content="Hojin" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
+<meta property="og:description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
+<link rel="canonical" href="http://localhost:4000/database/mysql/select.html" />
+<meta property="og:url" content="http://localhost:4000/database/mysql/select.html" />
+<meta property="og:site_name" content="객체지향 자바 프로그래밍 (Object-Oriented Java Programming)" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="20.9 데이터 읽기" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"20.9 데이터 읽기","url":"http://localhost:4000/database/mysql/select.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="/assets/css/docs.css" rel="stylesheet" />
+  <link href="/assets/css/highlight.css" rel="stylesheet" />
+
+  <style>
+    blockquote {
+      border-left: solid 5px #dee2e6;
+      padding: 5px 10px;
+      background-color: #f8f9fa;
+    }
+  </style>
+
+  <style>
+    h1 a {
+      text-decoration: none;
+    }
+
+    h2 a {
+      text-decoration: none;
+    }
+
+    h3 a {
+      text-decoration: none;
+    }
+
+    h4 a {
+      text-decoration: none;
+    }
+
+    h5 a {
+      text-decoration: none;
+    }
+
+    h6 a {
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      vertical-align: top
+    }
+
+    strong a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* 스크롤바 커스텀 */
+    /* 임의의 영역 생성 */
+    .scrollBar {}
+
+    /* 아래의 모든 코드는 영역::코드로 사용 */
+    .scrollBar::-webkit-scrollbar {
+      width: 7px;
+      /* 스크롤바의 너비 */
+    }
+
+    .scrollBar::-webkit-scrollbar-thumb {
+      height: 30%;
+      /* 스크롤바의 길이 */
+      background: #cccccc;
+      /* 스크롤바의 색상 */
+
+      border-radius: 5px;
+    }
+
+    .scrollBar::-webkit-scrollbar-track {
+      background: rgba(33, 122, 244, .1);
+      /*스크롤바 뒷 배경 색상*/
+    }
+  </style>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4VBPCT3CR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-R4VBPCT3CR');
+  </script>
+
+
+</head>
+
+<body>
+  <header class="navbar navbar-expand-lg bd-navbar sticky-top">
+    <nav class="container bd-gutter flex-wrap flex-lg-nowrap position-relative" aria-label="Main navigation">
+
+      <!-- Mobile: Left Toggle (Browse) -->
+      <div class="bd-navbar-toggle d-lg-none">
+        <button class="navbar-toggler p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdSidebar"
+          aria-controls="bdSidebar" aria-label="Toggle docs navigation">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="bi" fill="currentColor"
+            viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+              d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z">
+            </path>
+          </svg>
+          <span class="d-none fs-6 pe-1">Browse</span>
+        </button>
+      </div>
+
+      <!-- Brand: Desktop (Static), Mobile (Absolute Center) -->
+      <a class="navbar-brand p-0 me-0 me-lg-2 ms-lg-0 d-none d-lg-inline-block" href="/" aria-label="jinydev">
+        <svg width="32" height="26" viewBox="0 0 32 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M24.2746 5.33377C25.8486 7.33981 25.1183 11.1792 24.3961 13.0177C24.4028 13.0199 24.4094 13.0221 24.4161 13.0243L24.4013 13.0248L22.649 12.9082C22.649 12.9053 22.6488 12.9013 22.649 12.8993C22.9902 8.93373 22.5975 7.34575 22.2147 7.07677C17.6316 10.3896 13.5379 9.33658 12.2725 9.01111C11.928 8.9225 11.7932 8.88781 11.9152 9.00988C12.2872 9.38185 13.1336 9.82821 13.7371 10.1465H13.7372L13.7376 10.1467C13.8743 10.2188 13.9985 10.2843 14.1019 10.3409C9.12673 10.3984 7.12659 8.00279 6.53855 7.29846C6.47859 7.22664 6.4333 7.1724 6.40105 7.14015C6.11408 6.85318 4.49961 5.87252 3.99256 7.74227C3.50142 9.55335 3.81246 11.6775 3.97665 12.7988C3.99089 12.896 3.99257 12.8981 3.99257 12.9298L2.37635 13.0248L2.37213 13.0247C0.223493 8.05534 1.83854 5.26971 3.29536 4.2246C3.29536 1.78444 6.27428 -0.592359 10.0455 0.263262C14.8768 1.64043 16.3468 1.18409 18.0759 0.647278C18.774 0.430562 19.5143 0.200726 20.5351 0.073124C25.2219 -0.512739 26.7993 2.56612 27 4.16122C26.2141 3.70487 24.8556 4.73165 24.2746 5.33377ZM12.3374 1.5872C11.1225 1.16466 7.99257 0.717209 6.3478 2.41116C5.98397 2.78587 5.55554 3.48864 5.55554 3.48864C5.55554 3.48864 4.82665 4.81961 4.25622 4.24919C3.68579 3.67878 5.0168 1.96749 6.06259 1.46044C7.10838 0.953388 9.70703 0.0660505 12.3374 1.5872Z"
+            fill="currentColor" />
+          <path
+            d="M10.078 13.5002H3.10601C2.2309 13.5002 1.52148 14.2097 1.52148 15.0848V18.3172C1.52148 19.1923 2.2309 19.9018 3.10601 19.9018H10.078C10.9531 19.9018 11.6625 19.1923 11.6625 18.3172V15.0848C11.6625 14.2097 10.9531 13.5002 10.078 13.5002Z"
+            stroke="currentColor" stroke-width="1.26763" />
+          <path
+            d="M0.823513 14.6094H0.379847C0.187322 14.6094 0.03125 14.7654 0.03125 14.958V15.9721C0.03125 16.1646 0.187322 16.3207 0.379847 16.3207H0.823513C1.01604 16.3207 1.17211 16.1646 1.17211 15.9721V14.958C1.17211 14.7654 1.01604 14.6094 0.823513 14.6094Z"
+            fill="currentColor" stroke="currentColor" stroke-width="0.0633813" />
+          <path
+            d="M16.7326 13.5002H23.7045C24.5796 13.5002 25.2891 14.2097 25.2891 15.0848V18.3172C25.2891 19.1923 24.5796 19.9018 23.7045 19.9018H16.7326C15.8575 19.9018 15.1481 19.1923 15.1481 18.3172V15.0848C15.1481 14.2097 15.8575 13.5002 16.7326 13.5002Z"
+            stroke="currentColor" stroke-width="1.26763" />
+          <path
+            d="M25.9861 14.6094H26.4297C26.6222 14.6094 26.7783 14.7654 26.7783 14.958V15.9721C26.7783 16.1646 26.6222 16.3207 26.4297 16.3207H25.9861C25.7935 16.3207 25.6375 16.1646 25.6375 15.9721V14.958C25.6375 14.7654 25.7935 14.6094 25.9861 14.6094Z"
+            fill="currentColor" stroke="currentColor" stroke-width="0.0633813" />
+          <path
+            d="M12.2954 15.5601H14.5137C14.7062 15.5601 14.8623 15.7161 14.8623 15.9087V16.9228C14.8623 17.1153 14.7062 17.2713 14.5137 17.2713H12.2954C12.1028 17.2713 11.9468 17.1153 11.9468 16.9228V15.9087C11.9468 15.7161 12.1028 15.5601 12.2954 15.5601Z"
+            fill="currentColor" stroke="currentColor" stroke-width="0.0633813" />
+          <path
+            d="M9.93343 16.3937C9.93343 16.7087 9.76317 16.9641 9.55314 16.9641C9.34311 16.9641 9.17285 16.7087 9.17285 16.3937C9.17285 16.0786 9.34311 15.8232 9.55314 15.8232C9.76317 15.8232 9.93343 16.0786 9.93343 16.3937Z"
+            fill="currentColor" />
+          <path
+            d="M16.9688 16.3937C16.9688 16.7087 17.139 16.9641 17.3491 16.9641C17.5591 16.9641 17.7293 16.7087 17.7293 16.3937C17.7293 16.0786 17.5591 15.8232 17.3491 15.8232C17.139 15.8232 16.9688 16.0786 16.9688 16.3937Z"
+            fill="currentColor" />
+          <path
+            d="M14.2758 20.1016C13.642 20.6086 12.7863 20.3551 12.5645 20.1016C12.6278 20.4185 12.8687 20.8622 13.4518 20.8622C14.0349 20.8622 14.2441 20.3551 14.2758 20.1016Z"
+            fill="currentColor" />
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M12.1312 22.411C12.1575 22.2914 12.2759 22.2157 12.3956 22.2421L14.6347 22.735C14.7544 22.7614 14.83 22.8797 14.8036 22.9994C14.7773 23.119 14.659 23.1947 14.5393 23.1683L12.3002 22.6753C12.1805 22.649 12.1049 22.5307 12.1312 22.411Z"
+            fill="currentColor" />
+          <path
+            d="M13.4203 27.6754C9.00897 27.7261 5.77228 23.6613 4.70536 21.6225C4.54691 21.3197 4.42016 21.2739 4.32509 21.3373C4.17297 21.4387 4.28282 21.6437 4.32507 21.7493C4.85747 22.9916 5.58213 24.0416 5.87791 24.4113C4.83846 26.1353 4.49409 27.855 4.45183 28.4994C6.1758 26.8008 7.91668 26.8832 8.57162 27.1367C13.7055 29.7987 16.5577 27.929 18.1739 27.1367C19.4669 26.5029 21.4803 27.7388 22.3254 28.436C22.224 26.8642 21.3747 25.1402 20.9627 24.4747C21.6282 23.5873 22.1669 22.5099 22.4522 21.9711C22.6803 21.5401 22.6106 21.369 22.5472 21.3373C22.3951 21.2613 22.2092 21.4958 22.1353 21.6225C21.6599 22.4148 18.9345 27.6121 13.4203 27.6754Z"
+            fill="currentColor" />
+        </svg>
+      </a>
+      <a class="navbar-brand p-0 me-0 position-absolute top-50 start-50 translate-middle d-lg-none" href="/"
+        aria-label="jinydev">
+        <svg width="100" height="26" viewBox="0 0 112 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M24.2746 5.33377C25.8486 7.33981 25.1183 11.1792 24.3961 13.0177C24.4028 13.0199 24.4094 13.0221 24.4161 13.0243L24.4013 13.0248L22.649 12.9082C22.649 12.9053 22.6488 12.9013 22.649 12.8993C22.9902 8.93373 22.5975 7.34575 22.2147 7.07677C17.6316 10.3896 13.5379 9.33658 12.2725 9.01111C11.928 8.9225 11.7932 8.88781 11.9152 9.00988C12.2872 9.38185 13.1336 9.82821 13.7371 10.1465H13.7372L13.7376 10.1467C13.8743 10.2188 13.9985 10.2843 14.1019 10.3409C9.12673 10.3984 7.12659 8.00279 6.53855 7.29846C6.47859 7.22664 6.4333 7.1724 6.40105 7.14015C6.11408 6.85318 4.49961 5.87252 3.99256 7.74227C3.50142 9.55335 3.81246 11.6775 3.97665 12.7988C3.99089 12.896 3.99257 12.8981 3.99257 12.9298L2.37635 13.0248L2.37213 13.0247C0.223493 8.05534 1.83854 5.26971 3.29536 4.2246C3.29536 1.78444 6.27428 -0.592359 10.0455 0.263262C14.8768 1.64043 16.3468 1.18409 18.0759 0.647278C18.774 0.430562 19.5143 0.200726 20.5351 0.073124C25.2219 -0.512739 26.7993 2.56612 27 4.16122C26.2141 3.70487 24.8556 4.73165 24.2746 5.33377ZM12.3374 1.5872C11.1225 1.16466 7.99257 0.717209 6.3478 2.41116C5.98397 2.78587 5.55554 3.48864 5.55554 3.48864C5.55554 3.48864 4.82665 4.81961 4.25622 4.24919C3.68579 3.67878 5.0168 1.96749 6.06259 1.46044C7.10838 0.953388 9.70703 0.0660505 12.3374 1.5872Z"
+            fill="currentColor" />
+          <path
+            d="M10.078 13.5002H3.10601C2.2309 13.5002 1.52148 14.2097 1.52148 15.0848V18.3172C1.52148 19.1923 2.2309 19.9018 3.10601 19.9018H10.078C10.9531 19.9018 11.6625 19.1923 11.6625 18.3172V15.0848C11.6625 14.2097 10.9531 13.5002 10.078 13.5002Z"
+            stroke="currentColor" stroke-width="1.26763" />
+          <path
+            d="M0.823513 14.6094H0.379847C0.187322 14.6094 0.03125 14.7654 0.03125 14.958V15.9721C0.03125 16.1646 0.187322 16.3207 0.379847 16.3207H0.823513C1.01604 16.3207 1.17211 16.1646 1.17211 15.9721V14.958C1.17211 14.7654 1.01604 14.6094 0.823513 14.6094Z"
+            fill="currentColor" stroke="currentColor" stroke-width="0.0633813" />
+          <path
+            d="M16.7326 13.5002H23.7045C24.5796 13.5002 25.2891 14.2097 25.2891 15.0848V18.3172C25.2891 19.1923 24.5796 19.9018 23.7045 19.9018H16.7326C15.8575 19.9018 15.1481 19.1923 15.1481 18.3172V15.0848C15.1481 14.2097 15.8575 13.5002 16.7326 13.5002Z"
+            stroke="currentColor" stroke-width="1.26763" />
+          <path
+            d="M25.9861 14.6094H26.4297C26.6222 14.6094 26.7783 14.7654 26.7783 14.958V15.9721C26.7783 16.1646 26.6222 16.3207 26.4297 16.3207H25.9861C25.7935 16.3207 25.6375 16.1646 25.6375 15.9721V14.958C25.6375 14.7654 25.7935 14.6094 25.9861 14.6094Z"
+            fill="currentColor" stroke="currentColor" stroke-width="0.0633813" />
+          <path
+            d="M12.2954 15.5601H14.5137C14.7062 15.5601 14.8623 15.7161 14.8623 15.9087V16.9228C14.8623 17.1153 14.7062 17.2713 14.5137 17.2713H12.2954C12.1028 17.2713 11.9468 17.1153 11.9468 16.9228V15.9087C11.9468 15.7161 12.1028 15.5601 12.2954 15.5601Z"
+            fill="currentColor" stroke="currentColor" stroke-width="0.0633813" />
+          <path
+            d="M9.93343 16.3937C9.93343 16.7087 9.76317 16.9641 9.55314 16.9641C9.34311 16.9641 9.17285 16.7087 9.17285 16.3937C9.17285 16.0786 9.34311 15.8232 9.55314 15.8232C9.76317 15.8232 9.93343 16.0786 9.93343 16.3937Z"
+            fill="currentColor" />
+          <path
+            d="M16.9688 16.3937C16.9688 16.7087 17.139 16.9641 17.3491 16.9641C17.5591 16.9641 17.7293 16.7087 17.7293 16.3937C17.7293 16.0786 17.5591 15.8232 17.3491 15.8232C17.139 15.8232 16.9688 16.0786 16.9688 16.3937Z"
+            fill="currentColor" />
+          <path
+            d="M14.2758 20.1016C13.642 20.6086 12.7863 20.3551 12.5645 20.1016C12.6278 20.4185 12.8687 20.8622 13.4518 20.8622C14.0349 20.8622 14.2441 20.3551 14.2758 20.1016Z"
+            fill="currentColor" />
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M12.1312 22.411C12.1575 22.2914 12.2759 22.2157 12.3956 22.2421L14.6347 22.735C14.7544 22.7614 14.83 22.8797 14.8036 22.9994C14.7773 23.119 14.659 23.1947 14.5393 23.1683L12.3002 22.6753C12.1805 22.649 12.1049 22.5307 12.1312 22.411Z"
+            fill="currentColor" />
+          <path
+            d="M13.4203 27.6754C9.00897 27.7261 5.77228 23.6613 4.70536 21.6225C4.54691 21.3197 4.42016 21.2739 4.32509 21.3373C4.17297 21.4387 4.28282 21.6437 4.32507 21.7493C4.85747 22.9916 5.58213 24.0416 5.87791 24.4113C4.83846 26.1353 4.49409 27.855 4.45183 28.4994C6.1758 26.8008 7.91668 26.8832 8.57162 27.1367C13.7055 29.7987 16.5577 27.929 18.1739 27.1367C19.4669 26.5029 21.4803 27.7388 22.3254 28.436C22.224 26.8642 21.3747 25.1402 20.9627 24.4747C21.6282 23.5873 22.1669 22.5099 22.4522 21.9711C22.6803 21.5401 22.6106 21.369 22.5472 21.3373C22.3951 21.2613 22.2092 21.4958 22.1353 21.6225C21.6599 22.4148 18.9345 27.6121 13.4203 27.6754Z"
+            fill="currentColor" />
+          <text x="32" y="21" font-family="Arial, sans-serif" font-weight="bold" font-size="22"
+            fill="currentColor">Jiny</text>
+        </svg>
+      </a>
+
+      <!-- Mobile: Right Toggle (Menu) -->
+      <div class="d-flex d-lg-none ms-auto">
+        <button class="navbar-toggler p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdNavbar"
+          aria-controls="bdNavbar" aria-label="Toggle navigation">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-grid"
+            viewBox="0 0 16 16">
+            <path
+              d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- OffCanvas -->
+      <div class="offcanvas-lg offcanvas-end flex-grow-1" tabindex="-1" id="bdNavbar"
+        aria-labelledby="bdNavbarOffcanvasLabel" data-bs-scroll="true">
+        <!-- OffCanver Header -->
+        <div class="offcanvas-header px-4 pb-0">
+          <h5 class="offcanvas-title text-white" id="bdNavbarOffcanvasLabel">Jiny</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"
+            data-bs-target="#bdNavbar">
+          </button>
+        </div>
+
+        <!-- OffCanver Body -->
+        <div class="offcanvas-body p-4 pt-0 p-lg-0">
+          <hr class="d-lg-none text-white-50">
+
+          <ul class="navbar-nav flex-column flex-lg-row bd-navbar-nav">
+            
+            <li class="nav-item">
+              <a class="nav-link py-2 px-0 px-lg-2" href="/basic/">자바기초</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link py-2 px-0 px-lg-2" href="/oop/">객체지향</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link py-2 px-0 px-lg-2" href="/part03/">입출력</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link py-2 px-0 px-lg-2" href="/database/">데이터베이스</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link py-2 px-0 px-lg-2" href="/network/">네트워크</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link py-2 px-0 px-lg-2" href="/gui/">GUI</a>
+            </li>
+            
+          </ul>
+
+          <hr class="d-lg-none text-white-50">
+
+          <ul class="navbar-nav flex-row flex-wrap ms-md-auto">
+            <li class="nav-item col-6 col-lg-auto">
+              <a class="nav-link py-2 px-0 px-lg-2" href="https://github.com/jinydev/datas" target="_blank"
+                rel="noopener">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="navbar-nav-svg"
+                  viewBox="0 0 512 499.36" role="img">
+                  <title>GitHub</title>
+                  <path fill="currentColor" fill-rule="evenodd"
+                    d="M256 0C114.64 0 0 114.61 0 256c0 113.09 73.34 209 175.08 242.9 12.8 2.35 17.47-5.56 17.47-12.34 0-6.08-.22-22.18-.35-43.54-71.2 15.49-86.2-34.34-86.2-34.34-11.64-29.57-28.42-37.45-28.42-37.45-23.27-15.84 1.73-15.55 1.73-15.55 25.69 1.81 39.21 26.38 39.21 26.38 22.84 39.12 59.92 27.82 74.5 21.27 2.33-16.54 8.94-27.82 16.25-34.22-56.84-6.43-116.6-28.43-116.6-126.49 0-27.95 10-50.8 26.35-68.69-2.63-6.48-11.42-32.5 2.51-67.75 0 0 21.49-6.88 70.4 26.24a242.65 242.65 0 0 1 128.18 0c48.87-33.13 70.33-26.24 70.33-26.24 14 35.25 5.18 61.27 2.55 67.75 16.41 17.9 26.31 40.75 26.31 68.69 0 98.35-59.85 120-116.88 126.32 9.19 7.9 17.38 23.53 17.38 47.41 0 34.22-.31 61.83-.31 70.23 0 6.85 4.61 14.81 17.6 12.31C438.72 464.97 512 369.08 512 256.02 512 114.62 397.37 0 256 0z">
+                  </path>
+                </svg>
+                <small class="d-lg-none ms-2">GitHub</small>
+              </a>
+            </li>
+
+            <li class="nav-item py-2 py-lg-1 col-12 col-lg-auto">
+              <div class="vr d-none d-lg-flex h-100 mx-lg-2 text-white"></div>
+              <hr class="d-lg-none my-2 text-white-50">
+            </li>
+
+            <li class="nav-item col-6 col-lg-auto">
+              <a class="nav-link py-2 px-0 px-lg-2" href="https://jiny.dev" aria-label="Home">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="navbar-nav-svg"
+                  viewBox="0 0 16 16" role="img">
+                  <title>Home</title>
+                  <path fill="currentColor"
+                    d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z" />
+                </svg>
+                <small class="d-lg-none ms-2">Home</small>
+              </a>
+            </li>
+          </ul>
+
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container bd-gutter mt-3 my-md-4 bd-layout">
+    <aside class="bd-sidebar scrollBar">
+        <div class="offcanvas-lg offcanvas-start" tabindex="-1" id="bdSidebar"
+            aria-labelledby="bdSidebarOffcanvasLabel">
+            <div class="offcanvas-header border-bottom">
+                <h5 class="offcanvas-title" id="bdSidebarOffcanvasLabel">학습목차</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"
+                    data-bs-target="#bdSidebar"></button>
+            </div>
+
+            <div class="offcanvas-body">
+                <!-- 네비게이션 -->
+                <nav class="bd-links w-100" id="bd-docs-nav" aria-label="Docs navigation">
+  <ul class="bd-links-nav list-unstyled mb-0 pb-3 pb-md-2 pe-lg-2">
+    <li class="bd-links-group py-2">
+      <strong class="bd-links-heading d-flex w-100 align-items-center fw-semibold">
+        강의 목차
+      </strong>
+      <ul class="list-unstyled fw-normal pb-2 small">
+        
+        
+
+        
+        <li>
+          
+          
+          
+          <button
+            class="bd-links-link bd-links-btn btn d-inline-flex align-items-center rounded border-0 collapsed w-100"
+            data-bs-toggle="collapse" data-bs-target="#collapse-1"
+            aria-expanded="false">
+            JDBC
+            <svg class="bi ms-auto" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+            </svg>
+          </button>
+          <div class="collapse " id="collapse-1">
+            <ul class="list-unstyled fw-normal pb-1 small ms-3">
+              
+              <li>
+                <a href="/database/jdbc/"
+                  class="bd-links-link d-inline-block rounded ">
+                  학습목표
+                </a>
+              </li>
+              
+              <li>
+                <a href="/database/jdbc/intro/"
+                  class="bd-links-link d-inline-block rounded ">
+                  20.1 JDBC 개요
+                </a>
+              </li>
+              
+              <li>
+                <a href="/database/jdbc/install-dbms/"
+                  class="bd-links-link d-inline-block rounded ">
+                  20.2 DBMS 설치
+                </a>
+              </li>
+              
+              <li>
+                <a href="/database/jdbc/install-tool/"
+                  class="bd-links-link d-inline-block rounded ">
+                  20.3 Client Tool 설치
+                </a>
+              </li>
+              
+              <li>
+                <a href="/database/jdbc/config-db/"
+                  class="bd-links-link d-inline-block rounded ">
+                  20.4 DB 구성
+                </a>
+              </li>
+              
+              <li>
+                <a href="/database/jdbc/connect-db/"
+                  class="bd-links-link d-inline-block rounded ">
+                  20.5 DB 연결
+                </a>
+              </li>
+              
+              <li>
+                <a href="/database/jdbc/insert/"
+                  class="bd-links-link d-inline-block rounded ">
+                  20.6 데이터 저장
+                </a>
+              </li>
+              
+              <li>
+                <a href="/database/jdbc/update/"
+                  class="bd-links-link d-inline-block rounded ">
+                  20.7 데이터 수정
+                </a>
+              </li>
+              
+              <li>
+                <a href="/database/jdbc/delete/"
+                  class="bd-links-link d-inline-block rounded ">
+                  20.8 데이터 삭제
+                </a>
+              </li>
+              
+              <li>
+                <a href="/database/jdbc/select/"
+                  class="bd-links-link d-inline-block rounded ">
+                  20.9 데이터 읽기
+                </a>
+              </li>
+              
+              <li>
+                <a href="/database/jdbc/procedure/"
+                  class="bd-links-link d-inline-block rounded ">
+                  20.10 프로시저와 함수 호출
+                </a>
+              </li>
+              
+              <li>
+                <a href="/database/jdbc/transaction/"
+                  class="bd-links-link d-inline-block rounded ">
+                  20.11 트랜잭션 처리
+                </a>
+              </li>
+              
+              <li>
+                <a href="/database/jdbc/board/"
+                  class="bd-links-link d-inline-block rounded ">
+                  20.12 게시판 구현
+                </a>
+              </li>
+              
+              <li>
+                <a href="/database/jdbc/quiz/"
+                  class="bd-links-link d-inline-block rounded ">
+                  확인문제
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+          
+        </li>
+        
+        <li>
+          
+          
+          
+          <button
+            class="bd-links-link bd-links-btn btn d-inline-flex align-items-center rounded border-0 collapsed w-100"
+            data-bs-toggle="collapse" data-bs-target="#collapse-2"
+            aria-expanded="false">
+            MySQL
+            <svg class="bi ms-auto" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+            </svg>
+          </button>
+          <div class="collapse " id="collapse-2">
+            <ul class="list-unstyled fw-normal pb-1 small ms-3">
+              
+              <li>
+                <a href="/database/mysql/"
+                  class="bd-links-link d-inline-block rounded ">
+                  학습목표
+                </a>
+              </li>
+              
+              <li>
+                <a href="/database/mysql/intro/"
+                  class="bd-links-link d-inline-block rounded ">
+                  22.1 MySQL 개요
+                </a>
+              </li>
+              
+              <li>
+                <a href="/database/mysql/install/"
+                  class="bd-links-link d-inline-block rounded ">
+                  22.2 MySQL 설치
+                </a>
+              </li>
+              
+              <li>
+                <a href="/database/mysql/client-tool/"
+                  class="bd-links-link d-inline-block rounded ">
+                  22.3 Client Tool 설치
+                </a>
+              </li>
+              
+              <li>
+                <a href="/database/mysql/config/"
+                  class="bd-links-link d-inline-block rounded ">
+                  22.4 DB 구성
+                </a>
+              </li>
+              
+              <li>
+                <a href="/database/mysql/connect/"
+                  class="bd-links-link d-inline-block rounded ">
+                  22.5 DB 연결
+                </a>
+              </li>
+              
+              <li>
+                <a href="/database/mysql/insert/"
+                  class="bd-links-link d-inline-block rounded ">
+                  22.6 데이터 저장
+                </a>
+              </li>
+              
+              <li>
+                <a href="/database/mysql/update/"
+                  class="bd-links-link d-inline-block rounded ">
+                  22.7 데이터 수정
+                </a>
+              </li>
+              
+              <li>
+                <a href="/database/mysql/delete/"
+                  class="bd-links-link d-inline-block rounded ">
+                  22.8 데이터 삭제
+                </a>
+              </li>
+              
+              <li>
+                <a href="/database/mysql/select/"
+                  class="bd-links-link d-inline-block rounded ">
+                  22.9 데이터 읽기
+                </a>
+              </li>
+              
+              <li>
+                <a href="/database/mysql/transaction/"
+                  class="bd-links-link d-inline-block rounded ">
+                  22.10 트랜잭션 처리
+                </a>
+              </li>
+              
+              <li>
+                <a href="/database/mysql/board/"
+                  class="bd-links-link d-inline-block rounded ">
+                  22.11 게시판 구현
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+          
+        </li>
+        
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+        </div>
+    </aside>
+
+    <main class="bd-main order-1">
+        <nav aria-label="breadcrumb" class="mt-3">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <li class="breadcrumb-item"><a href="/database/">Database</a></li>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <li class="breadcrumb-item"><a href="/database/mysql/">Mysql</a></li>
+        
+        
+        
+        
+        
+        
+        <li class="breadcrumb-item active" aria-current="page">20.9 데이터 읽기</li>
+        
+        
+        
+    </ol>
+</nav>
+        <div class="bd-content ps-lg-2">
+            <h1 id="209-데이터-읽기">20.9 데이터 읽기</h1>
+
+<p>PreparedStatement를  생성할  때  SQL  문이  INSERT,  UPDATE,  DELETE일  경우에</p>
+
+<p>는  executeUpdate ( )  메소드를  호출하지만,  데이터를  가져오는  SELECT  문일  경우에는</p>
+
+<p>executeQuery ( ) 메소드를 호출해야 한다. executeQuery ( ) 메소드는 가져온 데이터를</p>
+
+<p>ResultSet에 저장하고 리턴한다.</p>
+
+<p>ResultSet rs  =  pstmt.executeQuery();</p>
+
+<p>ResultSet 구조</p>
+
+<p>ResultSet은 SELECT 문에 기술된 컬럼으로 구성된 행row의 집합이다. 예를 들어 다음 SELECT 문</p>
+
+<p>은 userid, username, userage 컬럼으로 구성된 ResultSet을 리턴한다.</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">userid</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">userage</span> <span class="k">FROM</span> <span class="n">users</span>
+</code></pre></div></div>
+
+<p>위의 SELECT 문이 가져온 데이터 행이 4개라면 ResultSet의 내부 구조는 다음과 같다.</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="err">문에</span> <span class="err">기술된</span> <span class="err">컬럼</span> <span class="err">순번</span>
+</code></pre></div></div>
+
+<p>ResultSet</p>
+
+<p>userid, 1</p>
+
+<p>username, 2</p>
+
+<p>userage, 3</p>
+
+<p>beforeFirst 행</p>
+
+<p>데이터 없음</p>
+
+<p>first 행</p>
+
+<p>spring</p>
+
+<p>summer</p>
+
+<p>fall</p>
+
+<p>last 행</p>
+
+<p>winter</p>
+
+<p>김봄이</p>
+
+<p>하여름</p>
+
+<p>이단풍</p>
+
+<p>한겨울</p>
+
+<p>afterLast 행</p>
+
+<p>데이터 없음</p>
+
+<p>최초 커서 위치</p>
+
+<p>true  =  next()</p>
+
+<p>true  =  next()</p>
+
+<p>true  =  next()</p>
+
+<p>true  =  next()</p>
+
+<p>false  =  next()</p>
+
+<p>ResultSet의 특징은 커서cursor가 있는 행의 데이터만 읽을 수 있다는 것이다. 여기서 커서는 행을</p>
+
+<p>가리키는 포인터를 말한다. ResultSet은 실제 가져온 데이터 행의 앞과 뒤에 beforeFirst 행과</p>
+
+<p>afterLast 행이 붙는데, 최초 커서는 beforeFirst를 가리킨다. 따라서 첫 번째 데이터 행인 first 행</p>
+
+<p>을 읽으려면 커서를 이동시켜야 한다. 이때 next ( ) 메소드를 사용한다.</p>
+
+<p>boolean result  =  rs.next();</p>
+
+<p>next ( ) 메소드는 커서를 다음 행으로 이동시키는데, 이동한 행에 데이터가 있으면 true를, 없으</p>
+
+<p>면 false를 리턴한다. 앞의 그림을 보면 last 행까지는 true를 리턴하고 afterLast 행으로 이동하면</p>
+
+<p>false를 리턴하는 것을 볼 수 있다.</p>
+
+<p>만약 SELECT 문으로 가져온 데이터 행이 없다면 beforeFirst 행과 afterLast 행이 붙어 있기 때문</p>
+
+<p>에 첫 번째 next ( ) 결과는 false가 된다. 다음은 SELECT 문으로 가져온 행의 수에 따라서 커서를</p>
+
+<p>이동시키는 코드이다.</p>
+
+<p>1개의 데이터 행만 가져올 경우</p>
+
+<p>n개의 데이터 행을 가져올 경우</p>
+
+<p>ResultSet rs  =  pstmt.executeQuery();
+if(rs.next()) {
+  //첫 번째 데이터 행 처리
+} else {
+  //afterLast 행으로 이동했을 경우</p>
+
+<p>}</p>
+
+<p>ResultSet rs  =  pstmt.executeQuery();
+while(rs.next()) {
+  //last 행까지 이동하면서 데이터 행 처리
+} 
+  //afterLast 행으로 이동했을 경우</p>
+
+<p>1개의 데이터 행만 가져올 경우에는 if 조건식에서 next ( ) 메소드를 1번 호출한다. true일 경우(첫</p>
+
+<p>번째 데이터 행이 있을 경우)와 false일 경우(afterLast 행으로 이동했을 경우)에 따라서 적절한 처</p>
+
+<p>리를 해야 한다. 주로 SELECT 문이 기본키primary key를 조건으로 데이터를 가져오는 경우에 해당한다.</p>
+
+<p>n개의 데이터 행을 가져올 경우에는 while 문을 이용해서 next ( ) 메소드를 반복 호출해 true가 리</p>
+
+<p>턴될 동안(last 행까지 이동할 때까지) 데이터 행을 처리하고, false가 리턴되면(afterLast 행으로</p>
+
+<p>이동할 때) 반복을 종료시킨다.</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="err">문에</span> <span class="err">따라</span> <span class="n">ResultSet</span><span class="err">에는</span> <span class="err">많은</span> <span class="err">데이터</span> <span class="err">행이</span> <span class="err">저장될</span> <span class="err">수</span> <span class="err">있기</span> <span class="err">때문에</span> <span class="n">ResultSet</span><span class="err">을</span> <span class="err">더</span> <span class="err">이상</span> 
+</code></pre></div></div>
+
+<p>사용하지 않는다면 close ( ) 메소드를 호출해서 ResultSet이 사용한 메모리를 해제하는 것이 좋다.</p>
+
+<p>rs.close();</p>
+
+<p>데이터 행 읽기</p>
+
+<p>커서가 있는 데이터 행에서 각 컬럼의 값은 Getter 메소드로 읽을 수 있다. 컬럼의 데이터 타입에</p>
+
+<p>따라서 getXxx ( ) 메소드가 사용되며, 매개값으로 컬럼의 이름 또는 컬럼 순번을 줄 수 있다.</p>
+
+<p>ResultSet에서 컬럼 순번은 1부터 시작하기 때문에 userid = 1, username = 2, userage = 3이</p>
+
+<p>된다.</p>
+
+<p>컬럼 이름으로 읽기</p>
+
+<p>컬럼 순번으로 읽기</p>
+
+<p>String userId  =<br />
+  rs.getString(“userid”);
+String userName  =<br />
+  rs.getString(“username”);
+int userAge  =  rs.getInt(“userage”);</p>
+
+<p>String userId  =  rs.getString(1);
+String userName  =  rs.getString(2);
+int userAge  =  rs.getInt(3);</p>
+
+<p>만약 SELECT 문에 연산식이나 함수 호출이 포함되어 있다면 컬럼 이름 대신에 컬럼 순번으로 읽어</p>
+
+<p>야 한다. 예를 들어 다음과 같은 SELECT 문에서 userage - 1 연산식이 사용되면 컬럼 순번으로만</p>
+
+<p>읽을 수 있다. userage - 1은 컬럼명이 아니기 때문이다.</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">userid</span><span class="p">,</span> <span class="n">userage</span> <span class="o">-</span> <span class="mi">1</span> 
+<span class="k">FROM</span> <span class="n">users</span>
+</code></pre></div></div>
+
+<p>String userId  =<br />
+  rs.getString(“userid”);
+int userAge  =  rs.getInt(2);</p>
+
+<p>(userage - 1 ) as userage와 같이 별명(alias )이 있다면 별명이 컬럼 이름이 된다.</p>
+
+<p>사용자 정보 읽기</p>
+
+<p>users 테이블에서 userid가 winter인 사용자의 정보를 가져와 출력해 보자. 먼저 users 테이블의</p>
+
+<p>한 개의 행(사용자)을 저장할 User 클래스를 작성한다. 컬럼 개수와 타입에 맞게 필드를 선언하고,</p>
+
+<p>롬복 @Data 어노테이션을 이용해서 Getter, Setter, toString ( ) 메소드를 자동 생성시킨다.</p>
+
+<p><strong>»&gt; User.java</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+<span class="kn">package</span> <span class="nn">ch20.mysql.sec09.exam01</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">lombok.Data</span><span class="o">;</span>
+
+<span class="nd">@Data</span>  <span class="c1">//Constructor, Getter, Setter, hashCode(), equals(), toString() 자동 생성</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">User</span> <span class="o">{</span>
+  <span class="kd">private</span> <span class="nc">String</span> <span class="n">userId</span><span class="o">;</span> 
+  <span class="kd">private</span> <span class="nc">String</span> <span class="n">userName</span><span class="o">;</span> 
+  <span class="kd">private</span> <span class="nc">String</span> <span class="n">userPassword</span><span class="o">;</span> 
+  <span class="kd">private</span> <span class="kt">int</span> <span class="n">userAge</span><span class="o">;</span> 
+  <span class="kd">private</span> <span class="nc">String</span> <span class="n">userEmail</span><span class="o">;</span>
+
+<span class="o">}</span>
+
+<span class="n">userid가</span> <span class="n">winter인</span> <span class="n">사용자</span> <span class="n">정보를</span> <span class="n">가져오는</span> <span class="no">SELECT</span> <span class="n">문은</span> <span class="n">다음과</span> <span class="n">같다</span><span class="o">.</span>
+
+<span class="no">SELECT</span> <span class="n">userid</span><span class="o">,</span> <span class="n">username</span><span class="o">,</span> <span class="n">userpassword</span><span class="o">,</span> <span class="n">userage</span><span class="o">,</span> <span class="n">useremail</span> 
+<span class="no">FROM</span> <span class="n">users</span>
+<span class="no">WHERE</span> <span class="n">userid</span> <span class="o">=</span> <span class="err">'</span><span class="n">winter</span><span class="err">'</span><span class="o">;</span>
+
+<span class="n">조건절의</span> <span class="n">값을</span> <span class="o">?</span><span class="n">로</span> <span class="n">대체한</span> <span class="n">매개변수화된</span> <span class="no">SQL</span> <span class="n">문을</span> <span class="nc">String</span> <span class="n">타입</span> <span class="n">변수</span> <span class="n">sql에</span> <span class="n">대입한다</span><span class="o">.</span>
+
+
+
+
+
+<span class="nc">String</span> <span class="n">sql</span>  <span class="o">=</span>  <span class="s">""</span> <span class="o">+</span>
+  <span class="s">"SELECT userid, username, userpassword, userage, useremail "</span> <span class="o">+</span>
+  <span class="s">"FROM users "</span> <span class="o">+</span>
+  <span class="s">"WHERE userid = ?"</span><span class="o">;</span>
+
+<span class="n">매개변수화된</span>  <span class="no">S</span> <span class="no">E</span> <span class="no">L</span> <span class="no">E</span> <span class="no">C</span> <span class="no">T</span>   <span class="n">문을</span>  <span class="n">실행하기</span>  <span class="n">위해</span>  <span class="n">p</span> <span class="n">r</span> <span class="n">e</span> <span class="n">p</span> <span class="n">a</span> <span class="n">r</span> <span class="n">e</span> <span class="no">S</span> <span class="n">t</span> <span class="n">a</span> <span class="n">t</span> <span class="n">e</span> <span class="n">m</span> <span class="n">e</span> <span class="n">n</span> <span class="nf">t</span> <span class="o">(</span> <span class="o">)</span>   <span class="n">메소드로부터</span> 
+
+<span class="nc">PreparedStatement를</span> <span class="n">얻고</span><span class="o">,</span> <span class="o">?</span><span class="n">에</span> <span class="n">값을</span> <span class="n">지정한다</span><span class="o">.</span>
+
+<span class="nc">PreparedStatement</span> <span class="n">pstmt</span>  <span class="o">=</span>  <span class="n">conn</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+<span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="s">"winter"</span><span class="o">);</span>
+
+<span class="n">executeQuery</span> <span class="o">(</span> <span class="o">)</span> <span class="n">메소드로</span> <span class="no">SELECT</span> <span class="n">문을</span> <span class="n">실행해서</span> <span class="nc">ResultSet을</span> <span class="n">얻는다</span><span class="o">.</span> <span class="n">userid는</span> <span class="n">기본키primary</span> 
+
+<span class="n">key이므로</span> <span class="n">조건에</span> <span class="n">맞는</span> <span class="n">행은</span> <span class="mi">1</span><span class="n">개이거나</span><span class="o">,</span> <span class="mi">0</span><span class="n">개이므로</span> <span class="k">if</span> <span class="n">문을</span> <span class="n">이용해서</span> <span class="n">next</span> <span class="o">(</span> <span class="o">)</span> <span class="n">메소드가</span> <span class="n">true를</span> <span class="n">리턴</span>
+
+<span class="n">할</span> <span class="n">경우</span> <span class="n">데이터</span> <span class="n">행을</span> <span class="nc">User</span> <span class="n">객체에</span> <span class="n">저장하고</span> <span class="n">출력한다</span><span class="o">.</span>
+
+<span class="c1">//1개의 데이터 행을 가져왔을 경우</span>
+
+<span class="nc">ResultSet</span> <span class="n">rs</span>  <span class="o">=</span>  <span class="n">pstmt</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">();</span>
+<span class="k">if</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">next</span><span class="o">())</span> <span class="o">{</span> 
+  <span class="nc">User</span> <span class="n">user</span>  <span class="o">=</span>  <span class="k">new</span> <span class="nc">User</span><span class="o">();</span>
+  <span class="n">user</span><span class="o">.</span><span class="na">setUserId</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"userid"</span><span class="o">));</span>
+  <span class="n">user</span><span class="o">.</span><span class="na">setUserName</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"username"</span><span class="o">));</span>
+  <span class="n">user</span><span class="o">.</span><span class="na">setUserPassword</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"userpassword"</span><span class="o">));</span>
+  <span class="n">user</span><span class="o">.</span><span class="na">setUserAge</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="mi">4</span><span class="o">));</span> 
+  <span class="n">user</span><span class="o">.</span><span class="na">setUserEmail</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="mi">5</span><span class="o">));</span> 
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">user</span><span class="o">);</span>
+<span class="o">}</span> <span class="k">else</span> <span class="o">{</span>  
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"사용자 아이디가 존재하지 않음"</span><span class="o">);</span>
+
+<span class="c1">//컬럼 순번을 이용해서 컬럼 지정</span>
+<span class="c1">//컬럼 순번을 이용해서 컬럼 지정</span>
+
+<span class="c1">//데이터 행을 가져오지 않았을 경우</span>
+
+<span class="o">}</span>
+
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span> <span class="o">(</span><span class="n">user</span> <span class="o">)</span><span class="n">는</span> <span class="n">롬복이</span> <span class="n">생성한</span> <span class="nc">User의</span> <span class="n">toString</span> <span class="o">(</span> <span class="o">)</span> <span class="n">메소드를</span> <span class="n">호출해서</span> <span class="n">받은</span> <span class="n">리턴값</span>
+
+<span class="n">을</span> <span class="n">출력한다</span><span class="o">.</span> <span class="n">다음은</span> <span class="n">users</span> <span class="n">테이블에서</span> <span class="n">userid가</span> <span class="n">winter인</span> <span class="n">사용자</span> <span class="n">정보를</span> <span class="n">가져오는</span> <span class="n">전체</span> <span class="n">코드를</span> 
+
+<span class="n">보여</span> <span class="n">준다</span><span class="o">.</span>
+
+
+
+ 
+ 
+ 
+
+
+</code></pre></div></div>
+<p><strong>»&gt; UserSelectExample.java</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+<span class="kn">package</span> <span class="nn">ch20.mysql.sec09.exam01</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.sql.Connection</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.sql.DriverManager</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.sql.PreparedStatement</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.sql.ResultSet</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.sql.SQLException</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">UserSelectExample</span> <span class="o">{</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">Connection</span> <span class="n">conn</span>  <span class="o">=</span>  <span class="kc">null</span><span class="o">;</span>
+    <span class="k">try</span> <span class="o">{</span>
+      <span class="c1">//JDBC Driver 등록</span>
+      <span class="nc">Class</span><span class="o">.</span><span class="na">forName</span><span class="o">(</span><span class="s">"com.mysql.cj.jdbc.Driver"</span><span class="o">);</span>
+
+      <span class="c1">//연결하기</span>
+      <span class="n">conn</span>  <span class="o">=</span>  <span class="nc">DriverManager</span><span class="o">.</span><span class="na">getConnection</span><span class="o">(</span>
+        <span class="s">"jdbc:mysql://localhost:3306/thisisjava"</span><span class="o">,</span> 
+        <span class="s">"java"</span><span class="o">,</span> 
+        <span class="s">"mysql"</span>
+
+      <span class="o">);</span> 
+
+      <span class="c1">//매개변수화된 SQL 문 작성</span>
+      <span class="nc">String</span> <span class="n">sql</span>  <span class="o">=</span>  <span class="s">""</span> <span class="o">+</span>
+        <span class="s">"SELECT userid, username, userpassword, userage, useremail "</span> <span class="o">+</span>
+        <span class="s">"FROM users "</span> <span class="o">+</span>
+        <span class="s">"WHERE userid = ?"</span><span class="o">;</span>
+
+      <span class="c1">//PreparedStatement 얻기 및 값 지정</span>
+      <span class="nc">PreparedStatement</span> <span class="n">pstmt</span>  <span class="o">=</span>  <span class="n">conn</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+      <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="s">"winter"</span><span class="o">);</span>
+
+      <span class="c1">//SQL 문 실행 후, ResultSet을 통해 데이터 읽기</span>
+      <span class="nc">ResultSet</span> <span class="n">rs</span>  <span class="o">=</span>  <span class="n">pstmt</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">();</span>
+      <span class="k">if</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">next</span><span class="o">())</span> <span class="o">{</span>   <span class="c1">//1개의 데이터 행을 가져왔을 경우</span>
+        <span class="nc">User</span> <span class="n">user</span>  <span class="o">=</span>  <span class="k">new</span> <span class="nc">User</span><span class="o">();</span>
+        <span class="n">user</span><span class="o">.</span><span class="na">setUserId</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"userid"</span><span class="o">));</span>
+        <span class="n">user</span><span class="o">.</span><span class="na">setUserName</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"username"</span><span class="o">));</span>
+
+
+
+     
+     
+     
+     
+
+
+
+        <span class="n">user</span><span class="o">.</span><span class="na">setUserPassword</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"userpassword"</span><span class="o">));</span>
+        <span class="n">user</span><span class="o">.</span><span class="na">setUserAge</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="mi">4</span><span class="o">));</span> 
+        <span class="n">user</span><span class="o">.</span><span class="na">setUserEmail</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="mi">5</span><span class="o">));</span> 
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">user</span><span class="o">);</span>
+      <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>   <span class="c1">//데이터 행을 가져오지 않았을 경우</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"사용자 아이디가 존재하지 않음"</span><span class="o">);</span>
+
+<span class="c1">//컬럼 순번을 이용</span>
+<span class="c1">//컬럼 순번을 이용</span>
+
+      <span class="o">}</span>
+      <span class="n">rs</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+
+      <span class="c1">//PreparedStatement 닫기</span>
+      <span class="n">pstmt</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+    <span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
+      <span class="k">if</span><span class="o">(</span><span class="n">conn</span> <span class="o">!=</span>  <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">try</span> <span class="o">{</span> 
+          <span class="c1">//연결 끊기</span>
+          <span class="n">conn</span><span class="o">.</span><span class="na">close</span><span class="o">();</span> 
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">SQLException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{}</span>
+
+      <span class="o">}</span>
+
+    <span class="o">}</span>
+
+  <span class="o">}</span>
+
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<p><strong>실행 결과</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+User(userId = winter, userName = 한겨울, userPassword = 12345, userAge = 25, 
+userEmail = winter@mycompany.com)
+
+게시물 정보 읽기
+
+이번에는 boards 테이블에서 bwriter가 winter인 게시물의 정보를 가져와보자. 먼저 20.6의 
+
+BoardInsertExample 예제를 이용해서 다음과 같이 boards 테이블에 bwriter를 winter로 하는 
+
+게시물을 2개 이상 저장해둔다.
+
+
+
+     
+
+
+  bno의 값은 다를 수 있다.
+
+먼저 boards 테이블의 1개 행(게시물)을 저장할 Board 클래스를 작성한다. 컬럼 개수와 타입에 
+
+맞게 필드를 선언하고, 롬복 @Data 어노테이션을 이용해서 Getter, Setter, toString ( ) 메소드를 
+
+자동 생성한다. 
+
+</code></pre></div></div>
+<p><strong>»&gt; Board.java</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+<span class="kn">package</span> <span class="nn">ch20.mysql.sec09.exam02</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.sql.Blob</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Date</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">lombok.Data</span><span class="o">;</span>
+
+<span class="nd">@Data</span>  <span class="c1">//Constructor, Getter, Setter, hashCode(), equals(), toString() 자동 생성</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Board</span> <span class="o">{</span>
+  <span class="kd">private</span> <span class="kt">int</span> <span class="n">bno</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="nc">String</span> <span class="n">btitle</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="nc">String</span> <span class="n">bcontent</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="nc">String</span> <span class="n">bwriter</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="nc">Date</span> <span class="n">bdate</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="nc">String</span> <span class="n">bfilename</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="nc">Blob</span> <span class="n">bfiledata</span><span class="o">;</span>
+
+<span class="o">}</span>
+
+<span class="n">bwriter가</span> <span class="n">winter인</span> <span class="n">게시물</span> <span class="n">정보를</span> <span class="n">가져오는</span> <span class="no">SELECT</span> <span class="n">문은</span> <span class="n">다음과</span> <span class="n">같다</span><span class="o">.</span>
+
+<span class="no">SELECT</span> <span class="n">bno</span><span class="o">,</span> <span class="n">btitle</span><span class="o">,</span> <span class="n">bcontent</span><span class="o">,</span> <span class="n">bwriter</span><span class="o">,</span> <span class="n">bdate</span><span class="o">,</span> <span class="n">bfilename</span><span class="o">,</span> <span class="n">bfiledata</span>
+<span class="no">FROM</span> <span class="n">boards</span>
+<span class="no">WHERE</span> <span class="n">bwriter</span> <span class="o">=</span> <span class="err">'</span><span class="n">winter</span><span class="err">'</span><span class="o">;</span>
+
+<span class="n">조건절의</span> <span class="n">값을</span> <span class="o">?</span><span class="n">로</span> <span class="n">대체한</span> <span class="n">매개변수화된</span> <span class="no">SELECT</span> <span class="n">문을</span> <span class="nc">String</span> <span class="n">타입</span> <span class="n">변수</span> <span class="n">sql에</span> <span class="n">대입한다</span><span class="o">.</span>
+
+
+
+
+
+<span class="nc">String</span> <span class="n">sql</span>  <span class="o">=</span>  <span class="s">""</span> <span class="o">+</span>
+  <span class="s">"SELECT bno, btitle, bcontent, bwriter, bdate, bfilename, bfiledata "</span> <span class="o">+</span>
+  <span class="s">"FROM boards "</span> <span class="o">+</span>
+  <span class="s">"WHERE bwriter = ?"</span><span class="o">;</span>
+
+<span class="n">매개변수화된</span> <span class="no">SELECT</span> <span class="n">문을</span> <span class="n">실행하기</span> <span class="n">위해</span> <span class="n">다음과</span> <span class="n">같이</span> <span class="n">prepareStatement</span> <span class="o">(</span> <span class="o">)</span> <span class="n">메소드로부터</span> 
+
+<span class="nc">PreparedStatement를</span> <span class="n">얻고</span><span class="o">,</span> <span class="o">?</span><span class="n">에</span> <span class="n">값을</span> <span class="n">지정한다</span><span class="o">.</span>
+
+<span class="nc">PreparedStatement</span> <span class="n">pstmt</span>  <span class="o">=</span>  <span class="n">conn</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+<span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="s">"winter"</span><span class="o">);</span>
+
+<span class="n">executeQuery</span> <span class="o">(</span> <span class="o">)</span> <span class="n">메소드로</span> <span class="no">SELECT</span> <span class="n">문을</span> <span class="n">실행해서</span> <span class="nc">ResultSet을</span> <span class="n">얻는다</span><span class="o">.</span> <span class="n">조건에</span> <span class="n">맞는</span> <span class="n">행은</span> <span class="n">n개이</span>
+
+<span class="n">므로</span> <span class="k">while</span> <span class="n">문을</span> <span class="n">이용해서</span> <span class="n">next</span> <span class="o">(</span> <span class="o">)</span> <span class="n">메소드가</span> <span class="n">false를</span> <span class="n">리턴할</span> <span class="n">때까지</span> <span class="n">반복해서</span> <span class="n">데이터</span> <span class="n">행을</span> <span class="nc">Board</span> 
+
+<span class="n">객체에</span> <span class="n">저장하고</span> <span class="n">출력한다</span><span class="o">.</span>
+
+<span class="nc">ResultSet</span> <span class="n">rs</span>  <span class="o">=</span>  <span class="n">pstmt</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">();</span>
+<span class="k">while</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">next</span><span class="o">())</span> <span class="o">{</span> 
+  <span class="c1">//데이터 행을 읽고 Board 객체에 저장</span>
+  <span class="nc">Board</span> <span class="n">board</span>  <span class="o">=</span>  <span class="k">new</span> <span class="nc">Board</span><span class="o">();</span>
+  <span class="n">board</span><span class="o">.</span><span class="na">setBno</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="s">"bno"</span><span class="o">));</span>
+  <span class="n">board</span><span class="o">.</span><span class="na">setBtitle</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"btitle"</span><span class="o">));</span>
+  <span class="n">board</span><span class="o">.</span><span class="na">setBcontent</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"bcontent"</span><span class="o">));</span>
+  <span class="n">board</span><span class="o">.</span><span class="na">setBwriter</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"bwriter"</span><span class="o">));</span>
+  <span class="n">board</span><span class="o">.</span><span class="na">setBdate</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getDate</span><span class="o">(</span><span class="s">"bdate"</span><span class="o">));</span>
+  <span class="n">board</span><span class="o">.</span><span class="na">setBfilename</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"bfilename"</span><span class="o">));</span>
+  <span class="n">board</span><span class="o">.</span><span class="na">setBfiledata</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getBlob</span><span class="o">(</span><span class="s">"bfiledata"</span><span class="o">));</span>
+
+	 <span class="c1">//콘솔에 출력</span>
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">board</span><span class="o">);</span>
+
+<span class="o">}</span>
+
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span> <span class="o">(</span><span class="n">board</span> <span class="o">)</span><span class="n">는</span> <span class="n">롬복이</span> <span class="n">생성한</span> <span class="nc">Board의</span> <span class="n">toString</span> <span class="o">(</span> <span class="o">)</span> <span class="n">메소드를</span> <span class="n">호출해서</span> <span class="n">받은</span> <span class="n">리</span>
+
+<span class="n">턴값을</span> <span class="n">출력한다</span><span class="o">.</span> <span class="nc">Board의</span> <span class="n">bfiledata는</span> <span class="nc">Blob</span> <span class="n">객체이므로</span> <span class="n">콘솔에</span> <span class="n">출력하면</span> <span class="n">com</span><span class="o">.</span><span class="na">mysql</span><span class="o">.</span><span class="na">cj</span><span class="o">.</span><span class="na">jdbc</span><span class="o">.</span>
+
+<span class="nc">Blob</span><span class="err">@</span><span class="mi">65</span><span class="n">b104b9와</span> <span class="n">같이</span> <span class="n">의미</span> <span class="n">없는</span> <span class="n">타입</span> <span class="n">정보만</span> <span class="n">출력된다</span><span class="o">.</span> 
+
+
+
+ 
+ 
+
+
+<span class="nc">Blob</span> <span class="n">객체에</span> <span class="n">저장된</span> <span class="n">바이너리</span> <span class="n">데이터를</span> <span class="n">얻기</span> <span class="n">위해서는</span> <span class="n">다음과</span> <span class="n">같이</span> <span class="n">입력</span> <span class="n">스트림</span> <span class="n">또는</span> <span class="n">배열을</span> <span class="n">얻어</span>
+
+<span class="n">내야</span> <span class="n">한다</span><span class="o">.</span> 
+
+<span class="nc">Blob</span> <span class="n">blob</span>  <span class="o">=</span>  <span class="n">board</span><span class="o">.</span><span class="na">getBfiledata</span><span class="o">();</span>
+<span class="nc">InputStream</span> <span class="n">is</span>  <span class="o">=</span>  
+  <span class="n">blob</span><span class="o">.</span><span class="na">getBinaryStream</span><span class="o">();</span> 
+
+<span class="nc">Blob</span> <span class="n">blob</span>  <span class="o">=</span>  <span class="n">board</span><span class="o">.</span><span class="na">getBfiledata</span><span class="o">();</span>
+<span class="kt">byte</span><span class="o">[]</span> <span class="n">bytes</span>  <span class="o">=</span>  <span class="n">blob</span><span class="o">.</span><span class="na">getBytes</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> 
+  <span class="n">blob</span><span class="o">.</span><span class="na">length</span><span class="o">());</span>
+
+<span class="n">다음은</span> <span class="nc">Blob</span> <span class="n">객체에서</span> <span class="nc">InputStream을</span> <span class="n">얻고</span><span class="o">,</span> <span class="n">읽은</span> <span class="n">바이트를</span> <span class="n">파일로</span> <span class="n">저장하는</span> <span class="n">방법을</span> <span class="n">보여</span> <span class="n">준다</span><span class="o">.</span>
+
+<span class="nc">InputStream</span> <span class="n">is</span>  <span class="o">=</span>  <span class="n">blob</span><span class="o">.</span><span class="na">getBinaryStream</span><span class="o">();</span>
+<span class="nc">OutputStream</span> <span class="n">os</span>  <span class="o">=</span>  <span class="k">new</span> <span class="nc">FileOutputStream</span><span class="o">(</span><span class="s">"C:/Temp/"</span> <span class="o">+</span> <span class="n">board</span><span class="o">.</span><span class="na">getBfilename</span><span class="o">());</span>
+<span class="n">is</span><span class="o">.</span><span class="na">transferTo</span><span class="o">(</span><span class="n">os</span><span class="o">);</span>
+<span class="n">os</span><span class="o">.</span><span class="na">flush</span><span class="o">();</span>
+<span class="n">os</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+<span class="n">is</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+
+<span class="n">다음은</span> <span class="n">boards</span> <span class="n">테이블에서</span> <span class="n">bwriter가</span> <span class="n">winter인</span> <span class="n">게시물</span> <span class="n">정보를</span> <span class="n">가져오는</span> <span class="n">전체</span> <span class="n">코드이다</span><span class="o">.</span>
+
+</code></pre></div></div>
+<p><strong>»&gt; BoardSelectExample.java</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+<span class="kn">package</span> <span class="nn">ch20.mysql.sec09.exam02</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.FileOutputStream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.InputStream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.OutputStream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.sql.Blob</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.sql.Connection</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.sql.DriverManager</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.sql.PreparedStatement</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.sql.ResultSet</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.sql.SQLException</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BoardSelectExample</span> <span class="o">{</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">Connection</span> <span class="n">conn</span>  <span class="o">=</span>  <span class="kc">null</span><span class="o">;</span>
+    <span class="k">try</span> <span class="o">{</span>
+
+
+
+
+
+
+      <span class="c1">//JDBC Driver 등록</span>
+      <span class="nc">Class</span><span class="o">.</span><span class="na">forName</span><span class="o">(</span><span class="s">"com.mysql.cj.jdbc.Driver"</span><span class="o">);</span>
+
+      <span class="c1">//연결하기</span>
+      <span class="n">conn</span>  <span class="o">=</span>  <span class="nc">DriverManager</span><span class="o">.</span><span class="na">getConnection</span><span class="o">(</span>
+        <span class="s">"jdbc:mysql://localhost:3306/thisisjava"</span><span class="o">,</span> 
+        <span class="s">"java"</span><span class="o">,</span> 
+        <span class="s">"mysql"</span>
+
+      <span class="o">);</span>
+
+      <span class="c1">//매개변수화된 SQL 문 작성</span>
+      <span class="nc">String</span> <span class="n">sql</span>  <span class="o">=</span>  <span class="s">""</span> <span class="o">+</span>
+        <span class="s">"SELECT bno, btitle, bcontent, bwriter, bdate, bfilename, bfiledata "</span> <span class="o">+</span>
+        <span class="s">"FROM boards "</span> <span class="o">+</span>
+        <span class="s">"WHERE bwriter = ?"</span><span class="o">;</span>
+
+      <span class="c1">//PreparedStatement 얻기 및 값 지정</span>
+      <span class="nc">PreparedStatement</span> <span class="n">pstmt</span>  <span class="o">=</span>  <span class="n">conn</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+      <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="s">"winter"</span><span class="o">);</span>
+
+      <span class="c1">//SQL 문 실행 후, ResultSet을 통해 데이터 읽기</span>
+      <span class="nc">ResultSet</span> <span class="n">rs</span>  <span class="o">=</span>  <span class="n">pstmt</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">();</span>
+      <span class="k">while</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">next</span><span class="o">())</span> <span class="o">{</span> 
+        <span class="c1">//데이터 행을 읽고 Board 객체 생성</span>
+        <span class="nc">Board</span> <span class="n">board</span>  <span class="o">=</span>  <span class="k">new</span> <span class="nc">Board</span><span class="o">();</span>
+        <span class="n">board</span><span class="o">.</span><span class="na">setBno</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="s">"bno"</span><span class="o">));</span>
+        <span class="n">board</span><span class="o">.</span><span class="na">setBtitle</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"btitle"</span><span class="o">));</span>
+        <span class="n">board</span><span class="o">.</span><span class="na">setBcontent</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"bcontent"</span><span class="o">));</span>
+        <span class="n">board</span><span class="o">.</span><span class="na">setBwriter</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"bwriter"</span><span class="o">));</span>
+        <span class="n">board</span><span class="o">.</span><span class="na">setBdate</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getDate</span><span class="o">(</span><span class="s">"bdate"</span><span class="o">));</span>
+        <span class="n">board</span><span class="o">.</span><span class="na">setBfilename</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"bfilename"</span><span class="o">));</span>
+        <span class="n">board</span><span class="o">.</span><span class="na">setBfiledata</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getBlob</span><span class="o">(</span><span class="s">"bfiledata"</span><span class="o">));</span>
+
+        <span class="c1">//콘솔에 출력</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">board</span><span class="o">);</span>
+
+        <span class="c1">//파일로 저장</span>
+        <span class="nc">Blob</span> <span class="n">blob</span>  <span class="o">=</span>  <span class="n">board</span><span class="o">.</span><span class="na">getBfiledata</span><span class="o">();</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">blob</span> <span class="o">!=</span>  <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+          <span class="nc">InputStream</span> <span class="n">is</span>  <span class="o">=</span>  <span class="n">blob</span><span class="o">.</span><span class="na">getBinaryStream</span><span class="o">();</span>
+
+
+
+     
+     
+     
+     
+ 
+       
+       
+
+
+          <span class="nc">OutputStream</span> <span class="n">os</span>  <span class="o">=</span>  <span class="k">new</span> <span class="nc">FileOutputStream</span><span class="o">(</span><span class="s">"C:/Temp/"</span> <span class="o">+</span> 
+              <span class="n">board</span><span class="o">.</span><span class="na">getBfilename</span><span class="o">());</span>
+          <span class="n">is</span><span class="o">.</span><span class="na">transferTo</span><span class="o">(</span><span class="n">os</span><span class="o">);</span>
+          <span class="n">os</span><span class="o">.</span><span class="na">flush</span><span class="o">();</span>
+          <span class="n">os</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+          <span class="n">is</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+
+        <span class="o">}</span>
+
+      <span class="o">}</span>
+      <span class="n">rs</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+
+      <span class="c1">//PreparedStatement 닫기</span>
+      <span class="n">pstmt</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+    <span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
+      <span class="k">if</span><span class="o">(</span><span class="n">conn</span> <span class="o">!=</span>  <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">try</span> <span class="o">{</span> 
+          <span class="c1">//연결 끊기</span>
+          <span class="n">conn</span><span class="o">.</span><span class="na">close</span><span class="o">();</span> 
+      <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">SQLException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{}</span>
+
+      <span class="o">}</span>
+
+    <span class="o">}</span>
+
+  <span class="o">}</span>
+
+<span class="o">}</span>
+
+
+
+</code></pre></div></div>
+
+<p><strong>실행 결과</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+Board(bno = 14, btitle = 봄의 정원, bcontent = 정원의 꽃이 예쁘네요., bwriter = winter, 
+bdate = 2022-01-25, bfilename = spring.jpg, bfiledata =  com.mysql.cj.jdbc.Blob@5f354bcf)
+
+Board(bno = 12, btitle = 눈 오는 날, bcontent = 함박눈이 내려요., bwriter = winter, 
+bdate = 2022-01-25, bfilename = snow.jpg, bfiledata =  com.mysql.cj.jdbc.Blob@146dfe6)
+
+Board(bno = 13, btitle = 크리스마스, bcontent = 메리 크리스마스~, bwriter = winter, 
+bdate = 2022-01-25, bfilename = chrismas.jpg, bfiledata =  com.mysql.cj.jdbc.
+Blob@4716be8b)
+
+bfiledata 컬럼의 그림 데이터는 다음과 같이 bfilename 컬럼 값을 파일명으로 해서 C:\Temp 디
+
+렉토리에 저장된다.
+
+</code></pre></div></div>
+
+        </div>
+
+        <div class="bd-toc mt-3 mb-5 my-lg-0 ps-xl-3 mb-lg-5 text-body-secondary">
+
+  <button class="btn btn-link p-md-0 mb-2 mb-md-0 text-decoration-none bd-toc-toggle d-md-none" type="button"
+    data-bs-toggle="collapse" data-bs-target="#tocContents" aria-expanded="false" aria-controls="tocContents">
+    서브목차
+    <svg class="bi d-md-none ms-2" aria-hidden="true">
+      <use xlink:href="#chevron-expand"></use>
+    </svg>
+  </button>
+
+  <strong class="d-none d-md-block h6 my-2">서브목차</strong>
+
+  <div class="collapse bd-toc-collapse" id="tocContents">
+    <nav id="TableOfContents">
+      <!--
+      <ul>
+        <li><a href="#quick-start">Quick start</a></li>
+        <li><a href="#cdn-links">CDN links</a></li>
+        <li><a href="#next-steps">Next steps</a></li>
+        <li><a href="#js-components">JS components</a></li>
+        <li><a href="#important-globals">Important globals</a>
+          <ul>
+            <li><a href="#html5-doctype">HTML5 doctype</a></li>
+            <li><a href="#responsive-meta-tag">Responsive meta tag</a></li>
+            <li><a href="#box-sizing">Box-sizing</a></li>
+            <li><a href="#reboot">Reboot</a></li>
+          </ul>
+        </li>
+        <li><a href="#community">Community</a></li>
+      </ul>
+      -->
+    </nav>
+  </div>
+</div>
+    </main>
+</div>
+
+  <footer class="container">
+  <hr class="mt-5 mb-3">
+  <div class="row align-items-center pb-3">
+    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+      <p class="mb-0 text-secondary">Copyright 2017~2026 JinyDev. All Rights Reserved.</p>
+    </div>
+    <div class="col-md-6 text-center text-md-end">
+      
+      <a href="https://datas.jiny.dev" class="text-decoration-none text-secondary ms-3">빅데이터</a>
+      
+      <a href="https://mysql.jiny.dev" class="text-decoration-none text-secondary ms-3">MySQL</a>
+      
+      <a href="https://php.jiny.dev" class="text-decoration-none text-secondary ms-3">PHP</a>
+      
+      <a href="https://java.jiny.dev" class="text-decoration-none text-secondary ms-3">자바</a>
+      
+      <a href="https://git.jiny.dev" class="text-decoration-none text-secondary ms-3">깃&깃허브</a>
+      
+      <a href="https://linux.jiny.dev" class="text-decoration-none text-secondary ms-3">리눅스</a>
+      
+    </div>
+  </div>
+</footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+
+    window.addEventListener('load', async function () {
+      mermaid.initialize({ startOnLoad: false });
+
+      const mermaidCodes = document.querySelectorAll('pre code.language-mermaid');
+      const mermaidDivs = [];
+
+      mermaidCodes.forEach(codeBlock => {
+        const mermaidDefinition = codeBlock.textContent.trim();
+        const container = codeBlock.closest('div.highlighter-rouge');
+
+        const mermaidDiv = document.createElement('div');
+        mermaidDiv.className = 'mermaid';
+        mermaidDiv.textContent = mermaidDefinition;
+
+        if (container) {
+          container.replaceWith(mermaidDiv);
+        } else {
+          const pre = codeBlock.parentElement;
+          if (pre) pre.replaceWith(mermaidDiv);
+        }
+        mermaidDivs.push(mermaidDiv);
+      });
+
+      if (mermaidDivs.length > 0) {
+        await mermaid.run({ nodes: mermaidDivs });
+      }
+    });
+  </script>
+  <script src="/assets/js/toc.js"></script>
+  <script src="/assets/js/sidebar.js"></script>
+
+</body>
+
+</html>

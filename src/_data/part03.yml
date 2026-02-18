@@ -1,149 +1,92 @@
 main:
-- title: 12. java.base 모듈
-  url: /part03/12/
-  subitems:
-  - title: 학습목표
-    url: /part03/12/
-  - title: 12.1 API 도큐먼트
-    url: /part03/12/01/
-  - title: 12.2 java.base 모듈
-    url: /part03/12/02/
-  - title: 12.3 Object 클래스
-    url: /part03/12/03/
-  - title: 12.4 System 클래스
-    url: /part03/12/04/
-  - title: 12.5 문자열 클래스
-    url: /part03/12/05/
-  - title: 12.6 포장 클래스
-    url: /part03/12/06/
-  - title: 12.7 수학 클래스
-    url: /part03/12/07/
-  - title: 12.8 날짜와 시간 클래스
-    url: /part03/12/08/
-  - title: 12.9 형식 클래스
-    url: /part03/12/09/
-  - title: 12.10 정규 표현식 클래스
-    url: /part03/12/10/
-  - title: 12.11 리플렉션
-    url: /part03/12/11/
-  - title: 12.12 어노테이션
-    url: /part03/12/12/
-  - title: 확인문제
-    url: /part03/12/quiz/
-- title: 13. 제네릭
-  url: /part03/13/
-  subitems:
-  - title: 학습목표
-    url: /part03/13/
-  - title: 13.1 제네릭이란?
-    url: /part03/13/01/
-  - title: 13.2 제네릭 타입
-    url: /part03/13/02/
-  - title: 13.3 제네릭 메소드
-    url: /part03/13/03/
-  - title: 13.4 제한된 타입 파라미터
-    url: /part03/13/04/
-  - title: 13.5 와일드카드 타입 파라미터
-    url: /part03/13/05/
-  - title: 확인문제
-    url: /part03/13/quiz/
 - title: 14. 멀티 스레드
-  url: /part03/14/
+  url: /part03/thread/
   subitems:
   - title: 학습목표
-    url: /part03/14/
+    url: /part03/thread/
   - title: 14.1 멀티 스레드 개념
-    url: /part03/14/01/
+    url: /part03/thread/concept/
   - title: 14.2 메인 스레드
-    url: /part03/14/02/
+    url: /part03/thread/main-thread/
   - title: 14.3 작업 스레드 생성과 실행
-    url: /part03/14/03/
+    url: /part03/thread/worker-thread/
   - title: 14.4 스레드 이름
-    url: /part03/14/04/
+    url: /part03/thread/thread-name/
   - title: 14.5 스레드 상태
-    url: /part03/14/05/
+    url: /part03/thread/thread-state/
   - title: 14.6 스레드 동기화
-    url: /part03/14/06/
+    url: /part03/thread/synchronization/
   - title: 14.7 스레드 안전 종료
-    url: /part03/14/07/
+    url: /part03/thread/safe-stop/
   - title: 14.8 데몬 스레드
-    url: /part03/14/08/
+    url: /part03/thread/daemon/
   - title: 14.9 스레드풀
-    url: /part03/14/09/
+    url: /part03/thread/thread-pool/
+  - title: 14.10 가상 스레드
+    url: /part03/thread/virtual-thread/
   - title: 확인문제
-    url: /part03/14/quiz/
-- title: 15. 컬렉션 자료구조
-  url: /part03/15/
-  subitems:
-  - title: 학습목표
-    url: /part03/15/
-  - title: 15.1 컬렉션 프레임워크
-    url: /part03/15/01/
-  - title: 15.2 List 컬렉션
-    url: /part03/15/02/
-  - title: 15.3 Set 컬렉션
-    url: /part03/15/03/
-  - title: 15.4 Map 컬렉션
-    url: /part03/15/04/
-  - title: 15.5 검색 기능을 강화시킨 컬렉션
-    url: /part03/15/05/
-  - title: 15.6 LIFO와 FIFO 컬렉션
-    url: /part03/15/06/
-  - title: 15.7 동기화된 컬렉션
-    url: /part03/15/07/
-  - title: 15.8 수정할 수 없는 컬렉션
-    url: /part03/15/08/
-  - title: 확인문제
-    url: /part03/15/quiz/
-- title: 16. 스트림과 병렬 처리
-  url: /part03/16/
-  subitems:
-  - title: 학습목표
-    url: /part03/16/
-  - title: 16.1 람다식이란?
-    url: /part03/16/01/
-  - title: 16.2 매개변수가 없는 람다식
-    url: /part03/16/02/
-  - title: 16.3 매개변수가 있는 람다식
-    url: /part03/16/03/
-  - title: 16.4 리턴값이 있는 람다식
-    url: /part03/16/04/
-  - title: 16.5 메소드 참조
-    url: /part03/16/05/
-  - title: 16.6 생성자 참조
-    url: /part03/16/06/
-  - title: 확인문제
-    url: /part03/16/quiz/
+    url: /part03/thread/quiz/
 - title: 17. 데이터 입출력
-  url: /part03/17/
+  url: /part03/io/
   subitems:
   - title: 학습목표
-    url: /part03/17/
+    url: /part03/io/
   - title: 17.1 스트림이란?
-    url: /part03/17/01/
+    url: /part03/io/intro/
   - title: 17.2 내부 반복자
-    url: /part03/17/02/
+    url: /part03/io/internal-iterator/
   - title: 17.3 중간 처리와 최종 처리
-    url: /part03/17/03/
+    url: /part03/io/intermediate-terminal/
   - title: 17.4 리소스로부터 스트림 얻기
-    url: /part03/17/04/
+    url: /part03/io/resource/
   - title: 17.5 요소 걸러내기(필터링)
-    url: /part03/17/05/
+    url: /part03/io/filtering/
   - title: 17.6 요소 변환(매핑)
-    url: /part03/17/06/
+    url: /part03/io/mapping/
   - title: 17.7 요소 정렬
-    url: /part03/17/07/
+    url: /part03/io/sorting/
   - title: 17.8 요소를 하나씩 처리(루핑)
-    url: /part03/17/08/
+    url: /part03/io/looping/
   - title: 17.9 요소 조건 만족 여부(매칭)
-    url: /part03/17/09/
+    url: /part03/io/matching/
   - title: 17.10 요소 기본 집계
-    url: /part03/17/10/
+    url: /part03/io/basic-aggregate/
   - title: 17.11 요소 커스텀 집계
-    url: /part03/17/11/
+    url: /part03/io/custom-aggregate/
   - title: 17.12 요소 수집
-    url: /part03/17/12/
+    url: /part03/io/collect/
   - title: 17.13 요소 병렬 처리
-    url: /part03/17/13/
+    url: /part03/io/parallel/
+  - title: 17.14 기본 문자셋 변경
+    url: /part03/io/charset/
   - title: 확인문제
-    url: /part03/17/quiz/
+    url: /part03/io/quiz/
+- title: 18. 데이터 입출력
+  url: /part03/stream/
+  subitems:
+  - title: 학습목표
+    url: /part03/stream/
+  - title: 18.1 입출력 스트림
+    url: /part03/stream/intro/
+  - title: 18.2 바이트 출력 스트림
+    url: /part03/stream/byte-output/
+  - title: 18.3 바이트 입력 스트림
+    url: /part03/stream/byte-input/
+  - title: 18.4 문자 입출력 스트림
+    url: /part03/stream/char-io/
+  - title: 18.5 보조 스트림
+    url: /part03/stream/buffer/
+  - title: 18.6 문자 변환 스트림
+    url: /part03/stream/char-convert/
+  - title: 18.7 성능 향상 스트림
+    url: /part03/stream/performance/
+  - title: 18.8 기본 타입 스트림
+    url: /part03/stream/primitive/
+  - title: 18.9 프린트 스트림
+    url: /part03/stream/print/
+  - title: 18.10 객체 스트림
+    url: /part03/stream/object/
+  - title: 18.11 File과 Files 클래스
+    url: /part03/stream/file/
+  - title: 확인문제
+    url: /part03/stream/quiz/

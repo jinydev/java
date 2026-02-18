@@ -1,0 +1,74 @@
+---
+layout: network
+title: "19.2 IP 주소 얻기"
+nav_order: 2
+parent: "Chapter 19. 네트워크 입출력"
+grand_parent: "데이터 입출력"
+---
+
+# 19.2 IP 주소 얻기
+
+컴퓨터에도 고유한 주소가 있다. 바로 **IP(Internet Protocol) 주소**이다. IP 주소는 네트워크 어댑터(LAN 카드)마다 할당된다.
+
+네트워크 어댑터에 어떤 IP 주소가 부여되어 있는지 확인하려면 윈도우에서는 `ipconfig` 명령어를, 맥OS에서는 `ifconfig` 명령어를 실행하면 된다.
+
+연결할 상대방 컴퓨터의 IP 주소를 모르면 프로그램들은 서로 통신할 수 없다. 우리가 전화번호를 모르면 114로 문의하듯이 프로그램은 **DNS(Domain Name System)**를 이용해서 컴퓨터의 IP 주소를 검색한다. DNS는 도메인 이름으로 IP를 등록하는 저장소이다.
+
+웹 브라우저는 웹 서버와 통신하는 클라이언트로, 사용자가 입력한 도메인 이름으로 DNS에서 IP 주소를 검색해 찾은 다음 웹 서버와 연결해서 웹 페이지를 받는다.
+
+## Port 번호
+
+한 대의 컴퓨터에는 다양한 서버 프로그램들이 실행될 수 있다. 예를 들어 웹(Web) 서버, 데이터베이스 관리 시스템(DBMS), FTP 서버 등이 하나의 IP 주소를 갖는 컴퓨터에서 동시에 실행될 수 있다. 이 경우 클라이언트는 어떤 서버와 통신해야 할지 결정해야 한다. IP는 컴퓨터의 네트워크 어댑터까지만 갈 수 있는 정보이기 때문에, 컴퓨터 내부에서 실행하는 서버를 선택하기 위해서는 추가적인 **Port 번호**가 필요하다.
+
+Port는 운영체제가 관리하는 서버 프로그램의 연결 번호이다. 서버는 시작할 때 특정 Port 번호에 바인딩(Binding)한다.
+
+클라이언트도 서버에서 보낸 정보를 받기 위해서는 Port 번호가 필요한데, 서버와 같이 고정적인 Port 번호에 바인딩하는 것이 아니라 운영체제가 자동으로 부여하는 번호를 사용한다.
+
+프로그램에서 사용할 수 있는 전체 Port 번호의 범위는 0 ~ 65535이다.
+
+| 구분명                              | 범위          | 설명                                                                     |
+| :---------------------------------- | :------------ | :----------------------------------------------------------------------- |
+| **Well Known Port Numbers**         | 0 ~ 1023      | 국제인터넷주소관리기구(ICANN)가 특정 애플리케이션용으로 미리 예약한 Port |
+| **Registered Port Numbers**         | 1024 ~ 49151  | 회사에서 등록해서 사용할 수 있는 Port                                    |
+| **Dynamic Or Private Port Numbers** | 49152 ~ 65535 | 운영체제가 부여하는 동적 Port 또는 개인적인 목적으로 사용할 수 있는 Port |
+
+자바는 IP 주소를 `java.net` 패키지의 `InetAddress`로 표현한다.
+
+*   로컬 컴퓨터의 IP 주소 얻기:
+    ```java
+    InetAddress ia = InetAddress.getLocalHost();
+    ```
+
+*   도메인 이름으로 IP 주소 얻기:
+    ```java
+    InetAddress ia = InetAddress.getByName(String domainName);
+    InetAddress[] iaArr = InetAddress.getAllByName(String domainName);
+    ```
+
+*   IP 주소 문자열 얻기:
+    ```java
+    String ip = ia.getHostAddress();
+    ```
+
+```java
+package ch19.sec02;
+
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
+public class InetAddressExample {
+	public static void main(String[] args) {
+		try {
+			InetAddress local = InetAddress.getLocalHost();
+			System.out.println("내 컴퓨터 IP 주소: " + local.getHostAddress());
+
+			InetAddress[] iaArr = InetAddress.getAllByName("www.naver.com");
+			for (InetAddress remote : iaArr) {
+				System.out.println("www.naver.com IP 주소: " + remote.getHostAddress());
+			}
+		} catch (UnknownHostException e) {
+			e.printStackTrace();
+		}
+	}
+}
+```
