@@ -1,0 +1,43 @@
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="400" fill="#f8f9fa"/>
+
+  <!-- Title -->
+  <text x="400" y="40" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="#2c3e50" font-weight="bold">패키지 = 폴더 (Nested Folders)</text>
+
+  <!-- Folder Structure Representation -->
+  <g transform="translate(150, 80)">
+    <!-- Root: com -->
+    <path d="M0,0 L100,0 L120,20 L300,20 L300,250 L0,250 Z" fill="#f1c40f" stroke="#f39c12" stroke-width="2"/>
+    <text x="20" y="50" font-family="Arial, sans-serif" font-size="20" fill="#d35400" font-weight="bold">com</text>
+
+    <!-- Sub: mycompany -->
+    <g transform="translate(40, 70)">
+      <path d="M0,0 L100,0 L120,20 L240,20 L240,160 L0,160 Z" fill="#f39c12" stroke="#e67e22" stroke-width="2"/>
+      <text x="20" y="50" font-family="Arial, sans-serif" font-size="18" fill="white" font-weight="bold">mycompany</text>
+
+      <!-- Sub: project -->
+      <g transform="translate(40, 70)">
+        <path d="M0,0 L80,0 L100,20 L180,20 L180,70 L0,70 Z" fill="#e67e22" stroke="#d35400" stroke-width="2"/>
+        <text x="20" y="50" font-family="Arial, sans-serif" font-size="16" fill="white" font-weight="bold">project</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- File Representation -->
+  <g transform="translate(500, 150)">
+    <rect x="0" y="0" width="120" height="150" fill="white" stroke="#34495e" stroke-width="2"/>
+    <path d="M80,0 L120,40 L120,150 L0,150 L0,0 Z" fill="white" stroke="#34495e" stroke-width="2"/>
+    <path d="M80,0 L80,40 L120,40" fill="#ecf0f1" stroke="#34495e" stroke-width="2"/>
+    
+    <text x="60" y="80" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#2c3e50" font-weight="bold">Car.java</text>
+    <text x="60" y="110" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#7f8c8d">package</text>
+    <text x="60" y="130" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#7f8c8d">com.mycompany</text>
+  </g>
+
+  <!-- Connection Line -->
+  <path d="M430,220 L500,220" stroke="#34495e" stroke-width="3" stroke-dasharray="5,5"/>
+
+  <text x="400" y="360" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#2c3e50">패키지 이름: com.mycompany.project</text>
+
+</svg>

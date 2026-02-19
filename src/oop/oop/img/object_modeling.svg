@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <rect width="800" height="400" fill="#f0f8ff"/>
+  
+  <text x="400" y="50" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" font-weight="bold" fill="#333">Object Modeling (Abstraction)</text>
+
+  <!-- Real Cat -->
+  <g transform="translate(150, 150)">
+    <ellipse cx="60" cy="80" rx="50" ry="40" fill="#ffa500"/> <!-- Body -->
+    <circle cx="60" cy="50" r="30" fill="#ffa500"/> <!-- Head -->
+    <polygon points="40,30 30,10 50,30" fill="#ffa500"/> <!-- Ear -->
+    <polygon points="80,30 90,10 70,30" fill="#ffa500"/> <!-- Ear -->
+    <circle cx="50" cy="50" r="3" fill="#000"/> <!-- Eye -->
+    <circle cx="70" cy="50" r="3" fill="#000"/> <!-- Eye -->
+    <path d="M 60 60 Q 50 70 70 70" fill="none" stroke="#000"/> <!-- Mouth -->
+    <line x1="30" y1="60" x2="10" y2="50" stroke="#000"/> <!-- Whisker -->
+    <line x1="30" y1="65" x2="10" y2="65" stroke="#000"/>
+    <line x1="90" y1="60" x2="110" y2="50" stroke="#000"/>
+    <line x1="90" y1="65" x2="110" y2="65" stroke="#000"/>
+    <text x="60" y="140" text-anchor="middle" font-size="16">Real World Object</text>
+  </g>
+
+  <!-- Arrow -->
+  <g transform="translate(350, 180)">
+    <line x1="0" y1="0" x2="80" y2="0" stroke="#333" stroke-width="5" marker-end="url(#arrowhead)"/>
+    <polygon points="80,-10 100,0 80,10" fill="#333"/>
+    <text x="50" y="-20" text-anchor="middle" font-size="14">Modeling</text>
+  </g>
+
+  <!-- Software Cat -->
+  <g transform="translate(500, 120)">
+    <rect x="0" y="0" width="180" height="200" fill="#fff" stroke="#333" stroke-width="2"/>
+    <rect x="0" y="0" width="180" height="40" fill="#4682b4"/>
+    <text x="90" y="25" text-anchor="middle" fill="#fff" font-weight="bold">Class Cat</text>
+    
+    <text x="10" y="70" font-family="monospace" fill="#333">String name;</text>
+    <text x="10" y="90" font-family="monospace" fill="#333">int age;</text>
+    <line x1="10" y1="110" x2="170" y2="110" stroke="#ccc"/>
+    
+    <text x="10" y="140" font-family="monospace" fill="#333">void meow() {</text>
+    <text x="20" y="160" font-family="monospace" fill="#666">print("Yaong");</text>
+    <text x="10" y="180" font-family="monospace" fill="#333">}</text>
+
+    <text x="90" y="230" text-anchor="middle" font-size="16">Software Object</text>
+  </g>
+</svg>

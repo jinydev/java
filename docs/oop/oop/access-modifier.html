@@ -8,7 +8,7 @@
   <!-- 기본 메타데이터 --><meta name="description" content="Jiny linux"><meta name="author" content="HojinLee"><!-- 제목 설정 --><title>6.13 접근 제한자</title>
   <meta name="title" content="6.13 접근 제한자" /><!-- 키워드 설정 --><!-- Open Graph 메타데이터 --><meta property="og:title" content="6.13 접근 제한자"><meta property="og:description" content="Jiny linux"><meta property="og:type" content="website"><meta property="og:locale" content="ko">
   <meta property="og:site_name" content="linux">
-  <meta property="og:url" content="https://java.jiny.dev/oop/oop/access-modifier.html">
+  <meta property="og:url" content="http://localhost:4000/oop/oop/access-modifier.html">
 
   <!-- Twitter 카드 메타데이터 --><meta name="twitter:card" content="summary"><meta property="twitter:title" content="6.13 접근 제한자"><!-- Begin Jekyll SEO tag v2.8.0 -->
 <meta name="generator" content="Jekyll v4.4.1" />
@@ -17,14 +17,14 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
 <meta property="og:description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
-<link rel="canonical" href="https://java.jiny.dev/oop/oop/access-modifier.html" />
-<meta property="og:url" content="https://java.jiny.dev/oop/oop/access-modifier.html" />
+<link rel="canonical" href="http://localhost:4000/oop/oop/access-modifier.html" />
+<meta property="og:url" content="http://localhost:4000/oop/oop/access-modifier.html" />
 <meta property="og:site_name" content="객체지향 자바 프로그래밍 (Object-Oriented Java Programming)" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="6.13 접근 제한자" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"6.13 접근 제한자","url":"https://java.jiny.dev/oop/oop/access-modifier.html"}</script>
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"6.13 접근 제한자","url":"http://localhost:4000/oop/oop/access-modifier.html"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -1527,223 +1527,125 @@
     </ol>
 </nav>
         <div class="bd-content ps-lg-2">
-            <h1 id="613-접근-제한자">6.13 접근 제한자</h1>
+            <h1 id="613-접근-제한자-보안-시스템">6.13 접근 제한자 (보안 시스템)</h1>
 
-<p>main() 메소드를 가지는 클래스에서 외부 클래스를 사용해서 객체를 생성하고 필드와 메소드를 사용하는 코드를 많이 보아왔다.</p>
+<h2 id="우리-집-보안-시스템">우리 집 보안 시스템</h2>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Car</span> <span class="n">myCar</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Car</span><span class="o">();</span>
-<span class="n">myCar</span><span class="o">.</span><span class="na">speed</span> <span class="o">=</span> <span class="mi">60</span><span class="o">;</span>
-<span class="n">myCar</span><span class="o">.</span><span class="na">run</span><span class="o">();</span>
-</code></pre></div></div>
+<p>접근 제한자(Access Modifier)는 쉽게 말해 <strong>‘우리 집 보안 시스템’</strong>과 같습니다.</p>
 
-<p>객체 생성을 막기 위해 생성자를 호출하지 못하게 하거나 객체의 특정 데이터를 보호하기 위해 해당 필드에 접근하지 못하게 막아야 할 때가 있다. 그리고 특정 메소드를 호출할 수 없도록 막아야 할 때도 있다.</p>
+<p>집에 있는 모든 물건을 아무나 가져가게 둘 수는 없잖아요?
+어떤 건 대문 밖에 내놓고(누구나 가져가도 됨), 어떤 건 안방 금고에 넣어두고(나만 볼 수 있음) 관리해야 안전하겠죠.</p>
 
-<p>자바는 이러한 경우를 대비해서 접근 제한자(Access Modifier)를 제공한다. 접근 제한자는 말 그대로 접근을 제한하기 위해 사용된다. 여기서 접근이란 클래스 및 인터페이스를 이용하는 것을 말한다.</p>
+<p>자바에서도 마찬가지입니다.</p>
 
-<p>접근 제한자는 public, protected, private와 default(아무것도 붙이지 않음)가 있다.</p>
+<p>클래스, 필드, 메소드를 <strong>누구에게 어디까지 공개할 것인가</strong>를 결정하는 것이 바로 접근 제한자입니다.</p>
+
+<p><img src="./img/access_modifier_analogy.svg" alt="Access Modifier Analogy" /></p>
 
 <table>
   <thead>
     <tr>
-      <th>접근 제한자</th>
-      <th>적용 대상</th>
-      <th>접근할 수 있는 범위</th>
+      <th style="text-align: left">접근 제한자</th>
+      <th style="text-align: left">의미 (비유)</th>
+      <th style="text-align: left">접근 가능 범위</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>public</td>
-      <td>클래스, 필드, 생성자, 메소드</td>
-      <td>없음 (모든 패키지에서 접근 가능)</td>
+      <td style="text-align: left"><strong>public</strong></td>
+      <td style="text-align: left"><strong>공원</strong> (Public Park)</td>
+      <td style="text-align: left"><strong>누구나</strong> 출입 가능 (모든 패키지)</td>
     </tr>
     <tr>
-      <td>protected</td>
-      <td>필드, 생성자, 메소드</td>
-      <td>같은 패키지 + 자식 클래스</td>
+      <td style="text-align: left"><strong>protected</strong></td>
+      <td style="text-align: left"><strong>상속 재산</strong></td>
+      <td style="text-align: left"><strong>자식</strong>에게만 물려줌 (+ 같은 패키지)</td>
     </tr>
     <tr>
-      <td>default</td>
-      <td>클래스, 필드, 생성자, 메소드</td>
-      <td>같은 패키지</td>
+      <td style="text-align: left"><strong>default</strong></td>
+      <td style="text-align: left"><strong>동네 친구</strong></td>
+      <td style="text-align: left"><strong>같은 동네(패키지)</strong> 친구들끼리만</td>
     </tr>
     <tr>
-      <td>private</td>
-      <td>필드, 생성자, 메소드</td>
-      <td>클래스 내부</td>
+      <td style="text-align: left"><strong>private</strong></td>
+      <td style="text-align: left"><strong>개인 금고</strong> (Private Safe)</td>
+      <td style="text-align: left"><strong>오직 나(클래스 내부)</strong>만 접근 가능</td>
     </tr>
   </tbody>
 </table>
 
 <h2 id="클래스의-접근-제한">클래스의 접근 제한</h2>
 
-<p>클래스를 어디에서나 사용할 수 있는 것은 아니다. 클래스를 다른 패키지에서도 사용할 수 있도록 할 것인지, 아니면 같은 패키지에서만 사용할 수 있도록 할 것인지에 따라 접근 제한자를 갖는다.</p>
+<p>클래스를 만들 때 <code class="language-plaintext highlighter-rouge">public</code>을 붙일지 말지 결정해야 합니다.</p>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span><span class="kd">public</span><span class="o">]</span> <span class="kd">class</span> <span class="nc">클래스</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
+<p><img src="./img/access_class_level.svg" alt="Class Level Access" /></p>
+
+<ul>
+  <li><strong>public class</strong>: “전국적으로 유명한 맛집” (어디서든 찾아올 수 있음)</li>
+  <li><strong>(default) class</strong>: “동네 사람들만 아는 맛집” (같은 패키지 안에서만 사용 가능)</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 전국구 맛집 (어디서든 import 가능)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">A</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
+
+<span class="c1">// 동네 맛집 (같은 패키지에서만 사용 가능)</span>
+<span class="kd">class</span> <span class="nc">B</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
 </code></pre></div></div>
 
-<p>클래스 선언 시 public 접근 제한자를 생략했다면 클래스는 default 접근 제한을 가졌다라고 말한다. 클래스가 default 접근 제한을 가지면 같은 패키지에서는 아무런 제한 없이 사용할 수 있지만 다른 패키지에서는 사용할 수 없도록 제한된다.</p>
+<h2 id="생성자의-접근-제한-열쇠-관리">생성자의 접근 제한 (열쇠 관리)</h2>
 
-<p>반대로 클래스가 public 접근 제한을 가지면 같은 패키지뿐만 아니라 다른 패키지에서도 아무런 제한 없이 사용할 수 있다.</p>
+<p>객체를 생성(<code class="language-plaintext highlighter-rouge">new</code>)한다는 것은, 그 객체의 문을 열고 들어가는 것과 같습니다.
+생성자에 어떤 접근 제한자를 붙이느냐에 따라 <strong>누구에게 열쇠를 줄 것인가</strong>가 결정됩니다.</p>
 
-<p>라이브러리 클래스를 개발할 때에는 일반적으로 public 접근 제한을 갖도록 해서 어느 패키지에서나 사용할 수 있도록 한다. 그러나 인터넷으로 배포되는 라이브러리 클래스들 중에는 public이 아닌 것도 있다. 이것은 외부로 노출시키지 않고 라이브러리 내부에서만 사용하기 위해서이다.</p>
+<p><img src="./img/access_constructor.svg" alt="Constructor Access" /></p>
 
-<h2 id="생성자의-접근-제한">생성자의 접근 제한</h2>
+<p>코드예시</p>
 
-<p>객체를 생성하기 위해서는 new 연산자로 생성자를 호출해야 한다. 하지만 생성자를 어디에서나 호출할 수 있는 것은 아니다. 생성자가 어떤 접근 제한을 갖느냐에 따라 호출 가능 여부가 결정된다.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Car</span> <span class="o">{</span>
+    <span class="c1">// 1. public: 누구나 차를 살 수 있음</span>
+    <span class="kd">public</span> <span class="nf">Car</span><span class="o">()</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ClassName</span> <span class="o">{</span>
-    <span class="o">[</span><span class="kd">public</span> <span class="o">|</span> <span class="kd">protected</span> <span class="o">|</span> <span class="kd">private</span><span class="o">]</span> <span class="nf">ClassName</span><span class="o">(...)</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
+    <span class="c1">// 2. private: 아무도 못 삼 (공장 내부용)</span>
+    <span class="kd">private</span> <span class="nf">Car</span><span class="o">(</span><span class="kt">int</span> <span class="n">secretCode</span><span class="o">)</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div></div>
 
 <ul>
-  <li><strong>public 접근 제한</strong>: 모든 패키지에서 아무런 제한 없이 생성자를 호출할 수 있다.</li>
-  <li><strong>protected 접근 제한</strong>: 같은 패키지에 속하는 클래스에서 생성자를 호출할 수 있다. 다른 패키지에 속한 클래스가 해당 클래스의 자식 클래스라면 생성자를 호출할 수 있다.</li>
-  <li><strong>default 접근 제한</strong>: 같은 패키지에 속하는 클래스에서만 생성자를 호출할 수 있다.</li>
-  <li><strong>private 접근 제한</strong>: 동일한 클래스 내부에서만 생성자를 호출할 수 있고 외부에서는 호출할 수 없다.</li>
+  <li><code class="language-plaintext highlighter-rouge">public Car()</code>: 누구나 <code class="language-plaintext highlighter-rouge">new Car()</code>를 호출해서 자동차를 만들 수 있습니다.</li>
+  <li><code class="language-plaintext highlighter-rouge">private Car()</code>: 외부에서는 절대 <code class="language-plaintext highlighter-rouge">new Car()</code>를 할 수 없습니다. (보통 식구들끼리만 쓸 때 사용)</li>
 </ul>
-
-<p><strong>A.java</strong></p>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch06.sec13.exam02.package1</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">A</span> <span class="o">{</span>
-	<span class="c1">// 필드 선언</span>
-	<span class="no">A</span> <span class="n">a1</span> <span class="o">=</span> <span class="k">new</span> <span class="no">A</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
-	<span class="no">A</span> <span class="n">a2</span> <span class="o">=</span> <span class="k">new</span> <span class="no">A</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
-	<span class="no">A</span> <span class="n">a3</span> <span class="o">=</span> <span class="k">new</span> <span class="no">A</span><span class="o">(</span><span class="s">"문자열"</span><span class="o">);</span>
-	
-	<span class="c1">// public 접근 제한 생성자 선언</span>
-	<span class="kd">public</span> <span class="nf">A</span><span class="o">(</span><span class="kt">boolean</span> <span class="n">b</span><span class="o">)</span> <span class="o">{</span>
-	<span class="o">}</span>
-	
-	<span class="c1">// default 접근 제한 생성자 선언</span>
-	<span class="no">A</span><span class="o">(</span><span class="kt">int</span> <span class="n">b</span><span class="o">)</span> <span class="o">{</span>
-	<span class="o">}</span>
-	
-	<span class="c1">// private 접근 제한 생성자 선언</span>
-	<span class="kd">private</span> <span class="nf">A</span><span class="o">(</span><span class="nc">String</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span>
-	<span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p><strong>B.java</strong></p>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch06.sec13.exam02.package1</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">B</span> <span class="o">{</span>
-	<span class="c1">// 필드 선언</span>
-	<span class="no">A</span> <span class="n">a1</span> <span class="o">=</span> <span class="k">new</span> <span class="no">A</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span> <span class="c1">// (o)</span>
-	<span class="no">A</span> <span class="n">a2</span> <span class="o">=</span> <span class="k">new</span> <span class="no">A</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>    <span class="c1">// (o)</span>
-	<span class="c1">// A a3 = new A("문자열"); // (x) private 생성자 접근 불가</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p><strong>C.java</strong></p>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch06.sec13.exam02.package2</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">ch06.sec13.exam02.package1.*</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">C</span> <span class="o">{</span>
-	<span class="c1">// 필드 선언</span>
-	<span class="no">A</span> <span class="n">a1</span> <span class="o">=</span> <span class="k">new</span> <span class="no">A</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span> <span class="c1">// (o)</span>
-	<span class="c1">// A a2 = new A(1);    // (x) default 생성자 접근 불가</span>
-	<span class="c1">// A a3 = new A("문자열"); // (x) private 생성자 접근 불가</span>
-<span class="o">}</span>
-</code></pre></div></div>
 
 <h2 id="필드와-메소드의-접근-제한">필드와 메소드의 접근 제한</h2>
 
-<p>필드와 메소드를 어디서나 사용할 수 있는 것은 아니다. 어떤 접근 제한을 갖느냐에 따라 호출 여부가 결정된다.</p>
+<p>객체 안에 있는 데이터(필드)와 기능(메소드)도 보호해야 합니다.</p>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span><span class="kd">public</span> <span class="o">|</span> <span class="kd">protected</span> <span class="o">|</span> <span class="kd">private</span><span class="o">]</span> <span class="o">[</span><span class="kd">static</span><span class="o">]</span> <span class="n">타입</span> <span class="n">필드</span><span class="o">;</span>
-<span class="o">[</span><span class="kd">public</span> <span class="o">|</span> <span class="kd">protected</span> <span class="o">|</span> <span class="kd">private</span><span class="o">]</span> <span class="o">[</span><span class="kd">static</span><span class="o">]</span> <span class="n">리턴타입</span> <span class="n">메소드</span><span class="o">(...)</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
+<p><img src="./img/access_field_method.svg" alt="Field and Method Access" /></p>
+
+<h3 id="데이터-보호-private-field">데이터 보호 (Private Field)</h3>
+
+<p>내 통장 잔고(<code class="language-plaintext highlighter-rouge">balance</code>)를 다른 사람이 마음대로 <code class="language-plaintext highlighter-rouge">0</code>원으로 바꾸면 안 되겠죠?
+그래서 중요한 데이터는 <code class="language-plaintext highlighter-rouge">private</code>으로 꽉 잠가둡니다.</p>
+
+<p>코드예시</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">BankAccount</span> <span class="o">{</span>
+    <span class="c1">// 중요! 외부에서 접근 금지</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">balance</span><span class="o">;</span>
+
+    <span class="c1">// 공개된 메소드를 통해서만 돈을 입금/출금 가능</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">deposit</span><span class="o">(</span><span class="kt">int</span> <span class="n">amount</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">amount</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">balance</span> <span class="o">+=</span> <span class="n">amount</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
 </code></pre></div></div>
 
 <ul>
-  <li><strong>public 접근 제한</strong>: 모든 패키지에서 아무런 제한 없이 필드와 메소드를 사용할 수 있다.</li>
-  <li><strong>protected 접근 제한</strong>: 같은 패키지에 속하는 클래스에서 필드와 메소드를 사용할 수 있다. 다른 패키지에 속한 클래스가 해당 클래스의 자식 클래스라면 필드와 메소드를 사용할 수 있다.</li>
-  <li><strong>default 접근 제한</strong>: 같은 패키지에 속하는 클래스에서만 필드와 메소드를 사용할 수 있다.</li>
-  <li><strong>private 접근 제한</strong>: 동일한 클래스 내부에서만 필드와 메소드를 사용할 수 있다.</li>
+  <li><code class="language-plaintext highlighter-rouge">field</code>는 대문 밖에서 안 보입니다. (<code class="language-plaintext highlighter-rouge">private</code>)</li>
+  <li><code class="language-plaintext highlighter-rouge">deposit</code> 버튼은 누구나 누를 수 있습니다. (<code class="language-plaintext highlighter-rouge">public</code>)</li>
+  <li>외부 사람은 <code class="language-plaintext highlighter-rouge">deposit</code> 버튼을 통해서만 안전하게 잔고를 바꿀 수 있습니다. 이를 <strong>캡슐화(Encapsulation)</strong>라고 합니다.</li>
 </ul>
-
-<p><strong>A.java</strong></p>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch06.sec13.exam03.package1</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">A</span> <span class="o">{</span>
-	<span class="c1">// public 접근 제한을 갖는 필드 선언</span>
-	<span class="kd">public</span> <span class="kt">int</span> <span class="n">field1</span><span class="o">;</span>
-	<span class="c1">// default 접근 제한을 갖는 필드 선언</span>
-	<span class="kt">int</span> <span class="n">field2</span><span class="o">;</span>
-	<span class="c1">// private 접근 제한을 갖는 필드 선언</span>
-	<span class="kd">private</span> <span class="kt">int</span> <span class="n">field3</span><span class="o">;</span>
-	
-	<span class="c1">// public 접근 제한을 갖는 생성자 선언</span>
-	<span class="kd">public</span> <span class="nf">A</span><span class="o">()</span> <span class="o">{</span>
-		<span class="n">field1</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>	<span class="c1">// (o)</span>
-		<span class="n">field2</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>	<span class="c1">// (o)</span>
-		<span class="n">field3</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>	<span class="c1">// (o)</span>
-		
-		<span class="n">method1</span><span class="o">();</span>	<span class="c1">// (o)</span>
-		<span class="n">method2</span><span class="o">();</span>	<span class="c1">// (o)</span>
-		<span class="n">method3</span><span class="o">();</span>	<span class="c1">// (o)</span>
-	<span class="o">}</span>
-	
-	<span class="c1">// public 접근 제한을 갖는 메소드 선언</span>
-	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">method1</span><span class="o">()</span> <span class="o">{</span>
-	<span class="o">}</span>
-	
-	<span class="c1">// default 접근 제한을 갖는 메소드 선언</span>
-	<span class="kt">void</span> <span class="nf">method2</span><span class="o">()</span> <span class="o">{</span>
-	<span class="o">}</span>
-	
-	<span class="c1">// private 접근 제한을 갖는 메소드 선언</span>
-	<span class="kd">private</span> <span class="kt">void</span> <span class="nf">method3</span><span class="o">()</span> <span class="o">{</span>
-	<span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p><strong>B.java</strong></p>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch06.sec13.exam03.package1</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">B</span> <span class="o">{</span>
-	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">method</span><span class="o">()</span> <span class="o">{</span>
-		<span class="c1">// 객체 생성</span>
-		<span class="no">A</span> <span class="n">a</span> <span class="o">=</span> <span class="k">new</span> <span class="no">A</span><span class="o">();</span>
-		
-		<span class="c1">// 필드값 변경</span>
-		<span class="n">a</span><span class="o">.</span><span class="na">field1</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="c1">// (o)</span>
-		<span class="n">a</span><span class="o">.</span><span class="na">field2</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="c1">// (o)</span>
-		<span class="c1">// a.field3 = 1; // (x) private 필드 접근 불가</span>
-		
-		<span class="c1">// 메소드 호출</span>
-		<span class="n">a</span><span class="o">.</span><span class="na">method1</span><span class="o">();</span> <span class="c1">// (o)</span>
-		<span class="n">a</span><span class="o">.</span><span class="na">method2</span><span class="o">();</span> <span class="c1">// (o)</span>
-		<span class="c1">// a.method3(); // (x) private 메소드 접근 불가</span>
-	<span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p><strong>C.java</strong></p>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch06.sec13.exam03.package2</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">ch06.sec13.exam03.package1.*</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">C</span> <span class="o">{</span>
-	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">method</span><span class="o">()</span> <span class="o">{</span>
-		<span class="c1">// 객체 생성</span>
-		<span class="no">A</span> <span class="n">a</span> <span class="o">=</span> <span class="k">new</span> <span class="no">A</span><span class="o">();</span>
-		
-		<span class="c1">// 필드값 변경</span>
-		<span class="n">a</span><span class="o">.</span><span class="na">field1</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="c1">// (o)</span>
-		<span class="c1">// a.field2 = 1; // (x) default 필드 접근 불가</span>
-		<span class="c1">// a.field3 = 1; // (x) private 필드 접근 불가</span>
-		
-		<span class="c1">// 메소드 호출</span>
-		<span class="n">a</span><span class="o">.</span><span class="na">method1</span><span class="o">();</span> <span class="c1">// (o)</span>
-		<span class="c1">// a.method2(); // (x) default 메소드 접근 불가</span>
-		<span class="c1">// a.method3(); // (x) private 메소드 접근 불가</span>
-	<span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
 
         </div>
 

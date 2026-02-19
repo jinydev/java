@@ -1,0 +1,35 @@
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="400" fill="#f8f9fa"/>
+
+  <!-- Engine (Internal Data) -->
+  <rect x="100" y="120" width="200" height="160" rx="10" fill="#95a5a6" stroke="#7f8c8d" stroke-width="3"/>
+  <text x="200" y="150" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="white" font-weight="bold">Engine (Field)</text>
+  <text x="200" y="200" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="#2c3e50" font-weight="bold">speed : 100</text>
+  <text x="200" y="230" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#ecf0f1">(Direct Value)</text>
+
+  <!-- Arrow to Getter -->
+  <path d="M300,200 L390,200" stroke="#2c3e50" stroke-width="5" marker-end="url(#arrow_black)"/>
+
+  <!-- Getter (Dashboard) -->
+  <g transform="translate(400, 100)">
+    <rect x="0" y="0" width="300" height="200" rx="10" fill="#3498db" stroke="#2980b9" stroke-width="3"/>
+    <text x="150" y="40" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="white" font-weight="bold">Getter (Dashboard)</text>
+    
+    <!-- Speedometer Graphic -->
+    <path d="M50,150 A100,100 0 0,1 250,150" stroke="white" stroke-width="10" fill="none" />
+    <line x1="150" y1="150" x2="220" y2="100" stroke="#e74c3c" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="150" cy="150" r="10" fill="#2c3e50"/>
+    
+    <text x="150" y="180" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="white" font-weight="bold">160 km/h</text>
+  </g>
+  
+  <text x="550" y="340" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#2980b9">필요하다면 단위 변환(마일 → km)도 가능!</text>
+
+  <defs>
+    <marker id="arrow_black" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#2c3e50" />
+    </marker>
+  </defs>
+
+</svg>

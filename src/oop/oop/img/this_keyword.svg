@@ -1,0 +1,30 @@
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="400" fill="#f8f9fa"/>
+
+  <!-- Character (The Object) -->
+  <g transform="translate(300, 100)">
+    <circle cx="100" cy="80" r="60" fill="#2ecc71" stroke="#27ae60" stroke-width="3"/>
+    <circle cx="80" cy="70" r="5" fill="#2d3436"/> <!-- Eye -->
+    <circle cx="120" cy="70" r="5" fill="#2d3436"/> <!-- Eye -->
+    <path d="M80,100 Q100,120 120,100" fill="none" stroke="#2d3436" stroke-width="3"/> <!-- Smile -->
+    
+    <path d="M40,140 L160,140 L160,250 L40,250 Z" fill="#2ecc71" stroke="#27ae60" stroke-width="3"/> <!-- Body -->
+    
+    <!-- Arm Pointing to Self -->
+    <path d="M40,160 C-20,160 -20,220 50,200" stroke="#27ae60" stroke-width="15" fill="none" stroke-linecap="round"/>
+    <circle cx="50" cy="200" r="15" fill="#27ae60"/> <!-- Hand -->
+  </g>
+
+  <!-- Speech Bubble -->
+  <g transform="translate(500, 50)">
+    <path d="M0,0 L200,0 L200,100 L20,100 L0,120 L0,0 Z" fill="white" stroke="#2c3e50" stroke-width="3"/>
+    <text x="100" y="40" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="#2c3e50" font-weight="bold">"this" is ME!</text>
+    <text x="100" y="70" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#7f8c8d">this.name = "MyName"</text>
+  </g>
+
+  <!-- Explanation -->
+  <text x="400" y="320" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#2c3e50" font-weight="bold">this = 나 자신 (현재 객체)</text>
+  <text x="400" y="350" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#7f8c8d">필드와 매개변수 이름이 같을 때 구분하기 위해 써요.</text>
+
+</svg>

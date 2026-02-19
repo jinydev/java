@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <rect width="800" height="400" fill="#f0f8ff"/>
+  
+  <text x="400" y="50" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" font-weight="bold" fill="#333">Actions (Methods, Behavior)</text>
+
+  <!-- Robot Moving -->
+  <g transform="translate(150, 150)">
+    <rect x="0" y="0" width="80" height="120" ry="20" fill="#c0c0c0" stroke="#333" stroke-width="3"/>
+    <circle cx="40" cy="30" r="5" fill="#0f0"/>
+    <circle cx="20" cy="30" r="5" fill="#0f0"/>
+    <line x1="10" y1="130" x2="30" y2="150" stroke="#333" stroke-width="5"/>
+    <line x1="70" y1="130" x2="50" y2="150" stroke="#333" stroke-width="5"/>
+    <text x="40" y="-20" text-anchor="middle" font-size="16">move()</text>
+    <!-- Motion lines -->
+    <path d="M -20 80 L -50 80" stroke="#ffa500" stroke-width="3" stroke-dasharray="5,5"/>
+    <path d="M -20 100 L -50 100" stroke="#ffa500" stroke-width="3" stroke-dasharray="5,5"/>
+  </g>
+
+  <!-- Robot Waving -->
+  <g transform="translate(450, 150)">
+    <rect x="0" y="0" width="80" height="120" ry="20" fill="#c0c0c0" stroke="#333" stroke-width="3"/>
+    <circle cx="60" cy="30" r="5" fill="#0f0"/>
+    <circle cx="40" cy="30" r="5" fill="#0f0"/>
+    <line x1="80" y1="40" x2="110" y2="10" stroke="#333" stroke-width="5"/> <!-- Arm up -->
+    <text x="40" y="-20" text-anchor="middle" font-size="16">wave()</text>
+    <path d="M 120 10 Q 130 0 140 10" stroke="#ffa500" stroke-width="3" fill="none"/>
+    <path d="M 120 20 Q 130 10 140 20" stroke="#ffa500" stroke-width="3" fill="none"/>
+  </g>
+
+    <!-- Code Block -->
+  <g transform="translate(600, 150)">
+    <rect x="0" y="0" width="150" height="120" fill="#eee" stroke="#ccc"/>
+    <text x="10" y="30" font-family="monospace">void move() {</text>
+    <text x="20" y="50" font-family="monospace" fill="#666"> // code...</text>
+    <text x="10" y="70" font-family="monospace">}</text>
+    <text x="10" y="90" font-family="monospace">void wave() {</text>
+    <text x="10" y="110" font-family="monospace">}</text>
+  </g>
+</svg>

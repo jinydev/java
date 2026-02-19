@@ -1,0 +1,48 @@
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="400" fill="#f0f3f5"/>
+
+  <!-- Title -->
+  <text x="400" y="40" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="#2c3e50" font-weight="bold">접근 제한자 = 우리 집 보안 시스템</text>
+
+  <!-- 1. Public (Public Park) -->
+  <g transform="translate(50, 80)">
+    <rect x="0" y="0" width="200" height="250" rx="10" fill="#2ecc71" stroke="#27ae60" stroke-width="3"/>
+    <text x="100" y="40" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="white" font-weight="bold">public</text>
+    <text x="100" y="70" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="white">모두에게 공개</text>
+    
+    <!-- Park Icon -->
+    <circle cx="100" cy="150" r="50" fill="#e8f8f5"/>
+    <path d="M100,120 L120,170 L80,170 Z" fill="#27ae60"/> <!-- Tree -->
+    <rect x="95" y="170" width="10" height="20" fill="#795548"/>
+    <text x="100" y="230" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="white">공원 (Park)</text>
+  </g>
+
+  <!-- 2. Protected (Inheritance) -->
+  <g transform="translate(300, 80)">
+    <rect x="0" y="0" width="200" height="250" rx="10" fill="#f1c40f" stroke="#f39c12" stroke-width="3"/>
+    <text x="100" y="40" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="white" font-weight="bold">protected</text>
+    <text x="100" y="70" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="white">자식만 허용</text>
+    
+    <!-- Shield/Family Icon -->
+    <path d="M100,110 L140,130 L140,180 L100,200 L60,180 L60,130 Z" fill="#fff9c4" stroke="#f39c12" stroke-width="2"/>
+    <text x="100" y="165" font-family="Arial, sans-serif" font-size="30" text-anchor="middle">🛡️</text>
+    <text x="100" y="230" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="white">상속 (Inheritance)</text>
+  </g>
+
+  <!-- 3. Private (Safe) -->
+  <g transform="translate(550, 80)">
+    <rect x="0" y="0" width="200" height="250" rx="10" fill="#e74c3c" stroke="#c0392b" stroke-width="3"/>
+    <text x="100" y="40" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="white" font-weight="bold">private</text>
+    <text x="100" y="70" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="white">나만 접근 가능</text>
+    
+    <!-- Safe Icon -->
+    <rect x="50" y="110" width="100" height="100" fill="#34495e" stroke="#2c3e50" stroke-width="2"/>
+    <circle cx="100" cy="160" r="15" fill="#95a5a6" stroke="#7f8c8d" stroke-width="2"/>
+    <text x="100" y="230" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="white">개인 금고 (Safe)</text>
+  </g>
+  
+  <!-- Default explanation below -->
+  <text x="400" y="360" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#7f8c8d">* default: 같은 동네(패키지) 사람들에게만 공개</text>
+
+</svg>

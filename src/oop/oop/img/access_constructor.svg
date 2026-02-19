@@ -1,0 +1,46 @@
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="400" fill="#f8f9fa"/>
+
+  <!-- Object (Car) being created -->
+  <g transform="translate(50, 50)">
+    <rect x="0" y="0" width="200" height="150" rx="10" fill="#3498db"/>
+    <text x="100" y="80" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="white" font-weight="bold">NEW OBJECT</text>
+  </g>
+
+  <!-- Arrow -->
+  <path d="M260,125 L340,125" stroke="#2c3e50" stroke-width="5" marker-end="url(#arrow)"/>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#2c3e50" />
+    </marker>
+  </defs>
+
+  <!-- Keys (Constructors) -->
+  <g transform="translate(350, 50)">
+    <!-- Public Key -->
+    <g transform="translate(0, 0)">
+      <path d="M20,20 L60,20 L60,40 L40,40 L40,60 L20,60 Z" fill="#2ecc71" stroke="#27ae60" stroke-width="2"/>
+      <circle cx="20" cy="30" r="10" fill="none" stroke="#27ae60" stroke-width="2"/>
+      <text x="80" y="40" font-family="Arial, sans-serif" font-size="16" fill="#27ae60" font-weight="bold">public 생성자</text>
+      <text x="80" y="60" font-family="Arial, sans-serif" font-size="12" fill="#7f8c8d">누구나 이 열쇠로 객체 생성 가능</text>
+    </g>
+
+    <!-- Private Key -->
+    <g transform="translate(0, 100)">
+      <path d="M20,20 L60,20 L60,40 L40,40 L40,60 L20,60 Z" fill="#e74c3c" stroke="#c0392b" stroke-width="2"/>
+      <circle cx="20" cy="30" r="10" fill="none" stroke="#c0392b" stroke-width="2"/>
+      <text x="80" y="40" font-family="Arial, sans-serif" font-size="16" fill="#c0392b" font-weight="bold">private 생성자</text>
+      <text x="80" y="60" font-family="Arial, sans-serif" font-size="12" fill="#7f8c8d">아무도 못 만듦 (내부에서만 가능)</text>
+    </g>
+    
+    <!-- Default Key -->
+    <g transform="translate(0, 200)">
+      <path d="M20,20 L60,20 L60,40 L40,40 L40,60 L20,60 Z" fill="#f1c40f" stroke="#f39c12" stroke-width="2"/>
+      <circle cx="20" cy="30" r="10" fill="none" stroke="#f39c12" stroke-width="2"/>
+      <text x="80" y="40" font-family="Arial, sans-serif" font-size="16" fill="#f39c12" font-weight="bold">(default) 생성자</text>
+      <text x="80" y="60" font-family="Arial, sans-serif" font-size="12" fill="#7f8c8d">같은 패키지 친구들만 가능</text>
+    </g>
+  </g>
+
+</svg>

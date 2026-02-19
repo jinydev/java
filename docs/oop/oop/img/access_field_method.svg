@@ -1,0 +1,32 @@
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="400" fill="#f8f9fa"/>
+
+  <!-- Object Box -->
+  <rect x="150" y="50" width="500" height="300" rx="10" fill="#ecf0f1" stroke="#bdc3c7" stroke-width="3"/>
+  <text x="400" y="90" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="#2c3e50" font-weight="bold">My Object</text>
+
+  <!-- Public Field -->
+  <g transform="translate(200, 120)">
+    <rect x="0" y="0" width="400" height="60" rx="5" fill="#2ecc71" opacity="0.2"/>
+    <text x="20" y="35" font-family="Arial, sans-serif" font-size="18" fill="#27ae60" font-weight="bold">public int score;</text>
+    <text x="250" y="35" font-family="Arial, sans-serif" font-size="14" fill="#27ae60">← 외부에서 마음대로 변경 가능</text>
+  </g>
+
+  <!-- Private Field -->
+  <g transform="translate(200, 200)">
+    <rect x="0" y="0" width="400" height="60" rx="5" fill="#e74c3c" opacity="0.2"/>
+    <text x="20" y="35" font-family="Arial, sans-serif" font-size="18" fill="#c0392b" font-weight="bold">private String password;</text>
+    <rect x="350" y="15" width="30" height="30" fill="#c0392b"/> <!-- Lock Icon Placeholder -->
+    <path d="M365,20 L365,30 M360,30 L370,30 L370,40 L360,40 Z" stroke="white" stroke-width="2" fill="none"/>
+    <text x="220" y="35" font-family="Arial, sans-serif" font-size="14" fill="#c0392b">← 접근 불가! (보호됨)</text>
+  </g>
+  
+  <!-- Method Access -->
+  <g transform="translate(200, 280)">
+    <text x="200" y="0" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#7f8c8d">비밀번호를 바꾸려면? (Getter/Setter)</text>
+    <rect x="100" y="10" width="200" height="40" rx="20" fill="#3498db" stroke="#2980b9" stroke-width="2"/>
+    <text x="200" y="35" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="white" font-weight="bold">public void setPassword()</text>
+  </g>
+
+</svg>

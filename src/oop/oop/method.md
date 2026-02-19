@@ -8,11 +8,17 @@ grand_parent: "객체지향 자바 프로그래밍"
 
 # 6.8 메소드 선언과 호출
 
-메소드 선언은 객체의 동작을 실행 블록으로 정의하는 것을 말하고, 메소드 호출은 실행 블록을 실제로 실행하는 것을 말한다. 메소드는 객체 내부에서도 호출되지만 다른 객체에서도 호출될 수 있기 때문에 객체 간의 상호작용 방법을 정의하는 것이라고 볼 수 있다. 상호작용의 개념은 6.1절을 참고하길 바란다.
+메소드(Method)는 객체 안에 있는 **'기능'**이나 **'명령'**이라고 생각하면 쉽습니다.
+우리가 로봇에게 "청소해!", "요리해!" 라고 명령을 내리면 로봇이 그 동작을 수행하듯이, 객체에게 일을 시키기 위해 사용하는 것이 바로 메소드입니다.
+
+*   **메소드 선언**: 로봇에게 어떤 동작을 어떻게 수행해야 하는지 가르쳐 주는 것 (설계도 작성)
+*   **메소드 호출**: 로봇에게 실제로 그 동작을 하라고 명령하는 것 (실행)
+
+![Method Declaration vs Call](./img/method_declaration_vs_call.svg)
 
 ## 메소드 선언
 
-다음은 메소드를 선언하는 방법을 보여 준다.
+메소드를 선언한다는 것은 "이 기능은 이렇게 작동해야 해"라고 정의하는 것입니다. 마치 요리책에 라면 끓이는 법(레시피)을 적어두는 것과 같습니다.
 
 ```java
 리턴타입 메소드명 (매개변수, ...) {
@@ -20,110 +26,99 @@ grand_parent: "객체지향 자바 프로그래밍"
 }
 ```
 
-### 리턴 타입
+### 리턴 타입 (결과값)
 
-리턴 타입은 메소드가 실행한 후 호출한 곳으로 전달하는 결과값의 타입을 말한다. 리턴값이 없는 메소드는 void로 작성해야 한다.
+자판기에서 음료수 버튼을 누르면 음료수가 나오죠? 이때 나오는 **음료수**가 바로 **리턴값**입니다.
+메소드가 실행을 마치고 나면, 그 결과를 호출한 곳으로 돌려줄 수 있는데 그 결과의 데이터 타입을 말합니다.
+
+*   **결과가 있는 경우**: `int`, `double`, `String` 등 해당 타입을 적어줍니다. 반드시 `return` 문으로 값을 돌려줘야 합니다.
+*   **결과가 없는 경우**: `void`라고 적습니다. "일만 하고 결과 보고는 안 해도 돼"라는 뜻입니다.
+
+![Method Return](./img/method_return.svg)
 
 ```java
-void powerOn() { ... } // 리턴값이 없는 메소드 선언
-double divide(int x, int y) { ... } // double 타입 값을 리턴하는 메소드 선언
+void powerOn() { ... } // 전원만 켜고 끝! (리턴값 없음)
+double divide(int x, int y) { ... } // 나눗셈 결과를 double로 돌려줘!
 ```
 
-리턴 타입이 있는 메소드는 실행 블록 안에서 return 문으로 리턴값을 반드시 지정해야 한다.
+### 메소드명 (이름)
 
-### 메소드명
+메소드 이름은 알기 쉽게 짓는 것이 중요합니다.
+*   **첫 글자는 소문자**: `run`, `start`
+*   **두 번째 단어부터는 대문자**: `setSpeed`, `getName` (캐멀 스타일)
 
-메소드명은 첫 문자를 소문자로 시작하고, 캐멀 스타일로 작성한다. 다음은 잘 작성된 메소드명을 보여 준다.
+### 매개변수 (재료 투입)
+
+자판기에 동전을 넣어야 음료수가 나오듯이, 메소드를 실행할 때 **필요한 재료(데이터)**를 넣어주는 구멍입니다.
+
+![Method Parameters](./img/method_parameters.svg)
+
+*   **재료가 필요한 경우**: 필요한 변수 타입을 적어줍니다. `int x`, `String name`
+*   **재료가 필요 없는 경우**: 빈 괄호 `()` 로 둡니다.
 
 ```java
-void run() { ... }
-void setSpeed(int speed) { ... }
-String getName() { ... }
-```
-
-### 매개변수
-
-매개변수는 메소드를 호출할 때 전달한 매개값을 받기 위해 사용된다. 다음 예에서 divide() 메소드는 연산할 두 수를 전달받아야 하므로 매개변수가 2개 필요하다. 전달할 매개값이 없다면 매개변수는 생략할 수 있다.
-
-```java
-double divide(int x, int y) { ... }
+double divide(int x, int y) { ... } // 계산하려면 숫자 2개가 필요해
+void powerOn() { ... } // 전원 켜는 건 재료가 필요 없어
 ```
 
 ### 실행 블록
 
-메소드 호출 시 실행되는 부분이다.
-
-다음 예제는 Calculator 클래스에서 powerOn(), plus(), divide(), powerOff() 메소드를 선언하는 방법을 보여 준다.
+메소드가 호출되었을 때 실제로 실행되는 코드들이 들어있는 중괄호 `{ }` 블록입니다.
 
 **Calculator.java**
 ```java
 package ch06.sec08.exam01;
 
 public class Calculator {
-	// 리턴값이 없는 메소드 선언
+	// 1. 리턴값이 없는 메소드 (void)
 	void powerOn() {
-		System.out.println("전원을 니다.");
+		System.out.println("전원을 켭니다.");
 	}
 
-	// 리턴값이 없는 메소드 선언
+	// 2. 리턴값이 없는 메소드 (void)
 	void powerOff() {
-		System.out.println("전원을 끕니다.");
+		System.out.println("전원을 끄니다.");
 	}
 
-	// 호출 시 두 정수 값을 전달받고,
-	// 호출한 곳으로 결과값 int를 리턴하는 메소드 선언
+	// 3. 덧셈 결과를 'int'로 돌려주는 메소드
 	int plus(int x, int y) {
 		int result = x + y;
-		return result; // 리턴값 지정
+		return result; // 결과값 반환
 	}
 
-	// 호출 시 두 정수 값을 전달받고,
-	// 호출한 곳으로 결과값 double을 리턴하는 메소드 선언
+	// 4. 나눗셈 결과를 'double'로 돌려주는 메소드
 	double divide(int x, int y) {
 		double result = (double)x / (double)y;
-		return result; // 리턴값 지정
+		return result; // 결과값 반환
 	}
 }
 ```
 
 ## 메소드 호출
 
-메소드를 호출한다는 것은 메소드 블록을 실행하는 것을 말한다. 클래스에서 메소드를 선언했다고 해서 바로 호출할 수 있는 것은 아니다. 메소드는 객체의 동작이므로 객체가 존재하지 않으면 메소드를 호출할 수 없다.
+메소드 호출은 "야, 이거 해!" 하고 **실제로 명령을 내리는 것**입니다. 레시피만 있다고 요리가 되는 게 아니죠? 요리사가 직접 요리를 해야(호출해야) 음식을 먹을 수 있습니다.
 
-클래스로부터 객체가 생성된 후에 메소드는 생성자와 다른 메소드 내부에서 호출될 수 있고, 객체 외부에서도 호출될 수 있다.
+### 객체 내부에서 호출
 
-객체 내부에서는 단순히 메소드명으로 호출하면 되지만, 외부 객체에서는 참조 변수와 도트(.) 연산자를 이용해서 호출한다. 또한 메소드가 매개변수를 가지고 있을 때는 호출할 때 매개변수의 타입과 수에 맞게 매개값을 제공해야 한다.
-
-메소드가 리턴값이 있을 경우에는 대입 연산자를 사용해서 다음과 같이 리턴값을 변수에 저장할 수 있다. 이때 변수 타입은 메소드의 리턴 타입과 동일하거나 자동 타입 변환될 수 있어야 한다.
+같은 객체 안에서는 이름만 부르면 됩니다. "철수야!" 하고 부르는 것과 같습니다.
 
 ```java
-타입 변수 = 메소드();
-```
-
-**객체 내부**
-```java
-Calculator() {
-    powerOff();
-}
-
 void method() {
-    powerOn();
+    powerOn(); // 이름만 부르면 됨
     int r1 = plus(3, 5);
-    double r2 = divide(15, 3);
 }
 ```
 
-**외부 객체**
+### 외부 객체에서 호출
+
+다른 객체에 있는 메소드를 부를 때는, 그 객체를 먼저 만들고 `.`(도트) 연산자를 사용해야 합니다. 마치 "옆집.철수야!" 하고 부르는 것과 비슷합니다.
+
 ```java
 void method() {
-    Calculator calc = new Calculator();
-    calc.powerOn();
-    int r1 = calc.plus(10, 20);
-    double r2 = calc.divide(10, 30);
+    Calculator calc = new Calculator(); // 객체 생성 (도구 준비)
+    calc.powerOn(); // 도구.동작()
 }
 ```
-
-다음 예제는 Calculator 클래스에서 선언된 powerOn(), plus(), divide(), powerOff() 메소드를 호출하는 방법을 보여 준다.
 
 **CalculatorExample.java**
 ```java
@@ -131,25 +126,23 @@ package ch06.sec08.exam01;
 
 public class CalculatorExample {
 	public static void main(String[] args) {
-		// Calculator 객체 생성
+		// 1. 계산기(객체) 생성
 		Calculator myCalc = new Calculator();
 		
-		// 리턴값이 없는 powerOn() 메소드 호출
+		// 2. 전원 켜기
 		myCalc.powerOn();
 		
-		// plus 메소드 호출 시 5와 6을 매개값으로 제공하고,
-		// 덧셈 결과를 리턴받아 result1 변수에 대입
+		// 3. 더하기 기능 사용 (5와 6을 넣으면 11을 줌)
 		int result1 = myCalc.plus(5, 6);
 		System.out.println("result1: " + result1);
 		
 		int x = 10;
 		int y = 4;
-		// divide() 메소드 호출 시 변수 x와 y의 값을 매개값으로 제공하고,
-		// 나눗셈 결과를 리턴받아 result2 변수에 대입
+		// 4. 나누기 기능 사용 (10과 4를 넣으면 2.5를 줌)
 		double result2 = myCalc.divide(x, y);
 		System.out.println("result2: " + result2);
 		
-		// 리턴값이 없는 powerOff() 메소드 호출
+		// 5. 전원 끄기
 		myCalc.powerOff();
 	}
 }
@@ -157,288 +150,62 @@ public class CalculatorExample {
 
 **실행 결과**
 ```
-전원을 니다.
+전원을 켭니다.
 result1: 11
 result2: 2.5
 전원을 끕니다.
 ```
 
-## 가변길이 매개변수
+## 가변길이 매개변수 (재료 개수가 내 맘대로?)
 
-메소드를 호출할 때에는 매개변수의 개수에 맞게 매개값을 제공해야 한다. 만약 메소드가 가변길이 매개변수를 가지고 있다면 매개변수의 개수와 상관없이 매개값을 줄 수 있다. 가변길이 매개변수는 다음과 같이 선언한다.
-
-```java
-int sum(int ... values) {
-}
-```
-
-가변길이 매개변수는 메소드 호출 시 매개값을 쉼표로 구분해서 개수와 상관없이 제공할 수 있다.
+보통은 재료(매개변수) 개수가 정해져 있지만, 때로는 몇 개가 들어올지 모를 때가 있습니다. 이때 사용하는 것이 `...` (가변길이 매개변수) 입니다.
 
 ```java
-int result = sum(1, 2, 3);
-int result = sum(1, 2, 3, 4, 5);
+int sum(int ... values) { ... }
 ```
 
-매개값들은 자동으로 배열 항목으로 변환되어 메소드에서 사용된다. 그렇기 때문에 메소드 호출 시 직접 배열을 매개값으로 제공해도 된다.
-
-```java
-int[] values = { 1, 2, 3 };
-int result = sum(values);
-int result = sum(new int[] { 1, 2, 3 });
-```
+이렇게 쓰면 `sum(1, 2)`도 되고, `sum(1, 2, 3, 4, 5)`도 됩니다. 마치 "재료가 몇 개든 다 받아서 처리해 줄게!" 하는 것과 같습니다. 들어온 값들은 **배열**처럼 다뤄집니다.
 
 **Computer.java**
 ```java
 package ch06.sec08.exam02;
 
 public class Computer {
-	// 가변길이 매개변수를 갖는 메소드 선언
+	// 입력된 숫자들을 모두 더해주는 메소드
 	int sum(int ... values) {
-		// sum 변수 선언
 		int sum = 0;
 		
-		// values는 배열 타입의 변수처럼 사용
+		// 들어온 값들을 하나씩 꺼내서 더하기
 		for (int i = 0; i < values.length; i++) {
 			sum += values[i];
 		}
 		
-		// 합산 결과를 리턴
 		return sum;
 	}
 }
 ```
 
-**ComputerExample.java**
-```java
-package ch06.sec08.exam02;
+## return 문 (일 끝내고 복귀!)
 
-public class ComputerExample {
-	public static void main(String[] args) {
-		// Computer 객체 생성
-		Computer myCom = new Computer();
-		
-		// sum() 메소드 호출 시 매개값 1, 2, 3을 제공하고
-		// 합산 결과를 리턴받아 result1 변수에 대입
-		int result1 = myCom.sum(1, 2, 3);
-		System.out.println("result1: " + result1);
-		
-		// sum() 메소드 호출 시 매개값 1, 2, 3, 4, 5를 제공하고
-		// 합산 결과를 리턴받아 result2 변수에 대입
-		int result2 = myCom.sum(1, 2, 3, 4, 5);
-		System.out.println("result2: " + result2);
-		
-		// sum() 메소드 호출 시 배열을 제공하고
-		// 합산 결과를 리턴받아 result3 변수에 대입
-		int[] values = { 1, 2, 3, 4, 5 };
-		int result3 = myCom.sum(values);
-		System.out.println("result3: " + result3);
-		
-		// sum() 메소드 호출 시 배열을 제공하고
-		// 합산 결과를 리턴받아 result4 변수에 대입
-		int result4 = myCom.sum(new int[] { 1, 2, 3, 4, 5 });
-		System.out.println("result4: " + result4);
-	}
-}
-```
+`return` 문은 두 가지 역할을 합니다.
+1.  **값 돌려주기**: `return 결과값;`
+2.  **즉시 종료하기**: `return;` (리턴값이 없는 void 메소드에서 사용)
 
-**실행 결과**
-```
-result1: 6
-result2: 15
-result3: 15
-result4: 15
-```
+`return`이 실행되면 메소드는 하던 일을 멈추고 즉시 종료됩니다. 그래서 `return` 뒤에 코드를 쓰면 "이 코드는 절대 실행될 리가 없어(Unreachable code)"라며 에러가 납니다.
 
-## return 문
+## 메소드 오버로딩 (같은 이름, 다른 기능)
 
-return 문은 메소드의 실행을 강제 종료하고 호출한 곳으로 돌아간다는 의미이다. 메소드 선언에 리턴 타입이 있을 경우에는 return 문 뒤에 리턴값을 추가로 지정해야 한다.
+**오버로딩(Overloading)**은 같은 이름의 메소드를 여러 개 만드는 것을 말합니다.
+"운전하다"라는 말이 자동차를 운전할 때와 오토바이를 운전할 때 조금씩 방식이 다르지만 똑같이 "운전하다"라고 부르는 것과 같습니다.
+
+조건은 **매개변수(재료)가 달라야 한다**는 것입니다.
 
 ```java
-return [리턴값];
+// 정사각형 넓이 (길이 하나만 필요)
+double areaRectangle(double width) { ... }
+
+// 직사각형 넓이 (가로, 세로 두 개 필요)
+double areaRectangle(double width, double height) { ... }
 ```
 
-return 문 이후에 실행문을 작성하면 'Unreachable code'라는 컴파일 에러가 발생한다. 왜냐하면 return 문 이후의 실행문은 결코 실행되지 않기 때문이다.
-
-```java
-int plus(int x, int y) {
-    int result = x + y;
-    return result;
-    System.out.println(result); // Unreachable code
-}
-```
-
-하지만 다음과 같은 경우에는 컴파일 에러가 발생하지 않는다.
-
-```java
-boolean isLeftGas() {
-    if (gas == 0) {
-        System.out.println("gas가 없습니다.");
-        return false; // 1
-    }
-    System.out.println("gas가 있습니다."); // 2
-    return true;
-}
-```
-
-if 문의 조건식이 false가 되면 정상적으로 2가 실행되기 때문에 2는 'Unreachable code' 에러를 발생시키지 않는다. if 문의 조건식이 true가 되면 1이 실행되고 return false;가 실행되어 메소드는 즉시 종료되므로 당연히 2는 실행되지 않는다.
-
-**Car.java**
-```java
-package ch06.sec08.exam03;
-
-public class Car {
-	// 필드 선언
-	int gas;
-	
-	// 리턴값이 없는 메소드로 매개값을 받아서 gas 필드값을 변경
-	void setGas(int gas) {
-		this.gas = gas;
-	}
-	
-	// 리턴값이 boolean인 메소드로 gas 필드값이 0이면 false를, 0이 아니면 true를 리턴
-	boolean isLeftGas() {
-		if (gas == 0) {
-			System.out.println("gas가 없습니다.");
-			return false; // false를 리턴하고 메소드 종료
-		}
-		System.out.println("gas가 있습니다.");
-		return true; // true를 리턴하고 메소드 종료
-	}
-	
-	// 리턴값이 없는 메소드로 gas 필드값이 0이면 return 문으로 메소드를 종료
-	void run() {
-		while (true) {
-			if (gas > 0) {
-				System.out.println("달립니다.(gas잔량:" + gas + ")");
-				gas -= 1;
-			} else {
-				System.out.println("멈춥니다.(gas잔량:" + gas + ")");
-				return; // 메소드 종료
-			}
-		}
-	}
-}
-```
-
-**CarExample.java**
-```java
-package ch06.sec08.exam03;
-
-public class CarExample {
-	public static void main(String[] args) {
-		// Car 객체 생성
-		Car myCar = new Car();
-		
-		// 리턴값이 없는 setGas() 메소드 호출
-		myCar.setGas(5);
-		
-		// isLeftGas() 메소드를 호출해서 받은 리턴값이 true일 경우 if 블록 실행
-		if (myCar.isLeftGas()) {
-			System.out.println("출발합니다.");
-			
-			// 리턴값이 없는 run() 메소드 호출
-			myCar.run();
-		}
-		
-		System.out.println("gas를 주입하세요.");
-	}
-}
-```
-
-**실행 결과**
-```
-gas가 있습니다.
-출발합니다.
-달립니다.(gas잔량:5)
-달립니다.(gas잔량:4)
-달립니다.(gas잔량:3)
-달립니다.(gas잔량:2)
-달립니다.(gas잔량:1)
-멈춥니다.(gas잔량:0)
-gas를 주입하세요.
-```
-
-## 메소드 오버로딩
-
-메소드 오버로딩(Overloading)은 메소드 이름은 같되 매개변수의 타입, 개수, 순서가 다른 메소드를 여러 개 선언하는 것을 말한다.
-
-```java
-class 클래스 {
-    리턴타입 메소드이름 (타입 변수, ...) { ... }
-    리턴타입 메소드이름 (타입 변수, ...) { ... } 
-    // 리턴타입은 무관, 매개변수는 동일값, 개수, 순서가 달라야 함
-}
-```
-
-메소드 오버로딩의 목적은 다양한 매개값을 처리하기 위해서이다. 다음 예에서 plus() 메소드는 두 개의 int 타입 매개값만 처리하고 double 타입 매개값은 처리할 수 없다.
-
-```java
-int plus(int x, int y) {
-    int result = x + y;
-    return result;
-}
-```
-
-만약 double 타입 값도 처리하고 싶다면 다음과 같이 plus() 메소드를 오버로딩하면 된다.
-
-```java
-double plus(double x, double y) {
-    double result = x + y;
-    return result;
-}
-```
-
-메소드 오버로딩의 대표적인 예는 콘솔에 출력하는 System.out.println() 메소드로, 호출할 때 주어진 매개값의 타입에 따라서 오버로딩된 println() 메소드 중 하나를 실행한다.
-
-```java
-void println() { ... }
-void println(double x) { ... }
-void println(int x) { ... }
-void println(String x) { ... }
-```
-
-다음 예제는 areaRectangle() 메소드를 오버로딩해서 매개값이 한 개면 정사각형의 넓이를, 두 개면 직사각형의 넓이를 계산한다.
-
-**Calculator.java**
-```java
-package ch06.sec08.exam04;
-
-public class Calculator {
-	// 정사각형의 넓이
-	double areaRectangle(double width) {
-		return width * width;
-	}
-	
-	// 직사각형의 넓이
-	double areaRectangle(double width, double height) {
-		return width * height;
-	}
-}
-```
-
-**CalculatorExample.java**
-```java
-package ch06.sec08.exam04;
-
-public class CalculatorExample {
-	public static void main(String[] args) {
-		// 객체 생성
-		Calculator myCalcu = new Calculator();
-		
-		// 정사각형의 넓이 구하기
-		double result1 = myCalcu.areaRectangle(10);
-		
-		// 직사각형의 넓이 구하기
-		double result2 = myCalcu.areaRectangle(10, 20);
-		
-		System.out.println("정사각형 넓이=" + result1);
-		System.out.println("직사각형 넓이=" + result2);
-	}
-}
-```
-
-**실행 결과**
-```
-정사각형 넓이=100.0
-직사각형 넓이=200.0
-```
+이름은 `areaRectangle`로 같지만, 재료가 1개냐 2개냐에 따라 알아서 맞는 기능이 실행됩니다. 이것이 바로 **다형성(다양한 형태를 가짐)**의 기초가 됩니다.

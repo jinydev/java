@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <rect width="800" height="400" fill="#f0f8ff"/>
+  <text x="400" y="50" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" font-weight="bold" fill="#333">Types of Relationships</text>
+
+  <!-- Aggregation -->
+  <g transform="translate(100, 100)">
+    <circle cx="80" cy="80" r="70" fill="#ffb6c1" opacity="0.8"/>
+    <text x="80" y="70" text-anchor="middle" font-weight="bold">Aggregation</text>
+    <text x="80" y="90" text-anchor="middle" font-size="12">(Has-a)</text>
+    <text x="80" y="110" text-anchor="middle" font-size="12">Part-Whole</text>
+  </g>
+
+  <!-- Use -->
+  <g transform="translate(300, 100)">
+    <circle cx="80" cy="80" r="70" fill="#add8e6" opacity="0.8"/>
+    <text x="80" y="70" text-anchor="middle" font-weight="bold">Use</text>
+    <text x="80" y="90" text-anchor="middle" font-size="12">(Uses-a)</text>
+    <text x="80" y="110" text-anchor="middle" font-size="12">Interaction</text>
+  </g>
+
+  <!-- Inheritance -->
+  <g transform="translate(500, 100)">
+    <circle cx="80" cy="80" r="70" fill="#98fb98" opacity="0.8"/>
+    <text x="80" y="70" text-anchor="middle" font-weight="bold">Inheritance</text>
+    <text x="80" y="90" text-anchor="middle" font-size="12">(Is-a)</text>
+    <text x="80" y="110" text-anchor="middle" font-size="12">Parent-Child</text>
+  </g>
+  
+  <!-- Connecting Lines for Concept -->
+  <line x1="240" y1="180" x2="310" y2="180" stroke="#666" stroke-dasharray="5,5"/>
+  <line x1="440" y1="180" x2="510" y2="180" stroke="#666" stroke-dasharray="5,5"/>
+
+</svg>

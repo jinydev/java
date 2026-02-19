@@ -1,0 +1,60 @@
+<svg width="800" height="500" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="500" fill="#f8f9fa"/>
+
+  <!-- Traditional Class -->
+  <g transform="translate(50, 60)">
+    <text x="150" y="-20" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="#c0392b" font-weight="bold">기존 Class (지루함)</text>
+    <rect width="300" height="400" fill="white" stroke="#bdc3c7" stroke-width="2" rx="5"/>
+    
+    <!-- Code Lines -->
+    <g transform="translate(20, 30)">
+        <text x="0" y="0" font-family="monospace" font-size="12" fill="#7f8c8d">public class Person {</text>
+        <text x="20" y="20" font-family="monospace" font-size="12" fill="#2c3e50">private final String name;</text>
+        <text x="20" y="40" font-family="monospace" font-size="12" fill="#2c3e50">private final int age;</text>
+        
+        <text x="20" y="70" font-family="monospace" font-size="12" fill="#2980b9">// Constructor</text>
+        <text x="20" y="90" font-family="monospace" font-size="12" fill="#7f8c8d">public Person(String name...) {</text>
+        <text x="40" y="110" font-family="monospace" font-size="12" fill="#7f8c8d">this.name = name;</text>
+        <text x="40" y="130" font-family="monospace" font-size="12" fill="#7f8c8d">this.age = age;</text>
+        <text x="20" y="150" font-family="monospace" font-size="12" fill="#7f8c8d">}</text>
+
+        <text x="20" y="180" font-family="monospace" font-size="12" fill="#2980b9">// Getters</text>
+        <text x="20" y="200" font-family="monospace" font-size="12" fill="#7f8c8d">public String getName() {...}</text>
+        <text x="20" y="220" font-family="monospace" font-size="12" fill="#7f8c8d">public int getAge() {...}</text>
+        
+        <text x="20" y="250" font-family="monospace" font-size="12" fill="#2980b9">// toString, equals, hashCode...</text>
+        <text x="20" y="270" font-family="monospace" font-size="12" fill="#7f8c8d">@Override public String...</text>
+        <text x="20" y="290" font-family="monospace" font-size="12" fill="#7f8c8d">@Override public boolean...</text>
+        <text x="20" y="310" font-family="monospace" font-size="12" fill="#7f8c8d">@Override public int...</text>
+        <text x="0" y="350" font-family="monospace" font-size="12" fill="#7f8c8d">}</text>
+    </g>
+    
+    <text x="150" y="380" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#e74c3c">너무 길고 복잡하다!</text>
+  </g>
+
+  <!-- Record -->
+  <g transform="translate(450, 60)">
+    <text x="150" y="-20" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="#27ae60" font-weight="bold">Record (심플함)</text>
+    <rect width="300" height="150" fill="white" stroke="#2ecc71" stroke-width="4" rx="5"/>
+    
+    <g transform="translate(20, 70)">
+        <text x="0" y="0" font-family="monospace" font-size="14" fill="#2c3e50" font-weight="bold">public record Person(</text>
+        <text x="20" y="20" font-family="monospace" font-size="14" fill="#d35400" font-weight="bold">String name, int age</text>
+        <text x="0" y="40" font-family="monospace" font-size="14" fill="#2c3e50" font-weight="bold">) {}</text>
+    </g>
+    
+    <text x="150" y="200" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="#27ae60" font-weight="bold">끝!</text>
+    <text x="150" y="230" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#2c3e50">생성자, Getter, toString 자동 생성</text>
+  </g>
+
+  <!-- Arrow -->
+  <path d="M370,200 L430,135" stroke="#2c3e50" stroke-width="3" marker-end="url(#arrow)"/>
+  
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#2c3e50" />
+    </marker>
+  </defs>
+
+</svg>

@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <rect width="800" height="400" fill="#f0f8ff"/>
+  <text x="400" y="50" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" font-weight="bold" fill="#333">Polymorphism (Multi-form)</text>
+
+  <!-- Interface / Slot -->
+  <g transform="translate(100, 150)">
+    <rect x="0" y="0" width="120" height="120" fill="#eee" stroke="#333" stroke-dasharray="5,5"/>
+    <text x="60" y="60" text-anchor="middle" font-size="14">Tire Slot</text>
+    <text x="60" y="80" text-anchor="middle" font-size="12">(Interface)</text>
+  </g>
+
+  <!-- Arrow -->
+  <polygon points="250,210 300,210 275,230" fill="#333" transform="rotate(-90 275 220) translate(0, -60)"/>
+
+  <!-- Implementations -->
+  <g transform="translate(350, 100)">
+    
+    <!-- Hankook Tire -->
+    <g transform="translate(0, 0)">
+      <circle cx="50" cy="50" r="40" fill="#333"/>
+      <circle cx="50" cy="50" r="20" fill="#555"/>
+      <text x="120" y="55" font-size="16" font-weight="bold">Hankook Tire</text>
+      <text x="120" y="75" font-size="14" fill="#666">roll() -> Smooth</text>
+    </g>
+
+    <!-- Kumho Tire -->
+    <g transform="translate(0, 120)">
+      <circle cx="50" cy="50" r="40" fill="#333" stroke="#f00" stroke-width="2"/>
+      <circle cx="50" cy="50" r="20" fill="#555"/>
+      <text x="120" y="55" font-size="16" font-weight="bold">Kumho Tire</text>
+      <text x="120" y="75" font-size="14" fill="#666">roll() -> Fast</text>
+    </g>
+
+  </g>
+
+  <g transform="translate(600, 150)">
+     <text x="0" y="0" width="200">
+       <tspan x="0" y="0" font-weight="bold">Same Method: roll()</tspan>
+       <tspan x="0" y="30">Different execution</tspan>
+       <tspan x="0" y="50">results!</tspan>
+     </text>
+  </g>
+
+</svg>

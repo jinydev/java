@@ -8,7 +8,7 @@
   <!-- 기본 메타데이터 --><meta name="description" content="Jiny linux"><meta name="author" content="HojinLee"><!-- 제목 설정 --><title>6.15 싱글톤 패턴</title>
   <meta name="title" content="6.15 싱글톤 패턴" /><!-- 키워드 설정 --><!-- Open Graph 메타데이터 --><meta property="og:title" content="6.15 싱글톤 패턴"><meta property="og:description" content="Jiny linux"><meta property="og:type" content="website"><meta property="og:locale" content="ko">
   <meta property="og:site_name" content="linux">
-  <meta property="og:url" content="https://java.jiny.dev/oop/oop/singleton.html">
+  <meta property="og:url" content="http://localhost:4000/oop/oop/singleton.html">
 
   <!-- Twitter 카드 메타데이터 --><meta name="twitter:card" content="summary"><meta property="twitter:title" content="6.15 싱글톤 패턴"><!-- Begin Jekyll SEO tag v2.8.0 -->
 <meta name="generator" content="Jekyll v4.4.1" />
@@ -17,14 +17,14 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
 <meta property="og:description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
-<link rel="canonical" href="https://java.jiny.dev/oop/oop/singleton.html" />
-<meta property="og:url" content="https://java.jiny.dev/oop/oop/singleton.html" />
+<link rel="canonical" href="http://localhost:4000/oop/oop/singleton.html" />
+<meta property="og:url" content="http://localhost:4000/oop/oop/singleton.html" />
 <meta property="og:site_name" content="객체지향 자바 프로그래밍 (Object-Oriented Java Programming)" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="6.15 싱글톤 패턴" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"6.15 싱글톤 패턴","url":"https://java.jiny.dev/oop/oop/singleton.html"}</script>
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"6.15 싱글톤 패턴","url":"http://localhost:4000/oop/oop/singleton.html"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -1527,82 +1527,104 @@
     </ol>
 </nav>
         <div class="bd-content ps-lg-2">
-            <h1 id="615-싱글톤-패턴">6.15 싱글톤 패턴</h1>
+            <h1 id="615-싱글톤-패턴-유일한-객체">6.15 싱글톤 패턴 (유일한 객체)</h1>
 
-<p>애플리케이션 전체에서 단 한 개의 객체만 생성해서 사용하고 싶다면 싱글톤(Singleton) 패턴을 적용할 수 있다. 싱글톤 패턴의 핵심은 생성자를 private 접근 제한해 외부에서 new 연산자로 생성자를 호출할 수 없도록 막는 것이다.</p>
+<p><br /></p>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">private</span> <span class="n">클래스</span><span class="o">()</span> <span class="o">{}</span>
-</code></pre></div></div>
+<h2 id="6151-싱글톤singleton이란">6.15.1 싱글톤(Singleton)이란?</h2>
 
-<p>생성자를 호출할 수 없으니 외부에서 마음대로 객체를 생성하는 것이 불가능해진다. 대신 싱글톤 패턴이 제공하는 정적 메소드를 통해 간접적으로 객체를 얻을 수 있다.</p>
+<p><strong>“우리 회사의 CEO는 단 한 명뿐입니다.”</strong></p>
 
-<p>다음은 싱글톤 패턴의 전체 코드를 보여 준다.</p>
+<p>프로그램 전체에서 <strong>단 하나의 객체만 생성해서 공유</strong>하고 싶을 때 사용하는 디자인 패턴입니다.</p>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">클래스</span> <span class="o">{</span>
-    <span class="c1">// private 접근 권한을 갖는 정적 필드 선언과 초기화</span>
-    <span class="kd">private</span> <span class="kd">static</span> <span class="n">클래스</span> <span class="n">singleton</span> <span class="o">=</span> <span class="k">new</span> <span class="n">클래스</span><span class="o">();</span>
+<blockquote>
+  <p><strong>비유: 회사의 CEO</strong></p>
+  <ul>
+    <li><strong>직원(일반 객체)</strong>: 필요할 때마다 계속 채용(생성)할 수 있습니다.</li>
+    <li><strong>CEO(싱글톤)</strong>: 회사에 딱 한 명만 존재해야 합니다. 만약 CEO가 두 명이라면 회사가 혼란에 빠질 것입니다.</li>
+  </ul>
+</blockquote>
+
+<p><img src="./img/singleton_concept.svg" alt="Singleton Concept" /></p>
+
+<p><br />
+<br /></p>
+
+<h2 id="6152-싱글톤-만들기-ceo-집무실-만들기">6.15.2 싱글톤 만들기 (CEO 집무실 만들기)</h2>
+
+<p>싱글톤을 만드는 핵심은 <strong>“외부에서 마음대로 생성(<code class="language-plaintext highlighter-rouge">new</code>)하지 못하게 막는 것”</strong>입니다.</p>
+
+<h3 id="-코드-예시">💻 코드 예시</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Singleton</span> <span class="o">{</span>
+    <span class="c1">// 1. 자기 자신을 나타내는 단 하나의 객체 (CEO 본인)</span>
+    <span class="c1">// private static으로 선언하여 외부 접근을 막고, 클래스 로딩 시 딱 한 번만 생성됨</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="nc">Singleton</span> <span class="n">singleton</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Singleton</span><span class="o">();</span>
     
-    <span class="c1">// private 접근 권한을 갖는 생성자 선언</span>
-    <span class="kd">private</span> <span class="n">클래스</span><span class="o">()</span> <span class="o">{}</span>
+    <span class="c1">// 2. 생성자를 private으로 막기 (채용 공고 내리기)</span>
+    <span class="c1">// 외부에서 'new Singleton()'을 호출할 수 없게 됨</span>
+    <span class="kd">private</span> <span class="nf">Singleton</span><span class="o">()</span> <span class="o">{}</span>
     
-    <span class="c1">// public 접근 권한을 갖는 정적 메소드 선언</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="n">클래스</span> <span class="n">getInstance</span><span class="o">()</span> <span class="o">{</span>
+    <span class="c1">// 3. 외부에서 접근할 수 있는 유일한 통로 (비서실)</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="nc">Singleton</span> <span class="nf">getInstance</span><span class="o">()</span> <span class="o">{</span>
         <span class="k">return</span> <span class="n">singleton</span><span class="o">;</span>
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div></div>
 
-<p>외부에서 객체를 얻는 유일한 방법은 getInstance() 메소드를 호출하는 것이다. getInstance() 메소드가 리턴하는 객체는 정적 필드가 참조하는 싱글톤 객체이다. 따라서 아래 코드에서 변수1과 변수2가 참조하는 객체는 동일한 객체가 된다.</p>
+<h3 id="-코드를-다시-한번-원리와-동작을-살펴봅니다">🔍 코드를 다시 한번 원리와 동작을 살펴봅니다</h3>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">클래스</span> <span class="n">변수1</span> <span class="o">=</span> <span class="n">클래스</span><span class="o">.</span><span class="na">getInstance</span><span class="o">();</span>
-<span class="n">클래스</span> <span class="n">변수2</span> <span class="o">=</span> <span class="n">클래스</span><span class="o">.</span><span class="na">getInstance</span><span class="o">();</span>
-</code></pre></div></div>
+<ol>
+  <li><strong><code class="language-plaintext highlighter-rouge">private static</code> 필드</strong>: 자신의 객체를 딱 하나만 만들어서 <code class="language-plaintext highlighter-rouge">singleton</code> 변수에 담아둡니다. <code class="language-plaintext highlighter-rouge">static</code>이므로 메모리에 딱 한 번만 올라갑니다.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">private</code> 생성자</strong>: 생성앞에 <code class="language-plaintext highlighter-rouge">private</code>을 붙이면 외부 클래스에서 <code class="language-plaintext highlighter-rouge">new Singleton()</code>을 호출했을 때 <strong>컴파일 에러</strong>가 발생합니다. 즉, 외부에서는 객체를 만들 수 없습니다.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">public static getInstance()</code></strong>: 외부에서 CEO를 만날 수 있는 유일한 방법입니다. 이 메소드를 호출하면 미리 만들어둔 <code class="language-plaintext highlighter-rouge">singleton</code> 객체를 리턴해줍니다.</li>
+</ol>
 
-<p><strong>Singleton.java</strong></p>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch06.sec15</span><span class="o">;</span>
+<p><img src="./img/singleton_access.svg" alt="Singleton Access" /></p>
 
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Singleton</span> <span class="o">{</span>
-	<span class="c1">// private 접근 권한을 갖는 정적 필드 선언과 초기화</span>
-	<span class="kd">private</span> <span class="kd">static</span> <span class="nc">Singleton</span> <span class="n">singleton</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Singleton</span><span class="o">();</span>
-	
-	<span class="c1">// private 접근 권한을 갖는 생성자 선언</span>
-	<span class="kd">private</span> <span class="nf">Singleton</span><span class="o">()</span> <span class="o">{</span>
-	<span class="o">}</span>
-	
-	<span class="c1">// public 접근 권한을 갖는 정적 메소드 선언</span>
-	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">Singleton</span> <span class="nf">getInstance</span><span class="o">()</span> <span class="o">{</span>
-		<span class="k">return</span> <span class="n">singleton</span><span class="o">;</span>
-	<span class="o">}</span>
+<p><br />
+<br /></p>
+
+<h2 id="6153-싱글톤-사용하기">6.15.3 싱글톤 사용하기</h2>
+
+<p>외부에서는 <code class="language-plaintext highlighter-rouge">new</code> 대신 <code class="language-plaintext highlighter-rouge">getInstance()</code> 메소드를 사용해야 합니다.</p>
+
+<h3 id="-코드-예시-1">💻 코드 예시</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SingletonExample</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// Singleton obj1 = new Singleton(); // (X) 컴파일 에러! 생성자 호출 불가</span>
+        
+        <span class="c1">// 올바른 사용법: getInstance() 호출</span>
+        <span class="nc">Singleton</span> <span class="n">obj1</span> <span class="o">=</span> <span class="nc">Singleton</span><span class="o">.</span><span class="na">getInstance</span><span class="o">();</span>
+        <span class="nc">Singleton</span> <span class="n">obj2</span> <span class="o">=</span> <span class="nc">Singleton</span><span class="o">.</span><span class="na">getInstance</span><span class="o">();</span>
+        
+        <span class="c1">// 두 변수가 같은 객체를 가리키는지 확인</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">obj1</span> <span class="o">==</span> <span class="n">obj2</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"같은 CEO입니다."</span><span class="o">);</span> 
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"다른 사람입니다."</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div></div>
 
-<p><strong>SingletonExample.java</strong></p>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch06.sec15</span><span class="o">;</span>
+<h3 id="-코드를-다시-한번-원리와-동작을-살펴봅니다-1">🔍 코드를 다시 한번 원리와 동작을 살펴봅니다</h3>
 
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SingletonExample</span> <span class="o">{</span>
-	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-		<span class="cm">/*
-		Singleton obj1 = new Singleton(); // 컴파일 에러
-		Singleton obj2 = new Singleton(); // 컴파일 에러
-		*/</span>
-		
-		<span class="c1">// 정적 메소드를 호출해서 싱글톤 객체 얻음</span>
-		<span class="nc">Singleton</span> <span class="n">obj1</span> <span class="o">=</span> <span class="nc">Singleton</span><span class="o">.</span><span class="na">getInstance</span><span class="o">();</span>
-		<span class="nc">Singleton</span> <span class="n">obj2</span> <span class="o">=</span> <span class="nc">Singleton</span><span class="o">.</span><span class="na">getInstance</span><span class="o">();</span>
-		
-		<span class="c1">// 동일한 객체를 참조하는지 확인</span>
-		<span class="k">if</span> <span class="o">(</span><span class="n">obj1</span> <span class="o">==</span> <span class="n">obj2</span><span class="o">)</span> <span class="o">{</span>
-			<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"같은 Singleton 객체입니다."</span><span class="o">);</span>
-		<span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-			<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"다른 Singleton 객체입니다."</span><span class="o">);</span>
-		<span class="o">}</span>
-	<span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
+<ul>
+  <li><strong>실행 결과</strong>: <code class="language-plaintext highlighter-rouge">같은 CEO입니다.</code> 가 출력됩니다.</li>
+  <li><strong>참조값 비교</strong>: <code class="language-plaintext highlighter-rouge">obj1</code>과 <code class="language-plaintext highlighter-rouge">obj2</code>는 완전히 동일한 주소(메모리 위치)를 가리키고 있습니다. 즉, 객체는 하나뿐이고 변수 두 개가 그 하나를 바라보는 것입니다.</li>
+</ul>
 
-<p><strong>실행 결과</strong></p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>같은 Singleton 객체입니다.
-</code></pre></div></div>
+<p><br />
+<br /></p>
+
+<h2 id="6154-왜-싱글톤을-쓸까요">6.15.4 왜 싱글톤을 쓸까요?</h2>
+
+<ul>
+  <li><strong>메모리 절약</strong>: 객체를 매번 새로 만들지 않고 하나를 계속 쓰니까 메모리가 낭비되지 않습니다.</li>
+  <li><strong>데이터 공유</strong>: 전역(Global)에서 사용되는 설정 정보나, 데이터베이스 연결 객체처럼 <strong>모두가 공유해야 하는 데이터</strong>를 관리할 때 유용합니다.</li>
+</ul>
 
         </div>
 

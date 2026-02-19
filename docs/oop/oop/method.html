@@ -8,7 +8,7 @@
   <!-- 기본 메타데이터 --><meta name="description" content="Jiny linux"><meta name="author" content="HojinLee"><!-- 제목 설정 --><title>6.8 메소드 선언과 호출</title>
   <meta name="title" content="6.8 메소드 선언과 호출" /><!-- 키워드 설정 --><!-- Open Graph 메타데이터 --><meta property="og:title" content="6.8 메소드 선언과 호출"><meta property="og:description" content="Jiny linux"><meta property="og:type" content="website"><meta property="og:locale" content="ko">
   <meta property="og:site_name" content="linux">
-  <meta property="og:url" content="https://java.jiny.dev/oop/oop/method.html">
+  <meta property="og:url" content="http://localhost:4000/oop/oop/method.html">
 
   <!-- Twitter 카드 메타데이터 --><meta name="twitter:card" content="summary"><meta property="twitter:title" content="6.8 메소드 선언과 호출"><!-- Begin Jekyll SEO tag v2.8.0 -->
 <meta name="generator" content="Jekyll v4.4.1" />
@@ -17,14 +17,14 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
 <meta property="og:description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
-<link rel="canonical" href="https://java.jiny.dev/oop/oop/method.html" />
-<meta property="og:url" content="https://java.jiny.dev/oop/oop/method.html" />
+<link rel="canonical" href="http://localhost:4000/oop/oop/method.html" />
+<meta property="og:url" content="http://localhost:4000/oop/oop/method.html" />
 <meta property="og:site_name" content="객체지향 자바 프로그래밍 (Object-Oriented Java Programming)" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="6.8 메소드 선언과 호출" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"6.8 메소드 선언과 호출","url":"https://java.jiny.dev/oop/oop/method.html"}</script>
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"6.8 메소드 선언과 호출","url":"http://localhost:4000/oop/oop/method.html"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -1529,411 +1529,206 @@
         <div class="bd-content ps-lg-2">
             <h1 id="68-메소드-선언과-호출">6.8 메소드 선언과 호출</h1>
 
-<p>메소드 선언은 객체의 동작을 실행 블록으로 정의하는 것을 말하고, 메소드 호출은 실행 블록을 실제로 실행하는 것을 말한다. 메소드는 객체 내부에서도 호출되지만 다른 객체에서도 호출될 수 있기 때문에 객체 간의 상호작용 방법을 정의하는 것이라고 볼 수 있다. 상호작용의 개념은 6.1절을 참고하길 바란다.</p>
+<p>메소드(Method)는 객체 안에 있는 <strong>‘기능’</strong>이나 <strong>‘명령’</strong>이라고 생각하면 쉽습니다.
+우리가 로봇에게 “청소해!”, “요리해!” 라고 명령을 내리면 로봇이 그 동작을 수행하듯이, 객체에게 일을 시키기 위해 사용하는 것이 바로 메소드입니다.</p>
+
+<ul>
+  <li><strong>메소드 선언</strong>: 로봇에게 어떤 동작을 어떻게 수행해야 하는지 가르쳐 주는 것 (설계도 작성)</li>
+  <li><strong>메소드 호출</strong>: 로봇에게 실제로 그 동작을 하라고 명령하는 것 (실행)</li>
+</ul>
+
+<p><img src="./img/method_declaration_vs_call.svg" alt="Method Declaration vs Call" /></p>
 
 <h2 id="메소드-선언">메소드 선언</h2>
 
-<p>다음은 메소드를 선언하는 방법을 보여 준다.</p>
+<p>메소드를 선언한다는 것은 “이 기능은 이렇게 작동해야 해”라고 정의하는 것입니다. 마치 요리책에 라면 끓이는 법(레시피)을 적어두는 것과 같습니다.</p>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">리턴타입</span> <span class="n">메소드명</span> <span class="o">(</span><span class="n">매개변수</span><span class="o">,</span> <span class="o">...)</span> <span class="o">{</span>
     <span class="c1">// 실행할 코드를 작성하는 곳</span>
 <span class="o">}</span>
 </code></pre></div></div>
 
-<h3 id="리턴-타입">리턴 타입</h3>
+<h3 id="리턴-타입-결과값">리턴 타입 (결과값)</h3>
 
-<p>리턴 타입은 메소드가 실행한 후 호출한 곳으로 전달하는 결과값의 타입을 말한다. 리턴값이 없는 메소드는 void로 작성해야 한다.</p>
+<p>자판기에서 음료수 버튼을 누르면 음료수가 나오죠? 이때 나오는 <strong>음료수</strong>가 바로 <strong>리턴값</strong>입니다.
+메소드가 실행을 마치고 나면, 그 결과를 호출한 곳으로 돌려줄 수 있는데 그 결과의 데이터 타입을 말합니다.</p>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">powerOn</span><span class="o">()</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span> <span class="c1">// 리턴값이 없는 메소드 선언</span>
-<span class="kt">double</span> <span class="nf">divide</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">)</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span> <span class="c1">// double 타입 값을 리턴하는 메소드 선언</span>
+<ul>
+  <li><strong>결과가 있는 경우</strong>: <code class="language-plaintext highlighter-rouge">int</code>, <code class="language-plaintext highlighter-rouge">double</code>, <code class="language-plaintext highlighter-rouge">String</code> 등 해당 타입을 적어줍니다. 반드시 <code class="language-plaintext highlighter-rouge">return</code> 문으로 값을 돌려줘야 합니다.</li>
+  <li><strong>결과가 없는 경우</strong>: <code class="language-plaintext highlighter-rouge">void</code>라고 적습니다. “일만 하고 결과 보고는 안 해도 돼”라는 뜻입니다.</li>
+</ul>
+
+<p><img src="./img/method_return.svg" alt="Method Return" /></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">powerOn</span><span class="o">()</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span> <span class="c1">// 전원만 켜고 끝! (리턴값 없음)</span>
+<span class="kt">double</span> <span class="nf">divide</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">)</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span> <span class="c1">// 나눗셈 결과를 double로 돌려줘!</span>
 </code></pre></div></div>
 
-<p>리턴 타입이 있는 메소드는 실행 블록 안에서 return 문으로 리턴값을 반드시 지정해야 한다.</p>
+<h3 id="메소드명-이름">메소드명 (이름)</h3>
 
-<h3 id="메소드명">메소드명</h3>
+<p>메소드 이름은 알기 쉽게 짓는 것이 중요합니다.</p>
+<ul>
+  <li><strong>첫 글자는 소문자</strong>: <code class="language-plaintext highlighter-rouge">run</code>, <code class="language-plaintext highlighter-rouge">start</code></li>
+  <li><strong>두 번째 단어부터는 대문자</strong>: <code class="language-plaintext highlighter-rouge">setSpeed</code>, <code class="language-plaintext highlighter-rouge">getName</code> (캐멀 스타일)</li>
+</ul>
 
-<p>메소드명은 첫 문자를 소문자로 시작하고, 캐멀 스타일로 작성한다. 다음은 잘 작성된 메소드명을 보여 준다.</p>
+<h3 id="매개변수-재료-투입">매개변수 (재료 투입)</h3>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
-<span class="kt">void</span> <span class="nf">setSpeed</span><span class="o">(</span><span class="kt">int</span> <span class="n">speed</span><span class="o">)</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
-<span class="nc">String</span> <span class="nf">getName</span><span class="o">()</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
-</code></pre></div></div>
+<p>자판기에 동전을 넣어야 음료수가 나오듯이, 메소드를 실행할 때 <strong>필요한 재료(데이터)</strong>를 넣어주는 구멍입니다.</p>
 
-<h3 id="매개변수">매개변수</h3>
+<p><img src="./img/method_parameters.svg" alt="Method Parameters" /></p>
 
-<p>매개변수는 메소드를 호출할 때 전달한 매개값을 받기 위해 사용된다. 다음 예에서 divide() 메소드는 연산할 두 수를 전달받아야 하므로 매개변수가 2개 필요하다. 전달할 매개값이 없다면 매개변수는 생략할 수 있다.</p>
+<ul>
+  <li><strong>재료가 필요한 경우</strong>: 필요한 변수 타입을 적어줍니다. <code class="language-plaintext highlighter-rouge">int x</code>, <code class="language-plaintext highlighter-rouge">String name</code></li>
+  <li><strong>재료가 필요 없는 경우</strong>: 빈 괄호 <code class="language-plaintext highlighter-rouge">()</code> 로 둡니다.</li>
+</ul>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">double</span> <span class="nf">divide</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">)</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">double</span> <span class="nf">divide</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">)</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span> <span class="c1">// 계산하려면 숫자 2개가 필요해</span>
+<span class="kt">void</span> <span class="nf">powerOn</span><span class="o">()</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span> <span class="c1">// 전원 켜는 건 재료가 필요 없어</span>
 </code></pre></div></div>
 
 <h3 id="실행-블록">실행 블록</h3>
 
-<p>메소드 호출 시 실행되는 부분이다.</p>
-
-<p>다음 예제는 Calculator 클래스에서 powerOn(), plus(), divide(), powerOff() 메소드를 선언하는 방법을 보여 준다.</p>
+<p>메소드가 호출되었을 때 실제로 실행되는 코드들이 들어있는 중괄호 <code class="language-plaintext highlighter-rouge">{ }</code> 블록입니다.</p>
 
 <p><strong>Calculator.java</strong></p>
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch06.sec08.exam01</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Calculator</span> <span class="o">{</span>
-	<span class="c1">// 리턴값이 없는 메소드 선언</span>
+	<span class="c1">// 1. 리턴값이 없는 메소드 (void)</span>
 	<span class="kt">void</span> <span class="nf">powerOn</span><span class="o">()</span> <span class="o">{</span>
-		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"전원을 니다."</span><span class="o">);</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"전원을 켭니다."</span><span class="o">);</span>
 	<span class="o">}</span>
 
-	<span class="c1">// 리턴값이 없는 메소드 선언</span>
+	<span class="c1">// 2. 리턴값이 없는 메소드 (void)</span>
 	<span class="kt">void</span> <span class="nf">powerOff</span><span class="o">()</span> <span class="o">{</span>
-		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"전원을 끕니다."</span><span class="o">);</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"전원을 끄니다."</span><span class="o">);</span>
 	<span class="o">}</span>
 
-	<span class="c1">// 호출 시 두 정수 값을 전달받고,</span>
-	<span class="c1">// 호출한 곳으로 결과값 int를 리턴하는 메소드 선언</span>
+	<span class="c1">// 3. 덧셈 결과를 'int'로 돌려주는 메소드</span>
 	<span class="kt">int</span> <span class="nf">plus</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">)</span> <span class="o">{</span>
 		<span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="o">;</span>
-		<span class="k">return</span> <span class="n">result</span><span class="o">;</span> <span class="c1">// 리턴값 지정</span>
+		<span class="k">return</span> <span class="n">result</span><span class="o">;</span> <span class="c1">// 결과값 반환</span>
 	<span class="o">}</span>
 
-	<span class="c1">// 호출 시 두 정수 값을 전달받고,</span>
-	<span class="c1">// 호출한 곳으로 결과값 double을 리턴하는 메소드 선언</span>
+	<span class="c1">// 4. 나눗셈 결과를 'double'로 돌려주는 메소드</span>
 	<span class="kt">double</span> <span class="nf">divide</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">)</span> <span class="o">{</span>
 		<span class="kt">double</span> <span class="n">result</span> <span class="o">=</span> <span class="o">(</span><span class="kt">double</span><span class="o">)</span><span class="n">x</span> <span class="o">/</span> <span class="o">(</span><span class="kt">double</span><span class="o">)</span><span class="n">y</span><span class="o">;</span>
-		<span class="k">return</span> <span class="n">result</span><span class="o">;</span> <span class="c1">// 리턴값 지정</span>
+		<span class="k">return</span> <span class="n">result</span><span class="o">;</span> <span class="c1">// 결과값 반환</span>
 	<span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div></div>
 
 <h2 id="메소드-호출">메소드 호출</h2>
 
-<p>메소드를 호출한다는 것은 메소드 블록을 실행하는 것을 말한다. 클래스에서 메소드를 선언했다고 해서 바로 호출할 수 있는 것은 아니다. 메소드는 객체의 동작이므로 객체가 존재하지 않으면 메소드를 호출할 수 없다.</p>
+<p>메소드 호출은 “야, 이거 해!” 하고 <strong>실제로 명령을 내리는 것</strong>입니다. 레시피만 있다고 요리가 되는 게 아니죠? 요리사가 직접 요리를 해야(호출해야) 음식을 먹을 수 있습니다.</p>
 
-<p>클래스로부터 객체가 생성된 후에 메소드는 생성자와 다른 메소드 내부에서 호출될 수 있고, 객체 외부에서도 호출될 수 있다.</p>
+<h3 id="객체-내부에서-호출">객체 내부에서 호출</h3>
 
-<p>객체 내부에서는 단순히 메소드명으로 호출하면 되지만, 외부 객체에서는 참조 변수와 도트(.) 연산자를 이용해서 호출한다. 또한 메소드가 매개변수를 가지고 있을 때는 호출할 때 매개변수의 타입과 수에 맞게 매개값을 제공해야 한다.</p>
+<p>같은 객체 안에서는 이름만 부르면 됩니다. “철수야!” 하고 부르는 것과 같습니다.</p>
 
-<p>메소드가 리턴값이 있을 경우에는 대입 연산자를 사용해서 다음과 같이 리턴값을 변수에 저장할 수 있다. 이때 변수 타입은 메소드의 리턴 타입과 동일하거나 자동 타입 변환될 수 있어야 한다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">타입</span> <span class="n">변수</span> <span class="o">=</span> <span class="n">메소드</span><span class="o">();</span>
-</code></pre></div></div>
-
-<p><strong>객체 내부</strong></p>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Calculator</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">powerOff</span><span class="o">();</span>
-<span class="o">}</span>
-
-<span class="kt">void</span> <span class="nf">method</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">powerOn</span><span class="o">();</span>
-    <span class="kt">int</span> <span class="n">r1</span> <span class="o">=</span> <span class="n">plus</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="mi">5</span><span class="o">);</span>
-    <span class="kt">double</span> <span class="n">r2</span> <span class="o">=</span> <span class="n">divide</span><span class="o">(</span><span class="mi">15</span><span class="o">,</span> <span class="mi">3</span><span class="o">);</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p><strong>외부 객체</strong></p>
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">method</span><span class="o">()</span> <span class="o">{</span>
-    <span class="nc">Calculator</span> <span class="n">calc</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Calculator</span><span class="o">();</span>
-    <span class="n">calc</span><span class="o">.</span><span class="na">powerOn</span><span class="o">();</span>
-    <span class="kt">int</span> <span class="n">r1</span> <span class="o">=</span> <span class="n">calc</span><span class="o">.</span><span class="na">plus</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="mi">20</span><span class="o">);</span>
-    <span class="kt">double</span> <span class="n">r2</span> <span class="o">=</span> <span class="n">calc</span><span class="o">.</span><span class="na">divide</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="mi">30</span><span class="o">);</span>
+    <span class="n">powerOn</span><span class="o">();</span> <span class="c1">// 이름만 부르면 됨</span>
+    <span class="kt">int</span> <span class="n">r1</span> <span class="o">=</span> <span class="n">plus</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="mi">5</span><span class="o">);</span>
 <span class="o">}</span>
 </code></pre></div></div>
 
-<p>다음 예제는 Calculator 클래스에서 선언된 powerOn(), plus(), divide(), powerOff() 메소드를 호출하는 방법을 보여 준다.</p>
+<h3 id="외부-객체에서-호출">외부 객체에서 호출</h3>
+
+<p>다른 객체에 있는 메소드를 부를 때는, 그 객체를 먼저 만들고 <code class="language-plaintext highlighter-rouge">.</code>(도트) 연산자를 사용해야 합니다. 마치 “옆집.철수야!” 하고 부르는 것과 비슷합니다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">method</span><span class="o">()</span> <span class="o">{</span>
+    <span class="nc">Calculator</span> <span class="n">calc</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Calculator</span><span class="o">();</span> <span class="c1">// 객체 생성 (도구 준비)</span>
+    <span class="n">calc</span><span class="o">.</span><span class="na">powerOn</span><span class="o">();</span> <span class="c1">// 도구.동작()</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
 <p><strong>CalculatorExample.java</strong></p>
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch06.sec08.exam01</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">CalculatorExample</span> <span class="o">{</span>
 	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-		<span class="c1">// Calculator 객체 생성</span>
+		<span class="c1">// 1. 계산기(객체) 생성</span>
 		<span class="nc">Calculator</span> <span class="n">myCalc</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Calculator</span><span class="o">();</span>
 		
-		<span class="c1">// 리턴값이 없는 powerOn() 메소드 호출</span>
+		<span class="c1">// 2. 전원 켜기</span>
 		<span class="n">myCalc</span><span class="o">.</span><span class="na">powerOn</span><span class="o">();</span>
 		
-		<span class="c1">// plus 메소드 호출 시 5와 6을 매개값으로 제공하고,</span>
-		<span class="c1">// 덧셈 결과를 리턴받아 result1 변수에 대입</span>
+		<span class="c1">// 3. 더하기 기능 사용 (5와 6을 넣으면 11을 줌)</span>
 		<span class="kt">int</span> <span class="n">result1</span> <span class="o">=</span> <span class="n">myCalc</span><span class="o">.</span><span class="na">plus</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="mi">6</span><span class="o">);</span>
 		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"result1: "</span> <span class="o">+</span> <span class="n">result1</span><span class="o">);</span>
 		
 		<span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
 		<span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">4</span><span class="o">;</span>
-		<span class="c1">// divide() 메소드 호출 시 변수 x와 y의 값을 매개값으로 제공하고,</span>
-		<span class="c1">// 나눗셈 결과를 리턴받아 result2 변수에 대입</span>
+		<span class="c1">// 4. 나누기 기능 사용 (10과 4를 넣으면 2.5를 줌)</span>
 		<span class="kt">double</span> <span class="n">result2</span> <span class="o">=</span> <span class="n">myCalc</span><span class="o">.</span><span class="na">divide</span><span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">);</span>
 		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"result2: "</span> <span class="o">+</span> <span class="n">result2</span><span class="o">);</span>
 		
-		<span class="c1">// 리턴값이 없는 powerOff() 메소드 호출</span>
+		<span class="c1">// 5. 전원 끄기</span>
 		<span class="n">myCalc</span><span class="o">.</span><span class="na">powerOff</span><span class="o">();</span>
 	<span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div></div>
 
 <p><strong>실행 결과</strong></p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>전원을 니다.
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>전원을 켭니다.
 result1: 11
 result2: 2.5
 전원을 끕니다.
 </code></pre></div></div>
 
-<h2 id="가변길이-매개변수">가변길이 매개변수</h2>
+<h2 id="가변길이-매개변수-재료-개수가-내-맘대로">가변길이 매개변수 (재료 개수가 내 맘대로?)</h2>
 
-<p>메소드를 호출할 때에는 매개변수의 개수에 맞게 매개값을 제공해야 한다. 만약 메소드가 가변길이 매개변수를 가지고 있다면 매개변수의 개수와 상관없이 매개값을 줄 수 있다. 가변길이 매개변수는 다음과 같이 선언한다.</p>
+<p>보통은 재료(매개변수) 개수가 정해져 있지만, 때로는 몇 개가 들어올지 모를 때가 있습니다. 이때 사용하는 것이 <code class="language-plaintext highlighter-rouge">...</code> (가변길이 매개변수) 입니다.</p>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">sum</span><span class="o">(</span><span class="kt">int</span> <span class="o">...</span> <span class="n">values</span><span class="o">)</span> <span class="o">{</span>
-<span class="o">}</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">sum</span><span class="o">(</span><span class="kt">int</span> <span class="o">...</span> <span class="n">values</span><span class="o">)</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
 </code></pre></div></div>
 
-<p>가변길이 매개변수는 메소드 호출 시 매개값을 쉼표로 구분해서 개수와 상관없이 제공할 수 있다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">sum</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">);</span>
-<span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">sum</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">5</span><span class="o">);</span>
-</code></pre></div></div>
-
-<p>매개값들은 자동으로 배열 항목으로 변환되어 메소드에서 사용된다. 그렇기 때문에 메소드 호출 시 직접 배열을 매개값으로 제공해도 된다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span><span class="o">[]</span> <span class="n">values</span> <span class="o">=</span> <span class="o">{</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span> <span class="o">};</span>
-<span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">sum</span><span class="o">(</span><span class="n">values</span><span class="o">);</span>
-<span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">sum</span><span class="o">(</span><span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span> <span class="o">});</span>
-</code></pre></div></div>
+<p>이렇게 쓰면 <code class="language-plaintext highlighter-rouge">sum(1, 2)</code>도 되고, <code class="language-plaintext highlighter-rouge">sum(1, 2, 3, 4, 5)</code>도 됩니다. 마치 “재료가 몇 개든 다 받아서 처리해 줄게!” 하는 것과 같습니다. 들어온 값들은 <strong>배열</strong>처럼 다뤄집니다.</p>
 
 <p><strong>Computer.java</strong></p>
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch06.sec08.exam02</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Computer</span> <span class="o">{</span>
-	<span class="c1">// 가변길이 매개변수를 갖는 메소드 선언</span>
+	<span class="c1">// 입력된 숫자들을 모두 더해주는 메소드</span>
 	<span class="kt">int</span> <span class="nf">sum</span><span class="o">(</span><span class="kt">int</span> <span class="o">...</span> <span class="n">values</span><span class="o">)</span> <span class="o">{</span>
-		<span class="c1">// sum 변수 선언</span>
 		<span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
 		
-		<span class="c1">// values는 배열 타입의 변수처럼 사용</span>
+		<span class="c1">// 들어온 값들을 하나씩 꺼내서 더하기</span>
 		<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">values</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
 			<span class="n">sum</span> <span class="o">+=</span> <span class="n">values</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
 		<span class="o">}</span>
 		
-		<span class="c1">// 합산 결과를 리턴</span>
 		<span class="k">return</span> <span class="n">sum</span><span class="o">;</span>
 	<span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div></div>
 
-<p><strong>ComputerExample.java</strong></p>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch06.sec08.exam02</span><span class="o">;</span>
+<h2 id="return-문-일-끝내고-복귀">return 문 (일 끝내고 복귀!)</h2>
 
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ComputerExample</span> <span class="o">{</span>
-	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-		<span class="c1">// Computer 객체 생성</span>
-		<span class="nc">Computer</span> <span class="n">myCom</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Computer</span><span class="o">();</span>
-		
-		<span class="c1">// sum() 메소드 호출 시 매개값 1, 2, 3을 제공하고</span>
-		<span class="c1">// 합산 결과를 리턴받아 result1 변수에 대입</span>
-		<span class="kt">int</span> <span class="n">result1</span> <span class="o">=</span> <span class="n">myCom</span><span class="o">.</span><span class="na">sum</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">);</span>
-		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"result1: "</span> <span class="o">+</span> <span class="n">result1</span><span class="o">);</span>
-		
-		<span class="c1">// sum() 메소드 호출 시 매개값 1, 2, 3, 4, 5를 제공하고</span>
-		<span class="c1">// 합산 결과를 리턴받아 result2 변수에 대입</span>
-		<span class="kt">int</span> <span class="n">result2</span> <span class="o">=</span> <span class="n">myCom</span><span class="o">.</span><span class="na">sum</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">5</span><span class="o">);</span>
-		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"result2: "</span> <span class="o">+</span> <span class="n">result2</span><span class="o">);</span>
-		
-		<span class="c1">// sum() 메소드 호출 시 배열을 제공하고</span>
-		<span class="c1">// 합산 결과를 리턴받아 result3 변수에 대입</span>
-		<span class="kt">int</span><span class="o">[]</span> <span class="n">values</span> <span class="o">=</span> <span class="o">{</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">5</span> <span class="o">};</span>
-		<span class="kt">int</span> <span class="n">result3</span> <span class="o">=</span> <span class="n">myCom</span><span class="o">.</span><span class="na">sum</span><span class="o">(</span><span class="n">values</span><span class="o">);</span>
-		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"result3: "</span> <span class="o">+</span> <span class="n">result3</span><span class="o">);</span>
-		
-		<span class="c1">// sum() 메소드 호출 시 배열을 제공하고</span>
-		<span class="c1">// 합산 결과를 리턴받아 result4 변수에 대입</span>
-		<span class="kt">int</span> <span class="n">result4</span> <span class="o">=</span> <span class="n">myCom</span><span class="o">.</span><span class="na">sum</span><span class="o">(</span><span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">5</span> <span class="o">});</span>
-		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"result4: "</span> <span class="o">+</span> <span class="n">result4</span><span class="o">);</span>
-	<span class="o">}</span>
-<span class="o">}</span>
+<p><code class="language-plaintext highlighter-rouge">return</code> 문은 두 가지 역할을 합니다.</p>
+<ol>
+  <li><strong>값 돌려주기</strong>: <code class="language-plaintext highlighter-rouge">return 결과값;</code></li>
+  <li><strong>즉시 종료하기</strong>: <code class="language-plaintext highlighter-rouge">return;</code> (리턴값이 없는 void 메소드에서 사용)</li>
+</ol>
+
+<p><code class="language-plaintext highlighter-rouge">return</code>이 실행되면 메소드는 하던 일을 멈추고 즉시 종료됩니다. 그래서 <code class="language-plaintext highlighter-rouge">return</code> 뒤에 코드를 쓰면 “이 코드는 절대 실행될 리가 없어(Unreachable code)”라며 에러가 납니다.</p>
+
+<h2 id="메소드-오버로딩-같은-이름-다른-기능">메소드 오버로딩 (같은 이름, 다른 기능)</h2>
+
+<p><strong>오버로딩(Overloading)</strong>은 같은 이름의 메소드를 여러 개 만드는 것을 말합니다.
+“운전하다”라는 말이 자동차를 운전할 때와 오토바이를 운전할 때 조금씩 방식이 다르지만 똑같이 “운전하다”라고 부르는 것과 같습니다.</p>
+
+<p>조건은 <strong>매개변수(재료)가 달라야 한다</strong>는 것입니다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 정사각형 넓이 (길이 하나만 필요)</span>
+<span class="kt">double</span> <span class="nf">areaRectangle</span><span class="o">(</span><span class="kt">double</span> <span class="n">width</span><span class="o">)</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
+
+<span class="c1">// 직사각형 넓이 (가로, 세로 두 개 필요)</span>
+<span class="kt">double</span> <span class="nf">areaRectangle</span><span class="o">(</span><span class="kt">double</span> <span class="n">width</span><span class="o">,</span> <span class="kt">double</span> <span class="n">height</span><span class="o">)</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
 </code></pre></div></div>
 
-<p><strong>실행 결과</strong></p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>result1: 6
-result2: 15
-result3: 15
-result4: 15
-</code></pre></div></div>
-
-<h2 id="return-문">return 문</h2>
-
-<p>return 문은 메소드의 실행을 강제 종료하고 호출한 곳으로 돌아간다는 의미이다. 메소드 선언에 리턴 타입이 있을 경우에는 return 문 뒤에 리턴값을 추가로 지정해야 한다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">return</span> <span class="o">[</span><span class="n">리턴값</span><span class="o">];</span>
-</code></pre></div></div>
-
-<p>return 문 이후에 실행문을 작성하면 ‘Unreachable code’라는 컴파일 에러가 발생한다. 왜냐하면 return 문 이후의 실행문은 결코 실행되지 않기 때문이다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">plus</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">)</span> <span class="o">{</span>
-    <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="o">;</span>
-    <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
-    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">result</span><span class="o">);</span> <span class="c1">// Unreachable code</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p>하지만 다음과 같은 경우에는 컴파일 에러가 발생하지 않는다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">boolean</span> <span class="nf">isLeftGas</span><span class="o">()</span> <span class="o">{</span>
-    <span class="k">if</span> <span class="o">(</span><span class="n">gas</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"gas가 없습니다."</span><span class="o">);</span>
-        <span class="k">return</span> <span class="kc">false</span><span class="o">;</span> <span class="c1">// 1</span>
-    <span class="o">}</span>
-    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"gas가 있습니다."</span><span class="o">);</span> <span class="c1">// 2</span>
-    <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p>if 문의 조건식이 false가 되면 정상적으로 2가 실행되기 때문에 2는 ‘Unreachable code’ 에러를 발생시키지 않는다. if 문의 조건식이 true가 되면 1이 실행되고 return false;가 실행되어 메소드는 즉시 종료되므로 당연히 2는 실행되지 않는다.</p>
-
-<p><strong>Car.java</strong></p>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch06.sec08.exam03</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Car</span> <span class="o">{</span>
-	<span class="c1">// 필드 선언</span>
-	<span class="kt">int</span> <span class="n">gas</span><span class="o">;</span>
-	
-	<span class="c1">// 리턴값이 없는 메소드로 매개값을 받아서 gas 필드값을 변경</span>
-	<span class="kt">void</span> <span class="nf">setGas</span><span class="o">(</span><span class="kt">int</span> <span class="n">gas</span><span class="o">)</span> <span class="o">{</span>
-		<span class="k">this</span><span class="o">.</span><span class="na">gas</span> <span class="o">=</span> <span class="n">gas</span><span class="o">;</span>
-	<span class="o">}</span>
-	
-	<span class="c1">// 리턴값이 boolean인 메소드로 gas 필드값이 0이면 false를, 0이 아니면 true를 리턴</span>
-	<span class="kt">boolean</span> <span class="nf">isLeftGas</span><span class="o">()</span> <span class="o">{</span>
-		<span class="k">if</span> <span class="o">(</span><span class="n">gas</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
-			<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"gas가 없습니다."</span><span class="o">);</span>
-			<span class="k">return</span> <span class="kc">false</span><span class="o">;</span> <span class="c1">// false를 리턴하고 메소드 종료</span>
-		<span class="o">}</span>
-		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"gas가 있습니다."</span><span class="o">);</span>
-		<span class="k">return</span> <span class="kc">true</span><span class="o">;</span> <span class="c1">// true를 리턴하고 메소드 종료</span>
-	<span class="o">}</span>
-	
-	<span class="c1">// 리턴값이 없는 메소드로 gas 필드값이 0이면 return 문으로 메소드를 종료</span>
-	<span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
-		<span class="k">while</span> <span class="o">(</span><span class="kc">true</span><span class="o">)</span> <span class="o">{</span>
-			<span class="k">if</span> <span class="o">(</span><span class="n">gas</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
-				<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"달립니다.(gas잔량:"</span> <span class="o">+</span> <span class="n">gas</span> <span class="o">+</span> <span class="s">")"</span><span class="o">);</span>
-				<span class="n">gas</span> <span class="o">-=</span> <span class="mi">1</span><span class="o">;</span>
-			<span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-				<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"멈춥니다.(gas잔량:"</span> <span class="o">+</span> <span class="n">gas</span> <span class="o">+</span> <span class="s">")"</span><span class="o">);</span>
-				<span class="k">return</span><span class="o">;</span> <span class="c1">// 메소드 종료</span>
-			<span class="o">}</span>
-		<span class="o">}</span>
-	<span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p><strong>CarExample.java</strong></p>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch06.sec08.exam03</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CarExample</span> <span class="o">{</span>
-	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-		<span class="c1">// Car 객체 생성</span>
-		<span class="nc">Car</span> <span class="n">myCar</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Car</span><span class="o">();</span>
-		
-		<span class="c1">// 리턴값이 없는 setGas() 메소드 호출</span>
-		<span class="n">myCar</span><span class="o">.</span><span class="na">setGas</span><span class="o">(</span><span class="mi">5</span><span class="o">);</span>
-		
-		<span class="c1">// isLeftGas() 메소드를 호출해서 받은 리턴값이 true일 경우 if 블록 실행</span>
-		<span class="k">if</span> <span class="o">(</span><span class="n">myCar</span><span class="o">.</span><span class="na">isLeftGas</span><span class="o">())</span> <span class="o">{</span>
-			<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"출발합니다."</span><span class="o">);</span>
-			
-			<span class="c1">// 리턴값이 없는 run() 메소드 호출</span>
-			<span class="n">myCar</span><span class="o">.</span><span class="na">run</span><span class="o">();</span>
-		<span class="o">}</span>
-		
-		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"gas를 주입하세요."</span><span class="o">);</span>
-	<span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p><strong>실행 결과</strong></p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gas가 있습니다.
-출발합니다.
-달립니다.(gas잔량:5)
-달립니다.(gas잔량:4)
-달립니다.(gas잔량:3)
-달립니다.(gas잔량:2)
-달립니다.(gas잔량:1)
-멈춥니다.(gas잔량:0)
-gas를 주입하세요.
-</code></pre></div></div>
-
-<h2 id="메소드-오버로딩">메소드 오버로딩</h2>
-
-<p>메소드 오버로딩(Overloading)은 메소드 이름은 같되 매개변수의 타입, 개수, 순서가 다른 메소드를 여러 개 선언하는 것을 말한다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">클래스</span> <span class="o">{</span>
-    <span class="n">리턴타입</span> <span class="n">메소드이름</span> <span class="o">(</span><span class="n">타입</span> <span class="n">변수</span><span class="o">,</span> <span class="o">...)</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
-    <span class="n">리턴타입</span> <span class="n">메소드이름</span> <span class="o">(</span><span class="n">타입</span> <span class="n">변수</span><span class="o">,</span> <span class="o">...)</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span> 
-    <span class="c1">// 리턴타입은 무관, 매개변수는 동일값, 개수, 순서가 달라야 함</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p>메소드 오버로딩의 목적은 다양한 매개값을 처리하기 위해서이다. 다음 예에서 plus() 메소드는 두 개의 int 타입 매개값만 처리하고 double 타입 매개값은 처리할 수 없다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">plus</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">)</span> <span class="o">{</span>
-    <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="o">;</span>
-    <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p>만약 double 타입 값도 처리하고 싶다면 다음과 같이 plus() 메소드를 오버로딩하면 된다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">double</span> <span class="nf">plus</span><span class="o">(</span><span class="kt">double</span> <span class="n">x</span><span class="o">,</span> <span class="kt">double</span> <span class="n">y</span><span class="o">)</span> <span class="o">{</span>
-    <span class="kt">double</span> <span class="n">result</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="o">;</span>
-    <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p>메소드 오버로딩의 대표적인 예는 콘솔에 출력하는 System.out.println() 메소드로, 호출할 때 주어진 매개값의 타입에 따라서 오버로딩된 println() 메소드 중 하나를 실행한다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">println</span><span class="o">()</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
-<span class="kt">void</span> <span class="nf">println</span><span class="o">(</span><span class="kt">double</span> <span class="n">x</span><span class="o">)</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
-<span class="kt">void</span> <span class="nf">println</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">)</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
-<span class="kt">void</span> <span class="nf">println</span><span class="o">(</span><span class="nc">String</span> <span class="n">x</span><span class="o">)</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
-</code></pre></div></div>
-
-<p>다음 예제는 areaRectangle() 메소드를 오버로딩해서 매개값이 한 개면 정사각형의 넓이를, 두 개면 직사각형의 넓이를 계산한다.</p>
-
-<p><strong>Calculator.java</strong></p>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch06.sec08.exam04</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Calculator</span> <span class="o">{</span>
-	<span class="c1">// 정사각형의 넓이</span>
-	<span class="kt">double</span> <span class="nf">areaRectangle</span><span class="o">(</span><span class="kt">double</span> <span class="n">width</span><span class="o">)</span> <span class="o">{</span>
-		<span class="k">return</span> <span class="n">width</span> <span class="o">*</span> <span class="n">width</span><span class="o">;</span>
-	<span class="o">}</span>
-	
-	<span class="c1">// 직사각형의 넓이</span>
-	<span class="kt">double</span> <span class="nf">areaRectangle</span><span class="o">(</span><span class="kt">double</span> <span class="n">width</span><span class="o">,</span> <span class="kt">double</span> <span class="n">height</span><span class="o">)</span> <span class="o">{</span>
-		<span class="k">return</span> <span class="n">width</span> <span class="o">*</span> <span class="n">height</span><span class="o">;</span>
-	<span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p><strong>CalculatorExample.java</strong></p>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch06.sec08.exam04</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CalculatorExample</span> <span class="o">{</span>
-	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-		<span class="c1">// 객체 생성</span>
-		<span class="nc">Calculator</span> <span class="n">myCalcu</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Calculator</span><span class="o">();</span>
-		
-		<span class="c1">// 정사각형의 넓이 구하기</span>
-		<span class="kt">double</span> <span class="n">result1</span> <span class="o">=</span> <span class="n">myCalcu</span><span class="o">.</span><span class="na">areaRectangle</span><span class="o">(</span><span class="mi">10</span><span class="o">);</span>
-		
-		<span class="c1">// 직사각형의 넓이 구하기</span>
-		<span class="kt">double</span> <span class="n">result2</span> <span class="o">=</span> <span class="n">myCalcu</span><span class="o">.</span><span class="na">areaRectangle</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="mi">20</span><span class="o">);</span>
-		
-		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"정사각형 넓이="</span> <span class="o">+</span> <span class="n">result1</span><span class="o">);</span>
-		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"직사각형 넓이="</span> <span class="o">+</span> <span class="n">result2</span><span class="o">);</span>
-	<span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p><strong>실행 결과</strong></p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>정사각형 넓이=100.0
-직사각형 넓이=200.0
-</code></pre></div></div>
+<p>이름은 <code class="language-plaintext highlighter-rouge">areaRectangle</code>로 같지만, 재료가 1개냐 2개냐에 따라 알아서 맞는 기능이 실행됩니다. 이것이 바로 <strong>다형성(다양한 형태를 가짐)</strong>의 기초가 됩니다.</p>
 
         </div>
 

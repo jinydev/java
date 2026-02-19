@@ -8,7 +8,7 @@
   <!-- 기본 메타데이터 --><meta name="description" content="Jiny linux"><meta name="author" content="HojinLee"><!-- 제목 설정 --><title>6.2 객체와 클래스</title>
   <meta name="title" content="6.2 객체와 클래스" /><!-- 키워드 설정 --><!-- Open Graph 메타데이터 --><meta property="og:title" content="6.2 객체와 클래스"><meta property="og:description" content="Jiny linux"><meta property="og:type" content="website"><meta property="og:locale" content="ko">
   <meta property="og:site_name" content="linux">
-  <meta property="og:url" content="https://java.jiny.dev/oop/oop/object-class.html">
+  <meta property="og:url" content="http://localhost:4000/oop/oop/object-class.html">
 
   <!-- Twitter 카드 메타데이터 --><meta name="twitter:card" content="summary"><meta property="twitter:title" content="6.2 객체와 클래스"><!-- Begin Jekyll SEO tag v2.8.0 -->
 <meta name="generator" content="Jekyll v4.4.1" />
@@ -17,14 +17,14 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
 <meta property="og:description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
-<link rel="canonical" href="https://java.jiny.dev/oop/oop/object-class.html" />
-<meta property="og:url" content="https://java.jiny.dev/oop/oop/object-class.html" />
+<link rel="canonical" href="http://localhost:4000/oop/oop/object-class.html" />
+<meta property="og:url" content="http://localhost:4000/oop/oop/object-class.html" />
 <meta property="og:site_name" content="객체지향 자바 프로그래밍 (Object-Oriented Java Programming)" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="6.2 객체와 클래스" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"6.2 객체와 클래스","url":"https://java.jiny.dev/oop/oop/object-class.html"}</script>
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"6.2 객체와 클래스","url":"http://localhost:4000/oop/oop/object-class.html"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -1529,11 +1529,36 @@
         <div class="bd-content ps-lg-2">
             <h1 id="62-객체와-클래스">6.2 객체와 클래스</h1>
 
-<p>객체를 생성할 때에는 설계도가 필요하다. 현실 세계에서 자동차를 생성하려면 자동차의 설계도가 필요하듯이, 객체지향 프로그래밍에서도 객체를 생성하려면 설계도에 해당하는 클래스(class)가 필요하다.</p>
+<h2 id="붕어빵-틀클래스과-붕어빵객체">붕어빵 틀(클래스)과 붕어빵(객체)</h2>
 
-<p>클래스로부터 생성된 객체를 해당 클래스의 인스턴스(instance)라고 부른다. 그리고 클래스로부터 객체를 만드는 과정을 인스턴스화라고 한다. 동일한 클래스로부터 여러 개의 인스턴스를 만들 수 있는데, 이것은 동일한 설계도로 여러 대의 자동차를 만드는 것과 동일하다.</p>
+<p>우리가 붕어빵을 먹으려면 무엇이 필요할까요?
+가장 먼저 <strong>붕어빵 틀</strong>이 있어야 하고, 그 틀에 반죽과 팥을 넣어 구워내면 <strong>붕어빵</strong>이 나옵니다.</p>
 
-<p>우리는 지금까지 많은 클래스를 선언해보았다. 클래스는 객체를 생성하기 위한 설계도이지만 객체를 만들지는 않았고, main() 메소드만 작성해서 실행할 목적으로 클래스를 이용했다. 6.3절부터는 main() 메소드가 없는 클래스를 선언하고 객체를 생성하는 방법을 배워 보도록 하자.</p>
+<ul>
+  <li><strong>클래스(Class)</strong>: 객체를 찍어내기 위한 <strong>설계도</strong> 또는 <strong>틀</strong>입니다. (예: 붕어빵 틀, 자동차 설계도)</li>
+  <li><strong>객체(Object)</strong>: 클래스(설계도)를 보고 실제로 만들어낸 <strong>결과물</strong>입니다. (예: 팥붕어빵, 슈크림붕어빵, 실제 자동차)</li>
+</ul>
+
+<p><img src="./img/class_blueprint.png" alt="Class Blueprint" /></p>
+
+<p>현실 세계에서 자동차를 만들려면 설계도가 필요하듯이, 프로그래밍에서도 객체를 생성하려면 먼저 <strong>‘클래스(설계도)’</strong>를 만들어야 합니다.</p>
+
+<h2 id="인스턴스-instance">인스턴스 (Instance)</h2>
+
+<p>클래스로부터 만들어진 객체를 특별히 그 클래스의 <strong>‘인스턴스(Instance)’</strong>라고 부릅니다.
+“이 자동차 객체는 Car 클래스의 인스턴스야” 라고 말하죠.</p>
+
+<p>설계도(클래스)는 하나지만, 그 설계도로 자동차(인스턴스)는 수천 대도 만들 수 있습니다.
+이 자동차들은 모두 같은 설계도로 만들어졌지만, 서로 다른 색상을 가질 수 있고 독립적으로 달릴 수 있는 별개의 존재들입니다.</p>
+
+<p><img src="./img/object_factory.png" alt="Object Factory" /></p>
+
+<h2 id="개발자의-역할">개발자의 역할</h2>
+
+<p>우리는 지금까지 자바를 배우면서 알게 모르게 많은 클래스를 사용해왔습니다.
+하지만 지금까지는 객체를 만들기 위한 ‘설계도’로서 클래스를 사용했다기보다는, 단순히 코드를 실행하기 위한 공간(<code class="language-plaintext highlighter-rouge">main()</code> 메소드를 담는 그릇)으로만 사용했습니다.</p>
+
+<p>이제부터는 여러분이 직접 <strong>설계자</strong>가 되어 클래스(설계도)를 작성하고, 그 설계도로 멋진 <strong>객체(부품)</strong>들을 조립하여 프로그램을 만들어 볼 것입니다.</p>
 
         </div>
 

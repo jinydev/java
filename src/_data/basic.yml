@@ -33,7 +33,7 @@ main:
     url: /basic/setup/vscode-installation
   - title: 8. 안티그라비티 소개
     url: /basic/setup/antigravity
-- title: 01. 자바 시작하기
+- title: 자바 시작하기
   url: /basic/start
   subitems:
   - title: 학습목표
@@ -50,7 +50,7 @@ main:
     url: /basic/start/java21-overview
   - title: 확인문제
     url: /basic/start/quiz
-- title: 02. 변수와 타입
+- title: 변수와 타입
   url: /basic/variable
   subitems:
   - title: 학습목표
@@ -85,7 +85,7 @@ main:
     url: /basic/variable/local-type-inference
   - title: 확인문제
     url: /basic/variable/quiz
-- title: 03. 연산자
+- title: 연산자
   url: /basic/operator
   subitems:
   - title: 학습목표
@@ -116,7 +116,7 @@ main:
     url: /basic/operator/precedence
   - title: 확인문제
     url: /basic/operator/quiz
-- title: 04. 조건문
+- title: 조건문
   url: /basic/condition
   subitems:
   - title: 학습목표
@@ -133,7 +133,7 @@ main:
     url: /basic/condition/switch-pattern
   - title: 확인문제
     url: /basic/condition/quiz
-- title: 05. 반복문
+- title: 반복문
   url: /basic/loop
   subitems:
   - title: 학습목표

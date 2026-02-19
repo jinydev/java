@@ -8,7 +8,7 @@
   <!-- 기본 메타데이터 --><meta name="description" content="Jiny linux"><meta name="author" content="HojinLee"><!-- 제목 설정 --><title>6.9 인스턴스 멤버</title>
   <meta name="title" content="6.9 인스턴스 멤버" /><!-- 키워드 설정 --><!-- Open Graph 메타데이터 --><meta property="og:title" content="6.9 인스턴스 멤버"><meta property="og:description" content="Jiny linux"><meta property="og:type" content="website"><meta property="og:locale" content="ko">
   <meta property="og:site_name" content="linux">
-  <meta property="og:url" content="https://java.jiny.dev/oop/oop/instance-member.html">
+  <meta property="og:url" content="http://localhost:4000/oop/oop/instance-member.html">
 
   <!-- Twitter 카드 메타데이터 --><meta name="twitter:card" content="summary"><meta property="twitter:title" content="6.9 인스턴스 멤버"><!-- Begin Jekyll SEO tag v2.8.0 -->
 <meta name="generator" content="Jekyll v4.4.1" />
@@ -17,14 +17,14 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
 <meta property="og:description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
-<link rel="canonical" href="https://java.jiny.dev/oop/oop/instance-member.html" />
-<meta property="og:url" content="https://java.jiny.dev/oop/oop/instance-member.html" />
+<link rel="canonical" href="http://localhost:4000/oop/oop/instance-member.html" />
+<meta property="og:url" content="http://localhost:4000/oop/oop/instance-member.html" />
 <meta property="og:site_name" content="객체지향 자바 프로그래밍 (Object-Oriented Java Programming)" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="6.9 인스턴스 멤버" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"6.9 인스턴스 멤버","url":"https://java.jiny.dev/oop/oop/instance-member.html"}</script>
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"6.9 인스턴스 멤버","url":"http://localhost:4000/oop/oop/instance-member.html"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -1527,81 +1527,117 @@
     </ol>
 </nav>
         <div class="bd-content ps-lg-2">
-            <h1 id="69-인스턴스-멤버">6.9 인스턴스 멤버</h1>
+            <h1 id="69-인스턴스-멤버-객체-고유의-속성">6.9 인스턴스 멤버 (객체 고유의 속성)</h1>
 
-<p>필드와 메소드는 선언 방법에 따라 인스턴스 멤버와 정적 멤버로 분류할 수 있다. 인스턴스 멤버로 선언되면 객체 생성 후 사용할 수 있고, 정적 멤버로 선언되면 객체 생성 없이도 사용할 수 있다.</p>
+<p><br /></p>
 
-<table>
-  <thead>
-    <tr>
-      <th>구분</th>
-      <th>설명</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>인스턴스(Instance) 멤버</td>
-      <td>객체에 소속된 멤버 (객체를 생성해야만 사용할 수 있는 멤버)</td>
-    </tr>
-    <tr>
-      <td>정적(Static) 멤버</td>
-      <td>클래스에 고정된 멤버 (객체 없이도 사용할 수 있는 멤버)</td>
-    </tr>
-  </tbody>
-</table>
+<h2 id="691-인스턴스instance-멤버란">6.9.1 인스턴스(Instance) 멤버란?</h2>
 
-<h2 id="인스턴스-멤버-선언-및-사용">인스턴스 멤버 선언 및 사용</h2>
+<p><strong>“내 건 내 거고, 네 건 네 거야!”</strong></p>
 
-<p>인스턴스(instance) 멤버란 객체에 소속된 멤버를 말한다. 따라서 객체가 있어야만 사용할 수 있는 멤버다. 우리가 지금까지 선언한 필드와 메소드는 인스턴스 멤버였다. 다음과 같이 Car 클래스에 gas 필드와 setSpeed() 메소드를 선언하면 인스턴스 멤버가 된다.</p>
+<p>인스턴스 멤버는 <strong>객체(Instance)를 생성해야만 사용할 수 있는 멤버(필드, 메소드)</strong>를 말합니다. 쉽게 말해 <strong>객체마다 각자 가지고 있는 고유한 데이터와 기능</strong>입니다.</p>
+
+<blockquote>
+  <p><strong>비유: 주민등록증</strong>
+사람마다 이름과 주민등록번호가 모두 다릅니다. ‘홍길동’의 신분증은 ‘유관순’의 신분증과 완전히 다른 별개의 물건인 것처럼, 객체들도 각자 독립적인 저장 공간을 가집니다.</p>
+</blockquote>
+
+<p><img src="./img/instance_vs_static_concept.svg" alt="Instance vs Static Concept" /></p>
+
+<p>하지만 비유를 넘어 기술적으로 이해해야 합니다.
+<strong>인스턴스 멤버</strong>는 객체가 <code class="language-plaintext highlighter-rouge">new</code> 연산자로 힙(Heap) 메모리에 생성될 때, 비로소 그 객체 안에 공간이 할당됩니다. 따라서 객체를 생성하지 않으면 아예 존재하지 않는 멤버들입니다.</p>
+
+<p><br />
+<br /></p>
+
+<h2 id="692-인스턴스-멤버-선언-및-사용">6.9.2 인스턴스 멤버 선언 및 사용</h2>
+
+<p>인스턴스 멤버는 객체에 소속되어 있기 때문에, 사용하려면 반드시 <strong>객체를 먼저 생성(<code class="language-plaintext highlighter-rouge">new</code>)</strong>해야 합니다.</p>
+
+<h3 id="-코드-예시">💻 코드 예시</h3>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Car</span> <span class="o">{</span>
-    <span class="c1">// 인스턴스 필드 선언</span>
+    <span class="c1">// 인스턴스 필드 (차마다의 고유 데이터)</span>
     <span class="kt">int</span> <span class="n">gas</span><span class="o">;</span>
-    <span class="c1">// 인스턴스 메소드 선언</span>
+    
+    <span class="c1">// 인스턴스 메소드 (차의 동작)</span>
     <span class="kt">void</span> <span class="nf">setSpeed</span><span class="o">(</span><span class="kt">int</span> <span class="n">speed</span><span class="o">)</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div></div>
 
-<p>gas 필드와 setSpeed() 메소드는 인스턴스 멤버이기 때문에 외부 클래스에서 사용하기 위해서는 Car 객체를 먼저 생성하고 참조 변수로 접근해서 사용해야 한다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Car</span> <span class="n">myCar</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Car</span><span class="o">();</span>
-<span class="n">myCar</span><span class="o">.</span><span class="na">gas</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
-<span class="n">myCar</span><span class="o">.</span><span class="na">setSpeed</span><span class="o">(</span><span class="mi">60</span><span class="o">);</span>
-
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 1. 객체 생성</span>
+<span class="nc">Car</span> <span class="n">myCar</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Car</span><span class="o">();</span> 
 <span class="nc">Car</span> <span class="n">yourCar</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Car</span><span class="o">();</span>
-<span class="n">yourCar</span><span class="o">.</span><span class="na">gas</span> <span class="o">=</span> <span class="mi">20</span><span class="o">;</span>
-<span class="n">yourCar</span><span class="o">.</span><span class="na">setSpeed</span><span class="o">(</span><span class="mi">80</span><span class="o">);</span>
+
+<span class="c1">// 2. 인스턴스 멤버 사용 (객체 참조 변수를 통해 접근)</span>
+<span class="n">myCar</span><span class="o">.</span><span class="na">gas</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
+<span class="n">yourCar</span><span class="o">.</span><span class="na">gas</span> <span class="o">=</span> <span class="mi">20</span><span class="o">;</span> 
 </code></pre></div></div>
 
-<p>인스턴스 멤버는 객체에 소속된 멤버라고 했다. gas 필드는 객체에 소속된 멤버가 분명하지만, setSpeed() 메소드는 객체에 포함되지 않는다. 여기서 우리는 ‘객체에 소속된’을 ‘객체에 포함된’이라고 해석하면 안 된다.</p>
+<h3 id="-코드를-다시-한번-원리와-동작을-살펴봅니다">🔍 코드를 다시 한번 원리와 동작을 살펴봅니다</h3>
 
-<p>메소드는 코드의 덩어리이므로 객체마다 저장한다면 중복 저장으로 인해 메모리 효율이 떨어진다. 따라서 메소드 코드는 메소드 영역에 두되 공유해서 사용하고, 이때 객체 없이는 사용하지 못하도록 제한을 걸어둔 것이다.</p>
+<ul>
+  <li><strong>메모리 할당</strong>: <code class="language-plaintext highlighter-rouge">new Car()</code>가 실행되는 순간, 컴퓨터 메모리(Heap)에 <code class="language-plaintext highlighter-rouge">Car</code> 객체를 위한 방이 만들어지고, 그 안에 <code class="language-plaintext highlighter-rouge">gas</code>라는 변수 공간이 생깁니다.</li>
+  <li><strong>독립성</strong>: <code class="language-plaintext highlighter-rouge">myCar</code>가 가리키는 객체와 <code class="language-plaintext highlighter-rouge">yourCar</code>가 가리키는 객체는 서로 다른 주소를 가진 <strong>별개의 존재</strong>입니다.</li>
+  <li><strong>데이터 보존</strong>: <code class="language-plaintext highlighter-rouge">myCar.gas</code>에 10을 넣어도 <code class="language-plaintext highlighter-rouge">yourCar.gas</code>에는 아무런 영향을 주지 않습니다. 이것이 바로 인스턴스 필드가 <strong>객체마다 독립적</strong>이라는 의미입니다.</li>
+</ul>
 
-<h2 id="this-키워드">this 키워드</h2>
+<p><br />
+<br /></p>
 
-<p>객체 내부에서는 인스턴스 멤버에 접근하기 위해 this를 사용할 수 있다. 우리가 자신을 ‘나’라고 하듯이, 객체는 자신을 ‘this’라고 한다. 생성자와 메소드의 매개변수명이 인스턴스 멤버인 필드명과 동일한 경우, 인스턴스 필드임을 강조하고자 할 때 this를 주로 사용한다.</p>
+<h2 id="693-this-키워드-현재-객체-참조">6.9.3 <code class="language-plaintext highlighter-rouge">this</code> 키워드 (현재 객체 참조)</h2>
+
+<p><strong>“이거(this) = 지금 실행 중인 나 자신”</strong></p>
+
+<p>객체 내부 코드에서 인스턴스 멤버에 접근할 때, <strong>현재 실행 중인 객체 자신을 가리키는 키워드</strong>가 바로 <code class="language-plaintext highlighter-rouge">this</code>입니다.</p>
+
+<p><img src="./img/this_keyword.svg" alt="This Keyword" /></p>
+
+<h3 id="-코드-예시-1">💻 코드 예시</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Car</span> <span class="o">{</span>
+    <span class="nc">String</span> <span class="n">model</span><span class="o">;</span> <span class="c1">// (1) 인스턴스 필드</span>
+    
+    <span class="kd">public</span> <span class="nf">Car</span><span class="o">(</span><span class="nc">String</span> <span class="n">model</span><span class="o">)</span> <span class="o">{</span> <span class="c1">// (2) 매개변수 (외부에서 받은 값)</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">model</span> <span class="o">=</span> <span class="n">model</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="-코드를-다시-한번-원리와-동작을-살펴봅니다-1">🔍 코드를 다시 한번 원리와 동작을 살펴봅니다</h3>
+
+<ul>
+  <li><strong>변수의 이름 충돌</strong>: 위 코드에서 필드 이름도 <code class="language-plaintext highlighter-rouge">model</code>이고, 생성자의 매개변수 이름도 <code class="language-plaintext highlighter-rouge">model</code>입니다. 이 경우 메소드 내부에서는 매개변수 <code class="language-plaintext highlighter-rouge">model</code>이 우선순위를 가집니다. (필드가 가려짐)</li>
+  <li><strong>this의 역할</strong>: 이때 <code class="language-plaintext highlighter-rouge">this.model</code>이라고 쓰면, “지역변수 <code class="language-plaintext highlighter-rouge">model</code>이 아니라, <strong>이 객체가 가지고 있는 필드 <code class="language-plaintext highlighter-rouge">model</code></strong>“을 명확하게 지칭하게 됩니다.</li>
+  <li><strong>주소값</strong>: 기술적으로 <code class="language-plaintext highlighter-rouge">this</code>는 <strong>현재 객체의 참조(주소)값</strong>을 가지고 있습니다. 그래서 <code class="language-plaintext highlighter-rouge">this.model = model;</code>은 “<strong>내 주소지에 있는 <code class="language-plaintext highlighter-rouge">model</code> 변수</strong>에, 전달받은 <code class="language-plaintext highlighter-rouge">model</code> 값을 저장하라”는 명령이 됩니다.</li>
+</ul>
+
+<p><br />
+<br /></p>
+
+<h2 id="694-전체-실행-예제">6.9.4 전체 실행 예제</h2>
+
+<h3 id="-코드-예시-2">💻 코드 예시</h3>
 
 <p><strong>Car.java</strong></p>
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch06.sec09</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Car</span> <span class="o">{</span>
-	<span class="c1">// 필드 선언</span>
+	<span class="c1">// 인스턴스 필드</span>
 	<span class="nc">String</span> <span class="n">model</span><span class="o">;</span>
 	<span class="kt">int</span> <span class="n">speed</span><span class="o">;</span>
 	
-	<span class="c1">// 생성자 선언</span>
+	<span class="c1">// 생성자</span>
 	<span class="nc">Car</span><span class="o">(</span><span class="nc">String</span> <span class="n">model</span><span class="o">)</span> <span class="o">{</span>
-		<span class="k">this</span><span class="o">.</span><span class="na">model</span> <span class="o">=</span> <span class="n">model</span><span class="o">;</span> <span class="c1">// 매개변수를 필드에 대입(this 생략 불가)</span>
+		<span class="c1">// 매개변수로 받은 model 값을 내 필드(this.model)에 저장</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">model</span> <span class="o">=</span> <span class="n">model</span><span class="o">;</span> 
 	<span class="o">}</span>
 	
-	<span class="c1">// 메소드 선언</span>
-	<span class="kt">void</span> <span class="nf">setSpeed</span><span class="o">(</span><span class="kt">int</span> <span class="n">speed</span><span class="o">)</span> <span class="o">{</span>
-		<span class="k">this</span><span class="o">.</span><span class="na">speed</span> <span class="o">=</span> <span class="n">speed</span><span class="o">;</span> <span class="c1">// 매개변수를 필드에 대입(this 생략 불가)</span>
-	<span class="o">}</span>
-	
+	<span class="c1">// 인스턴스 메소드</span>
 	<span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
-		<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">10</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="mi">50</span><span class="o">;</span> <span class="n">i</span><span class="o">+=</span><span class="mi">10</span><span class="o">)</span> <span class="o">{</span>
-			<span class="k">this</span><span class="o">.</span><span class="na">setSpeed</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+		<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">10</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="mi">30</span><span class="o">;</span> <span class="n">i</span><span class="o">+=</span><span class="mi">10</span><span class="o">)</span> <span class="o">{</span>
+			<span class="c1">// 내 필드 speed 수정</span>
+			<span class="k">this</span><span class="o">.</span><span class="na">speed</span> <span class="o">=</span> <span class="n">i</span><span class="o">;</span> 
 			<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">model</span> <span class="o">+</span> <span class="s">"가 달립니다.(시속:"</span> <span class="o">+</span> <span class="k">this</span><span class="o">.</span><span class="na">speed</span> <span class="o">+</span> <span class="s">"km/h)"</span><span class="o">);</span>
 		<span class="o">}</span>
 	<span class="o">}</span>
@@ -1613,27 +1649,23 @@
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">CarExample</span> <span class="o">{</span>
 	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="c1">// 객체 생성 (각각 다른 메모리 주소에 할당됨)</span>
 		<span class="nc">Car</span> <span class="n">myCar</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Car</span><span class="o">(</span><span class="s">"포르쉐"</span><span class="o">);</span>
 		<span class="nc">Car</span> <span class="n">yourCar</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Car</span><span class="o">(</span><span class="s">"벤츠"</span><span class="o">);</span>
 		
+		<span class="c1">// 인스턴스 메소드 호출</span>
 		<span class="n">myCar</span><span class="o">.</span><span class="na">run</span><span class="o">();</span>
 		<span class="n">yourCar</span><span class="o">.</span><span class="na">run</span><span class="o">();</span>
 	<span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div></div>
 
-<p><strong>실행 결과</strong></p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>포르쉐가 달립니다.(시속:10km/h)
-포르쉐가 달립니다.(시속:20km/h)
-포르쉐가 달립니다.(시속:30km/h)
-포르쉐가 달립니다.(시속:40km/h)
-포르쉐가 달립니다.(시속:50km/h)
-벤츠가 달립니다.(시속:10km/h)
-벤츠가 달립니다.(시속:20km/h)
-벤츠가 달립니다.(시속:30km/h)
-벤츠가 달립니다.(시속:40km/h)
-벤츠가 달립니다.(시속:50km/h)
-</code></pre></div></div>
+<h3 id="-코드를-다시-한번-원리와-동작을-살펴봅니다-2">🔍 코드를 다시 한번 원리와 동작을 살펴봅니다</h3>
+
+<ul>
+  <li><strong>this의 변화</strong>: <code class="language-plaintext highlighter-rouge">myCar.run()</code>을 호출했을 때의 <code class="language-plaintext highlighter-rouge">this</code>는 <code class="language-plaintext highlighter-rouge">myCar</code> 객체를 가리키고, <code class="language-plaintext highlighter-rouge">yourCar.run()</code>을 호출했을 때의 <code class="language-plaintext highlighter-rouge">this</code>는 <code class="language-plaintext highlighter-rouge">yourCar</code> 객체를 가리킵니다. 즉, <strong>누가 호출했느냐에 따라 <code class="language-plaintext highlighter-rouge">this</code>가 가리키는 대상이 달라집니다.</strong></li>
+  <li><strong>상태 유지</strong>: <code class="language-plaintext highlighter-rouge">run()</code> 메소드가 실행되는 동안 <code class="language-plaintext highlighter-rouge">this.speed</code> 값이 계속 변경되지만, 이는 오직 해당 메서드를 호출한 객체의 <code class="language-plaintext highlighter-rouge">speed</code> 필드에만 적용됩니다.</li>
+</ul>
 
         </div>
 

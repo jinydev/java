@@ -1,0 +1,27 @@
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="400" fill="#f8f9fa"/>
+
+  <!-- Vending Machine -->
+  <rect x="250" y="50" width="300" height="300" rx="10" fill="#3498db" stroke="#2980b9" stroke-width="5"/>
+  <rect x="280" y="80" width="240" height="120" rx="5" fill="#ecf0f1"/> <!-- Display -->
+  <text x="400" y="150" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="#2c3e50" font-weight="bold">Method Machine</text>
+  
+  <!-- Coin Slot (Parameter Input) -->
+  <circle cx="500" cy="250" r="15" fill="#f1c40f" stroke="#f39c12" stroke-width="2"/>
+  <rect x="498" y="240" width="4" height="20" fill="#2c3e50"/>
+  <text x="530" y="255" font-family="Arial, sans-serif" font-size="14" fill="white" font-weight="bold">Input</text>
+
+  <!-- Hand Inserting Coin -->
+  <g transform="translate(550, 220)">
+    <circle cx="20" cy="20" r="20" fill="#f1c40f" stroke="#f39c12" stroke-width="2"/>
+    <text x="20" y="25" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#d35400">$</text>
+    <text x="20" y="60" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#2c3e50" font-weight="bold">Parameter</text>
+  </g>
+  
+  <!-- Arrow -->
+  <path d="M540,240 L520,245 L540,250" fill="#2c3e50"/>
+
+  <text x="400" y="380" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="#7f8c8d">매개변수 = 자판기 동전 투입구 (재료 투입)</text>
+
+</svg>

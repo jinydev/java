@@ -8,7 +8,7 @@
   <!-- 기본 메타데이터 --><meta name="description" content="Jiny linux"><meta name="author" content="HojinLee"><!-- 제목 설정 --><title>6.12 패키지</title>
   <meta name="title" content="6.12 패키지" /><!-- 키워드 설정 --><!-- Open Graph 메타데이터 --><meta property="og:title" content="6.12 패키지"><meta property="og:description" content="Jiny linux"><meta property="og:type" content="website"><meta property="og:locale" content="ko">
   <meta property="og:site_name" content="linux">
-  <meta property="og:url" content="https://java.jiny.dev/oop/oop/package.html">
+  <meta property="og:url" content="http://localhost:4000/oop/oop/package.html">
 
   <!-- Twitter 카드 메타데이터 --><meta name="twitter:card" content="summary"><meta property="twitter:title" content="6.12 패키지"><!-- Begin Jekyll SEO tag v2.8.0 -->
 <meta name="generator" content="Jekyll v4.4.1" />
@@ -17,14 +17,14 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
 <meta property="og:description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
-<link rel="canonical" href="https://java.jiny.dev/oop/oop/package.html" />
-<meta property="og:url" content="https://java.jiny.dev/oop/oop/package.html" />
+<link rel="canonical" href="http://localhost:4000/oop/oop/package.html" />
+<meta property="og:url" content="http://localhost:4000/oop/oop/package.html" />
 <meta property="og:site_name" content="객체지향 자바 프로그래밍 (Object-Oriented Java Programming)" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="6.12 패키지" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"6.12 패키지","url":"https://java.jiny.dev/oop/oop/package.html"}</script>
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"6.12 패키지","url":"http://localhost:4000/oop/oop/package.html"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -1527,171 +1527,108 @@
     </ol>
 </nav>
         <div class="bd-content ps-lg-2">
-            <h1 id="612-패키지">6.12 패키지</h1>
+            <h1 id="612-패키지-폴더와-정리">6.12 패키지 (폴더와 정리)</h1>
 
-<p>우리는 지금까지 장별, 절별 예제 클래스를 패키지 안에 생성해서 관리했다. 자바의 패키지(package)는 단순히 디렉토리만을 의미하지는 않는다. 패키지는 클래스의 일부분이며, 클래스를 식별하는 용도로 사용된다.</p>
+<p><br /></p>
 
-<p>패키지는 주로 개발 회사 도메인 이름의 역순으로 만든다. 예를 들어 mycompany.com 회사의 패키지는 com.mycompany로, yourcompany.com 회사의 패키지는 com.yourcompany로 만든다. 이렇게 하면 두 회사에서 개발한 Car 클래스가 있을 경우 다음과 같이 관리할 수 있다.</p>
+<h2 id="6121-패키지란-컴퓨터-폴더">6.12.1 패키지란? (컴퓨터 폴더)</h2>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>com
-  mycompany
-    Car.class
-  yourcompany
-    Car.class
-</code></pre></div></div>
+<p>컴퓨터에 파일이 수천 개가 있는데, 바탕화면에 전부 다 꺼내져 있다고 상상해 보세요. 원하는 문서를 찾으려면 한참 걸릴 것입니다.</p>
 
-<p>패키지는 상위 패키지와 하위 패키지를 도트(.)로 구분한다. 도트는 물리적으로 하위 디렉토리임을 뜻한다. 예를 들어 com.mycompany 패키지의 com은 상위 디렉토리, mycompany는 하위 디렉토리이다.</p>
+<p>그래서 우리는 <strong>폴더(Directory)</strong>를 만들어서 종류별로 파일을 정리합니다.</p>
 
-<p>패키지는 클래스를 식별하는 용도로 사용되기 때문에 클래스의 전체 이름에 포함된다. 예를 들어 Car 클래스가 com.mycompany 패키지에 속해 있다면 Car 클래스의 전체 이름은 com.mycompany.Car가 된다. 이것은 com.yourcompany.Car와 다른 클래스임을 뜻한다.</p>
+<p>자바의 <strong>패키지(Package)</strong>도 똑같습니다.</p>
 
-<p>패키지에 속한 바이트코드 파일(*.class)은 따로 떼어 내어 다른 디렉토리로 이동할 수 없다. 예를 들어 Car 클래스가 com.mycompany 패키지에 소속되어 있다면 다른 디렉토리에 Car.class를 옮겨 저장할 경우 Car 클래스를 사용할 수 없게 된다.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>com
-  mycompany
-    Car.class
-
-com
-  yourcompany
-    Car.class
-</code></pre></div></div>
-
-<h2 id="패키지-선언">패키지 선언</h2>
-
-<p>패키지 디렉토리는 클래스를 컴파일하는 과정에서 자동으로 생성된다. 컴파일러는 클래스의 패키지 선언을 보고 디렉토리를 자동 생성시킨다. 패키지 선언은 package 키워드와 함께 패키지 이름을 기술한 것으로, 항상 소스 파일 최상단에 위치해야 한다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="err">상위패키지</span><span class="nn">.</span><span class="n">하위패키지</span><span class="o">;</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">클래스명</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
-</code></pre></div></div>
-
-<p>패키지 이름은 모두 소문자로 작성하는 것이 관례이다. 그리고 패키지 이름이 서로 중복되지 않도록 회사 도메인 이름의 역순으로 작성하고, 마지막에는 프로젝트 이름을 붙여 주는 것이 일반적이다.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>com.samsung.projectname
-com.lg.projectname
-org.apache.projectname
-</code></pre></div></div>
-
-<p>이클립스에서는 패키지를 먼저 생성하고 클래스를 나중에 추가하는 방식을 사용한다. 지금까지 우리는 장별, 절별 패키지를 먼저 만들고, 클래스를 나중에 추가했다. 추가된 클래스를 보면 자동으로 패키지 선언이 포함되어 있는 것을 볼 수 있다.</p>
-
-<p>소스 파일(<em>.java)이 저장되면 이클립스는 자동으로 컴파일해서 bin 디렉토리에 패키지 디렉토리와 함께 바이트코드 파일(</em>.class)을 생성한다.</p>
-
-<p>만약 패키지 선언이 없다면 이클립스는 클래스를 (default package)에 포함시킨다. (default package)란 패키지가 없다는 뜻이다. 그러나 어떤 프로젝트든 패키지 없이 클래스를 만드는 경우는 드물다.</p>
-
-<p><strong>Car.java</strong></p>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// (default package)</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Car</span> <span class="o">{</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<h2 id="import-문">import 문</h2>
-
-<p>같은 패키지에 있는 클래스는 아무런 조건 없이 사용할 수 있지만, 다른 패키지에 있는 클래스를 사용하려면 import 문을 이용해서 어떤 패키지의 클래스를 사용하는지 명시해야 한다.</p>
-
-<p>다음은 com.mycompany 패키지의 Car 클래스에서 com.hankook 패키지의 Tire 클래스를 사용하기 위해 import 문을 사용한 것이다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.mycompany</span><span class="o">;</span> <span class="c1">// Car 클래스의 패키지</span>
-<span class="kn">import</span> <span class="nn">com.hankook.Tire</span><span class="o">;</span> <span class="c1">// Tire 클래스의 전체 이름</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Car</span> <span class="o">{</span>
-    <span class="c1">// 필드 선언 시 com.hankook.Tire 클래스를 사용</span>
-    <span class="nc">Tire</span> <span class="n">tire</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Tire</span><span class="o">();</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p>import 문이 작성되는 위치는 패키지 선언과 클래스 선언 사이이다. import 키워드 뒤에는 사용하고자 하는 클래스의 전체 이름을 기술한다. 만약 동일한 패키지에 포함된 다수의 클래스를 사용해야 한다면 클래스 이름을 생략하고 *를 사용할 수 있다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">com.hankook.*</span><span class="o">;</span>
-</code></pre></div></div>
-
-<p>import 문은 하위 패키지를 포함하지 않는다. 따라서 com.hankook 패키지에 있는 클래스도 사용해야 하고, com.hankook.project 패키지에 있는 클래스도 사용해야 한다면 다음과 같이 두 개의 import 문이 필요하다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">com.hankook.*</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">com.hankook.project.*</span><span class="o">;</span>
-</code></pre></div></div>
-
-<p>만약 서로 다른 패키지에 동일한 클래스 이름이 존재한다고 가정해 보자.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.hankook</span><span class="o">;</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Tire</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
-
-<span class="kn">package</span> <span class="nn">com.kumho</span><span class="o">;</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Tire</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
-</code></pre></div></div>
-
-<p>두 패키지를 모두 import하고 Tire 클래스를 사용할 경우, 컴파일러는 어떤 패키지의 클래스를 사용할지 결정할 수 없기 때문에 컴파일 에러를 발생시킨다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.hyundai</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">com.hankook.*</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">com.kumho.*</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Car</span> <span class="o">{</span>
-    <span class="c1">// 필드 선언</span>
-    <span class="nc">Tire</span> <span class="n">tire</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Tire</span><span class="o">();</span> <span class="c1">// 컴파일 에러</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p>이 경우에는 클래스의 전체 이름을 사용해서 정확히 어떤 패키지의 클래스를 사용하는지 알려야 한다. 클래스 전체 이름을 사용할 경우 import 문은 필요 없다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">com</span><span class="o">.</span><span class="na">hankook</span><span class="o">.</span><span class="na">Tire</span> <span class="n">tire</span> <span class="o">=</span> <span class="k">new</span> <span class="n">com</span><span class="o">.</span><span class="na">hankook</span><span class="o">.</span><span class="na">Tire</span><span class="o">();</span>
-</code></pre></div></div>
+<p>수많은 클래스 파일을 체계적으로 관리하기 위해 사용하는 <strong>파일 시스템의 폴더</strong>입니다.</p>
 
 <blockquote>
-  <p><strong>import 문 자동 추가 기능</strong>
-이클립스는 소스에서 사용한 클래스를 조사해서 필요하면 import 문을 자동으로 추가하는 기능을 제공한다.</p>
-  <ol>
-    <li>기본적으로 ‘import 전체클래스이름’으로 추가하려면 다음과 같이 선택한다.
-상단 메뉴 [Source] - [Organize Imports] (단축키 [Ctrl]+[Shift]+[O])</li>
-    <li>‘import 패키지.*‘로 추가하길 원한다면 다음과 같이 이클립스 설정을 변경한다.
-상단 메뉴 [Window] - [Preferences] - [Java] - [Code Style] - [Organize Imports]
-      <ul>
-        <li>Number of imports needed for .*의 99를 1로 변경</li>
-      </ul>
-    </li>
-  </ol>
+  <p><strong>비유: 컴퓨터 폴더</strong>
+<code class="language-plaintext highlighter-rouge">C:\Program Files\Java</code> 처럼 폴더 안에 폴더가 있듯이, 자바 패키지도 점(<code class="language-plaintext highlighter-rouge">.</code>)을 찍어서 하위 폴더를 구분합니다.</p>
 </blockquote>
 
-<p><strong>SnowTire.java</strong></p>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch06.sec12.hankook</span><span class="o">;</span>
+<p><img src="./img/package_structure_folder.svg" alt="Package Structure" /></p>
 
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SnowTire</span> <span class="o">{</span>
+<h3 id="패키지-이름-짓는-법-국룰">패키지 이름 짓는 법 (국룰)</h3>
+
+<p>전 세계적으로 유일한 이름을 갖기 위해, 보통 <strong>회사의 도메인 주소를 거꾸로</strong> 사용합니다.</p>
+
+<p><strong>❓ 왜 도메인을 거꾸로 쓰나요?</strong></p>
+<ol>
+  <li><strong>유일성 보장</strong>: 도메인(예: <code class="language-plaintext highlighter-rouge">naver.com</code>)은 전 세계에서 딱 하나만 존재하므로, 이를 패키지 이름으로 쓰면 절대 겹치지 않습니다.</li>
+  <li><strong>포괄적인 것부터 구체적인 순서로</strong>:
+    <ul>
+      <li>주소를 쓸 때 <code class="language-plaintext highlighter-rouge">대한민국 &gt; 서울 &gt; 강남구</code> 순서로 쓰는 것과 같습니다.</li>
+      <li><code class="language-plaintext highlighter-rouge">com</code> (상업용 전체) ➡️ <code class="language-plaintext highlighter-rouge">samsung</code> (삼성이라는 회사) ➡️ <code class="language-plaintext highlighter-rouge">project</code> (그 안의 특정 프로젝트)</li>
+    </ul>
+  </li>
+</ol>
+
+<ul>
+  <li>삼성전자 프로젝트: <code class="language-plaintext highlighter-rouge">com.samsung.projectname</code></li>
+  <li>네이버 프로젝트: <code class="language-plaintext highlighter-rouge">com.naver.projectname</code></li>
+  <li>내 개인 프로젝트: <code class="language-plaintext highlighter-rouge">me.myname.myapp</code></li>
+</ul>
+
+<p><br />
+<br /></p>
+
+<h2 id="6122-패키지-선언">6.12.2 패키지 선언</h2>
+
+<p>자바 클래스를 만들 때는 “이 클래스는 어느 폴더(패키지)에 소속되어 있다”고 맨 윗줄에 명찰을 달아줘야 합니다.</p>
+
+<h3 id="-코드-예시">💻 코드 예시</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.mycompany.car</span><span class="o">;</span> <span class="c1">// 이 파일은 com/mycompany/car 폴더에 있습니다.</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Engine</span> <span class="o">{</span>
+    <span class="o">...</span>
 <span class="o">}</span>
 </code></pre></div></div>
 
-<p><strong>Tire.java (hankook)</strong></p>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch06.sec12.hankook</span><span class="o">;</span>
+<h3 id="-코드를-다시-한번-원리와-동작을-살펴봅니다">🔍 코드를 다시 한번 원리와 동작을 살펴봅니다</h3>
 
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Tire</span> <span class="o">{</span>
+<ul>
+  <li><strong>물리적 위치</strong>: 위 코드를 컴파일하면 실제로 컴퓨터에 <code class="language-plaintext highlighter-rouge">com</code> 폴더 -&gt; <code class="language-plaintext highlighter-rouge">mycompany</code> 폴더 -&gt; <code class="language-plaintext highlighter-rouge">car</code> 폴더가 생성되고, 그 안에 <code class="language-plaintext highlighter-rouge">Engine.class</code> 파일이 들어갑니다.</li>
+  <li><strong>전체 이름(Full Name)</strong>: 이 클래스의 진짜 이름은 단순히 <code class="language-plaintext highlighter-rouge">Engine</code>이 아니라, <code class="language-plaintext highlighter-rouge">com.mycompany.car.Engine</code>이 됩니다. (성+이름처럼 소속을 포함해야 함)</li>
+  <li><strong>이동 불가</strong>: 소스 코드의 <code class="language-plaintext highlighter-rouge">package</code> 선언과 실제 파일 위치가 다르면 실행되지 않습니다.</li>
+</ul>
+
+<p><br />
+<br /></p>
+
+<h2 id="6123-import-문-바로가기-만들기">6.12.3 <code class="language-plaintext highlighter-rouge">import</code> 문 (바로가기 만들기)</h2>
+
+<p>같은 패키지(같은 폴더)에 있는 친구들끼리는 그냥 이름만 불러도 됩니다. 하지만 <strong>다른 패키지(다른 폴더)</strong>에 있는 클래스를 쓰려면 어떻게 해야 할까요?</p>
+
+<ol>
+  <li><strong>풀 네임 부르기</strong>: <code class="language-plaintext highlighter-rouge">com.hankook.Tire tire = new com.hankook.Tire();</code> (너무 길고 힘들다)</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">import</code> 하기</strong>: “나 이제부터 <code class="language-plaintext highlighter-rouge">Tire</code>라고 하면 저기 딴 동네에 있는 걔를 말하는 거야”라고 미리 선언하기.</li>
+</ol>
+
+<p><img src="./img/import_concept.svg" alt="Import Concept" /></p>
+
+<h3 id="-코드-예시-1">💻 코드 예시</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.mycompany.car</span><span class="o">;</span>
+
+<span class="c1">// 다른 동네(패키지)에 있는 Tire 클래스를 가져옴</span>
+<span class="kn">import</span> <span class="nn">com.hankook.Tire</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyCar</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// import 덕분에 짧은 이름으로 사용 가능</span>
+        <span class="nc">Tire</span> <span class="n">myTire</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Tire</span><span class="o">();</span> 
+    <span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div></div>
 
-<p><strong>AllSeasonTire.java</strong></p>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch06.sec12.kumho</span><span class="o">;</span>
+<h3 id="-코드를-다시-한번-원리와-동작을-살펴봅니다-1">🔍 코드를 다시 한번 원리와 동작을 살펴봅니다</h3>
 
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">AllSeasonTire</span> <span class="o">{</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p><strong>Tire.java (kumho)</strong></p>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch06.sec12.kumho</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Tire</span> <span class="o">{</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p><strong>Car.java</strong></p>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch06.sec12.hyundai</span><span class="o">;</span>
-
-<span class="c1">// import 문으로 다른 패키지 클래스 사용을 명시</span>
-<span class="kn">import</span> <span class="nn">ch06.sec12.hankook.SnowTire</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">ch06.sec12.kumho.AllSeasonTire</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Car</span> <span class="o">{</span>
-	<span class="c1">// 부품 필드 선언</span>
-	<span class="n">ch06</span><span class="o">.</span><span class="na">sec12</span><span class="o">.</span><span class="na">hankook</span><span class="o">.</span><span class="na">Tire</span> <span class="n">tire1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ch06</span><span class="o">.</span><span class="na">sec12</span><span class="o">.</span><span class="na">hankook</span><span class="o">.</span><span class="na">Tire</span><span class="o">();</span>
-	<span class="n">ch06</span><span class="o">.</span><span class="na">sec12</span><span class="o">.</span><span class="na">kumho</span><span class="o">.</span><span class="na">Tire</span> <span class="n">tire2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ch06</span><span class="o">.</span><span class="na">sec12</span><span class="o">.</span><span class="na">kumho</span><span class="o">.</span><span class="na">Tire</span><span class="o">();</span>
-	<span class="nc">SnowTire</span> <span class="n">tire3</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">SnowTire</span><span class="o">();</span>
-	<span class="nc">AllSeasonTire</span> <span class="n">tire4</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">AllSeasonTire</span><span class="o">();</span>
-<span class="o">}</span>
-</code></pre></div></div>
+<ul>
+  <li><strong>위치</strong>: <code class="language-plaintext highlighter-rouge">import</code> 문은 반드시 <code class="language-plaintext highlighter-rouge">package</code> 선언 밑에, 그리고 <code class="language-plaintext highlighter-rouge">class</code> 선언 위에 와야 합니다.</li>
+  <li><strong>편의성</strong>: <code class="language-plaintext highlighter-rouge">import</code>는 물리적으로 파일을 복사해오는 것이 아니라, 컴파일러에게 “이 이름은 저기서 찾아라”라고 <strong>바로가기(Shortcut)</strong>를 알려주는 역할을 합니다.</li>
+  <li><strong>이름 충돌</strong>: 만약 <code class="language-plaintext highlighter-rouge">com.hankook.Tire</code>와 <code class="language-plaintext highlighter-rouge">com.kumho.Tire</code>를 둘 다 쓰고 싶다면? 이때는 <code class="language-plaintext highlighter-rouge">import</code>로 해결이 안 되니, 어쩔 수 없이 코드 안에서 풀 네임(<code class="language-plaintext highlighter-rouge">com.kumho.Tire</code>)을 써야 합니다.</li>
+</ul>
 
         </div>
 

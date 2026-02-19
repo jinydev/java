@@ -1,0 +1,22 @@
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="400" fill="#f8f9fa"/>
+
+  <!-- Stylish Sports Car (Flat Design) -->
+  <path d="M150,250 L250,180 L500,180 L600,250 L700,255 L700,320 L100,320 L100,280 L150,250 Z" fill="#e74c3c"/>
+  <path d="M260,190 L490,190 L580,250 L260,250 Z" fill="#34495e"/> <!-- Window -->
+  <circle cx="200" cy="320" r="45" fill="#2c3e50" stroke="#ecf0f1" stroke-width="5"/>
+  <circle cx="600" cy="320" r="45" fill="#2c3e50" stroke="#ecf0f1" stroke-width="5"/>
+  
+  <!-- Speed Lines -->
+  <path d="M50,250 L100,250" stroke="#bdc3c7" stroke-width="3"/>
+  <path d="M30,270 L80,270" stroke="#bdc3c7" stroke-width="3"/>
+
+  <!-- CamelCase Text Label -->
+  <text x="400" y="120" font-family="'Courier New', monospace" font-size="60" text-anchor="middle" fill="#2c3e50" font-weight="bold">
+    <tspan fill="#e74c3c" font-size="80">S</tspan>ports<tspan fill="#e74c3c" font-size="80">C</tspan>ar
+  </text>
+  
+  <text x="400" y="380" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="#7f8c8d">Class Name Convention (CamelCase)</text>
+
+</svg>

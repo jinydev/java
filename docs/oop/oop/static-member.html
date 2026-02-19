@@ -8,7 +8,7 @@
   <!-- 기본 메타데이터 --><meta name="description" content="Jiny linux"><meta name="author" content="HojinLee"><!-- 제목 설정 --><title>6.10 정적 멤버</title>
   <meta name="title" content="6.10 정적 멤버" /><!-- 키워드 설정 --><!-- Open Graph 메타데이터 --><meta property="og:title" content="6.10 정적 멤버"><meta property="og:description" content="Jiny linux"><meta property="og:type" content="website"><meta property="og:locale" content="ko">
   <meta property="og:site_name" content="linux">
-  <meta property="og:url" content="https://java.jiny.dev/oop/oop/static-member.html">
+  <meta property="og:url" content="http://localhost:4000/oop/oop/static-member.html">
 
   <!-- Twitter 카드 메타데이터 --><meta name="twitter:card" content="summary"><meta property="twitter:title" content="6.10 정적 멤버"><!-- Begin Jekyll SEO tag v2.8.0 -->
 <meta name="generator" content="Jekyll v4.4.1" />
@@ -17,14 +17,14 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
 <meta property="og:description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
-<link rel="canonical" href="https://java.jiny.dev/oop/oop/static-member.html" />
-<meta property="og:url" content="https://java.jiny.dev/oop/oop/static-member.html" />
+<link rel="canonical" href="http://localhost:4000/oop/oop/static-member.html" />
+<meta property="og:url" content="http://localhost:4000/oop/oop/static-member.html" />
 <meta property="og:site_name" content="객체지향 자바 프로그래밍 (Object-Oriented Java Programming)" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="6.10 정적 멤버" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"6.10 정적 멤버","url":"https://java.jiny.dev/oop/oop/static-member.html"}</script>
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"6.10 정적 멤버","url":"http://localhost:4000/oop/oop/static-member.html"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -1527,262 +1527,141 @@
     </ol>
 </nav>
         <div class="bd-content ps-lg-2">
-            <h1 id="610-정적-멤버">6.10 정적 멤버</h1>
+            <h1 id="610-정적-멤버-공유하는-속성">6.10 정적 멤버 (공유하는 속성)</h1>
 
-<p>자바는 클래스 로더(class loader)를 이용해서 클래스를 메소드 영역에 저장하고 사용한다. 정적(static) 멤버란 메소드 영역의 클래스에 고정적으로 위치하는 멤버를 말한다. 그렇기 때문에 정적 멤버는 객체를 생성할 필요 없이 클래스를 통해 바로 사용이 가능하다.</p>
+<p><br /></p>
 
-<p>필드와 메소드는 모두 정적 멤버가 될 수 있다. 정적 필드와 정적 메소드로 선언하려면 다음과 같이 static 키워드를 추가하면 된다.</p>
+<h2 id="6101-정적static-멤버란">6.10.1 정적(static) 멤버란?</h2>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">클래스</span> <span class="o">{</span>
-    <span class="kd">static</span> <span class="n">타입</span> <span class="n">필드</span> <span class="o">[=</span> <span class="n">초기값</span><span class="o">];</span>
+<p><strong>“우리 모두의 것, 하나만 있으면 돼!”</strong></p>
+
+<p>정적(static) 멤버는 객체마다 따로 만드는 것이 아니라, <strong>클래스에 고정되어 딱 하나만 생성되고 모든 객체가 공유하는 멤버</strong>입니다.</p>
+
+<blockquote>
+  <p><strong>비유: 강의실 벽시계 vs 손목시계</strong></p>
+  <ul>
+    <li><strong>정적 멤버 (벽시계)</strong>: 강의실 앞 벽에 하나만 걸려있고, 모든 학생이 그 시간을 봅니다. (공유)</li>
+    <li><strong>인스턴스 멤버 (손목시계)</strong>: 학생(객체)마다 각자 차고 있으며, 시간이 서로 다를 수 있습니다. (개별)</li>
+  </ul>
+</blockquote>
+
+<p><img src="./img/static_vs_static_analogy.svg" alt="Static vs Instance Analogy" /></p>
+
+<h3 id="-코드-예시">💻 코드 예시</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Calculator</span> <span class="o">{</span>
+    <span class="c1">// 정적 필드 (파이 값은 세상 모든 계산기에서 똑같음)</span>
+    <span class="kd">static</span> <span class="kt">double</span> <span class="n">pi</span> <span class="o">=</span> <span class="mf">3.14159</span><span class="o">;</span> 
     
-    <span class="c1">// 정적 메소드</span>
-    <span class="kd">static</span> <span class="n">리턴타입</span> <span class="n">메소드</span><span class="o">(</span> <span class="n">매개변수</span><span class="o">,</span> <span class="o">...</span> <span class="o">)</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
+    <span class="c1">// 인스턴스 필드 (색깔은 계산기마다 다름)</span>
+    <span class="nc">String</span> <span class="n">color</span><span class="o">;</span> 
 <span class="o">}</span>
 </code></pre></div></div>
 
-<p>객체마다 가지고 있을 필요성이 없는 공용적인 필드는 정적 필드로 선언하는 것이 좋다. 예를 들어 Calculator 클래스에서 원의 넓이나 둘레를 구할 때 필요한 파이(π)는 Calculator 객체마다 가지고 있을 필요가 없기 때문에 정적 필드로 선언하는 것이 좋다.</p>
+<h3 id="-코드를-다시-한번-원리와-동작을-살펴봅니다">🔍 코드를 다시 한번 원리와 동작을 살펴봅니다</h3>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Calculator</span> <span class="o">{</span>
-    <span class="nc">String</span> <span class="n">color</span><span class="o">;</span> <span class="c1">// 계산기별로 색깔이 다를 수 있다.</span>
-    <span class="kd">static</span> <span class="kt">double</span> <span class="n">pi</span> <span class="o">=</span> <span class="mf">3.14159</span><span class="o">;</span> <span class="c1">// 계산기에서 사용하는 파이(π) 값은 동일하다.</span>
-<span class="o">}</span>
-</code></pre></div></div>
+<ul>
+  <li><strong>메모리 위치 (Method Area)</strong>: <code class="language-plaintext highlighter-rouge">static</code> 키워드가 붙은 멤버는 프로그램이 시작될 때 <strong>메소드 영역(Method Area)</strong>이라는 곳에 딱 한 번 저장됩니다. 이곳은 모든 스레드와 객체가 공유하는 공용 공간입니다.</li>
+  <li><strong>생명 주기 (Lifecycle)</strong>: 정적 멤버는 <strong>클래스가 메모리에 로딩될 때</strong> 생성되어 프로그램이 끝날 때까지 살아있습니다. 반면 인스턴스 멤버(<code class="language-plaintext highlighter-rouge">color</code>)는 <strong>객체가 생성(<code class="language-plaintext highlighter-rouge">new</code>)될 때</strong> 힙(Heap) 영역에 생겼다가, 객체가 사라지면(GC) 같이 사라집니다.</li>
+</ul>
 
-<p>인스턴스 필드를 이용하지 않는 메소드는 정적 메소드로 선언하는 것이 좋다. 예를 들어 Calculator의 plus() 메소드는 외부에서 주어진 매개값들을 가지고 처리하므로 정적 메소드로 선언하는 것이 좋다. 그러나 인스턴스 필드인 color를 변경하는 setColor() 메소드는 인스턴스 메소드로 선언해야 한다.</p>
+<p><img src="./img/static_memory.svg" alt="Static Memory Layout" /></p>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Calculator</span> <span class="o">{</span>
-    <span class="nc">String</span> <span class="n">color</span><span class="o">;</span> <span class="c1">// 인스턴스 필드</span>
-    <span class="kt">void</span> <span class="nf">setColor</span><span class="o">(</span><span class="nc">String</span> <span class="n">color</span><span class="o">)</span> <span class="o">{</span> <span class="k">this</span><span class="o">.</span><span class="na">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">;</span> <span class="o">}</span> <span class="c1">// 인스턴스 메소드</span>
-    <span class="kd">static</span> <span class="kt">int</span> <span class="nf">plus</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">)</span> <span class="o">{</span> <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="o">;</span> <span class="o">}</span> <span class="c1">// 정적 메소드</span>
-    <span class="kd">static</span> <span class="kt">int</span> <span class="nf">minus</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">)</span> <span class="o">{</span> <span class="k">return</span> <span class="n">x</span> <span class="o">-</span> <span class="n">y</span><span class="o">;</span> <span class="o">}</span> <span class="c1">// 정적 메소드</span>
-<span class="o">}</span>
-</code></pre></div></div>
+<p><br />
+<br /></p>
 
-<h2 id="정적-멤버-사용">정적 멤버 사용</h2>
+<h2 id="6102-정적-멤버-사용법">6.10.2 정적 멤버 사용법</h2>
 
-<p>클래스가 메모리로 로딩되면 정적 멤버를 바로 사용할 수 있는데, 클래스 이름과 함께 도트(.) 연산자로 접근하면 된다. 예를 들어 Calculator 클래스가 다음과 같이 작성되었다면,</p>
+<p>정적 멤버는 객체에 소속된 것이 아니라 클래스 자체에 소속되어 있습니다. 그래서 <strong>객체를 생성하지 않고, 클래스 이름으로 바로 접근</strong>하는 것이 정석입니다.</p>
+
+<h3 id="-코드-예시-1">💻 코드 예시</h3>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Calculator</span> <span class="o">{</span>
     <span class="kd">static</span> <span class="kt">double</span> <span class="n">pi</span> <span class="o">=</span> <span class="mf">3.14159</span><span class="o">;</span>
-    <span class="kd">static</span> <span class="kt">int</span> <span class="nf">plus</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">)</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
-    <span class="kd">static</span> <span class="kt">int</span> <span class="nf">minus</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">)</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
+    <span class="kd">static</span> <span class="kt">int</span> <span class="nf">plus</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">)</span> <span class="o">{</span> <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="o">;</span> <span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div></div>
 
-<p>정적 필드 pi와 정적 메소드 plus(), minus()는 다음과 같이 사용할 수 있다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">double</span> <span class="n">result1</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">*</span> <span class="nc">Calculator</span><span class="o">.</span><span class="na">pi</span><span class="o">;</span>
-<span class="kt">int</span> <span class="n">result2</span> <span class="o">=</span> <span class="nc">Calculator</span><span class="o">.</span><span class="na">plus</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="mi">5</span><span class="o">);</span>
-<span class="kt">int</span> <span class="n">result3</span> <span class="o">=</span> <span class="nc">Calculator</span><span class="o">.</span><span class="na">minus</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="mi">5</span><span class="o">);</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 객체 생성 없이 바로 사용 가능!</span>
+<span class="kt">double</span> <span class="n">result</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">*</span> <span class="nc">Calculator</span><span class="o">.</span><span class="na">pi</span><span class="o">;</span> <span class="c1">// 클래스이름.필드</span>
+<span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="nc">Calculator</span><span class="o">.</span><span class="na">plus</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="mi">5</span><span class="o">);</span>        <span class="c1">// 클래스이름.메소드</span>
 </code></pre></div></div>
 
-<p>정적 필드와 정적 메소드는 다음과 같이 객체 참조 변수로도 접근이 가능하다.</p>
+<h3 id="-코드를-다시-한번-원리와-동작을-살펴봅니다-1">🔍 코드를 다시 한번 원리와 동작을 살펴봅니다</h3>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Calculator</span> <span class="n">myCalcu</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Calculator</span><span class="o">();</span>
-<span class="kt">double</span> <span class="n">result1</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">*</span> <span class="n">myCalcu</span><span class="o">.</span><span class="na">pi</span><span class="o">;</span>
-<span class="kt">int</span> <span class="n">result2</span> <span class="o">=</span> <span class="n">myCalcu</span><span class="o">.</span><span class="na">plus</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="mi">5</span><span class="o">);</span>
-<span class="kt">int</span> <span class="n">result3</span> <span class="o">=</span> <span class="n">myCalcu</span><span class="o">.</span><span class="na">minus</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="mi">5</span><span class="o">);</span>
-</code></pre></div></div>
+<ul>
+  <li><strong>도트(.) 연산자</strong>: <code class="language-plaintext highlighter-rouge">Calculator.pi</code>는 “Calculator 클래스에 있는 pi”를 가리킵니다. 객체 주소를 통하지 않고, 클래스 이름으로 주소를 바로 찾아갑니다.</li>
+  <li><strong>접근 권장사항</strong>: <code class="language-plaintext highlighter-rouge">new Calculator().pi</code> 처럼 객체를 통해서도 접근할 수는 있지만, 이는 권장되지 않습니다. 코드만 봤을 때 이것이 공유 변수인지 개인 변수인지 헷갈릴 수 있기 때문입니다. 그래서 이클립스 같은 도구는 “클래스 이름으로 접근해라(Access static way)”라고 경고를 줍니다.</li>
+</ul>
 
-<p>하지만 정적 요소는 클래스 이름으로 접근하는 것이 정석이다. 이클립스에서는 정적 멤버를 객체 참조 변수로 접근했을 경우, 경고 표시(![warning])를 낸다.</p>
+<p><br />
+<br /></p>
 
-<p><strong>Calculator.java</strong></p>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch06.sec10.exam01</span><span class="o">;</span>
+<h2 id="6103-정적-블록-static-block">6.10.3 정적 블록 (static block)</h2>
 
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Calculator</span> <span class="o">{</span>
-	<span class="kd">static</span> <span class="kt">double</span> <span class="n">pi</span> <span class="o">=</span> <span class="mf">3.14159</span><span class="o">;</span>
-	
-	<span class="kd">static</span> <span class="kt">int</span> <span class="nf">plus</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">)</span> <span class="o">{</span>
-		<span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="o">;</span>
-	<span class="o">}</span>
-	
-	<span class="kd">static</span> <span class="kt">int</span> <span class="nf">minus</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">)</span> <span class="o">{</span>
-		<span class="k">return</span> <span class="n">x</span> <span class="o">-</span> <span class="n">y</span><span class="o">;</span>
-	<span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
+<p>정적 필드에 복잡한 초기화가 필요하다면 <code class="language-plaintext highlighter-rouge">static { ... }</code> 블록을 사용합니다. 생성자는 객체를 만들 때 실행되지만, 정적 블록은 클래스를 준비할 때 실행됩니다.</p>
 
-<p><strong>CalculatorExample.java</strong></p>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch06.sec10.exam01</span><span class="o">;</span>
+<h3 id="-코드-예시-2">💻 코드 예시</h3>
 
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CalculatorExample</span> <span class="o">{</span>
-	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-		<span class="kt">double</span> <span class="n">result1</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">*</span> <span class="nc">Calculator</span><span class="o">.</span><span class="na">pi</span><span class="o">;</span>
-		<span class="kt">int</span> <span class="n">result2</span> <span class="o">=</span> <span class="nc">Calculator</span><span class="o">.</span><span class="na">plus</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="mi">5</span><span class="o">);</span>
-		<span class="kt">int</span> <span class="n">result3</span> <span class="o">=</span> <span class="nc">Calculator</span><span class="o">.</span><span class="na">minus</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="mi">5</span><span class="o">);</span>
-		
-		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"result1 : "</span> <span class="o">+</span> <span class="n">result1</span><span class="o">);</span>
-		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"result2 : "</span> <span class="o">+</span> <span class="n">result2</span><span class="o">);</span>
-		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"result3 : "</span> <span class="o">+</span> <span class="n">result3</span><span class="o">);</span>
-	<span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p><strong>실행 결과</strong></p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>result1 : 314.159
-result2 : 15
-result3 : 5
-</code></pre></div></div>
-
-<h2 id="정적-블록">정적 블록</h2>
-
-<p>정적 필드는 다음과 같이 필드 선언과 동시에 초기값을 주는 것이 일반적이다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">static</span> <span class="kt">double</span> <span class="n">pi</span> <span class="o">=</span> <span class="mf">3.14159</span><span class="o">;</span>
-</code></pre></div></div>
-
-<p>하지만 복잡한 초기화 작업이 필요하다면 정적 블록(static block)을 이용해야 한다. 다음은 정적 블록의 형태를 보여 준다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">static</span> <span class="o">{</span>
-    <span class="c1">// ...</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p>정적 블록은 클래스가 메모리로 로딩될 때 자동으로 실행된다. 정적 블록이 클래스 내부에 여러 개가 선언되어 있을 경우에는 선언된 순서대로 실행된다.</p>
-
-<blockquote>
-  <p><strong>생성자에서 초기화를 하지 않는 정적 필드</strong>
-정적 필드는 객체 생성 없이도 사용할 수 있기 때문에 생성자에서 초기화 작업을 하지 않는다. 생성자는 객체 생성 후 실행되기 때문이다.</p>
-</blockquote>
-
-<p>다음 예제를 보면 Television은 3개의 정적 필드를 가지고 있다. company와 model은 선언 시 초기값을 주었고, info는 정적 블록에서 company와 model을 서로 연결하여 초기값으로 주었다.</p>
-
-<p><strong>Television.java</strong></p>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch06.sec10.exam02</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Television</span> <span class="o">{</span>
-	<span class="kd">static</span> <span class="nc">String</span> <span class="n">company</span> <span class="o">=</span> <span class="s">"MyCompany"</span><span class="o">;</span>
-	<span class="kd">static</span> <span class="nc">String</span> <span class="n">model</span> <span class="o">=</span> <span class="s">"LCD"</span><span class="o">;</span>
-	<span class="kd">static</span> <span class="nc">String</span> <span class="n">info</span><span class="o">;</span>
-	
-	<span class="kd">static</span> <span class="o">{</span>
-		<span class="n">info</span> <span class="o">=</span> <span class="n">company</span> <span class="o">+</span> <span class="s">"-"</span> <span class="o">+</span> <span class="n">model</span><span class="o">;</span>
-	<span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p><strong>TelevisionExample.java</strong></p>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch06.sec10.exam02</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TelevisionExample</span> <span class="o">{</span>
-	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="nc">Television</span><span class="o">.</span><span class="na">info</span><span class="o">);</span>
-	<span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p><strong>실행 결과</strong></p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>MyCompany-LCD
-</code></pre></div></div>
-
-<h2 id="인스턴스-멤버-사용-불가">인스턴스 멤버 사용 불가</h2>
-
-<p>정적 메소드와 정적 블록은 객체가 없어도 실행된다는 특징 때문에 내부에 인스턴스 필드나 인스턴스 메소드를 사용할 수 없다. 또한 객체 자신의 참조인 this도 사용할 수 없다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ClassName</span> <span class="o">{</span>
-    <span class="c1">// 인스턴스 필드와 메소드 선언</span>
-    <span class="kt">int</span> <span class="n">field1</span><span class="o">;</span>
-    <span class="kt">void</span> <span class="nf">method1</span><span class="o">()</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Television</span> <span class="o">{</span>
+    <span class="kd">static</span> <span class="nc">String</span> <span class="n">company</span> <span class="o">=</span> <span class="s">"Samsung"</span><span class="o">;</span>
+    <span class="kd">static</span> <span class="nc">String</span> <span class="n">model</span> <span class="o">=</span> <span class="s">"OLED"</span><span class="o">;</span>
+    <span class="kd">static</span> <span class="nc">String</span> <span class="n">info</span><span class="o">;</span>
     
-    <span class="c1">// 정적 필드와 메소드 선언</span>
-    <span class="kd">static</span> <span class="kt">int</span> <span class="n">field2</span><span class="o">;</span>
-    <span class="kd">static</span> <span class="kt">void</span> <span class="nf">method2</span><span class="o">()</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
-    
-    <span class="c1">// 정적 블록 선언</span>
+    <span class="c1">// 정적 블록: 복잡한 초기화 로직</span>
     <span class="kd">static</span> <span class="o">{</span>
-        <span class="n">field1</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span> <span class="c1">// (x) 컴파일 에러</span>
-        <span class="n">method1</span><span class="o">();</span> <span class="c1">// (x)</span>
-        <span class="n">field2</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span> <span class="c1">// (o)</span>
-        <span class="n">method2</span><span class="o">();</span> <span class="c1">// (o)</span>
-    <span class="o">}</span>
-    
-    <span class="c1">// 정적 메소드 선언</span>
-    <span class="kd">static</span> <span class="kt">void</span> <span class="nf">method3</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">this</span><span class="o">.</span><span class="na">field1</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span> <span class="c1">// (x) 컴파일 에러</span>
-        <span class="k">this</span><span class="o">.</span><span class="na">method1</span><span class="o">();</span> <span class="c1">// (x)</span>
-        <span class="n">field2</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span> <span class="c1">// (o)</span>
-        <span class="n">method2</span><span class="o">();</span> <span class="c1">// (o)</span>
+        <span class="n">info</span> <span class="o">=</span> <span class="n">company</span> <span class="o">+</span> <span class="s">"-"</span> <span class="o">+</span> <span class="n">model</span><span class="o">;</span> <span class="c1">// "Samsung-OLED"</span>
+        <span class="c1">// 여기서 로깅을 하거나 복잡한 계산을 수행할 수음</span>
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div></div>
 
-<p>정적 메소드와 정적 블록에서 인스턴스 멤버를 사용하고 싶다면 다음과 같이 객체를 먼저 생성하고 참조 변수로 접근해야 한다.</p>
+<h3 id="-코드를-다시-한번-원리와-동작을-살펴봅니다-2">🔍 코드를 다시 한번 원리와 동작을 살펴봅니다</h3>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">static</span> <span class="kt">void</span> <span class="nf">method3</span><span class="o">()</span> <span class="o">{</span>
-    <span class="c1">// 객체 생성</span>
-    <span class="nc">ClassName</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ClassName</span><span class="o">();</span>
-    <span class="c1">// 인스턴스 멤버 사용</span>
-    <span class="n">obj</span><span class="o">.</span><span class="na">field1</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
-    <span class="n">obj</span><span class="o">.</span><span class="na">method1</span><span class="o">();</span>
-<span class="o">}</span>
-</code></pre></div></div>
+<ul>
+  <li><strong>실행 시점</strong>: 정적 블록은 클래스가 메모리로 로딩될 때 <strong>자동으로, 딱 한 번</strong> 실행됩니다. 객체를 100개 만들어도 정적 블록은 처음에 한 번만 실행됩니다.</li>
+  <li><strong>용도</strong>: 주로 필드값들을 조합하거나, 초기 설정값 계산, 또는 드라이버 로딩과 같이 프로그램 시작 시 딱 한 번만 해야 하는 작업에 사용합니다.</li>
+</ul>
 
-<p>main() 메소드도 동일한 규칙이 적용된다. main() 메소드도 정적 메소드이므로 객체 생성 없이 인스턴스 필드와 인스턴스 메소드를 main() 메소드에서 바로 사용할 수 없다. 따라서 다음과 같이 작성하면 컴파일 에러가 발생한다.</p>
+<p><br />
+<br /></p>
+
+<h2 id="6104-정적-메소드-사용-시-주의할-점">6.10.4 정적 메소드 사용 시 주의할 점</h2>
+
+<p><strong>“공용 공간에서 개인 물건을 찾지 마세요!”</strong></p>
+
+<p>정적 메소드는 객체 생성 없이 실행될 수 있습니다. 그런데 정적 메소드 안에서 갑자기 “내 이름은 뭐야?(<code class="language-plaintext highlighter-rouge">this.name</code>)”라고 묻는다면 컴퓨터는 대답할 수 없습니다. 왜냐하면 ‘나(this)’라는 객체가 아직 안 만들어졌을 수도 있기 때문입니다.</p>
+
+<h3 id="-코드-예시-3">💻 코드 예시</h3>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Car</span> <span class="o">{</span>
-    <span class="c1">// 인스턴스 필드 선언</span>
-    <span class="kt">int</span> <span class="n">speed</span><span class="o">;</span>
+    <span class="kt">int</span> <span class="n">speed</span><span class="o">;</span> <span class="c1">// 인스턴스 필드 (개인 물건)</span>
     
-    <span class="c1">// 인스턴스 메소드 선언</span>
-    <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
+    <span class="kd">static</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span> <span class="c1">// 정적 메소드 (공용 기능)</span>
+        <span class="c1">// [에러 발생 원인] </span>
+        <span class="c1">// run()은 객체 없이도 실행될 수 있는데, </span>
+        <span class="c1">// speed는 객체가 있어야만 존재합니다. 시점이 맞지 않습니다.</span>
+        <span class="c1">// speed = 100; (X)</span>
+        <span class="c1">// this.speed = 100; (X)</span>
+    <span class="o">}</span>
     
-    <span class="c1">// 메인 메소드 선언</span>
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">speed</span> <span class="o">=</span> <span class="mi">60</span><span class="o">;</span> <span class="c1">// (x) 컴파일 에러</span>
-        <span class="n">run</span><span class="o">();</span> <span class="c1">// (x)</span>
+        <span class="c1">// main도 정적 메소드입니다.</span>
+        <span class="c1">// run(); // 바로 사용 불가 (아직 객체가 없음)</span>
+        
+        <span class="nc">Car</span> <span class="n">myCar</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Car</span><span class="o">();</span> <span class="c1">// 객체 생성 (이제 힙 영역에 speed가 생김)</span>
+        <span class="n">myCar</span><span class="o">.</span><span class="na">speed</span> <span class="o">=</span> <span class="mi">60</span><span class="o">;</span>      <span class="c1">// 이제 사용 가능</span>
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div></div>
 
-<p>main() 메소드를 올바르게 수정하면 다음과 같다.</p>
+<h3 id="-코드를-다시-한번-원리와-동작을-살펴봅니다-3">🔍 코드를 다시 한번 원리와 동작을 살펴봅니다</h3>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-    <span class="c1">// 객체 생성</span>
-    <span class="nc">Car</span> <span class="n">myCar</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Car</span><span class="o">();</span>
-    <span class="c1">// 인스턴스 멤버 사용</span>
-    <span class="n">myCar</span><span class="o">.</span><span class="na">speed</span> <span class="o">=</span> <span class="mi">60</span><span class="o">;</span>
-    <span class="n">myCar</span><span class="o">.</span><span class="na">run</span><span class="o">();</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p><strong>Car.java</strong></p>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch06.sec10.exam03</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Car</span> <span class="o">{</span>
-	<span class="c1">// 인스턴스 필드 선언</span>
-	<span class="kt">int</span> <span class="n">speed</span><span class="o">;</span>
-	
-	<span class="c1">// 인스턴스 메소드 선언</span>
-	<span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
-		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">speed</span> <span class="o">+</span> <span class="s">"으로 달립니다."</span><span class="o">);</span>
-	<span class="o">}</span>
-	
-	<span class="kd">static</span> <span class="kt">void</span> <span class="nf">simulate</span><span class="o">()</span> <span class="o">{</span>
-		<span class="c1">// 객체 생성</span>
-		<span class="nc">Car</span> <span class="n">myCar</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Car</span><span class="o">();</span>
-		<span class="c1">// 인스턴스 멤버 사용</span>
-		<span class="n">myCar</span><span class="o">.</span><span class="na">speed</span> <span class="o">=</span> <span class="mi">200</span><span class="o">;</span>
-		<span class="n">myCar</span><span class="o">.</span><span class="na">run</span><span class="o">();</span>
-	<span class="o">}</span>
-	
-	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-		<span class="c1">// 정적 메소드 호출</span>
-		<span class="n">simulate</span><span class="o">();</span>
-		
-		<span class="c1">// 객체 생성</span>
-		<span class="nc">Car</span> <span class="n">myCar</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Car</span><span class="o">();</span>
-		<span class="c1">// 인스턴스 멤버 사용</span>
-		<span class="n">myCar</span><span class="o">.</span><span class="na">speed</span> <span class="o">=</span> <span class="mi">60</span><span class="o">;</span>
-		<span class="n">myCar</span><span class="o">.</span><span class="na">run</span><span class="o">();</span>
-	<span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p><strong>실행 결과</strong></p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>200으로 달립니다.
-60으로 달립니다.
-</code></pre></div></div>
+<ul>
+  <li><strong>this 사용 불가</strong>: <code class="language-plaintext highlighter-rouge">this</code>는 현재 실행 중인 객체의 주소를 가리킵니다. 하지만 정적 메소드는 객체 없이 실행되므로 참조할 주소(<code class="language-plaintext highlighter-rouge">this</code>)가 없습니다.</li>
+  <li><strong>인스턴스 멤버 접근 불가</strong>: 같은 이유로 인스턴스 필드나 메소드는 사용할 수 없습니다. 이들은 객체 생성 후에 힙 영역에 생성되는데, 정적 메소드는 그보다 먼저(클래스 로딩 시) 메모드 영역에 존재하기 때문입니다.</li>
+  <li><strong>해결 방법</strong>: 정적 메소드 안에서 인스턴스 멤버를 쓰고 싶다면, 반드시 <strong>객체를 먼저 생성(<code class="language-plaintext highlighter-rouge">new</code>)</strong> 하고 참조 변수를 통해 접근해야 합니다.</li>
+</ul>
 
         </div>
 

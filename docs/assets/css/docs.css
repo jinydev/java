@@ -1372,11 +1372,16 @@ details[open]>.bd-summary-link {
     width: 100%;
 }
 
-.bd-content > h1, .bd-content > h2, .bd-content > h3, .bd-content > p, .bd-content > ul, .bd-content > ol {
+.bd-content>h1,
+.bd-content>h2,
+.bd-content>h3,
+.bd-content>p,
+.bd-content>ul,
+.bd-content>ol {
     margin-bottom: 1rem;
 }
 
-.bd-content > h1 {
+.bd-content>h1 {
     margin-top: 1rem;
     margin-bottom: 2rem;
 }
@@ -3249,11 +3254,37 @@ details[open]>.bd-summary-link {
     color: #0d6efd;
     text-decoration: none;
     opacity: 1
-}/* Custom HR style for Markdown */
+}
+
+/* Custom HR style for Markdown */
 hr {
     margin: 3rem 0;
     color: inherit;
     border: 0;
     border-top: 1px solid var(--bs-gray-200);
     opacity: 1;
+}
+
+/* Table Style */
+.bd-content table {
+    border-collapse: collapse !important;
+    width: 100% !important;
+    margin-bottom: 1rem !important;
+    border: 1px solid #dee2e6 !important;
+    /* Add outer border */
+}
+
+.bd-content table th,
+.bd-content table td {
+    border: 1px solid #dee2e6 !important;
+    /* Bootstrap default border color */
+    padding: 0.75rem !important;
+    /* Bootstrap default padding */
+    vertical-align: top !important;
+}
+
+.bd-content table th {
+    border-bottom-width: 2px !important;
+    background-color: #f8f9fa !important;
+    /* Light gray background for headers */
 }

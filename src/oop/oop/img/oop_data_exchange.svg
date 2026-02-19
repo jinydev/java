@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <rect width="800" height="400" fill="#f0f8ff"/>
+  <text x="400" y="50" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" font-weight="bold" fill="#333">Data Exchange (Parameters &amp; Return)</text>
+
+  <!-- Object A -->
+  <g transform="translate(50, 150)">
+    <rect x="0" y="0" width="120" height="100" rx="10" fill="#ffb6c1" stroke="#db7093" stroke-width="2"/>
+    <text x="60" y="55" text-anchor="middle" font-size="18" font-weight="bold">Caller</text>
+  </g>
+
+  <!-- Object B -->
+  <g transform="translate(630, 150)">
+    <rect x="0" y="0" width="120" height="100" rx="10" fill="#add8e6" stroke="#4682b4" stroke-width="2"/>
+    <text x="60" y="55" text-anchor="middle" font-size="18" font-weight="bold">Receiver</text>
+  </g>
+
+  <!-- Data Flow -->
+  <g transform="translate(180, 150)">
+    <!-- Parameters -->
+    <g>
+      <path d="M 0 30 L 430 30" stroke="#ff4500" stroke-width="3"/>
+      <polygon points="430,25 440,30 430,35" fill="#ff4500"/>
+      <rect x="180" y="10" width="80" height="40" rx="5" fill="#fff" stroke="#ff4500"/>
+      <text x="220" y="35" text-anchor="middle" font-size="14">Data (10, 20)</text>
+    </g>
+
+    <!-- Return Value -->
+    <g transform="translate(0, 60)">
+      <path d="M 440 30 L 10 30" stroke="#4169e1" stroke-width="3"/>
+      <polygon points="10,25 0,30 10,35" fill="#4169e1"/>
+      <rect x="180" y="10" width="80" height="40" rx="5" fill="#fff" stroke="#4169e1"/>
+      <text x="220" y="35" text-anchor="middle" font-size="14">Result (30)</text>
+    </g>
+  </g>
+</svg>

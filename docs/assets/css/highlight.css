@@ -311,10 +311,28 @@ code {
 	color: #3333bb
 }
 
-/* Name.Variable.Instance */
+/* Literal.Number.Integer.Long */
 .il {
 	color: #0000DD;
 	font-weight: bold
 }
 
-/* Literal.Number.Integer.Long */
+/* Table Style */
+table {
+	border-collapse: collapse !important;
+	width: 100% !important;
+	margin-bottom: 1rem !important;
+	border: 1px solid #dee2e6 !important;
+}
+
+table th,
+table td {
+	border: 1px solid #dee2e6 !important;
+	padding: 0.75rem !important;
+	vertical-align: top !important;
+}
+
+table th {
+	border-bottom-width: 2px !important;
+	background-color: #f8f9fa !important;
+}

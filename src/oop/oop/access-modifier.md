@@ -6,201 +6,118 @@ parent: "Chapter 06. 클래스"
 grand_parent: "객체지향 자바 프로그래밍"
 ---
 
-# 6.13 접근 제한자
+# 6.13 접근 제한자 (보안 시스템)
 
-main() 메소드를 가지는 클래스에서 외부 클래스를 사용해서 객체를 생성하고 필드와 메소드를 사용하는 코드를 많이 보아왔다.
 
-```java
-Car myCar = new Car();
-myCar.speed = 60;
-myCar.run();
-```
 
-객체 생성을 막기 위해 생성자를 호출하지 못하게 하거나 객체의 특정 데이터를 보호하기 위해 해당 필드에 접근하지 못하게 막아야 할 때가 있다. 그리고 특정 메소드를 호출할 수 없도록 막아야 할 때도 있다.
+## 우리 집 보안 시스템
 
-자바는 이러한 경우를 대비해서 접근 제한자(Access Modifier)를 제공한다. 접근 제한자는 말 그대로 접근을 제한하기 위해 사용된다. 여기서 접근이란 클래스 및 인터페이스를 이용하는 것을 말한다.
+접근 제한자(Access Modifier)는 쉽게 말해 **'우리 집 보안 시스템'**과 같습니다.
 
-접근 제한자는 public, protected, private와 default(아무것도 붙이지 않음)가 있다.
+집에 있는 모든 물건을 아무나 가져가게 둘 수는 없잖아요?
+어떤 건 대문 밖에 내놓고(누구나 가져가도 됨), 어떤 건 안방 금고에 넣어두고(나만 볼 수 있음) 관리해야 안전하겠죠.
 
-| 접근 제한자 | 적용 대상                    | 접근할 수 있는 범위              |
-| ----------- | ---------------------------- | -------------------------------- |
-| public      | 클래스, 필드, 생성자, 메소드 | 없음 (모든 패키지에서 접근 가능) |
-| protected   | 필드, 생성자, 메소드         | 같은 패키지 + 자식 클래스        |
-| default     | 클래스, 필드, 생성자, 메소드 | 같은 패키지                      |
-| private     | 필드, 생성자, 메소드         | 클래스 내부                      |
+
+
+자바에서도 마찬가지입니다.
+
+ 클래스, 필드, 메소드를 **누구에게 어디까지 공개할 것인가**를 결정하는 것이 바로 접근 제한자입니다.
+
+![Access Modifier Analogy](./img/access_modifier_analogy.svg)
+
+| 접근 제한자   | 의미 (비유)                  | 접근 가능 범위                        |
+| :------------ | :--------------------------- | :------------------------------------ |
+| **public**    | **공원** (Public Park)       | **누구나** 출입 가능 (모든 패키지)    |
+| **protected** | **상속 재산**                | **자식**에게만 물려줌 (+ 같은 패키지) |
+| **default**   | **동네 친구**                | **같은 동네(패키지)** 친구들끼리만    |
+| **private**   | **개인 금고** (Private Safe) | **오직 나(클래스 내부)**만 접근 가능  |
+
+
 
 ## 클래스의 접근 제한
 
-클래스를 어디에서나 사용할 수 있는 것은 아니다. 클래스를 다른 패키지에서도 사용할 수 있도록 할 것인지, 아니면 같은 패키지에서만 사용할 수 있도록 할 것인지에 따라 접근 제한자를 갖는다.
+클래스를 만들 때 `public`을 붙일지 말지 결정해야 합니다.
+
+
+
+![Class Level Access](./img/access_class_level.svg)
+
+
+
+*   **public class**: "전국적으로 유명한 맛집" (어디서든 찾아올 수 있음)
+*   **(default) class**: "동네 사람들만 아는 맛집" (같은 패키지 안에서만 사용 가능)
+
+
 
 ```java
-[public] class 클래스 { ... }
+// 전국구 맛집 (어디서든 import 가능)
+public class A { ... }
+
+// 동네 맛집 (같은 패키지에서만 사용 가능)
+class B { ... }
 ```
 
-클래스 선언 시 public 접근 제한자를 생략했다면 클래스는 default 접근 제한을 가졌다라고 말한다. 클래스가 default 접근 제한을 가지면 같은 패키지에서는 아무런 제한 없이 사용할 수 있지만 다른 패키지에서는 사용할 수 없도록 제한된다.
 
-반대로 클래스가 public 접근 제한을 가지면 같은 패키지뿐만 아니라 다른 패키지에서도 아무런 제한 없이 사용할 수 있다.
 
-라이브러리 클래스를 개발할 때에는 일반적으로 public 접근 제한을 갖도록 해서 어느 패키지에서나 사용할 수 있도록 한다. 그러나 인터넷으로 배포되는 라이브러리 클래스들 중에는 public이 아닌 것도 있다. 이것은 외부로 노출시키지 않고 라이브러리 내부에서만 사용하기 위해서이다.
+## 생성자의 접근 제한 (열쇠 관리)
 
-## 생성자의 접근 제한
+객체를 생성(`new`)한다는 것은, 그 객체의 문을 열고 들어가는 것과 같습니다.
+생성자에 어떤 접근 제한자를 붙이느냐에 따라 **누구에게 열쇠를 줄 것인가**가 결정됩니다.
 
-객체를 생성하기 위해서는 new 연산자로 생성자를 호출해야 한다. 하지만 생성자를 어디에서나 호출할 수 있는 것은 아니다. 생성자가 어떤 접근 제한을 갖느냐에 따라 호출 가능 여부가 결정된다.
+
+
+![Constructor Access](./img/access_constructor.svg)
+
+
+
+코드예시
 
 ```java
-public class ClassName {
-    [public | protected | private] ClassName(...) { ... }
+public class Car {
+    // 1. public: 누구나 차를 살 수 있음
+    public Car() { ... }
+
+    // 2. private: 아무도 못 삼 (공장 내부용)
+    private Car(int secretCode) { ... }
 }
 ```
 
-- **public 접근 제한**: 모든 패키지에서 아무런 제한 없이 생성자를 호출할 수 있다.
-- **protected 접근 제한**: 같은 패키지에 속하는 클래스에서 생성자를 호출할 수 있다. 다른 패키지에 속한 클래스가 해당 클래스의 자식 클래스라면 생성자를 호출할 수 있다.
-- **default 접근 제한**: 같은 패키지에 속하는 클래스에서만 생성자를 호출할 수 있다.
-- **private 접근 제한**: 동일한 클래스 내부에서만 생성자를 호출할 수 있고 외부에서는 호출할 수 없다.
+*   `public Car()`: 누구나 `new Car()`를 호출해서 자동차를 만들 수 있습니다.
+*   `private Car()`: 외부에서는 절대 `new Car()`를 할 수 없습니다. (보통 식구들끼리만 쓸 때 사용)
 
-**A.java**
-```java
-package ch06.sec13.exam02.package1;
 
-public class A {
-	// 필드 선언
-	A a1 = new A(true);
-	A a2 = new A(1);
-	A a3 = new A("문자열");
-	
-	// public 접근 제한 생성자 선언
-	public A(boolean b) {
-	}
-	
-	// default 접근 제한 생성자 선언
-	A(int b) {
-	}
-	
-	// private 접근 제한 생성자 선언
-	private A(String s) {
-	}
-}
-```
-
-**B.java**
-```java
-package ch06.sec13.exam02.package1;
-
-public class B {
-	// 필드 선언
-	A a1 = new A(true); // (o)
-	A a2 = new A(1);    // (o)
-	// A a3 = new A("문자열"); // (x) private 생성자 접근 불가
-}
-```
-
-**C.java**
-```java
-package ch06.sec13.exam02.package2;
-
-import ch06.sec13.exam02.package1.*;
-
-public class C {
-	// 필드 선언
-	A a1 = new A(true); // (o)
-	// A a2 = new A(1);    // (x) default 생성자 접근 불가
-	// A a3 = new A("문자열"); // (x) private 생성자 접근 불가
-}
-```
 
 ## 필드와 메소드의 접근 제한
 
-필드와 메소드를 어디서나 사용할 수 있는 것은 아니다. 어떤 접근 제한을 갖느냐에 따라 호출 여부가 결정된다.
+객체 안에 있는 데이터(필드)와 기능(메소드)도 보호해야 합니다.
+
+![Field and Method Access](./img/access_field_method.svg)
+
+
+
+### 데이터 보호 (Private Field)
+
+내 통장 잔고(`balance`)를 다른 사람이 마음대로 `0`원으로 바꾸면 안 되겠죠?
+그래서 중요한 데이터는 `private`으로 꽉 잠가둡니다.
+
+
+
+코드예시
 
 ```java
-[public | protected | private] [static] 타입 필드;
-[public | protected | private] [static] 리턴타입 메소드(...) { ... }
-```
+public class BankAccount {
+    // 중요! 외부에서 접근 금지
+    private int balance;
 
-- **public 접근 제한**: 모든 패키지에서 아무런 제한 없이 필드와 메소드를 사용할 수 있다.
-- **protected 접근 제한**: 같은 패키지에 속하는 클래스에서 필드와 메소드를 사용할 수 있다. 다른 패키지에 속한 클래스가 해당 클래스의 자식 클래스라면 필드와 메소드를 사용할 수 있다.
-- **default 접근 제한**: 같은 패키지에 속하는 클래스에서만 필드와 메소드를 사용할 수 있다.
-- **private 접근 제한**: 동일한 클래스 내부에서만 필드와 메소드를 사용할 수 있다.
-
-**A.java**
-```java
-package ch06.sec13.exam03.package1;
-
-public class A {
-	// public 접근 제한을 갖는 필드 선언
-	public int field1;
-	// default 접근 제한을 갖는 필드 선언
-	int field2;
-	// private 접근 제한을 갖는 필드 선언
-	private int field3;
-	
-	// public 접근 제한을 갖는 생성자 선언
-	public A() {
-		field1 = 1;	// (o)
-		field2 = 1;	// (o)
-		field3 = 1;	// (o)
-		
-		method1();	// (o)
-		method2();	// (o)
-		method3();	// (o)
-	}
-	
-	// public 접근 제한을 갖는 메소드 선언
-	public void method1() {
-	}
-	
-	// default 접근 제한을 갖는 메소드 선언
-	void method2() {
-	}
-	
-	// private 접근 제한을 갖는 메소드 선언
-	private void method3() {
-	}
+    // 공개된 메소드를 통해서만 돈을 입금/출금 가능
+    public void deposit(int amount) {
+        if (amount > 0) {
+            balance += amount;
+        }
+    }
 }
 ```
 
-**B.java**
-```java
-package ch06.sec13.exam03.package1;
-
-public class B {
-	public void method() {
-		// 객체 생성
-		A a = new A();
-		
-		// 필드값 변경
-		a.field1 = 1; // (o)
-		a.field2 = 1; // (o)
-		// a.field3 = 1; // (x) private 필드 접근 불가
-		
-		// 메소드 호출
-		a.method1(); // (o)
-		a.method2(); // (o)
-		// a.method3(); // (x) private 메소드 접근 불가
-	}
-}
-```
-
-**C.java**
-```java
-package ch06.sec13.exam03.package2;
-
-import ch06.sec13.exam03.package1.*;
-
-public class C {
-	public void method() {
-		// 객체 생성
-		A a = new A();
-		
-		// 필드값 변경
-		a.field1 = 1; // (o)
-		// a.field2 = 1; // (x) default 필드 접근 불가
-		// a.field3 = 1; // (x) private 필드 접근 불가
-		
-		// 메소드 호출
-		a.method1(); // (o)
-		// a.method2(); // (x) default 메소드 접근 불가
-		// a.method3(); // (x) private 메소드 접근 불가
-	}
-}
-```
+*   `field`는 대문 밖에서 안 보입니다. (`private`)
+*   `deposit` 버튼은 누구나 누를 수 있습니다. (`public`)
+*   외부 사람은 `deposit` 버튼을 통해서만 안전하게 잔고를 바꿀 수 있습니다. 이를 **캡슐화(Encapsulation)**라고 합니다.

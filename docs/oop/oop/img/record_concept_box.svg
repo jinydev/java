@@ -1,0 +1,32 @@
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="400" fill="#f8f9fa"/>
+
+  <!-- Title -->
+  <text x="400" y="40" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="#2c3e50" font-weight="bold">Record = 밀봉된 택배 상자 (Immutable)</text>
+
+  <!-- The Box -->
+  <g transform="translate(250, 100)">
+    <!-- Main Box Body -->
+    <rect x="0" y="50" width="300" height="200" fill="#e67e22" stroke="#d35400" stroke-width="3" rx="10"/>
+    
+    <!-- Lid (Sealed) -->
+    <path d="M0,50 L150,0 L300,50" fill="#d35400" stroke="#a04000" stroke-width="2"/>
+    
+    <!-- Tape (Sealed Symbol) -->
+    <rect x="130" y="10" width="40" height="240" fill="#f1c40f" opacity="0.6"/>
+    <text x="150" y="150" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="#c0392b" font-weight="bold" transform="rotate(90, 150, 150)">SEALED (수정 불가)</text>
+
+    <!-- Window (Getter) -->
+    <rect x="50" y="100" width="200" height="100" fill="#ecf0f1" stroke="#bdc3c7" stroke-width="2"/>
+    <text x="150" y="80" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="white">투명 창문 (Getter)</text>
+    
+    <!-- Data inside -->
+    <text x="100" y="140" font-family="Arial, sans-serif" font-size="16" fill="#2c3e50">name = "Kim"</text>
+    <text x="100" y="170" font-family="Arial, sans-serif" font-size="16" fill="#2c3e50">age = 20</text>
+  </g>
+
+  <!-- Explanation -->
+  <text x="400" y="350" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#2c3e50">데이터를 한 번 넣으면(생성), 볼 수는 있지만 바꿀 수는 없습니다.</text>
+
+</svg>
