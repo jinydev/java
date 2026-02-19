@@ -1,68 +1,60 @@
 ---
 layout: oop
-title: "13.4 제한된 타입 파라미터"
-nav_order: 4
-parent: "Chapter 13. 제네릭"
-grand_parent: "객체지향 프로그래밍"
+title: "16.3 제한된 타입 파라미터"
+nav_order: 3
+parent: "Chapter 16. 제네릭"
+grand_parent: "객체지향 자바 프로그래밍"
 ---
 
-# 13.4 제한된 타입 파라미터
+# 16.3 제한된 타입 파라미터 (<T extends ...>)
 
-경우에 따라서는 타입 파라미터를 대체하는 구체적인 타입을 제한할 필요가 있다. 예를 들어 숫자를 연산하는 제네릭 메소드는 대체 타입으로 Number 또는 자식 클래스(Byte, Short, Integer, Long, Double)로 제한할 필요가 있다.
 
-이처럼 모든 타입으로 대체할 수 없고, 특정 타입과 자식 또는 구현 관계에 있는 타입만 대체할 수 있는 타입 파라미터를 **제한된 타입 파라미터(bounded type parameter)**라고 한다. 정의는 다음과 같이 한다.
+<br>
+
+## 1. 아무나 들어올 수 없다! (VIP Only) 🚫
+
+제네릭 `<T>`는 기본적으로 모든 타입(`Object`)을 다 받을 수 있습니다.
+하지만 계산기 프로그램을 만드는데 `String`이나 `Dog` 객체가 들어오면 곤란하겠죠?
+이때 **"숫자(Number) 종류만 들어와!"**라고 문지기를 세우는 것이 바로 **제한된 타입 파라미터**입니다.
+
+![Bounded Generic Gate](./img/bounded_generic_gate.svg)
+
+*   **`<T>`**: 개나 소나 다 들어옴. (String, Double, Person...)
+*   **`<T extends Number>`**: 오직 `Number`와 그 자식들(`Integer`, `Double`)만 입장 가능.
+
+<br>
+
+
+<br>
+
+## 2. 선언 방법 (`extends`)
+
+`extends` 키워드를 사용합니다. (인터페이스를 제한할 때도 `implements`가 아니라 `extends`를 씁니다!)
 
 ```java
-public <T extends 상위타입> 리턴타입 메소드(매개변수, ...) { ... }
-```
-
-상위 타입은 클래스뿐만 아니라 인터페이스도 가능하다. 인터페이스라고 해서 implements를 사용하지는 않는다. 다음은 Number 타입과 자식 클래스(Byte, Short, Integer, Long, Double)에만 대체 가능한 타입 파라미터를 정의한 것이다.
-
-```java
-public <T extends Number> boolean compare(T t1, T t2) {
-	double v1 = t1.doubleValue(); // Number의 doubleValue() 메소드 사용
-	double v2 = t2.doubleValue(); // Number의 doubleValue() 메소드 사용
-	return (v1 == v2);
+// T는 반드시 Number이거나 그 자식이어야 한다.
+public <T extends Number> double add(T t1, T t2) {
+    // T가 Number임이 보장되므로, Number의 메소드(doubleValue)를 맘놓고 쓸 수 있다.
+    return t1.doubleValue() + t2.doubleValue();
 }
 ```
 
-타입 파라미터가 Number 타입으로 제한되면서 Object의 메소드뿐만 아니라 Number가 가지고 있는 메소드도 사용할 수 있다. 위 코드에서 doubleValue() 메소드는 Number 타입에 정의되어 있는 메소드로, double 타입 값을 리턴한다.
+<br>
+
+
+<br>
+
+## 3. 사용 예시
 
 ```java
-package ch13.sec04;
+// 성공
+double sum1 = add(10, 20);      // Integer는 Number의 자식 -> OK
+double sum2 = add(3.14, 5.5);   // Double은 Number의 자식 -> OK
 
-public class GenericExample {
-	// 제한된 타입 파라미터를 갖는 제네릭 메소드
-	public static <T extends Number> boolean compare(T t1, T t2) {
-		// T의 타입을 출력
-		System.out.println("compare(" + t1.getClass().getSimpleName() + ", " +
-				t2.getClass().getSimpleName() + ")");
-
-		// Number의 메소드 사용
-		double v1 = t1.doubleValue();
-		double v2 = t2.doubleValue();
-
-		return (v1 == v2);
-	}
-
-	public static void main(String[] args) {
-		// 제네릭 메소드 호출
-		boolean result1 = compare(10, 20); // T를 Integer 타입으로 대체
-		System.out.println(result1);
-		System.out.println();
-
-		// 제네릭 메소드 호출
-		boolean result2 = compare(4.5, 4.5); // T를 Double 타입으로 대체
-		System.out.println(result2);
-	}
-}
+// 실패 (컴파일 에러)
+double sum3 = add("Hello", "World"); // String은 Number의 자식이 아님 -> Error!
 ```
 
-**실행 결과**
-```
-compare(Integer, Integer)
-false
-
-compare(Double, Double)
-true
-```
+> **핵심 요약**: `<T extends 상위타입>`을 쓰면,
+> 1.  이상한 타입이 들어오는 것을 막아주고 (안전성)
+> 2.  상위 타입의 메소드를 안심하고 사용할 수 있게 해줍니다. (기능성)

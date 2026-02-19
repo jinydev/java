@@ -1,0 +1,33 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="400" height="300" fill="#ffffff" />
+  
+  <!-- Clipboard/Manifest -->
+  <rect x="80" y="30" width="240" height="240" rx="5" fill="#fff" stroke="#333" stroke-width="2"/>
+  <rect x="150" y="20" width="100" height="20" rx="3" fill="#333"/> <!-- Clip -->
+  
+  <text x="200" y="60" font-family="monospace" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">module-info.java</text>
+  <line x1="100" y1="70" x2="300" y2="70" stroke="#333" stroke-width="1"/>
+  
+  <!-- Content -->
+  <g transform="translate(100, 90)">
+    <text x="0" y="20" font-family="monospace" font-size="14" fill="#0d47a1" font-weight="bold">module</text>
+    <text x="60" y="20" font-family="monospace" font-size="14" fill="#333">my.module {</text>
+    
+    <!-- Exports -->
+    <text x="20" y="50" font-family="monospace" font-size="14" fill="#e65100" font-weight="bold">exports</text>
+    <text x="90" y="50" font-family="monospace" font-size="14" fill="#333">pack.a;</text>
+    <text x="160" y="50" font-family="Arial, sans-serif" font-size="10" fill="#e65100">(내보내기/공개)</text>
+    
+    <!-- Requires -->
+    <text x="20" y="80" font-family="monospace" font-size="14" fill="#1b5e20" font-weight="bold">requires</text>
+    <text x="100" y="80" font-family="monospace" font-size="14" fill="#333">java.base;</text>
+    <text x="190" y="80" font-family="Arial, sans-serif" font-size="10" fill="#1b5e20">(수입/필요함)</text>
+    
+    <text x="0" y="110" font-family="monospace" font-size="14" fill="#333">}</text>
+  </g>
+  
+  <text x="200" y="230" font-family="Arial, sans-serif" font-size="12" fill="#555" text-anchor="middle">"모듈 명세서(Manifest)"</text>
+  <text x="200" y="250" font-family="Arial, sans-serif" font-size="12" fill="#555" text-anchor="middle">누구에게 무엇을 주고, 무엇을 받을지 적혀있습니다.</text>
+
+</svg>

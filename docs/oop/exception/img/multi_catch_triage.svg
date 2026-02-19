@@ -1,0 +1,56 @@
+<svg width="600" height="350" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="600" height="350" fill="#ffffff" />
+  
+  <!-- Exception Input -->
+  <circle cx="50" cy="100" r="30" fill="#ff5252" stroke="#d32f2f" stroke-width="2"/>
+  <text x="50" y="105" font-family="Arial, sans-serif" font-size="10" fill="#fff" text-anchor="middle">Exception</text>
+  <text x="50" y="150" font-family="Arial, sans-serif" font-size="12" fill="#333" text-anchor="middle">환자 발생</text>
+
+  <!-- Doctor 1 (Specific) -->
+  <g transform="translate(150, 50)">
+    <rect x="0" y="0" width="120" height="100" rx="5" fill="#e3f2fd" stroke="#2196f3" stroke-width="2"/>
+    <text x="60" y="30" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#0d47a1" text-anchor="middle">전문의 1</text>
+    <text x="60" y="50" font-family="monospace" font-size="10" fill="#333" text-anchor="middle">catch(NPE)</text>
+    <text x="60" y="80" font-family="Arial, sans-serif" font-size="12" fill="#1b5e20" text-anchor="middle">치료 가능?</text>
+  </g>
+
+  <!-- Doctor 2 (Specific) -->
+  <g transform="translate(300, 50)">
+    <rect x="0" y="0" width="120" height="100" rx="5" fill="#e3f2fd" stroke="#2196f3" stroke-width="2"/>
+    <text x="60" y="30" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#0d47a1" text-anchor="middle">전문의 2</text>
+    <text x="60" y="50" font-family="monospace" font-size="10" fill="#333" text-anchor="middle">catch(Index)</text>
+    <text x="60" y="80" font-family="Arial, sans-serif" font-size="12" fill="#1b5e20" text-anchor="middle">치료 가능?</text>
+  </g>
+
+  <!-- Doctor 3 (General) -->
+  <g transform="translate(450, 50)">
+    <rect x="0" y="0" width="120" height="100" rx="5" fill="#fff9c4" stroke="#fbc02d" stroke-width="2"/>
+    <text x="60" y="30" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#f57f17" text-anchor="middle">일반의 (당직)</text>
+    <text x="60" y="50" font-family="monospace" font-size="10" fill="#333" text-anchor="middle">catch(Exception)</text>
+    <text x="60" y="80" font-family="Arial, sans-serif" font-size="12" fill="#e65100" text-anchor="middle">모두 접수</text>
+  </g>
+
+  <!-- Flow Arrows -->
+  <path d="M80,100 L150,100" stroke="#555" stroke-width="2" marker-end="url(#arrow_tri)"/>
+  <path d="M210,150 L210,180" stroke="#4caf50" stroke-width="3" /> <!-- Treat 1 -->
+  <text x="210" y="200" font-family="Arial, sans-serif" font-size="12" fill="#2e7d32" text-anchor="middle">치료 완료</text>
+
+  <path d="M270,100 L300,100" stroke="#555" stroke-width="2" marker-end="url(#arrow_tri)"/> <!-- Next -->
+  <path d="M360,150 L360,180" stroke="#4caf50" stroke-width="3" /> <!-- Treat 2 -->
+  <text x="360" y="200" font-family="Arial, sans-serif" font-size="12" fill="#2e7d32" text-anchor="middle">치료 완료</text>
+
+  <path d="M420,100 L450,100" stroke="#555" stroke-width="2" marker-end="url(#arrow_tri)"/> <!-- Next -->
+  <path d="M510,150 L510,180" stroke="#4caf50" stroke-width="3" /> <!-- Treat 3 -->
+  <text x="510" y="200" font-family="Arial, sans-serif" font-size="12" fill="#2e7d32" text-anchor="middle">치료 완료</text>
+
+  <defs>
+    <marker id="arrow_tri" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#555" />
+    </marker>
+  </defs>
+
+  <text x="300" y="250" font-family="Arial, sans-serif" font-size="12" fill="#555" text-anchor="middle">"병명에 맞는 전문의를 먼저 찾고, 없으면 일반의가 처리합니다."</text>
+  <text x="300" y="270" font-family="Arial, sans-serif" font-size="12" fill="#d32f2f" text-anchor="middle">"주의: 일반의(Exception 타 catch)를 맨 앞에 두면 전문의가 진료할 기회가 없습니다!"</text>
+
+</svg>

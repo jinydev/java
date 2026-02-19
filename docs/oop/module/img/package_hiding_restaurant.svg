@@ -1,0 +1,39 @@
+<svg width="500" height="300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="500" height="300" fill="#ffffff" />
+  
+  <!-- Restaurant (Module) -->
+  <rect x="50" y="50" width="400" height="200" rx="10" fill="#fff3e0" stroke="#ff9800" stroke-width="3"/>
+  <text x="70" y="40" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#e65100">Restaurant Module</text>
+  
+  <!-- Dining Area (Exported) -->
+  <g transform="translate(70, 70)">
+    <rect x="0" y="0" width="160" height="160" rx="5" fill="#fff9c4" stroke="#fbc02d" stroke-width="2"/>
+    <text x="80" y="30" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#f57f17" text-anchor="middle">Dining Area</text>
+    <text x="80" y="50" font-family="Arial, sans-serif" font-size="10" fill="#333" text-anchor="middle">(pack.dining)</text>
+    <text x="80" y="100" font-family="Arial, sans-serif" font-size="12" fill="#4caf50" text-anchor="middle">손님 입장 가능</text>
+    <text x="80" y="120" font-family="monospace" font-size="12" fill="#f57f17" text-anchor="middle">exports</text>
+  </g>
+
+  <!-- Wall -->
+  <rect x="245" y="60" width="10" height="180" fill="#555"/>
+  
+  <!-- Kitchen (Hidden) -->
+  <g transform="translate(270, 70)">
+    <rect x="0" y="0" width="160" height="160" rx="5" fill="#cfd8dc" stroke="#607d8b" stroke-width="2"/>
+    <text x="80" y="30" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#455a64" text-anchor="middle">Kitchen</text>
+    <text x="80" y="50" font-family="Arial, sans-serif" font-size="10" fill="#333" text-anchor="middle">(pack.kitchen)</text>
+    <text x="80" y="100" font-family="Arial, sans-serif" font-size="12" fill="#d32f2f" text-anchor="middle">관계자 외 출입금지</text>
+    <text x="80" y="120" font-family="monospace" font-size="12" fill="#555" text-anchor="middle">(Hidden)</text>
+  </g>
+
+  <!-- Flow -->
+  <path d="M190,150 L230,150" stroke="#333" stroke-width="2" marker-end="url(#arrow_serve)"/>
+  <defs>
+    <marker id="arrow_serve" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#333" />
+    </marker>
+  </defs>
+  <text x="250" y="270" font-family="Arial, sans-serif" font-size="12" fill="#555" text-anchor="middle">"주방은 홀을 통해서만 음식을 내보냅니다. 손님이 직접 들어갈 수 없습니다."</text>
+
+</svg>

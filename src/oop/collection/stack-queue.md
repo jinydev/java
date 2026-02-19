@@ -1,90 +1,77 @@
 ---
 layout: oop
-title: "15.6 LIFO와 FIFO 컬렉션"
-nav_order: 6
-parent: "Chapter 15. 컬렉션 자료구조"
-grand_parent: "객체지향 프로그래밍"
+title: "17.5 LIFO와 FIFO 컬렉션"
+nav_order: 5
+parent: "Chapter 17. 컬렉션 자료구조"
+grand_parent: "객체지향 자바 프로그래밍"
 ---
 
-# 15.6 LIFO와 FIFO 컬렉션
+# 17.5 LIFO와 FIFO (Stack & Queue)
 
-후입선출(LIFO: Last In First Out)은 나중에 넣은 객체가 먼저 빠져나가고, 선입선출(FIFO: First In First Out)은 먼저 넣은 객체가 먼저 빠져나가는 구조를 말한다. 컬렉션 프레임워크는 LIFO 자료구조를 제공하는 **Stack** 클래스와 FIFO 자료구조를 제공하는 **Queue** 인터페이스를 제공하고 있다.
 
-- 스택(Stack): LIFO (응용 예: JVM 스택 메모리)
-- 큐(Queue): FIFO (응용 예: 스레드풀의 작업 큐)
+<br>
 
-## Stack
+## 1. 프링글스 통 vs 버스 줄 서기 🚌
 
-Stack 클래스는 LIFO 자료구조를 구현한 클래스이다.
+데이터가 들어오고 나가는 순서가 중요한 경우가 있습니다.
+대표적으로 **Stack**과 **Queue**가 있습니다.
 
-- `push(E item)`: 주어진 객체를 스택에 넣는다.
-- `pop()`: 스택의 맨 위 객체를 빼낸다.
+![Stack Queue Comparison](./img/stack_queue_comparison.svg)
 
-```java
-package ch15.sec06.exam01;
+### 1) Stack (LIFO: Last In First Out)
+*   **비유**: **"프링글스 통"**
+*   **특징**: 나중에 넣은 감자칩이 제일 위에 있어서, **나중에 넣은 걸 가장 먼저 먹습니다.**
+*   **사용처**: 뒤로 가기 버튼 (가장 최근에 본 페이지로 돌아감), 메소드 호출 스택.
 
-import java.util.Stack;
+### 2) Queue (FIFO: First In First Out)
+*   **비유**: **"버스 정류장 줄 서기"**
+*   **특징**: 먼저 줄 선 사람이 **가장 먼저 버스를 탑니다.**
+*   **사용처**: 프린터 대기열 (먼저 인쇄 누른 거 먼저 출력), 메시지 큐.
 
-public class StackExample {
-	public static void main(String[] args) {
-		// Stack 컬렉션 생성
-		Stack<Coin> coinBox = new Stack<Coin>();
+<br>
 
-		// 동전 넣기
-		coinBox.push(new Coin(100));
-		coinBox.push(new Coin(50));
-		coinBox.push(new Coin(500));
-		coinBox.push(new Coin(10));
 
-		// 동전을 하나씩 꺼내기
-		while (!coinBox.isEmpty()) {
-			Coin coin = coinBox.pop();
-			System.out.println("꺼내온 동전 : " + coin.getValue() + "원");
-		}
-	}
-}
-```
+<br>
 
-## Queue
+## 2. Stack 사용법 (Push / Pop)
 
-Queue 인터페이스는 FIFO 자료구조에서 사용되는 메소드를 정의하고 있다.
-
-- `offer(E e)`: 주어진 객체를 큐에 넣는다.
-- `poll()`: 큐에서 객체를 빼낸다.
-
-Queue 인터페이스를 구현한 대표적인 클래스는 LinkedList이다.
+자바에서는 `Stack` 클래스를 제공합니다.
 
 ```java
-package ch15.sec06.exam02;
+Stack<Coin> coinBox = new Stack<>();
 
-import java.util.LinkedList;
-import java.util.Queue;
+// 1. 넣기 (push)
+coinBox.push(new Coin(100)); // 1번
+coinBox.push(new Coin(500)); // 2번 (제일 위)
 
-public class QueueExample {
-	public static void main(String[] args) {
-		// Queue 컬렉션 생성
-		Queue<Message> messageQueue = new LinkedList<>();
+// 2. 꺼내기 (pop)
+Coin coin = coinBox.pop(); // 500원 (나중에 넣은 게 먼저 나옴)
 
-		// 메시지 넣기
-		messageQueue.offer(new Message("sendMail", "홍길동"));
-		messageQueue.offer(new Message("sendSMS", "신용권"));
-		messageQueue.offer(new Message("sendKakaotalk", "감자바"));
-
-		// 메시지를 하나씩 꺼내어 처리
-		while (!messageQueue.isEmpty()) {
-			Message message = messageQueue.poll();
-			switch (message.command) {
-				case "sendMail":
-					System.out.println(message.to + "님에게 메일을 보냅니다.");
-					break;
-				case "sendSMS":
-					System.out.println(message.to + "님에게 SMS를 보냅니다.");
-					break;
-				case "sendKakaotalk":
-					System.out.println(message.to + "님에게 카카오톡을 보냅니다.");
-					break;
-			}
-		}
-	}
-}
+// 3. 훔쳐보기 (peek)
+// 꺼내지는 않고 제일 위에 뭐 있는지만 확인
+Coin top = coinBox.peek(); 
 ```
+
+<br>
+
+
+<br>
+
+## 3. Queue 사용법 (Offer / Poll)
+
+자바에서 `Queue`는 인터페이스이고, 구현체로 주로 `LinkedList`를 사용합니다.
+
+```java
+Queue<Message> messageQueue = new LinkedList<>();
+
+// 1. 넣기 (offer)
+messageQueue.offer(new Message("홍길동")); // 1번
+messageQueue.offer(new Message("이순신")); // 2번
+
+// 2. 꺼내기 (poll)
+Message msg = messageQueue.poll(); // "홍길동" (먼저 넣은 게 먼저 나옴)
+```
+
+> **핵심 요약**
+> *   **Stack**: **"후입선출"** (나중에 온 놈이 대장)
+> *   **Queue**: **"선입선출"** (먼저 온 사람이 임자)

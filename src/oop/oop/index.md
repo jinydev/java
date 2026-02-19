@@ -1,12 +1,12 @@
 ---
 layout: oop
-title: "Chapter 06. 클래스"
-nav_order: 6
+title: "Chapter 09. 클래스"
+nav_order: 9
 has_children: true
 parent: "객체지향 자바 프로그래밍"
 ---
 
-# Chapter 06. 클래스 완전 정복
+# Chapter 09. 클래스 완전 정복
 
 자바 프로그래밍의 가장 중요한 핵심인 '클래스(Class)'를 배우는 챕터입니다. 어렵게 느껴질 수 있는 개념을 우리 주변의 사물에 비유하여 쉽게 설명했습니다.
 

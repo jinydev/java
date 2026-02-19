@@ -1,0 +1,42 @@
+<svg width="500" height="300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="500" height="300" fill="#ffffff" />
+  
+  <!-- Java Standard Exceptions -->
+  <g transform="translate(50, 50)">
+    <rect x="0" y="0" width="120" height="150" rx="10" fill="#eee" stroke="#9e9e9e" stroke-width="2"/>
+    <text x="60" y="30" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#616161" text-anchor="middle">Java Standard</text>
+    
+    <!-- Bells -->
+    <circle cx="60" cy="60" r="15" fill="#e0e0e0" stroke="#bdbdbd"/>
+    <text x="60" y="90" font-family="monospace" font-size="10" fill="#757575" text-anchor="middle">NullPtr...</text>
+    
+    <circle cx="60" cy="110" r="15" fill="#e0e0e0" stroke="#bdbdbd"/>
+    <text x="60" y="140" font-family="monospace" font-size="10" fill="#757575" text-anchor="middle">IOExcept...</text>
+  </g>
+
+  <!-- Custom Exception -->
+  <g transform="translate(250, 50)">
+    <rect x="0" y="0" width="200" height="150" rx="10" fill="#fff3e0" stroke="#ff9800" stroke-width="3"/>
+    <text x="100" y="30" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#e65100" text-anchor="middle">내 프로그램 전용 (Custom)</text>
+    
+    <!-- Special Bell -->
+    <path d="M70,60 L130,60 L130,120 L70,120 Z" fill="#ffcc80" stroke="#f57c00" stroke-width="2"/>
+    <circle cx="100" cy="90" r="15" fill="#ffe0b2"/>
+    <text x="100" y="95" font-family="Arial, sans-serif" font-size="20" fill="#bf360c" text-anchor="middle">🔔</text>
+    
+    <text x="100" y="140" font-family="monospace" font-size="12" font-weight="bold" fill="#bf360c" text-anchor="middle">BalanceInsufficient</text>
+  </g>
+
+  <!-- Bubble -->
+  <path d="M180,100 L240,100" stroke="#333" stroke-width="2" marker-end="url(#arrow_new)"/>
+  
+  <text x="250" y="250" font-family="Arial, sans-serif" font-size="12" fill="#555" text-anchor="middle">"자바에는 '잔고 부족'이라는 예외가 없습니다. 그래서 제가 직접 만들었습니다."</text>
+
+  <defs>
+    <marker id="arrow_new" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#333" />
+    </marker>
+  </defs>
+
+</svg>

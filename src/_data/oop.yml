@@ -1,290 +1,259 @@
 main:
-- title: 05. 참조 타입
-  url: /oop/reference
-  subitems:
-  - title: 학습목표
-    url: /oop/reference
-  - title: 5.1 데이터 타입 분류
-    url: /oop/reference/classification
-  - title: 5.2 메모리 사용 영역
-    url: /oop/reference/memory-area
-  - title: 5.3 참조 타입 변수의 ==, != 연산
-    url: /oop/reference/equality
-  - title: 5.4 null과 NullPointerException
-    url: /oop/reference/null
-  - title: 5.5 문자열(String) 타입
-    url: /oop/reference/string
-  - title: 5.6 배열(Array) 타입
-    url: /oop/reference/array
-  - title: 5.7 다차원 배열
-    url: /oop/reference/multidimensional-array
-  - title: 5.8 객체를 참조하는 배열
-    url: /oop/reference/object-array
-  - title: 5.9 배열 복사
-    url: /oop/reference/array-copy
-  - title: 5.10 배열 항목 반복을 위한 향상된 for 문
-    url: /oop/reference/enhanced-for
-  - title: 5.11 main() 메소드의 String[] 매개변수 용도
-    url: /oop/reference/main-arguments
-  - title: 5.12 열거(Enum) 타입
-    url: /oop/reference/enum
-  - title: 확인문제
-    url: /oop/reference/quiz
-- title: 06. 클래스
+- title: 09. 클래스
   url: /oop/oop
   subitems:
   - title: 학습목표
     url: /oop/oop
-  - title: 6.1 객체지향 프로그래밍
+  - title: 9.1 객체지향 프로그래밍
     url: /oop/oop/oop
-  - title: 6.2 객체와 클래스
+  - title: 9.2 객체와 클래스
     url: /oop/oop/object-class
-  - title: 6.3 클래스 선언
+  - title: 9.3 클래스 선언
     url: /oop/oop/class-declaration
-  - title: 6.4 객체 생성과 클래스 변수
+  - title: 9.4 객체 생성과 클래스 변수
     url: /oop/oop/instance-creation
-  - title: 6.5 클래스의 구성 멤버
+  - title: 9.5 클래스의 구성 멤버
     url: /oop/oop/class-members
-  - title: 6.6 필드 선언과 사용
+  - title: 9.6 필드 선언과 사용
     url: /oop/oop/field
-  - title: 6.7 생성자 선언과 호출
+  - title: 9.7 생성자 선언과 호출
     url: /oop/oop/constructor
-  - title: 6.8 메소드 선언과 호출
+  - title: 9.8 메소드 선언과 호출
     url: /oop/oop/method
-  - title: 6.9 인스턴스 멤버
+  - title: 9.9 인스턴스 멤버
     url: /oop/oop/instance-member
-  - title: 6.10 정적 멤버
+  - title: 9.10 정적 멤버
     url: /oop/oop/static-member
-  - title: 6.11 final 필드와 상수
+  - title: 9.11 final 필드와 상수
     url: /oop/oop/final-constant
-  - title: 6.12 패키지
+  - title: 9.12 패키지
     url: /oop/oop/package
-  - title: 6.13 접근 제한자
+  - title: 9.13 접근 제한자
     url: /oop/oop/access-modifier
-  - title: 6.14 Getter와 Setter
+  - title: 9.14 Getter와 Setter
     url: /oop/oop/getter-setter
-  - title: 6.15 싱글톤 패턴
+  - title: 9.15 싱글톤 패턴
     url: /oop/oop/singleton
-  - title: 6.16 레코드 패턴
+  - title: 9.16 레코드 패턴
     url: /oop/oop/record
   - title: 확인문제
     url: /oop/oop/quiz
-- title: 07. 상속
+- title: 10. 상속
   url: /oop/extends
   subitems:
   - title: 학습목표
     url: /oop/extends
-  - title: 7.1 상속 개념
+  - title: 10.1 상속 개념
     url: /oop/extends/inheritance
-  - title: 7.2 클래스 상속
+  - title: 10.2 클래스 상속
     url: /oop/extends/class-inheritance
-  - title: 7.3 부모 생성자 호출
+  - title: 10.3 부모 생성자 호출
     url: /oop/extends/super-constructor
-  - title: 7.4 메소드 재정의
+  - title: 10.4 메소드 재정의
     url: /oop/extends/method-overriding
-  - title: 7.5 final 클래스와 final 메소드
+  - title: 10.5 final 클래스와 final 메소드
     url: /oop/extends/final
-  - title: 7.6 protected 접근 제한자
+  - title: 10.6 protected 접근 제한자
     url: /oop/extends/protected
-  - title: 7.7 타입 변환
+  - title: 10.7 타입 변환
     url: /oop/extends/casting
-  - title: 7.8 다형성
+  - title: 10.8 다형성
     url: /oop/extends/polymorphism
-  - title: 7.9 객체 타입 확인
+  - title: 10.9 객체 타입 확인
     url: /oop/extends/instanceof
-  - title: 7.10 추상 클래스
+  - title: 10.10 추상 클래스
     url: /oop/extends/abstract-class
-  - title: 7.11 봉인된 클래스
+  - title: 10.11 봉인된 클래스
     url: /oop/extends/sealed-class
   - title: 확인문제
     url: /oop/extends/quiz
-- title: 08. 인터페이스
+- title: 11. 인터페이스
   url: /oop/interface
   subitems:
   - title: 학습목표
     url: /oop/interface
-  - title: 8.1 인터페이스의 역할
+  - title: 11.1 인터페이스의 역할
     url: /oop/interface/role
-  - title: 8.2 인터페이스와 구현 클래스 선언
+  - title: 11.2 인터페이스와 구현 클래스 선언
     url: /oop/interface/declaration
-  - title: 8.3 상수 필드
+  - title: 11.3 상수 필드
     url: /oop/interface/constant-field
-  - title: 8.4 추상 메소드
+  - title: 11.4 추상 메소드
     url: /oop/interface/abstract-method
-  - title: 8.5 디폴트 메소드
+  - title: 11.5 디폴트 메소드
     url: /oop/interface/default-method
-  - title: 8.6 정적 메소드
+  - title: 11.6 정적 메소드
     url: /oop/interface/static-method
-  - title: 8.7 private 메소드
+  - title: 11.7 private 메소드
     url: /oop/interface/private-method
-  - title: 8.8 다중 인터페이스 구현
+  - title: 11.8 다중 인터페이스 구현
     url: /oop/interface/multiple-implementation
-  - title: 8.9 인터페이스 상속
+  - title: 11.9 인터페이스 상속
     url: /oop/interface/inheritance
-  - title: 8.10 타입 변환
+  - title: 11.10 타입 변환
     url: /oop/interface/casting
-  - title: 8.11 다형성
+  - title: 11.11 다형성
     url: /oop/interface/polymorphism
-  - title: 8.12 객체 타입 확인
+  - title: 11.12 객체 타입 확인
     url: /oop/interface/instanceof
-  - title: 8.13 봉인된 인터페이스
+  - title: 11.13 봉인된 인터페이스
     url: /oop/interface/sealed-interface
   - title: 확인문제
     url: /oop/interface/quiz
-- title: 09. 중첩 선언과 익명 객체
+- title: 12. 중첩 선언과 익명 객체
   url: /oop/nested
   subitems:
   - title: 학습목표
     url: /oop/nested
-  - title: 9.1 중첩 클래스
+  - title: 12.1 중첩 클래스
     url: /oop/nested/nested-class
-  - title: 9.2 인스턴스 멤버 클래스
+  - title: 12.2 인스턴스 멤버 클래스
     url: /oop/nested/instance-member-class
-  - title: 9.3 정적 멤버 클래스
+  - title: 12.3 정적 멤버 클래스
     url: /oop/nested/static-member-class
-  - title: 9.4 로컬 클래스
+  - title: 12.4 로컬 클래스
     url: /oop/nested/local-class
-  - title: 9.5 바깥 멤버 접근
+  - title: 12.5 바깥 멤버 접근
     url: /oop/nested/access-outer
-  - title: 9.6 중첩 인터페이스
+  - title: 12.6 중첩 인터페이스
     url: /oop/nested/nested-interface
-  - title: 9.7 익명 객체
+  - title: 12.7 익명 객체
     url: /oop/nested/anonymous-object
   - title: 확인문제
     url: /oop/nested/quiz
-- title: 10. 라이브러리와 모듈
+- title: 13. 라이브러리와 모듈
   url: /oop/module
   subitems:
   - title: 학습목표
     url: /oop/module
-  - title: 10.1 라이브러리
+  - title: 13.1 라이브러리
     url: /oop/module/library
-  - title: 10.2 모듈
+  - title: 13.2 모듈
     url: /oop/module/module
-  - title: 10.3 응용프로그램 모듈화
+  - title: 13.3 응용프로그램 모듈화
     url: /oop/module/application-modularity
-  - title: 10.4 모듈 배포용 JAR 파일
+  - title: 13.4 모듈 배포용 JAR 파일
     url: /oop/module/modular-jar
-  - title: 10.5 패키지 은닉
+  - title: 13.5 패키지 은닉
     url: /oop/module/package-hiding
-  - title: 10.6 전이 의존
+  - title: 13.6 전이 의존
     url: /oop/module/transitive-dependency
-  - title: 10.7 집합 모듈
+  - title: 13.7 집합 모듈
     url: /oop/module/aggregator-module
-  - title: 10.8 리플렉션 허용
+  - title: 13.8 리플렉션 허용
     url: /oop/module/reflection
-  - title: 10.9 자바 표준 모듈
+  - title: 13.9 자바 표준 모듈
     url: /oop/module/standard-modules
   - title: 확인문제
     url: /oop/module/quiz
-- title: 11. 예외 처리
+- title: 14. 예외 처리
   url: /oop/exception
   subitems:
   - title: 학습목표
     url: /oop/exception
-  - title: 11.1 예외와 예외 클래스
+  - title: 14.1 예외와 예외 클래스
     url: /oop/exception/exception-class
-  - title: 11.2 예외 처리 코드
+  - title: 14.2 예외 처리 코드
     url: /oop/exception/handling-code
-  - title: 11.3 예외 종류에 따른 처리
+  - title: 14.3 예외 종류에 따른 처리
     url: /oop/exception/handling-by-type
-  - title: 11.4 리소스 자동 닫기
+  - title: 14.4 리소스 자동 닫기
     url: /oop/exception/try-with-resources
-  - title: 11.5 예외 떠넘기기
+  - title: 14.5 예외 떠넘기기
     url: /oop/exception/throws
-  - title: 11.6 사용자 정의 예외
+  - title: 14.6 사용자 정의 예외
     url: /oop/exception/custom-exception
   - title: 확인문제
     url: /oop/exception/quiz
-- title: 12. java.base 모듈
+- title: 15. java.base 모듈
   url: /oop/api
   subitems:
   - title: 학습목표
     url: /oop/api
-  - title: 12.1 API 도큐먼트
+  - title: 15.1 API 도큐먼트
     url: /oop/api/documentation
-  - title: 12.2 java.base 모듈
+  - title: 15.2 java.base 모듈
     url: /oop/api/java-base
-  - title: 12.3 Object 클래스
+  - title: 15.3 Object 클래스
     url: /oop/api/object
-  - title: 12.4 System 클래스
+  - title: 15.4 System 클래스
     url: /oop/api/system
-  - title: 12.5 문자열 클래스
+  - title: 15.5 문자열 클래스
     url: /oop/api/string
-  - title: 12.6 포장 클래스
+  - title: 15.6 포장 클래스
     url: /oop/api/wrapper
-  - title: 12.7 수학 클래스
+  - title: 15.7 수학 클래스
     url: /oop/api/math
-  - title: 12.8 날짜와 시간 클래스
+  - title: 15.8 날짜와 시간 클래스
     url: /oop/api/date-time
-  - title: 12.9 형식 클래스
+  - title: 15.9 형식 클래스
     url: /oop/api/format
-  - title: 12.10 정규 표현식 클래스
+  - title: 15.10 정규 표현식 클래스
     url: /oop/api/regex
-  - title: 12.11 리플렉션
+  - title: 15.11 리플렉션
     url: /oop/api/reflection
-  - title: 12.12 어노테이션
+  - title: 15.12 어노테이션
     url: /oop/api/annotation
   - title: 확인문제
     url: /oop/api/quiz
-- title: 13. 제네릭
+- title: 16. 제네릭
   url: /oop/generic
   subitems:
   - title: 학습목표
     url: /oop/generic
-  - title: 13.1 제네릭이란?
+  - title: 16.1 제네릭이란?
     url: /oop/generic/intro
-  - title: 13.2 제네릭 타입
+  - title: 16.2 제네릭 타입
     url: /oop/generic/type
-  - title: 13.3 제네릭 메소드
+  - title: 16.3 제네릭 메소드
     url: /oop/generic/method
-  - title: 13.4 제한된 타입 파라미터
+  - title: 16.4 제한된 타입 파라미터
     url: /oop/generic/bounded-type
-  - title: 13.5 와일드카드 타입 파라미터
+  - title: 16.5 와일드카드 타입 파라미터
     url: /oop/generic/wildcard
   - title: 확인문제
     url: /oop/generic/quiz
-- title: 15. 컬렉션 자료구조
+- title: 17. 컬렉션 자료구조
   url: /oop/collection
   subitems:
   - title: 학습목표
     url: /oop/collection
-  - title: 15.1 컬렉션 프레임워크
+  - title: 17.1 컬렉션 프레임워크
     url: /oop/collection/framework
-  - title: 15.2 List 컬렉션
+  - title: 17.2 List 컬렉션
     url: /oop/collection/list
-  - title: 15.3 Set 컬렉션
+  - title: 17.3 Set 컬렉션
     url: /oop/collection/set
-  - title: 15.4 Map 컬렉션
+  - title: 17.4 Map 컬렉션
     url: /oop/collection/map
-  - title: 15.5 검색 기능을 강화시킨 컬렉션
+  - title: 17.5 검색 기능을 강화시킨 컬렉션
     url: /oop/collection/search
-  - title: 15.6 LIFO와 FIFO 컬렉션
+  - title: 17.6 LIFO와 FIFO 컬렉션
     url: /oop/collection/stack-queue
-  - title: 15.7 동기화된 컬렉션
+  - title: 17.7 동기화된 컬렉션
     url: /oop/collection/synchronized
-  - title: 15.8 수정할 수 없는 컬렉션
+  - title: 17.8 수정할 수 없는 컬렉션
     url: /oop/collection/unmodifiable
-  - title: 15.9 순차 컬렉션
+  - title: 17.9 순차 컬렉션
     url: /oop/collection/sequenced
   - title: 확인문제
     url: /oop/collection/quiz
-- title: 16. 람다식
+- title: 18. 람다식
   url: /oop/lambda
   subitems:
   - title: 학습목표
     url: /oop/lambda
-  - title: 16.1 람다식이란?
+  - title: 18.1 람다식이란?
     url: /oop/lambda/intro
-  - title: 16.2 매개변수가 없는 람다식
+  - title: 18.2 매개변수가 없는 람다식
     url: /oop/lambda/no-parameter
-  - title: 16.3 매개변수가 있는 람다식
+  - title: 18.3 매개변수가 있는 람다식
     url: /oop/lambda/parameter
-  - title: 16.4 리턴값이 있는 람다식
+  - title: 18.4 리턴값이 있는 람다식
     url: /oop/lambda/return
-  - title: 16.5 메소드 참조
+  - title: 18.5 메소드 참조
     url: /oop/lambda/method-reference
-  - title: 16.6 생성자 참조
+  - title: 18.6 생성자 참조
     url: /oop/lambda/constructor-reference
   - title: 확인문제
     url: /oop/lambda/quiz

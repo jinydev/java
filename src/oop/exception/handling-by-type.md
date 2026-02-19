@@ -1,119 +1,85 @@
 ---
 layout: oop
-title: "11.3 예외 종류에 따른 처리"
+title: "14.3 예외 종류에 따른 처리"
 nav_order: 3
-parent: "Chapter 11. 예외 처리"
+parent: "Chapter 14. 예외 처리"
 grand_parent: "객체지향 자바 프로그래밍"
 ---
 
-# 11.3 예외 종류에 따른 처리
+# 14.3 예외 종류에 따른 처리 (Multi-catch)
 
-`try` 블록에는 다양한 종류의 예외가 발생할 수 있다. 이 경우, 다중 catch를 사용하면 발생하는 예외에 따라 예외 처리 코드를 다르게 작성할 수 있다. `catch` 블록의 예외 클래스는 `try` 블록에서 발생된 예외의 종류를 말하는데, 해당 타입의 예외가 발생하면 `catch` 블록이 선택되어 실행된다.
+
+<br>
+
+## 1. 종합 병원 진료 시스템 🏥
+
+병원에는 내과, 외과, 치과 등 전문 분야가 있습니다. 환자(예외)의 증상에 따라 의사가 달라져야 합니다.
+자바의 `try-catch`도 마찬가지입니다. 하나의 `try` 블록에서 여러 종류의 예외가 발생할 수 있다면, `catch` 블록을 여러 개 만들어 각각 다르게 처리할 수 있습니다.
+
+![Multi Catch Triage](./img/multi_catch_triage.svg)
+
+<br>
+
+
+<br>
+
+## 2. 기본 다중 catch
 
 ```java
 try {
-    // ArrayIndexOutOfBoundsException 발생
-    // NumberFormatException 발생
-} catch (ArrayIndexOutOfBoundsException e) {
-    // 예외 처리 1
-} catch (NumberFormatException e) {
-    // 예외 처리 2
+    // 1. 배열 인덱스 초과 가능성
+    // 2. 숫자 포맷 오류 가능성
+} catch(ArrayIndexOutOfBoundsException e) {
+    System.out.println("인덱스 오류! 배열 범위를 확인하세요.");
+} catch(NumberFormatException e) {
+    System.out.println("숫자 포맷 오류! 숫자만 입력하세요.");
 }
 ```
 
-`catch` 블록이 여러 개라 할지라도 `catch` 블록은 단 하나만 실행된다. 그 이유는 `try` 블록에서 동시다발적으로 예외가 발생하지 않으며, 하나의 예외가 발생하면 즉시 실행을 멈추고 해당 `catch` 블록으로 이동하기 때문이다.
+*   **동작 원리**: 예외가 터지면 위에서부터 순서대로 `catch` 블록을 검사합니다. 맞는 타입이 있으면 실행하고 나머지는 건너뜁니다.
+*   **주의**: `catch` 블록 중 **단 하나만** 실행됩니다.
 
-다음 예제는 배열의 인덱스가 초과되었을 경우 발생하는 `ArrayIndexOutOfBoundsException`과 숫자 타입이 아닐 때 발생하는 `NumberFormatException`을 각각 다르게 예외 처리한다.
+<br>
 
-**ExceptionHandlingExample.java**
+
+<br>
+
+## 3. 상속 관계 주의 (순서가 중요!)
+
+모든 예외의 부모인 `Exception` 클래스는 **"모든 병을 고치는 만능 의사(일반의)"**와 같습니다.
+만약 `catch(Exception e)`를 맨 위에 작성하면 어떻게 될까요?
+
 ```java
-package ch11.sec03.exam01;
-
-public class ExceptionHandlingExample {
-    public static void main(String[] args) {
-        String[] array = {"100", "1oo"};
-
-        for(int i=0; i<=array.length; i++) {
-            try {
-                int value = Integer.parseInt(array[i]);
-                System.out.println("array[" + i + "]: " + value);
-            } catch(ArrayIndexOutOfBoundsException e) {
-                System.out.println("배열 인덱스가 초과됨: " + e.getMessage());
-            } catch(NumberFormatException e) {
-                System.out.println("숫자로 변환할 수 없음: " + e.getMessage());
-            }
-        }
-    }
-}
+// ❌ 잘못된 순서
+try { ... } 
+catch(Exception e) { ... } // 여기서 다 걸러짐 (모든 예외의 부모니까)
+catch(NullPointerException e) { ... } // 여기까지 올 기회가 없음 (Unreachable Code)
 ```
 
-**실행 결과**
-```
-array[0]: 100
-숫자로 변환할 수 없음: For input string: "1oo"
-배열 인덱스가 초과됨: Index 2 out of bounds for length 2
-```
+따라서 **구체적인 자식 예외(전문의)**를 먼저 쓰고, **부모 예외(일반의)**는 맨 마지막에 써야 합니다.
 
-처리해야 할 예외 클래스들이 상속 관계에 있을 때는 하위 클래스 `catch` 블록을 먼저 작성하고 상위 클래스 `catch` 블록을 나중에 작성해야 한다. 예외가 발생하면 `catch` 블록은 위에서부터 차례대로 검사 대상이 되는데, 하위 예외도 상위 클래스 타입이므로 상위 클래스 `catch` 블록이 먼저 검사 대상이 되면 안 된다.
-
-**ExceptionHandlingExample.java**
 ```java
-package ch11.sec03.exam02;
-
-public class ExceptionHandlingExample {
-    public static void main(String[] args) {
-        String[] array = {"100", "1oo"};
-
-        for(int i=0; i<=array.length; i++) {
-            try {
-                int value = Integer.parseInt(array[i]);
-                System.out.println("array[" + i + "]: " + value);
-            } catch(ArrayIndexOutOfBoundsException e) {
-                System.out.println("배열 인덱스가 초과됨: " + e.getMessage());
-            } catch(Exception e) {
-                System.out.println("실행에 문제가 있습니다.");
-            }
-        }
-    }
-}
+// ✅ 올바른 순서
+catch(NullPointerException e) { ... }
+catch(NumberFormatException e) { ... }
+catch(Exception e) { ... } // 마지막 보루 (나머지 모든 예외 처리)
 ```
 
-**실행 결과**
-```
-array[0]: 100
-실행에 문제가 있습니다.
-배열 인덱스가 초과됨: Index 2 out of bounds for length 2
-```
+<br>
 
-두 개 이상의 예외를 하나의 `catch` 블록으로 동일하게 예외 처리하고 싶을 때가 있다. 이 경우에는 `catch` 블록에 예외 클래스를 기호 `|`로 연결하면 된다.
 
-**ExceptionHandlingExample.java**
+<br>
+
+## 4. 멀티 catch (파이프 `|`)
+
+Java 7부터는 똑같은 처리를 하는 예외들을 하나로 묶을 수 있습니다.
+
 ```java
-package ch11.sec03.exam03;
-
-public class ExceptionHandlingExample {
-    public static void main(String[] args) {
-        String[] array = {"100", "1oo", null, "200"};
-
-        for(int i=0; i<=array.length; i++) {
-            try {
-                int value = Integer.parseInt(array[i]);
-                System.out.println("array[" + i + "]: " + value);
-            } catch(ArrayIndexOutOfBoundsException e) {
-                System.out.println("배열 인덱스가 초과됨: " + e.getMessage());
-            } catch(NullPointerException | NumberFormatException e) {
-                System.out.println("데이터에 문제가 있음: " + e.getMessage());
-            }
-        }
-    }
+try { ... } 
+catch(NullPointerException | NumberFormatException e) {
+    // 두 예외 중 하나가 발생하면 여기서 처리
+    System.out.println("데이터에 문제가 있습니다.");
 }
 ```
 
-**실행 결과**
-```
-array[0]: 100
-데이터에 문제가 있음: For input string: "1oo"
-데이터에 문제가 있음: Cannot parse null string
-array[3]: 200
-배열 인덱스가 초과됨: Index 4 out of bounds for length 4
-```
+> **핵심 요약**: 예외 처리는 **"구체적인 것부터, 추상적인 것 순서로"** 작성해야 합니다. `Exception`은 최후의 안전장치(`else`)라고 생각하세요.

@@ -1,48 +1,32 @@
 ---
 layout: basic
-title: "2.11 변수 사용 범위"
-nav_order: 11
-parent: "Chapter 02. 변수와 타입"
-grand_parent: "객체지향 자바 프로그래밍"
+title: "4.9 변수 사용 범위"
+nav_order: 9
+parent: "Chapter 04. 변수와 타입"
+grand_parent: "Part 01. 자바 언어의 기초"
 ---
 
-# 2.11 변수 사용 범위
+# 4.9 변수 사용 범위
 
-`main()` 메소드 블록에는 다른 중괄호 `{}` 블록들이 작성될 수 있다. 조건문에 해당하는 `if`, 반복문에 해당하는 `for`, `while` 등이 중괄호 `{}` 블록을 가질 수 있는데, 이러한 중괄호 `{}` 블록 내에서 선언된 변수는 해당 중괄호 `{}` 블록 내에서만 사용이 가능하고 밖에서는 사용할 수 없다.
+## 1. 변수의 생명 주기 (Scope) 🌱
+
+변수는 **자신이 선언된 블록 `{ ... }` 안에서만** 살 수 있습니다.
+블록을 벗어나면 그 변수는 사라집니다.
+
+*   **메소드 블록** 안에서 만들면 -> 메소드 안에서만 씀 (지역 변수)
+*   **if문 블록** 안에서 만들면 -> if문 안에서만 씀
 
 ```java
 public static void main(String[] args) {
-    int var1; //메소드 블록에서 선언
+    int v1 = 10;
     
-    if(...) {
-        int var2; //if 블록에서 선언
-        //var1과 var2 사용 가능
+    if (v1 > 5) {
+        int v2 = 20; // v2는 이 if문 안에서만 존재
+        System.out.println(v1 + v2); // 가능 (v1은 바깥에 있으니까)
     }
     
-    for(...) {
-        int var3; //for 블록에서 선언
-        //var1과 var3 사용 가능
-        //var2는 사용 못함
-    }
-    
-    //var1 사용 가능
-    //var2와 var3는 사용 못함
+    // System.out.println(v2); // (X) 에러 발생! v2는 이미 사라짐
 }
 ```
 
-메소드 블록 전체에서 사용하고 싶다면 메소드 블록 첫머리에 선언하는 것이 좋고, 특정 블록 내부에서만 사용된다면 해당 블록 내에서 선언하는 것이 좋다.
-
-**[예제: VariableScopeExample.java]**
-```java
-package ch02.sec11;
-
-public class VariableScopeExample {
-    public static void main(String[] args) {
-        int v1 = 15;
-        if(v1>10) {
-            int v2 = v1 - 10;
-        }
-        int v3 = v1 + v2 + 5; //v2 변수를 사용할 수 없기 때문에 컴파일 에러 발생
-    }
-}
-```
+> **규칙**: **안쪽**에서는 **바깥쪽** 변수를 쓸 수 있지만, **바깥쪽**에서는 **안쪽** 변수를 쓸 수 없습니다.

@@ -1,0 +1,51 @@
+<svg width="600" height="300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="600" height="300" fill="#ffffff" />
+  
+  <!-- The Gate -->
+  <g transform="translate(350, 50)">
+    <rect x="0" y="0" width="10" height="200" fill="#555"/> <!-- Pole -->
+    <rect x="-100" y="50" width="100" height="20" fill="#d32f2f" stroke="#b71c1c" stroke-width="2"/> <!-- Bar -->
+    <circle cx="5" cy="60" r="10" fill="#333"/>
+    
+    <!-- Sign -->
+    <rect x="-80" y="-30" width="160" height="60" rx="5" fill="#fff9c4" stroke="#fbc02d" stroke-width="2"/>
+    <text x="0" y="0" font-family="monospace" font-size="14" font-weight="bold" fill="#f57f17" text-anchor="middle">&lt;T extends Number&gt;</text>
+    <text x="0" y="20" font-family="Arial, sans-serif" font-size="12" fill="#e65100" text-anchor="middle">숫자만 입장 가능</text>
+  </g>
+
+  <!-- Visitor 1: Integer (Pass) -->
+  <g transform="translate(450, 150)">
+    <circle cx="30" cy="30" r="25" fill="#c8e6c9" stroke="#388e3c" stroke-width="2"/>
+    <text x="30" y="35" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#1b5e20" text-anchor="middle">Integer</text>
+    <text x="30" y="70" font-family="Arial, sans-serif" font-size="10" fill="#2e7d32" text-anchor="middle">(자식)</text>
+    <text x="30" y="90" font-family="Arial, sans-serif" font-size="14" fill="#2e7d32" text-anchor="middle">✅ Pass</text>
+  </g>
+
+  <!-- Visitor 2: Double (Pass) -->
+  <g transform="translate(450, 50)">
+    <circle cx="30" cy="30" r="25" fill="#c8e6c9" stroke="#388e3c" stroke-width="2"/>
+    <text x="30" y="35" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#1b5e20" text-anchor="middle">Double</text>
+    <text x="30" y="70" font-family="Arial, sans-serif" font-size="10" fill="#2e7d32" text-anchor="middle">(자식)</text>
+    <text x="70" y="35" font-family="Arial, sans-serif" font-size="14" fill="#2e7d32" text-anchor="middle">✅ Pass</text>
+  </g>
+
+  <!-- Visitor 3: String (Block) -->
+  <g transform="translate(150, 150)">
+    <circle cx="30" cy="30" r="25" fill="#ffcdd2" stroke="#e57373" stroke-width="2"/>
+    <text x="30" y="35" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#b71c1c" text-anchor="middle">String</text>
+    <text x="30" y="70" font-family="Arial, sans-serif" font-size="10" fill="#c62828" text-anchor="middle">(Number 아님)</text>
+  </g>
+  
+  <path d="M190,180 L250,180" stroke="#f44336" stroke-width="3" marker-end="url(#arrow_block)"/>
+  <text x="220" y="170" font-family="Arial, sans-serif" font-size="20" fill="#d32f2f" text-anchor="middle">🚫</text>
+
+  <defs>
+    <marker id="arrow_block" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#f44336" />
+    </marker>
+  </defs>
+
+  <text x="300" y="280" font-family="Arial, sans-serif" font-size="12" fill="#555" text-anchor="middle">"상위 타입(Number)을 상속받은 클래스만 T가 될 수 있습니다."</text>
+
+</svg>

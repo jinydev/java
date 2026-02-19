@@ -1,0 +1,56 @@
+<svg width="600" height="300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="600" height="300" fill="#ffffff" />
+  
+  <!-- Step 1: Worker -->
+  <g transform="translate(50, 100)">
+    <circle cx="30" cy="30" r="25" fill="#bbdefb" stroke="#1976d2" stroke-width="2"/>
+    <text x="30" y="70" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#0d47a1" text-anchor="middle">Worker</text>
+    <text x="30" y="90" font-family="monospace" font-size="10" fill="#555" text-anchor="middle">method()</text>
+    
+    <!-- Bomb -->
+    <circle cx="60" cy="10" r="15" fill="#f44336" stroke="#b71c1c" stroke-width="2"/>
+    <text x="60" y="15" font-family="Arial, sans-serif" font-size="20" fill="#fff" text-anchor="middle">💣</text>
+  </g>
+
+  <!-- Arrow 1 -->
+  <path d="M90,120 Q150,50 210,120" fill="none" stroke="#f44336" stroke-width="2" marker-end="url(#arrow_throw)"/>
+  <text x="150" y="70" font-family="monospace" font-size="12" fill="#d32f2f" text-anchor="middle">throws</text>
+
+  <!-- Step 2: Manager -->
+  <g transform="translate(230, 100)">
+    <circle cx="30" cy="30" r="25" fill="#c8e6c9" stroke="#388e3c" stroke-width="2"/>
+    <text x="30" y="70" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#1b5e20" text-anchor="middle">Manager</text>
+    <text x="30" y="90" font-family="monospace" font-size="10" fill="#555" text-anchor="middle">caller()</text>
+  </g>
+
+  <!-- Arrow 2 -->
+  <path d="M270,120 Q330,50 390,120" fill="none" stroke="#f44336" stroke-width="2" marker-end="url(#arrow_throw)"/>
+  <text x="330" y="70" font-family="monospace" font-size="12" fill="#d32f2f" text-anchor="middle">throws</text>
+
+  <!-- Step 3: Main -->
+  <g transform="translate(410, 100)">
+    <circle cx="30" cy="30" r="25" fill="#ffecb3" stroke="#ffa000" stroke-width="2"/>
+    <text x="30" y="70" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#e65100" text-anchor="middle">Main</text>
+  </g>
+
+  <!-- Arrow 3 -->
+  <path d="M450,120 Q510,50 550,80" fill="none" stroke="#555" stroke-width="2" marker-end="url(#arrow_throw)"/>
+  <text x="500" y="70" font-family="monospace" font-size="12" fill="#555" text-anchor="middle">throws</text>
+
+  <!-- JVM -->
+  <g transform="translate(530, 50)">
+    <rect x="0" y="0" width="60" height="40" rx="5" fill="#CFD8DC" stroke="#607d8b" stroke-width="2"/>
+    <text x="30" y="25" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#37474f" text-anchor="middle">JVM</text>
+    <text x="30" y="60" font-family="Arial, sans-serif" font-size="10" fill="#d32f2f" text-anchor="middle">Crash!</text>
+  </g>
+
+  <defs>
+    <marker id="arrow_throw" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#f44336" />
+    </marker>
+  </defs>
+
+  <text x="300" y="250" font-family="Arial, sans-serif" font-size="12" fill="#555" text-anchor="middle">"폭탄(예외)을 처리하지 않고, 나를 부른 사람에게 던져버립니다(throws)."</text>
+
+</svg>

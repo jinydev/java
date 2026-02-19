@@ -1,62 +1,57 @@
 ---
 layout: basic
-title: "1.1 소스 작성부터 실행까지"
+title: "3.1 소스 작성부터 실행까지"
 nav_order: 1
-parent: "Chapter 01. 자바 시작하기"
-grand_parent: "객체지향 자바 프로그래밍"
+parent: "Chapter 03. 자바 시작하기"
+grand_parent: "Part 01. 자바 언어의 기초"
 ---
 
-# 1.1 소스 작성부터 실행까지
+# 3.1 소스 작성부터 실행까지
 
-1.2절에서 설명한 내용을 확인하기 위해 소스 작성부터 실행까지 실습해 보자(윈도우 기준).
+## 1. 실습 목표 🎯
 
-01 윈도우 탐색기에서 `C:\temp` 디렉토리를 다음 구조로 생성하고, `Hello.java` 소스 파일을 생성한다.
+가장 기본적인 자바 프로그램인 **"Hello, Java"**를 출력하는 프로그램을 만들어 봅시다.
+
+## 2. 폴더 만들기 (작업실 준비)
+
+탐색기(Finder)에서 `C:\temp` (또는 원하는 곳) 폴더를 만들고, 그 안에 `Hello.java` 파일을 만듭니다.
 
 ```
 C:\temp
- ├─ src
- │   └─ ch01
- │       └─ sec06   <-- 패키지 디렉토리 (소스 파일이 저장되는 디렉토리)
- │           └─ Hello.java  <-- 소스 파일
- └─ bin   <-- 바이트코드 파일이 저장되는 디렉토리
+ └─ Hello.java  <-- 우리가 작성할 소스 파일
 ```
 
-> 자바는 소스 파일 및 컴파일된 바이트코드 파일을 쉽게 관리하기 위해 패키지(package)를 사용한다. 패키지는 마치 파일 시스템의 디렉토리와 비슷하다. 이 책에서는 장별 그리고 절별로 패키지를 생성해서 파일들을 관리할 것이다.
+## 3. 코드 작성 (레시피 적기)
 
-02 `Hello.java`를 텍스트 에디터에서 열고, 다음과 같이 코드를 작성한다.
+`Hello.java` 파일을 메모장이나 텍스트 에디터로 열어서 아래 내용을 똑같이 적어보세요.
+(대소문자를 정확히 지켜야 합니다!)
 
-> VSCode(Visual Studio Code)와 같은 개발 도구 텍스트 에디터를 설치(https://code.visualstudio.com)해서 작성하는 것이 편리하다.
-
-**[예제: Hello.java]**
 ```java
-package ch01.sec06; // 바이트코드 파일이 위치할 패키지 선언
-
-public class Hello { // Hello 클래스 선언
-    public static void main(String[] args) { // main() 메소드 선언
-        System.out.println("Hello, Java"); // 콘솔에 출력하는 코드
+public class Hello {
+    public static void main(String[] args) {
+        System.out.println("Hello, Java");
     }
 }
 ```
 
-03 소스 파일을 `javac` 명령어로 컴파일해 보자. 명령 프롬프트에서 `cd` 명령어로 `C:\temp` 디렉토리로 이동하고, 다음과 같이 `javac` 명령어를 실행한다.
+## 4. 실행해보기 (요리하기)
 
-> `javac -d [바이트코드파일저장위치] [소스경로/*.java]`
-> `*.java`는 확장명이 java인 모든 파일을 말한다.
+터미널(명령 프롬프트)을 열고, 파일이 있는 곳으로 이동해서 실행합니다.
 
+### 1) 컴파일 (번역)
 ```bash
-C:\...> cd C:\temp
-C:\temp> javac -d bin src/ch01/sec06/Hello.java
+javac Hello.java
 ```
-`C:\temp\bin`에 패키지 디렉토리와 바이트코드 파일(`ch01/sec06/Hello.class`)이 생성
+*   아무 오류 없이 끝나면 `Hello.class` 파일(바이트코드)이 생깁니다.
 
-04 `java` 명령어로 바이트코드 파일을 기계어로 번역하고 실행시켜 보자. 여전히 명령 프롬프트의 현재 위치는 `C:\temp` 디렉토리이다. 주의할 점은 패키지 구분자는 `.`를 사용해야 하고, 클래스명은 `.class`를 제외한 `Hello`만 입력해야 한다는 점이다.
-
-> `java -cp [바이트코드파일위치] [패키지...클래스명]`
-
+### 2) 실행 (Run)
 ```bash
-C:\temp> java -cp bin ch01.sec06.Hello
+java Hello
+```
+*   **주의**: `Hello.class`가 아니라 그냥 `Hello`라고 입력하세요.
+
+### 결과 확인
+```
 Hello, Java
 ```
-콘솔에 "Hello, Java"가 출력
-
-윈도우와 맥OS를 함께 사용할 수 있는 환경을 갖고 있다면 한쪽에서 temp 디렉토리를 다른 쪽으로 복사한 다음 `java` 명령어를 실행해도 된다. `javac`로 컴파일하면 운영체제에 독립적인 바이트코드 파일(`*.class`)이 생성되기 때문이다.
+화면에 문구가 출력되면 성공입니다! 🎉

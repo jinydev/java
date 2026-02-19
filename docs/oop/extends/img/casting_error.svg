@@ -1,0 +1,34 @@
+<svg width="600" height="300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="600" height="300" fill="#fcfcfc"/>
+
+  <!-- Title -->
+  <text x="300" y="40" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="#c0392b" font-weight="bold">ClassCastException (변환 오류)</text>
+
+  <!-- Code -->
+  <rect x="50" y="70" width="500" height="60" rx="5" fill="#2c3e50"/>
+  <text x="250" y="95" font-family="monospace" font-size="16" text-anchor="middle" fill="#ecf0f1">Cat c = (Cat) new Dog();</text>
+  <text x="250" y="115" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#e74c3c" font-weight="bold">Illegal cast!</text>
+
+  <!-- Dog Object -->
+  <g transform="translate(100, 160)">
+    <rect width="120" height="80" rx="10" fill="#eceff1" stroke="#607d8b" stroke-width="2"/>
+    <text x="60" y="45" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#455a64" font-weight="bold">Dog</text>
+    <text x="60" y="65" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#455a64">(멍멍)</text>
+  </g>
+
+  <!-- Mask (Cat) -->
+  <g transform="translate(350, 160)">
+    <rect width="120" height="80" rx="10" fill="#fff3e0" stroke="#ff9800" stroke-width="2" stroke-dasharray="5,5"/>
+    <text x="60" y="45" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#e65100" font-weight="bold">Cat?</text>
+    <text x="60" y="65" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#e65100">(야옹)</text>
+  </g>
+
+  <!-- Arrow with Cross -->
+  <line x1="230" y1="200" x2="340" y2="200" stroke="#c0392b" stroke-width="4"/>
+  <line x1="270" y1="180" x2="300" y2="220" stroke="#c0392b" stroke-width="4"/>
+  <line x1="300" y1="180" x2="270" y2="220" stroke="#c0392b" stroke-width="4"/>
+
+  <text x="300" y="270" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#c0392b" font-weight="bold">"개는 고양이가 될 수 없습니다!"</text>
+
+</svg>

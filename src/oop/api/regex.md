@@ -1,93 +1,66 @@
 ---
 layout: oop
-title: "12.10 정규 표현식 클래스"
+title: "15.10 정규 표현식 (Regex)"
 nav_order: 10
-parent: "Chapter 12. java.base 모듈"
-grand_parent: "객체지향 프로그래밍"
+parent: "Chapter 15. 자바 기본 API (java.base)"
+grand_parent: "객체지향 자바 프로그래밍"
 ---
 
-# 12.10 정규 표현식 클래스
+# 15.10 정규 표현식 (Regex)
 
-문자열이 정해져 있는 형식으로 구성되어 있는지 검증해야 하는 경우가 있다. 예를 들어 이메일이나 전화번호를 사용자가 제대로 입력했는지 검증할 때이다. 자바는 정규 표현식(Regular Expression)을 이용해서 문자열이 올바르게 구성되어 있는지 검증한다.
 
-## 정규 표현식 작성 방법
+<br>
 
-정규 표현식은 문자 또는 숫자와 관련된 표현과 반복 기호가 결합된 문자열이다. 다음은 정규 표현식을 구성하는 표현 및 기호에 대한 설명이다.
+## 1. 문자열 검문소 🚧
 
-| 기호     | 설명                                                   |
-| :------- | :----------------------------------------------------- |
-| .        | 한 개의 문자                                           |
-| [abc]    | a, b, c 중 하나의 문자                                 |
-| [^abc]   | a, b, c 이외의 하나의 문자                             |
-| [a-zA-Z] | a~z, A~Z 중 하나의 문자                                |
-| \d       | 한 개의 숫자 ([0-9]와 동일)                            |
-| \s       | 공백                                                   |
-| \w       | 한 개의 알파벳 또는 한 개의 숫자 ([a-zA-Z_0-9]와 동일) |
-| ?        | 없음 또는 한 개                                        |
-| *        | 없음 또는 한 개 이상                                   |
-| +        | 한 개 이상                                             |
-| {n}      | 정확히 n개                                             |
-| {n,}     | 최소한 n개                                             |
-| {n,m}    | n개부터 m개까지                                        |
-| ( )      | 그룹핑                                                 |
-| \|       | 또는                                                   |
+**정규 표현식(Regular Expression)**은 문자열이 **"특정 규칙에 맞는지 검사"**하는 도구입니다.
+회원가입 할 때 "이메일 형식이 아닙니다" 또는 "전화번호를 다시 입력하세요"라고 알려주는 기능의 핵심입니다.
 
-다음은 02-123-1234 또는 010-1234-5678과 같은 전화번호를 위한 정규 표현식이다.
 
+<br>
+
+## 2. 주요 문법 (암호표)
+
+| 기호    | 설명          | 예시                   |
+| :------ | :------------ | :--------------------- |
+| `^`     | 시작          | `^010` (010으로 시작)  |
+| `$`     | 끝            | `com$` (com으로 끝남)  |
+| `.`     | 아무 문자 1개 |                        |
+| `\d`    | 숫자 (0~9)    | `\d{3}` (숫자 3개)     |
+| `\w`    | 문자+숫자     |                        |
+| `+`     | 1개 이상      |                        |
+| `*`     | 0개 이상      |                        |
+| `{n,m}` | n개~m개       | `\d{3,4}` (숫자 3~4개) |
+
+
+<br>
+
+## 3. 사용법 (`Pattern.matches`)
+
+`Pattern` 클래스의 `matches()` 메소드를 사용하면 한 줄로 검사가 끝납니다.
+
+### 1) 전화번호 검사
 ```java
-(02|010)-\d{3,4}-\d{4}
-```
+// 규칙: 010 - (숫자 3~4개) - (숫자 4개)
+String pattern = "010-\\d{3,4}-\\d{4}";
+String data = "010-1234-5678";
 
-다음은 white@naver.com과 같은 이메일을 위한 정규 표현식이다.
+boolean result = Pattern.matches(pattern, data);
 
-```java
-\w+@\w+\.\w+(\.\w+)?
-```
-
-주의할 점은 `\.`과 `.`은 다르다는 것이다. `\.`은 문자로서의 점(.)을 말하지만 `.`은 모든 문자 중에서 한 개의 문자를 뜻한다.
-
-## Pattern 클래스로 검증
-
-java.util.regex 패키지의 Pattern 클래스는 정규 표현식으로 문자열을 검증하는 matches() 메소드를 제공한다. 첫 번째 매개값은 정규 표현식이고, 두 번째 매개값은 검증할 문자열이다. 검증 후의 결과는 boolean 타입으로 리턴된다.
-
-```java
-boolean result = Pattern.matches("정규식", "검증할 문자열");
-```
-
-다음 예제는 전화번호와 이메일을 검증하는 코드를 보여 준다.
-
-```java
-package ch12.sec10;
-
-import java.util.regex.Pattern;
-
-public class PatternExample {
-	public static void main(String[] args) {
-		String regExp = "(02|010)-\\d{3,4}-\\d{4}";
-		String data = "010-123-4567";
-		boolean result = Pattern.matches(regExp, data);
-		if (result) {
-			System.out.println("정규식과 일치합니다.");
-		} else {
-			System.out.println("정규식과 일치하지 않습니다.");
-		}
-
-		regExp = "\\w+@\\w+\\.\\w+(\\.\\w+)?";
-		data = "angel@mycompanycom";
-		result = Pattern.matches(regExp, data);
-		if (result) {
-			System.out.println("정규식과 일치합니다.");
-		} else {
-			System.out.println("정규식과 일치하지 않습니다.");
-		}
-	}
+if(result) {
+    System.out.println("통과! 정상적인 번호입니다.");
+} else {
+    System.out.println("삐빅! 잘못된 번호입니다.");
 }
 ```
 
-**실행 결과**
-```
-정규식과 일치합니다.
-정규식과 일치하지 않습니다.
+### 2) 이메일 검사
+```java
+// 규칙: (문자들) @ (문자들) . (문자들)
+String pattern = "\\w+@\\w+\\.\\w+(\\.\\w+)?";
+String email = "hong@naver.com";
+
+boolean isEmail = Pattern.matches(pattern, email);
 ```
 
-16라인의 `\\`는 이스케이프 문자로 역슬래시(\) 하나를 문자열로 포함시킨다. 실행 결과에서 이메일 검증이 실패한 이유는 @ 뒤에 최소한 하나의 점이 와야 하기 때문이다. 따라서 mycompany.com이라고 해야 맞다.
+> **핵심**: 복잡한 문자열 규칙 검사는 `if`문 수십 줄 대신 **정규 표현식 한 줄**로 해결하세요.

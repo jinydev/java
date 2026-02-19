@@ -1,0 +1,46 @@
+<svg width="600" height="250" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="600" height="250" fill="#ffffff" />
+  
+  <!-- App -->
+  <g transform="translate(50, 100)">
+    <rect x="0" y="0" width="100" height="60" rx="5" fill="#e1bee7" stroke="#8e24aa" stroke-width="2"/>
+    <text x="50" y="35" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#4a148c" text-anchor="middle">App</text>
+  </g>
+
+  <!-- Module A (Bridge) -->
+  <g transform="translate(250, 100)">
+    <rect x="0" y="0" width="100" height="60" rx="5" fill="#ffecb3" stroke="#ffa000" stroke-width="2"/>
+    <text x="50" y="35" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#bf360c" text-anchor="middle">Module A</text>
+    <text x="50" y="55" font-family="monospace" font-size="10" fill="#555" text-anchor="middle">(Bridge)</text>
+  </g>
+
+  <!-- Module B (Target) -->
+  <g transform="translate(450, 100)">
+    <rect x="0" y="0" width="100" height="60" rx="5" fill="#c8e6c9" stroke="#388e3c" stroke-width="2"/>
+    <text x="50" y="35" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#1b5e20" text-anchor="middle">Module B</text>
+  </g>
+
+  <!-- Connections -->
+  <!-- App -> A -->
+  <path d="M150,130 L250,130" stroke="#333" stroke-width="2" marker-end="url(#arrow_tr)"/>
+  <text x="200" y="125" font-family="monospace" font-size="10" fill="#333" text-anchor="middle">requires</text>
+
+  <!-- A -> B -->
+  <path d="M350,130 L450,130" stroke="#333" stroke-width="2" marker-end="url(#arrow_tr)"/>
+  <text x="400" y="125" font-family="monospace" font-size="10" fill="#333" text-anchor="middle">requires transitive</text>
+  
+  <!-- Visualizing Transitive Flow -->
+  <path d="M100,160 Q300,230 500,160" fill="none" stroke="#2196f3" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#arrow_jump)"/>
+  <text x="300" y="220" font-family="Arial, sans-serif" font-size="12" fill="#0d47a1" text-anchor="middle">"App은 A만 불렀지만, B까지 쓸 수 있습니다!"</text>
+
+  <defs>
+    <marker id="arrow_tr" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#333" />
+    </marker>
+    <marker id="arrow_jump" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#2196f3" />
+    </marker>
+  </defs>
+
+</svg>

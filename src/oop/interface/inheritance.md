@@ -1,111 +1,80 @@
 ---
 layout: oop
-title: "8.9 인터페이스 상속"
-nav_order: 9
-parent: "Chapter 08. 인터페이스"
+title: "11.7 인터페이스 상속"
+nav_order: 7
+parent: "Chapter 11. 인터페이스"
 grand_parent: "객체지향 자바 프로그래밍"
 ---
 
-# 8.9 인터페이스 상속
+# 11.7 인터페이스 상속
 
-인터페이스도 다른 인터페이스를 상속할 수 있으며, 클래스와는 달리 다중 상속을 허용한다. 다음과 같이 `extends` 키워드 뒤에 상속할 인터페이스들을 나열하면 된다.
+인터페이스끼리도 상속이 가능합니다. 특이한 점은 클래스와 달리 **"다중 상속(여러 부모를 두는 것)"을 허용**한다는 것입니다.
+상속 키워드는 클래스와 동일하게 `extends`를 사용합니다.
+
+### 💡 핵심 비유: 족보와 유산
+> **"할아버지의 재산과 아버지의 재산을 모두 물려받은 손자. 손자는 자신이 번 돈뿐만 아니라 조상님들의 재산까지 모두 관리해야 한다."**
+
+![Inheritance Tree](./img/interface_inheritance_tree.svg)
+
+---
+
+
+<br>
+
+## 1. 인터페이스 다중 상속 문법
 
 ```java
-public interface 자식인터페이스 extends 부모인터페이스1, 부모인터페이스2 { ... }
-```
-
-자식 인터페이스의 구현 클래스는 자식 인터페이스의 메소드뿐만 아니라 부모 인터페이스의 모든 추상 메소드를 재정의해야 한다. 그리고 구현 객체는 다음과 같이 자식 및 부모 인터페이스 변수에 대입될 수 있다.
-
-```java
-자식인터페이스 변수 = new 구현클래스(...);
-부모인터페이스1 변수 = new 구현클래스(...);
-부모인터페이스2 변수 = new 구현클래스(...);
-```
-
-구현 객체가 자식 인터페이스 변수에 대입되면 자식 및 부모 인터페이스의 추상 메소드를 모두 호출할 수 있으나, 부모 인터페이스 변수에 대입되면 부모 인터페이스에 선언된 추상 메소드만 호출 가능하다. 다음 예제를 통해 확인해 보자.
-
-**InterfaceA.java**
-```java
-package ch08.sec09;
-
 public interface InterfaceA {
-	// 추상 메소드
-	void methodA();
+    void methodA();
 }
-```
-
-**InterfaceB.java**
-```java
-package ch08.sec09;
 
 public interface InterfaceB {
-	// 추상 메소드
-	void methodB();
+    void methodB();
 }
-```
 
-**InterfaceC.java**
-```java
-package ch08.sec09;
-
+// A와 B를 동시에 상속받은 C
 public interface InterfaceC extends InterfaceA, InterfaceB {
-	// 추상 메소드
-	void methodC();
+    void methodC();
 }
 ```
 
-**InterfaceCImpl.java**
+이제 `InterfaceC`는 자신의 기능인 `methodC()`뿐만 아니라, 부모인 `A`, `B`의 기능까지 모두 합쳐서 총 3개의 추상 메소드를 가지게 됩니다.
+
+
+<br>
+
+## 2. 구현 클래스의 막중한 의무
+
+`InterfaceC`를 구현(`implements`)하는 클래스는 **C의 메소드뿐만 아니라 A와 B의 메소드까지 전부 다 구현해야 합니다.** 하나라도 빠지면 에러가 납니다.
+
+![Impl Requirements](./img/interface_inheritance_impl_req.svg)
+
 ```java
-package ch08.sec09;
-
-public class InterfaceCImpl implements InterfaceC {
-	public void methodA() {
-		System.out.println("InterfaceCImpl-methodA() 실행");
-	}
-	
-	public void methodB() {
-		System.out.println("InterfaceCImpl-methodB() 실행");
-	}
-	
-	public void methodC() {
-		System.out.println("InterfaceCImpl-methodC() 실행");
-	}
+public class ImplClass implements InterfaceC {
+    // 반드시 A, B, C 다 구현해야 함!
+    @Override public void methodA() { ... }
+    @Override public void methodB() { ... }
+    @Override public void methodC() { ... }
 }
 ```
 
-**ExtendsExample.java**
+
+<br>
+
+## 3. 타입 변환의 범위
+
+구현 객체(`ImplClass`)는 자식 인터페이스(`C`)는 물론, 조상 인터페이스(`A`, `B`) 타입으로도 변환될 수 있습니다.
+
 ```java
-package ch08.sec09;
+ImplClass impl = new ImplClass();
 
-public class ExtendsExample {
-	public static void main(String[] args) {
-		InterfaceCImpl impl = new InterfaceCImpl();
-		
-		InterfaceA ia = impl;
-		ia.methodA();
-		// ia.methodB(); // (x)
-		System.out.println();
-		
-		InterfaceB ib = impl;
-		// ib.methodA(); // (x)
-		ib.methodB();
-		System.out.println();
-		
-		InterfaceC ic = impl;
-		ic.methodA();
-		ic.methodB();
-		ic.methodC();
-	}
-}
-```
+// InterfaceA 타입으로 변환 -> methodA()만 호출 가능
+InterfaceA ia = impl;
+ia.methodA();
 
-**실행 결과**
-```
-InterfaceCImpl-methodA() 실행
-
-InterfaceCImpl-methodB() 실행
-
-InterfaceCImpl-methodA() 실행
-InterfaceCImpl-methodB() 실행
-InterfaceCImpl-methodC() 실행
+// InterfaceC 타입으로 변환 -> A, B, C 모든 메소드 호출 가능
+InterfaceC ic = impl;
+ic.methodA();
+ic.methodB();
+ic.methodC(); // 강력함!
 ```

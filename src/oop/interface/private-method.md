@@ -1,112 +1,76 @@
 ---
 layout: oop
-title: "8.7 private 메소드"
-nav_order: 7
-parent: "Chapter 08. 인터페이스"
+title: "11.12 프라이빗 메소드"
+nav_order: 12
+parent: "Chapter 11. 인터페이스"
 grand_parent: "객체지향 자바 프로그래밍"
 ---
 
-# 8.7 private 메소드
+# 11.12 프라이빗 메소드 (비밀 레시피)
 
-인터페이스의 상수 필드, 추상 메소드, 디폴트 메소드, 정적 메소드는 모두 `public` 접근 제한을 갖는다. 이 멤버들을 선언할 때에는 `public`을 생략하더라도 컴파일 과정에서 `public` 접근 제한자가 붙어 항상 외부에서 접근이 가능하다. 또한 인터페이스에 외부에서 접근할 수 없는 `private` 메소드 선언도 가능하다.
+Java 9부터는 인터페이스 내부에 **`private` 메소드**를 만들 수 있게 되었습니다.
+인터페이스는 원래 "공개(public)"가 원칙이었는데, 왜 굳이 숨겨진 메소드를 허용했을까요?
 
-| 종류                  | 설명                         |
-| :-------------------- | :--------------------------- |
-| `private` 메소드      | 구현 객체가 필요한 메소드    |
-| `private` 정적 메소드 | 구현 객체가 필요 없는 메소드 |
+### 💡 핵심 비유: 식당의 메뉴판과 주방
+> **"손님에게 보여주는 메뉴판(public)은 깔끔해야 한다. 복잡한 요리 과정(private)은 주방 안에서만 공유하고, 밖으로 드러내지 않는다."**
 
-`private` 메소드는 디폴트 메소드 안에서만 호출이 가능한 반면, `private` 정적 메소드는 디폴트 메소드뿐만 아니라 정적 메소드 안에서도 호출이 가능하다. `private` 메소드의 용도는 디폴트와 정적 메소드들의 중복 코드를 줄이기 위함이다.
+![Secret Recipe](./img/interface_private_secret.svg)
 
-다음 예제는 `Service` 인터페이스에서 2개의 디폴트 메소드와 2개의 정적 메소드 중 중복 코드 부분을 각각 `private` 메소드와 `private` 정적 메소드로 선언하고 호출하는 방법을 보여 준다.
+---
 
-**Service.java**
+
+<br>
+
+## 1. 사용 목적 (코드 중복 제거)
+
+여러 `default` 메소드나 `static` 메소드에서 **공통적으로 반복되는 코드**가 있을 때, 이를 외부로 노출하지 않으면서 재사용하기 위해 사용합니다.
+
+### 🛑 Before (중복 발생)
 ```java
-package ch08.sec07;
-
 public interface Service {
-	// 디폴트 메소드
-	default void defaultMethod1() {
-		System.out.println("defaultMethod1 종속 코드");
-		defaultCommon();
-	}
-	
-	default void defaultMethod2() {
-		System.out.println("defaultMethod2 종속 코드");
-		defaultCommon();
-	}
-	
-	// private 메소드
-	private void defaultCommon() {
-		System.out.println("defaultMethod 중복 코드A");
-		System.out.println("defaultMethod 중복 코드B");
-	}
-	
-	// 정적 메소드
-	static void staticMethod1() {
-		System.out.println("staticMethod1 종속 코드");
-		staticCommon();
-	}
-	
-	static void staticMethod2() {
-		System.out.println("staticMethod2 종속 코드");
-		staticCommon();
-	}
-	
-	// private 정적 메소드
-	private static void staticCommon() {
-		System.out.println("staticMethod 중복 코드C");
-		System.out.println("staticMethod 중복 코드D");
-	}
+    default void methodA() {
+        System.out.println("보안 검사 시작"); // 중복!
+        System.out.println("로그 기록");      // 중복!
+        System.out.println("A 작업 수행");
+    }
+
+    default void methodB() {
+        System.out.println("보안 검사 시작"); // 중복!
+        System.out.println("로그 기록");      // 중복!
+        System.out.println("B 작업 수행");
+    }
 }
 ```
 
-**ServiceImpl.java**
+### ✅ After (Private 메소드로 분리)
+![Code Deduplication](./img/interface_private_code_dedup.svg)
+
 ```java
-package ch08.sec07;
+public interface Service {
+    default void methodA() {
+        commonLogic(); // 공통 코드 호출
+        System.out.println("A 작업 수행");
+    }
 
-public class ServiceImpl implements Service {
+    default void methodB() {
+        commonLogic(); // 공통 코드 호출
+        System.out.println("B 작업 수행");
+    }
+
+    // 외부에는 안 보이고, 내부에서만 쓰는 비밀 도우미
+    private void commonLogic() {
+        System.out.println("보안 검사 시작");
+        System.out.println("로그 기록");
+    }
 }
 ```
 
-**ServiceExample.java**
-```java
-package ch08.sec07;
 
-public class ServiceExample {
-	public static void main(String[] args) {
-		// 인터페이스 변수 선언과 구현 객체 대입
-		Service service = new ServiceImpl();
-		
-		// 디폴트 메소드 호출
-		service.defaultMethod1();
-		System.out.println();
-		service.defaultMethod2();
-		System.out.println();
-		
-		// 정적 메소드 호출
-		Service.staticMethod1();
-		System.out.println();
-		Service.staticMethod2();
-		System.out.println();
-	}
-}
-```
+<br>
 
-**실행 결과**
-```
-defaultMethod1 종속 코드
-defaultMethod 중복 코드A
-defaultMethod 중복 코드B
+## 2. 종류
 
-defaultMethod2 종속 코드
-defaultMethod 중복 코드A
-defaultMethod 중복 코드B
+1.  **`private` 메소드**: `default` 메소드에서 호출 가능.
+2.  **`private static` 메소드**: `static` 메소드에서 호출 가능. (물론 `default`에서도 호출 가능)
 
-staticMethod1 종속 코드
-staticMethod 중복 코드C
-staticMethod 중복 코드D
-
-staticMethod2 종속 코드
-staticMethod 중복 코드C
-staticMethod 중복 코드D
-```
+이제 인터페이스 내부 코드도 **"보여줄 것(Signature)"**과 **"감출 것(Implementation Details)"**을 명확히 나눌 수 있게 되었습니다.

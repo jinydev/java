@@ -1,157 +1,76 @@
 ---
 layout: oop
-title: "10.6 전이 의존"
+title: "13.6 전이 의존"
 nav_order: 6
-parent: "Chapter 10. 라이브러리와 모듈"
+parent: "Chapter 13. 라이브러리와 모듈"
 grand_parent: "객체지향 자바 프로그래밍"
 ---
 
-# 10.6 전이 의존
+# 13.6 전이 의존 (Transitive Dependency)
 
-`my_application_2` 프로젝트와 `my_module_a`, `my_module_b` 모듈의 의존 관계는 다음과 같이 표현할 수 있다. `my_application_2`는 직접적으로 두 모듈을 requires 하고 있기 때문이다.
 
-```
-my_application_2 -> my_module_a
-                 -> my_module_b
-```
+<br>
 
-다음과 같이 의존 관계를 변경한다고 가정해 보자.
+## 1. 징검다리 놓기 (Bridge) 🌉
 
-```
-my_application_2 -> my_module_a -> my_module_b
-```
+우리가 `Module A`를 사용합니다. 그런데 `Module A`가 내부적으로 `Module B`를 쓰고 있습니다.
+기본적으로는 `A`만 내 친구이고, `B`는 모르는 사이(접근 불가)입니다.
 
-`my_application_2`는 `my_module_a`에 의존하고, `my_module_a`는 `my_module_b`에 의존한다. 따라서 `my_application_2`와 `my_module_a`의 모듈 기술자는 다음과 같이 작성할 수 있을 것이다.
+하지만 `A`가 **"B는 내 절친이니까, 나랑 친구면 B랑도 친구 해!"**라고 소개해줄 수 있습니다.
+이것이 바로 **전이 의존 (`requires transitive`)**입니다.
 
-**my_application_2 module-info.java**
+![Transitive Dependency](./img/transitive_dependency_bridge.svg)
+
+*   **일반 의존 (`requires`)**: A가 B를 씀. (App은 B를 모름)
+*   **전이 의존 (`requires transitive`)**: A가 B를 쓰고, **A를 쓰는 녀석(App)에게 B도 쓰게 해줌.**
+
+<br>
+
+
+<br>
+
+## 2. 왜 쓸까요? (편리함)
+생각해보세요. 자바의 `java.desktop` 모듈을 쓰려면, 그 안에 있는 그래픽 관련 모듈(`java.xml` 등)도 다 불라와야 한다면 얼마나 귀찮을까요?
+`java.desktop` 하나만 `requires` 하면 관련된 것들이 줄줄이 비엔나처럼 따라오게 만들 때 사용합니다.
+
+<br>
+
+
+<br>
+
+## 3. 실습: A를 통해 B 쓰기
+
+### 상황 설정
+*   `my_application` -> `my_module_a` (requires)
+*   `my_module_a` -> `my_module_b` (requires **transitive**)
+
+### 코드 작성
+`my_module_a`의 기술자에 `transitive`를 붙입니다.
+
 ```java
-module my_application_2 {
-    requires my_module_a;
-}
-```
-
-**my_module_a module-info.java**
-```java
+// my_module_a/module-info.java
 module my_module_a {
     exports pack1;
-    requires my_module_b;
+    requires transitive my_module_b; // "나를 부르면 b도 같이 줍니다"
 }
 ```
 
-이렇게 작성하면 `my_application_2`의 Main 클래스는 `my_module_b` 모듈을 사용할 수 없기 때문에 컴파일 오류가 발생한다. `my_application_2`의 모듈 기술자에서 `requires my_module_b`가 빠졌기 때문이다.
-
-Main 클래스에서 `my_module_b` 패키지 코드를 모두 제거하면 되겠지만, 제거할 수 없는 경우도 있다. 다음과 같이 `my_module_a` 소속의 A 클래스가 `my_module_b` 소속의 C 타입 객체를 리턴하는 경우이다.
+이제 애플리케이션에서는 `my_module_a`만 불렀지만, `my_module_b`의 클래스도 맘껏 쓸 수 있습니다.
 
 ```java
-A a = new A();
-C c = a.method();
-```
+// my_application/Main.java
+import pack1.A; // module a
+import pack3.C; // module b (자동으로 사용 가능!)
 
-`my_application_2`에서 이 코드를 사용해야 한다면 C 타입이 있기 때문에 `my_application_2`의 모듈 기술자에 `requires my_module_b`를 반드시 추가해야 한다. `my_application_2`는 단지 `my_module_a`만 사용하고 싶었는데도 말이다.
-
-이 문제를 해결할 방법은 `my_module_a`가 가지고 있다. `my_module_a`의 모듈 기술자에 `transitive` 키워드와 함께 `my_module_b`를 의존 설정하면 된다. 그러면 `my_application_2`에서도 `my_module_b`를 사용할 수 있게 된다. 의존 설정이 전이되기 때문이다.
-
-**my_module_a module-info.java**
-```java
-module my_module_a {
-    exports pack1;
-    requires transitive my_module_b;
-}
-```
-
-다음 실습을 통해 전이 의존을 확인해 보자.
-
-## my_module_a 모듈 수정
-
-1.  Package Explorer 뷰에서 `my_module_a`를 선택하고 마우스 오른쪽 버튼으로 클릭하여 [Build Path] - [Configure Build Path] 메뉴를 클릭한다. [Projects] 탭에서 Modulepath 항목을 선택한 후 [Add] 버튼을 클릭한다. `my_module_b` 모듈의 체크박스에 체크하고 [OK] 버튼을 클릭한다.
-
-2.  Required projects on the build path에 `my_module_b` 모듈이 추가된 것을 확인하고 [Apply and Close] 버튼을 클릭한다.
-
-3.  `my_module_a`의 모듈 기술자를 열고 다음과 같이 `my_module_b` 모듈을 전이적 의존으로 기술한다.
-
-    **module-info.java**
-    ```java
-    module my_module_a {
-        exports pack1;
-        // exports pack2;
-        requires transitive my_module_b;
-    }
-    ```
-
-4.  `my_module_a`의 `A` 클래스에서 `getC()` 메소드를 선언한 다음, `my_module_b` 소속의 `C` 클래스로부터 객체를 생성하고 리턴하도록 다음과 같이 작성한다.
-
-    **A.java**
-    ```java
-    package pack1;
-
-    import pack2.B;
-    import pack3.C;
-
-    public class A {
-        // 메소드
-        public void method() {
-            System.out.println("A-method 실행");
-            // B 클래스 사용
-            B b = new B();
-            b.method();
-        }
+public class Main {
+    public static void main(String[] args) {
+        // A는 당연히 되고
+        A a = new A();
         
-        // 메소드
-        public C getC() {
-            C c = new C();
-            return c;
-        }
+        // B 모듈의 C도 사용 가능!
+        C c = new C(); 
     }
-    ```
+}
+```
 
-## my_application_2 프로젝트 수정
-
-1.  Package Explorer 뷰에서 `my_application_2` 프로젝트의 모듈 기술자를 열고, `my_module_b` 모듈의 직접적 의존 관계를 주석 처리한다.
-
-    **module-info.java**
-    ```java
-    module my_application_2 {
-        requires my_module_a;
-        // requires my_module_b;
-    }
-    ```
-
-2.  `my_application_2`의 `Main` 클래스에 다음과 같이 21~22라인을 추가한다.
-
-    **Main.java**
-    ```java
-    package app;
-
-    import pack1.A;
-    // import pack2.B;
-    import pack3.C;
-
-    public class Main {
-        public static void main(String[] args) {
-            // my_module_a 패키지에 포함된 A 클래스 이용
-            A a = new A();
-            a.method();
-            
-            // my_module_a 패키지에 포함된 B 클래스 이용
-            // B b = new B();
-            // b.method();
-            
-            // my_module_b 패키지에 포함된 C 클래스 이용
-            C c = new C();
-            c.method();
-            
-            C result = a.getC();
-            result.method();
-        }
-    }
-    ```
-
-    **실행 결과**
-    ```
-    A-method 실행
-    B-method 실행
-    C-method 실행
-    C-method 실행
-    ```
-
-`my_application_2` 모듈 기술자에서 `requires my_module_b`를 제거했음에도 불구하고 여전히 Main 클래스에서 `my_module_b` 소속의 `pack3.C` 클래스를 사용할 수 있다. 이는 `my_module_a` 모듈 기술자에서 `transitive`로 `my_module_b`를 의존 설정했기 때문이다.
+> **핵심 요약**: `transitive`는 **"남에게 내 친구(의존 모듈)를 소개해주는 키워드"**입니다.

@@ -1,0 +1,53 @@
+<svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="600" height="400" fill="#ffffff" />
+  
+  <!-- Base Module (Foundation) -->
+  <rect x="150" y="300" width="300" height="60" rx="5" fill="#e1bee7" stroke="#8e24aa" stroke-width="3"/>
+  <text x="300" y="335" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#4a148c" text-anchor="middle">java.base</text>
+  <text x="300" y="355" font-family="Arial, sans-serif" font-size="10" fill="#333" text-anchor="middle">(Core: lang, util, io, nio, net ...)</text>
+  
+  <!-- Layer 1 -->
+  <g transform="translate(50, 200)">
+    <rect x="0" y="0" width="100" height="50" rx="5" fill="#bbdefb" stroke="#1976d2" stroke-width="2"/>
+    <text x="50" y="30" font-family="Arial, sans-serif" font-size="12" fill="#0d47a1" text-anchor="middle">java.xml</text>
+  </g>
+  
+  <g transform="translate(250, 200)">
+    <rect x="0" y="0" width="100" height="50" rx="5" fill="#bbdefb" stroke="#1976d2" stroke-width="2"/>
+    <text x="50" y="30" font-family="Arial, sans-serif" font-size="12" fill="#0d47a1" text-anchor="middle">java.logging</text>
+  </g>
+  
+  <g transform="translate(450, 200)">
+    <rect x="0" y="0" width="100" height="50" rx="5" fill="#bbdefb" stroke="#1976d2" stroke-width="2"/>
+    <text x="50" y="30" font-family="Arial, sans-serif" font-size="12" fill="#0d47a1" text-anchor="middle">java.prefs</text>
+  </g>
+
+  <!-- Layer 2 -->
+  <g transform="translate(100, 100)">
+    <rect x="0" y="0" width="100" height="50" rx="5" fill="#c8e6c9" stroke="#388e3c" stroke-width="2"/>
+    <text x="50" y="30" font-family="Arial, sans-serif" font-size="12" fill="#1b5e20" text-anchor="middle">java.sql</text>
+  </g>
+  
+  <g transform="translate(350, 100)">
+    <rect x="0" y="0" width="120" height="50" rx="5" fill="#c8e6c9" stroke="#388e3c" stroke-width="2"/>
+    <text x="60" y="30" font-family="Arial, sans-serif" font-size="12" fill="#1b5e20" text-anchor="middle">java.desktop</text>
+  </g>
+
+  <!-- Arrows (Dependencies) -->
+  <path d="M100,250 L180,300" stroke="#555" stroke-width="1" marker-end="url(#arrow_std)"/>
+  <path d="M300,250 L300,300" stroke="#555" stroke-width="1" marker-end="url(#arrow_std)"/>
+  <path d="M500,250 L420,300" stroke="#555" stroke-width="1" marker-end="url(#arrow_std)"/>
+  
+  <path d="M150,150 L110,200" stroke="#555" stroke-width="1" marker-end="url(#arrow_std)"/>
+  <path d="M410,150 L390,200" stroke="#555" stroke-width="1" marker-end="url(#arrow_std)"/>
+
+  <defs>
+    <marker id="arrow_std" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#555" />
+    </marker>
+  </defs>
+  
+  <text x="300" y="380" font-family="Arial, sans-serif" font-size="12" fill="#d32f2f" text-anchor="middle">"모든 모듈은 java.base를 의존합니다. (requires java.base는 생략 가능)"</text>
+
+</svg>

@@ -1,0 +1,63 @@
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="400" fill="#fcfcfc"/>
+
+  <!-- Title -->
+  <text x="400" y="40" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="#2c3e50" font-weight="bold">다형성 (Polymorphism) - 타이어 교체</text>
+
+  <!-- Car Class -->
+  <g transform="translate(50, 100)">
+    <rect width="200" height="150" rx="10" fill="#ecf0f1" stroke="#34495e" stroke-width="3"/>
+    <text x="100" y="35" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="#2c3e50" font-weight="bold">자동차 (Car)</text>
+    
+    <!-- Tire Slot -->
+    <rect x="40" y="60" width="120" height="60" rx="5" fill="#bdc3c7" stroke="#7f8c8d" stroke-dasharray="5,5"/>
+    <text x="100" y="85" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#2c3e50">Tire tire;</text>
+    <text x="100" y="105" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#7f8c8d">(타이어 장착 슬롯)</text>
+  </g>
+
+  <!-- Arrows -->
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#3498db"/>
+    </marker>
+  </defs>
+
+  <!-- Connection Lines -->
+  <path d="M 350 120 L 260 140" stroke="#3498db" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M 350 240 L 260 180" stroke="#e67e22" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Tire Options -->
+  <g transform="translate(350, 50)">
+    <!-- Option 1: Hankook -->
+    <rect width="180" height="100" rx="10" fill="#e8f6f3" stroke="#1abc9c" stroke-width="2"/>
+    <text x="90" y="30" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#16a085" font-weight="bold">HankookTire</text>
+    <text x="90" y="55" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#2c3e50">extends Tire</text>
+    <text x="90" y="80" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#16a085">"부드러운 승차감"</text>
+  </g>
+
+  <g transform="translate(350, 200)">
+    <!-- Option 2: Kumho -->
+    <rect width="180" height="100" rx="10" fill="#fff3e0" stroke="#ff9800" stroke-width="2"/>
+    <text x="90" y="30" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#e65100" font-weight="bold">KumhoTire</text>
+    <text x="90" y="55" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#2c3e50">extends Tire</text>
+    <text x="90" y="80" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#e65100">"강력한 브레이크"</text>
+  </g>
+
+  <!-- Principle Text -->
+  <text x="650" y="100" font-family="Arial, sans-serif" font-size="14" fill="#2c3e50">
+    <tspan x="650" dy="0">"Tire 타입 변수에는</tspan>
+    <tspan x="650" dy="25">한국 타이어든 금호 타이어든</tspan>
+    <tspan x="650" dy="25">모두 끼울 수 있다!"</tspan>
+  </text>
+  
+   <text x="650" y="250" font-family="Arial, sans-serif" font-size="14" fill="#c0392b" font-weight="bold">
+    <tspan x="650" dy="0">자동 타입 변환</tspan>
+  </text>
+  
+  <text x="650" y="280" font-family="monospace" font-size="12" fill="#2c3e50">
+    <tspan x="650" dy="0">Tire t1 = new HankookTire();</tspan>
+    <tspan x="650" dy="20">Tire t2 = new KumhoTire();</tspan>
+  </text>
+
+</svg>

@@ -1,0 +1,33 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="400" height="300" fill="#ffffff" />
+  
+  <!-- Toolbox -->
+  <rect x="50" y="80" width="300" height="150" rx="10" fill="#f44336" stroke="#b71c1c" stroke-width="2"/>
+  <rect x="50" y="80" width="300" height="40" fill="#ef5350" stroke="#b71c1c" stroke-width="2"/> <!-- Lid -->
+  <rect x="180" y="70" width="40" height="20" rx="3" fill="#333"/> <!-- Handle -->
+  
+  <text x="200" y="110" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#fff" text-anchor="middle">MyLibrary.jar</text>
+  
+  <!-- Tools inside -->
+  <g transform="translate(80, 140)">
+    <!-- Tool 1: Class A -->
+    <rect x="0" y="0" width="60" height="60" rx="5" fill="#fff" stroke="#333" stroke-width="1"/>
+    <text x="30" y="35" font-family="monospace" font-size="14" fill="#333" text-anchor="middle">Class A</text>
+  </g>
+  
+  <g transform="translate(170, 140)">
+    <!-- Tool 2: Class B -->
+    <rect x="0" y="0" width="60" height="60" rx="5" fill="#fff" stroke="#333" stroke-width="1"/>
+    <text x="30" y="35" font-family="monospace" font-size="14" fill="#333" text-anchor="middle">Class B</text>
+  </g>
+  
+  <g transform="translate(260, 140)">
+    <!-- Tool 3: Interface -->
+    <circle cx="30" cy="30" r="30" fill="#fff" stroke="#333" stroke-width="1"/>
+    <text x="30" y="35" font-family="monospace" font-size="10" fill="#333" text-anchor="middle">Interface</text>
+  </g>
+  
+  <text x="200" y="260" font-family="Arial, sans-serif" font-size="12" fill="#555" text-anchor="middle">"이미 만들어진 도구(클래스)를 꺼내 씁니다."</text>
+
+</svg>

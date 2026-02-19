@@ -1,0 +1,24 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="400" height="300" fill="#ffffff" />
+  
+  <!-- JAR File (Box) -->
+  <path d="M50,100 L200,50 L350,100 L350,250 L200,300 L50,250 Z" fill="#e1f5fe" stroke="#0277bd" stroke-width="2"/>
+  <path d="M50,100 L200,150 L350,100" fill="none" stroke="#0277bd" stroke-width="2"/>
+  <path d="M200,150 L200,300" fill="none" stroke="#0277bd" stroke-width="2"/>
+  
+  <text x="200" y="280" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#01579b" text-anchor="middle">Modular JAR</text>
+  
+  <!-- The Label (module-info) -->
+  <g transform="translate(140, 110)">
+    <rect x="0" y="0" width="120" height="80" fill="#fff" stroke="#333" stroke-width="1" transform="rotate(-10)"/>
+    <circle cx="60" cy="15" r="5" fill="#d32f2f" transform="rotate(-10)"/> <!-- Pin/Sticker -->
+    
+    <text x="60" y="40" font-family="monospace" font-size="12" fill="#333" text-anchor="middle" font-weight="bold" transform="rotate(-10)">module-info</text>
+    <text x="60" y="60" font-family="monospace" font-size="10" fill="#555" text-anchor="middle" transform="rotate(-10)">exports ...</text>
+    <text x="60" y="75" font-family="monospace" font-size="10" fill="#555" text-anchor="middle" transform="rotate(-10)">requires ...</text>
+  </g>
+  
+  <text x="200" y="40" font-family="Arial, sans-serif" font-size="12" fill="#333" text-anchor="middle">"일반 JAR와 달리, 이 상자엔 명세서가 붙어있습니다."</text>
+
+</svg>

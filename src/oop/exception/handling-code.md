@@ -1,158 +1,63 @@
 ---
 layout: oop
-title: "11.2 예외 처리 코드"
+title: "14.2 예외 처리 코드"
 nav_order: 2
-parent: "Chapter 11. 예외 처리"
+parent: "Chapter 14. 예외 처리"
 grand_parent: "객체지향 자바 프로그래밍"
 ---
 
-# 11.2 예외 처리 코드
+# 14.2 예외 처리 코드 (try-catch-finally)
 
-예외가 발생했을 때 프로그램의 갑작스러운 종료를 막고 정상 실행을 유지할 수 있도록 처리하는 코드를 예외 처리 코드라고 한다. 예외 처리 코드는 `try-catch-finally` 블록으로 구성된다. `try-catch-finally` 블록은 생성자 내부와 메소드 내부에서 작성된다.
 
-**정상 실행되었을 경우**
+<br>
+
+## 1. 안전 운전 매뉴얼 🚗
+
+예외 처리는 **"사고가 나도 차를 멈추지 않고 계속 달리게 하는 기술"**입니다.
+자바에서는 `try-catch-finally` 블록을 사용해 3단계 안전장치를 만듭니다.
+
+![Try Catch Flow](./img/try_catch_flow.svg)
+
+1.  **`try` (시도)**: "일단 운전해봐." (예외가 발생할 수 있는 코드를 넣습니다.)
+2.  **`catch` (수습)**: "사고 나면 이렇게 처리해." (예외가 발생했을 때 실행할 코드입니다.)
+3.  **`finally` (마무리)**: "사고가 나든 안 나든, 시동은 끄고 내려." (무조건 실행되는 코드입니다.)
+
+<br>
+
+
+<br>
+
+## 2. 사용법 살펴보기
+
+### 기본 문법
 ```java
 try {
-    // 예외 발생 가능 코드
-} catch (예외클래스 e) {
-    // 예외 처리
+    // 1. 여기서 위험한 짓을 시도함
+    int result = 10 / 0; 
+} catch(ArithmeticException e) {
+    // 2. 사고(0으로 나누기) 발생 시 이곳으로 점프!
+    System.out.println("0으로 나눌 수 없습니다!");
 } finally {
-    // 항상 실행
+    // 3. 성공하든 실패하든 무조건 뒷정리
+    System.out.println("계산 종료.");
 }
 ```
 
-**예외가 발생되었을 경우**
-```java
-try {
-    // 예외 발생
-} catch (예외클래스 e) {
-    // 예외 처리
-} finally {
-    // 항상 실행
-}
-```
+### 실행 순서
+*   **성공 시**: `try` 실행 -> `finally` 실행. (`catch` 건너뜀)
+*   **실패 시**: `try` 실행 중단 -> `catch` 실행 -> `finally` 실행.
 
-`try` 블록에서 작성한 코드가 예외 없이 정상 실행되면 `catch` 블록은 실행되지 않고 `finally` 블록이 실행된다. 그러나 `try` 블록에서 예외가 발생하면 `catch` 블록이 실행되고 연이어 `finally` 블록이 실행된다.
+<br>
 
-예외 발생 여부와 상관없이 `finally` 블록은 항상 실행된다. 심지어 `try` 블록과 `catch` 블록에서 return 문(메소드 종료)을 사용하더라도 `finally` 블록은 항상 실행된다. `finally` 블록은 옵션으로 생략 가능하다.
 
-다음 예제에서 `printLength()` 메소드는 문자열의 수를 리턴한다. 12라인에서 문자열 대신 `null`을 입력하면 5라인에서 `NullPointerException`이 발생한다. `NullPointerException`은 참조 변수가 null인 상태에서 필드나 메소드에 접근할 경우 발생한다. `NullPointerException`은 실행 예외이므로 컴파일할 때 예외 처리 코드가 없어도 되지만, 실행 중에 발생하면 프로그램은 즉시 종료된다.
+<br>
 
-**ExceptionHandlingExample1.java**
-```java
-package ch11.sec02.exam01;
+## 3. 예외 정보를 확인하는 3가지 방법
 
-public class ExceptionHandlingExample1 {
-    public static void printLength(String data) {
-        int result = data.length();
-        System.out.println("문자 수: " + result);
-    }
+`catch (Exception e)` 블록에서 예외 객체 `e`를 통해 사고 경위를 조사할 수 있습니다.
 
-    public static void main(String[] args) {
-        System.out.println("[프로그램 시작]\n");
-        printLength("ThisIsJava");
-        printLength(null); // 매개값으로 null을 대입 -> NullPointerException 발생
-        System.out.println("[프로그램 종료]");
-    }
-}
-```
+1.  **이유만 간단히**: `e.getMessage()` -> "Zero division error"
+2.  **종류와 이유**: `e.toString()` -> "java.lang.ArithmeticException: / by zero"
+3.  **상세 추적(권장)**: `e.printStackTrace()` -> 사고 지점과 경로를 모두 출력해줍니다. 디버깅 때 필수!
 
-**실행 결과**
-```
-[프로그램 시작]
-
-문자 수: 10
-Exception in thread "main" java.lang.NullPointerException: Cannot invoke "String.length()" because "data" is null
-	at ch11.sec02.exam01.ExceptionHandlingExample1.printLength(ExceptionHandlingExample1.java:5)
-	at ch11.sec02.exam01.ExceptionHandlingExample1.main(ExceptionHandlingExample1.java:12)
-```
-
-위 예제에서 예외 처리 코드를 추가해 보자. `try` 블록에서 `NullPointerException`이 발생하면 `catch` 블록을 실행해서 예외를 처리하도록 하고, 예외 발생 여부와 상관없이 `finally` 블록을 실행하여 마무리 작업을 해보자.
-
-**ExceptionHandlingExample2.java**
-```java
-package ch11.sec02.exam01;
-
-public class ExceptionHandlingExample2 {
-    public static void printLength(String data) {
-        try {
-            int result = data.length();
-            System.out.println("문자 수: " + result);
-        } catch(NullPointerException e) {
-            System.out.println(e.getMessage());
-            // System.out.println(e.toString());
-            // e.printStackTrace();
-        } finally {
-            System.out.println("[마무리 실행]\n");
-        }
-    }
-
-    public static void main(String[] args) {
-        System.out.println("[프로그램 시작]\n");
-        printLength("ThisIsJava");
-        printLength(null);
-        System.out.println("[프로그램 종료]");
-    }
-}
-```
-
-**실행 결과**
-```
-[프로그램 시작]
-
-문자 수: 10
-[마무리 실행]
-
-Cannot invoke "String.length()" because "data" is null
-[마무리 실행]
-
-[프로그램 종료]
-```
-
-## 예외 정보를 얻는 3가지 방법
-
-9~11라인은 발생된 예외의 정보를 출력하는 3가지 방법을 보여 준다. 예외가 발생하면 예외 객체가 catch 선언부의 예외 클래스 변수에 대입된다.
-
-1.  `e.getMessage()`: 예외가 발생한 이유만 리턴한다.
-2.  `e.toString()`: 예외의 종류와 사유를 리턴한다.
-3.  `e.printStackTrace()`: 예외가 어디서 발생했는지 추적한 내용까지도 출력해 준다.
-
-다음 예제에서 `Class.forName("패키지...클래스")`는 ClassPath 위치에서 주어진 클래스를 찾는 코드이다. 찾지 못했을 경우, `ClassNotFoundException`이라는 일반 예외가 발생한다. 따라서 소스가 컴파일되려면 예외 처리 코드를 반드시 작성해야 한다.
-
-**ExceptionHandlingExample.java**
-```java
-package ch11.sec02.exam02;
-
-public class ExceptionHandlingExample {
-    public static void main(String[] args) {
-        try {
-            Class.forName("java.lang.String");
-            System.out.println("java.lang.String 클래스가 존재합니다.");
-        } catch(ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        System.out.println();
-
-        try {
-            Class.forName("java.lang.String2");
-            System.out.println("java.lang.String2 클래스가 존재합니다.");
-        } catch(ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-**실행 결과**
-```
-java.lang.String 클래스가 존재합니다.
-
-java.lang.ClassNotFoundException: java.lang.String2
-	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
-	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
-	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:520)
-	at java.base/java.lang.Class.forName0(Native Method)
-	at java.base/java.lang.Class.forName(Class.java:375)
-    at ch11.sec02.exam02.ExceptionHandlingExample.main(ExceptionHandlingExample.java:16)
-```
+> **핵심 요약**: `try`는 시도하고, `catch`는 받아내고, `finally`는 정리합니다. 이 구조만 알면 프로그램이 갑자기 툭 꺼지는 일을 막을 수 있습니다.

@@ -6,245 +6,145 @@ parent: "Chapter 07. 상속"
 grand_parent: "객체지향 자바 프로그래밍"
 ---
 
-# 7.7 타입 변환
+# 7.7 타입 변환 (Casting)
 
-타입 변환이란 타입을 다른 타입으로 변환하는 것을 말한다. 기본 타입의 변환에 대해서는 이미 2.7-8절에서 학습한 바 있다. 클래스도 마찬가지로 타입 변환이 있는데, 클래스의 타입 변환은 상속 관계에 있는 클래스 사이에서 발생한다.
+타입 변환이란 변수의 타입을 다른 타입으로 바꾸는 것을 말합니다.
+상속 관계에 있는 클래스 사이에서도 타입 변환이 가능합니다.
 
-## 자동 타입 변환
+### 💡 핵심 비유: 역할 놀이 (Role Playing)
+> **"학생은 사람이지만, 모든 사람이 학생은 아니다."**
+> 1.  **자동 변환 (Upcasting)**: 학생이 '사람' 역할을 하는 것. (자연스러움)
+> 2.  **강제 변환 (Downcasting)**: 사람보고 '학생' 역할을 하라고 시키는 것. (원래 학생이었던 사람만 가능!)
 
-자동 타입 변환(Promotion)은 의미 그대로 자동적으로 타입 변환이 일어나는 것을 말한다. 자동 타입 변환은 다음과 같은 조건에서 일어난다.
+---
 
-```java
-부모타입 변수 = 자식타입객체;
-```
+## 1. 자동 타입 변환 (Upcasting)
 
-자식은 부모의 특징과 기능을 상속받기 때문에 부모와 동일하게 취급될 수 있다. 예를 들어 고양이가 동물의 특징과 기능을 상속받았다면 '고양이는 동물이다'가 성립한다.
+자식은 부모의 모든 특징을 물려받았습니다.
+그래서 **'자식은 부모다'**라는 말이 성립합니다.
+자식 객체를 부모 타입 변수에 대입할 때는 **아무런 조치 없이 자동으로** 변환됩니다.
 
-```java
-class Animal {
-}
-
-class Cat extends Animal {
-}
-```
-
-그래서 Cat 객체를 생성하고 이것을 Animal 변수에 대입하면 자동 타입 변환이 일어난다.
+![Upcasting Concept](./img/upcasting_concept.svg)
 
 ```java
+// 고양이(자식)를 생성해서 동물(부모) 변수에 대입
 Cat cat = new Cat();
-Animal animal = cat;
-// Animal animal = new Cat();
+Animal animal = cat; // 자동 타입 변환 (OK)
 ```
 
-위 코드로 생성되는 메모리 상태를 그림으로 묘사하면 다음과 같다. cat과 animal 변수는 타입만 다를 뿐, 동일한 Cat 객체를 참조한다.
+### 특징
+*   부모 타입으로 변환되면, **부모 클래스에 있는 멤버(필드, 메소드)만 보입니다.**
+*   자식 클래스에서 추가한 기능(예: `meow()`)은 가려져서 보이지 않습니다.
+*   **단, 오버라이딩된 메소드는 자식의 것이 실행됩니다!** (중요: 다형성의 핵심)
 
-따라서 두 참조 변수의 == 연산 결과는 true가 나온다.
+<br>
+<br>
+
+---
+
+## 2. 강제 타입 변환 (Downcasting)
+
+부모 타입으로 변환된 객체를 **다시 자식 타입으로 되돌리는 것**입니다.
+이때는 자동으로 안 되고, **"내가 책임 질게!"**라고 괄호`( )`를 써서 강제로 변환해야 합니다.
+
+![Downcasting Concept](./img/downcasting_concept.svg)
 
 ```java
-cat == animal // true
+// 동물 변수에 들어있는 게 고양이가 맞다면
+Animal animal = new Cat(); 
+
+// 다시 고양이로 변환! (강제)
+Cat cat = (Cat) animal;
+cat.meow(); // 이제 다시 야옹 할 수 있다!
 ```
 
-바로 위의 부모가 아니더라도 상속 계층에서 상위 타입이라면 자동 타입 변환이 일어날 수 있다.
+### 🔍 메모리 구조로 이해하기 (Deep Dive)
+타입 변환이 일어난다고 해서 객체 자체가 바뀌는 것은 아닙니다.
+**"객체를 바라보는 시야(Scope)"**가 달라지는 것입니다.
+
+![Casting Memory View](./img/casting_memory.svg)
+
+*   `new Child()`로 생성된 객체는 메모리에 `Parent` 영역과 `Child` 영역을 모두 가지고 있습니다.
+*   `Parent` 타입 변수는 **부모 영역**까지만 볼 수 있습니다.
+*   `Child` 타입 변수는 **자식 영역**까지 모두 볼 수 있습니다.
+
+<br>
+<br>
+
+---
+
+## 3. 심화: 주의사항 및 활용
+
+### ⚠️ ClassCastException (변환 오류)
+강제 타입 변환은 위험합니다. 만약 실체가 '강아지'인데 억지로 '고양이'로 바꾸려 하면 에러가 납니다.
+
+![Casting Error](./img/casting_error.svg)
 
 ```java
-class A {}
-class B extends A {}
-class C extends A {}
-class D extends B {}
-class E extends C {}
+Animal animal = new Dog(); // 실체는 강아지
 
-public class PromotionExample {
+// "너 고양이 해!" (불가능)
+Cat cat = (Cat) animal; // ❌ 실행 시 에러 발생! (ClassCastException)
+```
+
+이런 오류를 막기 위해, 변환하기 전에 **`instanceof`** 연산자로 확인하는 것이 좋습니다.
+
+### ❓ 왜 이렇게 변환을 하나요?
+**"여러 종류의 객체를 하나로 묶어서 관리하기 위해서"**입니다.
+
+예를 들어 동물원을 관리하는 프로그램이 있다고 해봅시다.
+사자, 호랑이, 곰은 모두 다른 클래스이지만 `Animal`이라는 부모 클래스로 묶을 수 있습니다.
+
+```java
+// 다형성을 이용한 관리
+Animal[] zoo = {
+    new Lion(),
+    new Tiger(),
+    new Bear()
+};
+
+for (Animal animal : zoo) {
+    animal.sound(); // 각자 다른 소리를 냄 (오버라이딩)
+}
+```
+이렇게 **부모 타입 하나로 여러 자식 객체를 관리**할 수 있는 것이 상속과 타입 변환의 가장 큰 장점입니다.
+
+<br>
+<br>
+
+---
+
+## 4. 예제 코드: 원리와 동작
+
+**Parent.java**
+```java
+public class Parent {
+    public void field1() { System.out.println("부모 필드"); }
+}
+```
+
+**Child.java**
+```java
+public class Child extends Parent {
+    public void field2() { System.out.println("자식 필드"); }
+}
+```
+
+**Main.java**
+```java
+public class Main {
     public static void main(String[] args) {
-        B b = new B();
-        C c = new C();
-        D d = new D();
-        E e = new E(); 
-        
-        A a1 = b;
-        A a2 = c;
-        A a3 = d;
-        A a4 = e;
-        
-        B b1 = d;
-        C c1 = e;
-        
-        // B b3 = e; // (x) 상속 관계 아님
-        // C c2 = d; // (x) 상속 관계 아님
-    }
-}
-```
-
-부모 타입으로 자동 타입 변환된 이후에는 부모 클래스에 선언된 필드와 메소드만 접근이 가능하다.
-
-```java
-class Parent {
-    void method1() { ... }
-    void method2() { ... }
-}
-
-class Child extends Parent {
-    void method2() { ... } // 오버라이딩
-    void method3() { ... }
-}
-
-class ChildExample {
-    public static void main(String[] args) {
+        // 1. 객체 생성
         Child child = new Child();
-        Parent parent = child;
         
-        parent.method1();
-        parent.method2();
-        // parent.method3(); // (호출 불가능)
+        // 2. 자동 타입 변환 (Upcasting)
+        Parent parent = child;
+        parent.field1(); // 가능
+        // parent.field2(); // ❌ 불가능 (부모 눈에는 안 보임)
+
+        // 3. 강제 타입 변환 (Downcasting)
+        Child child2 = (Child) parent;
+        child2.field2(); // ✅ 다시 가능 (자식 눈에는 보임)
     }
 }
-```
-
-그러나 자식 클래스에서 오버라이딩된 메소드가 있다면 부모 메소드 대신 오버라이딩된 메소드가 호출된다. 이것은 다형성(Polymorphism)과 관련 있기 때문에 잘 알아두어야 한다.
-
-**Parent.java**
-```java
-package ch07.sec07.exam02;
-
-public class Parent {
-	// 메소드 선언
-	public void method1() {
-		System.out.println("Parent-method1()");
-	}
-	
-	// 메소드 선언
-	public void method2() {
-		System.out.println("Parent-method2()");
-	}
-}
-```
-
-**Child.java**
-```java
-package ch07.sec07.exam02;
-
-public class Child extends Parent {
-	// 메소드 오버라이딩
-	@Override
-	public void method2() {
-		System.out.println("Child-method2()");
-	}
-	
-	// 메소드 선언
-	public void method3() {
-		System.out.println("Child-method3()");
-	}
-}
-```
-
-**ChildExample.java**
-```java
-package ch07.sec07.exam02;
-
-public class ChildExample {
-	public static void main(String[] args) {
-		// 자식 객체 생성
-		Child child = new Child();
-		
-		// 자동 타입 변환
-		Parent parent = child;
-		
-		// 메소드 호출
-		parent.method1();
-		parent.method2();
-		// parent.method3(); // (호출 불가능)
-	}
-}
-```
-
-**실행 결과**
-```
-Parent-method1()
-Child-method2()
-```
-
-## 강제 타입 변환
-
-자식 타입은 부모 타입으로 자동 변환되지만, 반대로 부모 타입은 자식 타입으로 자동 변환되지 않는다. 대신 다음과 같이 캐스팅 연산자로 강제 타입 변환(Casting)을 할 수 있다.
-
-```java
-자식타입 변수 = (자식타입) 부모타입객체;
-```
-
-그렇다고 해서 부모 타입 객체를 자식 타입으로 무조건 강제 변환할 수 있는 것은 아니다. 자식 객체가 부모 타입으로 자동 변환된 후 다시 자식 타입으로 변환할 때 강제 타입 변환을 사용할 수 있다.
-
-```java
-Parent parent = new Child(); // 자동 타입 변환
-Child child = (Child) parent; // 강제 타입 변환
-```
-
-자식 객체가 부모 타입으로 자동 변환하면 부모 타입에 선언된 필드와 메소드만 사용 가능하다는 제약 사항이 따른다. 만약 자식 타입에 선언된 필드와 메소드를 꼭 사용해야 한다면 강제 타입 변환을 해서 다시 자식 타입으로 변환해야 한다.
-
-**Parent.java**
-```java
-package ch07.sec07.exam03;
-
-public class Parent {
-	// 필드 선언
-	public String field1;
-	
-	// 메소드 선언
-	public void method1() {
-		System.out.println("Parent-method1()");
-	}
-	
-	// 메소드 선언
-	public void method2() {
-		System.out.println("Parent-method2()");
-	}
-}
-```
-
-**Child.java**
-```java
-package ch07.sec07.exam03;
-
-public class Child extends Parent {
-	// 필드 선언
-	public String field2;
-	
-	// 메소드 선언
-	public void method3() {
-		System.out.println("Child-method3()");
-	}
-}
-```
-
-**ChildExample.java**
-```java
-package ch07.sec07.exam03;
-
-public class ChildExample {
-	public static void main(String[] args) {
-		// 객체 생성 및 자동 타입 변환
-		Parent parent = new Child();
-		
-		// Parent 타입으로 필드와 메소드 사용
-		parent.field1 = "data1";
-		parent.method1();
-		parent.method2();
-		/*
-		parent.field2 = "data2"; // (불가능)
-		parent.method3(); // (불가능)
-		*/
-		
-		// 강제 타입 변환
-		Child child = (Child) parent;
-		
-		// Child 타입으로 필드와 메소드 사용
-		child.field2 = "data2"; // (가능)
-		child.method3(); // (가능)
-	}
-}
-```
-
-**실행 결과**
-```
-Parent-method1()
-Parent-method2()
-Child-method3()
 ```

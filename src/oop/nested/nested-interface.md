@@ -1,142 +1,104 @@
 ---
 layout: oop
-title: "9.6 중첩 인터페이스"
+title: "12.6 중첩 인터페이스"
 nav_order: 6
-parent: "Chapter 09. 중첩 선언과 익명 객체"
+parent: "Chapter 12. 중첩 선언과 익명 객체"
 grand_parent: "객체지향 자바 프로그래밍"
 ---
 
-# 9.6 중첩 인터페이스
+# 12.6 중첩 인터페이스 (Nested Interface)
 
-중첩 인터페이스는 클래스의 멤버로 선언된 인터페이스를 말한다. 인터페이스를 클래스 내부에 선언하는 이유는 해당 클래스와 긴밀한 관계를 맺는 구현 객체를 만들기 위해서이다. 중첩 인터페이스는 다음과 같이 선언된다.
+
+<br>
+
+## 1. 버튼과 기능 칩 (Magic Button)
+
+"버튼"이라는 클래스를 생각해봅시다.
+이 버튼을 눌렀을 때 무슨 일이 일어날까요? 음악을 틀 수도 있고, 전화를 걸 수도 있습니다.
+버튼(Class) 내부에 **"무엇을 할지"**를 결정하는 슬롯(Interface)을 만들어두고, 그때그때 필요한 칩(구현 객체)을 끼우는 방식입니다.
+
+![Nested Interface Concept](./img/nested_interface_concept.svg)
+
+*   **중첩 인터페이스**: 버튼 클래스 **안에** 정의된 `OnClickListener` 인터페이스.
+*   **이유**: 이 인터페이스는 **오직 버튼을 위해서만** 존재하기 때문에, 굳이 외부에 따로 파일을 만들 필요가 없습니다.
+
+<br>
+
+
+<br>
+
+## 2. 안드로이드의 패턴 (이벤트 리스너)
+
+안드로이드 앱 개발을 포함한 많은 GUI 프로그래밍에서 이 패턴을 사용합니다.
 
 ```java
-class A {
-    [public | private] [static] interface B {
-        // 상수 필드
-        // 추상 메소드
-        // 디폴트 메소드
-        // 정적 메소드
+public class Button {
+    // 1. 중첩 인터페이스 선언 (규격 정의)
+    public static interface ClickListener {
+        void onClick(); // 버튼 눌렸을 때 실행할 추상 메소드
+    }
+    
+    // 2. 필드로 선언 (칩 슬롯)
+    private ClickListener listener;
+    
+    // 3. Setter (칩 끼우기)
+    public void setClickListener(ClickListener listener) {
+        this.listener = listener;
+    }
+    
+    // 4. 동작 (버튼 클릭)
+    public void touch() {
+        // 끼워진 칩의 기능을 실행
+        if (listener != null) {
+            listener.onClick();
+        }
     }
 }
 ```
 
-외부의 접근을 막지 않으려면 `public`을 붙이고, A 클래스 내부에서만 사용하려면 `private`을 붙인다. 접근 제한자를 붙이지 않으면 같은 패키지 안에서만 접근이 가능하다. 그리고 중첩 인터페이스는 암시적으로 `static`이므로 `static`을 생략해도 항상 A 객체 없이 B 인터페이스를 사용할 수 있다.
+<br>
 
-중첩 인터페이스는 안드로이드와 같은 UI 프로그램에서 이벤트를 처리할 목적으로 많이 활용된다. 예를 들어 버튼을 클릭했을 때 이벤트를 처리할 객체는 중첩 인터페이스를 구현해서 만든다. 다음 예제를 따라 작성하면서 이해해 보자.
 
-**Button.java**
+<br>
+
+## 3. 예제 코드로 확인하기
+
+### 💻 예제 코드
+
 ```java
-package ch09.sec06.exam01;
-
-public class Button {
-	// 정적 중첩 인터페이스
-	public static interface ClickListener {
-		// 추상 메소드
-		void onClick();
-	}
-}
-```
-
-외부에서 접근이 가능하도록 `public`이면서 Button 객체 없이 사용할 수 있는 `static` 중첩 인터페이스로 `ClickListener`를 선언했다. 그리고 추상 메소드인 `onClick()`을 선언했다. `onClick()` 메소드는 버튼이 클릭되었을 때 호출될 메소드이다.
-
-Button 클래스에 `ClickListener` 타입의 필드와 Setter를 추가해서 외부에서 Setter를 통해 `ClickListener` 구현 객체를 필드에 저장할 수 있도록 하자.
-
-**Button.java**
-```java
-package ch09.sec06.exam02;
-
-public class Button {
-	// 정적 멤버 인터페이스
-	public static interface ClickListener {
-		// 추상 메소드
-		void onClick();
-	}
-	
-	// 필드
-	private ClickListener clickListener;
-	
-	// 메소드
-	public void setClickListener(ClickListener clickListener) {
-		this.clickListener = clickListener;
-	}
-}
-```
-
-Button이 클릭되었을 때 실행할 메소드로 `click()`을 다음과 같이 추가한다. 실행 내용은 `ClickListener` 인터페이스 필드를 이용해서 `onClick()` 추상 메소드를 호출한다.
-
-**Button.java**
-```java
-package ch09.sec06.exam03;
-
-public class Button {
-	// 정적 멤버 인터페이스
-	public static interface ClickListener {
-		// 추상 메소드
-		void onClick();
-	}
-	
-	// 필드
-	private ClickListener clickListener;
-	
-	// 메소드
-	public void setClickListener(ClickListener clickListener) {
-		this.clickListener = clickListener;
-	}
-	
-	public void click() {
-		this.clickListener.onClick();
-	}
-}
-```
-
-`clickListener` 필드는 Setter를 통해 제공된 `ClickListener` 구현 객체의 참조를 갖고 있다. 따라서 `onClick()` 메소드를 호출하면 `ClickListener` 구현 객체의 `onClick()` 메소드가 실행된다. 이제 버튼을 이용하는 실행 클래스를 작성해 보자.
-
-**ButtonExample.java**
-```java
-package ch09.sec06.exam03;
-
+// 파일명: ButtonExample.java
 public class ButtonExample {
-	public static void main(String[] args) {
-		// Ok 버튼 객체 생성
-		Button btnOk = new Button();
-		
-		// Ok 버튼 클릭 이벤트를 처리할 ClickListener 구현 클래스(로컬 클래스)
-		class OkListener implements Button.ClickListener {
-			@Override
-			public void onClick() {
-				System.out.println("Ok 버튼을 클릭했습니다.");
-			}
-		}
-		
-		// Ok 버튼 객체에 ClickListener 구현 객체 주입
-		btnOk.setClickListener(new OkListener());
-		
-		// Ok 버튼 클릭하기
-		btnOk.click();
-		
-		// Cancel 버튼 객체 생성
-		Button btnCancel = new Button();
-		
-		// Cancel 버튼 클릭 이벤트를 처리할 ClickListener 구현 클래스(로컬 클래스)
-		class CancelListener implements Button.ClickListener {
-			@Override
-			public void onClick() {
-				System.out.println("Cancel 버튼을 클릭했습니다.");
-			}
-		}
-		
-		// Cancel 버튼 객체에 ClickListener 구현 객체 주입
-		btnCancel.setClickListener(new CancelListener());
-		
-		// Cancel 버튼 클릭하기
-		btnCancel.click();
-	}
+    public static void main(String[] args) {
+        Button btn = new Button();
+        
+        // 1. 전화 거는 기능 객체 만들기 (익명 객체 대신 로컬 클래스로 명시)
+        class CallListener implements Button.ClickListener {
+            @Override
+            public void onClick() {
+                System.out.println("📞 전화를 겁니다.");
+            }
+        }
+        
+        // 2. 버튼에 전화 기능 장착
+        btn.setClickListener(new CallListener());
+        btn.touch(); // "📞 전화를 겁니다."
+        
+        // 3. 메시지 보내는 기능 장착
+        btn.setClickListener(new Button.ClickListener() {
+           @Override
+           public void onClick() {
+               System.out.println("✉️ 메시지를 보냅니다.");
+           } 
+        });
+        btn.touch(); // "✉️ 메시지를 보냅니다."
+    }
 }
 ```
 
-**실행 결과**
+### 📋 실행 결과
 ```
-Ok 버튼을 클릭했습니다.
-Cancel 버튼을 클릭했습니다.
+📞 전화를 겁니다.
+✉️ 메시지를 보냅니다.
 ```
+
+> **핵심 요약**: 중첩 인터페이스는 **특정 클래스와 긴밀하게 연결된 규격**을 만들 때 사용합니다. 주로 버튼 이벤트 처리기(Listener)로 많이 봅니다.

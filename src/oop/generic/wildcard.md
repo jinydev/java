@@ -1,144 +1,70 @@
 ---
 layout: oop
-title: "13.5 와일드카드 타입 파라미터"
-nav_order: 5
-parent: "Chapter 13. 제네릭"
-grand_parent: "객체지향 프로그래밍"
+title: "16.4 와일드카드 타입"
+nav_order: 4
+parent: "Chapter 16. 제네릭"
+grand_parent: "객체지향 자바 프로그래밍"
 ---
 
-# 13.5 와일드카드 타입 파라미터
+# 16.4 와일드카드 타입 (<?>)
 
-제네릭 타입을 매개값이나 리턴 타입으로 사용할 때 타입 파라미터로 `?`(와일드카드)를 사용할 수 있다. `?`는 범위에 있는 모든 타입으로 대체할 수 있다는 표시이다. 예를 들어 다음과 같은 상속 관계가 있다고 가정해 보자.
 
-```
-Person
-  ^
-  | (extends)
-Worker     Student
-             ^
-             | (extends)
-         HighStudent
-         MiddleStudent
-```
+<br>
 
-타입 파라미터의 대체 타입으로 Student와 자식 클래스인 HighStudent와 MiddleStudent만 가능하도록 매개변수를 다음과 같이 선언할 수 있다.
+## 1. 다 받아주거나, 골라서 받거나 🎯
 
-```java
-리턴타입 메소드명(제네릭타입<? extends Student> 변수) { ... }
-```
+제네릭 타입을 매개변수로 받을 때, **정확히 그 타입(`Box<Integer>`)**만 받아야 한다면 너무 빡빡합니다.
+때로는 "학생(Student) 관련된 건 다 받아줘!"라거나 "직장인(Worker) 위로는 다 받아줘!"라고 범위를 지정하고 싶을 때가 있습니다.
 
-반대로 Worker와 부모 클래스인 Person만 가능하도록 매개변수를 다음과 같이 선언할 수 있다.
+이때 사용하는 것이 **와일드카드(`?`)**입니다.
 
-```java
-리턴타입 메소드명(제네릭타입<? super Worker> 변수) { ... }
-```
+![Wildcard Range](./img/wildcard_range.svg)
 
-어떤 타입이든 가능하도록 매개변수를 선언할 수도 있다.
+<br>
 
-```java
-리턴타입 메소드명(제네릭타입<?> 변수) { ... }
-```
 
-다음 예제에서 Course 클래스의 메소드 registerCourse1()은 모든 사람이 들을 수 있는 과정을 등록하고, registerCourse2()는 학생만 들을 수 있는 과정을 등록한다. 그리고 registerCourse3()은 직장인과 일반인만 들을 수 있는 과정을 등록한다.
+<br>
 
-```java
-package ch13.sec05;
+## 2. 세 가지 범위
 
-public class Person {
-}
+### 1) `<?>` : 모든 타입 가능 (Unbounded)
+*   "누구나 오세요!" (`Object`와 같음)
+*   **읽기 전용**으로 주로 쓰입니다.
 
-class Worker extends Person {
-}
+### 2) `<? extends T>` : 상한 제한 (Upper Bounded)
+*   **"T와 그 자식들만 오세요."**
+*   예시: `<? extends Student>`
+    *   `Student` (O), `HighStudent` (O), `MiddleStudent` (O)
+    *   `Person` (X), `Worker` (X)
+*   주로 **데이터를 꺼내서(Get) 사용할 때** 유용합니다. (안에 든 게 최소한 `Student`임은 확실하니까)
 
-class Student extends Person {
-}
+### 3) `<? super T>` : 하한 제한 (Lower Bounded)
+*   **"T와 그 부모들만 오세요."**
+*   예시: `<? super Worker>`
+    *   `Worker` (O), `Person` (O), `Object` (O)
+    *   `Student` (X)
+*   주로 **데이터를 저장할 때(Set)** 유용합니다. (`Worker`를 담으려면 `Worker` 그릇이나 더 큰 `Person` 그릇이 필요하니까)
 
-class HighStudent extends Student {
-}
+<br>
 
-class MiddleStudent extends Student {
-}
-```
+
+<br>
+
+## 3. 코드 예시
 
 ```java
-package ch13.sec05;
-
-public class Applicant<T> {
-	public T kind;
-
-	public Applicant(T kind) {
-		this.kind = kind;
-	}
-}
-```
-
-```java
-package ch13.sec05;
-
 public class Course {
-	// 모든 사람이면 등록 가능
-	public static void registerCourse1(Applicant<?> applicant) {
-		System.out.println(applicant.kind.getClass().getSimpleName() +
-				"이(가) Course1을 등록함");
-	}
+    // 1. 누구나 등록 가능
+    public static void registerCourse1(Applicant<?> applicant) { ... }
 
-	// 학생만 등록 가능
-	public static void registerCourse2(Applicant<? extends Student> applicant) {
-		System.out.println(applicant.kind.getClass().getSimpleName() +
-				"이(가) Course2를 등록함");
-	}
+    // 2. 학생만 등록 가능 (학생 할인 이벤트)
+    public static void registerCourse2(Applicant<? extends Student> applicant) { ... }
 
-	// 직장인 및 일반인만 등록 가능
-	public static void registerCourse3(Applicant<? super Worker> applicant) {
-		System.out.println(applicant.kind.getClass().getSimpleName() +
-				"이(가) Course3을 등록함");
-	}
+    // 3. 직장인과 일반인만 등록 가능 (직장인 과정)
+    public static void registerCourse3(Applicant<? super Worker> applicant) { ... }
 }
 ```
 
-```java
-package ch13.sec05;
-
-public class GenericExample {
-	public static void main(String[] args) {
-		// 모든 사람이 신청 가능
-		Course.registerCourse1(new Applicant<Person>(new Person()));
-		Course.registerCourse1(new Applicant<Worker>(new Worker()));
-		Course.registerCourse1(new Applicant<Student>(new Student()));
-		Course.registerCourse1(new Applicant<HighStudent>(new HighStudent()));
-		Course.registerCourse1(new Applicant<MiddleStudent>(new MiddleStudent()));
-		System.out.println();
-
-		// 학생만 신청 가능
-		// Course.registerCourse2(new Applicant<Person>(new Person())); (x)
-		// Course.registerCourse2(new Applicant<Worker>(new Worker())); (x)
-		Course.registerCourse2(new Applicant<Student>(new Student()));
-		Course.registerCourse2(new Applicant<HighStudent>(new HighStudent()));
-		Course.registerCourse2(new Applicant<MiddleStudent>(new MiddleStudent()));
-		System.out.println();
-
-		// 직장인 및 일반인만 신청 가능
-		Course.registerCourse3(new Applicant<Person>(new Person()));
-		Course.registerCourse3(new Applicant<Worker>(new Worker()));
-		// Course.registerCourse3(new Applicant<Student>(new Student())); (x)
-		// Course.registerCourse3(new Applicant<HighStudent>(new HighStudent())); (x)
-		// Course.registerCourse3(new Applicant<MiddleStudent>(new MiddleStudent())); (x)
-	}
-}
-```
-
-**실행 결과**
-```
-Person이(가) Course1을 등록함
-Worker이(가) Course1을 등록함
-Student이(가) Course1을 등록함
-HighStudent이(가) Course1을 등록함
-MiddleStudent이(가) Course1을 등록함
-
-Student이(가) Course2를 등록함
-HighStudent이(가) Course2를 등록함
-MiddleStudent이(가) Course2를 등록함
-
-Person이(가) Course3을 등록함
-Worker이(가) Course3을 등록함
-```
+> **핵심 요약**
+> *   **`extends`**: "나랑 내 밑으로 집합!" (소비자, 읽기용)
+> *   **`super`**: "나랑 내 위로 집합!" (공급자, 쓰기용)

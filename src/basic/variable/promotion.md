@@ -1,87 +1,38 @@
 ---
 layout: basic
-title: "2.7 자동 타입 변환"
+title: "4.7 자동 타입 변환"
 nav_order: 7
-parent: "Chapter 02. 변수와 타입"
-grand_parent: "객체지향 자바 프로그래밍"
+parent: "Chapter 04. 변수와 타입"
+grand_parent: "Part 01. 자바 언어의 기초"
 ---
 
-# 2.7 자동 타입 변환
+# 4.7 자동 타입 변환
 
-자동 타입 변환(promotion)은 말 그대로 자동으로 타입 변환이 일어나는 것을 말한다. 자동 타입 변환은 값의 허용 범위가 작은 타입이 허용 범위가 큰 타입으로 대입될 때 발생한다.
+## 1. 작은 컵의 물을 큰 양동이에 붓기 💧
 
-**자동 타입 변환**
-큰 허용 범위 타입 = 작은 허용 범위 타입
+데이터 타입을 다른 타입으로 바꾸는 것을 **타입 변환(Type Conversion)**이라고 합니다.
 
-기본 타입을 허용 범위 순으로 나열하면 다음과 같다.
-`byte` < `short`, `char` < `int` < `long` < `float` < `double`
+**자동 타입 변환(Promotion)**은 값의 범위가 **작은 타입**을 **큰 타입**으로 옮길 때 일어납니다.
+작은 컵의 물을 큰 양동이에 부으면 절대 넘치지 않겠죠? 그래서 자바가 알아서 바꿔줍니다.
 
-`int` 타입이 `byte` 타입보다 허용 범위가 더 크기 때문에 다음 코드는 자동 타입 변환이 된다.
-
-```java
-byte byteValue = 10;
-int intValue = byteValue; //자동 타입 변환됨
-```
-
-정수 타입이 실수 타입으로 대입될 경우에는 무조건 자동 타입 변환이 된다. 실수 타입은 정수 타입보다 허용 범위가 더 크기 때문이다.
+> `byte` < `short` < `int` < `long` < `float` < `double`
 
 ```java
-long longValue = 5000000000L;
-float floatValue = longValue; //5.0E9f로 저장됨
-double doubleValue = longValue; //5.0E9로 저장됨
+int small = 10;
+long big = small; // (O) 자동 변환 (int -> long)
+
+float f = 100;    // (O) 자동 변환 (정수 -> 실수)
 ```
 
-`char` 타입의 경우 `int` 타입으로 자동 변환되면 유니코드 값이 `int` 타입에 대입된다.
+## 2. 연산에서의 자동 변환
+
+정수끼리 계산하면 결과도 정수가 나오고,
+실수가 하나라도 끼어있으면 결과는 실수가 됩니다.
 
 ```java
-char charValue = 'A';
-int intValue = charValue; //65가 저장됨
-```
+int a = 10;
+double b = 2.5;
 
-자동 타입 변환에서 예외가 있다. `char` 타입보다 허용 범위가 작은 `byte` 타입은 `char` 타입으로 자동 변환될 수 없다. 왜냐하면 `char` 타입의 허용 범위는 음수를 포함하지 않는데, `byte` 타입은 음수를 포함하기 때문이다.
-
-```java
-byte byteValue = 65;
-char charValue = byteValue; //컴파일 에러
-```
-
-다음은 자동 타입 변환이 생기는 다양한 코드들이다.
-
-**[예제: PromotionExample.java]**
-```java
-package ch02.sec07;
-
-public class PromotionExample {
-    public static void main(String[] args) {
-        //자동 타입 변환
-        byte byteValue = 10;
-        int intValue = byteValue;
-        System.out.println("intValue: " + intValue);
-        
-        char charValue = '가';
-        intValue = charValue;
-        System.out.println("가의 유니코드: " + intValue);
-        
-        intValue = 50;
-        long longValue = intValue;
-        System.out.println("longValue: " + longValue);
-        
-        longValue = 100;
-        float floatValue = longValue;
-        System.out.println("floatValue: " + floatValue);
-        
-        floatValue = 100.5F;
-        double doubleValue = floatValue;
-        System.out.println("doubleValue: " + doubleValue);
-    }
-}
-```
-
-**실행 결과**
-```
-intValue: 10
-가의 유니코드: 44032
-longValue: 50
-floatValue: 100.0
-doubleValue: 100.5
+double result = a + b; // 10.0 + 2.5 = 12.5
+// a가 자동으로 double(10.0)로 변해서 계산됨
 ```

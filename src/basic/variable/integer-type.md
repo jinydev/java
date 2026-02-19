@@ -1,125 +1,42 @@
 ---
 layout: basic
-title: "2.2 정수 타입"
+title: "4.2 정수 타입"
 nav_order: 2
-parent: "Chapter 02. 변수와 타입"
-grand_parent: "객체지향 자바 프로그래밍"
+parent: "Chapter 04. 변수와 타입"
+grand_parent: "Part 01. 자바 언어의 기초"
 ---
 
-# 2.2 정수 타입
+# 4.2 정수 타입
 
-변수는 선언될 때의 타입에 따라 저장할 수 있는 값의 종류와 허용 범위가 달라진다. 자바는 정수, 실수, 논리값을 저장할 수 있는 기본(primitive) 타입 8개를 다음과 같이 제공한다.
+정수(Integer)는 소수점이 없는 숫자(..., -1, 0, 1, ...)입니다.
+자바는 크기에 따라 4가지 정수 상자를 제공합니다.
 
-| 값의 분류        | 기본 타입                    |
-| :--------------- | :--------------------------- |
-| 정수             | byte, char, short, int, long |
-| 실수             | float, double                |
-| 논리(true/false) | boolean                      |
+| 타입      | 크기   | 비유       | 설명                               |
+| :-------- | :----- | :--------- | :--------------------------------- |
+| `byte`    | 1 byte | **소주잔** | 매우 작은 숫자 (-128 ~ 127)        |
+| `short`   | 2 byte | **물컵**   | 작은 숫자 (약 -3만 ~ 3만)          |
+| **`int`** | 4 byte | **물통**   | **가장 많이 씀** (약 -21억 ~ 21억) |
+| `long`    | 8 byte | **드럼통** | 엄청 큰 숫자 (금융, 과학 등)       |
 
-정수 타입은 총 5개로, 다음과 같이 메모리 할당 크기와 저장되는 값의 범위를 가지고 있다.
+## 1. `int` (기본 물통)
+가장 일반적으로 사용하는 정수 타입입니다.
+컴퓨터가 가장 효율적으로 처리하는 크기입니다.
 
-| 타입  | 메모리 크기  | 저장되는 값의 허용 범위                                                   |
-| :---- | :----------- | :------------------------------------------------------------------------ |
-| byte  | 1byte(8bit)  | -2^7 ~ (2^7-1) (-128 ~ 127)                                               |
-| short | 2byte(16bit) | -2^15 ~ (2^15-1) (-32,768 ~ 32,767)                                       |
-| char  | 2byte(16bit) | 0 ~ (2^16-1) (0 ~ 65535, 유니코드)                                        |
-| int   | 4byte(32bit) | -2^31 ~ (2^31-1) (-2,147,483,648 ~ 2,147,483,647)                         |
-| long  | 8byte(64bit) | -2^63 ~ (2^63-1) (-9,223,372,036,854,775,808 ~ 9,223,372,036,854,775,807) |
-
-`byte`, `short`, `int`, `long`은 모두 부호 있는(signed) 정수 타입이므로 최상위 bit는 부호 bit로 사용되고, 나머지 bit는 값의 범위를 결정한다.
-
-코드에서 프로그래머가 직접 입력한 값을 리터럴(literal)이라고 부르는데, 변수에 대입할 정수 리터럴은 진수에 따라 작성하는 방법이 다르다.
-
-* **2진수**: `0b` 또는 `0B`로 시작하고 0과 1로 작성
-  ```java
-  int x = 0b1011; //10진수 값 = 11
-  int y = 0B10100; //10진수 값 = 20
-  ```
-* **8진수**: `0`으로 시작하고 0~7 숫자로 작성
-  ```java
-  int x = 013; //10진수 값 = 11
-  int y = 0206; //10진수 값 = 134
-  ```
-* **10진수**: 소수점이 없는 0~9 숫자로 작성
-  ```java
-  int x = 12;
-  int y = 365;
-  ```
-* **16진수**: `0x` 또는 `0X`로 시작하고 0~9 숫자나 A, B, C, D, E, F 또는 a, b, c, d, e, f로 작성
-  ```java
-  int x = 0xB3; //10진수 값 = 179
-  int y = 0x2A0F; //10진수 값 = 10767
-  ```
-
-다음 예제는 다양한 정수 리터럴을 `int` 타입 변수에 대입하고 10진수로 출력한다.
-
-**[예제: IntegerLiteralExample.java]**
 ```java
-package ch02.sec02;
-
-public class IntegerLiteralExample {
-    public static void main(String[] args) {
-        int var1 = 0b1011; //2진수
-        int var2 = 0206;   //8진수
-        int var3 = 365;    //10진수
-        int var4 = 0xB3;   //16진수
-        
-        System.out.println("var1: " + var1);
-        System.out.println("var2: " + var2);
-        System.out.println("var3: " + var3);
-        System.out.println("var4: " + var4);
-    }
-}
+int score = 95;
+int count = 10;
 ```
 
-**실행 결과**
-```
-var1: 11
-var2: 134
-var3: 365
-var4: 179
-```
+## 2. `long` (엄청 큰 물통)
+`int` 범위를 넘어서는 큰 숫자를 다룰 때 씁니다.
+값 뒤에 **`L`**을 붙여서 "이건 long 타입이야!"라고 알려줘야 합니다.
 
-다음 예제는 `byte` 타입 변수에 허용 범위를 초과한 값을 대입했을 경우 컴파일 오류가 발생하는 것을 보여 준다.
-
-**[예제: ByteExample.java]**
 ```java
-package ch02.sec02;
-
-public class ByteExample {
-    public static void main(String[] args) {
-        byte var1 = -128;
-        byte var2 = -30;
-        byte var3 = 0;
-        byte var4 = 30;
-        byte var5 = 127;
-        byte var6 = 128; //컴파일 에러(Type mismatch: cannot convert from int to byte)
-        
-        System.out.println(var1);
-        System.out.println(var2);
-        System.out.println(var3);
-        System.out.println(var4);
-        System.out.println(var5);
-    }
-}
+long balance = 3000000000L; // 30억 (int 범위를 넘음)
 ```
 
-`long` 타입은 수치가 큰 데이터를 다루는 프로그램에서 사용된다. 예를 들어 은행이나 과학 분야에서 사용되는 프로그램들이다. 기본적으로 컴파일러는 정수 리터럴을 `int` 타입 값으로 간주하기 때문에 `int` 타입의 허용 범위(-2,147,483,648 ~ 2,147,483,647)를 초과하는 리터럴은 뒤에 소문자 `l`이나 대문자 `L`을 붙여 `long` 타입 값임을 컴파일러에게 알려 줘야 한다.
+## 3. `byte`와 `short`
+메모리를 아껴야 할 때 쓰지만, 요즘은 메모리가 넉넉해서 잘 안 씁니다.
+주로 파일 전송이나 이미지 처리 같은 특수한 경우에 씁니다.
 
-**[예제: LongExample.java]**
-```java
-package ch02.sec02;
-
-public class LongExample {
-    public static void main(String[] args) {
-        long var1 = 10;
-        long var2 = 20L;
-        //long var3 = 1000000000000; //컴파일러는 int로 간주하기 때문에 에러 발생
-        long var4 = 1000000000000L;
-        
-        System.out.println(var1);
-        System.out.println(var2);
-        System.out.println(var4);
-    }
-}
-```
+> **핵심**: 정수는 무조건 **`int`**를 쓰고, 21억이 넘을 것 같으면 **`long`**을 쓰세요.

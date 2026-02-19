@@ -1,0 +1,47 @@
+<svg width="800" height="300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="300" fill="#ffffff"/>
+
+  <!-- Stone Tablet (Constant) -->
+  <g transform="translate(100, 50)">
+    <path d="M20,0 L180,0 L180,200 L20,200 Z" fill="#cfd8dc" stroke="#546e7a" stroke-width="3"/>
+    <path d="M20,20 L180,20" stroke="#546e7a" stroke-width="1"/>
+    
+    <text x="100" y="50" font-family="serif" font-size="20" text-anchor="middle" fill="#37474f" font-weight="bold">THE LAW</text>
+    <text x="100" y="80" font-family="serif" font-size="14" text-anchor="middle" fill="#455a64">(Interface)</text>
+    
+    <text x="100" y="120" font-family="monospace" font-size="16" text-anchor="middle" fill="#b71c1c">MAX_VOL = 10</text>
+    <text x="100" y="150" font-family="monospace" font-size="16" text-anchor="middle" fill="#b71c1c">MIN_VOL = 0</text>
+  </g>
+
+  <!-- Products obeying the law -->
+  <g transform="translate(350, 50)">
+    <!-- TV -->
+    <rect width="120" height="80" rx="5" fill="#e3f2fd" stroke="#2196f3" stroke-width="2"/>
+    <text x="60" y="45" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#0d47a1">TV</text>
+    <line x1="0" y1="40" x2="-50" y2="60" stroke="#2196f3" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#arrowBlue)"/>
+    
+    <!-- Audio -->
+    <rect x="0" y="120" width="120" height="80" rx="5" fill="#e8f5e9" stroke="#4caf50" stroke-width="2"/>
+    <text x="60" y="165" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#1b5e20">Audio</text>
+    <line x1="0" y1="160" x2="-50" y2="140" stroke="#4caf50" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#arrowGreen)"/>
+  
+    <!-- Phone -->
+    <rect x="160" y="60" width="80" height="120" rx="5" fill="#fff3e0" stroke="#ff9800" stroke-width="2"/>
+    <text x="200" y="125" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#e65100">Phone</text>
+    <line x1="160" y1="120" x2="110" y2="120" stroke="#ff9800" stroke-width="2" stroke-dasharray="5,5"/>
+  </g>
+
+  <!-- Explanation -->
+  <text x="400" y="270" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#555">모든 기기는 법(Interface)에 적힌 '최대 볼륨'을 따라야 한다.</text>
+  <text x="400" y="290" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#d32f2f">변경 불가 (Final) / 모두 공유 (Static)</text>
+
+  <defs>
+    <marker id="arrowBlue" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#2196f3" />
+    </marker>
+    <marker id="arrowGreen" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#4caf50" />
+    </marker>
+  </defs>
+</svg>

@@ -1,0 +1,49 @@
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="400" fill="#f8f9fa"/>
+
+  <!-- Title -->
+  <text x="400" y="40" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="#2c3e50" font-weight="bold">인터페이스의 역할 (만능 리모컨)</text>
+
+  <!-- User (Person) -->
+  <g transform="translate(50, 120)">
+    <circle cx="50" cy="50" r="40" fill="#ffe0b2" stroke="#f57c00" stroke-width="2"/>
+    <text x="50" y="55" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#e65100" font-weight="bold">사용자</text>
+    <text x="50" y="110" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">"전원 켜!"</text>
+  </g>
+
+  <!-- Interface (Remote Controller) -->
+  <g transform="translate(250, 100)">
+    <rect width="120" height="180" rx="10" fill="#212121" stroke="#000" stroke-width="2"/>
+    <text x="60" y="30" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#fff" font-weight="bold">Remocon</text>
+    <text x="60" y="50" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#bdbdbd">(Interface)</text>
+    
+    <!-- Button -->
+    <circle cx="60" cy="80" r="15" fill="#f44336"/>
+    <text x="60" y="120" font-family="monospace" font-size="12" text-anchor="middle" fill="#fff">turnOn()</text>
+  </g>
+
+  <!-- Connection Lines -->
+  <line x1="120" y1="170" x2="230" y2="170" stroke="#333" stroke-width="2" stroke-dasharray="5,5"/>
+  <polygon points="230,170 220,165 220,175" fill="#333"/>
+
+  <line x1="390" y1="170" x2="480" y2="100" stroke="#2196f3" stroke-width="3"/>
+  <line x1="390" y1="170" x2="480" y2="240" stroke="#2196f3" stroke-width="3"/>
+
+  <!-- Implementations (TV, Audio) -->
+  <g transform="translate(500, 50)">
+    <rect width="150" height="100" rx="5" fill="#e3f2fd" stroke="#2196f3" stroke-width="2"/>
+    <text x="75" y="40" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#1565c0" font-weight="bold">Television</text>
+    <text x="75" y="70" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#0d47a1">"TV 화면 켜짐"</text>
+  </g>
+
+  <g transform="translate(500, 200)">
+    <rect width="150" height="100" rx="5" fill="#e3f2fd" stroke="#2196f3" stroke-width="2"/>
+    <text x="75" y="40" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#1565c0" font-weight="bold">Audio</text>
+    <text x="75" y="70" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#0d47a1">"음악 재생 시작"</text>
+  </g>
+
+  <!-- Explanation Text -->
+  <text x="400" y="350" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#555">사용자는 리모컨 사용법만 알면, TV든 오디오든 조종할 수 있다.</text>
+
+</svg>

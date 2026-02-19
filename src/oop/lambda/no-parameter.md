@@ -1,123 +1,91 @@
 ---
 layout: oop
-title: "16.2 매개변수가 없는 람다식"
+title: "18.2 매개변수가 없는 람다식"
 nav_order: 2
-parent: "Chapter 16. 스트림과 병렬 처리"
-grand_parent: "객체지향 프로그래밍"
+parent: "Chapter 18. 람다식"
+grand_parent: "객체지향 자바 프로그래밍"
 ---
 
-# 16.2 매개변수가 없는 람다식
+# 18.2 매개변수가 없는 람다식
 
-함수형 인터페이스의 추상 메소드에 매개변수가 없을 경우 람다식은 다음과 같이 작성할 수 있다. 실행문이 두 개 이상일 경우에는 중괄호를 생략할 수 없고, 하나일 경우에만 생략할 수 있다.
 
-```
+<br>
+
+## 1. 시작 버튼 누르기 🔘
+
+매개변수가 없다는 것은 **"외부에서 데이터를 받지 않고, 그냥 실행만 하면 된다"**는 뜻입니다.
+마치 엘리베이터의 **열림 버튼**이나 게임의 **Start 버튼**과 같습니다.
+
+*   문법: `() -> { 실행문; }`
+
+
+<br>
+
+## 2. 기본 문법
+
+함수형 인터페이스의 추상 메소드에 매개변수가 없을 경우, 람다식은 빈 괄호 `()`를 사용합니다.
+
+```java
+// 1. 실행문이 여러 개인 경우: 중괄호 {} 필수!
 () -> {
-	실행문;
-	실행문;
+    System.out.println("명령 1");
+    System.out.println("명령 2");
 }
 
-() -> 실행문
+// 2. 실행문이 하나인 경우: 중괄호 {} 생략 가능 (권장)
+() -> System.out.println("명령 1");
 ```
 
+
+<br>
+
+## 3. 예제: 버튼 클릭 이벤트
+
+버튼을 클릭했을 때 어떤 동작을 할지 람다식으로 정의해보겠습니다.
+
+**함수형 인터페이스 정의**
 ```java
-package ch16.sec02.exam01;
-
-@FunctionalInterface
-public interface Workable {
-	void work();
-}
-```
-
-```java
-package ch16.sec02.exam01;
-
-public class Person {
-	public void action(Workable workable) {
-		workable.work();
-	}
-}
-```
-
-```java
-package ch16.sec02.exam01;
-
-public class LambdaExample {
-	public static void main(String[] args) {
-		Person person = new Person();
-
-		// 실행문이 두 개 이상인 경우 중괄호 필요
-		person.action(() -> {
-			System.out.println("출근을 합니다.");
-			System.out.println("프로그래밍을 합니다.");
-		});
-
-		// 실행문이 한 개일 경우 중괄호 생략 가능
-		person.action(() -> System.out.println("퇴근합니다."));
-	}
-}
-```
-
-**실행 결과**
-```
-출근을 합니다.
-프로그래밍을 합니다.
-퇴근합니다.
-```
-
-다음은 버튼의 클릭 이벤트를 람다식으로 처리하는 예제이다.
-
-```java
-package ch16.sec02.exam02;
+package ch18.sec02.exam02;
 
 public class Button {
-	// 정적 멤버 인터페이스
-	@FunctionalInterface
-	public static interface ClickListener {
-		// 추상 메소드
-		void onClick();
-	}
+    // 정적 멤버 인터페이스 (함수형 인터페이스)
+    @FunctionalInterface
+    public static interface ClickListener {
+        void onClick(); // 매개변수 없음
+    }
 
-	// 필드
-	private ClickListener clickListener;
+    private ClickListener clickListener;
 
-	// 메소드
-	public void setClickListener(ClickListener clickListener) {
-		this.clickListener = clickListener;
-	}
+    public void setClickListener(ClickListener clickListener) {
+        this.clickListener = clickListener;
+    }
 
-	public void click() {
-		this.clickListener.onClick();
-	}
+    public void click() {
+        this.clickListener.onClick();
+    }
 }
 ```
 
+**실행 코드**
 ```java
-package ch16.sec02.exam02;
+package ch18.sec02.exam02;
 
 public class ButtonExample {
-	public static void main(String[] args) {
-		// Ok 버튼 객체 생성
-		Button btnOk = new Button();
+    public static void main(String[] args) {
+        Button btnOk = new Button();
 
-		// Ok 버튼 객체에 람다식(ClickListener 익명 구현 객체) 주입
-		btnOk.setClickListener(() -> {
-			System.out.println("Ok 버튼을 클릭했습니다.");
-		});
+        // 1. 람다식 주입 (매개변수 없음)
+        btnOk.setClickListener(() -> {
+            System.out.println("Ok 버튼을 클릭했습니다.");
+        });
+        btnOk.click();
 
-		// Ok 버튼 클릭하기
-		btnOk.click();
+        Button btnCancel = new Button();
 
-		// Cancel 버튼 객체 생성
-		Button btnCancel = new Button();
-
-		// Cancel 버튼 객체에 람다식(ClickListener 익명 구현 객체) 주입
-		btnCancel.setClickListener(() -> {
-			System.out.println("Cancel 버튼을 클릭했습니다.");
-		});
-
-		// Cancel 버튼 클릭하기
-		btnCancel.click();
-	}
+        // 2. 람다식 주입 (중괄호 생략)
+        btnCancel.setClickListener(() -> System.out.println("Cancel 버튼을 클릭했습니다."));
+        btnCancel.click();
+    }
 }
 ```
 
@@ -126,3 +94,5 @@ public class ButtonExample {
 Ok 버튼을 클릭했습니다.
 Cancel 버튼을 클릭했습니다.
 ```
+
+> **핵심**: 매개변수가 없으면 **빈 괄호 `()`**를 꼭 써주세요.

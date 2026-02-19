@@ -1,109 +1,78 @@
 ---
 layout: oop
-title: "8.8 다중 인터페이스 구현"
-nav_order: 8
-parent: "Chapter 08. 인터페이스"
+title: "11.6 다중 인터페이스 구현"
+nav_order: 6
+parent: "Chapter 11. 인터페이스"
 grand_parent: "객체지향 자바 프로그래밍"
 ---
 
-# 8.8 다중 인터페이스 구현
+# 11.6 다중 인터페이스 구현 (Multi-Role)
 
-구현 객체는 여러 개의 인터페이스를 `implements`할 수 있다. 구현 객체가 인터페이스 A와 인터페이스 B를 구현하고 있다면, 각각의 인터페이스를 통해 구현 객체를 사용할 수 있다.
+자바에서 클래스 상속(`extends`)은 오직 하나만 가능합니다(단일 상속).
+하지만 인터페이스 구현(`implements`)은 **개수에 제한이 없습니다.** 이를 **다중 구현**이라고 합니다.
 
-```mermaid
-graph LR
-    A["인터페이스 A"] -->|메소드 A 호출| C["구현 객체"]
-    B["인터페이스 B"] -->|메소드 B 호출| C
-    C -->|리턴값| A
-    C -->|리턴값| B
-```
+### 💡 핵심 비유: 수륙양용차 (Amphibious Vehicle)
+> **"자동차의 기능(Car)과 배의 기능(Boat)을 모두 갖춘 수륙양용차는 땅에서도 달리고, 물에서도 뜬다. 두 가지 역할을 동시에 수행하는 것이다."**
 
-구현 클래스는 다음과 같이 인터페이스 A와 인터페이스 B를 `implements` 뒤에 쉼표로 구분해서 작성해, 모든 인터페이스가 가진 추상 메소드를 재정의해야 한다.
+![Multiple Concept](./img/interface_multiple_concept.svg)
+
+---
+
+
+<br>
+
+## 1. 다중 구현의 원리
+
+하나의 객체가 여러 개의 인터페이스를 구현하면, 그 객체는 **다양한 타입**으로 불릴 수 있습니다.
+마치 한 사람이 회사에서는 '대리님', 집에서는 '아빠', 동호회에서는 '총무님'으로 불리는 것과 같습니다.
+
+### 구조도
+![Multiple Diagram](./img/interface_multiple_diagram.svg)
 
 ```java
-public class 구현클래스명 implements 인터페이스A, 인터페이스B {
-    // 모든 추상 메소드 재정의
+public interface Remote {
+    void turnOn();
 }
-```
-
-인터페이스 A와 인터페이스 B를 구현한 객체는 다음과 같이 두 인터페이스 타입의 변수에 각각 대입될 수 있다.
-
-```java
-인터페이스A 변수 = new 구현클래스명(...);
-인터페이스B 변수 = new 구현클래스명(...);
-```
-
-구현 객체가 어떤 인터페이스 변수에 대입되느냐에 따라 변수를 통해 호출할 수 있는 추상 메소드가 결정된다. 다음과 같이 `RemoteControl` 인터페이스와 `Searchable` 인터페이스를 모두 구현한 `SmartTelevision` 클래스를 작성해 보자.
-
-**RemoteControl.java**
-```java
-package ch08.sec08;
-
-public interface RemoteControl {
-	// 추상 메소드
-	void turnOn();
-	void turnOff();
-}
-```
-
-**Searchable.java**
-```java
-package ch08.sec08;
 
 public interface Searchable {
-	// 추상 메소드
-	void search(String url);
+    void search(String url);
+}
+
+// 콤마(,)로 구분하여 나열
+public class SmartTelevision implements Remote, Searchable {
+    
+    @Override
+    public void turnOn() {
+        System.out.println("TV 켬");
+    }
+
+    @Override
+    public void search(String url) {
+        System.out.println(url + " 검색");
+    }
 }
 ```
 
-**SmartTelevision.java**
+
+<br>
+
+## 2. 사용할 때 주의점
+
+`SmartTelevision` 객체는 `Remote` 타입 변수에도 담길 수 있고, `Searchable` 타입 변수에도 담길 수 있습니다.
+단, **어느 변수에 담기느냐에 따라 사용할 수 있는 기능이 제한**됩니다.
+
 ```java
-package ch08.sec08;
+SmartTelevision tv = new SmartTelevision();
 
-public class SmartTelevision implements RemoteControl, Searchable {
-	// turnOn() 추상 메소드 오버라이딩
-	@Override
-	public void turnOn() {
-		System.out.println("TV를 켭니다.");
-	}
-	
-	// turnOff() 추상 메소드 오버라이딩
-	@Override
-	public void turnOff() {
-		System.out.println("TV를 끕니다.");
-	}
-	
-	// search() 추상 메소드 오버라이딩
-	@Override
-	public void search(String url) {
-		System.out.println(url + "을 검색합니다.");
-	}
-}
+// 1. Remote 타입으로 사용 -> turnOn()만 가능
+Remote rc = tv;
+rc.turnOn();
+// rc.search("youtube"); // (X) 불가능! 리모컨에는 검색 버튼이 없음
+
+// 2. Searchable 타입으로 사용 -> search()만 가능
+Searchable sc = tv;
+sc.search("youtube");
+// sc.turnOn(); // (X) 불가능! 검색기에는 전원 버튼이 없음
 ```
 
-**MultiInterfaceImplExample.java**
-```java
-package ch08.sec08;
-
-public class MultiInterfaceImplExample {
-	public static void main(String[] args) {
-		// RemoteControl 인터페이스 변수 선언 및 구현 객체 대입
-		RemoteControl rc = new SmartTelevision();
-		// RemoteControl 인터페이스에 선언된 추상 메소드만 호출 가능
-		rc.turnOn();
-		rc.turnOff();
-		
-		// Searchable 인터페이스 변수 선언 및 구현 객체 대입
-		Searchable searchable = new SmartTelevision();
-		// Searchable 인터페이스에 선언된 추상 메소드만 호출 가능
-		searchable.search("https://www.youtube.com");
-	}
-}
-```
-
-**실행 결과**
-```
-TV를 켭니다.
-TV를 끕니다.
-https://www.youtube.com을 검색합니다.
-```
+즉, **"내가 쓴 가면(인터페이스)에 맞는 행동만 할 수 있다"**는 원칙을 기억하세요!

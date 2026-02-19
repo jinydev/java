@@ -1,0 +1,53 @@
+<svg width="700" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="700" height="400" fill="#fcfcfc"/>
+
+  <!-- Title -->
+  <text x="350" y="40" font-family="Arial, sans-serif" font-size="22" text-anchor="middle" fill="#2c3e50" font-weight="bold">메소드 오버라이딩 (덮어쓰기)</text>
+
+  <!-- Parent: Basic Ramen Recipe -->
+  <g transform="translate(50, 80)">
+    <rect width="250" height="250" rx="10" fill="#e8f6f3" stroke="#1abc9c" stroke-width="3"/>
+    <text x="125" y="35" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#16a085" font-weight="bold">부모: 기본 라면</text>
+    
+    <!-- Code block -->
+    <rect x="25" y="60" width="200" height="150" fill="white" stroke="#bdc3c7" stroke-width="1"/>
+    <text x="40" y="90" font-family="monospace" font-size="14" fill="#7f8c8d">cook() {</text>
+    <text x="50" y="120" font-family="monospace" font-size="14" fill="#2c3e50">  물 끓이기;</text>
+    <text x="50" y="150" font-family="monospace" font-size="14" fill="#2c3e50">  스프 넣기;</text>
+    <text x="50" y="180" font-family="monospace" font-size="14" fill="#2c3e50">  면 넣기;</text>
+    <text x="40" y="210" font-family="monospace" font-size="14" fill="#7f8c8d">}</text>
+  </g>
+
+  <!-- Arrow -->
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#95a5a6"/>
+    </marker>
+  </defs>
+  <path d="M 310 205 L 390 205" stroke="#95a5a6" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="350" y="190" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#7f8c8d">상속 (extends)</text>
+
+  <!-- Child: Cheese Ramen Recipe -->
+  <g transform="translate(400, 80)">
+    <rect width="250" height="250" rx="10" fill="#fff3e0" stroke="#e67e22" stroke-width="3"/>
+    <text x="125" y="35" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#d35400" font-weight="bold">자식: 치즈 라면</text>
+    
+    <!-- Code block -->
+    <rect x="25" y="60" width="200" height="160" fill="white" stroke="#e67e22" stroke-width="2"/>
+    
+    <!-- Overwrite Tag -->
+    <g transform="translate(130, -10)">
+        <rect width="80" height="24" rx="12" fill="#e74c3c"/>
+        <text x="40" y="17" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white" font-weight="bold">@Override</text>
+    </g>
+
+    <text x="40" y="90" font-family="monospace" font-size="14" fill="#7f8c8d">cook() {</text>
+    <text x="50" y="120" font-family="monospace" font-size="14" fill="#7f8c8d">  super.cook();</text>
+    <text x="50" y="150" font-family="monospace" font-size="14" fill="#e67e22" font-weight="bold">  치즈 추가하기! (New)</text>
+    <text x="40" y="190" font-family="monospace" font-size="14" fill="#7f8c8d">}</text>
+    
+    <text x="125" y="240" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#e67e22">"기존 조리법을 수정해서 사용!"</text>
+  </g>
+
+</svg>

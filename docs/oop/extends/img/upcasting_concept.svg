@@ -1,0 +1,43 @@
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="400" fill="#fcfcfc"/>
+
+  <!-- Title -->
+  <text x="400" y="40" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="#2c3e50" font-weight="bold">자동 타입 변환 (Upcasting)</text>
+
+  <!-- Explanation Text -->
+  <text x="400" y="70" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#7f8c8d">"자식은 부모의 모든 특징을 가지고 있다!"</text>
+
+  <!-- Object: Cat -->
+  <g transform="translate(100, 150)">
+    <rect width="200" height="150" rx="10" fill="#fff3e0" stroke="#ff9800" stroke-width="2"/>
+    <text x="100" y="30" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#e65100" font-weight="bold">Cat (고양이)</text>
+    <text x="100" y="55" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#f57c00">(실체 객체)</text>
+    
+    <text x="30" y="90" font-family="Arial, sans-serif" font-size="14" fill="#3e2723">- breathe()</text>
+    <text x="30" y="115" font-family="Arial, sans-serif" font-size="14" fill="#d84315" font-weight="bold">- meow()</text>
+  </g>
+
+  <!-- Arrow -->
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#3498db"/>
+    </marker>
+  </defs>
+  <path d="M 320 225 L 460 225" stroke="#3498db" stroke-width="4" marker-end="url(#arrow)"/>
+  <text x="390" y="210" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#2980b9" font-weight="bold">Animal a = cat;</text>
+
+  <!-- View: Animal -->
+  <g transform="translate(480, 150)">
+    <rect width="200" height="150" rx="10" fill="#e3f2fd" stroke="#2196f3" stroke-width="2" stroke-dasharray="5,5"/>
+    <text x="100" y="30" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#1565c0" font-weight="bold">Animal (동물)</text>
+    <text x="100" y="55" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#1976d2">(바라보는 시각)</text>
+    
+    <text x="30" y="90" font-family="Arial, sans-serif" font-size="14" fill="#0d47a1">- breathe()</text>
+    <rect x="25" y="100" width="150" height="30" fill="#bdc3c7" opacity="0.5"/>
+    <text x="100" y="120" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#7f8c8d">(meow 숨겨짐)</text>
+  </g>
+  
+  <text x="400" y="350" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#2c3e50">동물로 취급하면 '동물 기능'만 보인다.</text>
+
+</svg>

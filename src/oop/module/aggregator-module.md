@@ -1,104 +1,56 @@
 ---
 layout: oop
-title: "10.7 집합 모듈"
+title: "13.7 집합 모듈"
 nav_order: 7
-parent: "Chapter 10. 라이브러리와 모듈"
+parent: "Chapter 13. 라이브러리와 모듈"
 grand_parent: "객체지향 자바 프로그래밍"
 ---
 
-# 10.7 집합 모듈
+# 13.7 집합 모듈 (Aggregator Module)
 
-집합 모듈은 여러 모듈을 모아놓은 모듈을 말한다. 자주 사용되는 모듈들을 일일이 requires 하는 번거로움을 피하고 싶을 때 집합 모듈을 생성하면 편리하다. 집합 모듈은 자체적인 패키지를 가지지 않고, 모듈 기술자에 전이 의존 설정만 한다.
 
-예를 들어 `my_module`은 `my_module_a`와 `my_module_b`을 제공하는 집합 모듈이라고 가정해 보자. `my_module`의 모듈 기술자는 다음과 같이 작성할 수 있다.
+<br>
+
+## 1. 종합 선물 세트 🎁
+
+명절에 스팸, 참치, 식용유를 각각 따로 사서 포장하려면 번거롭습니다.
+그래서 우리는 **"종합 선물 세트"**를 하나 삽니다. 이 상자 안에는 스팸, 참치, 식용유가 다 들어있죠.
+
+모듈 시스템에서도 마찬가지입니다.
+`Module A`, `Module B`, `Module C`... 수십 개의 모듈을 일일이 `requires` 하려면 기술자가 너무 지저분해집니다.
+이때, 이들을 묶어주는 **집합 모듈(Aggregator)**을 하나 만들어서 그것만 `requires` 하면 됩니다.
+
+![Aggregator Gift Set](./img/aggregator_gift_set.svg)
+
+*   **특징**: 집합 모듈은 **자신만의 코드는 거의 없고(빈 껍데기)**, 오직 `requires transitive`만 잔뜩 가지고 있습니다.
+*   **대표 예시**: 자바의 `java.se` 모듈. (이것만 부르면 자바의 핵심 기능을 다 쓸 수 있습니다.)
+
+<br>
+
+
+<br>
+
+## 2. 만들기 (빈 껍데기 + transitive)
+
+집합 모듈 `my_module`을 만들어 봅시다. 이 모듈은 A와 B를 포함합니다.
 
 ```java
+// my_module/module-info.java
 module my_module {
+    // 나는 아무것도 안 하지만, 나를 부르면 얘네들을 다 줍니다.
     requires transitive my_module_a;
     requires transitive my_module_b;
 }
 ```
 
-이때 다른 프로젝트에서 `my_module`만 requires 하게 되면 `my_module_a`와 `my_module_b` 모듈 둘 다 사용할 수 있게 된다. 실습을 통해 확인해 보자.
+이제 애플리케이션에서는 `my_module` 하나만 부르면 해결됩니다.
 
-## my_module 모듈 생성
+```java
+// my_application/module-info.java
+module my_application {
+    // A, B를 따로 적을 필요 없이 이거 하나면 끝!
+    requires my_module;
+}
+```
 
-1.  이클립스 메뉴에서 [File] - [New] - [Java Project]를 선택한다. Create a Java Project 대화상자가 나타나면 다음과 같이 입력하고 [Finish] 버튼을 클릭한다.
-    *   Project name: `my_module`
-    *   Module: [체크] Create module-info.java file (중요)
-    *   Module name: `my_module`
-
-2.  `my_module` 모듈은 `my_module_a`와 `my_module_b` 모듈을 제공할 목적으로 사용하므로 두 모듈에 대한 전이 의존 설정만 필요하다. 모듈 기술자(`module-info.java`)에 다음과 같이 작성한다.
-
-    **module-info.java**
-    ```java
-    module my_module {
-        requires transitive my_module_a;
-        requires transitive my_module_b;
-    }
-    ```
-
-3.  `my_module`이 두 모듈을 인식해야 하므로 Build Path에 추가하자. Package Explorer 뷰에서 `my_module`을 선택하고 마우스 오른쪽 버튼으로 클릭하여 [Build Path] - [Configure Build Path] 메뉴를 클릭한다. [Projects] 탭에서 Modulepath 항목을 선택하고 [Add] 버튼을 클릭해 연 후 `my_module_a`와 `my_module_b` 모듈을 체크하고 [OK] 버튼을 클릭한다.
-
-4.  Required projects on the build path에 두 모듈이 추가된 것을 확인하고 [Apply and Close] 버튼을 클릭해 닫는다.
-
-## my_application_2 프로젝트 수정
-
-1.  이제 `my_application_2`의 Build Path를 수정하자. Package Explorer 뷰에서 `my_application_2`를 선택한 다음 마우스 오른쪽 버튼으로 클릭하여 [Build Path] - [Configure Build Path] 메뉴를 클릭한다. [Projects] 탭에서 Modulepath 항목을 선택한 후 [Add] 버튼을 클릭한다. `my_module`의 체크박스에 체크하고 [OK] 버튼을 클릭한다.
-
-2.  Required projects on the build path에 `my_module`이 추가된 것을 확인하고 [Apply and Close] 버튼을 클릭한다.
-
-    > **my_module_a와 my_module_b가 Modulepath에 있어야 하는 이유**
-    >
-    > `my_application_2`는 결국 `my_module_a`와 `my_module_b`를 사용해야 하므로 이 두 모듈이 전부 ClassPath 위치에 있어야 한다.
-
-3.  `my_application_2` 프로젝트의 모듈 기술자를 다음과 같이 수정한다. `my_module_a`와 `my_module_b`의 직접적 의존을 주석 처리하는 대신에 집합 모듈인 `my_module`을 의존한다.
-
-    **module-info.java**
-    ```java
-    module my_application_2 {
-        // requires my_module_a;
-        // requires my_module_b;
-        requires my_module;
-    }
-    ```
-
-    Main 클래스는 수정할 내용이 없으니 실행만 해보자.
-
-    **Main.java**
-    ```java
-    package app;
-
-    import pack1.A;
-    // import pack2.B;
-    import pack3.C;
-
-    public class Main {
-        public static void main(String[] args) {
-            // my_module_a 패키지에 포함된 A 클래스 이용
-            A a = new A();
-            a.method();
-            
-            // my_module_a 패키지에 포함된 B 클래스 이용
-            // B b = new B();
-            // b.method();
-            
-            // my_module_b 패키지에 포함된 C 클래스 이용
-            C c = new C();
-            c.method();
-            
-            C result = a.getC();
-            result.method();
-        }
-    }
-    ```
-
-    **실행 결과**
-    ```
-    A-method 실행
-    B-method 실행
-    C-method 실행
-    C-method 실행
-    ```
-
-집합 모듈인 `my_module`만 requires 하더라도 `my_module_a`와 `my_module_b` 소속의 클래스 A와 C를 사용하는 데에는 아무런 문제가 발생하지 않는다.
+> **핵심 요약**: 집합 모듈은 여러 모듈을 그룹핑해주는 **"편리한 바로가기 링크"** 같은 존재입니다.

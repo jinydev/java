@@ -1,81 +1,67 @@
 ---
 layout: oop
-title: "10.4 모듈 배포용 JAR 파일"
+title: "13.4 모듈 배포용 JAR 파일"
 nav_order: 4
-parent: "Chapter 10. 라이브러리와 모듈"
+parent: "Chapter 13. 라이브러리와 모듈"
 grand_parent: "객체지향 자바 프로그래밍"
 ---
 
-# 10.4 모듈 배포용 JAR 파일
+# 13.4 모듈 배포용 JAR 파일
 
-모듈 개발을 완료했다면 다른 모듈에서 쉽게 사용할 수 있도록 바이트코드 파일(`.class`)로 구성된 배포용 JAR 파일을 생성해 보자. 이전 예제에서 만든 `my_module_a`와 `my_module_b` 모듈의 배포용 JAR 파일을 각각 생성한다.
 
-## 모듈 배포용 JAR 파일 생성
+<br>
 
-`my_module_a`와 `my_module_b` 모듈에 각각 JAR 파일을 저장할 `dist` 폴더를 생성하자. 모듈 프로젝트에서 마우스 오른쪽 버튼을 클릭하여 [New] - [Folder]를 선택하고 Folder name에 `dist`를 입력한 후 [Finish] 버튼을 클릭한다.
+## 1. 명세서가 붙은 택배 박스 📦
 
-`my_module_a` 모듈의 배포용 JAR 파일을 생성하는 방법은 다음과 같다.
+우리가 만든 모듈을 다른 사람에게 주려면 어떻게 해야 할까요?
+당연히 하나의 파일로 포장(JAR)해서 줘야 합니다.
 
-1.  `my_module_a` 모듈을 선택하고 마우스 오른쪽 버튼으로 클릭하여 [Export]를 선택한다.
-2.  Java 항목을 확장하고 JAR file을 선택한 후, [Next] 버튼을 클릭한다.
-3.  `my_module_a`를 확장하여 `src` 폴더에만 체크박스에 체크하고 나머지는 모두 체크 해제한다.
-4.  Select the export destination에서 [Browse] 버튼을 클릭하고, `my_module_a` 모듈의 `dist` 폴더로 이동한다. 파일 이름은 `my_module_a.jar`로 입력하고 [저장], [Finish] 버튼을 클릭한다.
-5.  Package Explorer 뷰에서 `my_module_a` 모듈을 선택하고 마우스 오른쪽 버튼으로 클릭하여 [Refresh]를 선택한다. `dist` 폴더에 JAR 파일이 생성되었는지 확인한다.
-6.  `my_module_b` 모듈의 배포용 JAR 파일도 위와 동일한 방법으로 생성한다.
+이때, **모듈 배포용 JAR**는 일반 JAR와 한 가지 결정적인 차이가 있습니다.
+바로 **'박스 겉면에 상세한 명세서(`module-info.class`)가 붙어있다'**는 점입니다.
 
-## my_application_3 프로젝트 생성
+![Modular JAR Label](./img/modular_jar_label.svg)
 
-이번엔 새로운 `my_application_3` 프로젝트를 생성해서 두 개의 모듈 JAR 파일을 가져와 사용해 보자.
+*   **일반 JAR**: 그냥 열어보기 전엔 뭐가 들었는지, 뭘 조심해야 하는지 모릅니다.
+*   **모듈 JAR**: "이 박스엔 폭발물이 없으며(보안), 취급 시 장갑이 필요함(의존성)" 같은 정보가 `module-info`에 적혀있습니다.
 
-1.  이클립스 메뉴에서 [File] - [New] - [Java Project]를 선택한다. Create a Java Project 대화상자가 나타나면 다음과 같이 입력하고 [Finish] 버튼을 클릭한다.
-    *   Project name: `my_application_3`
-    *   Module: [체크] Create module-info.java file (중요)
-    *   Module name: `my_application_3`
+<br>
 
-2.  Package Explorer 뷰에서 `my_application_3`을 선택하고 마우스 오른쪽 버튼으로 클릭하여 [Build Path] - [Configure Build Path] 메뉴를 선택한다. [Libraries] 탭의 Modulepath 항목을 선택한 후, [Add External JARs] 버튼을 클릭한다.
 
-3.  `my_module_a`와 `my_module_b` 모듈의 `dist` 폴더로 각각 이동해서 `my_module_a.jar` 파일과 `my_module_b.jar` 파일을 추가한다. 그리고 [Apply and Close] 버튼을 클릭한다.
+<br>
 
-4.  `my_application_3` 프로젝트는 `my_module_a` 모듈과 `my_module_b` 모듈을 사용해야 하므로 두 모듈 프로젝트에 대한 의존 설정이 필요하다. 모듈 기술자를 열고 다음과 같이 작성한다.
+## 2. JAR 파일 만들기 (Export)
 
-    **module-info.java**
-    ```java
-    module my_application_3 {
-        requires my_module_a;
-        requires my_module_b;
-    }
-    ```
+이클립스에서는 아주 쉽게 모듈을 JAR로 만들 수 있습니다.
 
-5.  `my_application_3` 모듈의 `src` 폴더에서 `app` 패키지를 생성한다. 그리고 `Main` 클래스를 생성하고 다음과 같이 작성하고 실행한다.
+1.  **프로젝트 우클릭** -> **Export** -> **Java / JAR file** 선택.
+2.  **`src` 폴더 체크**: 소스 코드와 `module-info.java`가 포함되어야 합니다.
+3.  **경로 지정**: 보통 `dist`(distribution) 폴더를 만들어 저장합니다.
 
-    **Main.java**
-    ```java
-    package app;
-    
-    import pack1.A;
-    import pack2.B;
-    import pack3.C;
-    
-    public class Main {
-        public static void main(String[] args) {
-            // my_module_a 패키지에 포함된 A 클래스 이용
-            A a = new A();
-            a.method();
-            
-            // my_module_a 패키지에 포함된 B 클래스 이용
-            B b = new B();
-            b.method();
-            
-            // my_module_b 패키지에 포함된 C 클래스 이용
-            C c = new C();
-            c.method();
-        }
-    }
-    ```
+이렇게 만든 `.jar` 파일 안에는 컴파일된 `module-info.class` 파일이 루트에 포함됩니다.
+이것이 바로 모듈의 **신분증**입니다.
 
-    **실행 결과**
-    ```
-    A-method 실행
-    B-method 실행
-    C-method 실행
-    ```
+<br>
+
+
+<br>
+
+## 3. 다른 프로젝트에서 가져다 쓰기
+
+이제 `my_application` 프로젝트에서 이 JAR 파일을 써봅시다.
+
+### Build Path 설정
+1.  **Project 우클릭** -> **Build Path** -> **Configure Build Path**.
+2.  **Libraries 탭** -> **Modulepath** 선택 (중요!).
+    *   *Classpath*가 아니라 *Modulepath*에 추가해야 모듈로 인식됩니다.
+3.  **Add External JARs** -> 방금 만든 JAR 파일 선택.
+
+### module-info.java 작성
+마지막으로, "나 이 모듈 쓸 거야"라고 선언해야 합니다.
+
+```java
+module my_application {
+    requires my_module_a; // JAR 파일 안에 적힌 모듈 이름
+}
+```
+
+> **핵심 요약**: 모듈을 JAR로 만들면, 그 자체로 **완벽한 자기 설명서(`module-info`)**를 가진 독립적인 부품이 됩니다.

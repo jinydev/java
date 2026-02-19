@@ -1,0 +1,28 @@
+<svg width="500" height="300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="500" height="300" fill="#ffffff" />
+  
+  <!-- X-ray Machine -->
+  <path d="M50,50 L450,50 L450,250 L50,250 Z" fill="#263238" stroke="#000" stroke-width="2"/>
+  <rect x="70" y="70" width="360" height="160" fill="#37474f"/> <!-- Screen -->
+  
+  <!-- Suitcase (Module) -->
+  <g transform="translate(150, 100)">
+    <!-- Outline -->
+    <rect x="0" y="0" width="200" height="100" rx="10" fill="none" stroke="#81d4fa" stroke-width="2" stroke-dasharray="5,5"/>
+    <text x="100" y="-10" font-family="Arial, sans-serif" font-size="12" fill="#81d4fa" text-anchor="middle">은닉된 모듈 (Encapsulated)</text>
+    
+    <!-- Lock -->
+    <text x="100" y="55" font-family="Arial, sans-serif" font-size="30" fill="#f44336" text-anchor="middle">🔒</text>
+    
+    <!-- Skeleton/Content (Visible via X-ray) -->
+    <circle cx="50" cy="50" r="20" fill="#fff" opacity="0.5"/>
+    <rect x="130" y="30" width="40" height="40" fill="#fff" opacity="0.5"/>
+    
+    <text x="100" y="90" font-family="Arial, sans-serif" font-size="12" fill="#4caf50" text-anchor="middle">내부 구조가 보임!</text>
+  </g>
+
+  <text x="250" y="280" font-family="Arial, sans-serif" font-size="14" fill="#333" text-anchor="middle">"opens 키워드는 엑스레이(Reflection) 검사를 허용합니다."</text>
+  <text x="250" y="40" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">Reflection (X-Ray)</text>
+
+</svg>

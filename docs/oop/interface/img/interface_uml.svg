@@ -1,0 +1,32 @@
+<svg width="600" height="200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="600" height="200" fill="#fff" />
+
+  <!-- Interface Box -->
+  <g transform="translate(50, 50)">
+    <rect width="150" height="100" fill="#fff" stroke="#333" stroke-width="1"/>
+    <text x="75" y="20" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">&lt;&lt;interface&gt;&gt;</text>
+    <text x="75" y="40" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#333" font-weight="bold">Remote</text>
+    <line x1="0" y1="50" x2="150" y2="50" stroke="#333" stroke-width="1"/>
+    <text x="10" y="70" font-family="Arial, sans-serif" font-size="12" fill="#333">+ turnOn()</text>
+  </g>
+
+  <!-- Class Box -->
+  <g transform="translate(350, 50)">
+    <rect width="150" height="100" fill="#fff" stroke="#333" stroke-width="1"/>
+    <text x="75" y="30" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#333" font-weight="bold">Television</text>
+    <line x1="0" y1="50" x2="150" y2="50" stroke="#333" stroke-width="1"/>
+    <text x="10" y="70" font-family="Arial, sans-serif" font-size="12" fill="#333">+ turnOn()</text>
+  </g>
+
+  <!-- Connection : Dashed line with empty triangle -->
+  <path d="M350,100 L210,100" stroke="#333" stroke-width="1" stroke-dasharray="5,5" marker-end="url(#triangle)"/>
+
+  <text x="275" y="90" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#555">implements</text>
+
+  <defs>
+    <marker id="triangle" markerWidth="15" markerHeight="15" refX="10" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 L0,0" fill="#fff" stroke="#333" stroke-width="1"/>
+    </marker>
+  </defs>
+</svg>

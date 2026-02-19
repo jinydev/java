@@ -1,58 +1,34 @@
 ---
 layout: basic
-title: "2.5 논리 타입"
+title: "4.5 논리 타입"
 nav_order: 5
-parent: "Chapter 02. 변수와 타입"
-grand_parent: "객체지향 자바 프로그래밍"
+parent: "Chapter 04. 변수와 타입"
+grand_parent: "Part 01. 자바 언어의 기초"
 ---
 
-# 2.5 논리 타입
+# 4.5 논리 타입
 
-참과 거짓을 의미하는 논리 리터럴은 `true`와 `false`이다. 논리 리터럴은 `boolean` 타입 변수에 다음과 같이 대입할 수 있다.
+## 1. 참과 거짓 (`boolean`) ✅
+
+`boolean`(불리언)은 딱 두 가지 값만 가질 수 있습니다.
+*   **`true`**: 참 (ON)
+*   **`false`**: 거짓 (OFF)
+
+전등 스위치처럼 켜거나 끄는 상태를 저장할 때 씁니다.
 
 ```java
 boolean stop = true;
-boolean stop = false;
+boolean isCar = false;
 ```
 
-`boolean` 타입 변수는 주로 두 가지 상태값을 저장할 필요가 있을 경우에 사용되며, 상태값에 따라 조건문과 제어문의 실행 흐름을 변경하는 데 사용된다. 연산식 중에서 비교 및 논리 연산의 산출값은 `true` 또는 `false`이므로 `boolean` 타입 변수에 다음과 같이 대입할 수 있다.
+## 2. 어디에 쓰나요?
+
+주로 **조건문(`if`)**이나 **반복문(`while`)**에서 흐름을 제어할 때 사용합니다.
 
 ```java
-int x = 10;
-boolean result = (x == 20); //변수 x의 값이 20인가?
-boolean result = (x != 20); //변수 x의 값이 20이 아닌가?
-boolean result = (x > 20); //변수 x의 값이 20보다 큰가?
-boolean result = (0 < x && x < 20); //변수 x의 값이 0보다 크고, 20보다 적은가?
-boolean result = (x < 0 || x > 200); //변수 x의 값이 0보다 적거나 200보다 큰가?
-```
+boolean isRainy = true;
 
-다음 예제는 `stop` 변수값에 따라 `if` 블록과 `else` 블록 중 하나를 실행하고, 연산식의 결과를 `boolean` 변수에 저장해서 출력한다.
-
-**[예제: BooleanExample.java]**
-```java
-package ch02.sec05;
-
-public class BooleanExample {
-    public static void main(String[] args) {
-        boolean stop = true;
-        if(stop) {
-            System.out.println("중지합니다.");
-        } else {
-            System.out.println("시작합니다.");
-        }
-        
-        int x = 10;
-        boolean result1 = (x == 20); //변수 x의 값이 20인가?
-        boolean result2 = (x != 20); //변수 x의 값이 20이 아닌가?
-        System.out.println("result1: " + result1);
-        System.out.println("result2: " + result2);
-    }
+if (isRainy) {
+    System.out.println("우산을 챙기세요!");
 }
-```
-
-**실행 결과**
-```
-중지합니다.
-result1: false
-result2: true
 ```

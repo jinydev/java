@@ -1,28 +1,42 @@
 ---
 layout: basic
-title: "1.2 코드 용어 이해"
+title: "3.2 코드 용어 이해"
 nav_order: 2
-parent: "Chapter 01. 자바 시작하기"
-grand_parent: "객체지향 자바 프로그래밍"
+parent: "Chapter 03. 자바 시작하기"
+grand_parent: "Part 01. 자바 언어의 기초"
 ---
 
-# 1.2 코드 용어 이해
+# 3.2 코드 용어 이해
 
-지금까지 작성한 Hello.java 소스 파일을 보면서 사용된 코드 용어들을 살펴보자.
+방금 작성한 코드를 해부해 봅시다. 🕵️‍♂️
 
 ```java
-package ch01.sec09; // ① 패키지 선언
+package ch01; // ① 패키지
 
-public class Hello { // ② 클래스 선언
+public class Hello { // ② 클래스
     
-    public static void main(String args[]) { // ③ 메소드 선언
-        System.out.println("Hello, Java"); // ④ 실행문
-    } // ⑤ 닫는 중괄호: 메소드 끝
-    
-} // ⑥ 닫는 중괄호: 클래스 끝 (소스 파일 끝)
+    public static void main(String[] args) { // ③ 메인 메소드
+        System.out.println("Hello"); // ④ 실행문
+    }
+
+}
 ```
 
-① **패키지 선언**: `package` 키워드는 해당 클래스가 어떤 패키지에 속해 있는지를 선언한다.
-② **클래스 선언**: `public class Hello`는 Hello라는 이름의 공개된 클래스를 선언한다는 뜻이다. `public class`는 공개 클래스라고 부르며, 클래스 이름은 소스 파일명과 동일해야 한다.
-③ **메소드 선언**: `public static void main(String[] args)`는 `main()` 메소드를 선언한다는 뜻이다. `main()` 메소드는 바이트코드 파일을 실행할 때 자바 가상 머신이 제일 먼저 찾는 메소드이기 때문에 실행 진입점(entry point)라고 부른다. 따라서 프로그램을 실행하려면 반드시 `main()` 메소드가 있어야 한다.
-④ **실행문**: `System.out.println("Hello, Java");`는 콘솔에 "Hello, Java"를 출력하라는 명령이다. `main()` 메소드 블록 `{}` 내부에는 다양한 실행문이 작성될 수 있다.
+## 1. 패키지 (Package) 📂
+*   **비유**: **폴더**
+*   비슷한 소스 파일들을 모아놓는 그룹입니다.
+*   `package ch01;`은 "이 파일은 `ch01` 폴더에 소속되어 있어"라고 선언하는 것입니다.
+
+## 2. 클래스 (Class) 📄
+*   **비유**: **파일 이름**
+*   자바 프로그램의 기본 단위입니다.
+*   **규칙**: 클래스 이름(`Hello`)은 소스 파일 이름(`Hello.java`)과 **똑같아야 합니다.** (대소문자까지!)
+
+## 3. 메인 메소드 (main method) ▶️
+*   **비유**: **시작 버튼 (Engine Start)**
+*   `public static void main(String[] args)`
+*   자바 프로그램은 무조건 **여기서부터 실행**됩니다. 이 부분이 없으면 실행할 수 없습니다.
+
+## 4. 실행문 (Statement) ✍️
+*   **비유**: **명령어**
+*   `System.out.println(...)`: 콘솔(화면)에 글자를 출력하라는 명령입니다.

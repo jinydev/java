@@ -1,0 +1,45 @@
+<svg width="600" height="300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="600" height="300" fill="#ffffff" />
+  
+  <!-- To-Do List Board -->
+  <g transform="translate(150, 50)">
+    <rect x="0" y="0" width="300" height="220" rx="10" fill="#fff9c4" stroke="#fbc02d" stroke-width="3"/>
+    
+    <!-- Title -->
+    <rect x="60" y="-15" width="180" height="40" rx="5" fill="#f57f17" stroke="#e65100" stroke-width="2"/>
+    <text x="150" y="10" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#fff" text-anchor="middle">To-Do List (List)</text>
+
+    <!-- Item 1 -->
+    <g transform="translate(20, 50)">
+      <circle cx="15" cy="15" r="12" fill="#fff" stroke="#f57f17" stroke-width="2"/>
+      <text x="15" y="20" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#f57f17" text-anchor="middle">0</text>
+      <text x="40" y="20" font-family="Arial, sans-serif" font-size="14" fill="#333">Java 공부하기</text>
+    </g>
+
+    <!-- Item 2 -->
+    <g transform="translate(20, 90)">
+      <circle cx="15" cy="15" r="12" fill="#fff" stroke="#f57f17" stroke-width="2"/>
+      <text x="15" y="20" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#f57f17" text-anchor="middle">1</text>
+      <text x="40" y="20" font-family="Arial, sans-serif" font-size="14" fill="#333">점심 먹기</text>
+    </g>
+
+    <!-- Item 3 -->
+    <g transform="translate(20, 130)">
+      <circle cx="15" cy="15" r="12" fill="#fff" stroke="#f57f17" stroke-width="2"/>
+      <text x="15" y="20" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#f57f17" text-anchor="middle">2</text>
+      <text x="40" y="20" font-family="Arial, sans-serif" font-size="14" fill="#333">Java 공부하기</text>
+      <text x="170" y="20" font-family="Arial, sans-serif" font-size="10" fill="#d32f2f">(중복 가능!)</text>
+    </g>
+
+     <!-- Item 4 -->
+    <g transform="translate(20, 170)">
+      <circle cx="15" cy="15" r="12" fill="#fff" stroke="#f57f17" stroke-width="2"/>
+      <text x="15" y="20" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#f57f17" text-anchor="middle">3</text>
+      <text x="40" y="20" font-family="Arial, sans-serif" font-size="14" fill="#333">영화 보기</text>
+    </g>
+  </g>
+
+  <text x="300" y="290" font-family="Arial, sans-serif" font-size="12" fill="#555" text-anchor="middle">"List는 순서(Index)가 있고, 똑같은 일을 또 적어도(중복) 괜찮습니다."</text>
+
+</svg>

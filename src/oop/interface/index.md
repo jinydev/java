@@ -1,16 +1,22 @@
 ---
 layout: oop
-title: "Chapter 08. 인터페이스"
-nav_order: 8
+title: "Chapter 11. 인터페이스"
+nav_order: 11
 has_children: true
 parent: "객체지향 자바 프로그래밍"
 ---
 
-# Chapter 08. 인터페이스
+# Chapter 11. 인터페이스
+
+
+<br>
 
 ## 학습목표
 
 객체의 사용 방법을 정의하는 인터페이스와 다형성 구현 방법을 학습합니다.
+
+
+<br>
 
 ## 목차
 
@@ -65,6 +71,9 @@ parent: "객체지향 자바 프로그래밍"
 ### [8.13 봉인된 인터페이스](./13/)
 
 Java 15부터는 무분별한 자식 인터페이스 생성을 방지하기 위해 봉인된sealed 인터페이스를 사용할 수 있다. InterfaceA의 자식 인터페이스는 InterfaceB만 가능하고, 그 이외는 자식 인터페이스가 될 수 없도록 다음과 같이 InterfaceA를 봉인된...
+
+
+<br>
 
 ## 확인문제
 - [확인문제](./quiz)

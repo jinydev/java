@@ -1,0 +1,43 @@
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="400" fill="#fcfcfc"/>
+
+  <!-- Title -->
+  <text x="400" y="40" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="#2c3e50" font-weight="bold">강제 타입 변환 (Downcasting)</text>
+
+  <!-- Explanation Text -->
+  <text x="400" y="70" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#c0392b">"다시 본래의 모습으로 돌아가려면 확인이 필요하다!"</text>
+
+  <!-- View: Animal -->
+  <g transform="translate(100, 150)">
+     <rect width="200" height="150" rx="10" fill="#e3f2fd" stroke="#2196f3" stroke-width="2" stroke-dasharray="5,5"/>
+    <text x="100" y="30" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#1565c0" font-weight="bold">Animal (동물)</text>
+    <text x="100" y="55" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#1976d2">(현재 상태)</text>
+  </g>
+
+  <!-- Arrow -->
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#e74c3c"/>
+    </marker>
+  </defs>
+  <path d="M 320 225 L 460 225" stroke="#e74c3c" stroke-width="4" marker-end="url(#arrow)"/>
+  <text x="390" y="210" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#c0392b" font-weight="bold">(Cat) animal</text>
+
+  <!-- Object: Cat -->
+   <g transform="translate(480, 150)">
+    <rect width="200" height="150" rx="10" fill="#fff3e0" stroke="#ff9800" stroke-width="2"/>
+    <text x="100" y="30" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#e65100" font-weight="bold">Cat (고양이)</text>
+    <text x="100" y="55" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#f57c00">(원래 실체)</text>
+    
+    <text x="30" y="115" font-family="Arial, sans-serif" font-size="14" fill="#d84315" font-weight="bold">- meow() 복구!</text>
+  </g>
+  
+  <!-- Warning -->
+  <g transform="translate(250, 300)">
+    <rect width="300" height="60" rx="5" fill="#ffebee" stroke="#ef5350"/>
+    <text x="150" y="25" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#c62828" font-weight="bold">주의!</text>
+    <text x="150" y="45" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#3e2723">실체가 Dog라면 변환 실패 (ClassCastException)</text>
+  </g>
+
+</svg>

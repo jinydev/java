@@ -1,264 +1,81 @@
 ---
 layout: oop
-title: "15.2 List 컬렉션"
-nav_order: 2
-parent: "Chapter 15. 컬렉션 자료구조"
-grand_parent: "객체지향 프로그래밍"
+title: "17.1 List 컬렉션"
+nav_order: 1
+parent: "Chapter 17. 컬렉션 자료구조"
+grand_parent: "객체지향 자바 프로그래밍"
 ---
 
-# 15.2 List 컬렉션
+# 17.1 List 컬렉션
 
-List 컬렉션은 객체를 인덱스로 관리하기 때문에 객체를 저장하면 인덱스가 부여되고 인덱스로 객체를 검색, 삭제할 수 있는 기능을 제공한다.
 
-List 컬렉션에는 ArrayList, Vector, LinkedList 등이 있는데, List 컬렉션에서 공통적으로 사용 가능한 List 인터페이스 메소드는 다음과 같다.
+<br>
 
-| 기능      | 메소드                           | 설명                                      |
-| :-------- | :------------------------------- | :---------------------------------------- |
-| 객체 추가 | `boolean add(E e)`               | 주어진 객체를 맨 끝에 추가                |
-|           | `void add(int index, E element)` | 주어진 인덱스에 객체를 추가               |
-|           | `E set(int index, E element)`    | 주어진 인덱스의 객체를 새로운 객체로 바꿈 |
-| 객체 검색 | `boolean contains(Object o)`     | 주어진 객체가 저장되어 있는지 여부        |
-|           | `E get(int index)`               | 주어진 인덱스에 저장된 객체를 리턴        |
-|           | `boolean isEmpty()`              | 컬렉션이 비어 있는지 조사                 |
-|           | `int size()`                     | 저장되어 있는 전체 객체 수를 리턴         |
-| 객체 삭제 | `void clear()`                   | 저장된 모든 객체를 삭제                   |
-|           | `E remove(int index)`            | 주어진 인덱스에 저장된 객체를 삭제        |
-|           | `boolean remove(Object o)`       | 주어진 객체를 삭제                        |
+## 1. 할 일 목록 (To-Do List) 📝
 
-## ArrayList
+List 컬렉션은 우리가 흔히 쓰는 **"할 일 목록"**과 같습니다.
+1.  **순서가 있다**: 첫 번째 할 일, 두 번째 할 일이 정해져 있습니다. (인덱스 0, 1, 2...)
+2.  **중복을 허용한다**: "공부하기"를 적고, 나중에 또 "공부하기"를 적어도 됩니다.
 
-ArrayList는 List 컬렉션에서 가장 많이 사용하는 컬렉션이다. ArrayList에 객체를 추가하면 내부 배열에 객체가 저장된다. 일반 배열과의 차이점은 ArrayList는 제한 없이 객체를 추가할 수 있다는 것이다.
+![List Concept Todo](./img/list_concept_todo.svg)
 
-List 컬렉션은 객체 자체를 저장하는 것이 아니라 객체의 번지를 저장한다. 또한 동일한 객체를 중복 저장할 수 있는데, 이 경우에는 동일한 번지가 저장된다. null 또한 저장이 가능하다.
+<br>
 
-ArrayList 컬렉션은 다음과 같이 생성할 수 있다.
 
-```java
-List<E> list = new ArrayList<E>(); // E에 지정된 타입의 객체만 저장
-List<E> list = new ArrayList<>(); // E에 지정된 타입의 객체만 저장
-List list = new ArrayList(); // 모든 타입의 객체를 저장
-```
+<br>
 
-타입 파라미터 E에는 ArrayList에 저장하고 싶은 객체 타입을 지정하면 된다.
+## 2. 대표적인 List 친구들
 
-ArrayList 컬렉션에 객체를 추가하면 인덱스 0번부터 차례대로 저장된다. 특정 인덱스의 객체를 제거하면 바로 뒤 인덱스부터 마지막 인덱스까지 모두 앞으로 1씩 당겨진다. 마찬가지로 특정 인덱스에 객체를 삽입하면 해당 인덱스부터 마지막 인덱스까지 모두 1씩 밀려난다.
+### 1) ArrayList: "크기가 늘어나는 배열"
+*   **특징**: 배열처럼 생겼지만, 물건을 넣으면 크기가 **자동으로 늘어납니다.**
+*   **장점**: 데이터를 찾을 때(`get`) 가 빠릅니다. (인덱스만 알면 바로 접근)
+*   **단점**: 중간에 끼워 넣거나 삭제할 때 느립니다. (뒤에 있는 애들을 한 칸씩 다 옮겨야 해서)
+*   **비유**: **"지하철 의자"**. 중간에 누가 앉으려면 다 비켜줘야 합니다.
 
-따라서 빈번한 객체 삭제와 삽입이 일어나는 곳에서는 ArrayList를 사용하는 것은 바람직하지 않다. 대신 이런 경우라면 LinkedList를 사용하는 것이 좋다.
+### 2) LinkedList: "줄줄이 비엔나"
+*   **특징**: 데이터들이 서로 **앞뒤로 연결(Link)**되어 있습니다.
+*   **장점**: 중간에 끼워 넣거나 삭제할 때 빠릅니다. (연결 고리만 바꿔주면 끝)
+*   **단점**: 데이터를 찾을 때 느립니다. (처음부터 줄을 타고 따라가야 해서)
+*   **비유**: **"기차"**. 중간 칸을 떼거나 붙이기가 쉽습니다.
 
-```java
-package ch15.sec02.exam01;
+### 3) Vector: "안전 제일 ArrayList"
+*   **특징**: `ArrayList`와 똑같지만, **동기화(Synchronized)** 기능이 있어 멀티 스레드 환경에서 안전합니다.
+*   **단점**: 안전장치 때문에 `ArrayList`보다 조금 느립니다.
 
-public class Board {
-	private String subject;
-	private String content;
-	private String writer;
+<br>
 
-	public Board(String subject, String content, String writer) {
-		this.subject = subject;
-		this.content = content;
-		this.writer = writer;
-	}
 
-	public String getSubject() { return subject; }
-	public void setSubject(String subject) { this.subject = subject; }
-	public String getContent() { return content; }
-	public void setContent(String content) { this.content = content; }
-	public String getWriter() { return writer; }
-	public void setWriter(String writer) { this.writer = writer; }
-}
-```
+<br>
+
+## 3. 사용법 (공통)
 
 ```java
-package ch15.sec02.exam01;
+// 생성 (보통 ArrayList를 가장 많이 씁니다)
+List<String> list = new ArrayList<>();
 
-import java.util.ArrayList;
-import java.util.List;
+// 1. 추가 (add)
+list.add("Java");
+list.add("Python");
+list.add("Java"); // 중복 허용!
 
-public class ArrayListExample {
-	public static void main(String[] args) {
-		// ArrayList 컬렉션 생성
-		List<Board> list = new ArrayList<>();
+// 2. 검색 (get)
+String item = list.get(0); // "Java"
 
-		// 객체 추가
-		list.add(new Board("제목1", "내용1", "글쓴이1"));
-		list.add(new Board("제목2", "내용2", "글쓴이2"));
-		list.add(new Board("제목3", "내용3", "글쓴이3"));
-		list.add(new Board("제목4", "내용4", "글쓴이4"));
-		list.add(new Board("제목5", "내용5", "글쓴이5"));
+// 3. 삭제 (remove)
+list.remove(0); // 0번방 삭제 (뒤에 있던 애들이 앞으로 당겨짐)
 
-		// 저장된 총 객체 수 얻기
-		int size = list.size();
-		System.out.println("총 객체 수: " + size);
-		System.out.println();
-
-		// 특정 인덱스의 객체 가져오기
-		Board board = list.get(2);
-		System.out.println(board.getSubject() + "\t" + board.getContent() + "\t" + board.getWriter());
-		System.out.println();
-
-		// 모든 객체를 하나씩 가져오기
-		for (int i=0; i<list.size(); i++) {
-			Board b = list.get(i);
-			System.out.println(b.getSubject() + "\t" + b.getContent() + "\t" + b.getWriter());
-		}
-		System.out.println();
-
-		// 객체 삭제
-		list.remove(2);
-		list.remove(2);
-
-		// 향상된 for 문으로 모든 객체를 하나씩 가져오기
-		for (Board b : list) {
-			System.out.println(b.getSubject() + "\t" + b.getContent() + "\t" + b.getWriter());
-		}
-	}
-}
+// 4. 전체 크기 (size)
+int size = list.size(); 
 ```
 
-**실행 결과**
-```
-총 객체 수: 5
+<br>
 
-제목3	내용3	글쓴이3
 
-제목1	내용1	글쓴이1
-제목2	내용2	글쓴이2
-제목3	내용3	글쓴이3
-제목4	내용4	글쓴이4
-제목5	내용5	글쓴이5
+<br>
 
-제목1	내용1	글쓴이1
-제목2	내용2	글쓴이2
-제목5	내용5	글쓴이5
-```
+## 4. 성능 비교 (ArrayList vs LinkedList)
 
-## Vector
+*   **읽기(검색)가 많다** -> `ArrayList` 승! 🏆
+*   **추가/삭제가 많다** -> `LinkedList` 승! 🏆
 
-Vector는 ArrayList와 동일한 내부 구조를 가지고 있다. 차이점은 Vector는 동기화된(synchronized) 메소드로 구성되어 있기 때문에 멀티 스레드가 동시에 Vector() 메소드를 실행할 수 없다는 것이다. 그렇기 때문에 멀티 스레드 환경에서는 안전하게 객체를 추가 또는 삭제할 수 있다.
-
-Vector 컬렉션은 다음과 같이 생성할 수 있다.
-
-```java
-List<E> list = new Vector<E>();
-List<E> list = new Vector<>();
-```
-
-다음은 ThreadA와 ThreadB에서 동시에 Board 객체를 Vector에 각각 1000개씩 추가한 후, 전체 저장된 수를 출력하는 예제이다.
-
-```java
-package ch15.sec02.exam02;
-
-import java.util.List;
-import java.util.Vector;
-
-public class VectorExample {
-	public static void main(String[] args) {
-		// Vector 컬렉션 생성
-		List<Board> list = new Vector<>();
-
-		// 작업 스레드 객체 생성
-		Thread threadA = new Thread() {
-			@Override
-			public void run() {
-				// 객체 1000개 추가
-				for (int i=1; i<=1000; i++) {
-					list.add(new Board("제목"+i, "내용"+i, "글쓴이"+i));
-				}
-			}
-		};
-
-		// 작업 스레드 객체 생성
-		Thread threadB = new Thread() {
-			@Override
-			public void run() {
-				// 객체 1000개 추가
-				for (int i=1001; i<=2000; i++) {
-					list.add(new Board("제목"+i, "내용"+i, "글쓴이"+i));
-				}
-			}
-		};
-
-		// 작업 스레드 실행
-		threadA.start();
-		threadB.start();
-
-		// 작업 스레드들이 모두 종료될 때까지 메인 스레드를 기다리게 함
-		try {
-			threadA.join();
-			threadB.join();
-		} catch (Exception e) {
-		}
-
-		// 저장된 총 객체 수 얻기
-		int size = list.size();
-		System.out.println("총 객체 수: " + size);
-		System.out.println();
-	}
-}
-```
-
-**실행 결과**
-```
-총 객체 수: 2000
-```
-
-만약 `List<Board> list = new ArrayList<>();`로 변경하고 실행하면 경합이 발생하여 2000개가 나오지 않거나 에러가 발생할 수 있다.
-
-## LinkedList
-
-LinkedList는 ArrayList와 사용 방법은 동일하지만 내부 구조는 완전히 다르다. ArrayList는 내부 배열에 객체를 저장하지만, LinkedList는 인접 객체를 체인처럼 연결해서 관리한다.
-
-LinkedList는 특정 위치에서 객체를 삽입하거나 삭제하면 바로 앞뒤 링크만 변경하면 되므로 빈번한 객체 삭제와 삽입이 일어나는 곳에서는 ArrayList보다 좋은 성능을 발휘한다.
-
-LinkedList 컬렉션은 다음과 같이 생성할 수 있다.
-
-```java
-List<E> list = new LinkedList<E>();
-List<E> list = new LinkedList<>();
-```
-
-다음 예제는 ArrayList와 LinkedList에 10000개의 객체를 삽입하는데 걸린 시간을 측정한 것이다.
-
-```java
-package ch15.sec02.exam03;
-
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-
-public class LinkedListExample {
-	public static void main(String[] args) {
-		// ArrayList 컬렉션 객체 생성
-		List<String> list1 = new ArrayList<String>();
-
-		// LinkedList 컬렉션 객체 생성
-		List<String> list2 = new LinkedList<String>();
-
-		// 시작 시간과 끝 시간을 저장할 변수 선언
-		long startTime;
-		long endTime;
-
-		// ArrayList 컬렉션에 저장하는 시간 측정
-		startTime = System.nanoTime();
-		for (int i=0; i<10000; i++) {
-			list1.add(0, String.valueOf(i));
-		}
-		endTime = System.nanoTime();
-		System.out.printf("%-17s %8d ns \n", "ArrayList 걸린 시간: ", (endTime-startTime));
-
-		// LinkedList 컬렉션에 저장하는 시간 측정
-		startTime = System.nanoTime();
-		for (int i=0; i<10000; i++) {
-			list2.add(0, String.valueOf(i));
-		}
-		endTime = System.nanoTime();
-		System.out.printf("%-17s %8d ns \n", "LinkedList 걸린 시간: ", (endTime-startTime));
-	}
-}
-```
-
-**실행 결과**
-```
-ArrayList 걸린 시간: 4265400 ns
-LinkedList 걸린 시간: 1045500 ns
-```
+> **핵심 요약**: 데이터의 **순서**가 중요하고, **중복**이 있어도 된다면 무조건 **List**를 쓰세요. 그 중에서도 **ArrayList**가 기본입니다.

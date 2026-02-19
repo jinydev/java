@@ -1,0 +1,59 @@
+<svg width="600" height="300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="600" height="300" fill="#ffffff" />
+  
+  <!-- Bookshelf -->
+  <g transform="translate(100, 50)">
+    <rect x="0" y="0" width="400" height="180" fill="#8d6e63" stroke="#5d4037" stroke-width="3"/>
+    <rect x="10" y="150" width="380" height="10" fill="#d7ccc8"/> <!-- Shelf -->
+    
+    <!-- Title -->
+    <rect x="110" y="-15" width="180" height="40" rx="5" fill="#a1887f" stroke="#5d4037" stroke-width="2"/>
+    <text x="200" y="10" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#fff" text-anchor="middle">TreeSet (Bookshelf)</text>
+
+    <!-- Book 1 (10) -->
+    <g transform="translate(30, 70)">
+      <rect x="0" y="0" width="30" height="80" fill="#ffcc80" stroke="#e65100" stroke-width="2"/>
+      <text x="15" y="45" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#e65100" text-anchor="middle">10</text>
+    </g>
+
+    <!-- Book 2 (30) -->
+    <g transform="translate(80, 70)">
+      <rect x="0" y="0" width="30" height="80" fill="#ffcc80" stroke="#e65100" stroke-width="2"/>
+      <text x="15" y="45" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#e65100" text-anchor="middle">30</text>
+    </g>
+    
+    <!-- Gap for 50 -->
+    
+    <!-- Book 3 (70) -->
+    <g transform="translate(200, 70)">
+      <rect x="0" y="0" width="30" height="80" fill="#ffcc80" stroke="#e65100" stroke-width="2"/>
+      <text x="15" y="45" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#e65100" text-anchor="middle">70</text>
+    </g>
+
+    <!-- Book 4 (90) -->
+    <g transform="translate(250, 70)">
+      <rect x="0" y="0" width="30" height="80" fill="#ffcc80" stroke="#e65100" stroke-width="2"/>
+      <text x="15" y="45" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#e65100" text-anchor="middle">90</text>
+    </g>
+  </g>
+
+  <!-- New Book (50) insertion -->
+  <g transform="translate(200, 250)">
+    <rect x="0" y="0" width="30" height="80" fill="#a5d6a7" stroke="#2e7d32" stroke-width="2"/>
+    <text x="15" y="45" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#2e7d32" text-anchor="middle">50</text>
+  </g>
+  
+  <path d="M215,250 L215,230 L240,150" stroke="#2e7d32" stroke-width="3" marker-end="url(#arrow_tree)"/>
+  
+  <text x="350" y="240" font-family="Arial, sans-serif" font-size="12" fill="#2e7d32" text-anchor="middle">"50은 30보다 크고 70보다 작으니 여기!"</text>
+  
+  <defs>
+    <marker id="arrow_tree" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#2e7d32" />
+    </marker>
+  </defs>
+
+  <text x="300" y="290" font-family="Arial, sans-serif" font-size="12" fill="#555" text-anchor="middle">"Tree는 데이터를 넣는 순간부터 순서대로(정렬되어) 저장됩니다."</text>
+
+</svg>

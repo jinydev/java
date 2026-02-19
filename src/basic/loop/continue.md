@@ -1,36 +1,24 @@
 ---
 layout: basic
-title: "5.5 continue 문"
+title: "7.5 continue 문"
 nav_order: 5
-parent: "Chapter 05. 반복문"
-grand_parent: "객체지향 자바 프로그래밍"
+parent: "Chapter 07. 반복문"
+grand_parent: "Part 01. 자바 언어의 기초"
 ---
 
-# 5.5 continue 문
+# 7.5 continue 문
 
-`continue` 문은 반복문인 `for` 문, `while` 문, `do-while` 문에서만 사용되는데, 블록 내부에서 `continue` 문이 실행되면 `for` 문의 증감식 또는 `while` 문, `do-while` 문의 조건식으로 바로 이동한다.
+## 1. 이번만 건너뛰기 ⏭️
 
-`continue` 문은 반복문을 종료하지 않고 계속 반복을 수행한다는 점이 `break` 문과 다르다. `break` 문과 마찬가지로 `continue` 문도 대개 `if` 문과 같이 사용되는데, 특정 조건을 만족하는 경우에 `continue` 문을 실행해서 그 이후의 문장을 실행하지 않고 다음 반복으로 넘어간다.
+반복문을 아예 종료하는(`break`) 것이 아니라,
+**"이번 바퀴만 쉬고 다음 바퀴로 넘어가라"**는 뜻입니다.
 
-다음 예제는 1에서 10 사이의 수 중에서 짝수만 출력하고 홀수인 경우에는 다음 반복으로 넘어간다.
-
-**[예제: ContinueExample.java]**
 ```java
-package ch04.sec08;
-
-public class ContinueExample {
-    public static void main(String[] args) {
-        for(int i=1; i<=10; i++) {
-            if(i%2 != 0) {
-                continue;
-            }
-            System.out.print(i + " ");
-        }
+// 1부터 10까지 짝수만 출력하기
+for(int i=1; i<=10; i++) {
+    if(i % 2 != 0) { // 홀수라면
+        continue; // 밑에 코드는 실행하지 말고 다음 숫자로 넘어가!
     }
+    System.out.println(i); // 짝수만 출력됨
 }
-```
-
-**실행 결과**
-```
-2 4 6 8 10 
 ```

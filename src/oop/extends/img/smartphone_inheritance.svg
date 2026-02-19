@@ -1,0 +1,40 @@
+<svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="600" height="400" fill="#fcfcfc"/>
+
+  <!-- Title -->
+  <text x="300" y="40" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="#2c3e50" font-weight="bold">SmartPhone 상속 구조</text>
+
+  <!-- Phone (Parent) -->
+  <g transform="translate(200, 60)">
+    <rect width="200" height="120" rx="10" fill="#e0f7fa" stroke="#00bcd4" stroke-width="2"/>
+    <text x="100" y="30" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#0097a7" font-weight="bold">Phone (부모)</text>
+    
+    <text x="30" y="60" font-family="Arial, sans-serif" font-size="12" fill="#006064">- model, color</text>
+    <text x="30" y="80" font-family="Arial, sans-serif" font-size="12" fill="#006064">- bell(), hangUp()</text>
+  </g>
+
+  <!-- Arrow -->
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2c3e50"/>
+    </marker>
+  </defs>
+  <line x1="300" y1="230" x2="300" y2="180" stroke="#2c3e50" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="310" y="210" font-family="Arial, sans-serif" font-size="14" fill="#2c3e50">extends</text>
+
+  <!-- SmartPhone (Child) -->
+  <g transform="translate(180, 230)">
+    <rect width="240" height="140" rx="10" fill="#e8eaf6" stroke="#3f51b5" stroke-width="2"/>
+    <text x="120" y="30" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#3949ab" font-weight="bold">SmartPhone (자식)</text>
+    
+    <!-- Inherited -->
+    <rect x="20" y="45" width="200" height="40" rx="5" fill="#e0f7fa" stroke="#00bcd4" stroke-dasharray="3,3"/>
+    <text x="120" y="70" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#0097a7">(Phone의 모든 기능 포함)</text>
+
+    <!-- New -->
+    <text x="30" y="105" font-family="Arial, sans-serif" font-size="12" fill="#1a237e" font-weight="bold">+ wifi (추가)</text>
+    <text x="30" y="125" font-family="Arial, sans-serif" font-size="12" fill="#1a237e" font-weight="bold">+ internet() (추가)</text>
+  </g>
+
+</svg>

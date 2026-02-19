@@ -1,0 +1,51 @@
+<svg width="600" height="300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="600" height="300" fill="#ffffff" />
+  
+  <!-- Jewelry Box -->
+  <g transform="translate(150, 50)">
+    <rect x="0" y="0" width="300" height="200" rx="20" fill="#f3e5f5" stroke="#8e24aa" stroke-width="3"/>
+    
+    <!-- Title -->
+    <rect x="80" y="-15" width="140" height="40" rx="5" fill="#ab47bc" stroke="#6a1b9a" stroke-width="2"/>
+    <text x="150" y="10" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#fff" text-anchor="middle">Set (Jewelry Box)</text>
+
+    <!-- Item: Diamond (Already in) -->
+    <g transform="translate(60, 60)">
+      <path d="M15,0 L30,15 L15,30 L0,15 Z" fill="#b3e5fc" stroke="#0288d1" stroke-width="2"/>
+      <text x="15" y="45" font-family="Arial, sans-serif" font-size="12" fill="#0277bd" text-anchor="middle">Diamond</text>
+    </g>
+
+    <!-- Item: Ruby (Already in) -->
+    <g transform="translate(200, 80)">
+      <circle cx="15" cy="15" r="15" fill="#ffcdd2" stroke="#d32f2f" stroke-width="2"/>
+      <text x="15" y="45" font-family="Arial, sans-serif" font-size="12" fill="#c62828" text-anchor="middle">Ruby</text>
+    </g>
+
+    <!-- Item: Gold (Already in) -->
+    <g transform="translate(130, 140)">
+      <rect x="0" y="0" width="40" height="20" rx="2" fill="#fff9c4" stroke="#fbc02d" stroke-width="2"/>
+      <text x="20" y="35" font-family="Arial, sans-serif" font-size="12" fill="#f57f17" text-anchor="middle">Gold</text>
+    </g>
+  </g>
+
+  <!-- Trying to insert duplicate Diamond -->
+  <g transform="translate(50, 60)">
+    <path d="M15,0 L30,15 L15,30 L0,15 Z" fill="#b3e5fc" stroke="#0288d1" stroke-width="2" opacity="0.7"/>
+    <text x="-60" y="20" font-family="Arial, sans-serif" font-size="12" fill="#0277bd">New Diamond</text>
+  </g>
+  
+  <!-- Arrow bouncing off -->
+  <path d="M50,75 L100,75" stroke="#d32f2f" stroke-width="3" marker-end="url(#arrow_block)"/>
+  <text x="75" y="50" font-family="Arial, sans-serif" font-size="20" fill="#d32f2f" text-anchor="middle">🚫</text>
+  <text x="75" y="100" font-family="Arial, sans-serif" font-size="10" fill="#d32f2f" text-anchor="middle">Duplicate!</text>
+
+  <defs>
+    <marker id="arrow_block" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#d32f2f" />
+    </marker>
+  </defs>
+
+  <text x="300" y="280" font-family="Arial, sans-serif" font-size="12" fill="#555" text-anchor="middle">"Set은 순서가 없고, 똑같은 보석(객체)을 두 개 넣을 수 없습니다."</text>
+
+</svg>

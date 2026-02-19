@@ -6,105 +6,94 @@ parent: "Chapter 07. 상속"
 grand_parent: "객체지향 자바 프로그래밍"
 ---
 
-# 7.11 봉인된 클래스
+# 7.11 봉인된 클래스 (Sealed Class)
 
-기본적으로 final 클래스를 제외한 모든 클래스는 부모 클래스가 될 수 있다. 그러나 Java 15부터는 무분별한 자식 클래스 생성을 방지하기 위해 봉인된(sealed) 클래스가 도입되었다.
+`final` 클래스는 상속을 아예 금지합니다.
+하지만 가끔은 **"특정 친구들에게만 상속을 허락하고 싶을 때"**가 있습니다.
+Java 15부터 도입된 **Sealed Class**가 바로 그 역할을 합니다.
 
-다음과 같이 Person의 자식 클래스는 Employee와 Manager만 가능하고, 그 이외는 자식 클래스가 될 수 없도록 Person을 봉인된 클래스로 선언할 수 있다.
+### 💡 핵심 비유: VIP 전용 멤버십
+> **"아무나 가입할 수 없다. 초대받은 사람(Listed)만 들어올 수 있다!"**
+
+![Sealed Concept](./img/sealed_concept.svg)
+
+---
+
+## 1. 사용 방법 (`permits`)
+
+`sealed` 키워드로 봉인을 선언하고, `permits` 뒤에 상속을 허락할 자식 클래스들을 나열합니다.
 
 ```java
-public sealed class Person permits Employee, Manager { ... }
+// "Employee와 Manager만 나를 상속받을 수 있어!"
+public sealed class Person permits Employee, Manager {
+    public String name;
+}
 ```
 
-sealed 키워드를 사용하면 permits 키워드 뒤에 상속 가능한 자식 클래스를 지정해야 한다. 봉인된 Person 클래스를 상속하는 Employee와 Manager는 final 또는 non-sealed 키워드로 다음과 같이 선언하거나, sealed 키워드를 사용해서 또 다른 봉인 클래스로 선언해야 한다.
+### 상속받은 자식의 의무
+봉인된 클래스를 상속받은 자식 클래스(`Employee`, `Manager`)는 반드시 다음 3가지 중 하나를 선택해야 합니다.
+
+1.  **`final`**: 더 이상 상속 불가 (대 끊기)
+2.  **`sealed`**: 나도 또 다른 특정 자식에게만 허용 (반복)
+3.  **`non-sealed`**: 봉인 해제! 이제부터 누구나 상속 가능 (개방)
 
 ```java
+// 1. final: 상속 끝
 public final class Employee extends Person { ... }
+
+// 3. non-sealed: 봉인 해제 (자유롭게 상속 가능해짐)
 public non-sealed class Manager extends Person { ... }
 ```
 
-final은 더 이상 상속할 수 없다는 뜻이고, non-sealed는 봉인을 해제한다는 뜻이다. 따라서 Employee는 더 이상 자식 클래스를 만들 수 없지만 Manager는 다음과 같이 자식 클래스를 만들 수 있다.
+---
+
+## 2. 왜 쓸까요? (Deep Dive)
+
+일반적인 상속은 너무 열려있습니다. 내가 라이브러리를 만들었는데, 사용자가 내 의도와 다르게 무분별하게 상속해서 기능을 망가뜨릴 수 있습니다.
+반대로 `final`은 너무 닫혀있어서 확장이 불가능합니다.
+
+**Sealed Class는 그 중간 지점을 제공합니다.**
+*   라이브러리 작성자가 **"상속 가능한 범위를 명확히 통제"**할 수 있습니다.
+*   패턴 매칭(Switch문 등)에서 모든 경우의 수를 컴파일러가 알 수 있어 **안전성**이 높아집니다.
 
 ```java
-public class Director extends Manager { ... }
+// 컴파일러는 Person의 자식이 Employee, Manager 뿐이라는 걸 안다! (non-sealed 제외 시)
+// 따라서 default 케이스가 없어도 안전하다.
 ```
 
-설명한 내용을 실습으로 확인해 보자.
+<br>
+<br>
+
+---
+
+## 3. 예제 코드
 
 **Person.java**
 ```java
-package ch07.sec11;
-
-public sealed class Person permits Employee, Manager {
-	// 필드
-	public String name;
-	
-	// 메소드
-	public void work() {
-		System.out.println("하는 일이 결정되지 않았습니다.");
-	}
+public sealed class Person permits Student, Teacher {
+    public String name;
 }
 ```
 
-**Employee.java**
+**Student.java**
 ```java
-package ch07.sec11;
-
-public final class Employee extends Person {
-	@Override
-	public void work() {
-		System.out.println("제품을 생산합니다.");
-	}
+public final class Student extends Person { // 더 이상 상속 불가
+    public void study() { System.out.println("공부"); }
 }
 ```
 
-**Manager.java**
+**Teacher.java**
 ```java
-package ch07.sec11;
-
-public non-sealed class Manager extends Person {
-	@Override
-	public void work() {
-		System.out.println("생산 관리를 합니다.");
-	}
+public non-sealed class Teacher extends Person { // 이제부터 상속 허용
+    public void teach() { System.out.println("가르침"); }
 }
 ```
 
-**Director.java**
+**Professor.java**
 ```java
-package ch07.sec11;
-
-public class Director extends Manager {
-	@Override
-	public void work() {
-		System.out.println("제품을 기획합니다.");
-	}
+// Teacher는 non-sealed라서 상속 가능!
+public class Professor extends Teacher { 
 }
 ```
 
-**SealedExample.java**
-```java
-package ch07.sec11;
-
-public class SealedExample {
-	public static void main(String[] args) {
-		Person p = new Person();
-		Employee e = new Employee();
-		Manager m = new Manager();
-		Director d = new Director();
-		
-		p.work();
-		e.work();
-		m.work();
-		d.work();
-	}
-}
-```
-
-**실행 결과**
-```
-하는 일이 결정되지 않았습니다.
-제품을 생산합니다.
-생산 관리를 합니다.
-제품을 기획합니다.
-```
+> **결론**: 무분별한 상속을 막고, **계층 구조를 엄격하게 관리**하고 싶을 때 Sealed Class를 사용하세요.

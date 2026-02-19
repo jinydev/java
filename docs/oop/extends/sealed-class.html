@@ -8,7 +8,7 @@
   <!-- 기본 메타데이터 --><meta name="description" content="Jiny linux"><meta name="author" content="HojinLee"><!-- 제목 설정 --><title>7.11 봉인된 클래스</title>
   <meta name="title" content="7.11 봉인된 클래스" /><!-- 키워드 설정 --><!-- Open Graph 메타데이터 --><meta property="og:title" content="7.11 봉인된 클래스"><meta property="og:description" content="Jiny linux"><meta property="og:type" content="website"><meta property="og:locale" content="ko">
   <meta property="og:site_name" content="linux">
-  <meta property="og:url" content="http://localhost:4000/oop/extends/sealed-class.html">
+  <meta property="og:url" content="https://java.jiny.dev/oop/extends/sealed-class.html">
 
   <!-- Twitter 카드 메타데이터 --><meta name="twitter:card" content="summary"><meta property="twitter:title" content="7.11 봉인된 클래스"><!-- Begin Jekyll SEO tag v2.8.0 -->
 <meta name="generator" content="Jekyll v4.4.1" />
@@ -17,14 +17,14 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
 <meta property="og:description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
-<link rel="canonical" href="http://localhost:4000/oop/extends/sealed-class.html" />
-<meta property="og:url" content="http://localhost:4000/oop/extends/sealed-class.html" />
+<link rel="canonical" href="https://java.jiny.dev/oop/extends/sealed-class.html" />
+<meta property="og:url" content="https://java.jiny.dev/oop/extends/sealed-class.html" />
 <meta property="og:site_name" content="객체지향 자바 프로그래밍 (Object-Oriented Java Programming)" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="7.11 봉인된 클래스" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"7.11 봉인된 클래스","url":"http://localhost:4000/oop/extends/sealed-class.html"}</script>
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"7.11 봉인된 클래스","url":"https://java.jiny.dev/oop/extends/sealed-class.html"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -341,7 +341,7 @@
             class="bd-links-link bd-links-btn btn d-inline-flex align-items-center rounded border-0 collapsed w-100"
             data-bs-toggle="collapse" data-bs-target="#collapse-1"
             aria-expanded="false">
-            05. 참조 타입
+            09. 클래스
             <svg class="bi ms-auto" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
               xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd"
@@ -349,127 +349,6 @@
             </svg>
           </button>
           <div class="collapse " id="collapse-1">
-            <ul class="list-unstyled fw-normal pb-1 small ms-3">
-              
-              <li>
-                <a href="/oop/reference"
-                  class="bd-links-link d-inline-block rounded ">
-                  학습목표
-                </a>
-              </li>
-              
-              <li>
-                <a href="/oop/reference/classification"
-                  class="bd-links-link d-inline-block rounded ">
-                  5.1 데이터 타입 분류
-                </a>
-              </li>
-              
-              <li>
-                <a href="/oop/reference/memory-area"
-                  class="bd-links-link d-inline-block rounded ">
-                  5.2 메모리 사용 영역
-                </a>
-              </li>
-              
-              <li>
-                <a href="/oop/reference/equality"
-                  class="bd-links-link d-inline-block rounded ">
-                  5.3 참조 타입 변수의 ==, != 연산
-                </a>
-              </li>
-              
-              <li>
-                <a href="/oop/reference/null"
-                  class="bd-links-link d-inline-block rounded ">
-                  5.4 null과 NullPointerException
-                </a>
-              </li>
-              
-              <li>
-                <a href="/oop/reference/string"
-                  class="bd-links-link d-inline-block rounded ">
-                  5.5 문자열(String) 타입
-                </a>
-              </li>
-              
-              <li>
-                <a href="/oop/reference/array"
-                  class="bd-links-link d-inline-block rounded ">
-                  5.6 배열(Array) 타입
-                </a>
-              </li>
-              
-              <li>
-                <a href="/oop/reference/multidimensional-array"
-                  class="bd-links-link d-inline-block rounded ">
-                  5.7 다차원 배열
-                </a>
-              </li>
-              
-              <li>
-                <a href="/oop/reference/object-array"
-                  class="bd-links-link d-inline-block rounded ">
-                  5.8 객체를 참조하는 배열
-                </a>
-              </li>
-              
-              <li>
-                <a href="/oop/reference/array-copy"
-                  class="bd-links-link d-inline-block rounded ">
-                  5.9 배열 복사
-                </a>
-              </li>
-              
-              <li>
-                <a href="/oop/reference/enhanced-for"
-                  class="bd-links-link d-inline-block rounded ">
-                  5.10 배열 항목 반복을 위한 향상된 for 문
-                </a>
-              </li>
-              
-              <li>
-                <a href="/oop/reference/main-arguments"
-                  class="bd-links-link d-inline-block rounded ">
-                  5.11 main() 메소드의 String[] 매개변수 용도
-                </a>
-              </li>
-              
-              <li>
-                <a href="/oop/reference/enum"
-                  class="bd-links-link d-inline-block rounded ">
-                  5.12 열거(Enum) 타입
-                </a>
-              </li>
-              
-              <li>
-                <a href="/oop/reference/quiz"
-                  class="bd-links-link d-inline-block rounded ">
-                  확인문제
-                </a>
-              </li>
-              
-            </ul>
-          </div>
-          
-        </li>
-        
-        <li>
-          
-          
-          
-          <button
-            class="bd-links-link bd-links-btn btn d-inline-flex align-items-center rounded border-0 collapsed w-100"
-            data-bs-toggle="collapse" data-bs-target="#collapse-2"
-            aria-expanded="false">
-            06. 클래스
-            <svg class="bi ms-auto" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
-              xmlns="http://www.w3.org/2000/svg">
-              <path fill-rule="evenodd"
-                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
-            </svg>
-          </button>
-          <div class="collapse " id="collapse-2">
             <ul class="list-unstyled fw-normal pb-1 small ms-3">
               
               <li>
@@ -482,112 +361,112 @@
               <li>
                 <a href="/oop/oop/oop"
                   class="bd-links-link d-inline-block rounded ">
-                  6.1 객체지향 프로그래밍
+                  9.1 객체지향 프로그래밍
                 </a>
               </li>
               
               <li>
                 <a href="/oop/oop/object-class"
                   class="bd-links-link d-inline-block rounded ">
-                  6.2 객체와 클래스
+                  9.2 객체와 클래스
                 </a>
               </li>
               
               <li>
                 <a href="/oop/oop/class-declaration"
                   class="bd-links-link d-inline-block rounded ">
-                  6.3 클래스 선언
+                  9.3 클래스 선언
                 </a>
               </li>
               
               <li>
                 <a href="/oop/oop/instance-creation"
                   class="bd-links-link d-inline-block rounded ">
-                  6.4 객체 생성과 클래스 변수
+                  9.4 객체 생성과 클래스 변수
                 </a>
               </li>
               
               <li>
                 <a href="/oop/oop/class-members"
                   class="bd-links-link d-inline-block rounded ">
-                  6.5 클래스의 구성 멤버
+                  9.5 클래스의 구성 멤버
                 </a>
               </li>
               
               <li>
                 <a href="/oop/oop/field"
                   class="bd-links-link d-inline-block rounded ">
-                  6.6 필드 선언과 사용
+                  9.6 필드 선언과 사용
                 </a>
               </li>
               
               <li>
                 <a href="/oop/oop/constructor"
                   class="bd-links-link d-inline-block rounded ">
-                  6.7 생성자 선언과 호출
+                  9.7 생성자 선언과 호출
                 </a>
               </li>
               
               <li>
                 <a href="/oop/oop/method"
                   class="bd-links-link d-inline-block rounded ">
-                  6.8 메소드 선언과 호출
+                  9.8 메소드 선언과 호출
                 </a>
               </li>
               
               <li>
                 <a href="/oop/oop/instance-member"
                   class="bd-links-link d-inline-block rounded ">
-                  6.9 인스턴스 멤버
+                  9.9 인스턴스 멤버
                 </a>
               </li>
               
               <li>
                 <a href="/oop/oop/static-member"
                   class="bd-links-link d-inline-block rounded ">
-                  6.10 정적 멤버
+                  9.10 정적 멤버
                 </a>
               </li>
               
               <li>
                 <a href="/oop/oop/final-constant"
                   class="bd-links-link d-inline-block rounded ">
-                  6.11 final 필드와 상수
+                  9.11 final 필드와 상수
                 </a>
               </li>
               
               <li>
                 <a href="/oop/oop/package"
                   class="bd-links-link d-inline-block rounded ">
-                  6.12 패키지
+                  9.12 패키지
                 </a>
               </li>
               
               <li>
                 <a href="/oop/oop/access-modifier"
                   class="bd-links-link d-inline-block rounded ">
-                  6.13 접근 제한자
+                  9.13 접근 제한자
                 </a>
               </li>
               
               <li>
                 <a href="/oop/oop/getter-setter"
                   class="bd-links-link d-inline-block rounded ">
-                  6.14 Getter와 Setter
+                  9.14 Getter와 Setter
                 </a>
               </li>
               
               <li>
                 <a href="/oop/oop/singleton"
                   class="bd-links-link d-inline-block rounded ">
-                  6.15 싱글톤 패턴
+                  9.15 싱글톤 패턴
                 </a>
               </li>
               
               <li>
                 <a href="/oop/oop/record"
                   class="bd-links-link d-inline-block rounded ">
-                  6.16 레코드 패턴
+                  9.16 레코드 패턴
                 </a>
               </li>
               
@@ -609,16 +488,16 @@
           
           <button
             class="bd-links-link bd-links-btn btn d-inline-flex align-items-center rounded border-0 collapsed w-100"
-            data-bs-toggle="collapse" data-bs-target="#collapse-3"
+            data-bs-toggle="collapse" data-bs-target="#collapse-2"
             aria-expanded="false">
-            07. 상속
+            10. 상속
             <svg class="bi ms-auto" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
               xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd"
                 d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
             </svg>
           </button>
-          <div class="collapse " id="collapse-3">
+          <div class="collapse " id="collapse-2">
             <ul class="list-unstyled fw-normal pb-1 small ms-3">
               
               <li>
@@ -631,77 +510,77 @@
               <li>
                 <a href="/oop/extends/inheritance"
                   class="bd-links-link d-inline-block rounded ">
-                  7.1 상속 개념
+                  10.1 상속 개념
                 </a>
               </li>
               
               <li>
                 <a href="/oop/extends/class-inheritance"
                   class="bd-links-link d-inline-block rounded ">
-                  7.2 클래스 상속
+                  10.2 클래스 상속
                 </a>
               </li>
               
               <li>
                 <a href="/oop/extends/super-constructor"
                   class="bd-links-link d-inline-block rounded ">
-                  7.3 부모 생성자 호출
+                  10.3 부모 생성자 호출
                 </a>
               </li>
               
               <li>
                 <a href="/oop/extends/method-overriding"
                   class="bd-links-link d-inline-block rounded ">
-                  7.4 메소드 재정의
+                  10.4 메소드 재정의
                 </a>
               </li>
               
               <li>
                 <a href="/oop/extends/final"
                   class="bd-links-link d-inline-block rounded ">
-                  7.5 final 클래스와 final 메소드
+                  10.5 final 클래스와 final 메소드
                 </a>
               </li>
               
               <li>
                 <a href="/oop/extends/protected"
                   class="bd-links-link d-inline-block rounded ">
-                  7.6 protected 접근 제한자
+                  10.6 protected 접근 제한자
                 </a>
               </li>
               
               <li>
                 <a href="/oop/extends/casting"
                   class="bd-links-link d-inline-block rounded ">
-                  7.7 타입 변환
+                  10.7 타입 변환
                 </a>
               </li>
               
               <li>
                 <a href="/oop/extends/polymorphism"
                   class="bd-links-link d-inline-block rounded ">
-                  7.8 다형성
+                  10.8 다형성
                 </a>
               </li>
               
               <li>
                 <a href="/oop/extends/instanceof"
                   class="bd-links-link d-inline-block rounded ">
-                  7.9 객체 타입 확인
+                  10.9 객체 타입 확인
                 </a>
               </li>
               
               <li>
                 <a href="/oop/extends/abstract-class"
                   class="bd-links-link d-inline-block rounded ">
-                  7.10 추상 클래스
+                  10.10 추상 클래스
                 </a>
               </li>
               
               <li>
                 <a href="/oop/extends/sealed-class"
                   class="bd-links-link d-inline-block rounded ">
-                  7.11 봉인된 클래스
+                  10.11 봉인된 클래스
                 </a>
               </li>
               
@@ -723,16 +602,16 @@
           
           <button
             class="bd-links-link bd-links-btn btn d-inline-flex align-items-center rounded border-0 collapsed w-100"
-            data-bs-toggle="collapse" data-bs-target="#collapse-4"
+            data-bs-toggle="collapse" data-bs-target="#collapse-3"
             aria-expanded="false">
-            08. 인터페이스
+            11. 인터페이스
             <svg class="bi ms-auto" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
               xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd"
                 d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
             </svg>
           </button>
-          <div class="collapse " id="collapse-4">
+          <div class="collapse " id="collapse-3">
             <ul class="list-unstyled fw-normal pb-1 small ms-3">
               
               <li>
@@ -745,91 +624,91 @@
               <li>
                 <a href="/oop/interface/role"
                   class="bd-links-link d-inline-block rounded ">
-                  8.1 인터페이스의 역할
+                  11.1 인터페이스의 역할
                 </a>
               </li>
               
               <li>
                 <a href="/oop/interface/declaration"
                   class="bd-links-link d-inline-block rounded ">
-                  8.2 인터페이스와 구현 클래스 선언
+                  11.2 인터페이스와 구현 클래스 선언
                 </a>
               </li>
               
               <li>
                 <a href="/oop/interface/constant-field"
                   class="bd-links-link d-inline-block rounded ">
-                  8.3 상수 필드
+                  11.3 상수 필드
                 </a>
               </li>
               
               <li>
                 <a href="/oop/interface/abstract-method"
                   class="bd-links-link d-inline-block rounded ">
-                  8.4 추상 메소드
+                  11.4 추상 메소드
                 </a>
               </li>
               
               <li>
                 <a href="/oop/interface/default-method"
                   class="bd-links-link d-inline-block rounded ">
-                  8.5 디폴트 메소드
+                  11.5 디폴트 메소드
                 </a>
               </li>
               
               <li>
                 <a href="/oop/interface/static-method"
                   class="bd-links-link d-inline-block rounded ">
-                  8.6 정적 메소드
+                  11.6 정적 메소드
                 </a>
               </li>
               
               <li>
                 <a href="/oop/interface/private-method"
                   class="bd-links-link d-inline-block rounded ">
-                  8.7 private 메소드
+                  11.7 private 메소드
                 </a>
               </li>
               
               <li>
                 <a href="/oop/interface/multiple-implementation"
                   class="bd-links-link d-inline-block rounded ">
-                  8.8 다중 인터페이스 구현
+                  11.8 다중 인터페이스 구현
                 </a>
               </li>
               
               <li>
                 <a href="/oop/interface/inheritance"
                   class="bd-links-link d-inline-block rounded ">
-                  8.9 인터페이스 상속
+                  11.9 인터페이스 상속
                 </a>
               </li>
               
               <li>
                 <a href="/oop/interface/casting"
                   class="bd-links-link d-inline-block rounded ">
-                  8.10 타입 변환
+                  11.10 타입 변환
                 </a>
               </li>
               
               <li>
                 <a href="/oop/interface/polymorphism"
                   class="bd-links-link d-inline-block rounded ">
-                  8.11 다형성
+                  11.11 다형성
                 </a>
               </li>
               
               <li>
                 <a href="/oop/interface/instanceof"
                   class="bd-links-link d-inline-block rounded ">
-                  8.12 객체 타입 확인
+                  11.12 객체 타입 확인
                 </a>
               </li>
               
               <li>
                 <a href="/oop/interface/sealed-interface"
                   class="bd-links-link d-inline-block rounded ">
-                  8.13 봉인된 인터페이스
+                  11.13 봉인된 인터페이스
                 </a>
               </li>
               
@@ -851,16 +730,16 @@
           
           <button
             class="bd-links-link bd-links-btn btn d-inline-flex align-items-center rounded border-0 collapsed w-100"
-            data-bs-toggle="collapse" data-bs-target="#collapse-5"
+            data-bs-toggle="collapse" data-bs-target="#collapse-4"
             aria-expanded="false">
-            09. 중첩 선언과 익명 객체
+            12. 중첩 선언과 익명 객체
             <svg class="bi ms-auto" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
               xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd"
                 d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
             </svg>
           </button>
-          <div class="collapse " id="collapse-5">
+          <div class="collapse " id="collapse-4">
             <ul class="list-unstyled fw-normal pb-1 small ms-3">
               
               <li>
@@ -873,49 +752,49 @@
               <li>
                 <a href="/oop/nested/nested-class"
                   class="bd-links-link d-inline-block rounded ">
-                  9.1 중첩 클래스
+                  12.1 중첩 클래스
                 </a>
               </li>
               
               <li>
                 <a href="/oop/nested/instance-member-class"
                   class="bd-links-link d-inline-block rounded ">
-                  9.2 인스턴스 멤버 클래스
+                  12.2 인스턴스 멤버 클래스
                 </a>
               </li>
               
               <li>
                 <a href="/oop/nested/static-member-class"
                   class="bd-links-link d-inline-block rounded ">
-                  9.3 정적 멤버 클래스
+                  12.3 정적 멤버 클래스
                 </a>
               </li>
               
               <li>
                 <a href="/oop/nested/local-class"
                   class="bd-links-link d-inline-block rounded ">
-                  9.4 로컬 클래스
+                  12.4 로컬 클래스
                 </a>
               </li>
               
               <li>
                 <a href="/oop/nested/access-outer"
                   class="bd-links-link d-inline-block rounded ">
-                  9.5 바깥 멤버 접근
+                  12.5 바깥 멤버 접근
                 </a>
               </li>
               
               <li>
                 <a href="/oop/nested/nested-interface"
                   class="bd-links-link d-inline-block rounded ">
-                  9.6 중첩 인터페이스
+                  12.6 중첩 인터페이스
                 </a>
               </li>
               
               <li>
                 <a href="/oop/nested/anonymous-object"
                   class="bd-links-link d-inline-block rounded ">
-                  9.7 익명 객체
+                  12.7 익명 객체
                 </a>
               </li>
               
@@ -937,16 +816,16 @@
           
           <button
             class="bd-links-link bd-links-btn btn d-inline-flex align-items-center rounded border-0 collapsed w-100"
-            data-bs-toggle="collapse" data-bs-target="#collapse-6"
+            data-bs-toggle="collapse" data-bs-target="#collapse-5"
             aria-expanded="false">
-            10. 라이브러리와 모듈
+            13. 라이브러리와 모듈
             <svg class="bi ms-auto" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
               xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd"
                 d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
             </svg>
           </button>
-          <div class="collapse " id="collapse-6">
+          <div class="collapse " id="collapse-5">
             <ul class="list-unstyled fw-normal pb-1 small ms-3">
               
               <li>
@@ -959,63 +838,63 @@
               <li>
                 <a href="/oop/module/library"
                   class="bd-links-link d-inline-block rounded ">
-                  10.1 라이브러리
+                  13.1 라이브러리
                 </a>
               </li>
               
               <li>
                 <a href="/oop/module/module"
                   class="bd-links-link d-inline-block rounded ">
-                  10.2 모듈
+                  13.2 모듈
                 </a>
               </li>
               
               <li>
                 <a href="/oop/module/application-modularity"
                   class="bd-links-link d-inline-block rounded ">
-                  10.3 응용프로그램 모듈화
+                  13.3 응용프로그램 모듈화
                 </a>
               </li>
               
               <li>
                 <a href="/oop/module/modular-jar"
                   class="bd-links-link d-inline-block rounded ">
-                  10.4 모듈 배포용 JAR 파일
+                  13.4 모듈 배포용 JAR 파일
                 </a>
               </li>
               
               <li>
                 <a href="/oop/module/package-hiding"
                   class="bd-links-link d-inline-block rounded ">
-                  10.5 패키지 은닉
+                  13.5 패키지 은닉
                 </a>
               </li>
               
               <li>
                 <a href="/oop/module/transitive-dependency"
                   class="bd-links-link d-inline-block rounded ">
-                  10.6 전이 의존
+                  13.6 전이 의존
                 </a>
               </li>
               
               <li>
                 <a href="/oop/module/aggregator-module"
                   class="bd-links-link d-inline-block rounded ">
-                  10.7 집합 모듈
+                  13.7 집합 모듈
                 </a>
               </li>
               
               <li>
                 <a href="/oop/module/reflection"
                   class="bd-links-link d-inline-block rounded ">
-                  10.8 리플렉션 허용
+                  13.8 리플렉션 허용
                 </a>
               </li>
               
               <li>
                 <a href="/oop/module/standard-modules"
                   class="bd-links-link d-inline-block rounded ">
-                  10.9 자바 표준 모듈
+                  13.9 자바 표준 모듈
                 </a>
               </li>
               
@@ -1037,16 +916,16 @@
           
           <button
             class="bd-links-link bd-links-btn btn d-inline-flex align-items-center rounded border-0 collapsed w-100"
-            data-bs-toggle="collapse" data-bs-target="#collapse-7"
+            data-bs-toggle="collapse" data-bs-target="#collapse-6"
             aria-expanded="false">
-            11. 예외 처리
+            14. 예외 처리
             <svg class="bi ms-auto" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
               xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd"
                 d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
             </svg>
           </button>
-          <div class="collapse " id="collapse-7">
+          <div class="collapse " id="collapse-6">
             <ul class="list-unstyled fw-normal pb-1 small ms-3">
               
               <li>
@@ -1059,42 +938,42 @@
               <li>
                 <a href="/oop/exception/exception-class"
                   class="bd-links-link d-inline-block rounded ">
-                  11.1 예외와 예외 클래스
+                  14.1 예외와 예외 클래스
                 </a>
               </li>
               
               <li>
                 <a href="/oop/exception/handling-code"
                   class="bd-links-link d-inline-block rounded ">
-                  11.2 예외 처리 코드
+                  14.2 예외 처리 코드
                 </a>
               </li>
               
               <li>
                 <a href="/oop/exception/handling-by-type"
                   class="bd-links-link d-inline-block rounded ">
-                  11.3 예외 종류에 따른 처리
+                  14.3 예외 종류에 따른 처리
                 </a>
               </li>
               
               <li>
                 <a href="/oop/exception/try-with-resources"
                   class="bd-links-link d-inline-block rounded ">
-                  11.4 리소스 자동 닫기
+                  14.4 리소스 자동 닫기
                 </a>
               </li>
               
               <li>
                 <a href="/oop/exception/throws"
                   class="bd-links-link d-inline-block rounded ">
-                  11.5 예외 떠넘기기
+                  14.5 예외 떠넘기기
                 </a>
               </li>
               
               <li>
                 <a href="/oop/exception/custom-exception"
                   class="bd-links-link d-inline-block rounded ">
-                  11.6 사용자 정의 예외
+                  14.6 사용자 정의 예외
                 </a>
               </li>
               
@@ -1116,16 +995,16 @@
           
           <button
             class="bd-links-link bd-links-btn btn d-inline-flex align-items-center rounded border-0 collapsed w-100"
-            data-bs-toggle="collapse" data-bs-target="#collapse-8"
+            data-bs-toggle="collapse" data-bs-target="#collapse-7"
             aria-expanded="false">
-            12. java.base 모듈
+            15. java.base 모듈
             <svg class="bi ms-auto" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
               xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd"
                 d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
             </svg>
           </button>
-          <div class="collapse " id="collapse-8">
+          <div class="collapse " id="collapse-7">
             <ul class="list-unstyled fw-normal pb-1 small ms-3">
               
               <li>
@@ -1138,84 +1017,84 @@
               <li>
                 <a href="/oop/api/documentation"
                   class="bd-links-link d-inline-block rounded ">
-                  12.1 API 도큐먼트
+                  15.1 API 도큐먼트
                 </a>
               </li>
               
               <li>
                 <a href="/oop/api/java-base"
                   class="bd-links-link d-inline-block rounded ">
-                  12.2 java.base 모듈
+                  15.2 java.base 모듈
                 </a>
               </li>
               
               <li>
                 <a href="/oop/api/object"
                   class="bd-links-link d-inline-block rounded ">
-                  12.3 Object 클래스
+                  15.3 Object 클래스
                 </a>
               </li>
               
               <li>
                 <a href="/oop/api/system"
                   class="bd-links-link d-inline-block rounded ">
-                  12.4 System 클래스
+                  15.4 System 클래스
                 </a>
               </li>
               
               <li>
                 <a href="/oop/api/string"
                   class="bd-links-link d-inline-block rounded ">
-                  12.5 문자열 클래스
+                  15.5 문자열 클래스
                 </a>
               </li>
               
               <li>
                 <a href="/oop/api/wrapper"
                   class="bd-links-link d-inline-block rounded ">
-                  12.6 포장 클래스
+                  15.6 포장 클래스
                 </a>
               </li>
               
               <li>
                 <a href="/oop/api/math"
                   class="bd-links-link d-inline-block rounded ">
-                  12.7 수학 클래스
+                  15.7 수학 클래스
                 </a>
               </li>
               
               <li>
                 <a href="/oop/api/date-time"
                   class="bd-links-link d-inline-block rounded ">
-                  12.8 날짜와 시간 클래스
+                  15.8 날짜와 시간 클래스
                 </a>
               </li>
               
               <li>
                 <a href="/oop/api/format"
                   class="bd-links-link d-inline-block rounded ">
-                  12.9 형식 클래스
+                  15.9 형식 클래스
                 </a>
               </li>
               
               <li>
                 <a href="/oop/api/regex"
                   class="bd-links-link d-inline-block rounded ">
-                  12.10 정규 표현식 클래스
+                  15.10 정규 표현식 클래스
                 </a>
               </li>
               
               <li>
                 <a href="/oop/api/reflection"
                   class="bd-links-link d-inline-block rounded ">
-                  12.11 리플렉션
+                  15.11 리플렉션
                 </a>
               </li>
               
               <li>
                 <a href="/oop/api/annotation"
                   class="bd-links-link d-inline-block rounded ">
-                  12.12 어노테이션
+                  15.12 어노테이션
                 </a>
               </li>
               
@@ -1237,16 +1116,16 @@
           
           <button
             class="bd-links-link bd-links-btn btn d-inline-flex align-items-center rounded border-0 collapsed w-100"
-            data-bs-toggle="collapse" data-bs-target="#collapse-9"
+            data-bs-toggle="collapse" data-bs-target="#collapse-8"
             aria-expanded="false">
-            13. 제네릭
+            16. 제네릭
             <svg class="bi ms-auto" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
               xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd"
                 d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
             </svg>
           </button>
-          <div class="collapse " id="collapse-9">
+          <div class="collapse " id="collapse-8">
             <ul class="list-unstyled fw-normal pb-1 small ms-3">
               
               <li>
@@ -1259,35 +1138,35 @@
               <li>
                 <a href="/oop/generic/intro"
                   class="bd-links-link d-inline-block rounded ">
-                  13.1 제네릭이란?
+                  16.1 제네릭이란?
                 </a>
               </li>
               
               <li>
                 <a href="/oop/generic/type"
                   class="bd-links-link d-inline-block rounded ">
-                  13.2 제네릭 타입
+                  16.2 제네릭 타입
                 </a>
               </li>
               
               <li>
                 <a href="/oop/generic/method"
                   class="bd-links-link d-inline-block rounded ">
-                  13.3 제네릭 메소드
+                  16.3 제네릭 메소드
                 </a>
               </li>
               
               <li>
                 <a href="/oop/generic/bounded-type"
                   class="bd-links-link d-inline-block rounded ">
-                  13.4 제한된 타입 파라미터
+                  16.4 제한된 타입 파라미터
                 </a>
               </li>
               
               <li>
                 <a href="/oop/generic/wildcard"
                   class="bd-links-link d-inline-block rounded ">
-                  13.5 와일드카드 타입 파라미터
+                  16.5 와일드카드 타입 파라미터
                 </a>
               </li>
               
@@ -1309,16 +1188,16 @@
           
           <button
             class="bd-links-link bd-links-btn btn d-inline-flex align-items-center rounded border-0 collapsed w-100"
-            data-bs-toggle="collapse" data-bs-target="#collapse-10"
+            data-bs-toggle="collapse" data-bs-target="#collapse-9"
             aria-expanded="false">
-            15. 컬렉션 자료구조
+            17. 컬렉션 자료구조
             <svg class="bi ms-auto" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
               xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd"
                 d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
             </svg>
           </button>
-          <div class="collapse " id="collapse-10">
+          <div class="collapse " id="collapse-9">
             <ul class="list-unstyled fw-normal pb-1 small ms-3">
               
               <li>
@@ -1331,63 +1210,63 @@
               <li>
                 <a href="/oop/collection/framework"
                   class="bd-links-link d-inline-block rounded ">
-                  15.1 컬렉션 프레임워크
+                  17.1 컬렉션 프레임워크
                 </a>
               </li>
               
               <li>
                 <a href="/oop/collection/list"
                   class="bd-links-link d-inline-block rounded ">
-                  15.2 List 컬렉션
+                  17.2 List 컬렉션
                 </a>
               </li>
               
               <li>
                 <a href="/oop/collection/set"
                   class="bd-links-link d-inline-block rounded ">
-                  15.3 Set 컬렉션
+                  17.3 Set 컬렉션
                 </a>
               </li>
               
               <li>
                 <a href="/oop/collection/map"
                   class="bd-links-link d-inline-block rounded ">
-                  15.4 Map 컬렉션
+                  17.4 Map 컬렉션
                 </a>
               </li>
               
               <li>
                 <a href="/oop/collection/search"
                   class="bd-links-link d-inline-block rounded ">
-                  15.5 검색 기능을 강화시킨 컬렉션
+                  17.5 검색 기능을 강화시킨 컬렉션
                 </a>
               </li>
               
               <li>
                 <a href="/oop/collection/stack-queue"
                   class="bd-links-link d-inline-block rounded ">
-                  15.6 LIFO와 FIFO 컬렉션
+                  17.6 LIFO와 FIFO 컬렉션
                 </a>
               </li>
               
               <li>
                 <a href="/oop/collection/synchronized"
                   class="bd-links-link d-inline-block rounded ">
-                  15.7 동기화된 컬렉션
+                  17.7 동기화된 컬렉션
                 </a>
               </li>
               
               <li>
                 <a href="/oop/collection/unmodifiable"
                   class="bd-links-link d-inline-block rounded ">
-                  15.8 수정할 수 없는 컬렉션
+                  17.8 수정할 수 없는 컬렉션
                 </a>
               </li>
               
               <li>
                 <a href="/oop/collection/sequenced"
                   class="bd-links-link d-inline-block rounded ">
-                  15.9 순차 컬렉션
+                  17.9 순차 컬렉션
                 </a>
               </li>
               
@@ -1409,16 +1288,16 @@
           
           <button
             class="bd-links-link bd-links-btn btn d-inline-flex align-items-center rounded border-0 collapsed w-100"
-            data-bs-toggle="collapse" data-bs-target="#collapse-11"
+            data-bs-toggle="collapse" data-bs-target="#collapse-10"
             aria-expanded="false">
-            16. 람다식
+            18. 람다식
             <svg class="bi ms-auto" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
               xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd"
                 d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
             </svg>
           </button>
-          <div class="collapse " id="collapse-11">
+          <div class="collapse " id="collapse-10">
             <ul class="list-unstyled fw-normal pb-1 small ms-3">
               
               <li>
@@ -1431,42 +1310,42 @@
               <li>
                 <a href="/oop/lambda/intro"
                   class="bd-links-link d-inline-block rounded ">
-                  16.1 람다식이란?
+                  18.1 람다식이란?
                 </a>
               </li>
               
               <li>
                 <a href="/oop/lambda/no-parameter"
                   class="bd-links-link d-inline-block rounded ">
-                  16.2 매개변수가 없는 람다식
+                  18.2 매개변수가 없는 람다식
                 </a>
               </li>
               
               <li>
                 <a href="/oop/lambda/parameter"
                   class="bd-links-link d-inline-block rounded ">
-                  16.3 매개변수가 있는 람다식
+                  18.3 매개변수가 있는 람다식
                 </a>
               </li>
               
               <li>
                 <a href="/oop/lambda/return"
                   class="bd-links-link d-inline-block rounded ">
-                  16.4 리턴값이 있는 람다식
+                  18.4 리턴값이 있는 람다식
                 </a>
               </li>
               
               <li>
                 <a href="/oop/lambda/method-reference"
                   class="bd-links-link d-inline-block rounded ">
-                  16.5 메소드 참조
+                  18.5 메소드 참조
                 </a>
               </li>
               
               <li>
                 <a href="/oop/lambda/constructor-reference"
                   class="bd-links-link d-inline-block rounded ">
-                  16.6 생성자 참조
+                  18.6 생성자 참조
                 </a>
               </li>
               
@@ -1527,100 +1406,105 @@
     </ol>
 </nav>
         <div class="bd-content ps-lg-2">
-            <h1 id="711-봉인된-클래스">7.11 봉인된 클래스</h1>
+            <h1 id="711-봉인된-클래스-sealed-class">7.11 봉인된 클래스 (Sealed Class)</h1>
 
-<p>기본적으로 final 클래스를 제외한 모든 클래스는 부모 클래스가 될 수 있다. 그러나 Java 15부터는 무분별한 자식 클래스 생성을 방지하기 위해 봉인된(sealed) 클래스가 도입되었다.</p>
+<p><code class="language-plaintext highlighter-rouge">final</code> 클래스는 상속을 아예 금지합니다.
+하지만 가끔은 <strong>“특정 친구들에게만 상속을 허락하고 싶을 때”</strong>가 있습니다.
+Java 15부터 도입된 <strong>Sealed Class</strong>가 바로 그 역할을 합니다.</p>
 
-<p>다음과 같이 Person의 자식 클래스는 Employee와 Manager만 가능하고, 그 이외는 자식 클래스가 될 수 없도록 Person을 봉인된 클래스로 선언할 수 있다.</p>
+<h3 id="-핵심-비유-vip-전용-멤버십">💡 핵심 비유: VIP 전용 멤버십</h3>
+<blockquote>
+  <p><strong>“아무나 가입할 수 없다. 초대받은 사람(Listed)만 들어올 수 있다!”</strong></p>
+</blockquote>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="n">sealed</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="n">permits</span> <span class="nc">Employee</span><span class="o">,</span> <span class="nc">Manager</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
+<p><img src="./img/sealed_concept.svg" alt="Sealed Concept" /></p>
+
+<hr />
+
+<h2 id="1-사용-방법-permits">1. 사용 방법 (<code class="language-plaintext highlighter-rouge">permits</code>)</h2>
+
+<p><code class="language-plaintext highlighter-rouge">sealed</code> 키워드로 봉인을 선언하고, <code class="language-plaintext highlighter-rouge">permits</code> 뒤에 상속을 허락할 자식 클래스들을 나열합니다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// "Employee와 Manager만 나를 상속받을 수 있어!"</span>
+<span class="kd">public</span> <span class="n">sealed</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="n">permits</span> <span class="nc">Employee</span><span class="o">,</span> <span class="nc">Manager</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+<span class="o">}</span>
 </code></pre></div></div>
 
-<p>sealed 키워드를 사용하면 permits 키워드 뒤에 상속 가능한 자식 클래스를 지정해야 한다. 봉인된 Person 클래스를 상속하는 Employee와 Manager는 final 또는 non-sealed 키워드로 다음과 같이 선언하거나, sealed 키워드를 사용해서 또 다른 봉인 클래스로 선언해야 한다.</p>
+<h3 id="상속받은-자식의-의무">상속받은 자식의 의무</h3>
+<p>봉인된 클래스를 상속받은 자식 클래스(<code class="language-plaintext highlighter-rouge">Employee</code>, <code class="language-plaintext highlighter-rouge">Manager</code>)는 반드시 다음 3가지 중 하나를 선택해야 합니다.</p>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="nc">Employee</span> <span class="kd">extends</span> <span class="nc">Person</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
+<ol>
+  <li><strong><code class="language-plaintext highlighter-rouge">final</code></strong>: 더 이상 상속 불가 (대 끊기)</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">sealed</code></strong>: 나도 또 다른 특정 자식에게만 허용 (반복)</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">non-sealed</code></strong>: 봉인 해제! 이제부터 누구나 상속 가능 (개방)</li>
+</ol>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 1. final: 상속 끝</span>
+<span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="nc">Employee</span> <span class="kd">extends</span> <span class="nc">Person</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
+
+<span class="c1">// 3. non-sealed: 봉인 해제 (자유롭게 상속 가능해짐)</span>
 <span class="kd">public</span> <span class="n">non</span><span class="o">-</span><span class="n">sealed</span> <span class="kd">class</span> <span class="nc">Manager</span> <span class="kd">extends</span> <span class="nc">Person</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
 </code></pre></div></div>
 
-<p>final은 더 이상 상속할 수 없다는 뜻이고, non-sealed는 봉인을 해제한다는 뜻이다. 따라서 Employee는 더 이상 자식 클래스를 만들 수 없지만 Manager는 다음과 같이 자식 클래스를 만들 수 있다.</p>
+<hr />
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Director</span> <span class="kd">extends</span> <span class="nc">Manager</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
+<h2 id="2-왜-쓸까요-deep-dive">2. 왜 쓸까요? (Deep Dive)</h2>
+
+<p>일반적인 상속은 너무 열려있습니다. 내가 라이브러리를 만들었는데, 사용자가 내 의도와 다르게 무분별하게 상속해서 기능을 망가뜨릴 수 있습니다.
+반대로 <code class="language-plaintext highlighter-rouge">final</code>은 너무 닫혀있어서 확장이 불가능합니다.</p>
+
+<p><strong>Sealed Class는 그 중간 지점을 제공합니다.</strong></p>
+<ul>
+  <li>라이브러리 작성자가 <strong>“상속 가능한 범위를 명확히 통제”</strong>할 수 있습니다.</li>
+  <li>패턴 매칭(Switch문 등)에서 모든 경우의 수를 컴파일러가 알 수 있어 <strong>안전성</strong>이 높아집니다.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 컴파일러는 Person의 자식이 Employee, Manager 뿐이라는 걸 안다! (non-sealed 제외 시)</span>
+<span class="c1">// 따라서 default 케이스가 없어도 안전하다.</span>
 </code></pre></div></div>
 
-<p>설명한 내용을 실습으로 확인해 보자.</p>
+<p><br />
+<br /></p>
+
+<hr />
+
+<h2 id="3-예제-코드">3. 예제 코드</h2>
 
 <p><strong>Person.java</strong></p>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch07.sec11</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="n">sealed</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="n">permits</span> <span class="nc">Employee</span><span class="o">,</span> <span class="nc">Manager</span> <span class="o">{</span>
-	<span class="c1">// 필드</span>
-	<span class="kd">public</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
-	
-	<span class="c1">// 메소드</span>
-	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">work</span><span class="o">()</span> <span class="o">{</span>
-		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"하는 일이 결정되지 않았습니다."</span><span class="o">);</span>
-	<span class="o">}</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="n">sealed</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="n">permits</span> <span class="nc">Student</span><span class="o">,</span> <span class="nc">Teacher</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
 <span class="o">}</span>
 </code></pre></div></div>
 
-<p><strong>Employee.java</strong></p>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch07.sec11</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="nc">Employee</span> <span class="kd">extends</span> <span class="nc">Person</span> <span class="o">{</span>
-	<span class="nd">@Override</span>
-	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">work</span><span class="o">()</span> <span class="o">{</span>
-		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"제품을 생산합니다."</span><span class="o">);</span>
-	<span class="o">}</span>
+<p><strong>Student.java</strong></p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="nc">Student</span> <span class="kd">extends</span> <span class="nc">Person</span> <span class="o">{</span> <span class="c1">// 더 이상 상속 불가</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">study</span><span class="o">()</span> <span class="o">{</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"공부"</span><span class="o">);</span> <span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div></div>
 
-<p><strong>Manager.java</strong></p>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch07.sec11</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="n">non</span><span class="o">-</span><span class="n">sealed</span> <span class="kd">class</span> <span class="nc">Manager</span> <span class="kd">extends</span> <span class="nc">Person</span> <span class="o">{</span>
-	<span class="nd">@Override</span>
-	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">work</span><span class="o">()</span> <span class="o">{</span>
-		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"생산 관리를 합니다."</span><span class="o">);</span>
-	<span class="o">}</span>
+<p><strong>Teacher.java</strong></p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="n">non</span><span class="o">-</span><span class="n">sealed</span> <span class="kd">class</span> <span class="nc">Teacher</span> <span class="kd">extends</span> <span class="nc">Person</span> <span class="o">{</span> <span class="c1">// 이제부터 상속 허용</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">teach</span><span class="o">()</span> <span class="o">{</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"가르침"</span><span class="o">);</span> <span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div></div>
 
-<p><strong>Director.java</strong></p>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch07.sec11</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Director</span> <span class="kd">extends</span> <span class="nc">Manager</span> <span class="o">{</span>
-	<span class="nd">@Override</span>
-	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">work</span><span class="o">()</span> <span class="o">{</span>
-		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"제품을 기획합니다."</span><span class="o">);</span>
-	<span class="o">}</span>
+<p><strong>Professor.java</strong></p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Teacher는 non-sealed라서 상속 가능!</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Professor</span> <span class="kd">extends</span> <span class="nc">Teacher</span> <span class="o">{</span> 
 <span class="o">}</span>
 </code></pre></div></div>
 
-<p><strong>SealedExample.java</strong></p>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch07.sec11</span><span class="o">;</span>
+<blockquote>
+  <p><strong>결론</strong>: 무분별한 상속을 막고, <strong>계층 구조를 엄격하게 관리</strong>하고 싶을 때 Sealed Class를 사용하세요.</p>
+</blockquote>
 
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SealedExample</span> <span class="o">{</span>
-	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-		<span class="nc">Person</span> <span class="n">p</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Person</span><span class="o">();</span>
-		<span class="nc">Employee</span> <span class="n">e</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Employee</span><span class="o">();</span>
-		<span class="nc">Manager</span> <span class="n">m</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Manager</span><span class="o">();</span>
-		<span class="nc">Director</span> <span class="n">d</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Director</span><span class="o">();</span>
-		
-		<span class="n">p</span><span class="o">.</span><span class="na">work</span><span class="o">();</span>
-		<span class="n">e</span><span class="o">.</span><span class="na">work</span><span class="o">();</span>
-		<span class="n">m</span><span class="o">.</span><span class="na">work</span><span class="o">();</span>
-		<span class="n">d</span><span class="o">.</span><span class="na">work</span><span class="o">();</span>
-	<span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
 
-<p><strong>실행 결과</strong></p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>하는 일이 결정되지 않았습니다.
-제품을 생산합니다.
-생산 관리를 합니다.
-제품을 기획합니다.
-</code></pre></div></div>
-
+            <!-- Google AdSense -->
+<div class="my-4">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3321560028329475"
+        crossorigin="anonymous"></script>
+</div>
         </div>
 
         <div class="bd-toc mt-3 mb-5 my-lg-0 ps-xl-3 mb-lg-5 text-body-secondary">

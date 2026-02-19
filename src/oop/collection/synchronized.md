@@ -1,77 +1,57 @@
 ---
 layout: oop
-title: "15.7 동기화된 컬렉션"
-nav_order: 7
-parent: "Chapter 15. 컬렉션 자료구조"
-grand_parent: "객체지향 프로그래밍"
+title: "17.6 동기화된 컬렉션"
+nav_order: 6
+parent: "Chapter 17. 컬렉션 자료구조"
+grand_parent: "객체지향 자바 프로그래밍"
 ---
 
-# 15.7 동기화된 컬렉션
+# 17.6 동기화된 컬렉션 (Synchronized)
 
-컬렉션 프레임워크의 대부분의 클래스들은 싱글 스레드 환경에서 사용할 수 있도록 설계되었다. 그렇기 때문에 여러 스레드가 동시에 컬렉션에 접근한다면 의도하지 않게 요소가 변경될 수 있는 불안전한 상태가 된다.
 
-Vector와 Hashtable은 동기화된(synchronized) 메소드로 구성되어 있기 때문에 안전하지만, ArrayList와 HashSet, HashMap은 안전하지 않다.
+<br>
 
-비동기화된 메소드를 동기화된 메소드로 래핑하는 Collections의 `synchronizedXXX()` 메소드를 사용하면 동기화된 컬렉션으로 변환할 수 있다.
+## 1. 1인용 화장실 vs 공원 벤치 🚻
 
-- `synchronizedList(List<T> list)`
-- `synchronizedMap(Map<K,V> m)`
-- `synchronizedSet(Set<T> s)`
+여러 스레드(사람)가 동시에 자료구조(시설)를 이용할 때 문제가 생길 수 있습니다.
+
+1.  **비동기화 컬렉션 (`ArrayList`, `HashSet`, `HashMap`)**:
+    *   **비유**: **"공원 벤치"**
+    *   **특징**: 여러 사람이 동시에 앉을 수 있습니다. 빠르고 편합니다.
+    *   **문제**: 두 사람이 동시에 같은 자리에 앉으려고 하면 부딪혀서 사고가 납니다. (데이터 깨짐, 에러 발생)
+
+2.  **동기화 컬렉션 (`Vector`, `Hashtable`)**:
+    *   **비유**: **"1인용 화장실"**
+    *   **특징**: 한 번에 한 사람만 들어갈 수 있습니다. 문을 잠그고(`Lock`) 씁니다.
+    *   **장점**: 안전합니다. 절대 겹치지 않습니다.
+    *   **단점**: 줄을 서야 해서 느립니다.
+
+<br>
+
+
+<br>
+
+## 2. 안전하게 바꾸기 (`Collections.synchronizedXXX`)
+
+`ArrayList`는 빠르지만 위험하고, `Vector`는 안전하지만 느립니다.
+평소에는 `ArrayList`를 쓰다가, 멀티 스레드 환경에서만 안전하게 바꾸고 싶다면?
+**"공원 벤치에 번호표 기계 달기"**를 하면 됩니다.
 
 ```java
-List<T> list = Collections.synchronizedList(new ArrayList<T>());
-Set<E> set = Collections.synchronizedSet(new HashSet<E>());
-Map<K,V> map = Collections.synchronizedMap(new HashMap<K,V>());
+// 1. 불안한 ArrayList 생성
+List<String> list = new ArrayList<>();
+
+// 2. 안전한 List로 포장 (Wrapping)
+List<String> safeList = Collections.synchronizedList(list);
+
+// 이제 safeList는 Vector처럼 동작합니다. (동기화 됨)
 ```
+
+마찬가지로 Set과 Map도 바꿀 수 있습니다.
 
 ```java
-package ch15.sec07;
-
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-
-public class SynchronizedMapExample {
-	public static void main(String[] args) {
-		// Map 컬렉션 생성
-		Map<Integer, String> map = Collections.synchronizedMap(new HashMap<>());
-
-		// 작업 스레드 객체 생성
-		Thread threadA = new Thread() {
-			@Override
-			public void run() {
-				// 객체 1000개 추가
-				for (int i=1; i<=1000; i++) {
-					map.put(i, "내용"+i);
-				}
-			}
-		};
-
-		// 작업 스레드 객체 생성
-		Thread threadB = new Thread() {
-			@Override
-			public void run() {
-				// 객체 1000개 추가
-				for (int i=1001; i<=2000; i++) {
-					map.put(i, "내용"+i);
-				}
-			}
-		};
-
-		// 작업 스레드 실행
-		threadA.start();
-		threadB.start();
-
-		// 작업 스레드들이 모두 종료될 때까지 메인 스레드를 기다리게 함
-		try {
-			threadA.join();
-			threadB.join();
-		} catch (Exception e) {
-		}
-
-		// 저장된 총 객체 수 얻기
-		int size = map.size();
-		System.out.println("총 객체 수: " + size);
-	}
-}
+Set<String> safeSet = Collections.synchronizedSet(new HashSet<>());
+Map<String, Integer> safeMap = Collections.synchronizedMap(new HashMap<>());
 ```
+
+> **핵심 요약**: 혼자 쓸 때는 `ArrayList`, `HashMap`을 쓰세요. 여럿이 동시에 써야 한다면 `Collections.synchronized...`로 감싸서 쓰세요.

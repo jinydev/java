@@ -1,174 +1,80 @@
 ---
 layout: oop
-title: "12.5 문자열 클래스"
+title: "15.5 문자열 클래스 (String)"
 nav_order: 5
-parent: "Chapter 12. java.base 모듈"
-grand_parent: "객체지향 프로그래밍"
+parent: "Chapter 15. 자바 기본 API (java.base)"
+grand_parent: "객체지향 자바 프로그래밍"
 ---
 
-# 12.5 문자열 클래스
+# 15.5 문자열 클래스 (String)
 
-자바에서 문자열과 관련된 주요 클래스는 다음과 같다.
 
-| 클래스          | 설명                                       |
-| :-------------- | :----------------------------------------- |
-| String          | 문자열을 저장하고 조작할 때 사용           |
-| StringBuilder   | 효율적인 문자열 조작 기능이 필요할 때 사용 |
-| StringTokenizer | 구분자로 연결된 문자열을 분리할 때 사용    |
+<br>
 
-## String 클래스
+## 1. 불변의 진주 목걸이 (`String`) 📿
 
-String 클래스는 문자열을 저장하고 조작할 때 사용한다. 문자열 리터럴은 자동으로 String 객체로 생성되지만, String 클래스의 다양한 생성자를 이용해서 직접 객체를 생성할 수도 있다.
-
-프로그램을 개발하다 보면 byte 배열을 문자열로 변환하는 경우가 종종 있다. 예를 들어 네트워크 통신으로 얻은 byte 배열을 원래 문자열로 변환하는 경우이다. 이때는 String 생성자 중에서 다음 두 가지를 사용해 String 객체로 생성할 수 있다.
-
-```java
-// 기본 문자셋으로 byte 배열을 디코딩해서 String 객체로 생성
-String str = new String(byte[] bytes);
-
-// 특정 문자셋으로 byte 배열을 디코딩해서 String 객체로 생성
-String str = new String(byte[] bytes, String charsetName);
-```
-
-다음 예제는 문자열을 byte 배열로 변환시키고 다시 문자열로 복원하는 방법을 보여 준다.
-
-```java
-package ch12.sec05;
-
-import java.util.Arrays;
-import java.io.UnsupportedEncodingException;
-
-public class BytesToStringExample {
-	public static void main(String[] args) throws UnsupportedEncodingException {
-		String data = "자바";
-
-		// String -> byte 배열(기본: UTF-8 인코딩)
-		byte[] arr1 = data.getBytes(); // byte[] arr1 = data.getBytes("UTF-8");
-		System.out.println("arr1: " + Arrays.toString(arr1));
-
-		// byte 배열 -> String (기본: UTF-8 디코딩)
-		String str1 = new String(arr1); // String str1 = new String(arr1, "UTF-8");
-		System.out.println("str1: " + str1);
-
-		// String -> byte 배열(EUC-KR 인코딩)
-		byte[] arr2 = data.getBytes("EUC-KR");
-		System.out.println("arr2: " + Arrays.toString(arr2));
-
-		// byte 배열 -> String (EUC-KR 디코딩)
-		String str2 = new String(arr2, "EUC-KR");
-		System.out.println("str2: " + str2);
-	}
-}
-```
-
-**실행 결과**
-```
-arr1: [-20, -98, -112, -21, -80, -108]
-str1: 자바
-arr2: [-64, -38, -71, -39]
-str2: 자바
-```
-
-## StringBuilder 클래스
-
-String은 내부 문자열을 수정할 수 없다. 다음 코드를 보면 다른 문자열을 결합해서 내부 문자열을 변경하는 것처럼 보이지만 사실 'ABCDEF'라는 새로운 String 객체를 생성하는 것이다. 그리고 data 변수는 새로 생성된 String 객체를 참조하게 된다.
+자바의 `String` 객체는 **불변(Immutable)**입니다. 한 번 만들어진 문자열은 절대 변하지 않습니다.
+마치 꽉 묶인 **진주 목걸이**와 같습니다.
 
 ```java
 String data = "ABC";
-data += "DEF";
+data += "DEF"; // "ABCDEF"
 ```
 
-문자열의 + 연산은 새로운 String 객체가 생성되고 이전 객체는 계속 버려지는 것이기 때문에 효율성이 좋다고는 볼 수 없다. 잦은 문자열 변경 작업을 해야 한다면 String보다는 StringBuilder를 사용하는 것이 좋다.
+위 코드는 "ABC" 목걸이에 "DEF" 구슬을 끼워 넣는 게 아닙니다.
+"ABC" 목걸이는 그대로 두고, **"ABCDEF"라는 새 목걸이를 만들어서** `data`가 그것을 가리키게 하는 것입니다.
+(수정이 빈번하면 쓰레기 객체가 많이 생겨서 성능에 안 좋습니다.)
 
-StringBuilder는 내부 버퍼(데이터를 저장하는 메모리)에 문자열을 저장해두고 그 안에서 추가, 수정, 삭제 작업을 하도록 설계되어 있다. 따라서 String처럼 새로운 객체를 만들지 않고도 문자열을 조작할 수 있다. StringBuilder가 제공하는 조작 메소드는 다음과 같다.
 
-| 리턴 타입     | 메소드(매개변수)                   | 설명                      |
-| :------------ | :--------------------------------- | :------------------------ |
-| StringBuilder | append(기본타입 또는 문자열)       | 문자열을 끝에 추가        |
-| StringBuilder | insert(위치, 기본타입 또는 문자열) | 문자열을 지정 위치에 추가 |
-| StringBuilder | delete(시작위치, 끝위치)           | 문자열 일부를 삭제        |
-| StringBuilder | replace(시작위치, 끝위치, 문자열)  | 문자열 일부를 대체        |
-| String        | toString()                         | 완성된 문자열을 리턴      |
+<br>
 
-toString()을 제외한 다른 메소드는 StringBuilder를 다시 리턴하기 때문에 연이어서 다른 메소드를 호출할 수 있는 메소드 체이닝(chaining) 패턴을 사용할 수 있다.
+## 2. 조립식 레고 (`StringBuilder`) 🧱
+
+문자열을 자주 수정해야 한다면 **`StringBuilder`**를 쓰는 것이 좋습니다.
+이것은 **레고 블록**과 같아서, 같은 판 위에서 블록을 더하고(`append`), 빼고(`delete`), 끼워 넣는(`insert`) 작업이 자유롭습니다.
 
 ```java
-package ch12.sec05;
+// 내부 버퍼(레고 판)에서 직접 수정함
+StringBuilder sb = new StringBuilder();
+sb.append("DEF");
+sb.insert(0, "ABC"); // 맨 앞에 추가
+sb.delete(3, 4); // D 삭제
+String result = sb.toString(); // 완성된 문자열 리턴
 
-public class StringBuilderExample {
-	public static void main(String[] args) {
-		String data = new StringBuilder()
-				.append("DEF")
-				.insert(0, "ABC")
-				.delete(3, 4)
-				.toString();
-		System.out.println(data);
-	}
-}
+System.out.println(result); // ABCEF
 ```
 
-**실행 결과**
-```
-ABCEF
-```
 
-## StringTokenizer 클래스
+<br>
 
-문자열이 구분자(delimiter)로 연결되어 있을 경우, 구분자를 기준으로 문자열을 분리하려면 String의 split() 메소드를 이용하거나 java.util 패키지의 StringTokenizer 클래스를 이용할 수 있다. split은 정규 표현식으로 구분하고, StringTokenizer는 문자로 구분한다는 차이점이 있다.
+## 3. 식빵 커팅기 (`StringTokenizer`) 🍞
 
-다음과 같은 문자열에서 &, 쉼표(,), 하이픈(-)으로 구분된 사람 이름을 뽑아낼 경우에는 정규 표현식으로 분리하는 split() 메소드를 사용해야 한다.
+긴 문자열을 특정 문자(구분자) 기준으로 잘라낼 때 사용합니다.
+`split()` 메소드와 비슷하지만, **한 종류의 구분자**로만 자를 때 더 간편합니다.
+
+*   `countTokens()`: 남은 조각 개수
+*   `hasMoreTokens()`: 남은 조각이 있니? (true/false)
+*   `nextToken()`: 다음 조각을 줘!
 
 ```java
-String data = "홍길동&이수홍,박연수,김자바-최명호";
-String[] names = data.split("&|,|-");
-```
-
-그러나 다음과 같이 여러 종류가 아닌 한 종류의 구분자만 있다면 StringTokenizer를 사용할 수도 있다.
-
-```java
-String data = "홍길동/이수홍/박연수";
-StringTokenizer st = new StringTokenizer(data, "/");
-```
-
-StringTokenizer 객체가 생성되면 다음 메소드들을 이용해서 분리된 문자열을 얻을 수 있다.
-
-| 리턴 타입 | 메소드(매개변수) | 설명                           |
-| :-------- | :--------------- | :----------------------------- |
-| int       | countTokens()    | 분리할 수 있는 문자열의 총 수  |
-| boolean   | hasMoreTokens()  | 남아 있는 문자열이 있는지 여부 |
-| String    | nextToken()      | 문자열을 하나씩 가져옴         |
-
-```java
-package ch12.sec05;
-
 import java.util.StringTokenizer;
 
 public class StringTokenizerExample {
-	public static void main(String[] args) {
-		String data1 = "홍길동&이수홍,박연수";
-		String[] arr = data1.split("&|,");
-		for (String token : arr) {
-			System.out.println(token);
-		}
-		System.out.println();
+    public static void main(String[] args) {
+        String data = "홍길동/이수홍/박연수";
+        
+        // /를 기준으로 자르겠다
+        StringTokenizer st = new StringTokenizer(data, "/");
 
-		String data2 = "홍길동/이수홍/박연수";
-		StringTokenizer st = new StringTokenizer(data2, "/");
-		while (st.hasMoreTokens()) {
-			String token = st.nextToken();
-			System.out.println(token);
-		}
-	}
+        while (st.hasMoreTokens()) {
+            String token = st.nextToken();
+            System.out.println(token);
+        }
+    }
 }
 ```
 
-**실행 결과**
-```
-홍길동
-이수홍
-박연수
-
-홍길동
-이수홍
-박연수
-```
+> **핵심**:
+> *   문자열 변화가 없다면? -> **`String`** (가장 많이 씀)
+> *   문자열을 마구 뜯어 고쳐야 한다면? -> **`StringBuilder`**
+> *   문자열을 단순하게 잘라야 한다면? -> **`StringTokenizer`**

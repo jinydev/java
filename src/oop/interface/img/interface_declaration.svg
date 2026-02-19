@@ -1,0 +1,51 @@
+<svg width="800" height="350" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="350" fill="#ffffff"/>
+
+  <!-- Step 1: Interface -->
+  <g transform="translate(50, 50)">
+    <text x="120" y="30" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#333" font-weight="bold">1. 계약서 작성 (Interface)</text>
+    
+    <rect x="20" y="50" width="200" height="250" fill="#fff9c4" stroke="#fbc02d" stroke-width="2"/>
+    <text x="120" y="80" font-family="serif" font-size="20" text-anchor="middle" fill="#f57f17">CONTRACT</text>
+    <line x1="40" y1="100" x2="200" y2="100" stroke="#fbc02d" stroke-width="1"/>
+    
+    <text x="40" y="140" font-family="monospace" font-size="14" fill="#333">implements ...</text>
+    <text x="40" y="170" font-family="Arial, sans-serif" font-size="12" fill="#555">1. 전원 켜기( )</text>
+    <text x="40" y="190" font-family="Arial, sans-serif" font-size="12" fill="#555">2. 전원 끄기( )</text>
+    <text x="40" y="210" font-family="Arial, sans-serif" font-size="12" fill="#555">3. 볼륨 조절( )</text>
+    
+    <text x="120" y="280" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#f57f17">"비어있는 서약"</text>
+  </g>
+
+  <!-- Arrow -->
+  <text x="300" y="180" font-family="Arial, sans-serif" font-size="30" text-anchor="middle" fill="#aaa">▶</text>
+  <text x="300" y="210" font-family="monospace" font-size="14" text-anchor="middle" fill="#555">implements</text>
+
+  <!-- Step 2: Implementation -->
+  <g transform="translate(350, 50)">
+    <text x="150" y="30" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#333" font-weight="bold">2. 서명 및 이행 (Class)</text>
+    
+    <rect x="20" y="50" width="260" height="250" fill="#e1f5fe" stroke="#03a9f4" stroke-width="2"/>
+    <text x="150" y="80" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="#0277bd" font-weight="bold">Television</text>
+    
+    <g transform="translate(40, 110)">
+        <circle cx="10" cy="10" r="5" fill="#4caf50"/>
+        <text x="25" y="15" font-family="monospace" font-size="14" fill="#333">turnOn() { 화면 켬 }</text>
+    </g>
+    <g transform="translate(40, 150)">
+        <circle cx="10" cy="10" r="5" fill="#4caf50"/>
+        <text x="25" y="15" font-family="monospace" font-size="14" fill="#333">turnOff() { 화면 끔 }</text>
+    </g>
+    <g transform="translate(40, 190)">
+        <circle cx="10" cy="10" r="5" fill="#4caf50"/>
+        <text x="25" y="15" font-family="monospace" font-size="14" fill="#333">setVol() { 소리 조절 }</text>
+    </g>
+
+    <text x="150" y="280" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#0277bd">"모든 조항을 실제로 구현함"</text>
+    
+    <!-- Stamp -->
+    <circle cx="230" cy="250" r="30" fill="none" stroke="#d32f2f" stroke-width="3"/>
+    <text x="230" y="255" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#d32f2f" transform="rotate(-15, 230, 255)">SIGNED</text>
+  </g>
+</svg>

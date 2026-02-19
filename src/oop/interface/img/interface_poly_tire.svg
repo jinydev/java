@@ -1,0 +1,51 @@
+<svg width="600" height="300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="600" height="300" fill="#fff" />
+
+  <!-- Car -->
+  <g transform="translate(50, 100)">
+    <rect width="180" height="100" rx="10" fill="#eceff1" stroke="#455a64" stroke-width="2"/>
+    <text x="90" y="40" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#37474f" font-weight="bold">Car</text>
+    
+    <!-- Tire Field -->
+    <rect x="20" y="60" width="140" height="30" fill="#fff" stroke="#90a4ae" stroke-width="1"/>
+    <text x="90" y="80" font-family="monospace" font-size="12" text-anchor="middle" fill="#455a64">Tire tire;</text>
+  </g>
+
+  <!-- Title -->
+  <text x="300" y="30" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#333" font-weight="bold">부품 교체의 자유 (Polymorphism)</text>
+
+  <!-- Tires -->
+  <g transform="translate(300, 50)">
+    <!-- Hankook -->
+    <g transform="translate(0, 0)">
+      <circle cx="40" cy="40" r="35" fill="#fff3e0" stroke="#ff9800" stroke-width="4" stroke-dasharray="5,2"/>
+      <text x="100" y="45" font-family="Arial, sans-serif" font-size="14" fill="#e65100">HankookTire</text>
+    </g>
+
+    <!-- Kumho -->
+    <g transform="translate(0, 90)">
+      <circle cx="40" cy="40" r="35" fill="#e8f5e9" stroke="#4caf50" stroke-width="4" stroke-dasharray="5,2"/>
+      <text x="100" y="45" font-family="Arial, sans-serif" font-size="14" fill="#1b5e20">KumhoTire</text>
+    </g>
+
+    <!-- Michelin -->
+    <g transform="translate(0, 180)">
+      <circle cx="40" cy="40" r="35" fill="#e3f2fd" stroke="#2196f3" stroke-width="4" stroke-dasharray="5,2"/>
+      <text x="100" y="45" font-family="Arial, sans-serif" font-size="14" fill="#0d47a1">MichelinTire</text>
+    </g>
+  </g>
+
+  <!-- Connection Lines -->
+  <path d="M230,115 L290,50" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M230,115 L290,140" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M230,115 L290,230" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <text x="260" y="100" font-family="Arial, sans-serif" font-size="12" fill="#555" transform="rotate(-30, 260, 100)">끼우면 작동!</text>
+
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#333" />
+    </marker>
+  </defs>
+</svg>

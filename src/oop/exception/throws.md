@@ -1,93 +1,66 @@
 ---
 layout: oop
-title: "11.5 예외 떠넘기기"
+title: "14.5 예외 떠넘기기"
 nav_order: 5
-parent: "Chapter 11. 예외 처리"
+parent: "Chapter 14. 예외 처리"
 grand_parent: "객체지향 자바 프로그래밍"
 ---
 
-# 11.5 예외 떠넘기기
+# 14.5 예외 떠넘기기 (throws)
 
-메소드 내부에서 예외가 발생할 때 `try-catch` 블록으로 예외를 처리하는 것이 기본이지만, 메소드를 호출한 곳으로 예외를 떠넘길 수도 있다. 이때 사용하는 키워드가 `throws`이다. `throws`는 메소드 선언부 끝에 작성하는데, 떠넘길 예외 클래스를 쉼표로 구분해서 나열해 주면 된다.
+
+<br>
+
+## 1. 폭탄 돌리기 💣
+
+예외가 발생했을 때 처리하는 방법은 두 가지입니다.
+1.  **직접 처리 (`try-catch`)**: 내가 폭탄을 해체한다.
+2.  **떠넘기기 (`throws`)**: "나 못해! 팀장님이 알아서 하세요!" 하고 폭탄을 호출한 쪽으로 던진다.
+
+![Exception Throws Hot Potato](./img/exception_throws_hot_potato.svg)
+
+*   `method()`가 폭탄을 던지면 -> 호출한 `caller()`가 받습니다.
+*   `caller()`도 던지면 -> `main()`이 받습니다.
+*   `main()`마저 던지면 -> **JVM(자바 가상 머신)**이 받아서 프로그램을 **강제 종료(Crash)** 시킵니다.
+
+<br>
+
+
+<br>
+
+## 2. 사용 방법
+
+메소드 이름 뒤에 `throws 예외클래스`를 적으면 됩니다.
 
 ```java
-리턴타입 메소드명(매개변수, ...) throws 예외클래스1, 예외클래스2, ... {
+public void findClass() throws ClassNotFoundException {
+    // 여기서 예외가 터지면, 나는 처리 안 하고 던질래!
+    Class.forName("java.lang.Syring2"); 
 }
 ```
 
-`throws` 키워드가 붙어 있는 메소드에서 해당 예외를 처리하지 않고 떠넘겼기 때문에 이 메소드를 호출하는 곳에서 예외를 받아 처리해야 한다. 예를 들어 다음 코드는 `ClassNotFoundException`을 `throws`하는 `method2()`의 예외를 `method1()`에서 호출할 때 처리하고 있다.
+이제 이 메소드를 호출하는 쪽에서는 **반드시** 예외 처리를 해야 합니다(또는 또 던지거나).
 
 ```java
-public void method1() {
+public static void main(String[] args) {
     try {
-        method2(); // method2() 호출
+        findClass(); // 폭탄이 날아올 수 있음!
     } catch(ClassNotFoundException e) {
-        System.out.println("예외 처리: " + e.getMessage());
-    }
-}
-
-public void method2() throws ClassNotFoundException {
-    Class.forName("java.lang.String2");
-}
-```
-
-**ThrowsExample1.java**
-```java
-package ch11.sec05;
-
-public class ThrowsExample1 {
-    public static void main(String[] args) {
-        try {
-            findClass();
-        } catch(ClassNotFoundException e) {
-            System.out.println("예외 처리: " + e.toString());
-        }
-    }
-
-    public static void findClass() throws ClassNotFoundException {
-        Class.forName("java.lang.String2");
+        System.out.println("폭탄 해체 완료!");
     }
 }
 ```
 
-**실행 결과**
-```
-예외 처리: java.lang.ClassNotFoundException: java.lang.String2
-```
+<br>
 
-나열해야 할 예외 클래스가 많을 경우에는 `throws Exception` 또는 `throws Throwable` 만으로 모든 예외를 간단히 떠넘길 수도 있다.
 
-```java
-리턴타입 메소드명(매개변수, ...) throws Exception {
-}
-```
+<br>
 
-`main()` 메소드에서도 `throws` 키워드를 사용해서 예외를 떠넘길 수 있는데, 결국 JVM이 최종적으로 예외 처리를 하게 된다. JVM은 예외의 내용을 콘솔에 출력하는 것으로 예외 처리를 한다.
+## 3. 왜 떠넘길까요?
 
-```java
-public static void main(String[] args) throws Exception {
-}
-```
+무책임해 보일 수 있지만, 사실은 **"역할 분담"**입니다.
+*   `readFile()` 메소드는 파일을 읽는 기능만 담당합니다.
+*   파일이 없을 때 "프로그램을 끌지", "다시 물어볼지", "기본 파일을 쓸지"는 이 메소드를 사용하는 **메인 로직**이 결정해야 합니다.
+*   그래서 `readFile()`은 "나 파일 못 찾았어!"라고 보고(`throws`)만 하는 것이 더 좋은 설계일 때가 많습니다.
 
-**ThrowsExample2.java**
-```java
-package ch11.sec05;
-
-public class ThrowsExample2 {
-    public static void main(String[] args) throws Exception {
-        findClass();
-    }
-
-    public static void findClass() throws ClassNotFoundException {
-        Class.forName("java.lang.String2");
-    }
-}
-```
-
-**실행 결과**
-```
-Exception in thread "main" java.lang.ClassNotFoundException: java.lang.String2
-	at java.base/java.lang.Class.forName(Class.java:375)
-	at ch11.sec05.ThrowsExample2.findClass(ThrowsExample2.java:9)
-	at ch11.sec05.ThrowsExample2.main(ThrowsExample2.java:5)
-```
+> **핵심 요약**: `throws`는 예외를 회피하는 것이 아니라, **처리 책임을 호출자에게 위임**하는 것입니다.

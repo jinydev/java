@@ -1,0 +1,38 @@
+<svg width="600" height="300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="600" height="300" fill="#fff" />
+
+  <!-- Interface -->
+  <g transform="translate(200, 20)">
+    <rect width="200" height="80" rx="5" fill="#e3f2fd" stroke="#2196f3" stroke-width="2"/>
+    <text x="100" y="30" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#0d47a1">Interface</text>
+    <text x="100" y="60" font-family="monospace" font-size="12" text-anchor="middle" fill="#2e7d32">default void method()</text>
+  </g>
+
+  <!-- Path A: Use as is -->
+  <g transform="translate(50, 150)">
+    <path d="M220,-50 L100,0" fill="none" stroke="#4caf50" stroke-width="2" marker-end="url(#arrowGreen)"/>
+    <rect width="180" height="100" rx="5" fill="#f1f8e9" stroke="#8bc34a" stroke-width="2"/>
+    <text x="90" y="30" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#33691e">Class A</text>
+    <text x="90" y="60" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#555">"난 그냥 쓸래"</text>
+    <text x="90" y="80" font-family="monospace" font-size="12" text-anchor="middle" fill="#2e7d32">(Inherited)</text>
+  </g>
+
+  <!-- Path B: Override -->
+  <g transform="translate(370, 150)">
+    <path d="M80,-50 L180,0" fill="none" stroke="#ff9800" stroke-width="2" marker-end="url(#arrowOrange)"/>
+    <rect width="180" height="100" rx="5" fill="#fff3e0" stroke="#ffb74d" stroke-width="2"/>
+    <text x="90" y="30" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#e65100">Class B</text>
+    <text x="90" y="60" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#555">"난 바꿀래!"</text>
+    <text x="90" y="80" font-family="monospace" font-size="12" text-anchor="middle" fill="#e65100">@Override</text>
+  </g>
+
+  <defs>
+    <marker id="arrowGreen" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#4caf50" />
+    </marker>
+    <marker id="arrowOrange" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#ff9800" />
+    </marker>
+  </defs>
+</svg>
