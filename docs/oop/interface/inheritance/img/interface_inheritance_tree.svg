@@ -1,0 +1,43 @@
+<svg width="600" height="350" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="600" height="350" fill="#fff" />
+
+  <!-- Parent Interface A -->
+  <g transform="translate(150, 50)">
+    <circle cx="50" cy="50" r="40" fill="#e3f2fd" stroke="#2196f3" stroke-width="2"/>
+    <text x="50" y="55" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#0d47a1">Interface A</text>
+  </g>
+
+  <!-- Parent Interface B -->
+  <g transform="translate(350, 50)">
+    <circle cx="50" cy="50" r="40" fill="#e3f2fd" stroke="#2196f3" stroke-width="2"/>
+    <text x="50" y="55" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#0d47a1">Interface B</text>
+  </g>
+
+  <!-- Child Interface C -->
+  <g transform="translate(250, 180)">
+    <ellipse cx="50" cy="50" rx="60" ry="40" fill="#e8f5e9" stroke="#4caf50" stroke-width="2"/>
+    <text x="50" y="55" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#1b5e20" font-weight="bold">Interface C</text>
+  </g>
+
+  <!-- Inheritance Lines -->
+  <path d="M280,180 L200,100" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M320,180 L400,100" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+  
+  <text x="210" y="150" font-family="monospace" font-size="12" fill="#555">extends</text>
+  <text x="350" y="150" font-family="monospace" font-size="12" fill="#555">extends</text>
+
+  <!-- Impl Class -->
+  <g transform="translate(200, 280)">
+    <rect width="200" height="50" rx="5" fill="#fff3e0" stroke="#ff9800" stroke-width="2"/>
+    <text x="100" y="30" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#e65100">ImplClass implements C</text>
+  </g>
+  
+  <path d="M300,280 L300,230" stroke="#333" stroke-width="1" stroke-dasharray="5,5" marker-end="url(#arrow)"/>
+
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#333" />
+    </marker>
+  </defs>
+</svg>

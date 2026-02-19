@@ -1,0 +1,47 @@
+<svg width="600" height="350" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="600" height="350" fill="#fff" />
+
+  <!-- Before -->
+  <g transform="translate(50, 40)">
+    <text x="100" y="20" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#f44336" font-weight="bold">Before (중복 발생)</text>
+    
+    <rect x="0" y="40" width="200" height="120" rx="5" fill="#ffebee" stroke="#ef5350" stroke-width="1"/>
+    
+    <text x="20" y="70" font-family="monospace" font-size="12" fill="#333">default methodA() {</text>
+    <text x="30" y="90" font-family="monospace" font-size="12" fill="#d32f2f" font-weight="bold">  System.out("Log");</text>
+    <text x="30" y="110" font-family="monospace" font-size="12" fill="#333">  ...</text>
+    <text x="20" y="130" font-family="monospace" font-size="12" fill="#333">}</text>
+    
+    <rect x="0" y="180" width="200" height="120" rx="5" fill="#ffebee" stroke="#ef5350" stroke-width="1"/>
+    
+    <text x="20" y="210" font-family="monospace" font-size="12" fill="#333">default methodB() {</text>
+    <text x="30" y="230" font-family="monospace" font-size="12" fill="#d32f2f" font-weight="bold">  System.out("Log");</text>
+    <text x="30" y="250" font-family="monospace" font-size="12" fill="#333">  ...</text>
+    <text x="20" y="270" font-family="monospace" font-size="12" fill="#333">}</text>
+  </g>
+
+  <!-- Arrow -->
+  <text x="280" y="180" font-size="30" fill="#555">➡</text>
+
+  <!-- After -->
+  <g transform="translate(350, 40)">
+    <text x="100" y="20" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#4caf50" font-weight="bold">After (Private 메소드)</text>
+    
+    <rect x="0" y="40" width="200" height="260" rx="5" fill="#e8f5e9" stroke="#66bb6a" stroke-width="2"/>
+    
+    <text x="20" y="70" font-family="monospace" font-size="12" fill="#333">default methodA() {</text>
+    <text x="30" y="90" font-family="monospace" font-size="12" fill="#2e7d32" font-weight="bold">  log(); // 호출</text>
+    <text x="20" y="110" font-family="monospace" font-size="12" fill="#333">}</text>
+    
+    <text x="20" y="140" font-family="monospace" font-size="12" fill="#333">default methodB() {</text>
+    <text x="30" y="160" font-family="monospace" font-size="12" fill="#2e7d32" font-weight="bold">  log(); // 호출</text>
+    <text x="20" y="180" font-family="monospace" font-size="12" fill="#333">}</text>
+    
+    <line x1="10" y1="200" x2="190" y2="200" stroke="#66bb6a" stroke-width="1" stroke-dasharray="3"/>
+    
+    <text x="20" y="230" font-family="monospace" font-size="12" fill="#d32f2f" font-weight="bold">private void log() {</text>
+    <text x="30" y="250" font-family="monospace" font-size="12" fill="#333">  System.out("Log");</text>
+    <text x="20" y="270" font-family="monospace" font-size="12" fill="#333">}</text>
+  </g>
+</svg>

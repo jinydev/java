@@ -1,0 +1,69 @@
+<svg width="600" height="300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="600" height="300" fill="#ffffff" />
+  
+  <!-- Map (Locker Room) -->
+  <g transform="translate(100, 50)">
+    <rect x="0" y="0" width="400" height="200" rx="10" fill="#e0f7fa" stroke="#0097a7" stroke-width="3"/>
+    
+    <!-- Title -->
+    <rect x="110" y="-15" width="180" height="40" rx="5" fill="#00bcd4" stroke="#00838f" stroke-width="2"/>
+    <text x="200" y="10" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#fff" text-anchor="middle">Map (Locker Room)</text>
+
+    <!-- Locker 101 -->
+    <g transform="translate(40, 50)">
+      <rect x="0" y="0" width="80" height="100" fill="#fff" stroke="#0097a7" stroke-width="2"/>
+      <rect x="10" y="10" width="60" height="20" fill="#b2ebf2"/>
+      <text x="40" y="25" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#006064" text-anchor="middle">101</text>
+      <text x="40" y="45" font-family="Arial, sans-serif" font-size="10" fill="#555" text-anchor="middle">(Key)</text>
+      
+      <circle cx="40" cy="70" r="15" fill="#ffcdd2" stroke="#e57373"/>
+      <text x="40" y="75" font-family="Arial, sans-serif" font-size="12" fill="#b71c1c" text-anchor="middle">Bag A</text>
+    </g>
+
+    <!-- Locker 102 -->
+    <g transform="translate(160, 50)">
+      <rect x="0" y="0" width="80" height="100" fill="#fff" stroke="#0097a7" stroke-width="2"/>
+      <rect x="10" y="10" width="60" height="20" fill="#b2ebf2"/>
+      <text x="40" y="25" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#006064" text-anchor="middle">102</text>
+      <text x="40" y="45" font-family="Arial, sans-serif" font-size="10" fill="#555" text-anchor="middle">(Key)</text>
+      
+      <circle cx="40" cy="70" r="15" fill="#c8e6c9" stroke="#388e3c"/>
+      <text x="40" y="75" font-family="Arial, sans-serif" font-size="12" fill="#1b5e20" text-anchor="middle">Bag B</text>
+    </g>
+    
+    <!-- Locker 103 -->
+    <g transform="translate(280, 50)">
+      <rect x="0" y="0" width="80" height="100" fill="#fff" stroke="#0097a7" stroke-width="2"/>
+      <rect x="10" y="10" width="60" height="20" fill="#b2ebf2"/>
+      <text x="40" y="25" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#006064" text-anchor="middle">103</text>
+      <text x="40" y="45" font-family="Arial, sans-serif" font-size="10" fill="#555" text-anchor="middle">(Key)</text>
+      
+      <text x="40" y="75" font-family="Arial, sans-serif" font-size="12" fill="#bbb" text-anchor="middle">(Empty)</text>
+    </g>
+  </g>
+
+  <!-- Action: Put Bag C into 101 -->
+  <g transform="translate(20, 100)">
+    <circle cx="20" cy="20" r="15" fill="#fff9c4" stroke="#fbc02d" stroke-width="2"/>
+    <text x="20" y="25" font-family="Arial, sans-serif" font-size="12" fill="#f57f17" text-anchor="middle">Bag C</text>
+  </g>
+  
+  <path d="M50,110 L90,110 L130,120" stroke="#f57f17" stroke-width="2" marker-end="url(#arrow_map)"/>
+  
+  <!-- Old Bag A kicked out -->
+  <path d="M150,160 L150,220" stroke="#e57373" stroke-width="2" stroke-dasharray="3,3" marker-end="url(#arrow_out_map)"/>
+  <text x="150" y="240" font-family="Arial, sans-serif" font-size="10" fill="#c62828" text-anchor="middle">Old Bag A removed</text>
+  
+  <defs>
+    <marker id="arrow_map" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#f57f17" />
+    </marker>
+     <marker id="arrow_out_map" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#e57373" />
+    </marker>
+  </defs>
+
+  <text x="300" y="280" font-family="Arial, sans-serif" font-size="12" fill="#555" text-anchor="middle">"Key(라커 번호)는 중복될 수 없습니다. 같은 번호에 넣으면 내용물이 바뀝니다."</text>
+
+</svg>

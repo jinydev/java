@@ -1,0 +1,45 @@
+<svg width="500" height="300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="500" height="300" fill="#ffffff" />
+  
+  <!-- Outer Class (Big Box) -->
+  <rect x="50" y="50" width="400" height="220" rx="10" fill="#e3f2fd" stroke="#2196f3" stroke-width="2"/>
+  <text x="70" y="80" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#0d47a1">Outer Class (A)</text>
+  
+  <!-- Outer Field -->
+  <rect x="300" y="80" width="120" height="40" rx="5" fill="#bbdefb" stroke="#1565c0" stroke-width="1"/>
+  <text x="360" y="105" font-family="monospace" font-size="12" fill="#0d47a1" text-anchor="middle">int field = 10;</text>
+
+  <!-- Inner Class (Small Box) -->
+  <g transform="translate(80, 130)">
+    <rect x="0" y="0" width="300" height="120" rx="10" fill="#fff3e0" stroke="#ff9800" stroke-width="2"/>
+    <text x="20" y="30" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#e65100">Inner Class (B)</text>
+    
+    <!-- Inner Field -->
+    <rect x="20" y="50" width="120" height="40" rx="5" fill="#ffe0b2" stroke="#e65100" stroke-width="1"/>
+    <text x="80" y="75" font-family="monospace" font-size="12" fill="#e65100" text-anchor="middle">int field = 20;</text>
+    
+    <!-- Code Accessing Fields -->
+    <g transform="translate(160, 40)">
+      <text x="0" y="20" font-family="monospace" font-size="12" fill="#333">System.out.println(...)</text>
+      
+      <!-- Arrow to Inner -->
+      <path d="M10,30 L-30,60" stroke="#e65100" stroke-width="2" marker-end="url(#arrow_inner)"/>
+      <text x="0" y="50" font-family="monospace" font-size="12" fill="#e65100" font-weight="bold">this.field (20)</text>
+      
+      <!-- Arrow to Outer -->
+      <path d="M50,30 L110,-30" stroke="#1565c0" stroke-width="2" marker-end="url(#arrow_outer)"/>
+      <text x="80" y="0" font-family="monospace" font-size="12" fill="#0d47a1" font-weight="bold">A.this.field (10)</text>
+    </g>
+  </g>
+
+  <defs>
+    <marker id="arrow_inner" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#e65100" />
+    </marker>
+    <marker id="arrow_outer" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#1565c0" />
+    </marker>
+  </defs>
+
+</svg>

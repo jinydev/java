@@ -1,0 +1,36 @@
+<svg width="600" height="300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="600" height="300" fill="#fff" />
+
+  <text x="300" y="30" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#333" font-weight="bold">구현 클래스의 의무</text>
+
+  <!-- Class Box -->
+  <g transform="translate(100, 60)">
+    <rect width="400" height="200" rx="10" fill="#f3e5f5" stroke="#9c27b0" stroke-width="2"/>
+    <text x="200" y="30" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#7b1fa2" font-weight="bold">ImplClass</text>
+    
+    <!-- Checklist -->
+    <g transform="translate(50, 50)">
+      <rect width="300" height="40" rx="5" fill="#e3f2fd" stroke="#2196f3" stroke-width="1"/>
+      <text x="150" y="25" font-family="monospace" font-size="14" text-anchor="middle" fill="#0d47a1">Method A() (from Interface A)</text>
+      <circle cx="280" cy="20" r="10" fill="#4caf50"/>
+      <path d="M275,20 L280,25 L285,15" stroke="#fff" stroke-width="2" fill="none"/>
+    </g>
+    
+    <g transform="translate(50, 100)">
+      <rect width="300" height="40" rx="5" fill="#e3f2fd" stroke="#2196f3" stroke-width="1"/>
+      <text x="150" y="25" font-family="monospace" font-size="14" text-anchor="middle" fill="#0d47a1">Method B() (from Interface B)</text>
+      <circle cx="280" cy="20" r="10" fill="#4caf50"/>
+      <path d="M275,20 L280,25 L285,15" stroke="#fff" stroke-width="2" fill="none"/>
+    </g>
+    
+    <g transform="translate(50, 150)">
+      <rect width="300" height="40" rx="5" fill="#e8f5e9" stroke="#4caf50" stroke-width="1"/>
+      <text x="150" y="25" font-family="monospace" font-size="14" text-anchor="middle" fill="#1b5e20">Method C() (from Interface C)</text>
+      <circle cx="280" cy="20" r="10" fill="#4caf50"/>
+      <path d="M275,20 L280,25 L285,15" stroke="#fff" stroke-width="2" fill="none"/>
+    </g>
+  </g>
+
+  <text x="300" y="280" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#d32f2f">★ 부모의 모든 추상 메소드까지 재정의해야 함!</text>
+</svg>

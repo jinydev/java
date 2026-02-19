@@ -1,0 +1,47 @@
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="400" fill="#f8f9fa"/>
+  
+  <!-- Factory Building -->
+  <rect x="50" y="50" width="700" height="300" rx="15" fill="#ecf0f1" stroke="#34495e" stroke-width="5"/>
+  <text x="400" y="40" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="#2c3e50" font-weight="bold">Constructor Overloading Factory</text>
+
+  <!-- Input Lanes (Left) -->
+  <g transform="translate(80, 80)">
+    <!-- Lane 1: Empty -->
+    <rect x="0" y="0" width="150" height="40" fill="#bdc3c7"/>
+    <text x="75" y="25" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#2c3e50">() No Args</text>
+
+    <!-- Lane 2: Model -->
+    <rect x="0" y="60" width="150" height="40" fill="#3498db"/>
+    <text x="75" y="85" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">(String model)</text>
+
+    <!-- Lane 3: Model + Color -->
+    <rect x="0" y="120" width="150" height="40" fill="#9b59b6"/>
+    <text x="75" y="145" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">(model, color)</text>
+
+    <!-- Lane 4: Model + Color + Speed -->
+    <rect x="0" y="180" width="150" height="40" fill="#e74c3c"/>
+    <text x="75" y="205" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">(model, color, speed)</text>
+  </g>
+
+  <!-- Processing Machine (Center) -->
+  <rect x="250" y="70" width="300" height="230" rx="10" fill="#f1c40f" stroke="#f39c12" stroke-width="3"/>
+  <text x="400" y="190" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="#2c3e50" font-weight="bold">Initialization Logic (this)</text>
+  
+  <!-- Arrows from lanes to machine -->
+  <path d="M230,100 L250,100" stroke="#34495e" stroke-width="3"/> <!-- Lane 1 -->
+  <path d="M230,160 L250,160" stroke="#34495e" stroke-width="3"/> <!-- Lane 2 -->
+  <path d="M230,220 L250,220" stroke="#34495e" stroke-width="3"/> <!-- Lane 3 -->
+  <path d="M230,280 L250,280" stroke="#34495e" stroke-width="3"/> <!-- Lane 4 -->
+
+  <!-- Output Conveyor (Right) -->
+  <rect x="550" y="150" width="150" height="60" fill="#95a5a6"/>
+  <text x="625" y="185" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="white">Result: Car Object</text>
+
+  <!-- Cars on Conveyor -->
+  <circle cx="600" cy="130" r="15" fill="#3498db"/>
+  <circle cx="650" cy="130" r="15" fill="#e74c3c"/>
+  <circle cx="700" cy="130" r="15" fill="#9b59b6"/>
+
+</svg>

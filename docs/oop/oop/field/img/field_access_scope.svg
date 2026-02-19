@@ -1,0 +1,27 @@
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="400" fill="#f8f9fa"/>
+
+  <!-- Object Box -->
+  <rect x="100" y="80" width="250" height="250" rx="15" fill="#ecf0f1" stroke="#34495e" stroke-width="4"/>
+  <text x="225" y="60" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="#2c3e50" font-weight="bold">Car Object</text>
+  
+  <!-- Internal Access -->
+  <text x="225" y="150" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="#2c3e50">Internal Access</text>
+  <text x="225" y="180" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#e74c3c">speed = 60;</text>
+  <text x="225" y="200" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#7f8c8d">(Direct access by name)</text>
+
+  <!-- External Actor -->
+  <rect x="500" y="80" width="200" height="250" rx="15" fill="#3498db" stroke="#2980b9" stroke-width="4"/>
+  <text x="600" y="60" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="#2c3e50" font-weight="bold">External Object</text>
+  
+  <!-- External Access -->
+  <text x="600" y="150" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="white">External Access</text>
+  <text x="600" y="180" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#f1c40f">myCar.speed = 60;</text>
+  <text x="600" y="200" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#ecf0f1">(Access via dot operator)</text>
+
+  <!-- Arrow interaction -->
+  <path d="M500,180 L350,180 L360,175 L360,185 L350,180 Z" fill="#34495e"/>
+  <circle cx="350" cy="180" r="5" fill="#e74c3c"/>
+
+</svg>

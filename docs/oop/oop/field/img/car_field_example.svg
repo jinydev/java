@@ -1,0 +1,33 @@
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="400" fill="#f8f9fa"/>
+  
+  <!-- Car Context -->
+  <path d="M150,250 L200,150 L500,150 L600,250 L650,250 L650,300 L150,300 Z" fill="#e74c3c" stroke="#c0392b" stroke-width="3"/>
+  <circle cx="250" cy="300" r="40" fill="#34495e"/>
+  <circle cx="550" cy="300" r="40" fill="#34495e"/>
+  
+  <!-- Labels pointing to parts (Fields) -->
+  
+  <!-- Company/Model (Intrinsic) -->
+  <rect x="50" y="50" width="150" height="80" rx="10" fill="#3498db" stroke="#2980b9" stroke-width="2"/>
+  <text x="125" y="75" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="white" font-weight="bold">Intrinsic Data</text>
+  <text x="125" y="95" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">company: "Hyundai"</text>
+  <text x="125" y="115" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">model: "Grandeur"</text>
+  <line x1="125" y1="130" x2="200" y2="200" stroke="#3498db" stroke-width="2" stroke-dasharray="5,5"/>
+
+  <!-- Speed/RPM (State) -->
+  <rect x="300" y="50" width="150" height="80" rx="10" fill="#f1c40f" stroke="#f39c12" stroke-width="2"/>
+  <text x="375" y="75" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="black" font-weight="bold">State Data</text>
+  <text x="375" y="95" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="black">speed: 0</text>
+  <text x="375" y="115" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="black">rpm: 0</text>
+  <line x1="375" y1="130" x2="350" y2="200" stroke="#f1c40f" stroke-width="2" stroke-dasharray="5,5"/>
+
+  <!-- Parts (Component) -->
+  <rect x="550" y="50" width="150" height="80" rx="10" fill="#2ecc71" stroke="#27ae60" stroke-width="2"/>
+  <text x="625" y="75" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="white" font-weight="bold">Parts Data</text>
+  <text x="625" y="95" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">engine: Engine</text>
+  <text x="625" y="115" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">tire: Tire</text>
+  <line x1="625" y1="130" x2="550" y2="250" stroke="#2ecc71" stroke-width="2" stroke-dasharray="5,5"/>
+
+</svg>

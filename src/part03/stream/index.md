@@ -1,12 +1,12 @@
 ---
 layout: part04
-title: "Chapter 18. JDBC"
-nav_order: 18
+title: "Chapter 22. 데이터 입출력"
+nav_order: 22
 has_children: true
 parent: "데이터 입출력"
 ---
 
-# Chapter 18. 데이터 입출력
+# Chapter 22. 데이터 입출력
 
 ## 학습목표
 

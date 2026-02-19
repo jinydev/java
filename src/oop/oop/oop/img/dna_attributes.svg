@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <rect width="800" height="400" fill="#f0f8ff"/>
+  
+  <text x="400" y="50" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" font-weight="bold" fill="#333">Attributes (Speed, Color, State)</text>
+
+  <!-- Robot -->
+  <g transform="translate(100, 100)">
+    <rect x="50" y="50" width="100" height="150" ry="20" fill="#c0c0c0" stroke="#333" stroke-width="3"/>
+    <rect x="70" y="70" width="60" height="40" fill="#000"/> <!-- Screen -->
+    <circle cx="80" cy="90" r="5" fill="#0f0"/> <!-- Eye -->
+    <circle cx="120" cy="90" r="5" fill="#0f0"/> <!-- Eye -->
+    <line x1="100" y1="50" x2="100" y2="30" stroke="#333" stroke-width="3"/>
+    <circle cx="100" cy="25" r="5" fill="#f00"/> <!-- Antenna -->
+  </g>
+
+  <!-- Attribute List -->
+  <g transform="translate(300, 100)">
+    <rect x="0" y="20" width="300" height="180" rx="10" fill="#fff" stroke="#ccc" stroke-width="2"/>
+    <text x="20" y="60" font-family="monospace" font-size="18">class Robot {</text>
+    <text x="40" y="90" font-family="monospace" font-size="18" fill="#d2691e">String name = "Robo";</text>
+    <text x="40" y="120" font-family="monospace" font-size="18" fill="#0000cd">String color = "Silver";</text>
+    <text x="40" y="150" font-family="monospace" font-size="18" fill="#228b22">int battery = 100;</text>
+    <text x="20" y="180" font-family="monospace" font-size="18">}</text>
+  </g>
+</svg>

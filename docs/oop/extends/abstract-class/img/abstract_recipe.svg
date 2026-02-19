@@ -1,0 +1,68 @@
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="400" fill="#fcfcfc"/>
+
+  <!-- Title -->
+  <text x="400" y="40" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="#2c3e50" font-weight="bold">추상 메소드 구현 (본사 레시피 완성하기)</text>
+
+  <!-- Abstract Recipe (Headquarters) -->
+  <g transform="translate(50, 80)">
+    <rect width="220" height="280" rx="10" fill="#fff9c4" stroke="#fbc02d" stroke-width="2"/>
+    <text x="110" y="30" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#f57f17" font-weight="bold">본사 레시피</text>
+    <text x="110" y="50" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#fbc02d">(Abstract Class)</text>
+    
+    <!-- Steps -->
+    <text x="20" y="90" font-family="Arial, sans-serif" font-size="14" fill="#5d4037">1. 물을 끓인다.</text>
+    <text x="20" y="120" font-family="Arial, sans-serif" font-size="14" fill="#5d4037">2. 면을 삶는다.</text>
+    
+    <!-- Abstract Method -->
+    <rect x="15" y="140" width="190" height="60" rx="5" fill="#ffffff" stroke="#e64a19" stroke-width="2" stroke-dasharray="5,5"/>
+    <text x="110" y="165" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#e64a19" font-weight="bold">???</text>
+    <text x="110" y="185" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#e64a19">makeSauce();</text>
+    
+    <text x="110" y="240" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#5d4037" font-style="italic">"소스는 지점에서 결정!"</text>
+  </g>
+
+  <!-- Arrow -->
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#95a5a6"/>
+    </marker>
+  </defs>
+
+  <!-- Branch 1: Kimchi -->
+  <g transform="translate(350, 50)">
+    <path d="M -50 140 L 0 70" stroke="#95a5a6" stroke-width="2" marker-end="url(#arrow)"/>
+    
+    <rect width="200" height="140" rx="10" fill="#ffebee" stroke="#e57373" stroke-width="2"/>
+    <text x="100" y="30" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#d32f2f" font-weight="bold">김치 라면 지점</text>
+    
+    <!-- Implemented Method -->
+    <rect x="25" y="50" width="150" height="70" rx="5" fill="white" stroke="#e57373"/>
+    <text x="100" y="80" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#2c3e50">makeSauce() {</text>
+    <text x="100" y="100" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#d32f2f" font-weight="bold">김치 소스 넣기!</text>
+    <text x="100" y="115" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#2c3e50">}</text>
+  </g>
+
+  <!-- Branch 2: Cheese -->
+   <g transform="translate(350, 220)">
+    <path d="M -50 40 L 0 70" stroke="#95a5a6" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <rect width="200" height="140" rx="10" fill="#e3f2fd" stroke="#64b5f6" stroke-width="2"/>
+    <text x="100" y="30" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#1976d2" font-weight="bold">치즈 라면 지점</text>
+    
+    <!-- Implemented Method -->
+    <rect x="25" y="50" width="150" height="70" rx="5" fill="white" stroke="#64b5f6"/>
+    <text x="100" y="80" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#2c3e50">makeSauce() {</text>
+    <text x="100" y="100" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#1976d2" font-weight="bold">치즈 가루 넣기!</text>
+    <text x="100" y="115" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#2c3e50">}</text>
+  </g>
+
+  <!-- Result -->
+  <text x="680" y="150" font-family="Arial, sans-serif" font-size="30" text-anchor="middle">🍲</text>
+  <text x="680" y="180" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#d32f2f" font-weight="bold">김치라면 완성</text>
+
+  <text x="680" y="300" font-family="Arial, sans-serif" font-size="30" text-anchor="middle">🍜</text>
+  <text x="680" y="330" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#1976d2" font-weight="bold">치즈라면 완성</text>
+
+</svg>

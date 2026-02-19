@@ -1,0 +1,49 @@
+<svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="600" height="400" fill="#fcfcfc"/>
+
+  <!-- Title -->
+  <text x="300" y="40" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="#2c3e50" font-weight="bold">자식 객체를 만들 때 일어나는 일 (메모리)</text>
+
+  <!-- Stack: remote control -->
+  <g transform="translate(50, 150)">
+    <rect width="100" height="60" fill="#fce4ec" stroke="#e91e63" stroke-width="2"/>
+    <text x="50" y="25" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#c2185b" font-weight="bold">child 변수</text>
+    <text x="50" y="45" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#880e4f">0x100 (주소)</text>
+  </g>
+
+  <!-- Arrow -->
+  <path d="M 160 180 L 220 180" stroke="#7f8c8d" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#7f8c8d"/>
+    </marker>
+  </defs>
+
+  <!-- Heap: Child Object -->
+  <g transform="translate(260, 100)">
+    <!-- Outer Box (Child Object) -->
+    <rect width="250" height="220" rx="10" fill="#e3f2fd" stroke="#2196f3" stroke-width="2"/>
+    <text x="125" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#1565c0" font-weight="bold">자식 객체 (Child)</text>
+    <text x="125" y="210" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#1565c0">Heap Area @0x100</text>
+
+    <!-- Inner Box (Parent Part) -->
+     <g transform="translate(20, 40)">
+        <rect width="210" height="100" rx="5" fill="#e8f6f3" stroke="#009688" stroke-width="2" stroke-dasharray="5,3"/>
+        <text x="105" y="20" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#00796b" font-weight="bold">부모 영역 (super)</text>
+        
+        <text x="30" y="50" font-family="Arial, sans-serif" font-size="12" fill="#004d40">field1 (재산)</text>
+        <text x="30" y="75" font-family="Arial, sans-serif" font-size="12" fill="#004d40">method1() (기술)</text>
+     </g>
+
+     <!-- Child Only Part -->
+     <g transform="translate(20, 150)">
+        <text x="30" y="15" font-family="Arial, sans-serif" font-size="12" fill="#1565c0">field2 (나의 재산)</text>
+        <text x="30" y="40" font-family="Arial, sans-serif" font-size="12" fill="#1565c0">method2() (나의 기술)</text>
+     </g>
+  </g>
+
+  <!-- Explanation -->
+  <text x="300" y="370" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#e67e22">"자식을 생성하면, 내부에 부모도 함께 생성됩니다!"</text>
+
+</svg>

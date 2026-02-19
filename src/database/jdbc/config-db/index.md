@@ -1,0 +1,18 @@
+---
+layout: part04
+title: "23.4 DB 구성"
+nav_order: 4
+parent: "Chapter 23. 데이터베이스 입출력 (Oracle)"
+grand_parent: "데이터 입출력"
+---
+
+# 23.4 DB 구성
+
+학습에 필요한 테이블, 시퀀스, 프로시저, 함수를 생성하여 데이터베이스를 구성한다.
+
+1.  `users` 테이블 생성: `sql/oracle/users.sql` 실행
+2.  `boards` 테이블 생성: `sql/oracle/boards.sql` 실행
+3.  `SEQ_BNO` 시퀀스 생성: `sql/oracle/sequence.sql` 실행
+4.  `accounts` 테이블 생성 및 데이터 삽입: `sql/oracle/accounts.sql` 실행
+5.  `user_create` 프로시저 생성: `sql/oracle/procedure.sql` 실행
+6.  `user_login` 함수 생성: `sql/oracle/function.sql` 실행

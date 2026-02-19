@@ -1,0 +1,41 @@
+<svg width="500" height="300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="500" height="300" fill="#ffffff" />
+  
+  <!-- Try-with-resources scope -->
+  <rect x="50" y="50" width="400" height="200" rx="10" fill="#e8f5e9" stroke="#4caf50" stroke-width="3" stroke-dasharray="5,5"/>
+  <text x="70" y="40" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#2e7d32">try (Resource)</text>
+  
+  <!-- Resource usage -->
+  <g transform="translate(150, 100)">
+    <rect x="0" y="0" width="200" height="80" rx="5" fill="#fff" stroke="#333" stroke-width="1"/>
+    <text x="100" y="30" font-family="Arial, sans-serif" font-size="12" fill="#333" text-anchor="middle">리소스 사용 중...</text>
+    <text x="100" y="50" font-family="monospace" font-size="10" fill="#555" text-anchor="middle">read() / write()</text>
+  </g>
+
+  <!-- Exit Event -->
+  <path d="M350,140 L450,140" stroke="#333" stroke-width="2" marker-end="url(#arrow_out)"/>
+  <text x="400" y="130" font-family="Arial, sans-serif" font-size="12" fill="#d32f2f" text-anchor="middle">Exit</text>
+
+  <!-- Auto Close Action -->
+  <g transform="translate(380, 180)">
+    <circle cx="40" cy="40" r="30" fill="#ffecb3" stroke="#ffa000" stroke-width="2"/>
+    <text x="40" y="45" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#ff6f00" text-anchor="middle">Click!</text>
+  </g>
+  
+  <text x="420" y="240" font-family="monospace" font-size="12" fill="#ff6f00" text-anchor="middle">close()</text>
+  
+  <path d="M420,150 L420,180" stroke="#ff6f00" stroke-width="2" stroke-dasharray="3,3" marker-end="url(#arrow_act)"/>
+
+  <defs>
+    <marker id="arrow_out" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#333" />
+    </marker>
+    <marker id="arrow_act" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#ff6f00" />
+    </marker>
+  </defs>
+
+  <text x="250" y="280" font-family="Arial, sans-serif" font-size="12" fill="#555" text-anchor="middle">"블록을 나가는 순간(정상/예외 상관없이) 자동으로 문이 잠깁니다."</text>
+
+</svg>

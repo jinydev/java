@@ -1,0 +1,25 @@
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="400" fill="#f8f9fa"/>
+
+  <!-- Vending Machine -->
+  <rect x="250" y="50" width="300" height="300" rx="10" fill="#3498db" stroke="#2980b9" stroke-width="5"/>
+  <rect x="280" y="80" width="240" height="120" rx="5" fill="#ecf0f1"/> <!-- Display -->
+  <text x="400" y="150" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="#2c3e50" font-weight="bold">Processing...</text>
+  
+  <!-- Output Slot -->
+  <rect x="280" y="280" width="240" height="50" rx="5" fill="#2c3e50"/>
+  
+  <!-- Drink Can (Return Value) -->
+  <g transform="translate(380, 260)">
+    <rect x="0" y="0" width="40" height="60" rx="5" fill="#e74c3c" stroke="#c0392b" stroke-width="2"/>
+    <text x="20" y="35" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="white">Cola</text>
+  </g>
+
+  <!-- Arrow Output -->
+  <path d="M400,340 L400,370 L390,360 M400,370 L410,360" stroke="#2c3e50" stroke-width="3" fill="none"/>
+  
+  <text x="400" y="390" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="#e74c3c" font-weight="bold">Return Value</text>
+  <text x="600" y="350" font-family="Arial, sans-serif" font-size="16" fill="#7f8c8d">결과값 반환</text>
+
+</svg>

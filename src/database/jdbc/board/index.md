@@ -1,0 +1,13 @@
+---
+layout: part04
+title: "23.12 게시판 구현"
+nav_order: 12
+parent: "Chapter 23. 데이터베이스 입출력 (Oracle)"
+grand_parent: "데이터 입출력"
+---
+
+# 23.12 게시판 구현
+
+JDBC를 활용하여 콘솔 기반의 게시판을 구현한다. 기능은 Create, Read, Update, Delete (CRUD)와 목록 보기, 전체 삭제, 종료를 포함한다.
+
+(상세 구현 코드는 생략하며, 각 기능별로 `BoardExample` 클래스를 단계적으로 발전시키는 형태임.)

@@ -1,0 +1,45 @@
+<svg width="500" height="300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="500" height="300" fill="#ffffff" />
+  
+  <!-- Comparison: Stack vs Heap -->
+  
+  <!-- Stack (Method) -->
+  <g transform="translate(50, 50)">
+    <rect x="0" y="0" width="150" height="200" rx="5" fill="#e0f2f1" stroke="#009688" stroke-width="2"/>
+    <text x="75" y="30" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#00695c" text-anchor="middle">Stack (메소드)</text>
+    
+    <!-- Variable -->
+    <rect x="20" y="80" width="110" height="40" rx="3" fill="#b2dfdb" stroke="#004d40" stroke-width="1"/>
+    <text x="75" y="105" font-family="monospace" font-size="12" fill="#004d40" text-anchor="middle">int val = 10;</text>
+    <text x="75" y="140" font-family="Arial, sans-serif" font-size="10" fill="#d32f2f" text-anchor="middle">End -> 사라짐</text>
+  </g>
+
+  <!-- Heap (Object) -->
+  <g transform="translate(300, 50)">
+    <rect x="0" y="0" width="150" height="200" rx="5" fill="#fff3e0" stroke="#ff9800" stroke-width="2"/>
+    <text x="75" y="30" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#e65100" text-anchor="middle">Heap (객체)</text>
+    
+    <!-- Captured Variable -->
+    <rect x="20" y="80" width="110" height="40" rx="3" fill="#ffcc80" stroke="#e65100" stroke-width="1"/>
+    <text x="75" y="105" font-family="monospace" font-size="12" fill="#bf360c" text-anchor="middle">val (Copy)</text>
+    <text x="75" y="140" font-family="Arial, sans-serif" font-size="10" fill="#333" text-anchor="middle">계속 살아있음</text>
+  </g>
+
+  <!-- Copy Action -->
+  <path d="M170,100 L280,100" stroke="#333" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#arrow_local)"/>
+  <defs>
+    <marker id="arrow_local" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#333" />
+    </marker>
+  </defs>
+  <text x="235" y="90" font-family="Arial, sans-serif" font-size="12" fill="#333" text-anchor="middle">복사 (Capture)</text>
+  
+  <!-- Lock -->
+  <circle cx="105" cy="100" r="15" fill="#ef5350" stroke="#fff" stroke-width="2"/>
+  <text x="105" y="105" font-family="Arial, sans-serif" font-size="12" fill="#fff" text-anchor="middle">🔒</text>
+  
+  <text x="250" y="270" font-family="Arial, sans-serif" font-size="12" fill="#333" text-anchor="middle">"메소드가 끝나도 객체는 살아있으므로, 값을 복사해둡니다."</text>
+  <text x="250" y="290" font-family="Arial, sans-serif" font-size="12" fill="#333" text-anchor="middle">"그래서 원본 값이 바뀌면 안 됩니다 (final)."</text>
+
+</svg>

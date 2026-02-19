@@ -1,0 +1,39 @@
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="400" fill="#f8f9fa"/>
+
+  <!-- Left Side: Method Declaration (Recipe Book) -->
+  <g transform="translate(100, 100)">
+    <rect x="0" y="0" width="200" height="250" rx="5" fill="#e74c3c" stroke="#c0392b" stroke-width="3"/>
+    <rect x="10" y="10" width="180" height="230" rx="3" fill="white"/>
+    <text x="100" y="50" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="#2c3e50" font-weight="bold">Recipe: Ramen</text>
+    <line x1="30" y1="70" x2="170" y2="70" stroke="#bdc3c7" stroke-width="2"/>
+    <text x="30" y="100" font-family="Arial, sans-serif" font-size="14" fill="#7f8c8d">1. Boil Water</text>
+    <text x="30" y="130" font-family="Arial, sans-serif" font-size="14" fill="#7f8c8d">2. Add Noodles</text>
+    <text x="30" y="160" font-family="Arial, sans-serif" font-size="14" fill="#7f8c8d">3. Add Sauce</text>
+    
+    <text x="100" y="280" font-family="Arial, sans-serif" font-size="22" text-anchor="middle" fill="#e74c3c" font-weight="bold">Declaration</text>
+    <text x="100" y="305" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#7f8c8d">(Planning)</text>
+  </g>
+
+  <!-- Divider -->
+  <line x1="400" y1="50" x2="400" y2="350" stroke="#95a5a6" stroke-width="3" stroke-dasharray="10,10"/>
+
+  <!-- Right Side: Method Call (Cooking) -->
+  <g transform="translate(500, 100)">
+    <!-- Pot -->
+    <path d="M20,150 L180,150 L170,230 Q165,250 145,250 L55,250 Q35,250 30,230 Z" fill="#95a5a6" stroke="#7f8c8d" stroke-width="3"/>
+    <ellipse cx="100" cy="150" rx="80" ry="20" fill="#bdc3c7" stroke="#7f8c8d" stroke-width="3"/>
+    
+    <!-- Steam -->
+    <path d="M80,100 Q60,80 80,60" stroke="white" stroke-width="5" fill="none" opacity="0.6"/>
+    <path d="M120,100 Q140,80 120,60" stroke="white" stroke-width="5" fill="none" opacity="0.6"/>
+    
+    <!-- Chef Hand -->
+    <path d="M150,120 Q180,80 220,100" stroke="#f1c40f" stroke-width="15" fill="none" stroke-linecap="round"/>
+    
+    <text x="100" y="280" font-family="Arial, sans-serif" font-size="22" text-anchor="middle" fill="#3498db" font-weight="bold">Call</text>
+    <text x="100" y="305" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#7f8c8d">(Action!)</text>
+  </g>
+  
+</svg>

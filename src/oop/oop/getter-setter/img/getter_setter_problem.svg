@@ -1,0 +1,33 @@
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="400" fill="#f8f9fa"/>
+
+  <!-- Car Engine Area -->
+  <rect x="150" y="50" width="500" height="300" rx="10" fill="#ecf0f1" stroke="#bdc3c7" stroke-width="3"/>
+  
+  <!-- Car Hood Open -->
+  <path d="M150,50 L650,50 L600,20 L200,20 Z" fill="#95a5a6" stroke="#7f8c8d" stroke-width="2"/>
+  <text x="400" y="80" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="#7f8c8d" font-weight="bold">Car Engine (Object)</text>
+
+  <!-- Engine Block -->
+  <rect x="250" y="120" width="300" height="180" rx="5" fill="#34495e" stroke="#2c3e50" stroke-width="3"/>
+  <text x="400" y="150" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#ecf0f1">Speed Control System</text>
+
+  <!-- Dangerous Wires -->
+  <path d="M280,180 C280,250 350,250 350,180" stroke="#e74c3c" stroke-width="5" fill="none"/>
+  <path d="M380,180 C380,250 450,250 450,180" stroke="#f1c40f" stroke-width="5" fill="none"/>
+  <path d="M480,180 C480,250 520,250 520,180" stroke="#3498db" stroke-width="5" fill="none"/>
+
+  <!-- Hands Messing with Wires -->
+  <g transform="translate(480, 220)">
+    <path d="M0,0 L30,30 L-10,40 Z" fill="#e67e22"/> <!-- Simplified Hand -->
+    <text x="50" y="30" font-family="Arial, sans-serif" font-size="24" fill="#e74c3c" font-weight="bold">Danger!</text>
+  </g>
+
+  <!-- Direct Value Input -->
+  <rect x="280" y="270" width="150" height="40" rx="5" fill="white" stroke="#e74c3c" stroke-width="2"/>
+  <text x="355" y="295" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#e74c3c" font-weight="bold">speed = -100</text>
+  
+  <text x="400" y="380" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#c0392b">본넷 열고 직접 엔진 만지기 = 위험함!! (객체 무결성 파괴)</text>
+
+</svg>

@@ -1,0 +1,40 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="400" height="300" fill="#ffffff" />
+  
+  <!-- App -->
+  <g transform="translate(150, 200)">
+    <rect x="0" y="0" width="100" height="60" rx="5" fill="#e1bee7" stroke="#8e24aa" stroke-width="2"/>
+    <text x="50" y="35" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#4a148c" text-anchor="middle">My App</text>
+  </g>
+
+  <!-- Module A -->
+  <g transform="translate(50, 50)">
+    <rect x="0" y="0" width="100" height="60" rx="5" fill="#bbdefb" stroke="#1976d2" stroke-width="2"/>
+    <text x="50" y="35" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#0d47a1" text-anchor="middle">Module A</text>
+  </g>
+
+  <!-- Module B -->
+  <g transform="translate(250, 50)">
+    <rect x="0" y="0" width="100" height="60" rx="5" fill="#c8e6c9" stroke="#388e3c" stroke-width="2"/>
+    <text x="50" y="35" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#1b5e20" text-anchor="middle">Module B</text>
+  </g>
+
+  <!-- Arrows -->
+  <!-- App -> A -->
+  <path d="M180,200 L120,120" stroke="#8e24aa" stroke-width="2" marker-end="url(#arrow_dep)"/>
+  <text x="130" y="160" font-family="monospace" font-size="10" fill="#8e24aa" transform="rotate(-45 130,160)">requires</text>
+
+  <!-- App -> B -->
+  <path d="M220,200 L280,120" stroke="#8e24aa" stroke-width="2" marker-end="url(#arrow_dep)"/>
+  <text x="270" y="160" font-family="monospace" font-size="10" fill="#8e24aa" transform="rotate(45 270,160)">requires</text>
+
+  <defs>
+    <marker id="arrow_dep" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#8e24aa" />
+    </marker>
+  </defs>
+
+  <text x="200" y="280" font-family="Arial, sans-serif" font-size="12" fill="#333" text-anchor="middle">"모듈 기술자(module-info.java)에 의존성을 명시합니다."</text>
+
+</svg>

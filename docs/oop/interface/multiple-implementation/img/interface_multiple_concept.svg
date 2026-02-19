@@ -1,0 +1,44 @@
+<svg width="600" height="300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="600" height="300" fill="#fff" />
+
+  <!-- Title -->
+  <text x="300" y="30" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#333" font-weight="bold">다중 구현 (Amphibious Vehicle)</text>
+
+  <!-- Interfaces -->
+  <g transform="translate(100, 60)">
+    <circle cx="50" cy="50" r="40" fill="#e3f2fd" stroke="#2196f3" stroke-width="2"/>
+    <text x="50" y="55" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#0d47a1">Car</text>
+    <text x="50" y="110" font-family="monospace" font-size="12" text-anchor="middle" fill="#555">drive()</text>
+  </g>
+
+  <g transform="translate(400, 60)">
+    <circle cx="50" cy="50" r="40" fill="#e0f7fa" stroke="#00bcd4" stroke-width="2"/>
+    <text x="50" y="55" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#006064">Boat</text>
+    <text x="50" y="110" font-family="monospace" font-size="12" text-anchor="middle" fill="#555">sail()</text>
+  </g>
+
+  <!-- Implementation -->
+  <g transform="translate(200, 180)">
+    <ellipse cx="100" cy="60" rx="120" ry="50" fill="#fff9c4" stroke="#fbc02d" stroke-width="2"/>
+    <text x="100" y="50" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#f57f17" font-weight="bold">AmphibiousVehicle</text>
+    <text x="100" y="75" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#555">(수륙양용차)</text>
+    
+    <!-- Implemented Methods -->
+    <rect x="20" y="90" width="70" height="25" rx="5" fill="#e3f2fd" stroke="#2196f3" stroke-width="1"/>
+    <text x="55" y="107" font-family="monospace" font-size="12" text-anchor="middle" fill="#0d47a1">drive()</text>
+
+    <rect x="110" y="90" width="70" height="25" rx="5" fill="#e0f7fa" stroke="#00bcd4" stroke-width="1"/>
+    <text x="145" y="107" font-family="monospace" font-size="12" text-anchor="middle" fill="#006064">sail()</text>
+  </g>
+
+  <!-- Connections -->
+  <path d="M250,180 L150,100" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M350,180 L450,100" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#333" />
+    </marker>
+  </defs>
+</svg>

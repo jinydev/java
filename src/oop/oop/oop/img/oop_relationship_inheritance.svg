@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <rect width="800" height="400" fill="#f0f8ff"/>
+  <text x="400" y="50" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" font-weight="bold" fill="#333">Inheritance (Parent &lt;- Child)</text>
+
+  <!-- Machine (Parent) -->
+  <g transform="translate(300, 80)">
+    <rect x="0" y="0" width="200" height="100" rx="10" fill="#d3d3d3" stroke="#666" stroke-width="2"/>
+    <text x="100" y="30" text-anchor="middle" font-weight="bold">Machine (Parent)</text>
+    <text x="100" y="60" text-anchor="middle" font-family="monospace">powerOn()</text>
+    <text x="100" y="80" text-anchor="middle" font-family="monospace">powerOff()</text>
+  </g>
+
+  <!-- Arrow -->
+  <g transform="translate(400, 180)">
+    <line x1="0" y1="40" x2="0" y2="0" stroke="#333" stroke-width="3"/>
+    <polygon points="-10,0 0,-15 10,0" fill="#fff" stroke="#333" stroke-width="2"/> <!-- Hollow triangle for inheritance -->
+  </g>
+
+  <!-- Car (Child) -->
+  <g transform="translate(300, 240)">
+    <rect x="0" y="0" width="200" height="100" rx="10" fill="#ffb6c1" stroke="#cd5c5c" stroke-width="2"/>
+    <text x="100" y="30" text-anchor="middle" font-weight="bold">Car (Child)</text>
+    <text x="100" y="60" text-anchor="middle" font-family="monospace">drive()</text>
+    <text x="100" y="80" text-anchor="middle" font-family="monospace">stop()</text>
+  </g>
+
+  <text x="600" y="200" width="150" font-size="14" fill="#555">Inherits powerOn()</text>
+  <text x="600" y="220" width="150" font-size="14" fill="#555">and powerOff()</text>
+</svg>

@@ -1,0 +1,49 @@
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="400" fill="#f8f9fa"/>
+
+  <!-- Setter Box (Pedal/Filter) -->
+  <rect x="100" y="100" width="250" height="200" rx="10" fill="#3498db" stroke="#2980b9" stroke-width="3"/>
+  <text x="225" y="140" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="white" font-weight="bold">Setter (Method)</text>
+  <text x="225" y="170" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#ecf0f1">setSpeed(speed)</text>
+
+  <!-- Input Arrow (Negative) -->
+  <path d="M20,150 L90,150" stroke="#e74c3c" stroke-width="5" marker-end="url(#arrow_red)"/>
+  <text x="50" y="140" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#e74c3c">-100</text>
+
+  <!-- Input Arrow (Positive) -->
+  <path d="M20,250 L90,250" stroke="#2ecc71" stroke-width="5" marker-end="url(#arrow_green)"/>
+  <text x="50" y="240" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#2ecc71">60</text>
+
+  <!-- Logic Gate inside Setter -->
+  <g transform="translate(140, 180)">
+    <rect x="0" y="0" width="170" height="80" rx="5" fill="#2c3e50"/>
+    <text x="85" y="30" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">IF speed &lt; 0</text>
+    <text x="85" y="50" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#e74c3c">Then set 0</text>
+    <text x="85" y="70" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#2ecc71">Else OK</text>
+  </g>
+
+  <!-- Engine (Target) -->
+  <rect x="500" y="120" width="200" height="160" rx="10" fill="#95a5a6" stroke="#7f8c8d" stroke-width="3"/>
+  <text x="600" y="150" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="white" font-weight="bold">Engine (Field)</text>
+  
+  <!-- Safe Input connections -->
+  <path d="M350,200 L490,200" stroke="#2c3e50" stroke-width="4" stroke-dasharray="5,5" marker-end="url(#arrow_black)"/>
+  
+  <text x="600" y="200" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#2c3e50" font-weight="bold">speed = 0 또는 60</text>
+  <text x="600" y="230" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#2ecc71">(Safe Value Only)</text>
+
+  <!-- Arrow Definitions -->
+  <defs>
+    <marker id="arrow_red" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#e74c3c" />
+    </marker>
+    <marker id="arrow_green" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#2ecc71" />
+    </marker>
+    <marker id="arrow_black" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#2c3e50" />
+    </marker>
+  </defs>
+
+</svg>

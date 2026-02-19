@@ -1,0 +1,42 @@
+<svg width="600" height="250" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="600" height="250" fill="#ffffff" />
+  
+  <!-- Method Execution Timeline -->
+  <rect x="50" y="50" width="500" height="150" rx="10" fill="#f3e5f5" stroke="#8e24aa" stroke-width="2"/>
+  <text x="70" y="80" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#4a148c">메소드 실행 영역 (method())</text>
+
+  <!-- Start Point -->
+  <circle cx="80" cy="130" r="10" fill="#8e24aa"/>
+  <text x="80" y="155" font-family="Arial, sans-serif" font-size="12" fill="#333" text-anchor="middle">Start</text>
+  
+  <!-- Local Class Definition -->
+  <g transform="translate(150, 100)">
+    <rect x="0" y="0" width="120" height="60" rx="5" fill="#e1bee7" stroke="#8e24aa" stroke-width="2" stroke-dasharray="2,2"/>
+    <text x="60" y="25" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#4a148c" text-anchor="middle">class Local {}</text>
+    <text x="60" y="45" font-family="Arial, sans-serif" font-size="10" fill="#333" text-anchor="middle">정의 (잠깐 존재)</text>
+  </g>
+  
+  <!-- Object Creation -->
+  <g transform="translate(300, 110)">
+    <rect x="0" y="0" width="100" height="40" rx="5" fill="#ce93d8" stroke="#8e24aa" stroke-width="2"/>
+    <text x="50" y="25" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#fff" text-anchor="middle">new Local()</text>
+  </g>
+
+  <!-- End Point -->
+  <circle cx="520" cy="130" r="10" fill="#8e24aa"/>
+  <text x="520" y="155" font-family="Arial, sans-serif" font-size="12" fill="#333" text-anchor="middle">End</text>
+  
+  <!-- Flow Line -->
+  <path d="M90,130 L150,130 M270,130 L300,130 M400,130 L510,130" stroke="#8e24aa" stroke-width="2" marker-end="url(#arrow)"/>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#8e24aa" />
+    </marker>
+  </defs>
+
+  <!-- Outside -->
+  <text x="300" y="30" font-family="Arial, sans-serif" font-size="14" fill="#333" text-anchor="middle">바깥 세상 (Class A)</text>
+  <text x="300" y="230" font-family="Arial, sans-serif" font-size="12" fill="#d32f2f" text-anchor="middle">메소드가 끝나면 클래스 정의도 사라짐!</text>
+
+</svg>

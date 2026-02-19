@@ -1,0 +1,34 @@
+<svg width="600" height="250" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="600" height="250" fill="#fcfcfc"/>
+
+  <!-- Title -->
+  <text x="300" y="40" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="#2c3e50" font-weight="bold">final의 의미 (변경 금지)</text>
+
+  <!-- Final Class -->
+  <g transform="translate(50, 80)">
+    <rect width="150" height="100" rx="10" fill="#eceff1" stroke="#546e7a" stroke-width="2"/>
+    <text x="75" y="35" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#37474f" font-weight="bold">String Class</text>
+    <text x="75" y="55" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#78909c">(final)</text>
+    
+    <!-- Lock Icon -->
+    <circle cx="75" cy="80" r="10" fill="#e74c3c"/>
+    <rect x="70" y="70" width="10" height="8" fill="white"/>
+    <text x="75" y="115" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#e74c3c" font-weight="bold">상속 불가</text>
+  </g>
+
+  <!-- Arrow X -->
+  <g transform="translate(220, 110)">
+    <line x1="0" y1="20" x2="60" y2="20" stroke="#bdc3c7" stroke-width="2" stroke-dasharray="5,5"/>
+    <line x1="20" y1="10" x2="40" y2="30" stroke="#e74c3c" stroke-width="3"/>
+    <line x1="40" y1="10" x2="20" y2="30" stroke="#e74c3c" stroke-width="3"/>
+  </g>
+
+  <!-- MyString (Fail) -->
+  <g transform="translate(300, 80)">
+    <rect width="150" height="100" rx="10" fill="#fbe9e7" stroke="#ffab91" stroke-width="2" stroke-dasharray="5,5"/>
+    <text x="75" y="55" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#d84315">MyString</text>
+    <text x="75" y="80" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#d84315">(생성 불가)</text>
+  </g>
+
+</svg>

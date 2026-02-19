@@ -1,0 +1,22 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="400" height="300" fill="#ffffff" />
+  
+  <!-- Silhouette -->
+  <g transform="translate(150, 50)">
+    <circle cx="50" cy="50" r="40" fill="#555" stroke="#333" stroke-width="2"/>
+    <path d="M10,100 Q50,150 90,100 L90,160 L10,160 Z" fill="#555" stroke="#333" stroke-width="2"/>
+    
+    <!-- Question Mark -->
+    <text x="50" y="65" font-family="Arial, sans-serif" font-size="40" font-weight="bold" fill="#fff" text-anchor="middle">?</text>
+    
+    <!-- Label -->
+    <text x="50" y="190" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">이름 없는 객체</text>
+  </g>
+
+  <!-- Explanation -->
+  <rect x="30" y="220" width="340" height="60" rx="5" fill="#e3f2fd" stroke="#2196f3" stroke-width="1"/>
+  <text x="200" y="245" font-family="Arial, sans-serif" font-size="12" fill="#0d47a1" text-anchor="middle">"부모(상속)나 인터페이스(구현)를 빌려 태어나지만,</text>
+  <text x="200" y="265" font-family="Arial, sans-serif" font-size="12" fill="#0d47a1" text-anchor="middle">나만의 클래스 이름은 없습니다."</text>
+
+</svg>

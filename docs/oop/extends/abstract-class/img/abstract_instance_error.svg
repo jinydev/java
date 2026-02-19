@@ -1,0 +1,38 @@
+<svg width="600" height="300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="600" height="300" fill="#fcfcfc"/>
+
+  <!-- Title -->
+  <text x="300" y="40" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="#c0392b" font-weight="bold">추상 클래스는 객체를 만들 수 없다!</text>
+
+  <!-- Code Line -->
+  <rect x="50" y="70" width="500" height="50" rx="5" fill="#2c3e50"/>
+  <text x="70" y="100" font-family="monospace" font-size="16" fill="#ecf0f1">Animal a = new Animal();</text>
+  
+  <!-- Error Strike -->
+  <line x1="60" y1="95" x2="540" y2="95" stroke="#e74c3c" stroke-width="3"/>
+  <text x="450" y="100" font-family="Arial, sans-serif" font-size="14" fill="#e74c3c" font-weight="bold">❌ Compile Error</text>
+
+  <!-- Illustration -->
+  <g transform="translate(100, 150)">
+    <!-- Ghost Animal -->
+    <path d="M 50 100 Q 50 20 100 20 Q 150 20 150 100 L 140 120 L 120 100 L 100 120 L 80 100 L 60 120 Z" fill="#ecf0f1" stroke="#bdc3c7" stroke-width="2" stroke-dasharray="5,5" opacity="0.6"/>
+    <circle cx="85" cy="60" r="5" fill="#bdc3c7"/>
+    <circle cx="115" cy="60" r="5" fill="#bdc3c7"/>
+    <text x="100" y="80" font-family="Arial, sans-serif" font-size="30" text-anchor="middle" fill="#bdc3c7">👻</text>
+    <text x="100" y="140" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#7f8c8d">실체가 없음 (유령)</text>
+  </g>
+
+  <text x="300" y="200" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="#34495e">VS</text>
+
+  <!-- Real Dog -->
+  <g transform="translate(400, 150)">
+    <rect width="120" height="80" rx="10" fill="#e8f6f3" stroke="#1abc9c" stroke-width="2"/>
+    <text x="60" y="45" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#16a085" font-weight="bold">Dog</text>
+    <text x="60" y="110" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#16a085">실체가 있음!</text>
+  </g>
+
+  <!-- Arrow -->
+  <text x="300" y="270" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#e67e22">"설계도만으로는 물건을 쓸 수 없다."</text>
+
+</svg>

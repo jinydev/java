@@ -1,0 +1,65 @@
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="400" fill="#fcfcfc"/>
+
+  <!-- Title -->
+  <text x="400" y="40" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="#2c3e50" font-weight="bold">메소드 오버라이딩의 원리 (지도 바꾸기)</text>
+
+  <!-- Parent Class Logic -->
+  <g transform="translate(50, 100)">
+    <rect width="200" height="150" rx="10" fill="#e3f2fd" stroke="#2196f3" stroke-width="2"/>
+    <text x="100" y="30" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#1565c0" font-weight="bold">Parent (계산기)</text>
+    
+    <!-- Method Slot -->
+    <rect x="20" y="60" width="160" height="40" rx="5" fill="#fff" stroke="#2196f3"/>
+    <text x="100" y="85" font-family="monospace" font-size="14" text-anchor="middle" fill="#0d47a1">calculate()</text>
+    
+    <!-- Code Block -->
+    <rect x="20" y="110" width="160" height="30" fill="#bbdefb"/>
+    <text x="100" y="130" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#0d47a1">"대충 계산 (3.14)"</text>
+  </g>
+
+  <!-- Child Class Logic -->
+  <g transform="translate(550, 100)">
+    <rect width="200" height="150" rx="10" fill="#e8eaf6" stroke="#3f51b5" stroke-width="2"/>
+    <text x="100" y="30" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#3949ab" font-weight="bold">Child (컴퓨터)</text>
+    
+    <!-- Method Slot -->
+    <rect x="20" y="60" width="160" height="40" rx="5" fill="#fff" stroke="#3f51b5"/>
+    <text x="100" y="85" font-family="monospace" font-size="14" text-anchor="middle" fill="#1a237e">calculate()</text>
+    <text x="180" y="85" font-family="Arial, sans-serif" font-size="12" fill="#d32f2f" font-weight="bold">(New!)</text>
+    
+    <!-- Code Block -->
+    <rect x="20" y="110" width="160" height="30" fill="#c5cae9"/>
+    <text x="100" y="130" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#1a237e">"정밀 계산 (Math.PI)"</text>
+  </g>
+
+  <!-- Object Instance -->
+  <g transform="translate(300, 280)">
+    <rect width="200" height="100" rx="10" fill="#fff9c4" stroke="#fbc02d" stroke-width="3"/>
+    <text x="100" y="30" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#f57f17" font-weight="bold">실제 객체 (Instance)</text>
+    <text x="100" y="50" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#f9a825">Type: Child</text>
+    
+    <!-- Connection -->
+    <text x="100" y="80" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#333">calculate() 호출 시...</text>
+  </g>
+
+  <!-- Arrows -->
+  <defs>
+    <marker id="arrowRed" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#d32f2f"/>
+    </marker>
+    <marker id="arrowGray" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#bdbdbd"/>
+    </marker>
+  </defs>
+
+  <!-- Old Path (X) -->
+  <path d="M 350 280 Q 200 250 150 150" stroke="#bdbdbd" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#arrowGray)"/>
+  <text x="230" y="240" font-family="Arial, sans-serif" font-size="20" fill="#bdbdbd" font-weight="bold">❌</text>
+
+  <!-- New Path (O) -->
+  <path d="M 450 280 Q 600 250 650 150" stroke="#d32f2f" stroke-width="3" marker-end="url(#arrowRed)"/>
+  <text x="560" y="240" font-family="Arial, sans-serif" font-size="14" fill="#d32f2f" font-weight="bold">이쪽으로 연결!</text>
+
+</svg>

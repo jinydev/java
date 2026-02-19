@@ -1,0 +1,49 @@
+<svg width="500" height="300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="500" height="300" fill="#ffffff" />
+  
+  <!-- Comprehensive Gift Set -->
+  <g transform="translate(150, 50)">
+    <rect x="0" y="0" width="200" height="150" rx="10" fill="#ffcdd2" stroke="#e57373" stroke-width="3"/>
+    <text x="100" y="30" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#b71c1c" text-anchor="middle">종합 선물 세트</text>
+    <text x="100" y="50" font-family="monospace" font-size="12" fill="#333" text-anchor="middle">(Aggregator Module)</text>
+    
+    <!-- Contents inside (Abstract) -->
+    <path d="M50,80 L80,80 L80,110 L50,110 Z" fill="#fff" stroke="#e57373"/>
+    <path d="M90,80 L120,80 L120,110 L90,110 Z" fill="#fff" stroke="#e57373"/>
+    <path d="M130,80 L160,80 L160,110 L130,110 Z" fill="#fff" stroke="#e57373"/>
+    
+    <text x="100" y="140" font-family="Arial, sans-serif" font-size="12" fill="#c62828" text-anchor="middle">"이것만 가져가세요!"</text>
+  </g>
+
+  <!-- Real Modules -->
+  <g transform="translate(50, 230)">
+    <!-- Module A -->
+    <rect x="0" y="0" width="80" height="50" rx="5" fill="#bbdefb" stroke="#1976d2" stroke-width="2"/>
+    <text x="40" y="30" font-family="Arial, sans-serif" font-size="12" fill="#0d47a1" text-anchor="middle">Module A</text>
+  </g>
+
+  <g transform="translate(210, 230)">
+    <!-- Module B -->
+    <rect x="0" y="0" width="80" height="50" rx="5" fill="#c8e6c9" stroke="#388e3c" stroke-width="2"/>
+    <text x="40" y="30" font-family="Arial, sans-serif" font-size="12" fill="#1b5e20" text-anchor="middle">Module B</text>
+  </g>
+  
+  <g transform="translate(370, 230)">
+    <!-- Module C -->
+    <rect x="0" y="0" width="80" height="50" rx="5" fill="#fff9c4" stroke="#fbc02d" stroke-width="2"/>
+    <text x="40" y="30" font-family="Arial, sans-serif" font-size="12" fill="#f57f17" text-anchor="middle">Module C</text>
+  </g>
+  
+  <!-- Connections (Transitive) -->
+  <path d="M200,200 L100,230" stroke="#e57373" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#arrow_agg)"/>
+  <path d="M250,200 L250,230" stroke="#e57373" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#arrow_agg)"/>
+  <path d="M300,200 L400,230" stroke="#e57373" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#arrow_agg)"/>
+  
+  <defs>
+    <marker id="arrow_agg" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#e57373" />
+    </marker>
+  </defs>
+
+</svg>

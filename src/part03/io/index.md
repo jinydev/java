@@ -1,12 +1,12 @@
 ---
 layout: part03
-title: "Chapter 17. 데이터 입출력"
-nav_order: 17
+title: "Chapter 21. 스트림과 병렬 처리"
+nav_order: 21
 has_children: true
 parent: "라이브러리 활용"
 ---
 
-# Chapter 17. 스트림과 병렬 처리
+# Chapter 21. 스트림과 병렬 처리
 
 ## 학습목표
 

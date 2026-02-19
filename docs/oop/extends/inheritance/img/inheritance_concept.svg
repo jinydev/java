@@ -1,0 +1,47 @@
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="400" fill="#fcfcfc"/>
+
+  <!-- Title -->
+  <text x="400" y="40" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="#2c3e50" font-weight="bold">부모의 것을 내 것처럼 (상속의 개념)</text>
+
+  <!-- Parent Class (Mother/Father) -->
+  <g transform="translate(150, 80)">
+    <rect width="200" height="250" rx="15" fill="#e8f6f3" stroke="#1abc9c" stroke-width="3"/>
+    <text x="100" y="30" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#16a085" font-weight="bold">부모 클래스 (Parent)</text>
+    
+    <!-- Properties -->
+    <rect x="25" y="60" width="150" height="40" rx="5" fill="white" stroke="#16a085" stroke-dasharray="5,5"/>
+    <text x="100" y="85" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#2c3e50">💰 재산 (Field)</text>
+    
+    <rect x="25" y="110" width="150" height="40" rx="5" fill="white" stroke="#16a085" stroke-dasharray="5,5"/>
+    <text x="100" y="135" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#2c3e50">🧬 유전자 (Field)</text>
+
+    <rect x="25" y="160" width="150" height="40" rx="5" fill="white" stroke="#16a085" stroke-dasharray="5,5"/>
+    <text x="100" y="185" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#2c3e50">🏃‍♂️ 운동신경 (Method)</text>
+  </g>
+
+  <!-- Arrow passing genes -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#3498db"/>
+    </marker>
+  </defs>
+  
+  <path d="M 360 200 L 440 200" stroke="#3498db" stroke-width="4" marker-end="url(#arrowhead)"/>
+  <text x="400" y="180" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#3498db" font-weight="bold">extends (확장)</text>
+
+  <!-- Child Class -->
+  <g transform="translate(450, 80)">
+    <rect width="200" height="250" rx="15" fill="#ebf5fb" stroke="#3498db" stroke-width="3"/>
+    <text x="100" y="30" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#2980b9" font-weight="bold">자식 클래스 (Child)</text>
+    
+    <!-- Inherited scope -->
+    <rect x="15" y="50" width="170" height="160" rx="10" fill="none" stroke="#1abc9c" stroke-width="2" stroke-dasharray="5,5"/>
+    <text x="100" y="130" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#1abc9c">물려받은 재산/능력<br/>(자동 사용 가능)</text>
+    
+    <!-- Own Properties -->
+    <rect x="25" y="220" width="150" height="20" rx="5" fill="#fdfefe"/>
+    <text x="100" y="235" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#e74c3c">+ 나의 새로운 기술</text>
+  </g>
+</svg>

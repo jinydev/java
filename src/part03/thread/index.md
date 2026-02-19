@@ -1,12 +1,12 @@
 ---
 layout: part03
-title: "Chapter 14. 멀티 스레드"
-nav_order: 14
+title: "Chapter 20. 멀티 스레드"
+nav_order: 20
 has_children: true
 parent: "라이브러리 활용"
 ---
 
-# Chapter 14. 멀티 스레드
+# Chapter 20. 멀티 스레드
 
 ## 학습목표
 

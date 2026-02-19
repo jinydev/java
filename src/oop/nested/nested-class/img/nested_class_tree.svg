@@ -1,0 +1,47 @@
+<svg width="600" height="350" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="600" height="350" fill="#ffffff" />
+  
+  <!-- Root Node -->
+  <rect x="250" y="20" width="100" height="40" rx="5" fill="#2196f3" stroke="#1976d2" stroke-width="2"/>
+  <text x="300" y="45" font-family="Arial, sans-serif" font-size="14" fill="#fff" text-anchor="middle" font-weight="bold">중첩 클래스</text>
+
+  <!-- Level 1 Lines -->
+  <path d="M300,60 L300,100 M200,100 L400,100" stroke="#555" stroke-width="2"/>
+  <path d="M200,100 L200,120" stroke="#555" stroke-width="2"/>
+  <path d="M400,100 L400,120" stroke="#555" stroke-width="2"/>
+
+  <!-- Level 1 Nodes -->
+  <rect x="150" y="120" width="120" height="40" rx="5" fill="#4caf50" stroke="#388e3c" stroke-width="2"/>
+  <text x="210" y="145" font-family="Arial, sans-serif" font-size="14" fill="#fff" text-anchor="middle" font-weight="bold">멤버 클래스</text>
+  <text x="210" y="170" font-family="Arial, sans-serif" font-size="10" fill="#333" text-anchor="middle">(클래스의 멤버)</text>
+
+  <rect x="350" y="120" width="120" height="40" rx="5" fill="#ff9800" stroke="#f57c00" stroke-width="2"/>
+  <text x="410" y="145" font-family="Arial, sans-serif" font-size="14" fill="#fff" text-anchor="middle" font-weight="bold">로컬 클래스</text>
+  <text x="410" y="170" font-family="Arial, sans-serif" font-size="10" fill="#333" text-anchor="middle">(메소드 내부)</text>
+
+  <!-- Level 2 Lines (Member Class) -->
+  <path d="M210,160 L210,200 M140,200 L280,200" stroke="#555" stroke-width="2"/>
+  <path d="M140,200 L140,220" stroke="#555" stroke-width="2"/>
+  <path d="M280,200 L280,220" stroke="#555" stroke-width="2"/>
+
+  <!-- Level 2 Nodes -->
+  <rect x="80" y="220" width="120" height="40" rx="5" fill="#e8f5e9" stroke="#4caf50" stroke-width="2"/>
+  <text x="140" y="245" font-family="Arial, sans-serif" font-size="12" fill="#333" text-anchor="middle">인스턴스 멤버</text>
+  
+  <rect x="220" y="220" width="120" height="40" rx="5" fill="#e8f5e9" stroke="#4caf50" stroke-width="2"/>
+  <text x="280" y="245" font-family="Arial, sans-serif" font-size="12" fill="#333" text-anchor="middle">정적(static) 멤버</text>
+
+  <!-- Level 2 Lines (Local Class) -->
+  <path d="M410,160 L410,200" stroke="#555" stroke-width="2"/>
+  <path d="M410,200 L410,220" stroke="#555" stroke-width="2"/>
+  
+  <rect x="350" y="220" width="120" height="40" rx="5" fill="#fff3e0" stroke="#ff9800" stroke-width="2"/>
+  <text x="410" y="245" font-family="Arial, sans-serif" font-size="12" fill="#333" text-anchor="middle">로컬 클래스</text>
+
+  <!-- Special Node (Anonymous) -->
+   <path d="M410,260 L410,290" stroke="#555" stroke-width="2" stroke-dasharray="2,2"/>
+   <rect x="350" y="290" width="120" height="30" rx="5" fill="#eee" stroke="#999" stroke-width="2" stroke-dasharray="4,2"/>
+   <text x="410" y="310" font-family="Arial, sans-serif" font-size="11" fill="#555" text-anchor="middle">익명 객체</text>
+
+</svg>

@@ -1,0 +1,52 @@
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="400" fill="#f8f9fa"/>
+
+  <!-- Method Area (Static) -->
+  <g transform="translate(50, 50)">
+    <rect width="300" height="300" rx="10" fill="#ecf0f1" stroke="#2c3e50" stroke-width="2"/>
+    <text x="150" y="30" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#2c3e50" font-weight="bold">메소드 영역 (Method Area)</text>
+    <text x="150" y="50" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#7f8c8d">클래스, Static 멤버 저장</text>
+    
+    <!-- Static Field (Vertically Centered) -->
+    <rect x="50" y="120" width="200" height="60" rx="5" fill="#f1c40f" stroke="#f39c12" stroke-width="2"/>
+    <text x="150" y="155" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#d35400" font-weight="bold">static pi = 3.14</text>
+  </g>
+
+  <!-- Heap Area (Instance) -->
+  <g transform="translate(450, 50)">
+    <rect width="300" height="300" rx="10" fill="#ecf0f1" stroke="#2c3e50" stroke-width="2"/>
+    <text x="150" y="30" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#2c3e50" font-weight="bold">힙 영역 (Heap Area)</text>
+    <text x="150" y="50" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#7f8c8d">객체(Instance) 저장</text>
+    
+    <!-- Object A (Top) -->
+    <g transform="translate(50, 80)">
+      <rect width="120" height="80" rx="5" fill="#3498db" opacity="0.2" stroke="#2980b9" stroke-width="2"/>
+      <text x="60" y="30" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#2980b9" font-weight="bold">객체 A</text>
+      <text x="60" y="60" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#2980b9">color="Red"</text>
+    </g>
+
+    <!-- Object B (Bottom) -->
+    <g transform="translate(50, 190)">
+      <rect width="120" height="80" rx="5" fill="#e74c3c" opacity="0.2" stroke="#c0392b" stroke-width="2"/>
+      <text x="60" y="30" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#c0392b" font-weight="bold">객체 B</text>
+      <text x="60" y="60" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#c0392b">color="Blue"</text>
+    </g>
+  </g>
+
+  <!-- Connectors from Objects to Static -->
+  <!-- From Object A -->
+  <path d="M500,170 C450,170 400,170 350,170" stroke="#2ecc71" stroke-width="3" marker-end="url(#arrow)" fill="none"/>
+  
+  <!-- From Object B -->
+  <path d="M500,280 C400,280 400,190 350,190" stroke="#2ecc71" stroke-width="3" marker-end="url(#arrow)" fill="none"/>
+
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#2ecc71" />
+    </marker>
+  </defs>
+
+  <text x="400" y="380" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#2c3e50">객체들은 하나의 Static 멤버를 공유합니다.</text>
+
+</svg>

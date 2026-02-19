@@ -1,0 +1,51 @@
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="400" fill="#fcfcfc"/>
+
+  <!-- Title -->
+  <text x="400" y="40" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="#2c3e50" font-weight="bold">객체 타입 확인 (instanceof)</text>
+
+  <!-- Scenario 1: Success -->
+  <g transform="translate(50, 100)">
+    <!-- Scanner -->
+    <rect width="200" height="200" rx="10" fill="#e8f5e9" stroke="#4caf50" stroke-width="3"/>
+    <text x="100" y="30" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#2e7d32" font-weight="bold">Type Scanner</text>
+    <text x="100" y="55" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#2e7d32">instanceof Student</text>
+
+    <!-- Passing Object (Student) -->
+    <g transform="translate(50, 80)">
+       <circle cx="50" cy="50" r="40" fill="#fff3e0" stroke="#ff9800" stroke-width="2"/>
+       <text x="50" y="55" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#e65100" font-weight="bold">Student</text>
+    </g>
+    
+    <!-- Result -->
+    <text x="100" y="180" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="#4caf50" font-weight="bold">✔ TRUE</text>
+  </g>
+
+  <!-- Scenario 2: Fail -->
+  <g transform="translate(300, 100)">
+    <!-- Scanner -->
+    <rect width="200" height="200" rx="10" fill="#ffebee" stroke="#ef5350" stroke-width="3"/>
+    <text x="100" y="30" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#c62828" font-weight="bold">Type Scanner</text>
+    <text x="100" y="55" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#c62828">instanceof Student</text>
+
+    <!-- Failing Object (Teacher) -->
+    <g transform="translate(50, 80)">
+       <rect x="10" y="10" width="80" height="80" rx="5" fill="#e3f2fd" stroke="#2196f3" stroke-width="2"/>
+       <text x="50" y="55" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#1565c0" font-weight="bold">Teacher</text>
+    </g>
+    
+    <!-- Result -->
+    <text x="100" y="180" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="#ef5350" font-weight="bold">❌ FALSE</text>
+  </g>
+
+  <!-- Explanation -->
+  <g transform="translate(550, 100)">
+    <text x="100" y="50" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#2c3e50" font-weight="bold">안전한 변환을 위한 검사</text>
+    <text x="100" y="90" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#546e7a">"변환하기 전에 신분증을</text>
+    <text x="100" y="115" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#546e7a">검사하는 것과 같다."</text>
+    
+    <text x="100" y="160" font-family="monospace" font-size="12" text-anchor="middle" fill="#333">if (p instanceof Student)</text>
+  </g>
+
+</svg>

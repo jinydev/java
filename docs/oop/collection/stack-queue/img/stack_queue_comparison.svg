@@ -1,0 +1,86 @@
+<svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="600" height="400" fill="#ffffff" />
+  
+  <!-- Stack (Pringles) -->
+  <g transform="translate(50, 50)">
+    <!-- Title -->
+    <text x="100" y="30" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#d32f2f" text-anchor="middle">Stack (LIFO)</text>
+    <text x="100" y="50" font-family="Arial, sans-serif" font-size="12" fill="#555" text-anchor="middle">"Pringles Can"</text>
+
+    <!-- Can Body -->
+    <path d="M50,100 L50,250 Q100,270 150,250 L150,100" fill="#ffebee" stroke="#d32f2f" stroke-width="3"/>
+    <ellipse cx="100" cy="250" rx="50" ry="10" fill="#ffebee" stroke="#d32f2f" stroke-width="3"/>
+    <ellipse cx="100" cy="100" rx="50" ry="10" fill="none" stroke="#d32f2f" stroke-width="3"/>
+
+    <!-- Chips -->
+    <g transform="translate(0, 80)">
+       <ellipse cx="100" cy="150" rx="40" ry="8" fill="#ffcc80" stroke="#f57f17" stroke-width="2"/> <!-- Bottom Chip (1) -->
+       <text x="100" y="153" font-family="Arial, sans-serif" font-size="10" fill="#e65100" text-anchor="middle">1st In</text>
+       
+       <ellipse cx="100" cy="130" rx="40" ry="8" fill="#ffcc80" stroke="#f57f17" stroke-width="2"/> <!-- Middle Chip (2) -->
+       
+       <ellipse cx="100" cy="110" rx="40" ry="8" fill="#ffcc80" stroke="#f57f17" stroke-width="2"/> <!-- Top Chip (3) -->
+       <text x="100" y="113" font-family="Arial, sans-serif" font-size="10" fill="#e65100" text-anchor="middle">Last In</text>
+    </g>
+
+    <!-- Action Arrows -->
+    <path d="M180,100 L160,110" stroke="#2e7d32" stroke-width="3" marker-end="url(#arrow_stack)"/>
+    <text x="210" y="100" font-family="Arial, sans-serif" font-size="12" fill="#2e7d32">Push</text>
+    
+    <path d="M160,80 L180,70" stroke="#c62828" stroke-width="3" marker-end="url(#arrow_out_stack)"/>
+    <text x="210" y="70" font-family="Arial, sans-serif" font-size="12" fill="#c62828">Pop</text>
+
+    <text x="100" y="300" font-family="Arial, sans-serif" font-size="12" fill="#555" text-anchor="middle">Last In, First Out</text>
+  </g>
+
+  <!-- Queue (Bus Line) -->
+  <g transform="translate(300, 50)">
+    <!-- Title -->
+    <text x="150" y="30" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#1976d2" text-anchor="middle">Queue (FIFO)</text>
+    <text x="150" y="50" font-family="Arial, sans-serif" font-size="12" fill="#555" text-anchor="middle">"Bus Line"</text>
+
+    <!-- Pipe/Tunnel -->
+    <rect x="50" y="100" width="200" height="60" fill="#e3f2fd" stroke="#1976d2" stroke-width="3"/>
+    
+    <!-- People -->
+    <g transform="translate(220, 110)"> <!-- First Person -->
+      <circle cx="15" cy="15" r="10" fill="#bbdefb" stroke="#1565c0" stroke-width="2"/>
+       <text x="15" y="35" font-family="Arial, sans-serif" font-size="10" fill="#0d47a1" text-anchor="middle">1st</text>
+    </g>
+    
+    <g transform="translate(140, 110)"> <!-- Middle Person -->
+       <circle cx="15" cy="15" r="10" fill="#bbdefb" stroke="#1565c0" stroke-width="2"/>
+    </g>
+
+    <g transform="translate(60, 110)"> <!-- Last Person -->
+       <circle cx="15" cy="15" r="10" fill="#bbdefb" stroke="#1565c0" stroke-width="2"/>
+       <text x="15" y="35" font-family="Arial, sans-serif" font-size="10" fill="#0d47a1" text-anchor="middle">Last</text>
+    </g>
+
+    <!-- Action Arrows -->
+    <path d="M20,130 L40,130" stroke="#2e7d32" stroke-width="3" marker-end="url(#arrow_queue)"/>
+    <text x="20" y="120" font-family="Arial, sans-serif" font-size="12" fill="#2e7d32" text-anchor="end">Offer (In)</text>
+    
+    <path d="M260,130 L280,130" stroke="#c62828" stroke-width="3" marker-end="url(#arrow_out_queue)"/>
+    <text x="280" y="120" font-family="Arial, sans-serif" font-size="12" fill="#c62828" text-anchor="start">Poll (Out)</text>
+
+     <text x="150" y="300" font-family="Arial, sans-serif" font-size="12" fill="#555" text-anchor="middle">First In, First Out</text>
+  </g>
+
+  <defs>
+    <marker id="arrow_stack" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#2e7d32" />
+    </marker>
+    <marker id="arrow_out_stack" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#c62828" />
+    </marker>
+     <marker id="arrow_queue" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#2e7d32" />
+    </marker>
+    <marker id="arrow_out_queue" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#c62828" />
+    </marker>
+  </defs>
+
+</svg>

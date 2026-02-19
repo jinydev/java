@@ -1,12 +1,12 @@
 ---
 layout: database
-title: "20. 데이터베이스 입출력 (MySQL)"
-nav_order: 22
+title: "Chapter 24. MySQL"
+nav_order: 24
 has_children: true
 parent: "데이터베이스"
 ---
 
-# Chapter 20. JDBC (MySQL)
+# Chapter 24. MySQL
 
 본 부록은 MySQL을 사용하여 JDBC 프로그래밍을 학습하는 분들을 위한 가이드입니다. 
 Oracle을 사용하는 분들은 [데이터베이스 입출력](../jdbc/index.md)을 참고하세요.

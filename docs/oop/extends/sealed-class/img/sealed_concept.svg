@@ -1,0 +1,47 @@
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="400" fill="#fcfcfc"/>
+
+  <!-- Title -->
+  <text x="400" y="40" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="#2c3e50" font-weight="bold">봉인된 클래스 (Sealed Class)</text>
+  <text x="400" y="70" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#7f8c8d">"허락된 자식만 상속 가능!"</text>
+
+  <!-- Parent Class (VIP Room) -->
+  <g transform="translate(250, 100)">
+    <rect width="300" height="100" rx="10" fill="#e8eaf6" stroke="#3f51b5" stroke-width="3"/>
+    <text x="150" y="35" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#1a237e" font-weight="bold">Person (Sealed)</text>
+    <text x="150" y="60" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#3949ab">permits Employee, Manager</text>
+    
+    <!-- Lock Icon -->
+    <circle cx="270" cy="30" r="10" fill="#fbc02d"/>
+    <rect x="265" y="25" width="10" height="8" fill="white"/>
+  </g>
+
+  <!-- Allowed Child 1 -->
+  <g transform="translate(100, 250)">
+    <path d="M 150 -50 L 250 -150" stroke="#4caf50" stroke-width="3" stroke-dasharray="5,5"/>
+    
+    <rect width="180" height="80" rx="10" fill="#e8f5e9" stroke="#4caf50" stroke-width="2"/>
+    <text x="90" y="35" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#2e7d32" font-weight="bold">Employee</text>
+    <text x="90" y="60" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="#4caf50">✔ 허가됨</text>
+  </g>
+
+  <!-- Allowed Child 2 -->
+  <g transform="translate(320, 250)">
+    <path d="M 90 -50 L 90 -150" stroke="#4caf50" stroke-width="3" stroke-dasharray="5,5"/>
+
+    <rect width="180" height="80" rx="10" fill="#e8f5e9" stroke="#4caf50" stroke-width="2"/>
+    <text x="90" y="35" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#2e7d32" font-weight="bold">Manager</text>
+    <text x="90" y="60" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="#4caf50">✔ 허가됨</text>
+  </g>
+
+  <!-- Denied Child -->
+  <g transform="translate(540, 250)">
+    <path d="M 90 -50 L 0 -150" stroke="#f44336" stroke-width="3"/>
+
+    <rect width="180" height="80" rx="10" fill="#ffebee" stroke="#f44336" stroke-width="2"/>
+    <text x="90" y="35" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#c62828" font-weight="bold">Student</text>
+    <text x="90" y="60" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="#f44336">❌ 거부됨</text>
+  </g>
+
+</svg>
