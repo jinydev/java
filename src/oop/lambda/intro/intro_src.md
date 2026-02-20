@@ -20,7 +20,7 @@ grand_parent: "객체지향 프로그래밍"
 
 자바는 람다식을 익명 구현 객체로 변환한다. 익명 구현 객체란 이름이 없는 인터페이스 구현 객체를 말한다.
 
-예를 들어 다음과 같이 Calculable 인터페이스가 있다고 가정해 보자.
+예를 들어 다음과 같이 `Calculable` 인터페이스가 있다고 가정해 보자.
 
 ```java
 public interface Calculable {
@@ -29,7 +29,7 @@ public interface Calculable {
 }
 ```
 
-Calculable 인터페이스의 익명 구현 객체는 다음과 같이 생성할 수 있다.
+`Calculable` 인터페이스의 익명 구현 객체는 다음과 같이 생성할 수 있다.
 
 ```java
 new Calculable() {
@@ -38,7 +38,7 @@ new Calculable() {
 };
 ```
 
-이것을 람다식으로 표현하면 다음과 같다. 추상 메소드인 calculate()는 두 개의 매개변수를 가지므로 (x, y)로 표현되었고, 화살표 -> 뒤에 calculate()의 실행 블록이 온다.
+이것을 람다식으로 표현하면 다음과 같다. 추상 메소드인 `calculate()`는 두 개의 매개변수를 가지므로 `(x, y)`로 표현되었고, 화살표 `->` 뒤에 `calculate()`의 실행 블록이 온다.
 
 ```java
 (x, y) -> { 처리내용 };
@@ -54,7 +54,7 @@ public void action(Calculable calculable) {
 }
 ```
 
-action() 메소드를 호출할 때 매개값으로 다음과 같이 람다식을 제공할 수 있다.
+`action()` 메소드를 호출할 때 매개값으로 다음과 같이 람다식을 제공할 수 있다.
 
 ```java
 action((x, y) -> {

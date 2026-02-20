@@ -14,7 +14,7 @@ grand_parent: "객체지향 프로그래밍"
     *   ③ `(x, y) -> { return x+y; }`는 `(x, y) -> x+y`로 바꿀 수 있다.
     *   ④ `@FunctionalInterface`가 기술된 인터페이스만 람다식으로 표현이 가능하다.
     > **정답**: ④
-    > **해설**: @FunctionalInterface 어노테이션이 없어도 추상 메소드가 하나라면 람다식으로 표현 가능하다.
+    > **해설**: `@FunctionalInterface` 어노테이션이 없어도 추상 메소드가 하나라면 람다식으로 표현 가능하다.
 
 2.  메소드 참조와 생성자 참조에 대한 설명으로 틀린 것은 무엇입니까?
     *   ① 메소드 참조는 함수적 인터페이스의 익명 구현 객체를 생성한다.
@@ -54,7 +54,7 @@ grand_parent: "객체지향 프로그래밍"
     btnCancel.click();
     ```
 
-6.  다음 코드를 보고, Function 함수형 인터페이스를 작성해 보세요.
+6.  다음 코드를 보고, `Function` 함수형 인터페이스를 작성해 보세요.
     ```java
     @FunctionalInterface
     public interface Function {
@@ -62,7 +62,7 @@ grand_parent: "객체지향 프로그래밍"
     }
     ```
 
-7.  다음은 배열 항목 중에 최대값 또는 최소값을 찾는 코드입니다. maxOrMin() 메소드를 호출할 때 빈 곳에 람다식을 작성해 보세요.
+7.  다음은 배열 항목 중에 최대값 또는 최소값을 찾는 코드입니다. `maxOrMin()` 메소드를 호출할 때 빈 곳에 람다식을 작성해 보세요.
     ```java
     // ... main 내부 ...
     // 최대값 얻기
@@ -78,7 +78,7 @@ grand_parent: "객체지향 프로그래밍"
     System.out.println("최소값: " + min);
     ```
 
-8.  다음은 학생의 영어 평균 점수와 수학 평균 점수를 계산하는 코드입니다. 빈 곳에 avg() 메소드를 작성해 보세요.
+8.  다음은 학생의 영어 평균 점수와 수학 평균 점수를 계산하는 코드입니다. 빈 곳에 `avg()` 메소드를 작성해 보세요.
     ```java
     // ... Example 클래스 내부 ...
     public static double avg(Function<Student> function) {
@@ -91,7 +91,7 @@ grand_parent: "객체지향 프로그래밍"
     }
     ```
 
-9.  8번 문제에서 Example 클래스의 main() 메소드를 실행할 때, avg() 메소드의 매개값으로 람다식을 사용하지 않고 메소드 참조로 변경해 보세요.
+9.  8번 문제에서 `Example` 클래스의 `main()` 메소드를 실행할 때, `avg()` 메소드의 매개값으로 람다식을 사용하지 않고 메소드 참조로 변경해 보세요.
     ```java
     double englishAvg = avg( Student :: getEnglishScore );
     double mathAvg = avg( Student :: getMathScore );
