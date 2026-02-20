@@ -18,6 +18,26 @@ grand_parent: "Part 01. 자바 언어의 기초"
 2.  중괄호 `{}`로 여러 줄을 묶을 수 있습니다.
 3.  콤마(`,`)로 여러 값을 한 번에 처리할 수 있습니다.
 
+```mermaid
+flowchart LR
+    Input([입력값: 'A' 또는 'a']) --> CaseA{"case 'A', 'a'"}
+    Input2([입력값: 'B' 또는 'b']) --> CaseB{"case 'B', 'b'"}
+    
+    CaseA --> ActionA["우수 회원입니다."]
+    CaseB --> ActionB["일반 회원입니다."]
+    
+    ActionA --> End([switch 종료 (break 불필요)])
+    ActionB --> End
+
+    style Input fill:#f9f,stroke:#333,stroke-width:2px
+    style Input2 fill:#f9f,stroke:#333,stroke-width:2px
+    style CaseA fill:#ff9,stroke:#333,stroke-width:2px
+    style CaseB fill:#ff9,stroke:#333,stroke-width:2px
+    style ActionA fill:#bbf,stroke:#333,stroke-width:2px
+    style ActionB fill:#bbf,stroke:#333,stroke-width:2px
+    style End fill:#ccc,stroke:#333,stroke-width:2px
+```
+
 ```java
 char grade = 'B';
 

@@ -8,7 +8,7 @@
   <!-- 기본 메타데이터 --><meta name="description" content="Jiny linux"><meta name="author" content="HojinLee"><!-- 제목 설정 --><title>6.2 if 문</title>
   <meta name="title" content="6.2 if 문" /><!-- 키워드 설정 --><!-- Open Graph 메타데이터 --><meta property="og:title" content="6.2 if 문"><meta property="og:description" content="Jiny linux"><meta property="og:type" content="website"><meta property="og:locale" content="ko">
   <meta property="og:site_name" content="linux">
-  <meta property="og:url" content="https://java.jiny.dev/basic/condition/if/">
+  <meta property="og:url" content="http://localhost:4000/basic/condition/if/">
 
   <!-- Twitter 카드 메타데이터 --><meta name="twitter:card" content="summary"><meta property="twitter:title" content="6.2 if 문"><!-- Begin Jekyll SEO tag v2.8.0 -->
 <meta name="generator" content="Jekyll v4.4.1" />
@@ -17,14 +17,14 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
 <meta property="og:description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
-<link rel="canonical" href="https://java.jiny.dev/basic/condition/if/" />
-<meta property="og:url" content="https://java.jiny.dev/basic/condition/if/" />
+<link rel="canonical" href="http://localhost:4000/basic/condition/if/" />
+<meta property="og:url" content="http://localhost:4000/basic/condition/if/" />
 <meta property="og:site_name" content="객체지향 자바 프로그래밍 (Object-Oriented Java Programming)" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="6.2 if 문" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"6.2 if 문","url":"https://java.jiny.dev/basic/condition/if/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"6.2 if 문","url":"http://localhost:4000/basic/condition/if/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -1117,6 +1117,28 @@
 
 <p><strong>“A야? 아니면 B야? 그것도 아니면 C야?”</strong>
 여러 개의 갈림길이 있을 때 씁니다.</p>
+
+<pre><code class="language-mermaid">flowchart TD
+    Start([성적 확인 시작]) --&gt; Check90{90점 이상인가?}
+    
+    Check90 -- "예" --&gt; GradeA[A등급]
+    Check90 -- "아니오" --&gt; Check80{80점 이상인가?}
+    
+    Check80 -- "예" --&gt; GradeB[B등급]
+    Check80 -- "아니오" --&gt; GradeC[C등급]
+    
+    GradeA --&gt; End([종료])
+    GradeB --&gt; End
+    GradeC --&gt; End
+
+    style Start fill:#f9f,stroke:#333,stroke-width:2px
+    style End fill:#f9f,stroke:#333,stroke-width:2px
+    style Check90 fill:#ff9,stroke:#333,stroke-width:2px
+    style Check80 fill:#ff9,stroke:#333,stroke-width:2px
+    style GradeA fill:#bbf,stroke:#333,stroke-width:2px
+    style GradeB fill:#bbf,stroke:#333,stroke-width:2px
+    style GradeC fill:#bbf,stroke:#333,stroke-width:2px
+</code></pre>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="o">(</span><span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">90</span><span class="o">)</span> <span class="o">{</span>
     <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"A등급"</span><span class="o">);</span>

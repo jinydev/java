@@ -8,7 +8,7 @@
   <!-- 기본 메타데이터 --><meta name="description" content="Jiny linux"><meta name="author" content="HojinLee"><!-- 제목 설정 --><title>3.4 실행문과 세미콜론</title>
   <meta name="title" content="3.4 실행문과 세미콜론" /><!-- 키워드 설정 --><!-- Open Graph 메타데이터 --><meta property="og:title" content="3.4 실행문과 세미콜론"><meta property="og:description" content="Jiny linux"><meta property="og:type" content="website"><meta property="og:locale" content="ko">
   <meta property="og:site_name" content="linux">
-  <meta property="og:url" content="https://java.jiny.dev/basic/start/statements/">
+  <meta property="og:url" content="http://localhost:4000/basic/start/statements/">
 
   <!-- Twitter 카드 메타데이터 --><meta name="twitter:card" content="summary"><meta property="twitter:title" content="3.4 실행문과 세미콜론"><!-- Begin Jekyll SEO tag v2.8.0 -->
 <meta name="generator" content="Jekyll v4.4.1" />
@@ -17,14 +17,14 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
 <meta property="og:description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
-<link rel="canonical" href="https://java.jiny.dev/basic/start/statements/" />
-<meta property="og:url" content="https://java.jiny.dev/basic/start/statements/" />
+<link rel="canonical" href="http://localhost:4000/basic/start/statements/" />
+<meta property="og:url" content="http://localhost:4000/basic/start/statements/" />
 <meta property="og:site_name" content="객체지향 자바 프로그래밍 (Object-Oriented Java Programming)" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="3.4 실행문과 세미콜론" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"3.4 실행문과 세미콜론","url":"https://java.jiny.dev/basic/start/statements/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"3.4 실행문과 세미콜론","url":"http://localhost:4000/basic/start/statements/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -1089,25 +1089,89 @@
         <div class="bd-content ps-lg-2">
             <h1 id="34-실행문과-세미콜론">3.4 실행문과 세미콜론</h1>
 
-<h2 id="1-마침표를-찍어주세요-">1. 마침표를 찍어주세요 (<code class="language-plaintext highlighter-rouge">;</code>)</h2>
+<h2 id="1-실행문-컴퓨터에게-내리는-명령-️">1. 실행문: 컴퓨터에게 내리는 명령 🗣️</h2>
 
-<p>우리말이나 영어에서 문장이 끝나면 마침표(<code class="language-plaintext highlighter-rouge">.</code>)를 찍듯이,
-자바에서는 명령(실행문)이 끝나면 반드시 <strong>세미콜론(<code class="language-plaintext highlighter-rouge">;</code>)</strong>을 찍어야 합니다.</p>
+<h3 id="1-개념">1) 개념</h3>
+<p>실행문(Statement)은 변수를 선언하거나, 값을 저장하거나, 메소드를 호출하는 등 <strong>구체적인 작업을 수행하는 명령</strong>입니다.
+자바 프로그램은 이러한 실행문들이 모여서 만들어집니다.</p>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>   <span class="c1">// (X) 에러 발생! 마침표가 없어요.</span>
+<h3 id="2-비유-식당-주문서">2) 비유: “식당 주문서”</h3>
+<ul>
+  <li>우리가 식당에서 주문할 때 “물 주세요.”, “메뉴판 주세요.” 라고 말하는 것 하나하나가 실행문입니다.</li>
+  <li>주문(명령)이 끝나면 <strong>“이상입니다.”</strong>라고 확실히 말해줘야 직원이 알아듣듯이, 자바에서도 문장이 끝났음을 알려줘야 합니다.</li>
+</ul>
+
+<hr />
+
+<h2 id="2-세미콜론---문장의-마침표-">2. 세미콜론 (<code class="language-plaintext highlighter-rouge">;</code>) : 문장의 마침표 🛑</h2>
+
+<h3 id="1-개념-1">1) 개념</h3>
+<p>자바의 모든 실행문 끝에는 반드시 <strong>세미콜론(<code class="language-plaintext highlighter-rouge">;</code>)</strong>을 붙여야 합니다.
+컴파일러는 세미콜론을 보고 <strong>“아, 여기까지가 하나의 명령이구나!”</strong>라고 인식합니다.</p>
+
+<h3 id="2-코드-예시">2) 코드 예시</h3>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>   <span class="c1">// (X) 에러! 마침표가 없어서 말이 끊기지 않았어요.</span>
 <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>  <span class="c1">// (O) 성공!</span>
 </code></pre></div></div>
 
-<h2 id="2-실행문의-종류">2. 실행문의 종류</h2>
+<h3 id="3-실행-흐름-시각화">3) 실행 흐름 시각화</h3>
+
+<pre><code class="language-mermaid">flowchart TD
+    Stmt1[1. 변수 선언: int x;] --&gt; Stmt2[2. 값 저장: x = 10;]
+    Stmt2 --&gt; Stmt3[3. 출력: System.out.println(x);]
+    
+    style Stmt1 fill:#f9f,stroke:#333
+    style Stmt2 fill:#fff,stroke:#333
+    style Stmt3 fill:#bfb,stroke:#333
+</code></pre>
 
 <ul>
-  <li><strong>변수 선언</strong>: <code class="language-plaintext highlighter-rouge">int x;</code> (그릇 만들기)</li>
-  <li><strong>값 저장</strong>: <code class="language-plaintext highlighter-rouge">x = 10;</code> (그릇에 담기)</li>
-  <li><strong>메소드 호출</strong>: <code class="language-plaintext highlighter-rouge">System.out.println("Hello");</code> (일 시키기)</li>
+  <li>화살표 방향(위에서 아래)으로 하나씩 차례대로 실행됩니다.</li>
 </ul>
 
-<p>세미콜론을 빠뜨리는 것은 초보자가 가장 많이 하는 실수 중 하나입니다.
-<strong>“명령 끝!”</strong>이라는 의미로 <code class="language-plaintext highlighter-rouge">;</code>를 잊지 마세요.</p>
+<hr />
+
+<h2 id="3-실행문의-종류-">3. 실행문의 종류 📋</h2>
+
+<p>실행문은 크게 3가지로 나눌 수 있습니다.</p>
+
+<h3 id="1-변수-선언문-그릇-만들기">1) 변수 선언문 (그릇 만들기)</h3>
+<ul>
+  <li>어떤 데이터를 담을지 그릇을 준비하는 명령입니다.</li>
+  <li><code class="language-plaintext highlighter-rouge">int x;</code> (정수를 담을 x라는 그릇을 만들어라)</li>
+</ul>
+
+<h3 id="2-대입문-그릇에-담기">2) 대입문 (그릇에 담기)</h3>
+<ul>
+  <li>준비된 그릇에 데이터를 넣는 명령입니다.</li>
+  <li><code class="language-plaintext highlighter-rouge">x = 10;</code> (x라는 그릇에 10을 넣어라)</li>
+</ul>
+
+<h3 id="3-메소드-호출문-일-시키기">3) 메소드 호출문 (일 시키기)</h3>
+<ul>
+  <li>이미 만들어진 기능(메소드)을 사용하라는 명령입니다.</li>
+  <li><code class="language-plaintext highlighter-rouge">System.out.println("Hello");</code> (화면에 Hello를 출력해라)</li>
+</ul>
+
+<hr />
+
+<h2 id="4-블록-----문장-묶음-">4. 블록 <code class="language-plaintext highlighter-rouge">{ ... }</code> : 문장 묶음 📦</h2>
+
+<p>여러 개의 실행문을 하나로 묶을 때는 <strong>중괄호 <code class="language-plaintext highlighter-rouge">{ }</code></strong>를 사용합니다. 이것을 <strong>블록(Block)</strong>이라고 합니다.
+클래스나 메소드도 블록으로 감싸져 있습니다.</p>
+
+<pre><code class="language-mermaid">graph TD
+    Class[클래스 블록 { }] --&gt; Method[메소드 블록 { }]
+    Method --&gt; Stmt1[실행문 1;]
+    Method --&gt; Stmt2[실행문 2;]
+    
+    style Class fill:#eee,stroke:#333
+    style Method fill:#ddd,stroke:#333
+</code></pre>
+
+<blockquote>
+  <p><strong>주의</strong>: 블록 자체는 실행문의 묶음일 뿐이므로, 블록 끝(<code class="language-plaintext highlighter-rouge">}</code>)에는 세미콜론을 붙이지 않습니다.</p>
+</blockquote>
 
 
             <!-- Google AdSense -->

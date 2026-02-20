@@ -8,7 +8,7 @@
   <!-- 기본 메타데이터 --><meta name="description" content="Jiny linux"><meta name="author" content="HojinLee"><!-- 제목 설정 --><title>5.2 산술 연산자</title>
   <meta name="title" content="5.2 산술 연산자" /><!-- 키워드 설정 --><!-- Open Graph 메타데이터 --><meta property="og:title" content="5.2 산술 연산자"><meta property="og:description" content="Jiny linux"><meta property="og:type" content="website"><meta property="og:locale" content="ko">
   <meta property="og:site_name" content="linux">
-  <meta property="og:url" content="https://java.jiny.dev/basic/operator/arithmetic/">
+  <meta property="og:url" content="http://localhost:4000/basic/operator/arithmetic/">
 
   <!-- Twitter 카드 메타데이터 --><meta name="twitter:card" content="summary"><meta property="twitter:title" content="5.2 산술 연산자"><!-- Begin Jekyll SEO tag v2.8.0 -->
 <meta name="generator" content="Jekyll v4.4.1" />
@@ -17,14 +17,14 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
 <meta property="og:description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
-<link rel="canonical" href="https://java.jiny.dev/basic/operator/arithmetic/" />
-<meta property="og:url" content="https://java.jiny.dev/basic/operator/arithmetic/" />
+<link rel="canonical" href="http://localhost:4000/basic/operator/arithmetic/" />
+<meta property="og:url" content="http://localhost:4000/basic/operator/arithmetic/" />
 <meta property="og:site_name" content="객체지향 자바 프로그래밍 (Object-Oriented Java Programming)" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="5.2 산술 연산자" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"5.2 산술 연산자","url":"https://java.jiny.dev/basic/operator/arithmetic/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"5.2 산술 연산자","url":"http://localhost:4000/basic/operator/arithmetic/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -1087,60 +1087,138 @@
     </ol>
 </nav>
         <div class="bd-content ps-lg-2">
-            <h1 id="52-산술-연산자">5.2 산술 연산자</h1>
+            <h1 id="52-산술-연산자-arithmetic-operators">5.2 산술 연산자 (Arithmetic Operators)</h1>
 
-<h2 id="1-사칙연산과-나머지-">1. 사칙연산과 나머지 ➗</h2>
+<p>수학 시간에 배운 사칙연산(<code class="language-plaintext highlighter-rouge">+</code>, <code class="language-plaintext highlighter-rouge">-</code>, <code class="language-plaintext highlighter-rouge">*</code>, <code class="language-plaintext highlighter-rouge">/</code>)을 프로그램에서 어떻게 사용하는지 알아봅니다.
+그리고 수학에는 없지만 프로그래밍에서 매우 중요한 <strong>나머지 연산자(<code class="language-plaintext highlighter-rouge">%</code>)</strong>의 비밀도 파헤쳐 봅시다. ➗</p>
 
-<p>자바의 기본 산술 연산자 5가지입니다.</p>
+<hr />
+
+<h2 id="1-사칙연산과-나머지-">1. 사칙연산과 나머지 🧮</h2>
+
+<h3 id="1-기본-연산자">1) 기본 연산자</h3>
+<p>자바는 5가지 기본 산술 연산자를 제공합니다.</p>
 
 <table>
   <thead>
     <tr>
       <th style="text-align: center">연산자</th>
+      <th style="text-align: left">이름</th>
       <th style="text-align: left">설명</th>
-      <th style="text-align: left">예시</th>
+      <th style="text-align: left">예시 (a=10, b=3)</th>
+      <th style="text-align: left">결과</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td style="text-align: center"><strong><code class="language-plaintext highlighter-rouge">+</code></strong></td>
       <td style="text-align: left">더하기</td>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">1 + 1</code> -&gt; <code class="language-plaintext highlighter-rouge">2</code></td>
+      <td style="text-align: left">값을 더합니다.</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">10 + 3</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">13</code></td>
     </tr>
     <tr>
       <td style="text-align: center"><strong><code class="language-plaintext highlighter-rouge">-</code></strong></td>
       <td style="text-align: left">빼기</td>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">2 - 1</code> -&gt; <code class="language-plaintext highlighter-rouge">1</code></td>
+      <td style="text-align: left">값을 뺍니다.</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">10 - 3</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">7</code></td>
     </tr>
     <tr>
       <td style="text-align: center"><strong><code class="language-plaintext highlighter-rouge">*</code></strong></td>
       <td style="text-align: left">곱하기</td>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">2 * 3</code> -&gt; <code class="language-plaintext highlighter-rouge">6</code></td>
+      <td style="text-align: left">값을 곱합니다. (<code class="language-plaintext highlighter-rouge">x</code> 아님)</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">10 * 3</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">30</code></td>
     </tr>
     <tr>
       <td style="text-align: center"><strong><code class="language-plaintext highlighter-rouge">/</code></strong></td>
       <td style="text-align: left">나누기 (몫)</td>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">10 / 3</code> -&gt; <code class="language-plaintext highlighter-rouge">3</code></td>
+      <td style="text-align: left">나누고 난 <strong>몫</strong>을 구합니다.</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">10 / 3</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">3</code> (3.333 아님!)</td>
     </tr>
     <tr>
       <td style="text-align: center"><strong><code class="language-plaintext highlighter-rouge">%</code></strong></td>
       <td style="text-align: left"><strong>나머지</strong></td>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">10 % 3</code> -&gt; <code class="language-plaintext highlighter-rouge">1</code></td>
+      <td style="text-align: left">나누고 난 <strong>나머지</strong>를 구합니다.</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">10 % 3</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">1</code></td>
     </tr>
   </tbody>
 </table>
 
-<blockquote>
-  <p><strong>주의</strong>: 정수끼리 나누면 <strong>몫만</strong> 나옵니다. (<code class="language-plaintext highlighter-rouge">5 / 2 = 2</code>)
-소수점까지 보고 싶으면 하나라도 실수(<code class="language-plaintext highlighter-rouge">5.0 / 2</code>)여야 합니다.</p>
-</blockquote>
+<h3 id="2-나누기와-나머지-시각화">2) 나누기(<code class="language-plaintext highlighter-rouge">/</code>)와 나머지(<code class="language-plaintext highlighter-rouge">%</code>) 시각화</h3>
 
-<h2 id="2-문자열-더하기">2. 문자열 더하기</h2>
+<pre><code class="language-mermaid">graph TD
+    N[나눗셈: 10 ÷ 3]
+    N --&gt; Q[몫 (/): 3]
+    N --&gt; R[나머지 (%): 1]
+    
+    style N fill:#eef,stroke:#333
+    style Q fill:#bfb,stroke:#333
+    style R fill:#ff9,stroke:#333
+</code></pre>
 
-<p><code class="language-plaintext highlighter-rouge">+</code> 연산자는 숫자뿐만 아니라 <strong>글자도 이어 붙여줍니다.</strong></p>
+<ul>
+  <li><strong>용도</strong>:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">/</code>: 빵 10개를 3명에게 똑같이 나눠줄 때 한 사람이 받는 개수</li>
+      <li><code class="language-plaintext highlighter-rouge">%</code>: 다 나눠주고 남은 빵의 개수 (짝수/홀수 판별, 배수 확인 등에 필수!)</li>
+    </ul>
+  </li>
+</ul>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">String</span> <span class="n">str</span> <span class="o">=</span> <span class="s">"JDK"</span> <span class="o">+</span> <span class="mi">21</span><span class="o">;</span> <span class="c1">// "JDK21"</span>
+<hr />
+
+<h2 id="2-주의-정수-나눗셈의-함정-️">2. 주의: 정수 나눗셈의 함정 ⚠️</h2>
+
+<p>프로그래밍 초보자가 가장 많이 하는 실수입니다.
+<strong>정수끼리 나누면 결과도 무조건 정수(몫)</strong>가 나옵니다. 소수점은 과감히 버려집니다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
+<span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">4</span><span class="o">;</span>
+
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">a</span> <span class="o">/</span> <span class="n">b</span><span class="o">);</span> <span class="c1">// 출력: 2 (2.5가 아님!)</span>
 </code></pre></div></div>
+
+<h3 id="해결-방법-">해결 방법 ✅</h3>
+<p>소수점까지 정확하게 계산하려면, 숫자 중 최소한 하나는 실수(<code class="language-plaintext highlighter-rouge">double</code>)여야 합니다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="mi">10</span> <span class="o">/</span> <span class="mf">4.0</span><span class="o">);</span>   <span class="c1">// 2.5 (성공)</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="mf">10.0</span> <span class="o">/</span> <span class="mi">4</span><span class="o">);</span>   <span class="c1">// 2.5 (성공)</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">((</span><span class="kt">double</span><span class="o">)</span><span class="mi">10</span> <span class="o">/</span> <span class="mi">4</span><span class="o">);</span> <span class="c1">// 2.5 (강제 변환 후 계산)</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="3-문자열-더하기-연결-">3. 문자열 더하기 (연결) 🔗</h2>
+
+<p><code class="language-plaintext highlighter-rouge">+</code> 연산자는 숫자를 더하는 기능뿐만 아니라, <strong>글자를 이어 붙이는 풀(Glue)</strong> 역할도 합니다.</p>
+
+<h3 id="1-개념">1) 개념</h3>
+<p>문자열이 하나라도 섞여 있으면, 나머지 숫자들도 모두 문자열로 변해서 이어 붙습니다.</p>
+
+<pre><code class="language-mermaid">graph LR
+    Str["String 'JDK'"] -- + --&gt; Num[int 21]
+    Num --&gt; Result["String 'JDK21'"]
+    
+    style Str fill:#f9f,stroke:#333
+    style Num fill:#cef,stroke:#333
+    style Result fill:#ff9,stroke:#333
+</code></pre>
+
+<h3 id="2-코드-예시">2) 코드 예시</h3>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">String</span> <span class="n">str1</span> <span class="o">=</span> <span class="s">"JDK"</span> <span class="o">+</span> <span class="mi">21</span><span class="o">;</span>      <span class="c1">// "JDK21"</span>
+<span class="nc">String</span> <span class="n">str2</span> <span class="o">=</span> <span class="s">"3"</span> <span class="o">+</span> <span class="mf">3.0</span><span class="o">;</span>       <span class="c1">// "33.0" (숫자 6.0 아님!)</span>
+<span class="nc">String</span> <span class="n">str3</span> <span class="o">=</span> <span class="s">"A"</span> <span class="o">+</span> <span class="s">"B"</span><span class="o">;</span>       <span class="c1">// "AB"</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong>우선순위 주의</strong>: 앞에서부터 순서대로 계산됩니다.
+<code class="language-plaintext highlighter-rouge">System.out.println(1 + 2 + "3");</code> 👉 <code class="language-plaintext highlighter-rouge">"33"</code> (1+2=3, 3+”3”=”33”)
+<code class="language-plaintext highlighter-rouge">System.out.println("1" + 2 + 3);</code> 👉 <code class="language-plaintext highlighter-rouge">"123"</code> (“1”+2=”12”, “12”+3=”123”)</p>
+</blockquote>
 
 
             <!-- Google AdSense -->

@@ -8,7 +8,7 @@
   <!-- 기본 메타데이터 --><meta name="description" content="Jiny linux"><meta name="author" content="HojinLee"><!-- 제목 설정 --><title>3.2 코드 용어 이해</title>
   <meta name="title" content="3.2 코드 용어 이해" /><!-- 키워드 설정 --><!-- Open Graph 메타데이터 --><meta property="og:title" content="3.2 코드 용어 이해"><meta property="og:description" content="Jiny linux"><meta property="og:type" content="website"><meta property="og:locale" content="ko">
   <meta property="og:site_name" content="linux">
-  <meta property="og:url" content="https://java.jiny.dev/basic/start/code-terminology/">
+  <meta property="og:url" content="http://localhost:4000/basic/start/code-terminology/">
 
   <!-- Twitter 카드 메타데이터 --><meta name="twitter:card" content="summary"><meta property="twitter:title" content="3.2 코드 용어 이해"><!-- Begin Jekyll SEO tag v2.8.0 -->
 <meta name="generator" content="Jekyll v4.4.1" />
@@ -17,14 +17,14 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
 <meta property="og:description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
-<link rel="canonical" href="https://java.jiny.dev/basic/start/code-terminology/" />
-<meta property="og:url" content="https://java.jiny.dev/basic/start/code-terminology/" />
+<link rel="canonical" href="http://localhost:4000/basic/start/code-terminology/" />
+<meta property="og:url" content="http://localhost:4000/basic/start/code-terminology/" />
 <meta property="og:site_name" content="객체지향 자바 프로그래밍 (Object-Oriented Java Programming)" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="3.2 코드 용어 이해" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"3.2 코드 용어 이해","url":"https://java.jiny.dev/basic/start/code-terminology/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"3.2 코드 용어 이해","url":"http://localhost:4000/basic/start/code-terminology/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -1089,44 +1089,137 @@
         <div class="bd-content ps-lg-2">
             <h1 id="32-코드-용어-이해">3.2 코드 용어 이해</h1>
 
-<p>방금 작성한 코드를 해부해 봅시다. 🕵️‍♂️</p>
+<p>방금 작성한 <code class="language-plaintext highlighter-rouge">Hello.java</code> 코드를 한 줄씩 뜯어보며, 자바 프로그램의 기본 구성 요소를 완벽하게 이해해 봅시다. 🕵️‍♂️</p>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch01</span><span class="o">;</span> <span class="c1">// ① 패키지</span>
+<p><strong>예제 코드</strong></p>
 
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Hello</span> <span class="o">{</span> <span class="c1">// ② 클래스</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch01</span><span class="o">;</span> <span class="c1">// ① 패키지 선언</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Hello</span> <span class="o">{</span> <span class="c1">// ② 클래스 선언</span>
     
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span> <span class="c1">// ③ 메인 메소드</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span> <span class="c1">// ③ 메인 메소드 선언</span>
         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Hello"</span><span class="o">);</span> <span class="c1">// ④ 실행문</span>
     <span class="o">}</span>
 
 <span class="o">}</span>
 </code></pre></div></div>
 
+<hr />
+
 <h2 id="1-패키지-package-">1. 패키지 (Package) 📂</h2>
+
+<h3 id="1-개념">1) 개념</h3>
+<p>패키지는 <strong>관련된 자바 클래스들을 묶어서 관리하는 폴더</strong>와 같습니다.
+컴퓨터에서 파일을 정리할 때 폴더를 만들어서 보관하듯이, 자바에서도 수많은 클래스 파일을 체계적으로 관리하기 위해 패키지를 사용합니다.</p>
+
+<h3 id="2-비유-컴퓨터의-폴더">2) 비유: “컴퓨터의 폴더”</h3>
 <ul>
-  <li><strong>비유</strong>: <strong>폴더</strong></li>
-  <li>비슷한 소스 파일들을 모아놓는 그룹입니다.</li>
-  <li><code class="language-plaintext highlighter-rouge">package ch01;</code>은 “이 파일은 <code class="language-plaintext highlighter-rouge">ch01</code> 폴더에 소속되어 있어”라고 선언하는 것입니다.</li>
+  <li>우리가 사진을 <code class="language-plaintext highlighter-rouge">사진</code> 폴더에, 문서를 <code class="language-plaintext highlighter-rouge">문서</code> 폴더에 정리하듯, 자바 파일도 성격에 맞는 패키지(폴더)에 넣어 관리합니다.</li>
+  <li><code class="language-plaintext highlighter-rouge">package ch01;</code>이라는 선언은 <strong>“이 파일은 <code class="language-plaintext highlighter-rouge">ch01</code>이라는 폴더 안에 소속되어 있다”</strong>는 것을 명시하는 것입니다.</li>
 </ul>
+
+<h3 id="3-구조-시각화">3) 구조 시각화</h3>
+
+<pre><code class="language-mermaid">graph TD
+    Project[자바 프로젝트] --&gt; src[src 폴더]
+    src --&gt; ch01[📂 ch01 패키지]
+    ch01 --&gt; Hello[📄 Hello.java]
+    src --&gt; ch02[📂 ch02 패키지]
+    ch02 --&gt; World[📄 World.java]
+    
+    style ch01 fill:#f9f,stroke:#333,stroke-width:2px
+    style Hello fill:#bfb,stroke:#333,stroke-width:2px
+</code></pre>
+
+<h3 id="4-상세-설명">4) 상세 설명</h3>
+<ul>
+  <li><strong>물리적 위치</strong>: 실제로 파일 탐색기에서 프로젝트 폴더를 열어보면 <code class="language-plaintext highlighter-rouge">src/ch01</code> 경로에 <code class="language-plaintext highlighter-rouge">Hello.java</code> 파일이 있는 것을 확인할 수 있습니다.</li>
+  <li><strong>이름 충돌 방지</strong>: 만약 다른 회사의 <code class="language-plaintext highlighter-rouge">Hello</code> 클래스와 내 <code class="language-plaintext highlighter-rouge">Hello</code> 클래스 이름이 같더라도, 패키지 이름이 다르면 서로 다른 파일로 인식됩니다. (예: <code class="language-plaintext highlighter-rouge">com.companyA.Hello</code> vs <code class="language-plaintext highlighter-rouge">com.companyB.Hello</code>)</li>
+</ul>
+
+<hr />
 
 <h2 id="2-클래스-class-">2. 클래스 (Class) 📄</h2>
+
+<h3 id="1-개념-1">1) 개념</h3>
+<p>클래스는 <strong>자바 프로그램의 기본 단위</strong>이자, 객체를 만들기 위한 <strong>설계도</strong>입니다.
+자바의 모든 코드는 반드시 클래스 안에 존재해야 합니다.</p>
+
+<h3 id="2-비유-파일-자체-또는-설계도">2) 비유: “파일 자체 또는 설계도”</h3>
 <ul>
-  <li><strong>비유</strong>: <strong>파일 이름</strong></li>
-  <li>자바 프로그램의 기본 단위입니다.</li>
-  <li><strong>규칙</strong>: 클래스 이름(<code class="language-plaintext highlighter-rouge">Hello</code>)은 소스 파일 이름(<code class="language-plaintext highlighter-rouge">Hello.java</code>)과 <strong>똑같아야 합니다.</strong> (대소문자까지!)</li>
+  <li><code class="language-plaintext highlighter-rouge">Hello.java</code>라는 파일을 만들었다면, 그 안에는 반드시 <code class="language-plaintext highlighter-rouge">Hello</code>라는 이름의 클래스가 있어야 합니다.</li>
+  <li>우리가 붕어빵을 만들기 위해 <strong>붕어빵 틀</strong>이 필요하듯이, 프로그램을 만들기 위해서는 <strong>클래스(설계도)</strong>가 필요합니다.</li>
 </ul>
+
+<h3 id="3-구조">3) 구조</h3>
+
+<pre><code class="language-mermaid">classDiagram
+    class Hello {
+        +main(args : String[]) void
+    }
+    note for Hello "클래스 이름은\n파일 이름과 동일해야 함"
+</code></pre>
+
+<h3 id="4-상세-설명-1">4) 상세 설명</h3>
+<ul>
+  <li><strong>Naming Convention (명명 규칙)</strong>: 클래스 이름은 소스 파일명과 <strong>정확히 일치</strong>해야 합니다. (대소문자 구별)
+    <ul>
+      <li>파일: <code class="language-plaintext highlighter-rouge">Hello.java</code> 👉 클래스: <code class="language-plaintext highlighter-rouge">public class Hello</code></li>
+    </ul>
+  </li>
+  <li><strong>블록 <code class="language-plaintext highlighter-rouge">{ }</code></strong>: 클래스의 시작(<code class="language-plaintext highlighter-rouge">{</code>)과 끝(<code class="language-plaintext highlighter-rouge">}</code>)을 감싸는 중괄호 안에 모든 코드가 작성됩니다.</li>
+</ul>
+
+<hr />
 
 <h2 id="3-메인-메소드-main-method-️">3. 메인 메소드 (main method) ▶️</h2>
+
+<h3 id="1-개념-2">1) 개념</h3>
+<p>메인 메소드는 <strong>자바 프로그램의 시작점(Entry Point)</strong>입니다.
+자바 가상 머신(JVM)은 프로그램을 실행할 때 무조건 <code class="language-plaintext highlighter-rouge">main</code> 메소드를 찾아서 실행합니다.</p>
+
+<h3 id="2-비유-자동차의-시동-버튼">2) 비유: “자동차의 시동 버튼”</h3>
 <ul>
-  <li><strong>비유</strong>: <strong>시작 버튼 (Engine Start)</strong></li>
-  <li><code class="language-plaintext highlighter-rouge">public static void main(String[] args)</code></li>
-  <li>자바 프로그램은 무조건 <strong>여기서부터 실행</strong>됩니다. 이 부분이 없으면 실행할 수 없습니다.</li>
+  <li>자동차가 아무리 멋져도 시동 버튼을 누르지 않으면 움직이지 않듯이, 자바 프로그램도 <strong>main 메소드</strong>가 없으면 실행되지 않습니다.</li>
+  <li>프로그램 실행 = <code class="language-plaintext highlighter-rouge">main</code> 메소드 안의 내용 실행</li>
 </ul>
 
-<h2 id="4-실행문-statement-️">4. 실행문 (Statement) ✍️</h2>
+<h3 id="3-실행-흐름">3) 실행 흐름</h3>
+
+<pre><code class="language-mermaid">flowchart LR
+    Start([프로그램 시작]) --&gt; FindMain{main 메소드 찾기}
+    FindMain --&gt;|있음| Execute[코드 실행]
+    FindMain --&gt;|없음| Error[실행 불가 오류]
+    Execute --&gt; End([프로그램 종료])
+    
+    style Start fill:#f96,stroke:#333,stroke-width:2px
+    style Execute fill:#9f6,stroke:#333,stroke-width:2px
+</code></pre>
+
+<h3 id="4-상세-설명-2">4) 상세 설명</h3>
 <ul>
-  <li><strong>비유</strong>: <strong>명령어</strong></li>
-  <li><code class="language-plaintext highlighter-rouge">System.out.println(...)</code>: 콘솔(화면)에 글자를 출력하라는 명령입니다.</li>
+  <li><code class="language-plaintext highlighter-rouge">public static void main(String[] args)</code>: 이 긴 문장은 “여기가 바로 시작점입니다!”라고 선언하는 약속된 문법입니다. 글자 하나라도 틀리면 실행되지 않습니다.</li>
+  <li><strong>진입점</strong>: 프로그램이 시작되면 가장 먼저 호출되는 메소드입니다.</li>
+</ul>
+
+<hr />
+
+<h2 id="4-실행문-statement-️">4. 실행문 (Statement) ✍️</h2>
+
+<h3 id="1-개념-3">1) 개념</h3>
+<p>실행문은 <strong>컴퓨터에게 내리는 구체적인 명령</strong>입니다.
+변수를 선언하거나, 값을 계산하거나, 메소드를 호출하는 등의 작업을 수행합니다.</p>
+
+<h3 id="2-비유-문장과-마침표">2) 비유: “문장과 마침표”</h3>
+<ul>
+  <li>우리가 글을 쓸 때 문장 끝에 마침표(<code class="language-plaintext highlighter-rouge">.</code>)를 찍듯이, 자바에서는 명령이 끝날 때마다 <strong>세미콜론(<code class="language-plaintext highlighter-rouge">;</code>)</strong>을 찍어야 합니다.</li>
+  <li><code class="language-plaintext highlighter-rouge">System.out.println("Hello");</code> 👉 “화면에 Hello라고 출력해라.” (마침표)</li>
+</ul>
+
+<h3 id="3-상세-설명">3) 상세 설명</h3>
+<ul>
+  <li><strong>순차적 실행</strong>: 실행문은 위에서 아래로 순서대로 실행됩니다. (특별한 제어문이 없다면)</li>
+  <li><strong>세미콜론(<code class="language-plaintext highlighter-rouge">;</code>) 필수</strong>: 자바 컴파일러는 세미콜론을 보고 “아, 여기까지가 하나의 명령이구나”라고 인식합니다. 빠뜨리면 컴파일 에러가 발생합니다.</li>
 </ul>
 
 

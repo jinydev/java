@@ -8,7 +8,7 @@
   <!-- 기본 메타데이터 --><meta name="description" content="Jiny linux"><meta name="author" content="HojinLee"><!-- 제목 설정 --><title>5.4 비교 연산자</title>
   <meta name="title" content="5.4 비교 연산자" /><!-- 키워드 설정 --><!-- Open Graph 메타데이터 --><meta property="og:title" content="5.4 비교 연산자"><meta property="og:description" content="Jiny linux"><meta property="og:type" content="website"><meta property="og:locale" content="ko">
   <meta property="og:site_name" content="linux">
-  <meta property="og:url" content="https://java.jiny.dev/basic/operator/comparison/">
+  <meta property="og:url" content="http://localhost:4000/basic/operator/comparison/">
 
   <!-- Twitter 카드 메타데이터 --><meta name="twitter:card" content="summary"><meta property="twitter:title" content="5.4 비교 연산자"><!-- Begin Jekyll SEO tag v2.8.0 -->
 <meta name="generator" content="Jekyll v4.4.1" />
@@ -17,14 +17,14 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
 <meta property="og:description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
-<link rel="canonical" href="https://java.jiny.dev/basic/operator/comparison/" />
-<meta property="og:url" content="https://java.jiny.dev/basic/operator/comparison/" />
+<link rel="canonical" href="http://localhost:4000/basic/operator/comparison/" />
+<meta property="og:url" content="http://localhost:4000/basic/operator/comparison/" />
 <meta property="og:site_name" content="객체지향 자바 프로그래밍 (Object-Oriented Java Programming)" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="5.4 비교 연산자" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"5.4 비교 연산자","url":"https://java.jiny.dev/basic/operator/comparison/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"5.4 비교 연산자","url":"http://localhost:4000/basic/operator/comparison/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -1087,63 +1087,129 @@
     </ol>
 </nav>
         <div class="bd-content ps-lg-2">
-            <h1 id="54-비교-연산자">5.4 비교 연산자</h1>
+            <h1 id="54-비교-연산자-comparison-operators">5.4 비교 연산자 (Comparison Operators)</h1>
 
-<p>두 값을 비교해서 <strong>참(<code class="language-plaintext highlighter-rouge">true</code>)</strong>인지 <strong>거짓(<code class="language-plaintext highlighter-rouge">false</code>)</strong>인지 판단합니다.</p>
+<p>“누가 더 키가 큰가?”, “비밀번호가 일치하는가?” 처럼 두 값을 비교할 때 사용하는 연산자입니다.
+결과는 무조건 <strong>참(<code class="language-plaintext highlighter-rouge">true</code>)</strong> 아니면 <strong>거짓(<code class="language-plaintext highlighter-rouge">false</code>)</strong>으로 나옵니다.</p>
+
+<hr />
+
+<h2 id="1-크기-비교-숫자-️">1. 크기 비교 (숫자) ⚖️</h2>
+
+<h3 id="1-개념">1) 개념</h3>
+<p>수학 시간에 배운 부등호를 그대로 사용합니다. (단, <code class="language-plaintext highlighter-rouge">≤</code>, <code class="language-plaintext highlighter-rouge">≥</code> 기호는 없어서 <code class="language-plaintext highlighter-rouge">&lt;=</code> 형태로 씁니다.)</p>
 
 <table>
   <thead>
     <tr>
       <th style="text-align: center">연산자</th>
-      <th style="text-align: left">의미</th>
       <th style="text-align: left">설명</th>
+      <th style="text-align: left">예시 (a=10, b=5)</th>
+      <th style="text-align: left">결과</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><strong><code class="language-plaintext highlighter-rouge">&gt;</code></strong></td>
+      <td style="text-align: left">크다 (초과)</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">10 &gt; 5</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">true</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><strong><code class="language-plaintext highlighter-rouge">&gt;=</code></strong></td>
+      <td style="text-align: left">크거나 같다 (이상)</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">10 &gt;= 10</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">true</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><strong><code class="language-plaintext highlighter-rouge">&lt;</code></strong></td>
+      <td style="text-align: left">작다 (미만)</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">10 &lt; 5</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">false</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><strong><code class="language-plaintext highlighter-rouge">&lt;=</code></strong></td>
+      <td style="text-align: left">작거나 같다 (이하)</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">10 &lt;= 5</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">false</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="2-비유-양팔-저울">2) 비유: “양팔 저울”</h3>
+<ul>
+  <li>양쪽에 물건을 올렸을 때 어느 쪽으로 기울어지는지(True/False) 확인하는 것과 같습니다.</li>
+</ul>
+
+<hr />
+
+<h2 id="2-등가-비교-같니-다르니-">2. 등가 비교 (같니? 다르니?) 🤝</h2>
+
+<p>값이 같은지 다른지 확인할 때 사용합니다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">연산자</th>
+      <th style="text-align: left">설명</th>
+      <th style="text-align: left">예시</th>
+      <th style="text-align: left">결과</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td style="text-align: center"><strong><code class="language-plaintext highlighter-rouge">==</code></strong></td>
       <td style="text-align: left">같다</td>
-      <td style="text-align: left">두 값이 같으면 참</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">10 == 10</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">true</code></td>
     </tr>
     <tr>
       <td style="text-align: center"><strong><code class="language-plaintext highlighter-rouge">!=</code></strong></td>
       <td style="text-align: left">다르다</td>
-      <td style="text-align: left">두 값이 다르면 참</td>
-    </tr>
-    <tr>
-      <td style="text-align: center"><strong><code class="language-plaintext highlighter-rouge">&gt;</code></strong></td>
-      <td style="text-align: left">크다</td>
-      <td style="text-align: left">왼쪽이 더 크면 참</td>
-    </tr>
-    <tr>
-      <td style="text-align: center"><strong><code class="language-plaintext highlighter-rouge">&gt;=</code></strong></td>
-      <td style="text-align: left">크거나 같다</td>
-      <td style="text-align: left">왼쪽이 더 크거나 같으면 참</td>
-    </tr>
-    <tr>
-      <td style="text-align: center"><strong><code class="language-plaintext highlighter-rouge">&lt;</code></strong></td>
-      <td style="text-align: left">작다</td>
-      <td style="text-align: left">오른쪽이 더 크면 참</td>
-    </tr>
-    <tr>
-      <td style="text-align: center"><strong><code class="language-plaintext highlighter-rouge">&lt;=</code></strong></td>
-      <td style="text-align: left">작거나 같다</td>
-      <td style="text-align: left">오른쪽이 더 크거나 같으면 참</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">10 != 5</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">true</code></td>
     </tr>
   </tbody>
 </table>
 
-<h2 id="주의사항-문자열-비교">주의사항: 문자열 비교</h2>
+<blockquote>
+  <p><strong>주의</strong>: 수학에서는 <code class="language-plaintext highlighter-rouge">=</code>가 같다는 뜻이지만, 자바에서는 <code class="language-plaintext highlighter-rouge">=</code>는 <strong>대입(저장)</strong>이고, <code class="language-plaintext highlighter-rouge">==</code>가 <strong>비교(같다)</strong>입니다.</p>
+</blockquote>
 
-<p>문자열(<code class="language-plaintext highlighter-rouge">String</code>)이 같은지 비교할 때는 <strong><code class="language-plaintext highlighter-rouge">==</code>를 쓰면 안 됩니다!</strong>
-반드시 <strong><code class="language-plaintext highlighter-rouge">.equals()</code></strong> 기능을 써야 합니다.</p>
+<hr />
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">String</span> <span class="n">s1</span> <span class="o">=</span> <span class="s">"Java"</span><span class="o">;</span>
-<span class="nc">String</span> <span class="n">s2</span> <span class="o">=</span> <span class="s">"Java"</span><span class="o">;</span>
+<h2 id="3-함정-문자열string-비교-">3. 함정: 문자열(String) 비교 🚨</h2>
 
-<span class="c1">// s1 == s2 (위험! 가끔 틀릴 수 있음)</span>
-<span class="kt">boolean</span> <span class="n">result</span> <span class="o">=</span> <span class="n">s1</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">s2</span><span class="o">);</span> <span class="c1">// (안전!)</span>
+<p>숫자는 <code class="language-plaintext highlighter-rouge">==</code>로 비교하면 되지만, <strong>문자열은 절대로 <code class="language-plaintext highlighter-rouge">==</code>로 비교하면 안 됩니다!</strong></p>
+
+<h3 id="1-왜-안-되나요">1) 왜 안 되나요?</h3>
+<p><code class="language-plaintext highlighter-rouge">String</code>은 참조 타입이라서 <code class="language-plaintext highlighter-rouge">==</code>는 “내용이 같은가?”가 아니라 <strong>“같은 물건(주소)인가?”</strong>를 비교하기 때문입니다.
+내용이 같아도 서로 다른 메모리 공간에 저장되어 있으면 <code class="language-plaintext highlighter-rouge">false</code>가 나올 수 있습니다.</p>
+
+<h3 id="2-해결책-equals">2) 해결책: <code class="language-plaintext highlighter-rouge">.equals()</code></h3>
+<p>문자열의 <strong>내용</strong>이 같은지 비교하려면 반드시 <strong><code class="language-plaintext highlighter-rouge">.equals()</code></strong> 기능을 써야 합니다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">String</span> <span class="n">str1</span> <span class="o">=</span> <span class="s">"Java"</span><span class="o">;</span>
+<span class="nc">String</span> <span class="n">str2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">(</span><span class="s">"Java"</span><span class="o">);</span> <span class="c1">// 내용은 같지만 주소가 다름</span>
+
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str1</span> <span class="o">==</span> <span class="n">str2</span><span class="o">);</span>      <span class="c1">// false (주소가 다름) ❌</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str1</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">str2</span><span class="o">));</span> <span class="c1">// true (내용이 같음) ✅</span>
 </code></pre></div></div>
+
+<h3 id="3-비교-방식-시각화">3) 비교 방식 시각화</h3>
+
+<pre><code class="language-mermaid">graph TD
+    subgraph Memory
+        Addr1[주소 100번지] --&gt; Val1["Java"]
+        Addr2[주소 200번지] --&gt; Val2["Java"]
+    end
+    
+    Op1["== (주소 비교)"] --&gt;|100번지 == 200번지?| Res1[false]
+    Op2[".equals() (내용 비교)"] --&gt;|"Java" == "Java"?| Res2[true]
+    
+    style Op1 fill:#fbb,stroke:#333
+    style Op2 fill:#bfb,stroke:#333
+</code></pre>
 
 
             <!-- Google AdSense -->

@@ -14,6 +14,23 @@ grand_parent: "Part 01. 자바 언어의 기초"
 반면 `switch` 문은 **"값이 1이면 여기, 2면 저기"** 하고 딱딱 정해진 곳으로 바로 이동합니다.
 마치 자판기 버튼을 누르면 해당 음료수가 바로 나오는 것과 비슷합니다.
 
+```mermaid
+flowchart TD
+    Input([자판기 동전 투입]) --> Switch{어떤 버튼을 눌렀나?}
+    
+    Switch -- "버튼 1" --> Case1[콜라 나옴]
+    Switch -- "버튼 2" --> Case2[사이다 나옴]
+    Switch -- "버튼 3" --> Case3[환타 나옴]
+    Switch -- "그 외 (default)" --> Default[물 나옴]
+
+    style Input fill:#f9f,stroke:#333,stroke-width:2px
+    style Switch fill:#ff9,stroke:#333,stroke-width:2px
+    style Case1 fill:#bbf,stroke:#333,stroke-width:2px
+    style Case2 fill:#bbf,stroke:#333,stroke-width:2px
+    style Case3 fill:#bbf,stroke:#333,stroke-width:2px
+    style Default fill:#ccc,stroke:#333,stroke-width:2px
+```
+
 ```java
 int num = 1;
 

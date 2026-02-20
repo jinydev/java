@@ -8,7 +8,7 @@
   <!-- 기본 메타데이터 --><meta name="description" content="Jiny linux"><meta name="author" content="HojinLee"><!-- 제목 설정 --><title>4.2 정수 타입</title>
   <meta name="title" content="4.2 정수 타입" /><!-- 키워드 설정 --><!-- Open Graph 메타데이터 --><meta property="og:title" content="4.2 정수 타입"><meta property="og:description" content="Jiny linux"><meta property="og:type" content="website"><meta property="og:locale" content="ko">
   <meta property="og:site_name" content="linux">
-  <meta property="og:url" content="https://java.jiny.dev/basic/variable/integer-type/">
+  <meta property="og:url" content="http://localhost:4000/basic/variable/integer-type/">
 
   <!-- Twitter 카드 메타데이터 --><meta name="twitter:card" content="summary"><meta property="twitter:title" content="4.2 정수 타입"><!-- Begin Jekyll SEO tag v2.8.0 -->
 <meta name="generator" content="Jekyll v4.4.1" />
@@ -17,14 +17,14 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
 <meta property="og:description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
-<link rel="canonical" href="https://java.jiny.dev/basic/variable/integer-type/" />
-<meta property="og:url" content="https://java.jiny.dev/basic/variable/integer-type/" />
+<link rel="canonical" href="http://localhost:4000/basic/variable/integer-type/" />
+<meta property="og:url" content="http://localhost:4000/basic/variable/integer-type/" />
 <meta property="og:site_name" content="객체지향 자바 프로그래밍 (Object-Oriented Java Programming)" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="4.2 정수 타입" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"4.2 정수 타입","url":"https://java.jiny.dev/basic/variable/integer-type/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"4.2 정수 타입","url":"http://localhost:4000/basic/variable/integer-type/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -1089,15 +1089,23 @@
         <div class="bd-content ps-lg-2">
             <h1 id="42-정수-타입">4.2 정수 타입</h1>
 
-<p>정수(Integer)는 소수점이 없는 숫자(…, -1, 0, 1, …)입니다.
-자바는 크기에 따라 4가지 정수 상자를 제공합니다.</p>
+<p>소수점이 없는 숫자(…, -1, 0, 1, …)를 저장할 때 사용하는 타입입니다.
+자바는 숫자의 크기에 따라 4가지 크기의 상자를 제공합니다.</p>
+
+<hr />
+
+<h2 id="1-정수-타입-4총사-">1. 정수 타입 4총사 📏</h2>
+
+<h3 id="1-크기-비교">1) 크기 비교</h3>
+<p>메모리 공간의 크기에 따라 담을 수 있는 숫자의 범위가 다릅니다.</p>
 
 <table>
   <thead>
     <tr>
       <th style="text-align: left">타입</th>
-      <th style="text-align: left">크기</th>
-      <th style="text-align: left">비유</th>
+      <th style="text-align: left">메모리 크기</th>
+      <th style="text-align: left">비유 (물통 크기)</th>
+      <th style="text-align: left">저장 가능한 값의 범위 (대략)</th>
       <th style="text-align: left">설명</th>
     </tr>
   </thead>
@@ -1105,52 +1113,99 @@
     <tr>
       <td style="text-align: left"><code class="language-plaintext highlighter-rouge">byte</code></td>
       <td style="text-align: left">1 byte</td>
-      <td style="text-align: left"><strong>소주잔</strong></td>
-      <td style="text-align: left">매우 작은 숫자 (-128 ~ 127)</td>
+      <td style="text-align: left"><strong>소주잔</strong> 🍶</td>
+      <td style="text-align: left">-128 ~ 127</td>
+      <td style="text-align: left">매우 작은 숫자</td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="language-plaintext highlighter-rouge">short</code></td>
       <td style="text-align: left">2 byte</td>
-      <td style="text-align: left"><strong>물컵</strong></td>
-      <td style="text-align: left">작은 숫자 (약 -3만 ~ 3만)</td>
+      <td style="text-align: left"><strong>머그컵</strong> ☕️</td>
+      <td style="text-align: left">-32,768 ~ 32,767</td>
+      <td style="text-align: left">작은 숫자 (C언어 호환용)</td>
     </tr>
     <tr>
       <td style="text-align: left"><strong><code class="language-plaintext highlighter-rouge">int</code></strong></td>
       <td style="text-align: left">4 byte</td>
-      <td style="text-align: left"><strong>물통</strong></td>
-      <td style="text-align: left"><strong>가장 많이 씀</strong> (약 -21억 ~ 21억)</td>
+      <td style="text-align: left"><strong>물동이</strong> 🪣</td>
+      <td style="text-align: left">약 -21억 ~ 21억</td>
+      <td style="text-align: left"><strong>기본 정수 타입</strong></td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="language-plaintext highlighter-rouge">long</code></td>
       <td style="text-align: left">8 byte</td>
-      <td style="text-align: left"><strong>드럼통</strong></td>
-      <td style="text-align: left">엄청 큰 숫자 (금융, 과학 등)</td>
+      <td style="text-align: left"><strong>물탱크</strong> 🚛</td>
+      <td style="text-align: left">약 -922경 ~ 922경</td>
+      <td style="text-align: left">금융, 과학 등 <strong>대용량 숫자</strong></td>
     </tr>
   </tbody>
 </table>
 
-<h2 id="1-int-기본-물통">1. <code class="language-plaintext highlighter-rouge">int</code> (기본 물통)</h2>
-<p>가장 일반적으로 사용하는 정수 타입입니다.
-컴퓨터가 가장 효율적으로 처리하는 크기입니다.</p>
+<h3 id="2-크기-시각화">2) 크기 시각화</h3>
+
+<pre><code class="language-mermaid">graph TD
+    Byte[byte (1칸)] --- Short[short (2칸)]
+    Short --- Int[int (4칸)]
+    Int --- Long[long (8칸)]
+    
+    style Byte fill:#fff,stroke:#333
+    style Short fill:#cef,stroke:#333
+    style Int fill:#9cf,stroke:#333
+    style Long fill:#69f,stroke:#333
+</code></pre>
+
+<hr />
+
+<h2 id="2-기본-타입-int-integer">2. 기본 타입: int (Integer)</h2>
+
+<h3 id="1-개념">1) 개념</h3>
+<p>자바에서 정수를 다룰 때 가장 <strong>기본</strong>이 되는 타입입니다.
+특별한 이유가 없다면 정수는 무조건 <code class="language-plaintext highlighter-rouge">int</code>를 사용하면 됩니다.</p>
+
+<h3 id="2-왜-int가-기본인가요">2) 왜 int가 기본인가요?</h3>
+<ul>
+  <li>CPU가 숫자를 계산할 때 4byte 단위로 처리하는 것이 가장 빠르고 효율적이기 때문입니다.</li>
+</ul>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">score</span> <span class="o">=</span> <span class="mi">95</span><span class="o">;</span>
 <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
 </code></pre></div></div>
 
-<h2 id="2-long-엄청-큰-물통">2. <code class="language-plaintext highlighter-rouge">long</code> (엄청 큰 물통)</h2>
-<p><code class="language-plaintext highlighter-rouge">int</code> 범위를 넘어서는 큰 숫자를 다룰 때 씁니다.
-값 뒤에 <strong><code class="language-plaintext highlighter-rouge">L</code></strong>을 붙여서 “이건 long 타입이야!”라고 알려줘야 합니다.</p>
+<hr />
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">long</span> <span class="n">balance</span> <span class="o">=</span> <span class="mi">3000000000L</span><span class="o">;</span> <span class="c1">// 30억 (int 범위를 넘음)</span>
+<h2 id="3-대용량-타입-long">3. 대용량 타입: long</h2>
+
+<h3 id="1-개념-1">1) 개념</h3>
+<p><code class="language-plaintext highlighter-rouge">int</code>가 담을 수 있는 범위(약 ±21억)를 초과하는 숫자를 다룰 때 사용합니다.</p>
+<ul>
+  <li>예: 유튜브 조회수(수십억 회), 은행 잔고, 행성 간 거리 등</li>
+</ul>
+
+<h3 id="2-주의-사항-l-접미사">2) 주의 사항: L 접미사</h3>
+<p><code class="language-plaintext highlighter-rouge">long</code> 타입 변수에 값을 대입할 때는 숫자 뒤에 <strong><code class="language-plaintext highlighter-rouge">L</code></strong> 또는 <strong><code class="language-plaintext highlighter-rouge">l</code></strong>을 붙여야 합니다. (소문자 <code class="language-plaintext highlighter-rouge">l</code>은 숫자 <code class="language-plaintext highlighter-rouge">1</code>과 헷갈리므로 대문자 <code class="language-plaintext highlighter-rouge">L</code> 권장)
+컴파일러에게 “이건 int가 아니라 long이야!”라고 알려주는 표시입니다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">long</span> <span class="n">balance</span> <span class="o">=</span> <span class="mi">3000000000L</span><span class="o">;</span> <span class="c1">// 30억 (int 범위 초과)</span>
+<span class="kt">long</span> <span class="n">distance</span> <span class="o">=</span> <span class="mi">100L</span><span class="o">;</span>       <span class="c1">// int 범위 내라도 L 붙이는 습관</span>
 </code></pre></div></div>
 
-<h2 id="3-byte와-short">3. <code class="language-plaintext highlighter-rouge">byte</code>와 <code class="language-plaintext highlighter-rouge">short</code></h2>
-<p>메모리를 아껴야 할 때 쓰지만, 요즘은 메모리가 넉넉해서 잘 안 씁니다.
-주로 파일 전송이나 이미지 처리 같은 특수한 경우에 씁니다.</p>
+<hr />
 
-<blockquote>
-  <p><strong>핵심</strong>: 정수는 무조건 <strong><code class="language-plaintext highlighter-rouge">int</code></strong>를 쓰고, 21억이 넘을 것 같으면 <strong><code class="language-plaintext highlighter-rouge">long</code></strong>을 쓰세요.</p>
-</blockquote>
+<h2 id="4-작은-타입-byte-short">4. 작은 타입: byte, short</h2>
+
+<h3 id="1-개념-2">1) 개념</h3>
+<p>메모리를 극도로 아껴야 하거나, 파일 전송/이미지 처리처럼 바이너리 데이터를 다룰 때 사용합니다.
+일반적인 프로그래밍에서는 잘 사용하지 않습니다.</p>
+
+<h3 id="2-오버플로우-overflow-주의">2) 오버플로우 (Overflow) 주의</h3>
+<p>작은 컵에 물을 너무 많이 부으면 넘치듯이, 변수의 범위를 넘는 값을 넣으면 엉뚱한 값으로 변해버립니다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">byte</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">127</span><span class="o">;</span> <span class="c1">// byte의 최대값</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">b</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>    <span class="c1">// 128이 되는 게 아니라 -128이 됨 (오버플로우)</span>
+</code></pre></div></div>
+<ul>
+  <li><strong>비유</strong>: 자동차 주행거리가 99999km에서 1km 더 달리면 00000km로 돌아가는 현상과 비슷합니다.</li>
+</ul>
 
 
             <!-- Google AdSense -->

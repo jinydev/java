@@ -8,7 +8,7 @@
   <!-- 기본 메타데이터 --><meta name="description" content="Jiny linux"><meta name="author" content="HojinLee"><!-- 제목 설정 --><title>4.3 문자 타입</title>
   <meta name="title" content="4.3 문자 타입" /><!-- 키워드 설정 --><!-- Open Graph 메타데이터 --><meta property="og:title" content="4.3 문자 타입"><meta property="og:description" content="Jiny linux"><meta property="og:type" content="website"><meta property="og:locale" content="ko">
   <meta property="og:site_name" content="linux">
-  <meta property="og:url" content="https://java.jiny.dev/basic/variable/char-type/">
+  <meta property="og:url" content="http://localhost:4000/basic/variable/char-type/">
 
   <!-- Twitter 카드 메타데이터 --><meta name="twitter:card" content="summary"><meta property="twitter:title" content="4.3 문자 타입"><!-- Begin Jekyll SEO tag v2.8.0 -->
 <meta name="generator" content="Jekyll v4.4.1" />
@@ -17,14 +17,14 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
 <meta property="og:description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
-<link rel="canonical" href="https://java.jiny.dev/basic/variable/char-type/" />
-<meta property="og:url" content="https://java.jiny.dev/basic/variable/char-type/" />
+<link rel="canonical" href="http://localhost:4000/basic/variable/char-type/" />
+<meta property="og:url" content="http://localhost:4000/basic/variable/char-type/" />
 <meta property="og:site_name" content="객체지향 자바 프로그래밍 (Object-Oriented Java Programming)" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="4.3 문자 타입" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"4.3 문자 타입","url":"https://java.jiny.dev/basic/variable/char-type/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"4.3 문자 타입","url":"http://localhost:4000/basic/variable/char-type/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -1087,31 +1087,106 @@
     </ol>
 </nav>
         <div class="bd-content ps-lg-2">
-            <h1 id="43-문자-타입">4.3 문자 타입</h1>
+            <h1 id="43-문자-타입-char">4.3 문자 타입 (char)</h1>
 
-<h2 id="1-글자-하나-char-">1. 글자 하나 (<code class="language-plaintext highlighter-rouge">char</code>) 🔤</h2>
-<p><code class="language-plaintext highlighter-rouge">char</code>(캐릭터)는 <strong>글자 딱 하나</strong>를 저장하는 타입입니다.
-<strong>작은따옴표(<code class="language-plaintext highlighter-rouge">'</code>)</strong>로 감싸야 합니다.</p>
+<p>자바에서 글자 하나를 다루는 방법, <strong><code class="language-plaintext highlighter-rouge">char</code> (Character)</strong> 타입에 대해 알아봅니다.</p>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">char</span> <span class="n">grade</span> <span class="o">=</span> <span class="sc">'A'</span><span class="o">;</span>
-<span class="kt">char</span> <span class="n">hangul</span> <span class="o">=</span> <span class="sc">'가'</span><span class="o">;</span>
+<hr />
+
+<h2 id="1-글자-하나만-저장하기---">1. 글자 하나만 저장하기 (‘ ‘) 🔤</h2>
+
+<h3 id="1-개념">1) 개념</h3>
+<p><code class="language-plaintext highlighter-rouge">char</code>는 <strong>딱 하나의 문자</strong>만 저장할 수 있는 타입입니다.
+반드시 <strong>작은따옴표(<code class="language-plaintext highlighter-rouge">' '</code>)</strong>로 감싸야 합니다.</p>
+
+<h3 id="2-비유-레고-블록-한-개">2) 비유: “레고 블록 한 개”</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">char</code>가 레고 블록 <strong>한 개</strong>라면, <code class="language-plaintext highlighter-rouge">String</code>(문자열)은 블록이 여러 개 연결된 <strong>완성품</strong>입니다.</li>
+  <li>블록 한 개(<code class="language-plaintext highlighter-rouge">char</code>)는 <code class="language-plaintext highlighter-rouge">'A'</code>, 완성품(<code class="language-plaintext highlighter-rouge">String</code>)은 <code class="language-plaintext highlighter-rouge">"ABC"</code>입니다.</li>
+</ul>
+
+<h3 id="3-코드-예시">3) 코드 예시</h3>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">char</span> <span class="n">grade</span> <span class="o">=</span> <span class="sc">'A'</span><span class="o">;</span>    <span class="c1">// (O) 한 글자</span>
+<span class="kt">char</span> <span class="n">hangul</span> <span class="o">=</span> <span class="sc">'가'</span><span class="o">;</span>  <span class="c1">// (O) 한 글자</span>
+<span class="c1">// char error = "A"; // (X) 큰따옴표 안 됨 (String)</span>
+<span class="c1">// char error2 = 'AB'; // (X) 두 글자 안 됨</span>
 </code></pre></div></div>
 
-<h2 id="2-유니코드-unicode">2. 유니코드 (Unicode)</h2>
-<p>컴퓨터는 사실 글자를 모릅니다. 모든 글자에 번호를 붙여서 관리하는데, 이를 <strong>유니코드</strong>라고 합니다.
-<code class="language-plaintext highlighter-rouge">char</code> 타입은 이 유니코드 번호(정수)를 저장합니다.</p>
+<hr />
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">char</span> <span class="n">c1</span> <span class="o">=</span> <span class="sc">'A'</span><span class="o">;</span>  <span class="c1">// 문자 저장</span>
-<span class="kt">char</span> <span class="n">c2</span> <span class="o">=</span> <span class="mi">65</span><span class="o">;</span>   <span class="c1">// 'A'의 유니코드 번호 저장 (같은 결과)</span>
+<h2 id="2-컴퓨터가-문자를-기억하는-법-unicode-">2. 컴퓨터가 문자를 기억하는 법 (Unicode) 🔢</h2>
+
+<h3 id="1-개념-1">1) 개념</h3>
+<p>컴퓨터는 사실 ‘글자’를 모릅니다. 오직 0과 1(숫자)만 알 뿐입니다.
+그래서 전 세계 모든 글자에 고유한 <strong>번호</strong>를 붙여서 약속했습니다. 이것을 <strong>유니코드(Unicode)</strong>라고 합니다.</p>
+
+<h3 id="2-저장-방식-시각화">2) 저장 방식 시각화</h3>
+
+<pre><code class="language-mermaid">graph LR
+    Input['A'] --&gt;|저장| Memory(65)
+    Memory --&gt;|출력| Output['A']
+    
+    style Input fill:#fff,stroke:#333
+    style Memory fill:#bfb,stroke:#333
+    style Output fill:#fff,stroke:#333
+</code></pre>
+
+<ul>
+  <li>우리가 <code class="language-plaintext highlighter-rouge">'A'</code>라고 입력하면 컴퓨터는 <strong><code class="language-plaintext highlighter-rouge">65</code></strong>라는 숫자로 기억합니다.</li>
+  <li>우리가 <code class="language-plaintext highlighter-rouge">'가'</code>라고 입력하면 컴퓨터는 <strong><code class="language-plaintext highlighter-rouge">44032</code></strong>라는 숫자로 기억합니다.</li>
+</ul>
+
+<h3 id="3-코드-확인">3) 코드 확인</h3>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">char</span> <span class="n">c1</span> <span class="o">=</span> <span class="sc">'A'</span><span class="o">;</span>      <span class="c1">// 문자 'A' 저장</span>
+<span class="kt">char</span> <span class="n">c2</span> <span class="o">=</span> <span class="mi">65</span><span class="o">;</span>       <span class="c1">// 'A'의 유니코드 번호 65 저장</span>
+<span class="kt">char</span> <span class="n">c3</span> <span class="o">=</span> <span class="sc">'\u0041'</span><span class="o">;</span> <span class="c1">// 'A'의 16진수 유니코드 코드값 저장</span>
 
 <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">c1</span><span class="o">);</span> <span class="c1">// A</span>
-<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">c2</span><span class="o">);</span> <span class="c1">// A</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">c2</span><span class="o">);</span> <span class="c1">// A (똑같이 'A'가 출력됨)</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">c3</span><span class="o">);</span> <span class="c1">// A</span>
 </code></pre></div></div>
 
-<blockquote>
-  <p><strong>주의</strong>: 글자 하나는 <code class="language-plaintext highlighter-rouge">char</code>(‘A’), 여러 글자는 <code class="language-plaintext highlighter-rouge">String</code>(“ABC”)입니다.
-(빈 문자 <code class="language-plaintext highlighter-rouge">''</code>는 에러가 납니다. 공백 <code class="language-plaintext highlighter-rouge">' '</code>은 가능합니다.)</p>
-</blockquote>
+<hr />
+
+<h2 id="3-자주-하는-실수-️">3. 자주 하는 실수 ⚠️</h2>
+
+<h3 id="1-빈-문자-empty-character">1) 빈 문자 (Empty Character)</h3>
+<p><code class="language-plaintext highlighter-rouge">char</code> 변수에는 아무것도 없는 빈 값(<code class="language-plaintext highlighter-rouge">''</code>)을 넣을 수 없습니다. 최소한 <strong>공백(Space)</strong> 하나라도 있어야 합니다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">char</span> <span class="n">c1</span> <span class="o">=</span> <span class="err">''</span><span class="o">;</span>   <span class="c1">// (X) 에러 발생! (빈 문자 불가)</span>
+<span class="kt">char</span> <span class="n">c2</span> <span class="o">=</span> <span class="sc">' '</span><span class="o">;</span>  <span class="c1">// (O) 공백 문자 가능 (Space)</span>
+<span class="nc">String</span> <span class="n">s</span> <span class="o">=</span> <span class="s">""</span><span class="o">;</span>  <span class="c1">// (O) 문자열은 빈 값 가능</span>
+</code></pre></div></div>
+
+<h3 id="2-문자-vs-문자열">2) 문자 vs 문자열</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">타입</th>
+      <th style="text-align: left">키워드</th>
+      <th style="text-align: left">기호</th>
+      <th style="text-align: left">예시</th>
+      <th style="text-align: left">비유</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>문자</strong></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">char</code></td>
+      <td style="text-align: left">작은따옴표 <code class="language-plaintext highlighter-rouge">' '</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">'A'</code></td>
+      <td style="text-align: left">벽돌 1개</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>문자열</strong></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">String</code></td>
+      <td style="text-align: left">큰따옴표 <code class="language-plaintext highlighter-rouge">" "</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">"ABC"</code></td>
+      <td style="text-align: left">벽돌로 쌓은 벽</td>
+    </tr>
+  </tbody>
+</table>
 
 
             <!-- Google AdSense -->

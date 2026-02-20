@@ -8,7 +8,7 @@
   <!-- 기본 메타데이터 --><meta name="description" content="Jiny linux"><meta name="author" content="HojinLee"><!-- 제목 설정 --><title>4.1 변수 선언</title>
   <meta name="title" content="4.1 변수 선언" /><!-- 키워드 설정 --><!-- Open Graph 메타데이터 --><meta property="og:title" content="4.1 변수 선언"><meta property="og:description" content="Jiny linux"><meta property="og:type" content="website"><meta property="og:locale" content="ko">
   <meta property="og:site_name" content="linux">
-  <meta property="og:url" content="https://java.jiny.dev/basic/variable/declaration/">
+  <meta property="og:url" content="http://localhost:4000/basic/variable/declaration/">
 
   <!-- Twitter 카드 메타데이터 --><meta name="twitter:card" content="summary"><meta property="twitter:title" content="4.1 변수 선언"><!-- Begin Jekyll SEO tag v2.8.0 -->
 <meta name="generator" content="Jekyll v4.4.1" />
@@ -17,14 +17,14 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
 <meta property="og:description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
-<link rel="canonical" href="https://java.jiny.dev/basic/variable/declaration/" />
-<meta property="og:url" content="https://java.jiny.dev/basic/variable/declaration/" />
+<link rel="canonical" href="http://localhost:4000/basic/variable/declaration/" />
+<meta property="og:url" content="http://localhost:4000/basic/variable/declaration/" />
 <meta property="og:site_name" content="객체지향 자바 프로그래밍 (Object-Oriented Java Programming)" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="4.1 변수 선언" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"4.1 변수 선언","url":"https://java.jiny.dev/basic/variable/declaration/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"4.1 변수 선언","url":"http://localhost:4000/basic/variable/declaration/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -1087,45 +1087,100 @@
     </ol>
 </nav>
         <div class="bd-content ps-lg-2">
-            <h1 id="41-변수-선언">4.1 변수 선언</h1>
+            <h1 id="41-변수-선언과-저장">4.1 변수 선언과 저장</h1>
 
-<h2 id="1-변수란-데이터를-담는-상자-">1. 변수란? (데이터를 담는 상자) 📦</h2>
+<p>프로그래밍에서 데이터를 다루는 가장 기본적인 방법, <strong>변수(Variable)</strong>에 대해 알아봅시다.</p>
 
-<p><strong>변수(Variable)</strong>는 값을 저장할 수 있는 메모리 공간입니다.
-쉽게 말해, <strong>“데이터를 담는 이름표 붙은 상자”</strong>라고 생각하면 됩니다.</p>
+<hr />
 
+<h2 id="1-변수란-무엇인가-data-box-">1. 변수란 무엇인가? (Data Box) 📦</h2>
+
+<h3 id="1-개념">1) 개념</h3>
+<p>변수는 <strong>하나의 값을 저장할 수 있는 메모리 공간</strong>입니다.
+쉽게 말해, 프로그램에서 사용할 데이터를 담아두는 <strong>이름표가 붙은 상자</strong>라고 생각하면 됩니다.</p>
+
+<h3 id="2-비유-물건-정리-상자">2) 비유: “물건 정리 상자”</h3>
 <ul>
-  <li>하나의 변수에는 <strong>하나의 값</strong>만 저장할 수 있습니다.</li>
-  <li>변수에는 다양한 타입(정수, 실수, 문자 등)의 값을 저장할 수 있습니다.</li>
+  <li>이사할 때 “주방용품”, “책”, “옷”이라고 쓴 상자를 준비하듯이, 프로그래밍에서도 데이터를 담기 전에 <strong>어떤 데이터를 담을 상자인지</strong> 미리 정해야 합니다.</li>
+  <li><strong>주의</strong>: “옷” 상자(<code class="language-plaintext highlighter-rouge">int</code>)에 “물”(<code class="language-plaintext highlighter-rouge">String</code>)을 담으려고 하면 안 들어갑니다. (타입 일치 필요)</li>
 </ul>
 
-<h2 id="2-변수-선언-상자-준비하기">2. 변수 선언 (상자 준비하기)</h2>
+<hr />
 
-<p>변수를 쓰려면 먼저 “어떤 데이터를 담을 상자인지”와 “상자의 이름”을 정해야 합니다.</p>
+<h2 id="2-변수-선언-상자-준비하기-️">2. 변수 선언 (상자 준비하기) 🏷️</h2>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">age</span><span class="o">;</span>       <span class="c1">// 정수(int)를 담을 상자, 이름은 age</span>
+<p>변수를 사용하려면 먼저 <strong>선언(Declaration)</strong>을 해야 합니다.
+“나 이제부터 이 이름으로 된 상자를 쓸 거야!”라고 컴퓨터에게 알리는 것입니다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 타입 변수이름;</span>
+<span class="kt">int</span> <span class="n">age</span><span class="o">;</span>       <span class="c1">// 정수(int)를 담을 상자, 이름은 age</span>
 <span class="kt">double</span> <span class="n">height</span><span class="o">;</span> <span class="c1">// 실수(double)를 담을 상자, 이름은 height</span>
 </code></pre></div></div>
 
-<h2 id="3-값-저장-상자에-물건-넣기">3. 값 저장 (상자에 물건 넣기)</h2>
+<h3 id="상자-만들기-시각화">상자 만들기 시각화</h3>
 
-<p>대입 연산자(<code class="language-plaintext highlighter-rouge">=</code>)를 사용합니다. 수학에서는 “같다”는 뜻이지만, 프로그래밍에서는 <strong>“오른쪽 값을 왼쪽 상자에 넣어라”</strong>는 뜻입니다.</p>
+<pre><code class="language-mermaid">graph TD
+    Decl[int age;] --&gt; Box(("|      |&lt;br&gt;age (int)"))
+    style Box fill:#fff,stroke:#333
+</code></pre>
+
+<ul>
+  <li>아직 상자 안은 비어있습니다. (정확히는 알 수 없는 쓰레기 값이 들어있을 수 있습니다.)</li>
+</ul>
+
+<hr />
+
+<h2 id="3-값-대입-상자에-물건-넣기-">3. 값 대입 (상자에 물건 넣기) 📥</h2>
+
+<p>준비된 상자에 값을 넣는 것을 <strong>대입(Assignment)</strong>이라고 합니다.
+대입 연산자 <strong><code class="language-plaintext highlighter-rouge">=</code></strong>를 사용합니다.</p>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">age</span> <span class="o">=</span> <span class="mi">25</span><span class="o">;</span>      <span class="c1">// age 상자에 25를 넣음</span>
 <span class="n">height</span> <span class="o">=</span> <span class="mf">175.5</span> <span class="c1">// height 상자에 175.5를 넣음</span>
 </code></pre></div></div>
 
-<h2 id="4-초기화-initialization">4. 초기화 (Initialization)</h2>
+<h3 id="1-대입-연산자--의-의미">1) 대입 연산자 <code class="language-plaintext highlighter-rouge">=</code> 의 의미</h3>
+<p>수학에서는 <code class="language-plaintext highlighter-rouge">=</code>가 “같다”는 뜻이지만, 프로그래밍에서는 <strong>“오른쪽의 값을 왼쪽의 상자에 넣어라”</strong>는 뜻입니다.</p>
 
-<p>변수를 선언함과 동시에 값을 넣을 수도 있습니다. 이를 <strong>초기화</strong>라고 합니다.</p>
+<pre><code class="language-mermaid">graph LR
+    Value[25] --&gt;|대입 (=)| Box(("|  25  |&lt;br&gt;age"))
+    style Box fill:#bfb,stroke:#333
+</code></pre>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">score</span> <span class="o">=</span> <span class="mi">90</span><span class="o">;</span> <span class="c1">// 상자를 만들면서 바로 90을 넣음</span>
+<hr />
+
+<h2 id="4-변수-초기화-initialization-">4. 변수 초기화 (Initialization) 🆕</h2>
+
+<p>변수 선언과 동시에 값을 넣는 것을 <strong>초기화</strong>라고 합니다.
+가장 많이 사용하는 방식입니다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">score</span> <span class="o">=</span> <span class="mi">90</span><span class="o">;</span> <span class="c1">// 상자를 만들자마자 90을 넣음</span>
 </code></pre></div></div>
 
-<blockquote>
-  <p><strong>주의</strong>: 값이 들어있지 않은(초기화되지 않은) 변수는 사용할 수 없습니다!
-빈 상자에서 물건을 꺼낼 수 없는 것과 같습니다.</p>
-</blockquote>
+<h3 id="초기화하지-않은-변수는-사용할-수-없다-">초기화하지 않은 변수는 사용할 수 없다! 🚫</h3>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">value</span><span class="o">;</span> <span class="c1">// 선언만 함 (값 없음)</span>
+<span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">value</span> <span class="o">+</span> <span class="mi">10</span><span class="o">;</span> <span class="c1">// (X) 에러 발생!</span>
+</code></pre></div></div>
+<ul>
+  <li><strong>비유</strong>: 빈 상자에서 물건을 꺼내려다가 손이 허공을 가르는 것과 같습니다. 반드시 값을 넣은 후에 사용해야 합니다.</li>
+</ul>
+
+<hr />
+
+<h2 id="5-변수-이름-명명-규칙-naming-convention-">5. 변수 이름 명명 규칙 (Naming Convention) 📜</h2>
+
+<p>변수 이름은 개발자가 마음대로 지을 수 있지만, 몇 가지 규칙과 관례가 있습니다.</p>
+
+<ol>
+  <li><strong>영어 대소문양 구분</strong>: <code class="language-plaintext highlighter-rouge">score</code>와 <code class="language-plaintext highlighter-rouge">Score</code>는 다른 변수입니다.</li>
+  <li><strong>첫 글자는 소문자</strong>: <code class="language-plaintext highlighter-rouge">myScore</code> (권장), <code class="language-plaintext highlighter-rouge">MyScore</code> (X - 클래스 이름 같음)</li>
+  <li><strong>카멜 표기법(CamelCase)</strong>: 여러 단어를 합칠 때, 두 번째 단어부터 첫 글자를 대문자로 씁니다. (낙타 등처럼 불룩하다는 뜻 🐫)
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">mathScore</code>, <code class="language-plaintext highlighter-rouge">userName</code>, <code class="language-plaintext highlighter-rouge">maxSpeed</code></li>
+    </ul>
+  </li>
+  <li><strong>예약어 사용 금지</strong>: 자바가 이미 쓰고 있는 단어(<code class="language-plaintext highlighter-rouge">int</code>, <code class="language-plaintext highlighter-rouge">class</code>, <code class="language-plaintext highlighter-rouge">public</code> 등)는 변수 이름으로 쓸 수 없습니다.</li>
+</ol>
 
 
             <!-- Google AdSense -->

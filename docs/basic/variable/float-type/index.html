@@ -8,7 +8,7 @@
   <!-- 기본 메타데이터 --><meta name="description" content="Jiny linux"><meta name="author" content="HojinLee"><!-- 제목 설정 --><title>4.4 실수 타입</title>
   <meta name="title" content="4.4 실수 타입" /><!-- 키워드 설정 --><!-- Open Graph 메타데이터 --><meta property="og:title" content="4.4 실수 타입"><meta property="og:description" content="Jiny linux"><meta property="og:type" content="website"><meta property="og:locale" content="ko">
   <meta property="og:site_name" content="linux">
-  <meta property="og:url" content="https://java.jiny.dev/basic/variable/float-type/">
+  <meta property="og:url" content="http://localhost:4000/basic/variable/float-type/">
 
   <!-- Twitter 카드 메타데이터 --><meta name="twitter:card" content="summary"><meta property="twitter:title" content="4.4 실수 타입"><!-- Begin Jekyll SEO tag v2.8.0 -->
 <meta name="generator" content="Jekyll v4.4.1" />
@@ -17,14 +17,14 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
 <meta property="og:description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
-<link rel="canonical" href="https://java.jiny.dev/basic/variable/float-type/" />
-<meta property="og:url" content="https://java.jiny.dev/basic/variable/float-type/" />
+<link rel="canonical" href="http://localhost:4000/basic/variable/float-type/" />
+<meta property="og:url" content="http://localhost:4000/basic/variable/float-type/" />
 <meta property="og:site_name" content="객체지향 자바 프로그래밍 (Object-Oriented Java Programming)" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="4.4 실수 타입" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"4.4 실수 타입","url":"https://java.jiny.dev/basic/variable/float-type/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"4.4 실수 타입","url":"http://localhost:4000/basic/variable/float-type/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -1089,14 +1089,23 @@
         <div class="bd-content ps-lg-2">
             <h1 id="44-실수-타입">4.4 실수 타입</h1>
 
-<p>실수(Floating Point)는 소수점이 있는 숫자(3.14, -0.5)입니다.</p>
+<p>소수점이 있는 숫자(3.14, -0.5)를 저장할 때 사용하는 타입입니다.
+“부동 소수점(Floating Point)” 방식이라서 실수 타입이라고 부릅니다.</p>
+
+<hr />
+
+<h2 id="1-실수-타입-2총사-">1. 실수 타입 2총사 📏</h2>
+
+<h3 id="1-크기-및-정밀도-비교">1) 크기 및 정밀도 비교</h3>
+<p>실수는 얼마나 큰 수를 저장하느냐보다, <strong>얼마나 정밀하게(소수점 몇 째 자리까지)</strong> 저장하느냐가 중요합니다.</p>
 
 <table>
   <thead>
     <tr>
       <th style="text-align: left">타입</th>
-      <th style="text-align: left">크기</th>
-      <th style="text-align: left">정밀도</th>
+      <th style="text-align: left">메모리 크기</th>
+      <th style="text-align: left">정밀도 (유효 자릿수)</th>
+      <th style="text-align: left">비유 (측정 도구)</th>
       <th style="text-align: left">설명</th>
     </tr>
   </thead>
@@ -1104,43 +1113,74 @@
     <tr>
       <td style="text-align: left"><code class="language-plaintext highlighter-rouge">float</code></td>
       <td style="text-align: left">4 byte</td>
-      <td style="text-align: left">낮음</td>
-      <td style="text-align: left">소수점 7자리 정도 정확</td>
+      <td style="text-align: left">7자리</td>
+      <td style="text-align: left"><strong>학교 자</strong> (mm 단위)</td>
+      <td style="text-align: left">가볍지만 정밀도가 낮음</td>
     </tr>
     <tr>
       <td style="text-align: left"><strong><code class="language-plaintext highlighter-rouge">double</code></strong></td>
       <td style="text-align: left">8 byte</td>
-      <td style="text-align: left"><strong>높음</strong></td>
-      <td style="text-align: left"><strong>가장 많이 씀</strong>. 소수점 15자리 정도 정확</td>
+      <td style="text-align: left"><strong>15자리</strong></td>
+      <td style="text-align: left"><strong>버니어 캘리퍼스</strong> (0.01mm 단위)</td>
+      <td style="text-align: left"><strong>기본 실수 타입</strong>, 매우 정밀함</td>
     </tr>
   </tbody>
 </table>
 
-<h2 id="1-double-기본-실수">1. <code class="language-plaintext highlighter-rouge">double</code> (기본 실수)</h2>
-<p><code class="language-plaintext highlighter-rouge">int</code>가 정수의 기본이듯, <code class="language-plaintext highlighter-rouge">double</code>이 실수의 기본입니다.
-(Double이라는 이름은 <code class="language-plaintext highlighter-rouge">float</code>보다 2배 더 정밀하다는 뜻입니다.)</p>
+<h3 id="2-정밀도-시각화">2) 정밀도 시각화</h3>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">double</span> <span class="n">pi</span> <span class="o">=</span> <span class="mf">3.14159</span><span class="o">;</span>
+<pre><code class="language-mermaid">graph TD
+    Float[float (소수점 7자리)&lt;br&gt;0.1234567]
+    Double[double (소수점 15자리)&lt;br&gt;0.123456789012345]
+    
+    style Float fill:#eee,stroke:#333
+    style Double fill:#9cf,stroke:#333,stroke-width:2px
+</code></pre>
+
+<hr />
+
+<h2 id="2-기본-타입-double">2. 기본 타입: double</h2>
+
+<h3 id="1-개념">1) 개념</h3>
+<p>자바에서 실수의 <strong>기본</strong> 타입입니다.
+<code class="language-plaintext highlighter-rouge">float</code>보다 2배(Double) 더 정밀하다고 해서 이름이 <code class="language-plaintext highlighter-rouge">double</code>입니다.</p>
+
+<h3 id="2-왜-double을-쓰나요">2) 왜 double을 쓰나요?</h3>
+<ul>
+  <li>현대의 컴퓨터는 메모리가 충분하기 때문에, 정확도가 떨어지는 <code class="language-plaintext highlighter-rouge">float</code>를 굳이 쓸 이유가 없습니다.</li>
+  <li>과학 계산, 금융 계산 등에서 오차를 줄이기 위해 <code class="language-plaintext highlighter-rouge">double</code>을 사용합니다.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">double</span> <span class="n">pi</span> <span class="o">=</span> <span class="mf">3.1415926535</span><span class="o">;</span>
+<span class="kt">double</span> <span class="n">height</span> <span class="o">=</span> <span class="mf">175.5</span><span class="o">;</span>
 </code></pre></div></div>
 
-<h2 id="2-float">2. <code class="language-plaintext highlighter-rouge">float</code></h2>
-<p>값 뒤에 <strong><code class="language-plaintext highlighter-rouge">f</code></strong> 또는 <strong><code class="language-plaintext highlighter-rouge">F</code></strong>를 붙여야 합니다.</p>
+<hr />
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">float</span> <span class="n">weight</span> <span class="o">=</span> <span class="mf">65.5f</span><span class="o">;</span>
+<h2 id="3-가벼운-타입-float">3. 가벼운 타입: float</h2>
+
+<h3 id="1-개념-1">1) 개념</h3>
+<p>메모리를 적게 차지하지만 정밀도가 낮습니다.
+값 뒤에 <strong><code class="language-plaintext highlighter-rouge">f</code></strong> 또는 <strong><code class="language-plaintext highlighter-rouge">F</code></strong>를 붙여서 “이건 float야!”라고 알려줘야 합니다. (안 붙이면 에러가 납니다. 자바는 실수를 무조건 double로 인식하기 때문입니다.)</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">float</span> <span class="n">weight</span> <span class="o">=</span> <span class="mf">65.5f</span><span class="o">;</span> <span class="c1">// f를 꼭 붙여야 함!</span>
 </code></pre></div></div>
 
-<h2 id="3-정밀도-차이">3. 정밀도 차이</h2>
-<p><code class="language-plaintext highlighter-rouge">double</code>이 훨씬 더 정교한 계산을 할 수 있습니다.</p>
+<hr />
+
+<h2 id="4-정밀도-차이-실습-">4. 정밀도 차이 실습 🔬</h2>
+
+<p>같은 숫자를 저장해도 <code class="language-plaintext highlighter-rouge">float</code>는 뒤쪽 숫자가 잘리거나 부정확하게 바뀔 수 있습니다.</p>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">float</span> <span class="n">f</span> <span class="o">=</span> <span class="mf">0.1234567890123456789f</span><span class="o">;</span>
 <span class="kt">double</span> <span class="n">d</span> <span class="o">=</span> <span class="mf">0.1234567890123456789</span><span class="o">;</span>
 
-<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">f</span><span class="o">);</span> <span class="c1">// 0.12345679 (뒤가 잘림)</span>
-<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">d</span><span class="o">);</span> <span class="c1">// 0.12345678901234568 (훨씬 정확)</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">f</span><span class="o">);</span> <span class="c1">// 0.12345679  (뒤가 짤리고 반올림됨 - 부정확)</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">d</span><span class="o">);</span> <span class="c1">// 0.12345678901234568 (훨씬 더 많이 저장됨 - 정확)</span>
 </code></pre></div></div>
 
 <blockquote>
-  <p><strong>핵심</strong>: 소수점이 나오면 무조건 <strong><code class="language-plaintext highlighter-rouge">double</code></strong>을 쓰세요.</p>
+  <p><strong>핵심</strong>: 소수점이 나오면 고민하지 말고 <strong><code class="language-plaintext highlighter-rouge">double</code></strong>을 쓰세요.</p>
 </blockquote>
 
 

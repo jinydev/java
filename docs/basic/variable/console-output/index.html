@@ -8,7 +8,7 @@
   <!-- 기본 메타데이터 --><meta name="description" content="Jiny linux"><meta name="author" content="HojinLee"><!-- 제목 설정 --><title>4.10 콘솔 출력</title>
   <meta name="title" content="4.10 콘솔 출력" /><!-- 키워드 설정 --><!-- Open Graph 메타데이터 --><meta property="og:title" content="4.10 콘솔 출력"><meta property="og:description" content="Jiny linux"><meta property="og:type" content="website"><meta property="og:locale" content="ko">
   <meta property="og:site_name" content="linux">
-  <meta property="og:url" content="https://java.jiny.dev/basic/variable/console-output/">
+  <meta property="og:url" content="http://localhost:4000/basic/variable/console-output/">
 
   <!-- Twitter 카드 메타데이터 --><meta name="twitter:card" content="summary"><meta property="twitter:title" content="4.10 콘솔 출력"><!-- Begin Jekyll SEO tag v2.8.0 -->
 <meta name="generator" content="Jekyll v4.4.1" />
@@ -17,14 +17,14 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
 <meta property="og:description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
-<link rel="canonical" href="https://java.jiny.dev/basic/variable/console-output/" />
-<meta property="og:url" content="https://java.jiny.dev/basic/variable/console-output/" />
+<link rel="canonical" href="http://localhost:4000/basic/variable/console-output/" />
+<meta property="og:url" content="http://localhost:4000/basic/variable/console-output/" />
 <meta property="og:site_name" content="객체지향 자바 프로그래밍 (Object-Oriented Java Programming)" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="4.10 콘솔 출력" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"4.10 콘솔 출력","url":"https://java.jiny.dev/basic/variable/console-output/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"4.10 콘솔 출력","url":"http://localhost:4000/basic/variable/console-output/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -1089,39 +1089,117 @@
         <div class="bd-content ps-lg-2">
             <h1 id="410-콘솔-출력">4.10 콘솔 출력</h1>
 
-<h2 id="1-출력하기-systemoutprintln-">1. 출력하기 (<code class="language-plaintext highlighter-rouge">System.out.println</code>) 📺</h2>
+<p>프로그램이 계산한 결과나 사용자에게 보여줄 메시지를 화면(콘솔)에 출력하는 방법을 알아봅니다. 📺</p>
 
-<p>화면에 글자를 보여주는 방법은 크게 3가지가 있습니다.</p>
+<hr />
 
+<h2 id="1-출력-방법-3가지-️">1. 출력 방법 3가지 🖨️</h2>
+
+<h3 id="1-개념">1) 개념</h3>
+<p>자바는 <code class="language-plaintext highlighter-rouge">System.out</code>이라는 기본 출력 도구를 제공합니다.
+상황에 따라 3가지 메소드를 골라 쓸 수 있습니다.</p>
+
+<h3 id="2-비유-프린터-모드-설정">2) 비유: “프린터 모드 설정”</h3>
 <ul>
-  <li><strong><code class="language-plaintext highlighter-rouge">println()</code></strong> (Print Line): 내용을 출력하고 <strong>줄을 바꿉니다.</strong> (가장 많이 씀)</li>
-  <li><strong><code class="language-plaintext highlighter-rouge">print()</code></strong>: 내용을 출력하고 줄을 바꾸지 않습니다. (이어 쓰기)</li>
-  <li><strong><code class="language-plaintext highlighter-rouge">printf()</code></strong>: 형식을 지정해서 출력합니다.</li>
+  <li><strong>println (Print Line)</strong>: 한 줄 쓰고 <strong>종이를 위로 올리기(엔터)</strong></li>
+  <li><strong>print</strong>: 한 줄 쓰고 <strong>그 자리에 멈추기</strong> (옆에 이어 쓰기)</li>
+  <li><strong>printf (Print Format)</strong>: <strong>서식(양식)</strong>에 맞춰서 예쁘게 채워 넣기</li>
 </ul>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Hello"</span><span class="o">);</span>
-<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"World"</span><span class="o">);</span>
-<span class="c1">// 결과:</span>
-<span class="c1">// Hello</span>
-<span class="c1">// World</span>
+<h3 id="3-출력-차이-시각화">3) 출력 차이 시각화</h3>
 
-<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"Hello"</span><span class="o">);</span>
-<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"World"</span><span class="o">);</span>
-<span class="c1">// 결과: HelloWorld</span>
+<pre><code class="language-mermaid">graph TD
+    subgraph println [println("A"); println("B");]
+        L1[A]
+        L2[B]
+        L1 --&gt; L2
+    end
+    
+    subgraph print [print("A"); print("B");]
+        P1[AB]
+    end
+    
+    style println fill:#eef,stroke:#333
+    style print fill:#eef,stroke:#333
+</code></pre>
+
+<hr />
+
+<h2 id="2-자주-쓰는-메소드">2. 자주 쓰는 메소드</h2>
+
+<h3 id="1-systemoutprintln">1) System.out.println()</h3>
+<p>괄호 안의 내용을 출력하고 <strong>줄을 바꿉니다</strong>. 가장 많이 사용합니다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"안녕하세요"</span><span class="o">);</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"반갑습니다"</span><span class="o">);</span>
+<span class="c1">// 출력:</span>
+<span class="c1">// 안녕하세요</span>
+<span class="c1">// 반갑습니다</span>
 </code></pre></div></div>
 
-<h2 id="2-형식대로-출력하기-printf">2. 형식대로 출력하기 (<code class="language-plaintext highlighter-rouge">printf</code>)</h2>
+<h3 id="2-systemoutprint">2) System.out.print()</h3>
+<p>괄호 안의 내용을 출력하고 <strong>줄을 바꾸지 않습니다</strong>.</p>
 
-<p>“가격: 1000원” 처럼 문자와 변수를 섞어 쓸 때 유용합니다.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"사과"</span><span class="o">);</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"포도"</span><span class="o">);</span>
+<span class="c1">// 출력: 사과포도</span>
+</code></pre></div></div>
 
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">%d</code>: 정수 (Integer)</li>
-  <li><code class="language-plaintext highlighter-rouge">%f</code>: 실수 (Float)</li>
-  <li><code class="language-plaintext highlighter-rouge">%s</code>: 문자열 (String)</li>
-</ul>
+<hr />
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">price</span> <span class="o">=</span> <span class="mi">1000</span><span class="o">;</span>
-<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"가격: %d원\n"</span><span class="o">,</span> <span class="n">price</span><span class="o">);</span> <span class="c1">// \n은 줄바꿈</span>
+<h2 id="3-형식-지정-출력-printf-">3. 형식 지정 출력 (printf) 🎨</h2>
+
+<h3 id="1-개념-1">1) 개념</h3>
+<p><code class="language-plaintext highlighter-rouge">printf("형식문자열", 값1, 값2, ...)</code> 형태로 사용합니다.
+문자열 안에 <strong>빈칸(서식 지정자)</strong>을 만들어두고, 뒤에 오는 값을 순서대로 채워 넣는 방식입니다.</p>
+
+<h3 id="2-자주-쓰는-서식-지정자-format-specifier">2) 자주 쓰는 서식 지정자 (Format Specifier)</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">기호</th>
+      <th style="text-align: left">설명</th>
+      <th style="text-align: left">타입</th>
+      <th style="text-align: left">예시</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong><code class="language-plaintext highlighter-rouge">%d</code></strong></td>
+      <td style="text-align: left">10진수 정수 (Decimal)</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">int</code>, <code class="language-plaintext highlighter-rouge">long</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">printf("나이: %d", 25)</code> 👉 “나이: 25”</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong><code class="language-plaintext highlighter-rouge">%s</code></strong></td>
+      <td style="text-align: left">문자열 (String)</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">String</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">printf("이름: %s", "홍길동")</code> 👉 “이름: 홍길동”</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong><code class="language-plaintext highlighter-rouge">%f</code></strong></td>
+      <td style="text-align: left">실수 (Float)</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">double</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">printf("키: %.1f", 175.5)</code> 👉 “키: 175.5”</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p><strong>꿀팁</strong>: <code class="language-plaintext highlighter-rouge">%</code>와 글자 사이에 숫자를 넣으면 자릿수를 맞출 수 있습니다.</p>
+  <ul>
+    <li><code class="language-plaintext highlighter-rouge">%.2f</code>: 소수점 둘째 자리까지 표시 (반올림)</li>
+  </ul>
+</blockquote>
+
+<h3 id="3-코드-예시">3) 코드 예시</h3>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">String</span> <span class="n">name</span> <span class="o">=</span> <span class="s">"김자바"</span><span class="o">;</span>
+<span class="kt">int</span> <span class="n">age</span> <span class="o">=</span> <span class="mi">20</span><span class="o">;</span>
+<span class="kt">double</span> <span class="n">height</span> <span class="o">=</span> <span class="mf">180.56</span><span class="o">;</span>
+
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"이름: %s, 나이: %d세, 키: %.1fcm\n"</span><span class="o">,</span> <span class="n">name</span><span class="o">,</span> <span class="n">age</span><span class="o">,</span> <span class="n">height</span><span class="o">);</span>
+<span class="c1">// 출력: 이름: 김자바, 나이: 20세, 키: 180.6cm</span>
 </code></pre></div></div>
 
 

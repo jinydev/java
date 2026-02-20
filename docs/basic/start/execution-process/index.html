@@ -8,7 +8,7 @@
   <!-- 기본 메타데이터 --><meta name="description" content="Jiny linux"><meta name="author" content="HojinLee"><!-- 제목 설정 --><title>3.1 소스 작성부터 실행까지</title>
   <meta name="title" content="3.1 소스 작성부터 실행까지" /><!-- 키워드 설정 --><!-- Open Graph 메타데이터 --><meta property="og:title" content="3.1 소스 작성부터 실행까지"><meta property="og:description" content="Jiny linux"><meta property="og:type" content="website"><meta property="og:locale" content="ko">
   <meta property="og:site_name" content="linux">
-  <meta property="og:url" content="https://java.jiny.dev/basic/start/execution-process/">
+  <meta property="og:url" content="http://localhost:4000/basic/start/execution-process/">
 
   <!-- Twitter 카드 메타데이터 --><meta name="twitter:card" content="summary"><meta property="twitter:title" content="3.1 소스 작성부터 실행까지"><!-- Begin Jekyll SEO tag v2.8.0 -->
 <meta name="generator" content="Jekyll v4.4.1" />
@@ -17,14 +17,14 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
 <meta property="og:description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
-<link rel="canonical" href="https://java.jiny.dev/basic/start/execution-process/" />
-<meta property="og:url" content="https://java.jiny.dev/basic/start/execution-process/" />
+<link rel="canonical" href="http://localhost:4000/basic/start/execution-process/" />
+<meta property="og:url" content="http://localhost:4000/basic/start/execution-process/" />
 <meta property="og:site_name" content="객체지향 자바 프로그래밍 (Object-Oriented Java Programming)" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="3.1 소스 작성부터 실행까지" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"3.1 소스 작성부터 실행까지","url":"https://java.jiny.dev/basic/start/execution-process/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"3.1 소스 작성부터 실행까지","url":"http://localhost:4000/basic/start/execution-process/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -1089,23 +1089,35 @@
         <div class="bd-content ps-lg-2">
             <h1 id="31-소스-작성부터-실행까지">3.1 소스 작성부터 실행까지</h1>
 
-<h2 id="1-실습-목표-">1. 실습 목표 🎯</h2>
+<p>자바 프로그램이 어떻게 만들어지고 실행되는지, 그 전체 과정을 <strong>요리</strong>에 비유하여 알아봅니다. 🍳</p>
 
-<p>가장 기본적인 자바 프로그램인 <strong>“Hello, Java”</strong>를 출력하는 프로그램을 만들어 봅시다.</p>
+<h2 id="1-전체-과정-한눈에-보기-️">1. 전체 과정 한눈에 보기 👁️</h2>
 
-<h2 id="2-폴더-만들기-작업실-준비">2. 폴더 만들기 (작업실 준비)</h2>
+<p>자바 개발은 크게 <strong>3단계</strong>로 이루어집니다.</p>
 
-<p>탐색기(Finder)에서 <code class="language-plaintext highlighter-rouge">C:\temp</code> (또는 원하는 곳) 폴더를 만들고, 그 안에 <code class="language-plaintext highlighter-rouge">Hello.java</code> 파일을 만듭니다.</p>
+<pre><code class="language-mermaid">flowchart LR
+    Coding["1. 코드 작성\n(Hello.java)"] --&gt;|저장| Source[소스 파일]
+    Source --&gt; Compile["2. 컴파일 (javac)\n(번역)"]
+    Compile --&gt; Bytecode["바이트 코드\n(Hello.class)"]
+    Bytecode --&gt; Run["3. 실행 (java)\n(JVM)"]
+    Run --&gt; Output[결과 출력]
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>C:\temp
- └─ Hello.java  &lt;-- 우리가 작성할 소스 파일
-</code></pre></div></div>
+    style Coding fill:#f9f,stroke:#333
+    style Compile fill:#ff9,stroke:#333
+    style Run fill:#9f6,stroke:#333
+</code></pre>
 
-<h2 id="3-코드-작성-레시피-적기">3. 코드 작성 (레시피 적기)</h2>
+<hr />
 
-<p><code class="language-plaintext highlighter-rouge">Hello.java</code> 파일을 메모장이나 텍스트 에디터로 열어서 아래 내용을 똑같이 적어보세요.
-(대소문자를 정확히 지켜야 합니다!)</p>
+<h2 id="2-단계별-상세-설명-">2. 단계별 상세 설명 📝</h2>
 
+<h3 id="1단계-코드-작성-레시피-적기">1단계: 코드 작성 (레시피 적기)</h3>
+<ul>
+  <li><strong>비유</strong>: <strong>요리 레시피</strong>를 종이에 적는 단계입니다.</li>
+  <li><strong>설명</strong>: 사람(개발자)이 이해할 수 있는 언어(Java)로 명령을 작성하여 파일로 저장합니다. 이때 파일 확장자는 반드시 <code class="language-plaintext highlighter-rouge">.java</code>여야 합니다.</li>
+</ul>
+
+<p><strong>작성 예시 (<code class="language-plaintext highlighter-rouge">Hello.java</code>)</strong></p>
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Hello</span> <span class="o">{</span>
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Hello, Java"</span><span class="o">);</span>
@@ -1113,28 +1125,60 @@
 <span class="o">}</span>
 </code></pre></div></div>
 
-<h2 id="4-실행해보기-요리하기">4. 실행해보기 (요리하기)</h2>
+<h3 id="2단계-컴파일-번역하기">2단계: 컴파일 (번역하기)</h3>
+<ul>
+  <li><strong>비유</strong>: 한국어로 적힌 레시피를 <strong>외국인 요리사(컴퓨터)</strong>가 볼 수 있도록 영어로 <strong>번역</strong>하는 과정입니다.</li>
+  <li><strong>도구</strong>: <code class="language-plaintext highlighter-rouge">javac.exe</code> (자바 컴파일러)</li>
+  <li><strong>명령어</strong>: <code class="language-plaintext highlighter-rouge">javac Hello.java</code></li>
+  <li><strong>결과</strong>: 번역이 성공하면 기계어가 섞인 <code class="language-plaintext highlighter-rouge">Hello.class</code> (바이트 코드) 파일이 생성됩니다. 이 파일은 사람이 읽을 수 없습니다.</li>
+</ul>
 
-<p>터미널(명령 프롬프트)을 열고, 파일이 있는 곳으로 이동해서 실행합니다.</p>
+<h3 id="3단계-실행-요리하기">3단계: 실행 (요리하기)</h3>
+<ul>
+  <li><strong>비유</strong>: 번역된 레시피를 보고 요리사가 실제로 <strong>요리</strong>를 해서 음식을 내놓는 단계입니다.</li>
+  <li><strong>도구</strong>: <code class="language-plaintext highlighter-rouge">java.exe</code> (자바 가상 머신 구동기)</li>
+  <li><strong>명령어</strong>: <code class="language-plaintext highlighter-rouge">java Hello</code> (확장자 <code class="language-plaintext highlighter-rouge">.class</code>는 생략합니다!)</li>
+  <li><strong>결과</strong>: 화면에 “Hello, Java”라는 결과가 출력됩니다.</li>
+</ul>
 
-<h3 id="1-컴파일-번역">1) 컴파일 (번역)</h3>
+<hr />
+
+<h2 id="3-실습-직접-해보기-">3. 실습: 직접 해보기 💻</h2>
+
+<h3 id="1-작업실-만들기-폴더-생성">1. 작업실 만들기 (폴더 생성)</h3>
+<p>탐색기(Finder)에서 <code class="language-plaintext highlighter-rouge">C:\temp</code> (또는 원하는 곳) 폴더를 만들고, 그 안에 <code class="language-plaintext highlighter-rouge">Hello.java</code> 파일을 만듭니다.</p>
+
+<h3 id="2-컴파일-하기">2. 컴파일 하기</h3>
+<p>터미널(명령 프롬프트)을 열고, 파일이 있는 곳으로 이동한 후 아래 명령어를 입력합니다.</p>
+
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>javac Hello.java
 </code></pre></div></div>
-<ul>
-  <li>아무 오류 없이 끝나면 <code class="language-plaintext highlighter-rouge">Hello.class</code> 파일(바이트코드)이 생깁니다.</li>
-</ul>
 
-<h3 id="2-실행-run">2) 실행 (Run)</h3>
+<blockquote>
+  <p><strong>성공?</strong> 아무 메시지 없이 다음 줄로 넘어가면 성공입니다! 폴더를 보면 <code class="language-plaintext highlighter-rouge">Hello.class</code> 파일이 생겼을 것입니다.
+<strong>실패?</strong> 에러 메시지가 뜬다면 오타가 없는지, 대소문자를 정확히 썼는지 확인하세요.</p>
+</blockquote>
+
+<h3 id="3-실행-하기">3. 실행 하기</h3>
+<p>이제 번역된 파일을 실행해 봅시다.</p>
+
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>java Hello
 </code></pre></div></div>
-<ul>
-  <li><strong>주의</strong>: <code class="language-plaintext highlighter-rouge">Hello.class</code>가 아니라 그냥 <code class="language-plaintext highlighter-rouge">Hello</code>라고 입력하세요.</li>
-</ul>
 
-<h3 id="결과-확인">결과 확인</h3>
+<p><strong>실행 결과</strong></p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Hello, Java
 </code></pre></div></div>
 <p>화면에 문구가 출력되면 성공입니다! 🎉</p>
+
+<hr />
+
+<h2 id="4-자주-발생하는-실수-️">4. 자주 발생하는 실수 ⚠️</h2>
+
+<ol>
+  <li><strong>파일명 불일치</strong>: <code class="language-plaintext highlighter-rouge">class Hello</code>라고 적었으면 파일명도 무조건 <code class="language-plaintext highlighter-rouge">Hello.java</code>여야 합니다. (<code class="language-plaintext highlighter-rouge">hello.java</code> ❌)</li>
+  <li><strong>확장자 입력</strong>: 실행할 때는 <code class="language-plaintext highlighter-rouge">java Hello.class</code>가 아니라 <code class="language-plaintext highlighter-rouge">java Hello</code>입니다.</li>
+  <li><strong>세미콜론 누락</strong>: 문장 끝에 <code class="language-plaintext highlighter-rouge">;</code>를 빼먹지 않았는지 확인하세요.</li>
+</ol>
 
 
             <!-- Google AdSense -->

@@ -8,7 +8,7 @@
   <!-- 기본 메타데이터 --><meta name="description" content="Jiny linux"><meta name="author" content="HojinLee"><!-- 제목 설정 --><title>4.5 논리 타입</title>
   <meta name="title" content="4.5 논리 타입" /><!-- 키워드 설정 --><!-- Open Graph 메타데이터 --><meta property="og:title" content="4.5 논리 타입"><meta property="og:description" content="Jiny linux"><meta property="og:type" content="website"><meta property="og:locale" content="ko">
   <meta property="og:site_name" content="linux">
-  <meta property="og:url" content="https://java.jiny.dev/basic/variable/boolean-type/">
+  <meta property="og:url" content="http://localhost:4000/basic/variable/boolean-type/">
 
   <!-- Twitter 카드 메타데이터 --><meta name="twitter:card" content="summary"><meta property="twitter:title" content="4.5 논리 타입"><!-- Begin Jekyll SEO tag v2.8.0 -->
 <meta name="generator" content="Jekyll v4.4.1" />
@@ -17,14 +17,14 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
 <meta property="og:description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
-<link rel="canonical" href="https://java.jiny.dev/basic/variable/boolean-type/" />
-<meta property="og:url" content="https://java.jiny.dev/basic/variable/boolean-type/" />
+<link rel="canonical" href="http://localhost:4000/basic/variable/boolean-type/" />
+<meta property="og:url" content="http://localhost:4000/basic/variable/boolean-type/" />
 <meta property="og:site_name" content="객체지향 자바 프로그래밍 (Object-Oriented Java Programming)" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="4.5 논리 타입" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"4.5 논리 타입","url":"https://java.jiny.dev/basic/variable/boolean-type/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"4.5 논리 타입","url":"http://localhost:4000/basic/variable/boolean-type/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -1087,32 +1087,68 @@
     </ol>
 </nav>
         <div class="bd-content ps-lg-2">
-            <h1 id="45-논리-타입">4.5 논리 타입</h1>
+            <h1 id="45-논리-타입-boolean">4.5 논리 타입 (boolean)</h1>
 
-<h2 id="1-참과-거짓-boolean-">1. 참과 거짓 (<code class="language-plaintext highlighter-rouge">boolean</code>) ✅</h2>
+<p>컴퓨터 세상에서의 대답은 오직 <strong>“YES”</strong> 아니면 <strong>“NO”</strong>입니다.
+이 둘 중 하나를 저장하는 타입이 바로 <strong>boolean(불리언)</strong>입니다.</p>
 
-<p><code class="language-plaintext highlighter-rouge">boolean</code>(불리언)은 딱 두 가지 값만 가질 수 있습니다.</p>
+<hr />
+
+<h2 id="1-참과-거짓-true-or-false-">1. 참과 거짓 (True or False) 🚥</h2>
+
+<h3 id="1-개념">1) 개념</h3>
+<p><code class="language-plaintext highlighter-rouge">boolean</code> 타입은 오직 두 가지 값만 가질 수 있습니다.</p>
 <ul>
-  <li><strong><code class="language-plaintext highlighter-rouge">true</code></strong>: 참 (ON)</li>
-  <li><strong><code class="language-plaintext highlighter-rouge">false</code></strong>: 거짓 (OFF)</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">true</code></strong>: 참 (맞다, 켜짐, 성공)</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">false</code></strong>: 거짓 (아니다, 꺼짐, 실패)</li>
 </ul>
 
-<p>전등 스위치처럼 켜거나 끄는 상태를 저장할 때 씁니다.</p>
+<h3 id="2-비유-전등-스위치">2) 비유: “전등 스위치”</h3>
+<ul>
+  <li>방의 전등 스위치는 <strong>ON(켜짐)</strong> 또는 <strong>OFF(꺼짐)</strong> 두 가지 상태밖에 없습니다. “반만 켜짐” 같은 건 없습니다.</li>
+  <li>boolean 변수도 마찬가지로 딱 두 가지 상태만 저장합니다.</li>
+</ul>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">boolean</span> <span class="n">stop</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
-<span class="kt">boolean</span> <span class="n">isCar</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+<h3 id="3-상태-시각화">3) 상태 시각화</h3>
+
+<pre><code class="language-mermaid">graph LR
+    ON((ON&lt;br&gt;true)) &lt;--&gt; OFF((OFF&lt;br&gt;false))
+    style ON fill:#bfb,stroke:#333
+    style OFF fill:#eee,stroke:#333
+</code></pre>
+
+<hr />
+
+<h2 id="2-사용-예시">2. 사용 예시</h2>
+
+<h3 id="1-변수-선언-및-초기화">1) 변수 선언 및 초기화</h3>
+<p>주로 상태를 나타내는 변수 이름 앞에 <code class="language-plaintext highlighter-rouge">is</code>, <code class="language-plaintext highlighter-rouge">has</code>, <code class="language-plaintext highlighter-rouge">can</code> 등을 붙여서 질문형으로 짓습니다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">boolean</span> <span class="n">isStop</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>   <span class="c1">// 멈췄나요? 네(true)</span>
+<span class="kt">boolean</span> <span class="n">hasApple</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span> <span class="c1">// 사과가 있나요? 아니요(false)</span>
+<span class="kt">boolean</span> <span class="n">canRun</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>    <span class="c1">// 달릴 수 있나요? 네(true)</span>
 </code></pre></div></div>
 
-<h2 id="2-어디에-쓰나요">2. 어디에 쓰나요?</h2>
+<h3 id="2-흐름-제어-flow-control">2) 흐름 제어 (Flow Control)</h3>
+<p>boolean 타입은 주로 <strong>조건문(<code class="language-plaintext highlighter-rouge">if</code>)</strong>이나 <strong>반복문(<code class="language-plaintext highlighter-rouge">while</code>)</strong>에서 프로그램의 흐름을 결정할 때 사용됩니다.</p>
 
-<p>주로 <strong>조건문(<code class="language-plaintext highlighter-rouge">if</code>)</strong>이나 <strong>반복문(<code class="language-plaintext highlighter-rouge">while</code>)</strong>에서 흐름을 제어할 때 사용합니다.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">boolean</span> <span class="n">isRaining</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">boolean</span> <span class="n">isRainy</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
-
-<span class="k">if</span> <span class="o">(</span><span class="n">isRainy</span><span class="o">)</span> <span class="o">{</span>
-    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"우산을 챙기세요!"</span><span class="o">);</span>
+<span class="k">if</span> <span class="o">(</span><span class="n">isRaining</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"우산을 챙기세요! ☔️"</span><span class="o">);</span>
+<span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"양산을 챙기세요! ☀️"</span><span class="o">);</span>
 <span class="o">}</span>
 </code></pre></div></div>
+
+<pre><code class="language-mermaid">flowchart TD
+    Check{isRaining?} --&gt;|true| Umbrella[우산 챙기기]
+    Check{isRaining?} --&gt;|false| Sunshade[양산 챙기기]
+    
+    style Check fill:#ff9,stroke:#333
+    style Umbrella fill:#bef,stroke:#333
+    style Sunshade fill:#fdb,stroke:#333
+</code></pre>
 
 
             <!-- Google AdSense -->

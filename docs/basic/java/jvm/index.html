@@ -8,7 +8,7 @@
   <!-- 기본 메타데이터 --><meta name="description" content="Jiny linux"><meta name="author" content="HojinLee"><!-- 제목 설정 --><title>1.4 바이트코드와 JVM</title>
   <meta name="title" content="1.4 바이트코드와 JVM" /><!-- 키워드 설정 --><!-- Open Graph 메타데이터 --><meta property="og:title" content="1.4 바이트코드와 JVM"><meta property="og:description" content="Jiny linux"><meta property="og:type" content="website"><meta property="og:locale" content="ko">
   <meta property="og:site_name" content="linux">
-  <meta property="og:url" content="https://java.jiny.dev/basic/java/jvm/">
+  <meta property="og:url" content="http://localhost:4000/basic/java/jvm/">
 
   <!-- Twitter 카드 메타데이터 --><meta name="twitter:card" content="summary"><meta property="twitter:title" content="1.4 바이트코드와 JVM"><!-- Begin Jekyll SEO tag v2.8.0 -->
 <meta name="generator" content="Jekyll v4.4.1" />
@@ -17,14 +17,14 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
 <meta property="og:description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
-<link rel="canonical" href="https://java.jiny.dev/basic/java/jvm/" />
-<meta property="og:url" content="https://java.jiny.dev/basic/java/jvm/" />
+<link rel="canonical" href="http://localhost:4000/basic/java/jvm/" />
+<meta property="og:url" content="http://localhost:4000/basic/java/jvm/" />
 <meta property="og:site_name" content="객체지향 자바 프로그래밍 (Object-Oriented Java Programming)" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="1.4 바이트코드와 JVM" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"1.4 바이트코드와 JVM","url":"https://java.jiny.dev/basic/java/jvm/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"1.4 바이트코드와 JVM","url":"http://localhost:4000/basic/java/jvm/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -1089,44 +1089,88 @@
         <div class="bd-content ps-lg-2">
             <h1 id="14-바이트코드와-jvm">1.4 바이트코드와 JVM</h1>
 
-<p>자바 프로그램이 실행되는 과정은 <strong>“요리”</strong>와 비슷합니다.</p>
+<p>자바가 운영체제에 독립적으로 실행될 수 있는 비결, 바로 <strong>바이트코드</strong>와 <strong>JVM</strong>의 비밀을 파헤쳐 봅니다. 🕵️‍♀️</p>
 
-<h2 id="1-실행-과정-3단계">1. 실행 과정 3단계</h2>
+<hr />
 
-<h3 id="1단계-소스-코드-작성-java-">1단계: 소스 코드 작성 (<code class="language-plaintext highlighter-rouge">.java</code>) 📝</h3>
+<h2 id="1-바이트코드-bytecode-">1. 바이트코드 (Bytecode) 📜</h2>
+
+<h3 id="1-개념">1) 개념</h3>
+<p>자바 소스 파일(<code class="language-plaintext highlighter-rouge">.java</code>)을 컴파일하면 생성되는 <code class="language-plaintext highlighter-rouge">.class</code> 파일의 내용입니다.
+컴퓨터(CPU)가 바로 이해할 수 있는 기계어가 아니라, <strong>JVM만 이해할 수 있는 중간 언어</strong>입니다.</p>
+
+<h3 id="2-비유-에스페란토-공용어">2) 비유: “에스페란토 (공용어)”</h3>
 <ul>
-  <li>개발자가 영어로 코드를 짭니다.</li>
-  <li><strong>비유</strong>: 셰프가 <strong>자필 레시피</strong>를 적습니다.</li>
+  <li>한국인(Win), 미국인(Mac), 프랑스인(Linux)이 모여 있을 때, 각자의 언어로 말하면 소통이 안 됩니다.</li>
+  <li>이때 <strong>“에스페란토(바이트코드)”</strong>라는 공용어로 적어서 주면, 각자의 <strong>통역사(JVM)</strong>가 모국어로 통역해 줍니다.</li>
 </ul>
 
-<h3 id="2단계-컴파일-class-️">2단계: 컴파일 (<code class="language-plaintext highlighter-rouge">.class</code>) 🖨️</h3>
+<hr />
+
+<h2 id="2-jvm-java-virtual-machine-">2. JVM (Java Virtual Machine) 🤖</h2>
+
+<h3 id="1-개념-1">1) 개념</h3>
+<p><strong>자바 가상 머신</strong>의 약자로, 바이트코드를 읽어서 해당 운영체제가 이해할 수 있는 기계어로 번역하고 실행하는 <strong>가상의 컴퓨터</strong>입니다.</p>
+
+<h3 id="2-비유-전용-통역사">2) 비유: “전용 통역사”</h3>
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">javac</code> (컴파일러)가 소스 코드를 <strong>바이트코드</strong>로 번역합니다.</li>
-  <li>바이트코드는 기계어가 아니라, <strong>JVM이 이해하는 중간 언어</strong>입니다.</li>
-  <li><strong>비유</strong>: 자필 레시피를 보기 좋게 <strong>인쇄된 표준 레시피</strong>로 만듭니다.</li>
+  <li><strong>개발자</strong>: “나는 윈도우용, 맥용 따로 만들기 귀찮아. 그냥 자바어로 한 번만 말할게!”</li>
+  <li><strong>JVM</strong>: “걱정 마세요. 제가 윈도우한테는 윈도우 말로, 맥한테는 맥 말로 통역해 드릴게요.”</li>
 </ul>
 
-<h3 id="3단계-실행-jvm-">3단계: 실행 (JVM) 🍳</h3>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">java</code> (JVM) 명령어가 바이트코드를 읽어서 컴퓨터(OS)에게 기계어로 통역해줍니다.</li>
-  <li><strong>비유</strong>: 요리사(JVM)가 인쇄된 레시피를 보고 <strong>실제로 요리</strong>를 합니다.</li>
-</ul>
+<hr />
 
-<pre><code class="language-mermaid">graph LR
-    A[Hello.java&lt;br&gt;(소스 코드)] --&gt;|javac&lt;br&gt;컴파일| B[Hello.class&lt;br&gt;(바이트코드)]
-    B --&gt;|java&lt;br&gt;실행| C[JVM&lt;br&gt;(가상 머신)]
-    C --&gt;|기계어| D[운영체제&lt;br&gt;(Windows/Mac)]
+<h2 id="3-jvm-내부-구조-심화-">3. JVM 내부 구조 (심화) 🧠</h2>
+
+<p>JVM이 어떻게 동작하는지 <strong>요리 과정</strong>에 비유하여 알아봅니다.</p>
+
+<pre><code class="language-mermaid">graph TD
+    classDef box fill:#fff,stroke:#333,stroke-width:2px;
+    classDef grp fill:#eee,stroke:#333,stroke-dasharray: 5 5;
+
+    Source[Hello.class&lt;br&gt;(식재료)] --&gt; CL[Class Loader&lt;br&gt;(재료 손질)]
+    CL --&gt; Runtime[Runtime Data Area&lt;br&gt;(주방)]
+    
+    subgraph JVM [JVM (레스토랑)]
+        direction TB
+        CL
+        Runtime
+        EE[Execution Engine&lt;br&gt;(요리사)]
+        GC[Garbage Collector&lt;br&gt;(청소부)]
+    end
+    
+    Runtime &lt;--&gt; EE
+    Runtime -.-&gt; GC
+    
+    style JVM fill:#eef,stroke:#333
+    style Runtime fill:#fed,stroke:#333
+    style CL fill:#def,stroke:#333
+    style EE fill:#bfb,stroke:#333
+    style GC fill:#fbb,stroke:#333
 </code></pre>
 
-<h2 id="2-jvm-java-virtual-machine">2. JVM (Java Virtual Machine)</h2>
-
-<p><strong>“자바를 실행하기 위한 가상의 컴퓨터”</strong>입니다.
-운영체제(Windows, Mac)는 서로 말이 다른데, JVM이 중간에서 <strong>통역</strong>을 해줍니다.</p>
-
+<h3 id="1-class-loader-재료-손질">1) Class Loader (재료 손질)</h3>
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">Hello.class</code> 파일은 하나지만,</li>
-  <li><strong>Windows용 JVM</strong>, <strong>Mac용 JVM</strong>이 각각 있어서 알아서 운영체제에 맞게 실행해줍니다.</li>
-  <li>그래서 개발자는 운영체제 상관없이 코드를 딱 한 번만 짜면 됩니다.</li>
+  <li><code class="language-plaintext highlighter-rouge">.class</code> 파일을 읽어들여서 JVM이 사용할 수 있게 메모리(주방)에 배치합니다.</li>
+  <li><strong>비유</strong>: 창고에서 식재료를 꺼내 다듬어서 주방 선반에 올려놓는 과정입니다.</li>
+</ul>
+
+<h3 id="2-runtime-data-area-주방">2) Runtime Data Area (주방)</h3>
+<ul>
+  <li>프로그램 실행에 필요한 데이터가 저장되는 메모리 공간입니다.</li>
+  <li><strong>비유</strong>: 요리사가 요리할 때 쓰는 도마, 냄비, 접시가 놓인 <strong>조리대</strong>입니다.</li>
+</ul>
+
+<h3 id="3-execution-engine-요리사">3) Execution Engine (요리사)</h3>
+<ul>
+  <li>메모리에 로드된 바이트코드를 한 줄씩 읽어서 실제 기계어로 변환하고 실행합니다.</li>
+  <li><strong>비유</strong>: 조리대에 있는 재료로 실제로 <strong>요리</strong>를 하는 셰프입니다.</li>
+</ul>
+
+<h3 id="4-garbage-collector-청소부">4) Garbage Collector (청소부)</h3>
+<ul>
+  <li>더 이상 쓰지 않는 메모리(객체)를 자동으로 정리합니다.</li>
+  <li><strong>비유</strong>: 요리가 끝나고 남은 껍질이나 빈 그릇을 치워주는 <strong>청소 담당</strong>입니다.</li>
 </ul>
 
 

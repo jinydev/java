@@ -5,26 +5,26 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- 기본 메타데이터 --><meta name="description" content="Jiny linux"><meta name="author" content="HojinLee"><!-- 제목 설정 --><title>2.10 문자열을 기본 타입으로 변환</title>
-  <meta name="title" content="2.10 문자열을 기본 타입으로 변환" /><!-- 키워드 설정 --><!-- Open Graph 메타데이터 --><meta property="og:title" content="2.10 문자열을 기본 타입으로 변환"><meta property="og:description" content="Jiny linux"><meta property="og:type" content="website"><meta property="og:locale" content="ko">
+  <!-- 기본 메타데이터 --><meta name="description" content="Jiny linux"><meta name="author" content="HojinLee"><!-- 제목 설정 --><title>4.10 문자열 타입 변환</title>
+  <meta name="title" content="4.10 문자열 타입 변환" /><!-- 키워드 설정 --><!-- Open Graph 메타데이터 --><meta property="og:title" content="4.10 문자열 타입 변환"><meta property="og:description" content="Jiny linux"><meta property="og:type" content="website"><meta property="og:locale" content="ko">
   <meta property="og:site_name" content="linux">
-  <meta property="og:url" content="https://java.jiny.dev/basic/variable/string-conversion/">
+  <meta property="og:url" content="http://localhost:4000/basic/variable/string-conversion/">
 
-  <!-- Twitter 카드 메타데이터 --><meta name="twitter:card" content="summary"><meta property="twitter:title" content="2.10 문자열을 기본 타입으로 변환"><!-- Begin Jekyll SEO tag v2.8.0 -->
+  <!-- Twitter 카드 메타데이터 --><meta name="twitter:card" content="summary"><meta property="twitter:title" content="4.10 문자열 타입 변환"><!-- Begin Jekyll SEO tag v2.8.0 -->
 <meta name="generator" content="Jekyll v4.4.1" />
-<meta property="og:title" content="2.10 문자열을 기본 타입으로 변환" />
+<meta property="og:title" content="4.10 문자열 타입 변환" />
 <meta name="author" content="Hojin" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
 <meta property="og:description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
-<link rel="canonical" href="https://java.jiny.dev/basic/variable/string-conversion/" />
-<meta property="og:url" content="https://java.jiny.dev/basic/variable/string-conversion/" />
+<link rel="canonical" href="http://localhost:4000/basic/variable/string-conversion/" />
+<meta property="og:url" content="http://localhost:4000/basic/variable/string-conversion/" />
 <meta property="og:site_name" content="객체지향 자바 프로그래밍 (Object-Oriented Java Programming)" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="2.10 문자열을 기본 타입으로 변환" />
+<meta property="twitter:title" content="4.10 문자열 타입 변환" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"2.10 문자열을 기본 타입으로 변환","url":"https://java.jiny.dev/basic/variable/string-conversion/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"4.10 문자열 타입 변환","url":"http://localhost:4000/basic/variable/string-conversion/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -1080,93 +1080,129 @@
         
         
         
-        <li class="breadcrumb-item active" aria-current="page">2.10 문자열을 기본 타입으로 변환</li>
+        <li class="breadcrumb-item active" aria-current="page">4.10 문자열 타입 변환</li>
         
         
         
     </ol>
 </nav>
         <div class="bd-content ps-lg-2">
-            <h1 id="210-문자열을-기본-타입으로-변환">2.10 문자열을 기본 타입으로 변환</h1>
+            <h1 id="410-문자열-타입-변환">4.10 문자열 타입 변환</h1>
 
-<p>프로그램에서 문자열을 숫자 타입으로 변환하는 경우가 매우 많다. 예를 들어 “12”와 “3.5”를 정수 및 실수 타입으로 변환해서 숫자 연산을 하는 경우이다. 자바에서 문자열을 기본 타입으로 변환하는 방법은 다음과 같다.</p>
+<p>프로그래밍을 하다 보면 숫자처럼 생긴 문자열(<code class="language-plaintext highlighter-rouge">"100"</code>)을 진짜 숫자(<code class="language-plaintext highlighter-rouge">100</code>)로 바꿔야 할 때가 많습니다.
+반대로 숫자를 문자열로 바꿔야 할 때도 있죠.
+이 <strong>변환(Conversion)</strong> 방법에 대해 알아봅니다. 🔄</p>
+
+<hr />
+
+<h2 id="1-문자열-️-기본-타입-parsing">1. 문자열 ➡️ 기본 타입 (Parsing)</h2>
+
+<h3 id="1-개념">1) 개념</h3>
+<p>문자열(String)을 <code class="language-plaintext highlighter-rouge">int</code>, <code class="language-plaintext highlighter-rouge">double</code>, <code class="language-plaintext highlighter-rouge">boolean</code> 등의 기본 타입으로 바꾸는 것을 <strong>파싱(Parsing)</strong>이라고 합니다.
+자바에서는 각 타입의 <strong>포장 클래스(Wrapper Class)</strong>가 가진 <code class="language-plaintext highlighter-rouge">parse...()</code> 메소드를 사용합니다.</p>
+
+<h3 id="2-비유-포장지-뜯기">2) 비유: “포장지 뜯기”</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">"100"</code>은 숫자 100이 문자열 포장지에 싸여있는 상태입니다.</li>
+  <li><strong>파싱(Parsing)</strong>은 이 포장지를 뜯어서 알맹이인 숫자 <code class="language-plaintext highlighter-rouge">100</code>을 꺼내는 작업입니다.</li>
+</ul>
+
+<h3 id="3-변환-방법-표">3) 변환 방법 표</h3>
 
 <table>
   <thead>
     <tr>
-      <th style="text-align: left">변환 타입</th>
-      <th style="text-align: left">사용 예</th>
+      <th style="text-align: left">변환 방향</th>
+      <th style="text-align: left">비유</th>
+      <th style="text-align: left">메소드 (코드)</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td style="text-align: left">String -&gt; byte</td>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">byte value = Byte.parseByte(str);</code></td>
+      <td style="text-align: left">String ➡ byte</td>
+      <td style="text-align: left">소주잔에 따르기</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Byte.parseByte("10")</code></td>
     </tr>
     <tr>
-      <td style="text-align: left">String -&gt; short</td>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">short value = Short.parseShort(str);</code></td>
+      <td style="text-align: left">String ➡ short</td>
+      <td style="text-align: left">머그컵에 따르기</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Short.parseShort("200")</code></td>
     </tr>
     <tr>
-      <td style="text-align: left">String -&gt; int</td>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">int value = Integer.parseInt(str);</code></td>
+      <td style="text-align: left"><strong>String ➡ int</strong></td>
+      <td style="text-align: left"><strong>물동이에 따르기</strong> (가장 많이 씀)</td>
+      <td style="text-align: left"><strong><code class="language-plaintext highlighter-rouge">Integer.parseInt("1000")</code></strong></td>
     </tr>
     <tr>
-      <td style="text-align: left">String -&gt; long</td>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">long value = Long.parseLong(str);</code></td>
+      <td style="text-align: left">String ➡ long</td>
+      <td style="text-align: left">물탱크에 따르기</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Long.parseLong("100000")</code></td>
     </tr>
     <tr>
-      <td style="text-align: left">String -&gt; float</td>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">float value = Float.parseFloat(str);</code></td>
+      <td style="text-align: left">String ➡ float</td>
+      <td style="text-align: left">작은 자로 재기</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Float.parseFloat("3.14")</code></td>
     </tr>
     <tr>
-      <td style="text-align: left">String -&gt; double</td>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">double value = Double.parseDouble(str);</code></td>
+      <td style="text-align: left">String ➡ double</td>
+      <td style="text-align: left">정밀한 자로 재기</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Double.parseDouble("3.14159")</code></td>
     </tr>
     <tr>
-      <td style="text-align: left">String -&gt; boolean</td>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">boolean value = Boolean.parseBoolean(str);</code></td>
+      <td style="text-align: left">String ➡ boolean</td>
+      <td style="text-align: left">스위치 확인하기</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Boolean.parseBoolean("true")</code></td>
     </tr>
   </tbody>
 </table>
 
-<p>반대로 기본 타입의 값을 문자열로 변경하는 경우도 있는데, 이 경우는 간단히 <code class="language-plaintext highlighter-rouge">String.valueOf()</code> 메소드를 이용하면 된다.</p>
+<h3 id="4-변환-과정-시각화">4) 변환 과정 시각화</h3>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">String</span> <span class="n">str</span> <span class="o">=</span> <span class="nc">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">기본타입값</span><span class="o">);</span>
+<pre><code class="language-mermaid">graph LR
+    Str["String '123'"] --&gt; Parser[Integer.parseInt()]
+    Parser --&gt; Int[int 123]
+    
+    style Str fill:#f9f,stroke:#333
+    style Parser fill:#ff9,stroke:#333
+    style Int fill:#bfb,stroke:#333
+</code></pre>
+
+<hr />
+
+<h2 id="2-기본-타입-️-문자열-stringvalueof">2. 기본 타입 ➡️ 문자열 (String.valueOf)</h2>
+
+<h3 id="1-개념-1">1) 개념</h3>
+<p>반대로 숫자나 불리언 값을 문자열로 바꿀 때는 <code class="language-plaintext highlighter-rouge">String.valueOf()</code> 메소드를 사용합니다.
+가장 간단하고 강력한 방법입니다.</p>
+
+<h3 id="2-코드-예시">2) 코드 예시</h3>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">100</span><span class="o">;</span>
+<span class="nc">String</span> <span class="n">s1</span> <span class="o">=</span> <span class="nc">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">a</span><span class="o">);</span> <span class="c1">// 100 -&gt; "100"</span>
+
+<span class="kt">double</span> <span class="n">b</span> <span class="o">=</span> <span class="mf">3.14</span><span class="o">;</span>
+<span class="nc">String</span> <span class="n">s2</span> <span class="o">=</span> <span class="nc">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">b</span><span class="o">);</span> <span class="c1">// 3.14 -&gt; "3.14"</span>
+
+<span class="kt">boolean</span> <span class="n">c</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+<span class="nc">String</span> <span class="n">s3</span> <span class="o">=</span> <span class="nc">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">c</span><span class="o">);</span> <span class="c1">// true -&gt; "true"</span>
 </code></pre></div></div>
 
-<p><strong>[예제: PrimitiveAndStringConversionExample.java]</strong></p>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch02.sec10</span><span class="o">;</span>
+<blockquote>
+  <p><strong>꿀팁</strong>: 빈 문자열(<code class="language-plaintext highlighter-rouge">""</code>)을 더해도 문자열로 변합니다.
+<code class="language-plaintext highlighter-rouge">String s = 100 + "";</code> 👉 <code class="language-plaintext highlighter-rouge">"100"</code></p>
+</blockquote>
 
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">PrimitiveAndStringConversionExample</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-        <span class="kt">int</span> <span class="n">value1</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="s">"10"</span><span class="o">);</span>
-        <span class="kt">double</span> <span class="n">value2</span> <span class="o">=</span> <span class="nc">Double</span><span class="o">.</span><span class="na">parseDouble</span><span class="o">(</span><span class="s">"3.14"</span><span class="o">);</span>
-        <span class="kt">boolean</span> <span class="n">value3</span> <span class="o">=</span> <span class="nc">Boolean</span><span class="o">.</span><span class="na">parseBoolean</span><span class="o">(</span><span class="s">"true"</span><span class="o">);</span>
-        
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"value1: "</span> <span class="o">+</span> <span class="n">value1</span><span class="o">);</span>
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"value2: "</span> <span class="o">+</span> <span class="n">value2</span><span class="o">);</span>
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"value3: "</span> <span class="o">+</span> <span class="n">value3</span><span class="o">);</span>
-        
-        <span class="nc">String</span> <span class="n">str1</span> <span class="o">=</span> <span class="nc">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="mi">10</span><span class="o">);</span>
-        <span class="nc">String</span> <span class="n">str2</span> <span class="o">=</span> <span class="nc">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="mf">3.14</span><span class="o">);</span>
-        <span class="nc">String</span> <span class="n">str3</span> <span class="o">=</span> <span class="nc">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
-        
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"str1: "</span> <span class="o">+</span> <span class="n">str1</span><span class="o">);</span>
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"str2: "</span> <span class="o">+</span> <span class="n">str2</span><span class="o">);</span>
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"str3: "</span> <span class="o">+</span> <span class="n">str3</span><span class="o">);</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
+<hr />
 
-<p><strong>실행 결과</strong></p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>value1: 10
-value2: 3.14
-value3: true
-str1: 10
-str2: 3.14
-str3: true
+<h2 id="3-주의-변환할-수-없는-문자열-️">3. 주의: 변환할 수 없는 문자열 ⚠️</h2>
+
+<p>숫자가 아닌 문자열을 억지로 숫자로 바꾸려 하면 <strong>에러(예외)</strong>가 발생합니다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">String</span> <span class="n">str</span> <span class="o">=</span> <span class="s">"1a2b3c"</span><span class="o">;</span> <span class="c1">// 숫자가 아님!</span>
+<span class="kt">int</span> <span class="n">value</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">str</span><span class="o">);</span> <span class="c1">// (X) NumberFormatException 발생 💥</span>
 </code></pre></div></div>
+<ul>
+  <li><strong>비유</strong>: “사과”라는 글자를 숫자로 바꿀 수 없는 것과 같습니다. 반드시 <strong>숫자 형태</strong>의 문자열만 변환해야 합니다.</li>
+</ul>
 
 
             <!-- Google AdSense -->

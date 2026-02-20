@@ -8,7 +8,7 @@
   <!-- 기본 메타데이터 --><meta name="description" content="Jiny linux"><meta name="author" content="HojinLee"><!-- 제목 설정 --><title>5.6 대입 연산자</title>
   <meta name="title" content="5.6 대입 연산자" /><!-- 키워드 설정 --><!-- Open Graph 메타데이터 --><meta property="og:title" content="5.6 대입 연산자"><meta property="og:description" content="Jiny linux"><meta property="og:type" content="website"><meta property="og:locale" content="ko">
   <meta property="og:site_name" content="linux">
-  <meta property="og:url" content="https://java.jiny.dev/basic/operator/assignment/">
+  <meta property="og:url" content="http://localhost:4000/basic/operator/assignment/">
 
   <!-- Twitter 카드 메타데이터 --><meta name="twitter:card" content="summary"><meta property="twitter:title" content="5.6 대입 연산자"><!-- Begin Jekyll SEO tag v2.8.0 -->
 <meta name="generator" content="Jekyll v4.4.1" />
@@ -17,14 +17,14 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
 <meta property="og:description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
-<link rel="canonical" href="https://java.jiny.dev/basic/operator/assignment/" />
-<meta property="og:url" content="https://java.jiny.dev/basic/operator/assignment/" />
+<link rel="canonical" href="http://localhost:4000/basic/operator/assignment/" />
+<meta property="og:url" content="http://localhost:4000/basic/operator/assignment/" />
 <meta property="og:site_name" content="객체지향 자바 프로그래밍 (Object-Oriented Java Programming)" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="5.6 대입 연산자" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"5.6 대입 연산자","url":"https://java.jiny.dev/basic/operator/assignment/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"5.6 대입 연산자","url":"http://localhost:4000/basic/operator/assignment/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -1087,58 +1087,95 @@
     </ol>
 </nav>
         <div class="bd-content ps-lg-2">
-            <h1 id="56-대입-연산자">5.6 대입 연산자</h1>
+            <h1 id="56-대입-연산자-assignment-operators">5.6 대입 연산자 (Assignment Operators)</h1>
 
-<h2 id="1-기본-대입-">1. 기본 대입 (<code class="language-plaintext highlighter-rouge">=</code>)</h2>
+<p>변수에 값을 저장하거나, 저장된 값을 수정할 때 사용하는 연산자입니다.</p>
 
-<p>오른쪽 값을 왼쪽에 저장합니다.</p>
+<hr />
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">score</span> <span class="o">=</span> <span class="mi">80</span><span class="o">;</span>
+<h2 id="1-기본-대입-연산자--">1. 기본 대입 연산자 (<code class="language-plaintext highlighter-rouge">=</code>) 📥</h2>
+
+<h3 id="1-개념">1) 개념</h3>
+<p>“오른쪽의 값을 왼쪽의 변수에 저장하라”는 명령입니다.
+수학의 “같다”와는 전혀 다른 의미입니다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">score</span> <span class="o">=</span> <span class="mi">80</span><span class="o">;</span> <span class="c1">// 80을 score 상자에 넣어라</span>
 </code></pre></div></div>
 
-<h2 id="2-복합-대입----">2. 복합 대입 (<code class="language-plaintext highlighter-rouge">+=</code>, <code class="language-plaintext highlighter-rouge">-=</code>, …)</h2>
+<hr />
 
-<p>계산과 저장을 한 번에 하는 <strong>단축키</strong>입니다.</p>
+<h2 id="2-복합-대입-연산자-compound-assignment-️">2. 복합 대입 연산자 (Compound Assignment) ⚡️</h2>
+
+<h3 id="1-개념-1">1) 개념</h3>
+<p>산술 연산(<code class="language-plaintext highlighter-rouge">+</code>, <code class="language-plaintext highlighter-rouge">-</code>, <code class="language-plaintext highlighter-rouge">*</code>, <code class="language-plaintext highlighter-rouge">/</code>)과 대입 연산(<code class="language-plaintext highlighter-rouge">=</code>)을 한 번에 처리하는 <strong>단축키</strong>입니다.
+코드를 더 짧고 간결하게 만들어줍니다.</p>
+
+<h3 id="2-비유-저금통">2) 비유: “저금통”</h3>
+<ul>
+  <li><strong>기본</strong>: “내 저금통에 있는 돈을 꺼내서 500원을 더한 뒤에 다시 저금통에 넣어라.” (<code class="language-plaintext highlighter-rouge">money = money + 500</code>)</li>
+  <li><strong>복합</strong>: “내 저금통에 500원 더 넣어라.” (<code class="language-plaintext highlighter-rouge">money += 500</code>)</li>
+</ul>
+
+<h3 id="3-종류-및-변환-표">3) 종류 및 변환 표</h3>
 
 <table>
   <thead>
     <tr>
       <th style="text-align: center">연산자</th>
-      <th style="text-align: left">풀이</th>
+      <th style="text-align: left">풀어쓴 코드</th>
       <th style="text-align: left">설명</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td style="text-align: center"><strong><code class="language-plaintext highlighter-rouge">+=</code></strong></td>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">x = x + y</code></td>
-      <td style="text-align: left">더하고 저장</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">A = A + B</code></td>
+      <td style="text-align: left">A에 B를 더해서 저장</td>
     </tr>
     <tr>
       <td style="text-align: center"><strong><code class="language-plaintext highlighter-rouge">-=</code></strong></td>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">x = x - y</code></td>
-      <td style="text-align: left">빼고 저장</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">A = A - B</code></td>
+      <td style="text-align: left">A에서 B를 빼서 저장</td>
     </tr>
     <tr>
       <td style="text-align: center"><strong><code class="language-plaintext highlighter-rouge">*=</code></strong></td>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">x = x * y</code></td>
-      <td style="text-align: left">곱하고 저장</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">A = A * B</code></td>
+      <td style="text-align: left">A에 B를 곱해서 저장</td>
     </tr>
     <tr>
       <td style="text-align: center"><strong><code class="language-plaintext highlighter-rouge">/=</code></strong></td>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">x = x / y</code></td>
-      <td style="text-align: left">나누고 저장</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">A = A / B</code></td>
+      <td style="text-align: left">A를 B로 나눈 몫을 저장</td>
     </tr>
     <tr>
       <td style="text-align: center"><strong><code class="language-plaintext highlighter-rouge">%=</code></strong></td>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">x = x % y</code></td>
-      <td style="text-align: left">나머지를 저장</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">A = A % B</code></td>
+      <td style="text-align: left">A를 B로 나눈 나머지를 저장</td>
     </tr>
   </tbody>
 </table>
 
+<h3 id="4-실행-흐름-시각화">4) 실행 흐름 시각화</h3>
+
+<pre><code class="language-mermaid">graph LR
+    Var[money: 1000] --&gt;|읽기| Calc(1000 + 500)
+    Calc --&gt;|쓰기| Result[money: 1500]
+    
+    style Var fill:#eee,stroke:#333
+    style Calc fill:#ff9,stroke:#333
+    style Result fill:#bfb,stroke:#333
+</code></pre>
+
+<hr />
+
+<h2 id="3-코드-예시">3. 코드 예시</h2>
+
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">money</span> <span class="o">=</span> <span class="mi">1000</span><span class="o">;</span>
-<span class="n">money</span> <span class="o">+=</span> <span class="mi">500</span><span class="o">;</span> <span class="c1">// money는 1500이 됨</span>
+
+<span class="n">money</span> <span class="o">+=</span> <span class="mi">500</span><span class="o">;</span>  <span class="c1">// 1500 (1000 + 500)</span>
+<span class="n">money</span> <span class="o">-=</span> <span class="mi">200</span><span class="o">;</span>  <span class="c1">// 1300 (1500 - 200)</span>
+<span class="n">money</span> <span class="o">*=</span> <span class="mi">2</span><span class="o">;</span>    <span class="c1">// 2600 (1300 * 2)</span>
+<span class="n">money</span> <span class="o">/=</span> <span class="mi">100</span><span class="o">;</span>  <span class="c1">// 26   (2600 / 100)</span>
 </code></pre></div></div>
 
 

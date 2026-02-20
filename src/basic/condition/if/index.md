@@ -39,6 +39,29 @@ if (score >= 60) {
 **"A야? 아니면 B야? 그것도 아니면 C야?"**
 여러 개의 갈림길이 있을 때 씁니다.
 
+```mermaid
+flowchart TD
+    Start([성적 확인 시작]) --> Check90{90점 이상인가?}
+    
+    Check90 -- "예" --> GradeA[A등급]
+    Check90 -- "아니오" --> Check80{80점 이상인가?}
+    
+    Check80 -- "예" --> GradeB[B등급]
+    Check80 -- "아니오" --> GradeC[C등급]
+    
+    GradeA --> End([종료])
+    GradeB --> End
+    GradeC --> End
+
+    style Start fill:#f9f,stroke:#333,stroke-width:2px
+    style End fill:#f9f,stroke:#333,stroke-width:2px
+    style Check90 fill:#ff9,stroke:#333,stroke-width:2px
+    style Check80 fill:#ff9,stroke:#333,stroke-width:2px
+    style GradeA fill:#bbf,stroke:#333,stroke-width:2px
+    style GradeB fill:#bbf,stroke:#333,stroke-width:2px
+    style GradeC fill:#bbf,stroke:#333,stroke-width:2px
+```
+
 ```java
 if (score >= 90) {
     System.out.println("A등급");
