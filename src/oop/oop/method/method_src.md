@@ -22,14 +22,14 @@ grand_parent: "객체지향 자바 프로그래밍"
 
 ### 리턴 타입
 
-리턴 타입은 메소드가 실행한 후 호출한 곳으로 전달하는 결과값의 타입을 말한다. 리턴값이 없는 메소드는 void로 작성해야 한다.
+리턴 타입은 메소드가 실행한 후 호출한 곳으로 전달하는 결과값의 타입을 말한다. 리턴값이 없는 메소드는 `void`로 작성해야 한다.
 
 ```java
 void powerOn() { ... } // 리턴값이 없는 메소드 선언
 double divide(int x, int y) { ... } // double 타입 값을 리턴하는 메소드 선언
 ```
 
-리턴 타입이 있는 메소드는 실행 블록 안에서 return 문으로 리턴값을 반드시 지정해야 한다.
+리턴 타입이 있는 메소드는 실행 블록 안에서 `return` 문으로 리턴값을 반드시 지정해야 한다.
 
 ### 메소드명
 
@@ -43,7 +43,7 @@ String getName() { ... }
 
 ### 매개변수
 
-매개변수는 메소드를 호출할 때 전달한 매개값을 받기 위해 사용된다. 다음 예에서 divide() 메소드는 연산할 두 수를 전달받아야 하므로 매개변수가 2개 필요하다. 전달할 매개값이 없다면 매개변수는 생략할 수 있다.
+매개변수는 메소드를 호출할 때 전달한 매개값을 받기 위해 사용된다. 다음 예에서 `divide()` 메소드는 연산할 두 수를 전달받아야 하므로 매개변수가 2개 필요하다. 전달할 매개값이 없다면 매개변수는 생략할 수 있다.
 
 ```java
 double divide(int x, int y) { ... }
@@ -53,7 +53,7 @@ double divide(int x, int y) { ... }
 
 메소드 호출 시 실행되는 부분이다.
 
-다음 예제는 Calculator 클래스에서 powerOn(), plus(), divide(), powerOff() 메소드를 선언하는 방법을 보여 준다.
+다음 예제는 `Calculator` 클래스에서 `powerOn()`, `plus()`, `divide()`, `powerOff()` 메소드를 선언하는 방법을 보여 준다.
 
 **Calculator.java**
 ```java
@@ -123,7 +123,7 @@ void method() {
 }
 ```
 
-다음 예제는 Calculator 클래스에서 선언된 powerOn(), plus(), divide(), powerOff() 메소드를 호출하는 방법을 보여 준다.
+다음 예제는 `Calculator` 클래스에서 선언된 `powerOn()`, `plus()`, `divide()`, `powerOff()` 메소드를 호출하는 방법을 보여 준다.
 
 **CalculatorExample.java**
 ```java
@@ -251,13 +251,13 @@ result4: 15
 
 ## return 문
 
-return 문은 메소드의 실행을 강제 종료하고 호출한 곳으로 돌아간다는 의미이다. 메소드 선언에 리턴 타입이 있을 경우에는 return 문 뒤에 리턴값을 추가로 지정해야 한다.
+`return` 문은 메소드의 실행을 강제 종료하고 호출한 곳으로 돌아간다는 의미이다. 메소드 선언에 리턴 타입이 있을 경우에는 `return` 문 뒤에 리턴값을 추가로 지정해야 한다.
 
 ```java
 return [리턴값];
 ```
 
-return 문 이후에 실행문을 작성하면 'Unreachable code'라는 컴파일 에러가 발생한다. 왜냐하면 return 문 이후의 실행문은 결코 실행되지 않기 때문이다.
+`return` 문 이후에 실행문을 작성하면 'Unreachable code'라는 컴파일 에러가 발생한다. 왜냐하면 `return` 문 이후의 실행문은 결코 실행되지 않기 때문이다.
 
 ```java
 int plus(int x, int y) {
@@ -280,7 +280,7 @@ boolean isLeftGas() {
 }
 ```
 
-if 문의 조건식이 false가 되면 정상적으로 2가 실행되기 때문에 2는 'Unreachable code' 에러를 발생시키지 않는다. if 문의 조건식이 true가 되면 1이 실행되고 return false;가 실행되어 메소드는 즉시 종료되므로 당연히 2는 실행되지 않는다.
+`if` 문의 조건식이 false가 되면 정상적으로 2가 실행되기 때문에 2는 'Unreachable code' 에러를 발생시키지 않는다. `if` 문의 조건식이 true가 되면 1이 실행되고 `return false;`가 실행되어 메소드는 즉시 종료되므로 당연히 2는 실행되지 않는다.
 
 **Car.java**
 ```java
@@ -370,7 +370,7 @@ class 클래스 {
 }
 ```
 
-메소드 오버로딩의 목적은 다양한 매개값을 처리하기 위해서이다. 다음 예에서 plus() 메소드는 두 개의 int 타입 매개값만 처리하고 double 타입 매개값은 처리할 수 없다.
+메소드 오버로딩의 목적은 다양한 매개값을 처리하기 위해서이다. 다음 예에서 `plus()` 메소드는 두 개의 `int` 타입 매개값만 처리하고 `double` 타입 매개값은 처리할 수 없다.
 
 ```java
 int plus(int x, int y) {
@@ -379,7 +379,7 @@ int plus(int x, int y) {
 }
 ```
 
-만약 double 타입 값도 처리하고 싶다면 다음과 같이 plus() 메소드를 오버로딩하면 된다.
+만약 `double` 타입 값도 처리하고 싶다면 다음과 같이 `plus()` 메소드를 오버로딩하면 된다.
 
 ```java
 double plus(double x, double y) {
@@ -388,7 +388,7 @@ double plus(double x, double y) {
 }
 ```
 
-메소드 오버로딩의 대표적인 예는 콘솔에 출력하는 System.out.println() 메소드로, 호출할 때 주어진 매개값의 타입에 따라서 오버로딩된 println() 메소드 중 하나를 실행한다.
+메소드 오버로딩의 대표적인 예는 콘솔에 출력하는 `System.out.println()` 메소드로, 호출할 때 주어진 매개값의 타입에 따라서 오버로딩된 `println()` 메소드 중 하나를 실행한다.
 
 ```java
 void println() { ... }
@@ -397,7 +397,7 @@ void println(int x) { ... }
 void println(String x) { ... }
 ```
 
-다음 예제는 areaRectangle() 메소드를 오버로딩해서 매개값이 한 개면 정사각형의 넓이를, 두 개면 직사각형의 넓이를 계산한다.
+다음 예제는 `areaRectangle()` 메소드를 오버로딩해서 매개값이 한 개면 정사각형의 넓이를, 두 개면 직사각형의 넓이를 계산한다.
 
 **Calculator.java**
 ```java
