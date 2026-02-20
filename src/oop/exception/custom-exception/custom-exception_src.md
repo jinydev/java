@@ -57,7 +57,7 @@ throw new RuntimeException("예외메시지");
 throw new InsufficientException("예외메시지");
 ```
 
-throw된 예외는 직접 `try-catch` 블록으로 예외를 처리할 수도 있지만(아래 왼쪽), 대부분은 메소드를 호출한 곳에서 예외를 처리하도록 `throws` 키워드로 예외를 떠넘긴다(아래 오른쪽).
+`throw`된 예외는 직접 `try-catch` 블록으로 예외를 처리할 수도 있지만(아래 왼쪽), 대부분은 메소드를 호출한 곳에서 예외를 처리하도록 `throws` 키워드로 예외를 떠넘긴다(아래 오른쪽).
 
 ```java
 void method() {
