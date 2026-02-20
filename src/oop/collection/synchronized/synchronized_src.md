@@ -10,9 +10,9 @@ grand_parent: "객체지향 프로그래밍"
 
 컬렉션 프레임워크의 대부분의 클래스들은 싱글 스레드 환경에서 사용할 수 있도록 설계되었다. 그렇기 때문에 여러 스레드가 동시에 컬렉션에 접근한다면 의도하지 않게 요소가 변경될 수 있는 불안전한 상태가 된다.
 
-Vector와 Hashtable은 동기화된(synchronized) 메소드로 구성되어 있기 때문에 안전하지만, ArrayList와 HashSet, HashMap은 안전하지 않다.
+`Vector`와 `Hashtable`은 동기화된(`synchronized`) 메소드로 구성되어 있기 때문에 안전하지만, `ArrayList`와 `HashSet`, `HashMap`은 안전하지 않다.
 
-비동기화된 메소드를 동기화된 메소드로 래핑하는 Collections의 `synchronizedXXX()` 메소드를 사용하면 동기화된 컬렉션으로 변환할 수 있다.
+비동기화된 메소드를 동기화된 메소드로 래핑하는 `Collections`의 `synchronizedXXX()` 메소드를 사용하면 동기화된 컬렉션으로 변환할 수 있다.
 
 - `synchronizedList(List<T> list)`
 - `synchronizedMap(Map<K,V> m)`

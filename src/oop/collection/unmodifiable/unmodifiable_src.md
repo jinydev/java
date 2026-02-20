@@ -8,7 +8,7 @@ grand_parent: "객체지향 프로그래밍"
 
 # 15.8 수정할 수 없는 컬렉션
 
-수정할 수 없는(unmodifiable) 컬렉션이란 요소를 추가, 삭제할 수 없는 컬렉션을 말한다. 컬렉션 생성 시 저장된 요소를 변경하고 싶지 않을 때 유용하다.
+수정할 수 없는(`unmodifiable`) 컬렉션이란 요소를 추가, 삭제할 수 없는 컬렉션을 말한다. 컬렉션 생성 시 저장된 요소를 변경하고 싶지 않을 때 유용하다.
 
 1. `of()` 메소드 이용:
 ```java
@@ -24,7 +24,7 @@ Set<E> immutableSet = Set.copyOf(Collection<E> coll);
 Map<K,V> immutableMap = Map.copyOf(Map<K,V> map);
 ```
 
-3. 배열로부터 `Arrays.asList()` (약간 다름: 추가/삭제 불가하지만 set은 가능할 수 있음, 하지만 여기서는 of/copyOf와 함께 소개됨) - *참고: 책 예제에서는 Arrays.asList(arr)을 사용하여 List 불변 컬렉션 생성을 설명하고 있는데, 엄밀히 말하면 Arrays.asList는 고정 크기 리스트를 반환하며 set()은 허용한다. 하지만 List.of()는 완전 불변이다.*
+3. 배열로부터 `Arrays.asList()` (약간 다름: 추가/삭제 불가하지만 `set`은 가능할 수 있음, 하지만 여기서는 `of`/`copyOf`와 함께 소개됨) - *참고: 책 예제에서는 `Arrays.asList(arr)`을 사용하여 `List` 불변 컬렉션 생성을 설명하고 있는데, 엄밀히 말하면 `Arrays.asList`는 고정 크기 리스트를 반환하며 `set()`은 허용한다. 하지만 `List.of()`는 완전 불변이다.*
 
 ```java
 package ch15.sec08;

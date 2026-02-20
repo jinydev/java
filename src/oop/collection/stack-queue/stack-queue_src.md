@@ -8,14 +8,14 @@ grand_parent: "객체지향 프로그래밍"
 
 # 15.6 LIFO와 FIFO 컬렉션
 
-후입선출(LIFO: Last In First Out)은 나중에 넣은 객체가 먼저 빠져나가고, 선입선출(FIFO: First In First Out)은 먼저 넣은 객체가 먼저 빠져나가는 구조를 말한다. 컬렉션 프레임워크는 LIFO 자료구조를 제공하는 **Stack** 클래스와 FIFO 자료구조를 제공하는 **Queue** 인터페이스를 제공하고 있다.
+후입선출(`LIFO: Last In First Out`)은 나중에 넣은 객체가 먼저 빠져나가고, 선입선출(`FIFO: First In First Out`)은 먼저 넣은 객체가 먼저 빠져나가는 구조를 말한다. 컬렉션 프레임워크는 LIFO 자료구조를 제공하는 **`Stack`** 클래스와 FIFO 자료구조를 제공하는 **`Queue`** 인터페이스를 제공하고 있다.
 
-- 스택(Stack): LIFO (응용 예: JVM 스택 메모리)
-- 큐(Queue): FIFO (응용 예: 스레드풀의 작업 큐)
+- 스택(`Stack`): `LIFO` (응용 예: JVM 스택 메모리)
+- 큐(`Queue`): `FIFO` (응용 예: 스레드풀의 작업 큐)
 
 ## Stack
 
-Stack 클래스는 LIFO 자료구조를 구현한 클래스이다.
+`Stack` 클래스는 LIFO 자료구조를 구현한 클래스이다.
 
 - `push(E item)`: 주어진 객체를 스택에 넣는다.
 - `pop()`: 스택의 맨 위 객체를 빼낸다.
@@ -47,12 +47,12 @@ public class StackExample {
 
 ## Queue
 
-Queue 인터페이스는 FIFO 자료구조에서 사용되는 메소드를 정의하고 있다.
+`Queue` 인터페이스는 FIFO 자료구조에서 사용되는 메소드를 정의하고 있다.
 
 - `offer(E e)`: 주어진 객체를 큐에 넣는다.
 - `poll()`: 큐에서 객체를 빼낸다.
 
-Queue 인터페이스를 구현한 대표적인 클래스는 LinkedList이다.
+`Queue` 인터페이스를 구현한 대표적인 클래스는 `LinkedList`이다.
 
 ```java
 package ch15.sec06.exam02;

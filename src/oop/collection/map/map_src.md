@@ -8,11 +8,11 @@ grand_parent: "객체지향 프로그래밍"
 
 # 15.4 Map 컬렉션
 
-Map 컬렉션은 **키(key)**와 **값(value)**으로 구성된 **엔트리(Entry)** 객체를 저장한다. 여기서 키와 값은 모두 객체이다. 키는 중복 저장할 수 없지만 값은 중복 저장할 수 있다. 기존에 저장된 키와 동일한 키로 값을 저장하면 기존의 값은 없어지고 새로운 값으로 대치된다.
+`Map` 컬렉션은 **키(key)**와 **값(value)**으로 구성된 **엔트리(Entry)** 객체를 저장한다. 여기서 키와 값은 모두 객체이다. 키는 중복 저장할 수 없지만 값은 중복 저장할 수 있다. 기존에 저장된 키와 동일한 키로 값을 저장하면 기존의 값은 없어지고 새로운 값으로 대치된다.
 
-Map 컬렉션에는 HashMap, Hashtable, LinkedHashMap, Properties, TreeMap 등이 있다.
+`Map` 컬렉션에는 `HashMap`, `Hashtable`, `LinkedHashMap`, `Properties`, `TreeMap` 등이 있다.
 
-Map 컬렉션에서 공통적으로 사용 가능한 Map 인터페이스 메소드는 다음과 같다.
+`Map` 컬렉션에서 공통적으로 사용 가능한 `Map` 인터페이스 메소드는 다음과 같다.
 
 | 기능      | 메소드                                | 설명                                                            |
 | :-------- | :------------------------------------ | :-------------------------------------------------------------- |
@@ -30,16 +30,16 @@ Map 컬렉션에서 공통적으로 사용 가능한 Map 인터페이스 메소�
 
 ## HashMap
 
-HashMap은 키로 사용할 객체가 hashCode() 메소드의 리턴값이 같고 equals() 메소드가 true를 리턴할 경우, 동일 키로 보고 중복 저장을 허용하지 않는다.
+`HashMap`은 키로 사용할 객체가 `hashCode()` 메소드의 리턴값이 같고 `equals()` 메소드가 `true`를 리턴할 경우, 동일 키로 보고 중복 저장을 허용하지 않는다.
 
-다음은 HashMap 컬렉션을 생성하는 방법이다.
+다음은 `HashMap` 컬렉션을 생성하는 방법이다.
 
 ```java
 Map<K, V> map = new HashMap<K, V>();
 Map<K, V> map = new HashMap<>();
 ```
 
-다음 예제는 이름을 키로, 점수를 값으로 저장하는 HashMap 사용 방법을 보여 준다.
+다음 예제는 이름을 키로, 점수를 값으로 저장하는 `HashMap` 사용 방법을 보여 준다.
 
 ```java
 package ch15.sec04.exam01;
@@ -117,7 +117,7 @@ public class HashMapExample {
 
 ## Hashtable
 
-Hashtable은 HashMap과 동일한 내부 구조를 가지고 있다. 차이점은 Hashtable은 동기화된(synchronized) 메소드로 구성되어 있기 때문에 멀티 스레드가 동시에 Hashtable의 메소드들을 실행할 수 없다는 것이다. 따라서 멀티 스레드 환경에서도 안전하게 객체를 추가, 삭제할 수 있다.
+`Hashtable`은 `HashMap`과 동일한 내부 구조를 가지고 있다. 차이점은 `Hashtable`은 동기화된(`synchronized`) 메소드로 구성되어 있기 때문에 멀티 스레드가 동시에 `Hashtable`의 메소드들을 실행할 수 없다는 것이다. 따라서 멀티 스레드 환경에서도 안전하게 객체를 추가, 삭제할 수 있다.
 
 ```java
 package ch15.sec04.exam02;
@@ -178,9 +178,9 @@ public class HashtableExample {
 
 ## Properties
 
-Properties는 Hashtable의 자식 클래스이기 때문에 Hashtable의 특징을 그대로 가지고 있다. Properties는 키와 값을 String 타입으로 제한한 컬렉션이다. Properties는 주로 확장자가 `.properties`인 프로퍼티 파일을 읽을 때 사용한다.
+`Properties`는 `Hashtable`의 자식 클래스이기 때문에 `Hashtable`의 특징을 그대로 가지고 있다. `Properties`는 키와 값을 `String` 타입으로 제한한 컬렉션이다. `Properties`는 주로 확장자가 `.properties`인 프로퍼티 파일을 읽을 때 사용한다.
 
-프로퍼티 파일은 키와 값이 `=` 기호로 연결되어 있는 텍스트 파일이다.
+`프로퍼티 파일`은 키와 값이 `=` 기호로 연결되어 있는 텍스트 파일이다.
 
 **database.properties**
 ```properties

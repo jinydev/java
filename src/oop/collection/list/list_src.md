@@ -8,9 +8,9 @@ grand_parent: "객체지향 프로그래밍"
 
 # 15.2 List 컬렉션
 
-List 컬렉션은 객체를 인덱스로 관리하기 때문에 객체를 저장하면 인덱스가 부여되고 인덱스로 객체를 검색, 삭제할 수 있는 기능을 제공한다.
+`List` 컬렉션은 객체를 인덱스로 관리하기 때문에 객체를 저장하면 인덱스가 부여되고 인덱스로 객체를 검색, 삭제할 수 있는 기능을 제공한다.
 
-List 컬렉션에는 ArrayList, Vector, LinkedList 등이 있는데, List 컬렉션에서 공통적으로 사용 가능한 List 인터페이스 메소드는 다음과 같다.
+`List` 컬렉션에는 `ArrayList`, `Vector`, `LinkedList` 등이 있는데, `List` 컬렉션에서 공통적으로 사용 가능한 `List` 인터페이스 메소드는 다음과 같다.
 
 | 기능      | 메소드                           | 설명                                      |
 | :-------- | :------------------------------- | :---------------------------------------- |
@@ -27,11 +27,11 @@ List 컬렉션에는 ArrayList, Vector, LinkedList 등이 있는데, List 컬렉
 
 ## ArrayList
 
-ArrayList는 List 컬렉션에서 가장 많이 사용하는 컬렉션이다. ArrayList에 객체를 추가하면 내부 배열에 객체가 저장된다. 일반 배열과의 차이점은 ArrayList는 제한 없이 객체를 추가할 수 있다는 것이다.
+`ArrayList`는 `List` 컬렉션에서 가장 많이 사용하는 컬렉션이다. `ArrayList`에 객체를 추가하면 내부 배열에 객체가 저장된다. 일반 배열과의 차이점은 `ArrayList`는 제한 없이 객체를 추가할 수 있다는 것이다.
 
-List 컬렉션은 객체 자체를 저장하는 것이 아니라 객체의 번지를 저장한다. 또한 동일한 객체를 중복 저장할 수 있는데, 이 경우에는 동일한 번지가 저장된다. null 또한 저장이 가능하다.
+`List` 컬렉션은 객체 자체를 저장하는 것이 아니라 객체의 번지를 저장한다. 또한 동일한 객체를 중복 저장할 수 있는데, 이 경우에는 동일한 번지가 저장된다. `null` 또한 저장이 가능하다.
 
-ArrayList 컬렉션은 다음과 같이 생성할 수 있다.
+`ArrayList` 컬렉션은 다음과 같이 생성할 수 있다.
 
 ```java
 List<E> list = new ArrayList<E>(); // E에 지정된 타입의 객체만 저장
@@ -39,11 +39,11 @@ List<E> list = new ArrayList<>(); // E에 지정된 타입의 객체만 저장
 List list = new ArrayList(); // 모든 타입의 객체를 저장
 ```
 
-타입 파라미터 E에는 ArrayList에 저장하고 싶은 객체 타입을 지정하면 된다.
+타입 파라미터 `E`에는 `ArrayList`에 저장하고 싶은 객체 타입을 지정하면 된다.
 
-ArrayList 컬렉션에 객체를 추가하면 인덱스 0번부터 차례대로 저장된다. 특정 인덱스의 객체를 제거하면 바로 뒤 인덱스부터 마지막 인덱스까지 모두 앞으로 1씩 당겨진다. 마찬가지로 특정 인덱스에 객체를 삽입하면 해당 인덱스부터 마지막 인덱스까지 모두 1씩 밀려난다.
+`ArrayList` 컬렉션에 객체를 추가하면 인덱스 0번부터 차례대로 저장된다. 특정 인덱스의 객체를 제거하면 바로 뒤 인덱스부터 마지막 인덱스까지 모두 앞으로 1씩 당겨진다. 마찬가지로 특정 인덱스에 객체를 삽입하면 해당 인덱스부터 마지막 인덱스까지 모두 1씩 밀려난다.
 
-따라서 빈번한 객체 삭제와 삽입이 일어나는 곳에서는 ArrayList를 사용하는 것은 바람직하지 않다. 대신 이런 경우라면 LinkedList를 사용하는 것이 좋다.
+따라서 빈번한 객체 삭제와 삽입이 일어나는 곳에서는 `ArrayList`를 사용하는 것은 바람직하지 않다. 대신 이런 경우라면 `LinkedList`를 사용하는 것이 좋다.
 
 ```java
 package ch15.sec02.exam01;
@@ -134,16 +134,16 @@ public class ArrayListExample {
 
 ## Vector
 
-Vector는 ArrayList와 동일한 내부 구조를 가지고 있다. 차이점은 Vector는 동기화된(synchronized) 메소드로 구성되어 있기 때문에 멀티 스레드가 동시에 Vector() 메소드를 실행할 수 없다는 것이다. 그렇기 때문에 멀티 스레드 환경에서는 안전하게 객체를 추가 또는 삭제할 수 있다.
+`Vector`는 `ArrayList`와 동일한 내부 구조를 가지고 있다. 차이점은 `Vector`는 동기화된(`synchronized`) 메소드로 구성되어 있기 때문에 멀티 스레드가 동시에 `Vector()` 메소드를 실행할 수 없다는 것이다. 그렇기 때문에 멀티 스레드 환경에서는 안전하게 객체를 추가 또는 삭제할 수 있다.
 
-Vector 컬렉션은 다음과 같이 생성할 수 있다.
+`Vector` 컬렉션은 다음과 같이 생성할 수 있다.
 
 ```java
 List<E> list = new Vector<E>();
 List<E> list = new Vector<>();
 ```
 
-다음은 ThreadA와 ThreadB에서 동시에 Board 객체를 Vector에 각각 1000개씩 추가한 후, 전체 저장된 수를 출력하는 예제이다.
+다음은 `ThreadA`와 `ThreadB`에서 동시에 `Board` 객체를 `Vector`에 각각 1000개씩 추가한 후, 전체 저장된 수를 출력하는 예제이다.
 
 ```java
 package ch15.sec02.exam02;
@@ -206,18 +206,18 @@ public class VectorExample {
 
 ## LinkedList
 
-LinkedList는 ArrayList와 사용 방법은 동일하지만 내부 구조는 완전히 다르다. ArrayList는 내부 배열에 객체를 저장하지만, LinkedList는 인접 객체를 체인처럼 연결해서 관리한다.
+`LinkedList`는 `ArrayList`와 사용 방법은 동일하지만 내부 구조는 완전히 다르다. `ArrayList`는 내부 배열에 객체를 저장하지만, `LinkedList`는 인접 객체를 체인처럼 연결해서 관리한다.
 
-LinkedList는 특정 위치에서 객체를 삽입하거나 삭제하면 바로 앞뒤 링크만 변경하면 되므로 빈번한 객체 삭제와 삽입이 일어나는 곳에서는 ArrayList보다 좋은 성능을 발휘한다.
+`LinkedList`는 특정 위치에서 객체를 삽입하거나 삭제하면 바로 앞뒤 링크만 변경하면 되므로 빈번한 객체 삭제와 삽입이 일어나는 곳에서는 `ArrayList`보다 좋은 성능을 발휘한다.
 
-LinkedList 컬렉션은 다음과 같이 생성할 수 있다.
+`LinkedList` 컬렉션은 다음과 같이 생성할 수 있다.
 
 ```java
 List<E> list = new LinkedList<E>();
 List<E> list = new LinkedList<>();
 ```
 
-다음 예제는 ArrayList와 LinkedList에 10000개의 객체를 삽입하는데 걸린 시간을 측정한 것이다.
+다음 예제는 `ArrayList`와 `LinkedList`에 10000개의 객체를 삽입하는데 걸린 시간을 측정한 것이다.
 
 ```java
 package ch15.sec02.exam03;
