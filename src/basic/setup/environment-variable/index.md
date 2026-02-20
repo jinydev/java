@@ -26,6 +26,19 @@ JDK를 설치했지만, 컴퓨터(운영체제)는 아직 **자바 도구가 어
 *   **의미**: "명령어 찾을 때 이 길(Path)도 찾아봐."
 *   **설정**: `%JAVA_HOME%\bin`을 추가합니다. (`bin` 폴더에 실행 파일들이 들어있거든요.)
 
+```mermaid
+flowchart LR
+    User([사용자]) -->|명령어: java| OS{운영체제}
+    OS -- 1. 현재 폴더 탐색 --> Fail[못 찾음]
+    OS -- 2. Path 환경 변수 탐색 --> Path["Path 변수 등록 경로들 확인"]
+    Path -->|C:\Program Files\...\bin| JVM[java.exe 발견 및 실행!]
+
+    style OS fill:#ff9,stroke:#333,stroke-width:2px
+    style Fail fill:#f99,stroke:#333
+    style Path fill:#bbf,stroke:#333
+    style JVM fill:#bfb,stroke:#333,stroke-width:2px
+```
+
 ## 3. 설정 확인
 
 설정이 잘 됐는지 확인하려면 **터미널(명령 프롬프트)**을 열고 물어보세요.

@@ -21,6 +21,28 @@ System.out.println(s1 == s2); // false! (주소가 다름)
 ```
 내용은 같아도, 힙 영역에 따로따로 지어진 집이기 때문에 주소가 다릅니다.
 
+```mermaid
+flowchart TD
+    subgraph Stack [변수]
+        s1[변수 s1]
+        s2[변수 s2]
+    end
+    
+    subgraph Heap [객체 (집)]
+        obj1[번지1: '안녕']
+        obj2[번지2: '안녕']
+    end
+    
+    s1 -->|가리킴| obj1
+    s2 -->|가리킴| obj2
+    
+    s1 -. "=="은 화살표 도착지가 같은지 비교 .-> s2
+    obj1 -. "equals()"는 상자 안의 내용물이 같은지 비교 .-> obj2
+    
+    style Stack fill:#eef,stroke:#333
+    style Heap fill:#efe,stroke:#333
+```
+
 ## 2. `equals()`를 써야 하는 이유
 
 내용물(실제 값)이 같은지 비교하려면 **`equals()`** 메소드를 써야 합니다.

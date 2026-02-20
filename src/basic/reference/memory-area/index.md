@@ -27,3 +27,22 @@ grand_parent: "Part 01. 자바 언어의 기초"
 *   메소드가 실행될 때마다 잠깐 생겼다 사라지는 공간입니다.
 *   우리가 만드는 변수(기본 타입 변수, 참조 변수)들이 여기에 잠시 머뭅니다.
 *   메소드가 끝나면 책상은 싹 치워집니다(자동 제거).
+
+---
+
+### 메모리 영역 시각화 (도서관 비유)
+
+```mermaid
+graph TD
+    subgraph JVM [JVM 메모리 (도서관)]
+        direction LR
+        Method[메소드 영역 📜\n(공용 게시판)\n클래스 정보, static 변수]
+        Heap[힙 영역 📚\n(서고)\nnew 객체, 배열\nGarbage Collector가 관리]
+        Stack[스택 영역 🖥️\n(개인 책상)\n지역 변수, 매개 변수]
+    end
+    
+    style JVM fill:#f9f9f9,stroke:#333,stroke-width:2px
+    style Method fill:#ffe6cc,stroke:#333
+    style Heap fill:#d5e8d4,stroke:#333
+    style Stack fill:#dae8fc,stroke:#333
+```

@@ -23,6 +23,22 @@ grand_parent: "Part 01. 자바 언어의 기초"
 *   조건 2: **그리고(&&)**, 보호자가 동반해야 한다.
 *   둘 다 만족해야 놀이기구를 탈 수 있습니다.
 
+```mermaid
+flowchart LR
+    Start([입구]) --> Gate1{키 120cm 이상?}
+    Gate1 -- "통과 (true)" --> Gate2{보호자 동반?}
+    Gate1 -. "실패 (false)" .-> Fail1[입장 불가 ❌]
+    
+    Gate2 -- "통과 (true)" --> Success[놀이기구 탑승! 🎢]
+    Gate2 -. "실패 (false)" .-> Fail2[입장 불가 ❌]
+    
+    style Gate1 fill:#ff9,stroke:#333
+    style Gate2 fill:#ff9,stroke:#333
+    style Success fill:#bfb,stroke:#333,stroke-width:2px
+    style Fail1 fill:#f99,stroke:#333
+    style Fail2 fill:#f99,stroke:#333
+```
+
 ### 3) 진리표
 |   A   |   B   | 결과 (A && B) | 설명                 |
 | :---: | :---: | :-----------: | :------------------- |
@@ -43,6 +59,21 @@ grand_parent: "Part 01. 자바 언어의 기초"
 *   조건 1: 회원 카드가 있거나,
 *   조건 2: **또는(||)**, 쿠폰이 있다.
 *   둘 중 하나만 있어도 할인을 받을 수 있습니다.
+
+```mermaid
+flowchart LR
+    Start([결제 시작]) --> Gate1{회원 카드 있음?}
+    Gate1 -- "예 (true)" --> Success[할인 적용! 💰]
+    
+    Gate1 -. "아니오 (false)" .-> Gate2{할인 쿠폰 있음?}
+    Gate2 -- "예 (true)" --> Success
+    Gate2 -. "아니오 (false)" .-> Fail[할인 불가 ❌]
+    
+    style Gate1 fill:#ff9,stroke:#333
+    style Gate2 fill:#ff9,stroke:#333
+    style Success fill:#bfb,stroke:#333,stroke-width:2px
+    style Fail fill:#f99,stroke:#333
+```
 
 ### 3) 진리표
 |   A   |   B   | 결과 (A \|\| B) | 설명                      |

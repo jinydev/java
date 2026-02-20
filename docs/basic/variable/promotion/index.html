@@ -8,7 +8,7 @@
   <!-- 기본 메타데이터 --><meta name="description" content="Jiny linux"><meta name="author" content="HojinLee"><!-- 제목 설정 --><title>4.7 자동 타입 변환</title>
   <meta name="title" content="4.7 자동 타입 변환" /><!-- 키워드 설정 --><!-- Open Graph 메타데이터 --><meta property="og:title" content="4.7 자동 타입 변환"><meta property="og:description" content="Jiny linux"><meta property="og:type" content="website"><meta property="og:locale" content="ko">
   <meta property="og:site_name" content="linux">
-  <meta property="og:url" content="http://localhost:4000/basic/variable/promotion/">
+  <meta property="og:url" content="https://java.jiny.dev/basic/variable/promotion/">
 
   <!-- Twitter 카드 메타데이터 --><meta name="twitter:card" content="summary"><meta property="twitter:title" content="4.7 자동 타입 변환"><!-- Begin Jekyll SEO tag v2.8.0 -->
 <meta name="generator" content="Jekyll v4.4.1" />
@@ -17,14 +17,14 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
 <meta property="og:description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
-<link rel="canonical" href="http://localhost:4000/basic/variable/promotion/" />
-<meta property="og:url" content="http://localhost:4000/basic/variable/promotion/" />
+<link rel="canonical" href="https://java.jiny.dev/basic/variable/promotion/" />
+<meta property="og:url" content="https://java.jiny.dev/basic/variable/promotion/" />
 <meta property="og:site_name" content="객체지향 자바 프로그래밍 (Object-Oriented Java Programming)" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="4.7 자동 타입 변환" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"4.7 자동 타입 변환","url":"http://localhost:4000/basic/variable/promotion/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"4.7 자동 타입 변환","url":"https://java.jiny.dev/basic/variable/promotion/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -254,10 +254,6 @@
             
             <li class="nav-item">
               <a class="nav-link py-2 px-0 px-lg-2" href="/database">데이터베이스</a>
-            </li>
-            
-            <li class="nav-item">
-              <a class="nav-link py-2 px-0 px-lg-2" href="/network">네트워크</a>
             </li>
             
             <li class="nav-item">
@@ -1095,6 +1091,13 @@
 
 <p><strong>자동 타입 변환(Promotion)</strong>은 값의 범위가 <strong>작은 타입</strong>을 <strong>큰 타입</strong>으로 옮길 때 일어납니다.
 작은 컵의 물을 큰 양동이에 부으면 절대 넘치지 않겠죠? 그래서 자바가 알아서 바꿔줍니다.</p>
+
+<pre><code class="language-mermaid">flowchart LR
+    SmallCup[작은 컵\nint\n'10'] --&gt;|자동 변환 (안전)| BigBucket[큰 양동이\nlong\n'10']
+    
+    style SmallCup fill:#def,stroke:#333,stroke-width:2px
+    style BigBucket fill:#bdf,stroke:#333,shape:cylinder,stroke-width:2px
+</code></pre>
 
 <blockquote>
   <p><code class="language-plaintext highlighter-rouge">byte</code> &lt; <code class="language-plaintext highlighter-rouge">short</code> &lt; <code class="language-plaintext highlighter-rouge">int</code> &lt; <code class="language-plaintext highlighter-rouge">long</code> &lt; <code class="language-plaintext highlighter-rouge">float</code> &lt; <code class="language-plaintext highlighter-rouge">double</code></p>

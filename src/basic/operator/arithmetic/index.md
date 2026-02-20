@@ -26,17 +26,24 @@ grand_parent: "Part 01. 자바 언어의 기초"
 | **`/`** | 나누기 (몫) | 나누고 난 **몫**을 구합니다.     | `10 / 3`         | `3` (3.333 아님!) |
 | **`%`** | **나머지**  | 나누고 난 **나머지**를 구합니다. | `10 % 3`         | `1`               |
 
-### 2) 나누기(`/`)와 나머지(`%`) 시각화
+### 2) 산술 기계 (계산 과정 시각화)
 
 ```mermaid
-graph TD
-    N[나눗셈: 10 ÷ 3]
-    N --> Q[몫 (/): 3]
-    N --> R[나머지 (%): 1]
+flowchart LR
+    Input1([입력값 A: 10]) --> Machine{산술 연산 기계}
+    Input2([입력값 B: 3]) ---> Machine
     
-    style N fill:#eef,stroke:#333
-    style Q fill:#bfb,stroke:#333
-    style R fill:#ff9,stroke:#333
+    Machine -- "+" --> Plus[더하기: 13]
+    Machine -- "-" --> Minus[빼기: 7]
+    Machine -- "*" --> Mult[곱하기: 30]
+    Machine -- "/" --> Div[몫: 3]
+    Machine -- "%" --> Mod[나머지: 1]
+    
+    style Machine fill:#fed,stroke:#333,stroke-width:2px
+    style Input1 fill:#fff,stroke:#333
+    style Input2 fill:#fff,stroke:#333
+    style Div fill:#bfb,stroke:#333
+    style Mod fill:#ff9,stroke:#333
 ```
 
 *   **용도**:

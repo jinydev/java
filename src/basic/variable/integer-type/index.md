@@ -25,18 +25,21 @@ grand_parent: "Part 01. 자바 언어의 기초"
 | **`int`** | 4 byte      | **물동이** 🪣     | 약 -21억 ~ 21억              | **기본 정수 타입**            |
 | `long`    | 8 byte      | **물탱크** 🚛     | 약 -922경 ~ 922경            | 금융, 과학 등 **대용량 숫자** |
 
-### 2) 크기 시각화
+### 2) 크기 시각화 (상자 크기 비교)
 
 ```mermaid
-graph TD
-    Byte[byte (1칸)] --- Short[short (2칸)]
-    Short --- Int[int (4칸)]
-    Int --- Long[long (8칸)]
+graph LR
+    subgraph Integer_Types [정수 타입 크기 비교]
+        direction LR
+        Byte[byte\n1 byte\n🍶] --- Short[short\n2 bytes\n☕️]
+        Short --- Int[int\n4 bytes\n기본형 🪣]
+        Int --- Long[long\n8 bytes\n🚛]
+    end
     
-    style Byte fill:#fff,stroke:#333
-    style Short fill:#cef,stroke:#333
-    style Int fill:#9cf,stroke:#333
-    style Long fill:#69f,stroke:#333
+    style Byte fill:#fff,stroke:#333,stroke-width:2px
+    style Short fill:#cef,stroke:#333,stroke-width:2px
+    style Int fill:#9cf,stroke:#333,stroke-width:3px
+    style Long fill:#69f,stroke:#333,stroke-width:2px
 ```
 
 ---

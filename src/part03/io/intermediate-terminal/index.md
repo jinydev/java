@@ -12,6 +12,29 @@ grand_parent: "라이브러리 활용"
 
 오리지널 스트림과 집계 처리 사이의 중간 스트림들은 최종 처리를 위해 요소를 걸러내거나(필터링), 요소를 변환시키거나(매핑), 정렬하는 작업을 수행한다. 최종 처리는 중간 처리에서 정제된 요소들을 반복하거나, 집계(카운팅, 총합, 평균) 작업을 수행한다.
 
+### 스트림 파이프라인 시각화 (공장 컨베이어 벨트 비유)
+
+{% raw %}
+```mermaid
+flowchart LR
+    Source[(컬렉션/배열\n시작점)] -->|스트림 생성| Pipe1
+    
+    subgraph Pipeline [스트림 파이프라인 (중간 처리)]
+        direction LR
+        Pipe1((필터링\nfilter)) --> Pipe2((변환\nmap)) --> Pipe3((정렬\nsorted))
+    end
+    
+    Pipeline -->|최종 처리 단계| Terminal{{결과 산출\n(sum, count, collect)}}
+    
+    style Source fill:#dae8fc,stroke:#6c8ebf
+    style Pipeline fill:#fff2cc,stroke:#d6b656,stroke-width:2px
+    style Pipe1 fill:#ffe6cc,stroke:#d79b00
+    style Pipe2 fill:#ffe6cc,stroke:#d79b00
+    style Pipe3 fill:#ffe6cc,stroke:#d79b00
+    style Terminal fill:#d5e8d4,stroke:#82b366,stroke-width:2px
+```
+{% endraw %}
+
 ```java
 // Student 스트림
 Stream<Student> studentStream = list.stream();

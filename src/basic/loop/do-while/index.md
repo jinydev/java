@@ -15,6 +15,21 @@ grand_parent: "Part 01. 자바 언어의 기초"
 
 **비유**: "일단 한 입 먹어봐. 맛있으면 더 먹어."
 
+```mermaid
+flowchart TD
+    Start([시작]) --> Run[실행 블록 (무조건 1회 실행)]
+    
+    Run --> Cond{조건식 검사}
+    
+    Cond -- "참 (true)" --> Run
+    Cond -- "거짓 (false)" --> End([종료])
+    
+    style Start fill:#f9f,stroke:#333,stroke-width:2px
+    style End fill:#ccc,stroke:#333,stroke-width:2px
+    style Cond fill:#ff9,stroke:#333,stroke-width:2px
+    style Run fill:#bfb,stroke:#333,stroke-width:2px
+```
+
 ```java
 import java.util.Scanner;
 

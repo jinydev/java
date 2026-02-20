@@ -10,6 +10,29 @@ grand_parent: "라이브러리 활용"
 
 for 문과 Iterator는 컬렉션의 요소를 컬렉션 바깥쪽으로 반복해서 가져와 처리하는데, 이것을 **외부 반복자(external iterator)**라고 한다. 반면 스트림은 요소 처리 방법을 컬렉션 내부로 주입시켜서 요소를 반복 처리하는데, 이것을 **내부 반복자(internal iterator)**라고 한다.
 
+### 외부 반복자 vs 내부 반복자 시각화 (택배 상하차 비유)
+
+```mermaid
+flowchart TD
+    subgraph External [외부 반복자 (for문, Iterator)]
+        direction LR
+        Dev1[개발자 👨‍💻] -->|가져와!| Item1[요소 하나 꺼냄]
+        Item1 -->|처리| Dev1
+    end
+    
+    subgraph Internal [내부 반복자 (Stream)]
+        direction LR
+        Dev2[개발자 👨‍💻\n'이렇게 처리해' 명령만 전달] -.-> Belt
+        Belt{컨베이어 벨트 ⚙️\n(컬렉션 내부)}
+        Item2[요소들 줄지어 지나감] --> Belt
+        Belt -->|알아서 병렬/순차 처리| Result[결과물]
+    end
+    
+    style External fill:#f9f9f9,stroke:#333
+    style Internal fill:#e1d5e7,stroke:#9673a6
+    style Belt fill:#fff2cc,stroke:#d6b656,stroke-width:2px
+```
+
 외부 반복자일 경우는 컬렉션의 요소를 외부로 가져오는 코드와 처리하는 코드를 모두 개발자 코드가 가지고 있어야 한다. 반면 내부 반복자일 경우는 개발자 코드에서 제공한 데이터 처리 코드(람다식)를 가지고 컬렉션 내부에서 요소를 반복 처리한다.
 
 내부 반복자는 멀티 코어 CPU를 최대한 활용하기 위해 요소들을 분배시켜 병렬 작업을 할 수 있다. 하나씩 처리하는 순차적 외부 반복자보다는 효율적으로 요소를 반복시킬 수 있는 장점이 있다.

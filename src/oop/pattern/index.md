@@ -1,11 +1,11 @@
 ---
 layout: basic
-title: "Chapter 19. 디자인 패턴"
-nav_order: 19
+title: "Chapter 20. 디자인 패턴"
+nav_order: 20
 parent: "Part 02. 객체지향 프로그래밍"
 ---
 
-# Chapter 19. 디자인 패턴
+# Chapter 20. 디자인 패턴
 
 객체지향 프로그래밍에서 자주 발생하는 문제들을 해결하기 위한 입증된 설계 솔루션인 디자인 패턴을 학습합니다.
 

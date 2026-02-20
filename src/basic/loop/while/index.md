@@ -13,6 +13,21 @@ grand_parent: "Part 01. 자바 언어의 기초"
 **"노래가 끝날 때까지 춤을 춰!"** 처럼 **조건**이 중요할 때 사용합니다.
 몇 번 반복할지는 모르지만, 특정 조건이 만족되는 동안은 계속 실행합니다.
 
+```mermaid
+flowchart TD
+    Start([시작]) --> Cond{조건식 (노래가 나오는가?)}
+    
+    Cond -- "참 (true)" --> Run[실행 블록 (춤을 춘다)]
+    Run --> Cond
+    
+    Cond -- "거짓 (false)" --> End([종료])
+    
+    style Start fill:#f9f,stroke:#333,stroke-width:2px
+    style End fill:#ccc,stroke:#333,stroke-width:2px
+    style Cond fill:#ff9,stroke:#333,stroke-width:2px
+    style Run fill:#bfb,stroke:#333,stroke-width:2px
+```
+
 ```java
 int i = 1;
 while (i <= 10) {

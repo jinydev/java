@@ -8,7 +8,7 @@
   <!-- 기본 메타데이터 --><meta name="description" content="Jiny linux"><meta name="author" content="HojinLee"><!-- 제목 설정 --><title>7.1 for 문</title>
   <meta name="title" content="7.1 for 문" /><!-- 키워드 설정 --><!-- Open Graph 메타데이터 --><meta property="og:title" content="7.1 for 문"><meta property="og:description" content="Jiny linux"><meta property="og:type" content="website"><meta property="og:locale" content="ko">
   <meta property="og:site_name" content="linux">
-  <meta property="og:url" content="http://localhost:4000/basic/loop/for/">
+  <meta property="og:url" content="https://java.jiny.dev/basic/loop/for/">
 
   <!-- Twitter 카드 메타데이터 --><meta name="twitter:card" content="summary"><meta property="twitter:title" content="7.1 for 문"><!-- Begin Jekyll SEO tag v2.8.0 -->
 <meta name="generator" content="Jekyll v4.4.1" />
@@ -17,14 +17,14 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
 <meta property="og:description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
-<link rel="canonical" href="http://localhost:4000/basic/loop/for/" />
-<meta property="og:url" content="http://localhost:4000/basic/loop/for/" />
+<link rel="canonical" href="https://java.jiny.dev/basic/loop/for/" />
+<meta property="og:url" content="https://java.jiny.dev/basic/loop/for/" />
 <meta property="og:site_name" content="객체지향 자바 프로그래밍 (Object-Oriented Java Programming)" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="7.1 for 문" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"7.1 for 문","url":"http://localhost:4000/basic/loop/for/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"7.1 for 문","url":"https://java.jiny.dev/basic/loop/for/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -254,10 +254,6 @@
             
             <li class="nav-item">
               <a class="nav-link py-2 px-0 px-lg-2" href="/database">데이터베이스</a>
-            </li>
-            
-            <li class="nav-item">
-              <a class="nav-link py-2 px-0 px-lg-2" href="/network">네트워크</a>
             </li>
             
             <li class="nav-item">
@@ -1099,14 +1095,33 @@
 <span class="o">}</span>
 </code></pre></div></div>
 
-<h2 id="2-구성-요소">2. 구성 요소</h2>
+<h2 id="2-구성-요소와-실행-순서">2. 구성 요소와 실행 순서</h2>
 
-<p><code class="language-plaintext highlighter-rouge">for (초기화식; 조건식; 증감식)</code></p>
+<p><code class="language-plaintext highlighter-rouge">for (초기화식; 조건식; 증감식) { 실행문 }</code></p>
+
+<pre><code class="language-mermaid">flowchart TD
+    Start([반복문 시작]) --&gt; Init[1. 초기화식 (i=1)]
+    Init --&gt; Cond{2. 조건식 (i&lt;=10)}
+    
+    Cond -- "참(true)" --&gt; Run[3. 실행문 (출력)]
+    Run --&gt; Inc[4. 증감식 (i++)]
+    Inc --&gt; Cond
+    
+    Cond -- "거짓(false)" --&gt; End([반복문 종료])
+    
+    style Start fill:#f9f,stroke:#333,stroke-width:2px
+    style End fill:#f9f,stroke:#333,stroke-width:2px
+    style Cond fill:#ff9,stroke:#333,stroke-width:2px
+    style Init fill:#bbf,stroke:#333
+    style Run fill:#bfb,stroke:#333,stroke-width:2px
+    style Inc fill:#fcf,stroke:#333
+</code></pre>
 
 <ol>
-  <li><strong>초기화식 (<code class="language-plaintext highlighter-rouge">int i=1</code>)</strong>: 시작점입니다. (1번부터 시작!)</li>
-  <li><strong>조건식 (<code class="language-plaintext highlighter-rouge">i&lt;=10</code>)</strong>: “여기까지만 해.” (10번 이하일 때만 계속해)</li>
-  <li><strong>증감식 (<code class="language-plaintext highlighter-rouge">i++</code>)</strong>: “한 바퀴 돌았으면 카운트 올려.” (1씩 증가)</li>
+  <li><strong>초기화식 (<code class="language-plaintext highlighter-rouge">int i=1</code>)</strong>: 시작점입니다. (1번부터 시작!) - <strong>최초 1회만</strong> 실행됩니다.</li>
+  <li><strong>조건식 (<code class="language-plaintext highlighter-rouge">i&lt;=10</code>)</strong>: “여기까지만 해.” (10번 이하일 때만 계속해) - 참이면 실행, 거짓이면 탈출합니다.</li>
+  <li><strong>실행문</strong>: 조건이 참일 때 실행되는 실제 명령입니다.</li>
+  <li><strong>증감식 (<code class="language-plaintext highlighter-rouge">i++</code>)</strong>: “한 바퀴 돌았으면 카운트 올려.” (1씩 증가) - 실행 후 조건식으로 다시 돌아갑니다.</li>
 </ol>
 
 <h2 id="3-중첩-for-문-구구단">3. 중첩 for 문 (구구단)</h2>

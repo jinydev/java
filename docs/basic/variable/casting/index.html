@@ -8,7 +8,7 @@
   <!-- 기본 메타데이터 --><meta name="description" content="Jiny linux"><meta name="author" content="HojinLee"><!-- 제목 설정 --><title>4.8 강제 타입 변환</title>
   <meta name="title" content="4.8 강제 타입 변환" /><!-- 키워드 설정 --><!-- Open Graph 메타데이터 --><meta property="og:title" content="4.8 강제 타입 변환"><meta property="og:description" content="Jiny linux"><meta property="og:type" content="website"><meta property="og:locale" content="ko">
   <meta property="og:site_name" content="linux">
-  <meta property="og:url" content="http://localhost:4000/basic/variable/casting/">
+  <meta property="og:url" content="https://java.jiny.dev/basic/variable/casting/">
 
   <!-- Twitter 카드 메타데이터 --><meta name="twitter:card" content="summary"><meta property="twitter:title" content="4.8 강제 타입 변환"><!-- Begin Jekyll SEO tag v2.8.0 -->
 <meta name="generator" content="Jekyll v4.4.1" />
@@ -17,14 +17,14 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
 <meta property="og:description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
-<link rel="canonical" href="http://localhost:4000/basic/variable/casting/" />
-<meta property="og:url" content="http://localhost:4000/basic/variable/casting/" />
+<link rel="canonical" href="https://java.jiny.dev/basic/variable/casting/" />
+<meta property="og:url" content="https://java.jiny.dev/basic/variable/casting/" />
 <meta property="og:site_name" content="객체지향 자바 프로그래밍 (Object-Oriented Java Programming)" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="4.8 강제 타입 변환" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"4.8 강제 타입 변환","url":"http://localhost:4000/basic/variable/casting/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"4.8 강제 타입 변환","url":"https://java.jiny.dev/basic/variable/casting/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -254,10 +254,6 @@
             
             <li class="nav-item">
               <a class="nav-link py-2 px-0 px-lg-2" href="/database">데이터베이스</a>
-            </li>
-            
-            <li class="nav-item">
-              <a class="nav-link py-2 px-0 px-lg-2" href="/network">네트워크</a>
             </li>
             
             <li class="nav-item">
@@ -1097,6 +1093,15 @@
 
 <p>하지만 개발자가 “괜찮아, 안 넘쳐! 내가 책임질게!”라고 강제로 넣을 수 있습니다.
 이것을 <strong>강제 타입 변환(Casting, 캐스팅)</strong>이라고 합니다.</p>
+
+<pre><code class="language-mermaid">flowchart LR
+    BigBucket[큰 양동이\ndouble\n'3.14'] --&gt;|강제 압축 (캐스팅)| SmallCup[작은 컵\nint\n'3']
+    Overflow((💦 \n물 넘침!\n.14 손실)) -.-&gt; SmallCup
+    
+    style BigBucket fill:#bdf,stroke:#333,shape:cylinder,stroke-width:2px
+    style SmallCup fill:#def,stroke:#333,stroke-width:2px
+    style Overflow fill:#f99,stroke:#f00,stroke-dasharray: 5 5
+</code></pre>
 
 <h2 id="2-캐스팅-방법">2. 캐스팅 방법</h2>
 

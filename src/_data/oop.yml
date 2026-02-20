@@ -257,3 +257,61 @@ main:
     url: /oop/lambda/constructor-reference
   - title: 확인문제
     url: /oop/lambda/quiz
+- title: 19. UML
+  url: /oop/uml
+  subitems:
+  - title: 학습목표
+    url: /oop/uml
+  - title: 19.1 UML 기초
+    url: /oop/uml
+- title: 20. 디자인 패턴
+  url: /oop/pattern
+  subitems:
+  - title: 학습목표
+    url: /oop/pattern
+  - title: 20.1 Singleton Pattern
+    url: /oop/pattern/singleton
+  - title: 20.2 Factory Method Pattern
+    url: /oop/pattern/factory-method
+  - title: 20.3 Abstract Factory Pattern
+    url: /oop/pattern/abstract-factory
+  - title: 20.4 Builder Pattern
+    url: /oop/pattern/builder
+  - title: 20.5 Prototype Pattern
+    url: /oop/pattern/prototype
+  - title: 20.6 Adapter Pattern
+    url: /oop/pattern/adapter
+  - title: 20.7 Bridge Pattern
+    url: /oop/pattern/bridge
+  - title: 20.8 Composite Pattern
+    url: /oop/pattern/composite
+  - title: 20.9 Decorator Pattern
+    url: /oop/pattern/decorator
+  - title: 20.10 Facade Pattern
+    url: /oop/pattern/facade
+  - title: 20.11 Flyweight Pattern
+    url: /oop/pattern/flyweight
+  - title: 20.12 Proxy Pattern
+    url: /oop/pattern/proxy
+  - title: 20.13 Chain of Responsibility
+    url: /oop/pattern/chain-of-responsibility
+  - title: 20.14 Command Pattern
+    url: /oop/pattern/command
+  - title: 20.15 Interpreter Pattern
+    url: /oop/pattern/interpreter
+  - title: 20.16 Iterator Pattern
+    url: /oop/pattern/iterator
+  - title: 20.17 Mediator Pattern
+    url: /oop/pattern/mediator
+  - title: 20.18 Memento Pattern
+    url: /oop/pattern/memento
+  - title: 20.19 Observer Pattern
+    url: /oop/pattern/observer
+  - title: 20.20 State Pattern
+    url: /oop/pattern/state
+  - title: 20.21 Strategy Pattern
+    url: /oop/pattern/strategy
+  - title: 20.22 Template Method Pattern
+    url: /oop/pattern/template-method
+  - title: 20.23 Visitor Pattern
+    url: /oop/pattern/visitor

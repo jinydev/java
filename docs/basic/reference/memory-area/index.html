@@ -8,7 +8,7 @@
   <!-- 기본 메타데이터 --><meta name="description" content="Jiny linux"><meta name="author" content="HojinLee"><!-- 제목 설정 --><title>8.2 메모리 사용 영역</title>
   <meta name="title" content="8.2 메모리 사용 영역" /><!-- 키워드 설정 --><!-- Open Graph 메타데이터 --><meta property="og:title" content="8.2 메모리 사용 영역"><meta property="og:description" content="Jiny linux"><meta property="og:type" content="website"><meta property="og:locale" content="ko">
   <meta property="og:site_name" content="linux">
-  <meta property="og:url" content="http://localhost:4000/basic/reference/memory-area/">
+  <meta property="og:url" content="https://java.jiny.dev/basic/reference/memory-area/">
 
   <!-- Twitter 카드 메타데이터 --><meta name="twitter:card" content="summary"><meta property="twitter:title" content="8.2 메모리 사용 영역"><!-- Begin Jekyll SEO tag v2.8.0 -->
 <meta name="generator" content="Jekyll v4.4.1" />
@@ -17,14 +17,14 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
 <meta property="og:description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
-<link rel="canonical" href="http://localhost:4000/basic/reference/memory-area/" />
-<meta property="og:url" content="http://localhost:4000/basic/reference/memory-area/" />
+<link rel="canonical" href="https://java.jiny.dev/basic/reference/memory-area/" />
+<meta property="og:url" content="https://java.jiny.dev/basic/reference/memory-area/" />
 <meta property="og:site_name" content="객체지향 자바 프로그래밍 (Object-Oriented Java Programming)" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="8.2 메모리 사용 영역" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"8.2 메모리 사용 영역","url":"http://localhost:4000/basic/reference/memory-area/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"8.2 메모리 사용 영역","url":"https://java.jiny.dev/basic/reference/memory-area/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -254,10 +254,6 @@
             
             <li class="nav-item">
               <a class="nav-link py-2 px-0 px-lg-2" href="/database">데이터베이스</a>
-            </li>
-            
-            <li class="nav-item">
-              <a class="nav-link py-2 px-0 px-lg-2" href="/network">네트워크</a>
             </li>
             
             <li class="nav-item">
@@ -1114,6 +1110,24 @@
   <li>우리가 만드는 변수(기본 타입 변수, 참조 변수)들이 여기에 잠시 머뭅니다.</li>
   <li>메소드가 끝나면 책상은 싹 치워집니다(자동 제거).</li>
 </ul>
+
+<hr />
+
+<h3 id="메모리-영역-시각화-도서관-비유">메모리 영역 시각화 (도서관 비유)</h3>
+
+<pre><code class="language-mermaid">graph TD
+    subgraph JVM [JVM 메모리 (도서관)]
+        direction LR
+        Method[메소드 영역 📜\n(공용 게시판)\n클래스 정보, static 변수]
+        Heap[힙 영역 📚\n(서고)\nnew 객체, 배열\nGarbage Collector가 관리]
+        Stack[스택 영역 🖥️\n(개인 책상)\n지역 변수, 매개 변수]
+    end
+    
+    style JVM fill:#f9f9f9,stroke:#333,stroke-width:2px
+    style Method fill:#ffe6cc,stroke:#333
+    style Heap fill:#d5e8d4,stroke:#333
+    style Stack fill:#dae8fc,stroke:#333
+</code></pre>
 
 
             <!-- Google AdSense -->

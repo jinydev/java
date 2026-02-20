@@ -13,9 +13,29 @@ grand_parent: "Part 01. 자바 언어의 기초"
 자바로 요리(프로그래밍)를 하려면 도구가 필요합니다.
 **JDK (Java Development Kit)**는 자바 개발에 필요한 모든 도구가 들어있는 **종합 선물 세트**입니다.
 
-*   `javac`: 소스 코드를 번역하는 **컴파일러**
+```mermaid
+flowchart TD
+    subgraph JDK [JDK: 자바 개발 종합 도구 세트]
+        direction TB
+        subgraph JRE [JRE: 자바 실행 환경]
+            JVM[JVM: 자바 가상 머신]
+            Libs[표준 라이브러리: 미리 만들어진 부품들]
+        end
+        Compiler[javac: 자바 컴파일러]
+        Tools[기타 개발 도구들]
+    end
+
+    style JDK fill:#eef,stroke:#333,stroke-width:2px
+    style JRE fill:#fed,stroke:#333
+    style JVM fill:#bfb,stroke:#333
+    style Libs fill:#bfd,stroke:#333
+    style Compiler fill:#fbb,stroke:#333
+    style Tools fill:#ccc,stroke:#333
+```
+
+*   `javac`: 소스 코드를 번역하는 **컴파일러** (`.java` -> `.class`)
 *   `java`: 프로그램을 실행하는 **JVM**
-*   각종 라이브러리: 미리 만들어진 부품들
+*   각종 라이브러리: 코딩할 때 쓸 수 있는 미리 만들어진 **부품들**
 
 ## 2. 어떤 JDK를 써야 하나요?
 

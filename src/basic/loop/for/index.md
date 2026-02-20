@@ -19,13 +19,33 @@ for(int i=1; i<=10; i++) {
 }
 ```
 
-## 2. 구성 요소
+## 2. 구성 요소와 실행 순서
 
-`for (초기화식; 조건식; 증감식)`
+`for (초기화식; 조건식; 증감식) { 실행문 }`
 
-1.  **초기화식 (`int i=1`)**: 시작점입니다. (1번부터 시작!)
-2.  **조건식 (`i<=10`)**: "여기까지만 해." (10번 이하일 때만 계속해)
-3.  **증감식 (`i++`)**: "한 바퀴 돌았으면 카운트 올려." (1씩 증가)
+```mermaid
+flowchart TD
+    Start([반복문 시작]) --> Init[1. 초기화식 (i=1)]
+    Init --> Cond{2. 조건식 (i<=10)}
+    
+    Cond -- "참(true)" --> Run[3. 실행문 (출력)]
+    Run --> Inc[4. 증감식 (i++)]
+    Inc --> Cond
+    
+    Cond -- "거짓(false)" --> End([반복문 종료])
+    
+    style Start fill:#f9f,stroke:#333,stroke-width:2px
+    style End fill:#f9f,stroke:#333,stroke-width:2px
+    style Cond fill:#ff9,stroke:#333,stroke-width:2px
+    style Init fill:#bbf,stroke:#333
+    style Run fill:#bfb,stroke:#333,stroke-width:2px
+    style Inc fill:#fcf,stroke:#333
+```
+
+1.  **초기화식 (`int i=1`)**: 시작점입니다. (1번부터 시작!) - **최초 1회만** 실행됩니다.
+2.  **조건식 (`i<=10`)**: "여기까지만 해." (10번 이하일 때만 계속해) - 참이면 실행, 거짓이면 탈출합니다.
+3.  **실행문**: 조건이 참일 때 실행되는 실제 명령입니다.
+4.  **증감식 (`i++`)**: "한 바퀴 돌았으면 카운트 올려." (1씩 증가) - 실행 후 조건식으로 다시 돌아갑니다.
 
 ## 3. 중첩 for 문 (구구단)
 

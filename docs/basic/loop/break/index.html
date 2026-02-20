@@ -8,7 +8,7 @@
   <!-- 기본 메타데이터 --><meta name="description" content="Jiny linux"><meta name="author" content="HojinLee"><!-- 제목 설정 --><title>7.4 break 문</title>
   <meta name="title" content="7.4 break 문" /><!-- 키워드 설정 --><!-- Open Graph 메타데이터 --><meta property="og:title" content="7.4 break 문"><meta property="og:description" content="Jiny linux"><meta property="og:type" content="website"><meta property="og:locale" content="ko">
   <meta property="og:site_name" content="linux">
-  <meta property="og:url" content="http://localhost:4000/basic/loop/break/">
+  <meta property="og:url" content="https://java.jiny.dev/basic/loop/break/">
 
   <!-- Twitter 카드 메타데이터 --><meta name="twitter:card" content="summary"><meta property="twitter:title" content="7.4 break 문"><!-- Begin Jekyll SEO tag v2.8.0 -->
 <meta name="generator" content="Jekyll v4.4.1" />
@@ -17,14 +17,14 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
 <meta property="og:description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
-<link rel="canonical" href="http://localhost:4000/basic/loop/break/" />
-<meta property="og:url" content="http://localhost:4000/basic/loop/break/" />
+<link rel="canonical" href="https://java.jiny.dev/basic/loop/break/" />
+<meta property="og:url" content="https://java.jiny.dev/basic/loop/break/" />
 <meta property="og:site_name" content="객체지향 자바 프로그래밍 (Object-Oriented Java Programming)" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="7.4 break 문" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"7.4 break 문","url":"http://localhost:4000/basic/loop/break/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"7.4 break 문","url":"https://java.jiny.dev/basic/loop/break/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -254,10 +254,6 @@
             
             <li class="nav-item">
               <a class="nav-link py-2 px-0 px-lg-2" href="/database">데이터베이스</a>
-            </li>
-            
-            <li class="nav-item">
-              <a class="nav-link py-2 px-0 px-lg-2" href="/network">네트워크</a>
             </li>
             
             <li class="nav-item">
@@ -1093,6 +1089,19 @@
 
 <p>반복문(<code class="language-plaintext highlighter-rouge">for</code>, <code class="language-plaintext highlighter-rouge">while</code>)을 실행하다가 <strong>즉시 멈추고 밖으로 나가고 싶을 때</strong> 사용합니다.
 마치 비상 탈출 버튼과 같습니다.</p>
+
+<pre><code class="language-mermaid">flowchart TD
+    Start([반복 시작]) --&gt; Run[실행중...]
+    Run --&gt; Check{탈출 조건 만족?}
+    
+    Check -- "아니오 (계속 반복)" --&gt; Run
+    Check -- "예 (break! 🚨)" --&gt; Exit([반복문 완전 빠져나감])
+    
+    style Start fill:#f9f,stroke:#333
+    style Run fill:#bfb,stroke:#333
+    style Check fill:#ff9,stroke:#333
+    style Exit fill:#f99,stroke:#333,stroke-width:2px
+</code></pre>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">while</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span> <span class="o">{</span> <span class="c1">// 무한 반복</span>
     <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)(</span><span class="nc">Math</span><span class="o">.</span><span class="na">random</span><span class="o">()</span> <span class="o">*</span> <span class="mi">6</span><span class="o">)</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>

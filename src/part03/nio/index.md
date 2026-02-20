@@ -1,7 +1,7 @@
 ---
-layout: network
+layout: part03
 title: "25. NIO 기반 입출력 및 네트워킹"
-parent: NIO
+parent: "라이브러리 활용"
 nav_order: 25
 ---
 

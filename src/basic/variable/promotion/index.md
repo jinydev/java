@@ -15,6 +15,14 @@ grand_parent: "Part 01. 자바 언어의 기초"
 **자동 타입 변환(Promotion)**은 값의 범위가 **작은 타입**을 **큰 타입**으로 옮길 때 일어납니다.
 작은 컵의 물을 큰 양동이에 부으면 절대 넘치지 않겠죠? 그래서 자바가 알아서 바꿔줍니다.
 
+```mermaid
+flowchart LR
+    SmallCup[작은 컵\nint\n'10'] -->|자동 변환 (안전)| BigBucket[큰 양동이\nlong\n'10']
+    
+    style SmallCup fill:#def,stroke:#333,stroke-width:2px
+    style BigBucket fill:#bdf,stroke:#333,shape:cylinder,stroke-width:2px
+```
+
 > `byte` < `short` < `int` < `long` < `float` < `double`
 
 ```java

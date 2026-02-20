@@ -8,7 +8,7 @@
   <!-- 기본 메타데이터 --><meta name="description" content="Jiny linux"><meta name="author" content="HojinLee"><!-- 제목 설정 --><title>5.5 논리 연산자</title>
   <meta name="title" content="5.5 논리 연산자" /><!-- 키워드 설정 --><!-- Open Graph 메타데이터 --><meta property="og:title" content="5.5 논리 연산자"><meta property="og:description" content="Jiny linux"><meta property="og:type" content="website"><meta property="og:locale" content="ko">
   <meta property="og:site_name" content="linux">
-  <meta property="og:url" content="http://localhost:4000/basic/operator/logical/">
+  <meta property="og:url" content="https://java.jiny.dev/basic/operator/logical/">
 
   <!-- Twitter 카드 메타데이터 --><meta name="twitter:card" content="summary"><meta property="twitter:title" content="5.5 논리 연산자"><!-- Begin Jekyll SEO tag v2.8.0 -->
 <meta name="generator" content="Jekyll v4.4.1" />
@@ -17,14 +17,14 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
 <meta property="og:description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
-<link rel="canonical" href="http://localhost:4000/basic/operator/logical/" />
-<meta property="og:url" content="http://localhost:4000/basic/operator/logical/" />
+<link rel="canonical" href="https://java.jiny.dev/basic/operator/logical/" />
+<meta property="og:url" content="https://java.jiny.dev/basic/operator/logical/" />
 <meta property="og:site_name" content="객체지향 자바 프로그래밍 (Object-Oriented Java Programming)" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="5.5 논리 연산자" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"5.5 논리 연산자","url":"http://localhost:4000/basic/operator/logical/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"5.5 논리 연산자","url":"https://java.jiny.dev/basic/operator/logical/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -254,10 +254,6 @@
             
             <li class="nav-item">
               <a class="nav-link py-2 px-0 px-lg-2" href="/database">데이터베이스</a>
-            </li>
-            
-            <li class="nav-item">
-              <a class="nav-link py-2 px-0 px-lg-2" href="/network">네트워크</a>
             </li>
             
             <li class="nav-item">
@@ -1106,6 +1102,21 @@
   <li>둘 다 만족해야 놀이기구를 탈 수 있습니다.</li>
 </ul>
 
+<pre><code class="language-mermaid">flowchart LR
+    Start([입구]) --&gt; Gate1{키 120cm 이상?}
+    Gate1 -- "통과 (true)" --&gt; Gate2{보호자 동반?}
+    Gate1 -. "실패 (false)" .-&gt; Fail1[입장 불가 ❌]
+    
+    Gate2 -- "통과 (true)" --&gt; Success[놀이기구 탑승! 🎢]
+    Gate2 -. "실패 (false)" .-&gt; Fail2[입장 불가 ❌]
+    
+    style Gate1 fill:#ff9,stroke:#333
+    style Gate2 fill:#ff9,stroke:#333
+    style Success fill:#bfb,stroke:#333,stroke-width:2px
+    style Fail1 fill:#f99,stroke:#333
+    style Fail2 fill:#f99,stroke:#333
+</code></pre>
+
 <h3 id="3-진리표">3) 진리표</h3>
 <p>|   A   |   B   | 결과 (A &amp;&amp; B) | 설명                 |
 | :—: | :—: | :———–: | :——————- |
@@ -1138,6 +1149,20 @@
   </li>
   <li>둘 중 하나만 있어도 할인을 받을 수 있습니다.</li>
 </ul>
+
+<pre><code class="language-mermaid">flowchart LR
+    Start([결제 시작]) --&gt; Gate1{회원 카드 있음?}
+    Gate1 -- "예 (true)" --&gt; Success[할인 적용! 💰]
+    
+    Gate1 -. "아니오 (false)" .-&gt; Gate2{할인 쿠폰 있음?}
+    Gate2 -- "예 (true)" --&gt; Success
+    Gate2 -. "아니오 (false)" .-&gt; Fail[할인 불가 ❌]
+    
+    style Gate1 fill:#ff9,stroke:#333
+    style Gate2 fill:#ff9,stroke:#333
+    style Success fill:#bfb,stroke:#333,stroke-width:2px
+    style Fail fill:#f99,stroke:#333
+</code></pre>
 
 <h3 id="3-진리표-1">3) 진리표</h3>
 <p>|   A   |   B   | 결과 (A || B) | 설명                      |

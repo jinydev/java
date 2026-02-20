@@ -8,7 +8,7 @@
   <!-- 기본 메타데이터 --><meta name="description" content="Jiny linux"><meta name="author" content="HojinLee"><!-- 제목 설정 --><title>8.4 null과 NullPointerException</title>
   <meta name="title" content="8.4 null과 NullPointerException" /><!-- 키워드 설정 --><!-- Open Graph 메타데이터 --><meta property="og:title" content="8.4 null과 NullPointerException"><meta property="og:description" content="Jiny linux"><meta property="og:type" content="website"><meta property="og:locale" content="ko">
   <meta property="og:site_name" content="linux">
-  <meta property="og:url" content="http://localhost:4000/basic/reference/null/">
+  <meta property="og:url" content="https://java.jiny.dev/basic/reference/null/">
 
   <!-- Twitter 카드 메타데이터 --><meta name="twitter:card" content="summary"><meta property="twitter:title" content="8.4 null과 NullPointerException"><!-- Begin Jekyll SEO tag v2.8.0 -->
 <meta name="generator" content="Jekyll v4.4.1" />
@@ -17,14 +17,14 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
 <meta property="og:description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
-<link rel="canonical" href="http://localhost:4000/basic/reference/null/" />
-<meta property="og:url" content="http://localhost:4000/basic/reference/null/" />
+<link rel="canonical" href="https://java.jiny.dev/basic/reference/null/" />
+<meta property="og:url" content="https://java.jiny.dev/basic/reference/null/" />
 <meta property="og:site_name" content="객체지향 자바 프로그래밍 (Object-Oriented Java Programming)" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="8.4 null과 NullPointerException" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"8.4 null과 NullPointerException","url":"http://localhost:4000/basic/reference/null/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"8.4 null과 NullPointerException","url":"https://java.jiny.dev/basic/reference/null/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -254,10 +254,6 @@
             
             <li class="nav-item">
               <a class="nav-link py-2 px-0 px-lg-2" href="/database">데이터베이스</a>
-            </li>
-            
-            <li class="nav-item">
-              <a class="nav-link py-2 px-0 px-lg-2" href="/network">네트워크</a>
             </li>
             
             <li class="nav-item">
@@ -1098,6 +1094,27 @@
   <li>“이 변수는 아직 아무것도 가리키고 있지 않아.”</li>
   <li>“명함 지갑이 비어있어.”</li>
 </ul>
+
+<pre><code class="language-mermaid">flowchart LR
+    subgraph Stack [스택 (Stack)]
+        Ref1[String s1 = '100번지']
+        Ref2[String s2 = null]
+    end
+    
+    subgraph Heap [힙 (Heap)]
+        Obj1['100번지: 객체 데이터']
+    end
+    
+    Ref1 --&gt;|정상 참조| Obj1
+    Ref2 -.-&gt;|가리키는 곳 없음| Null[허공 💨]
+    
+    style Stack fill:#eef,stroke:#333
+    style Heap fill:#efe,stroke:#333
+    style Ref1 fill:#ff9,stroke:#333
+    style Ref2 fill:#f99,stroke:#333
+    style Obj1 fill:#bfb,stroke:#333
+    style Null fill:#eee,stroke:#333,stroke-dasharray: 5 5
+</code></pre>
 
 <h2 id="2-nullpointerexception-가장-무서운-에러-">2. <code class="language-plaintext highlighter-rouge">NullPointerException</code> (가장 무서운 에러 😱)</h2>
 

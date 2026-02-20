@@ -22,3 +22,24 @@ grand_parent: "Part 01. 자바 언어의 기초"
 참조 타입 변수는 객체가 힙(Heap) 메모리 어딘가에 있고, 그 **위치(주소)**를 가지고 있습니다.
 마치 "서울시 강남구..."라는 주소가 적힌 명함과 같습니다.
 우리가 그 명함(변수)을 보고 찾아가야 실제 집(객체)을 만날 수 있습니다.
+
+```mermaid
+flowchart LR
+    subgraph Stack [스택(Stack) 영역 - 변수 상자]
+        direction TB
+        Prim[기본 타입 변수\nint age = 25]
+        Ref[참조 타입 변수\nString name = '100번지']
+    end
+    
+    subgraph Heap [힙(Heap) 영역 - 실제 객체]
+        Obj[실제 데이터\n'100번지: 홍길동']
+    end
+    
+    Ref -->|주소를 참조| Obj
+    
+    style Stack fill:#eef,stroke:#333
+    style Heap fill:#efe,stroke:#333
+    style Prim fill:#fff,stroke:#333
+    style Ref fill:#ff9,stroke:#333
+    style Obj fill:#bfb,stroke:#333,stroke-width:2px
+```

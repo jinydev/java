@@ -17,6 +17,16 @@ grand_parent: "Part 01. 자바 언어의 기초"
 하지만 개발자가 "괜찮아, 안 넘쳐! 내가 책임질게!"라고 강제로 넣을 수 있습니다.
 이것을 **강제 타입 변환(Casting, 캐스팅)**이라고 합니다.
 
+```mermaid
+flowchart LR
+    BigBucket[큰 양동이\ndouble\n'3.14'] -->|강제 압축 (캐스팅)| SmallCup[작은 컵\nint\n'3']
+    Overflow((💦 \n물 넘침!\n.14 손실)) -.-> SmallCup
+    
+    style BigBucket fill:#bdf,stroke:#333,shape:cylinder,stroke-width:2px
+    style SmallCup fill:#def,stroke:#333,stroke-width:2px
+    style Overflow fill:#f99,stroke:#f00,stroke-dasharray: 5 5
+```
+
 ## 2. 캐스팅 방법
 
 작은 컵 이름(타입)을 괄호 `()` 안에 적어주면 됩니다.

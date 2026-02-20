@@ -10,6 +10,28 @@ grand_parent: "Chapter 22. 데이터 입출력"
 
 바이트 스트림 (`InputStream`, `OutputStream`)에서 입출력할 데이터가 문자라면 문자 스트림 (`Reader`, `Writer`)으로 변환해서 사용하는 것이 좋다.
 
+### 문자 변환 스트림 시각화 (돼지코 변환 어댑터 비유)
+
+```mermaid
+flowchart LR
+    subgraph Bytes [바이트(Byte) 데이터]
+        Data1[01010100...]
+    end
+    
+    Converter{문자 변환 스트림\n(InputStreamReader/ \nOutputStreamWriter)}
+    
+    subgraph Chars [문자(Char) 데이터]
+        Data2["'A', '가', '한'"]
+    end
+    
+    Bytes -->|바이트 읽기| Converter
+    Converter -->|문자로 조립해서 전달| Chars
+    
+    style Bytes fill:#dae8fc,stroke:#6c8ebf
+    style Converter fill:#fff2cc,stroke:#d6b656,stroke-width:2px
+    style Chars fill:#d5e8d4,stroke:#82b366
+```
+
 ## InputStream을 Reader로 변환
 
 ```java

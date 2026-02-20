@@ -25,23 +25,30 @@ grand_parent: "Part 01. 자바 언어의 기초"
 
 ### 3) 범위 시각화
 
+### 3) 범위 시각화
+
 ```mermaid
 graph TD
-    subgraph MainBlock [Main 메소드 블록]
-        v1[변수 v1]
+    subgraph Main [상위 블록: main 메소드]
+        v1((v1 변수))
         
-        subgraph IfBlock [If문 블록]
-            v2[변수 v2]
-            Access1[v1 사용 가능? O]
+        subgraph Sub [하위 블록: if 문]
+            v2((v2 변수))
+            Access1[v1 보임 👀]
         end
         
-        Access2[v2 사용 가능? X]
+        Access2[v2 안 보임 🙈]
     end
     
-    style MainBlock fill:#eef,stroke:#333
-    style IfBlock fill:#ddf,stroke:#333
+    v1 -.-> Access1
+    v2 -.-> Access2
+    
+    style Main fill:#eef,stroke:#333,stroke-width:2px,stroke-dasharray: 5 5
+    style Sub fill:#ddf,stroke:#333,stroke-width:2px
+    style v1 fill:#fff,stroke:#333
+    style v2 fill:#fff,stroke:#333
     style Access1 fill:#bfb,stroke:#333
-    style Access2 fill:#fbb,stroke:#333
+    style Access2 fill:#f99,stroke:#333
 ```
 
 ---

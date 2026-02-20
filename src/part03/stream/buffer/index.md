@@ -14,6 +14,25 @@ grand_parent: "Chapter 22. 데이터 입출력"
 보조스트림 변수 = new 보조스트림(입출력스트림);
 ```
 
+### 보조 스트림 시각화 (정수기 필터 비유)
+
+```mermaid
+flowchart LR
+    Origin[(출발지\n수도관)]
+    MainStream[기본 스트림\n(물 흐름)]
+    AuxStream[보조 스트림\n(정수기 필터 🧊)]
+    Program((프로그램))
+    
+    Origin --> MainStream
+    MainStream --> AuxStream
+    AuxStream -->|필터링/성능강화 된 데이터| Program
+    
+    style Origin fill:#f9f9f9,stroke:#333
+    style MainStream fill:#dae8fc,stroke:#6c8ebf
+    style AuxStream fill:#d5e8d4,stroke:#82b366,stroke-width:2px
+    style Program fill:#e1d5e7,stroke:#9673a6
+```
+
 자주 사용되는 보조 스트림은 다음과 같다.
 
 | 보조 스트림                                                                         | 기능                                 |

@@ -5,26 +5,26 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- 기본 메타데이터 --><meta name="description" content="Jiny linux"><meta name="author" content="HojinLee"><!-- 제목 설정 --><title>19.5 서버의 동시 요청 처리</title>
-  <meta name="title" content="19.5 서버의 동시 요청 처리" /><!-- 키워드 설정 --><!-- Open Graph 메타데이터 --><meta property="og:title" content="19.5 서버의 동시 요청 처리"><meta property="og:description" content="Jiny linux"><meta property="og:type" content="website"><meta property="og:locale" content="ko">
+  <!-- 기본 메타데이터 --><meta name="description" content="Jiny linux"><meta name="author" content="HojinLee"><!-- 제목 설정 --><title>19.6 JSON 데이터 형식</title>
+  <meta name="title" content="19.6 JSON 데이터 형식" /><!-- 키워드 설정 --><!-- Open Graph 메타데이터 --><meta property="og:title" content="19.6 JSON 데이터 형식"><meta property="og:description" content="Jiny linux"><meta property="og:type" content="website"><meta property="og:locale" content="ko">
   <meta property="og:site_name" content="linux">
-  <meta property="og:url" content="http://localhost:4000/network/tcp/server/">
+  <meta property="og:url" content="https://java.jiny.dev/part03/tcp/json/">
 
-  <!-- Twitter 카드 메타데이터 --><meta name="twitter:card" content="summary"><meta property="twitter:title" content="19.5 서버의 동시 요청 처리"><!-- Begin Jekyll SEO tag v2.8.0 -->
+  <!-- Twitter 카드 메타데이터 --><meta name="twitter:card" content="summary"><meta property="twitter:title" content="19.6 JSON 데이터 형식"><!-- Begin Jekyll SEO tag v2.8.0 -->
 <meta name="generator" content="Jekyll v4.4.1" />
-<meta property="og:title" content="19.5 서버의 동시 요청 처리" />
+<meta property="og:title" content="19.6 JSON 데이터 형식" />
 <meta name="author" content="Hojin" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
 <meta property="og:description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
-<link rel="canonical" href="http://localhost:4000/network/tcp/server/" />
-<meta property="og:url" content="http://localhost:4000/network/tcp/server/" />
+<link rel="canonical" href="https://java.jiny.dev/part03/tcp/json/" />
+<meta property="og:url" content="https://java.jiny.dev/part03/tcp/json/" />
 <meta property="og:site_name" content="객체지향 자바 프로그래밍 (Object-Oriented Java Programming)" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="19.5 서버의 동시 요청 처리" />
+<meta property="twitter:title" content="19.6 JSON 데이터 형식" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"19.5 서버의 동시 요청 처리","url":"http://localhost:4000/network/tcp/server/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"19.6 JSON 데이터 형식","url":"https://java.jiny.dev/part03/tcp/json/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -257,10 +257,6 @@
             </li>
             
             <li class="nav-item">
-              <a class="nav-link py-2 px-0 px-lg-2" href="/network">네트워크</a>
-            </li>
-            
-            <li class="nav-item">
               <a class="nav-link py-2 px-0 px-lg-2" href="/gui">GUI</a>
             </li>
             
@@ -341,7 +337,7 @@
             class="bd-links-link bd-links-btn btn d-inline-flex align-items-center rounded border-0 collapsed w-100"
             data-bs-toggle="collapse" data-bs-target="#collapse-1"
             aria-expanded="false">
-            19. 네트워크 입출력
+            14. 멀티 스레드
             <svg class="bi ms-auto" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
               xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd"
@@ -352,63 +348,84 @@
             <ul class="list-unstyled fw-normal pb-1 small ms-3">
               
               <li>
-                <a href="/network/tcp"
+                <a href="/part03/thread"
                   class="bd-links-link d-inline-block rounded ">
                   학습목표
                 </a>
               </li>
               
               <li>
-                <a href="/network/tcp/basic"
+                <a href="/part03/thread/concept"
                   class="bd-links-link d-inline-block rounded ">
-                  19.1 네트워크 기초
+                  14.1 멀티 스레드 개념
                 </a>
               </li>
               
               <li>
-                <a href="/network/tcp/ip"
+                <a href="/part03/thread/main-thread"
                   class="bd-links-link d-inline-block rounded ">
-                  19.2 IP 주소 얻기
+                  14.2 메인 스레드
                 </a>
               </li>
               
               <li>
-                <a href="/network/tcp/tcp"
+                <a href="/part03/thread/worker-thread"
                   class="bd-links-link d-inline-block rounded ">
-                  19.3 TCP 네트워킹
+                  14.3 작업 스레드 생성과 실행
                 </a>
               </li>
               
               <li>
-                <a href="/network/tcp/udp"
+                <a href="/part03/thread/thread-name"
                   class="bd-links-link d-inline-block rounded ">
-                  19.4 UDP 네트워킹
+                  14.4 스레드 이름
                 </a>
               </li>
               
               <li>
-                <a href="/network/tcp/server"
+                <a href="/part03/thread/thread-state"
                   class="bd-links-link d-inline-block rounded ">
-                  19.5 서버의 동시 요청 처리
+                  14.5 스레드 상태
                 </a>
               </li>
               
               <li>
-                <a href="/network/tcp/json"
+                <a href="/part03/thread/synchronization"
                   class="bd-links-link d-inline-block rounded ">
-                  19.6 JSON 데이터 형식
+                  14.6 스레드 동기화
                 </a>
               </li>
               
               <li>
-                <a href="/network/tcp/chat"
+                <a href="/part03/thread/safe-stop"
                   class="bd-links-link d-inline-block rounded ">
-                  19.7 TCP 채팅 프로그램
+                  14.7 스레드 안전 종료
                 </a>
               </li>
               
               <li>
-                <a href="/network/tcp/quiz"
+                <a href="/part03/thread/daemon"
+                  class="bd-links-link d-inline-block rounded ">
+                  14.8 데몬 스레드
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/thread/thread-pool"
+                  class="bd-links-link d-inline-block rounded ">
+                  14.9 스레드풀
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/thread/virtual-thread"
+                  class="bd-links-link d-inline-block rounded ">
+                  14.10 가상 스레드
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/thread/quiz"
                   class="bd-links-link d-inline-block rounded ">
                   확인문제
                 </a>
@@ -427,7 +444,7 @@
             class="bd-links-link bd-links-btn btn d-inline-flex align-items-center rounded border-0 collapsed w-100"
             data-bs-toggle="collapse" data-bs-target="#collapse-2"
             aria-expanded="false">
-            25. NIO
+            17. 데이터 입출력
             <svg class="bi ms-auto" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
               xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd"
@@ -438,7 +455,342 @@
             <ul class="list-unstyled fw-normal pb-1 small ms-3">
               
               <li>
-                <a href="/network/nio"
+                <a href="/part03/io"
+                  class="bd-links-link d-inline-block rounded ">
+                  학습목표
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/io/intro"
+                  class="bd-links-link d-inline-block rounded ">
+                  17.1 스트림이란?
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/io/internal-iterator"
+                  class="bd-links-link d-inline-block rounded ">
+                  17.2 내부 반복자
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/io/intermediate-terminal"
+                  class="bd-links-link d-inline-block rounded ">
+                  17.3 중간 처리와 최종 처리
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/io/resource"
+                  class="bd-links-link d-inline-block rounded ">
+                  17.4 리소스로부터 스트림 얻기
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/io/filtering"
+                  class="bd-links-link d-inline-block rounded ">
+                  17.5 요소 걸러내기(필터링)
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/io/mapping"
+                  class="bd-links-link d-inline-block rounded ">
+                  17.6 요소 변환(매핑)
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/io/sorting"
+                  class="bd-links-link d-inline-block rounded ">
+                  17.7 요소 정렬
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/io/looping"
+                  class="bd-links-link d-inline-block rounded ">
+                  17.8 요소를 하나씩 처리(루핑)
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/io/matching"
+                  class="bd-links-link d-inline-block rounded ">
+                  17.9 요소 조건 만족 여부(매칭)
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/io/basic-aggregate"
+                  class="bd-links-link d-inline-block rounded ">
+                  17.10 요소 기본 집계
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/io/custom-aggregate"
+                  class="bd-links-link d-inline-block rounded ">
+                  17.11 요소 커스텀 집계
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/io/collect"
+                  class="bd-links-link d-inline-block rounded ">
+                  17.12 요소 수집
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/io/parallel"
+                  class="bd-links-link d-inline-block rounded ">
+                  17.13 요소 병렬 처리
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/io/charset"
+                  class="bd-links-link d-inline-block rounded ">
+                  17.14 기본 문자셋 변경
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/io/quiz"
+                  class="bd-links-link d-inline-block rounded ">
+                  확인문제
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+          
+        </li>
+        
+        <li>
+          
+          
+          
+          <button
+            class="bd-links-link bd-links-btn btn d-inline-flex align-items-center rounded border-0 collapsed w-100"
+            data-bs-toggle="collapse" data-bs-target="#collapse-3"
+            aria-expanded="false">
+            18. 데이터 입출력
+            <svg class="bi ms-auto" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+            </svg>
+          </button>
+          <div class="collapse " id="collapse-3">
+            <ul class="list-unstyled fw-normal pb-1 small ms-3">
+              
+              <li>
+                <a href="/part03/stream"
+                  class="bd-links-link d-inline-block rounded ">
+                  학습목표
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/stream/intro"
+                  class="bd-links-link d-inline-block rounded ">
+                  18.1 입출력 스트림
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/stream/byte-output"
+                  class="bd-links-link d-inline-block rounded ">
+                  18.2 바이트 출력 스트림
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/stream/byte-input"
+                  class="bd-links-link d-inline-block rounded ">
+                  18.3 바이트 입력 스트림
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/stream/char-io"
+                  class="bd-links-link d-inline-block rounded ">
+                  18.4 문자 입출력 스트림
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/stream/buffer"
+                  class="bd-links-link d-inline-block rounded ">
+                  18.5 보조 스트림
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/stream/char-convert"
+                  class="bd-links-link d-inline-block rounded ">
+                  18.6 문자 변환 스트림
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/stream/performance"
+                  class="bd-links-link d-inline-block rounded ">
+                  18.7 성능 향상 스트림
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/stream/primitive"
+                  class="bd-links-link d-inline-block rounded ">
+                  18.8 기본 타입 스트림
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/stream/print"
+                  class="bd-links-link d-inline-block rounded ">
+                  18.9 프린트 스트림
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/stream/object"
+                  class="bd-links-link d-inline-block rounded ">
+                  18.10 객체 스트림
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/stream/file"
+                  class="bd-links-link d-inline-block rounded ">
+                  18.11 File과 Files 클래스
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/stream/quiz"
+                  class="bd-links-link d-inline-block rounded ">
+                  확인문제
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+          
+        </li>
+        
+        <li>
+          
+          
+          
+          <button
+            class="bd-links-link bd-links-btn btn d-inline-flex align-items-center rounded border-0 collapsed w-100"
+            data-bs-toggle="collapse" data-bs-target="#collapse-4"
+            aria-expanded="false">
+            19. 네트워크 입출력
+            <svg class="bi ms-auto" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+            </svg>
+          </button>
+          <div class="collapse " id="collapse-4">
+            <ul class="list-unstyled fw-normal pb-1 small ms-3">
+              
+              <li>
+                <a href="/part03/tcp"
+                  class="bd-links-link d-inline-block rounded ">
+                  학습목표
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/tcp/basic"
+                  class="bd-links-link d-inline-block rounded ">
+                  19.1 네트워크 기초
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/tcp/ip"
+                  class="bd-links-link d-inline-block rounded ">
+                  19.2 IP 주소 얻기
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/tcp/tcp"
+                  class="bd-links-link d-inline-block rounded ">
+                  19.3 TCP 네트워킹
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/tcp/udp"
+                  class="bd-links-link d-inline-block rounded ">
+                  19.4 UDP 네트워킹
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/tcp/server"
+                  class="bd-links-link d-inline-block rounded ">
+                  19.5 서버의 동시 요청 처리
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/tcp/json"
+                  class="bd-links-link d-inline-block rounded ">
+                  19.6 JSON 데이터 형식
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/tcp/chat"
+                  class="bd-links-link d-inline-block rounded ">
+                  19.7 TCP 채팅 프로그램
+                </a>
+              </li>
+              
+              <li>
+                <a href="/part03/tcp/quiz"
+                  class="bd-links-link d-inline-block rounded ">
+                  확인문제
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+          
+        </li>
+        
+        <li>
+          
+          
+          
+          <button
+            class="bd-links-link bd-links-btn btn d-inline-flex align-items-center rounded border-0 collapsed w-100"
+            data-bs-toggle="collapse" data-bs-target="#collapse-5"
+            aria-expanded="false">
+            25. NIO
+            <svg class="bi ms-auto" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+            </svg>
+          </button>
+          <div class="collapse " id="collapse-5">
+            <ul class="list-unstyled fw-normal pb-1 small ms-3">
+              
+              <li>
+                <a href="/part03/nio"
                   class="bd-links-link d-inline-block rounded ">
                   학습목표
                 </a>
@@ -470,7 +822,7 @@
         
         
         
-        <li class="breadcrumb-item"><a href="/network/">Network</a></li>
+        <li class="breadcrumb-item"><a href="/part03/">Part03</a></li>
         
         
         
@@ -480,206 +832,119 @@
         
         
         
-        <li class="breadcrumb-item"><a href="/network/tcp/">Tcp</a></li>
+        <li class="breadcrumb-item"><a href="/part03/tcp/">Tcp</a></li>
         
         
         
         
         
         
-        <li class="breadcrumb-item active" aria-current="page">19.5 서버의 동시 요청 처리</li>
+        <li class="breadcrumb-item active" aria-current="page">19.6 JSON 데이터 형식</li>
         
         
         
     </ol>
 </nav>
         <div class="bd-content ps-lg-2">
-            <h1 id="195-서버의-동시-요청-처리">19.5 서버의 동시 요청 처리</h1>
+            <h1 id="196-json-데이터-형식">19.6 JSON 데이터 형식</h1>
 
-<p>일반적으로 서버는 다수의 클라이언트와 통신을 한다. <code class="language-plaintext highlighter-rouge">accept()</code>와 <code class="language-plaintext highlighter-rouge">receive()</code>를 제외한 요청 처리 코드를 별도의 스레드에서 작업하는 것이 좋다. 스레드를 처리할 때 주의할 점은 클라이언트의 폭증으로 인한 서버의 과도한 스레드 생성을 방지해야 한다는 것이다. 그래서 <strong>스레드풀(ExecutorService)</strong>을 사용하는 것이 바람직하다.</p>
+<p>네트워크로 전달하는 데이터가 복잡할수록 구조화된 형식이 필요하다. <strong>JSON(JavaScript Object Notation)</strong>은 네트워크 통신에서 가장 많이 사용되는 데이터 형식이다.</p>
 
-<h2 id="tcp-echoserver-동시-요청-처리">TCP EchoServer 동시 요청 처리</h2>
+<p>JSON을 자바에서 처리하기 위해 <code class="language-plaintext highlighter-rouge">org.json</code> 라이브러리를 사용한다.</p>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch19.sec05.exam01</span><span class="o">;</span>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">JSONObject</code>: JSON 객체 표기를 생성하거나 파싱할 때 사용</li>
+  <li><code class="language-plaintext highlighter-rouge">JSONArray</code>: JSON 배열 표기를 생성하거나 파싱할 때 사용</li>
+</ul>
 
-<span class="kn">import</span> <span class="nn">java.io.DataInputStream</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.io.DataOutputStream</span><span class="o">;</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch19.sec06</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.FileWriter</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.net.InetSocketAddress</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.net.ServerSocket</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.net.Socket</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.util.concurrent.ExecutorService</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.util.concurrent.Executors</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.Writer</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.nio.charset.Charset</span><span class="o">;</span>
 
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">EchoServer</span> <span class="o">{</span>
-	<span class="kd">private</span> <span class="kd">static</span> <span class="nc">ServerSocket</span> <span class="n">serverSocket</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
-	<span class="kd">private</span> <span class="kd">static</span> <span class="nc">ExecutorService</span> <span class="n">executorService</span> <span class="o">=</span> <span class="nc">Executors</span><span class="o">.</span><span class="na">newFixedThreadPool</span><span class="o">(</span><span class="mi">10</span><span class="o">);</span> <span class="c1">// 10개의 스레드로 요청을 처리하는 스레드풀 생성</span>
+<span class="kn">import</span> <span class="nn">org.json.JSONArray</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.json.JSONObject</span><span class="o">;</span>
 
-	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"--------------------------------------------------------------------"</span><span class="o">);</span>
-		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"서버를 종료하려면 q를 입력하고 Enter 키를 입력하세요."</span><span class="o">);</span>
-		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"--------------------------------------------------------------------"</span><span class="o">);</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CreateJsonExample</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
+		<span class="c1">// JSON 객체 생성</span>
+		<span class="nc">JSONObject</span> <span class="n">root</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JSONObject</span><span class="o">();</span>
 
-		<span class="c1">// TCP 서버 시작</span>
-		<span class="n">startServer</span><span class="o">();</span>
+		<span class="c1">// 속성 추가</span>
+		<span class="n">root</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"id"</span><span class="o">,</span> <span class="s">"winter"</span><span class="o">);</span>
+		<span class="n">root</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"name"</span><span class="o">,</span> <span class="s">"한겨울"</span><span class="o">);</span>
+		<span class="n">root</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"age"</span><span class="o">,</span> <span class="mi">25</span><span class="o">);</span>
+		<span class="n">root</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"student"</span><span class="o">,</span> <span class="kc">true</span><span class="o">);</span>
 
-		<span class="c1">// 키보드 입력</span>
-		<span class="nc">Scanner</span> <span class="n">scanner</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
-		<span class="k">while</span> <span class="o">(</span><span class="kc">true</span><span class="o">)</span> <span class="o">{</span>
-			<span class="nc">String</span> <span class="n">key</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextLine</span><span class="o">();</span>
-			<span class="k">if</span> <span class="o">(</span><span class="n">key</span><span class="o">.</span><span class="na">toLowerCase</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="s">"q"</span><span class="o">))</span> <span class="o">{</span>
-				<span class="k">break</span><span class="o">;</span>
-			<span class="o">}</span>
-		<span class="o">}</span>
-		<span class="n">scanner</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+		<span class="c1">// 객체 속성 추가</span>
+		<span class="nc">JSONObject</span> <span class="n">tel</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JSONObject</span><span class="o">();</span>
+		<span class="n">tel</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"home"</span><span class="o">,</span> <span class="s">"02-123-1234"</span><span class="o">);</span>
+		<span class="n">tel</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"mobile"</span><span class="o">,</span> <span class="s">"010-123-1234"</span><span class="o">);</span>
+		<span class="n">root</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"tel"</span><span class="o">,</span> <span class="n">tel</span><span class="o">);</span>
 
-		<span class="c1">// TCP 서버 종료</span>
-		<span class="n">stopServer</span><span class="o">();</span>
-	<span class="o">}</span>
+		<span class="c1">// 배열 속성 추가</span>
+		<span class="nc">JSONArray</span> <span class="n">skill</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JSONArray</span><span class="o">();</span>
+		<span class="n">skill</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"java"</span><span class="o">);</span>
+		<span class="n">skill</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"c"</span><span class="o">);</span>
+		<span class="n">skill</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"c++"</span><span class="o">);</span>
+		<span class="n">root</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"skill"</span><span class="o">,</span> <span class="n">skill</span><span class="o">);</span>
 
-	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">startServer</span><span class="o">()</span> <span class="o">{</span>
-		<span class="c1">// 작업 스레드 정의</span>
-		<span class="nc">Thread</span> <span class="n">thread</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Thread</span><span class="o">()</span> <span class="o">{</span>
-			<span class="nd">@Override</span>
-			<span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
-				<span class="k">try</span> <span class="o">{</span>
-					<span class="c1">// ServerSocket 생성 및 Port 바인딩</span>
-					<span class="n">serverSocket</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ServerSocket</span><span class="o">(</span><span class="mi">50001</span><span class="o">);</span>
-					<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"[서버] 시작됨\n"</span><span class="o">);</span>
+		<span class="c1">// JSON 얻기</span>
+		<span class="nc">String</span> <span class="n">json</span> <span class="o">=</span> <span class="n">root</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span>
 
-					<span class="c1">// 연결 수락 및 데이터 통신</span>
-					<span class="k">while</span> <span class="o">(</span><span class="kc">true</span><span class="o">)</span> <span class="o">{</span>
-						<span class="c1">// 연결 수락</span>
-						<span class="nc">Socket</span> <span class="n">socket</span> <span class="o">=</span> <span class="n">serverSocket</span><span class="o">.</span><span class="na">accept</span><span class="o">();</span>
+		<span class="c1">// 콘솔에 출력</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">json</span><span class="o">);</span>
 
-						<span class="n">executorService</span><span class="o">.</span><span class="na">execute</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="o">{</span>
-							<span class="k">try</span> <span class="o">{</span>
-								<span class="c1">// 연결된 클라이언트 정보 얻기</span>
-								<span class="nc">InetSocketAddress</span> <span class="n">isa</span> <span class="o">=</span> <span class="o">(</span><span class="nc">InetSocketAddress</span><span class="o">)</span> <span class="n">socket</span><span class="o">.</span><span class="na">getRemoteSocketAddress</span><span class="o">();</span>
-								<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"[서버] "</span> <span class="o">+</span> <span class="n">isa</span><span class="o">.</span><span class="na">getHostName</span><span class="o">()</span> <span class="o">+</span> <span class="s">"의 연결 요청을 수락함"</span><span class="o">);</span>
-
-								<span class="c1">// 데이터 받기</span>
-								<span class="nc">DataInputStream</span> <span class="n">dis</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">DataInputStream</span><span class="o">(</span><span class="n">socket</span><span class="o">.</span><span class="na">getInputStream</span><span class="o">());</span>
-								<span class="nc">String</span> <span class="n">message</span> <span class="o">=</span> <span class="n">dis</span><span class="o">.</span><span class="na">readUTF</span><span class="o">();</span>
-
-								<span class="c1">// 데이터 보내기</span>
-								<span class="nc">DataOutputStream</span> <span class="n">dos</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">DataOutputStream</span><span class="o">(</span><span class="n">socket</span><span class="o">.</span><span class="na">getOutputStream</span><span class="o">());</span>
-								<span class="n">dos</span><span class="o">.</span><span class="na">writeUTF</span><span class="o">(</span><span class="n">message</span><span class="o">);</span>
-								<span class="n">dos</span><span class="o">.</span><span class="na">flush</span><span class="o">();</span>
-								<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"[서버] 받은 데이터를 다시 보냄: "</span> <span class="o">+</span> <span class="n">message</span><span class="o">);</span>
-
-								<span class="c1">// 연결 끊기</span>
-								<span class="n">socket</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-								<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"[서버] "</span> <span class="o">+</span> <span class="n">isa</span><span class="o">.</span><span class="na">getHostName</span><span class="o">()</span> <span class="o">+</span> <span class="s">"의 연결을 끊음\n"</span><span class="o">);</span>
-							<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-							<span class="o">}</span>
-						<span class="o">});</span>
-					<span class="o">}</span>
-				<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-					<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"[서버] "</span> <span class="o">+</span> <span class="n">e</span><span class="o">.</span><span class="na">getMessage</span><span class="o">());</span>
-				<span class="o">}</span>
-			<span class="o">}</span>
-		<span class="o">};</span>
-		<span class="c1">// 스레드 시작</span>
-		<span class="n">thread</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
-	<span class="o">}</span>
-
-	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">stopServer</span><span class="o">()</span> <span class="o">{</span>
-		<span class="k">try</span> <span class="o">{</span>
-			<span class="c1">// ServerSocket을 닫고 Port 언바인딩</span>
-			<span class="n">serverSocket</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-			<span class="n">executorService</span><span class="o">.</span><span class="na">shutdownNow</span><span class="o">();</span> <span class="c1">// 스레드풀 종료</span>
-			<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"[서버] 종료됨"</span><span class="o">);</span>
-		<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">IOException</span> <span class="n">e1</span><span class="o">)</span> <span class="o">{}</span>
+		<span class="c1">// 파일로 저장</span>
+		<span class="nc">Writer</span> <span class="n">writer</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">FileWriter</span><span class="o">(</span><span class="s">"C:/Temp/member.json"</span><span class="o">,</span> <span class="nc">Charset</span><span class="o">.</span><span class="na">forName</span><span class="o">(</span><span class="s">"UTF-8"</span><span class="o">));</span>
+		<span class="n">writer</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">json</span><span class="o">);</span>
+		<span class="n">writer</span><span class="o">.</span><span class="na">flush</span><span class="o">();</span>
+		<span class="n">writer</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
 	<span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div></div>
 
-<h2 id="udp-newsserver-동시-요청-처리">UDP NewsServer 동시 요청 처리</h2>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch19.sec06</span><span class="o">;</span>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch19.sec05.exam02</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.BufferedReader</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.FileReader</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.nio.charset.Charset</span><span class="o">;</span>
 
-<span class="kn">import</span> <span class="nn">java.net.DatagramPacket</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.net.DatagramSocket</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.net.SocketAddress</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.util.concurrent.ExecutorService</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.util.concurrent.Executors</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.json.JSONArray</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.json.JSONObject</span><span class="o">;</span>
 
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">NewsServer</span> <span class="o">{</span>
-	<span class="kd">private</span> <span class="kd">static</span> <span class="nc">DatagramSocket</span> <span class="n">datagramSocket</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
-	<span class="kd">private</span> <span class="kd">static</span> <span class="nc">ExecutorService</span> <span class="n">executorService</span> <span class="o">=</span> <span class="nc">Executors</span><span class="o">.</span><span class="na">newFixedThreadPool</span><span class="o">(</span><span class="mi">10</span><span class="o">);</span> <span class="c1">// 10개의 스레드로 요청을 처리하는 스레드풀 생성</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ParseJsonExample</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
+		<span class="c1">// 파일로부터 JSON 읽기</span>
+		<span class="nc">BufferedReader</span> <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span>
+			<span class="k">new</span> <span class="nf">FileReader</span><span class="o">(</span><span class="s">"C:/Temp/member.json"</span><span class="o">,</span> <span class="nc">Charset</span><span class="o">.</span><span class="na">forName</span><span class="o">(</span><span class="s">"UTF-8"</span><span class="o">))</span>
+		<span class="o">);</span>
+		<span class="nc">String</span> <span class="n">json</span> <span class="o">=</span> <span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">();</span>
+		<span class="n">br</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
 
-	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
-		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"--------------------------------------------------------------------"</span><span class="o">);</span>
-		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"서버를 종료하려면 q를 입력하고 Enter 키를 입력하세요."</span><span class="o">);</span>
-		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"--------------------------------------------------------------------"</span><span class="o">);</span>
+		<span class="c1">// JSON 파싱</span>
+		<span class="nc">JSONObject</span> <span class="n">root</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JSONObject</span><span class="o">(</span><span class="n">json</span><span class="o">);</span>
 
-		<span class="c1">// UDP 서버 시작</span>
-		<span class="n">startServer</span><span class="o">();</span>
+		<span class="c1">// 속성 정보 읽기</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"id: "</span> <span class="o">+</span> <span class="n">root</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"id"</span><span class="o">));</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"name: "</span> <span class="o">+</span> <span class="n">root</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"name"</span><span class="o">));</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"age: "</span> <span class="o">+</span> <span class="n">root</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="s">"age"</span><span class="o">));</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"student: "</span> <span class="o">+</span> <span class="n">root</span><span class="o">.</span><span class="na">getBoolean</span><span class="o">(</span><span class="s">"student"</span><span class="o">));</span>
 
-		<span class="c1">// 키보드 입력</span>
-		<span class="nc">Scanner</span> <span class="n">scanner</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
-		<span class="k">while</span> <span class="o">(</span><span class="kc">true</span><span class="o">)</span> <span class="o">{</span>
-			<span class="nc">String</span> <span class="n">key</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextLine</span><span class="o">();</span>
-			<span class="k">if</span> <span class="o">(</span><span class="n">key</span><span class="o">.</span><span class="na">toLowerCase</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="s">"q"</span><span class="o">))</span> <span class="o">{</span>
-				<span class="k">break</span><span class="o">;</span>
-			<span class="o">}</span>
+		<span class="c1">// 객체 속성 정보 읽기</span>
+		<span class="nc">JSONObject</span> <span class="n">tel</span> <span class="o">=</span> <span class="n">root</span><span class="o">.</span><span class="na">getJSONObject</span><span class="o">(</span><span class="s">"tel"</span><span class="o">);</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"home: "</span> <span class="o">+</span> <span class="n">tel</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"home"</span><span class="o">));</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"mobile: "</span> <span class="o">+</span> <span class="n">tel</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"mobile"</span><span class="o">));</span>
+
+		<span class="c1">// 배열 속성 정보 읽기</span>
+		<span class="nc">JSONArray</span> <span class="n">skill</span> <span class="o">=</span> <span class="n">root</span><span class="o">.</span><span class="na">getJSONArray</span><span class="o">(</span><span class="s">"skill"</span><span class="o">);</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"skill: "</span><span class="o">);</span>
+		<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">skill</span><span class="o">.</span><span class="na">length</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+			<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">skill</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">)</span> <span class="o">+</span> <span class="s">", "</span><span class="o">);</span>
 		<span class="o">}</span>
-		<span class="n">scanner</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-
-		<span class="c1">// UDP 서버 종료</span>
-		<span class="n">stopServer</span><span class="o">();</span>
-	<span class="o">}</span>
-
-	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">startServer</span><span class="o">()</span> <span class="o">{</span>
-		<span class="c1">// 작업 스레드 정의</span>
-		<span class="nc">Thread</span> <span class="n">thread</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Thread</span><span class="o">()</span> <span class="o">{</span>
-			<span class="nd">@Override</span>
-			<span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
-				<span class="k">try</span> <span class="o">{</span>
-					<span class="c1">// DatagramSocket 생성 및 Port 바인딩</span>
-					<span class="n">datagramSocket</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">DatagramSocket</span><span class="o">(</span><span class="mi">50001</span><span class="o">);</span>
-					<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"[서버] 시작됨"</span><span class="o">);</span>
-
-					<span class="k">while</span> <span class="o">(</span><span class="kc">true</span><span class="o">)</span> <span class="o">{</span>
-						<span class="c1">// 클라이언트가 구독하고 싶은 뉴스 주제 얻기</span>
-						<span class="nc">DatagramPacket</span> <span class="n">receivePacket</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">DatagramPacket</span><span class="o">(</span><span class="k">new</span> <span class="kt">byte</span><span class="o">[</span><span class="mi">1024</span><span class="o">],</span> <span class="mi">1024</span><span class="o">);</span>
-						<span class="n">datagramSocket</span><span class="o">.</span><span class="na">receive</span><span class="o">(</span><span class="n">receivePacket</span><span class="o">);</span>
-
-						<span class="n">executorService</span><span class="o">.</span><span class="na">execute</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="o">{</span>
-							<span class="k">try</span> <span class="o">{</span>
-								<span class="nc">String</span> <span class="n">newsKind</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">(</span><span class="n">receivePacket</span><span class="o">.</span><span class="na">getData</span><span class="o">(),</span> <span class="mi">0</span><span class="o">,</span> <span class="n">receivePacket</span><span class="o">.</span><span class="na">getLength</span><span class="o">(),</span> <span class="s">"UTF-8"</span><span class="o">);</span>
-
-								<span class="c1">// 클라이언트의 IP와 Port 얻기</span>
-								<span class="nc">SocketAddress</span> <span class="n">socketAddress</span> <span class="o">=</span> <span class="n">receivePacket</span><span class="o">.</span><span class="na">getSocketAddress</span><span class="o">();</span>
-
-								<span class="c1">// 10개의 뉴스를 클라이언트로 전송</span>
-								<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="mi">10</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-									<span class="nc">String</span> <span class="n">data</span> <span class="o">=</span> <span class="n">newsKind</span> <span class="o">+</span> <span class="s">": 뉴스"</span> <span class="o">+</span> <span class="n">i</span><span class="o">;</span>
-									<span class="kt">byte</span><span class="o">[]</span> <span class="n">bytes</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="na">getBytes</span><span class="o">(</span><span class="s">"UTF-8"</span><span class="o">);</span>
-									<span class="nc">DatagramPacket</span> <span class="n">sendPacket</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">DatagramPacket</span><span class="o">(</span><span class="n">bytes</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">bytes</span><span class="o">.</span><span class="na">length</span><span class="o">,</span> <span class="n">socketAddress</span><span class="o">);</span>
-									<span class="n">datagramSocket</span><span class="o">.</span><span class="na">send</span><span class="o">(</span><span class="n">sendPacket</span><span class="o">);</span>
-								<span class="o">}</span>
-							<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-							<span class="o">}</span>
-						<span class="o">});</span>
-					<span class="o">}</span>
-				<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-					<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"[서버] "</span> <span class="o">+</span> <span class="n">e</span><span class="o">.</span><span class="na">getMessage</span><span class="o">());</span>
-				<span class="o">}</span>
-			<span class="o">}</span>
-		<span class="o">};</span>
-		<span class="c1">// 스레드 시작</span>
-		<span class="n">thread</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
-	<span class="o">}</span>
-
-	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">stopServer</span><span class="o">()</span> <span class="o">{</span>
-		<span class="c1">// DatagramSocket을 닫고 Port 언바인딩</span>
-		<span class="n">datagramSocket</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-		<span class="n">executorService</span><span class="o">.</span><span class="na">shutdownNow</span><span class="o">();</span> <span class="c1">// 스레드풀 종료</span>
-		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"[서버] 종료됨"</span><span class="o">);</span>
 	<span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div></div>

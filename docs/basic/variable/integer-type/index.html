@@ -8,7 +8,7 @@
   <!-- 기본 메타데이터 --><meta name="description" content="Jiny linux"><meta name="author" content="HojinLee"><!-- 제목 설정 --><title>4.2 정수 타입</title>
   <meta name="title" content="4.2 정수 타입" /><!-- 키워드 설정 --><!-- Open Graph 메타데이터 --><meta property="og:title" content="4.2 정수 타입"><meta property="og:description" content="Jiny linux"><meta property="og:type" content="website"><meta property="og:locale" content="ko">
   <meta property="og:site_name" content="linux">
-  <meta property="og:url" content="http://localhost:4000/basic/variable/integer-type/">
+  <meta property="og:url" content="https://java.jiny.dev/basic/variable/integer-type/">
 
   <!-- Twitter 카드 메타데이터 --><meta name="twitter:card" content="summary"><meta property="twitter:title" content="4.2 정수 타입"><!-- Begin Jekyll SEO tag v2.8.0 -->
 <meta name="generator" content="Jekyll v4.4.1" />
@@ -17,14 +17,14 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
 <meta property="og:description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
-<link rel="canonical" href="http://localhost:4000/basic/variable/integer-type/" />
-<meta property="og:url" content="http://localhost:4000/basic/variable/integer-type/" />
+<link rel="canonical" href="https://java.jiny.dev/basic/variable/integer-type/" />
+<meta property="og:url" content="https://java.jiny.dev/basic/variable/integer-type/" />
 <meta property="og:site_name" content="객체지향 자바 프로그래밍 (Object-Oriented Java Programming)" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="4.2 정수 타입" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"4.2 정수 타입","url":"http://localhost:4000/basic/variable/integer-type/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"4.2 정수 타입","url":"https://java.jiny.dev/basic/variable/integer-type/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -254,10 +254,6 @@
             
             <li class="nav-item">
               <a class="nav-link py-2 px-0 px-lg-2" href="/database">데이터베이스</a>
-            </li>
-            
-            <li class="nav-item">
-              <a class="nav-link py-2 px-0 px-lg-2" href="/network">네트워크</a>
             </li>
             
             <li class="nav-item">
@@ -1141,17 +1137,20 @@
   </tbody>
 </table>
 
-<h3 id="2-크기-시각화">2) 크기 시각화</h3>
+<h3 id="2-크기-시각화-상자-크기-비교">2) 크기 시각화 (상자 크기 비교)</h3>
 
-<pre><code class="language-mermaid">graph TD
-    Byte[byte (1칸)] --- Short[short (2칸)]
-    Short --- Int[int (4칸)]
-    Int --- Long[long (8칸)]
+<pre><code class="language-mermaid">graph LR
+    subgraph Integer_Types [정수 타입 크기 비교]
+        direction LR
+        Byte[byte\n1 byte\n🍶] --- Short[short\n2 bytes\n☕️]
+        Short --- Int[int\n4 bytes\n기본형 🪣]
+        Int --- Long[long\n8 bytes\n🚛]
+    end
     
-    style Byte fill:#fff,stroke:#333
-    style Short fill:#cef,stroke:#333
-    style Int fill:#9cf,stroke:#333
-    style Long fill:#69f,stroke:#333
+    style Byte fill:#fff,stroke:#333,stroke-width:2px
+    style Short fill:#cef,stroke:#333,stroke-width:2px
+    style Int fill:#9cf,stroke:#333,stroke-width:3px
+    style Long fill:#69f,stroke:#333,stroke-width:2px
 </code></pre>
 
 <hr />

@@ -16,6 +16,28 @@ grand_parent: "라이브러리 활용"
 
 실행 상태에서 일시 정지 상태로 가기도 하는데, 일시 정지 상태는 스레드가 실행할 수 없는 상태를 말한다. 스레드가 다시 실행 상태로 가기 위해서는 일시 정지 상태에서 실행 대기 상태로 가야만 한다.
 
+### 스레드 상태 변화 (생명 주기) 시각화
+
+```mermaid
+stateDiagram-v2
+    direction LR
+    [*] --> NEW : 객체 생성 (new)
+    
+    NEW --> RUNNABLE : start() 호출
+    
+    RUNNABLE --> RUNNING : CPU 점유 (스케줄링)
+    RUNNING --> RUNNABLE : 양보 (yield) 또는 시간 초과
+    
+    RUNNING --> PAUSED : sleep(), join(), wait()
+    PAUSED --> RUNNABLE : 시간 종료, notify(), interrupt()
+    
+    RUNNING --> TERMINATED : run() 종료
+    TERMINATED --> [*]
+    
+    note right of PAUSED : 일시 정지 상태\n(WAITING, BLOCKED)
+    note right of RUNNABLE : 실행 대기 상태
+```
+
 ## 주어진 시간 동안 일시 정지
 
 실행 중인 스레드를 일정 시간 멈추게 하고 싶다면 Thread 클래스의 정적 메소드인 sleep()을 이용하면 된다. 매개값에는 얼마 동안 일시 정지 상태로 있을 것인지 밀리세컨드(1/1000) 단위로 시간을 주면 된다.

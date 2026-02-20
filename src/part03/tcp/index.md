@@ -1,9 +1,9 @@
 ---
-layout: network
+layout: part03
 title: "Chapter 19. 네트워크 입출력"
 nav_order: 19
 has_children: true
-parent: "데이터 입출력"
+parent: "라이브러리 활용"
 ---
 
 # Chapter 19. 네트워크 입출력

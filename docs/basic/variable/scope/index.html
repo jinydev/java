@@ -8,7 +8,7 @@
   <!-- 기본 메타데이터 --><meta name="description" content="Jiny linux"><meta name="author" content="HojinLee"><!-- 제목 설정 --><title>4.9 변수 사용 범위</title>
   <meta name="title" content="4.9 변수 사용 범위" /><!-- 키워드 설정 --><!-- Open Graph 메타데이터 --><meta property="og:title" content="4.9 변수 사용 범위"><meta property="og:description" content="Jiny linux"><meta property="og:type" content="website"><meta property="og:locale" content="ko">
   <meta property="og:site_name" content="linux">
-  <meta property="og:url" content="http://localhost:4000/basic/variable/scope/">
+  <meta property="og:url" content="https://java.jiny.dev/basic/variable/scope/">
 
   <!-- Twitter 카드 메타데이터 --><meta name="twitter:card" content="summary"><meta property="twitter:title" content="4.9 변수 사용 범위"><!-- Begin Jekyll SEO tag v2.8.0 -->
 <meta name="generator" content="Jekyll v4.4.1" />
@@ -17,14 +17,14 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
 <meta property="og:description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
-<link rel="canonical" href="http://localhost:4000/basic/variable/scope/" />
-<meta property="og:url" content="http://localhost:4000/basic/variable/scope/" />
+<link rel="canonical" href="https://java.jiny.dev/basic/variable/scope/" />
+<meta property="og:url" content="https://java.jiny.dev/basic/variable/scope/" />
 <meta property="og:site_name" content="객체지향 자바 프로그래밍 (Object-Oriented Java Programming)" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="4.9 변수 사용 범위" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"4.9 변수 사용 범위","url":"http://localhost:4000/basic/variable/scope/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"4.9 변수 사용 범위","url":"https://java.jiny.dev/basic/variable/scope/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -254,10 +254,6 @@
             
             <li class="nav-item">
               <a class="nav-link py-2 px-0 px-lg-2" href="/database">데이터베이스</a>
-            </li>
-            
-            <li class="nav-item">
-              <a class="nav-link py-2 px-0 px-lg-2" href="/network">네트워크</a>
             </li>
             
             <li class="nav-item">
@@ -1108,22 +1104,29 @@
 
 <h3 id="3-범위-시각화">3) 범위 시각화</h3>
 
+<h3 id="3-범위-시각화-1">3) 범위 시각화</h3>
+
 <pre><code class="language-mermaid">graph TD
-    subgraph MainBlock [Main 메소드 블록]
-        v1[변수 v1]
+    subgraph Main [상위 블록: main 메소드]
+        v1((v1 변수))
         
-        subgraph IfBlock [If문 블록]
-            v2[변수 v2]
-            Access1[v1 사용 가능? O]
+        subgraph Sub [하위 블록: if 문]
+            v2((v2 변수))
+            Access1[v1 보임 👀]
         end
         
-        Access2[v2 사용 가능? X]
+        Access2[v2 안 보임 🙈]
     end
     
-    style MainBlock fill:#eef,stroke:#333
-    style IfBlock fill:#ddf,stroke:#333
+    v1 -.-&gt; Access1
+    v2 -.-&gt; Access2
+    
+    style Main fill:#eef,stroke:#333,stroke-width:2px,stroke-dasharray: 5 5
+    style Sub fill:#ddf,stroke:#333,stroke-width:2px
+    style v1 fill:#fff,stroke:#333
+    style v2 fill:#fff,stroke:#333
     style Access1 fill:#bfb,stroke:#333
-    style Access2 fill:#fbb,stroke:#333
+    style Access2 fill:#f99,stroke:#333
 </code></pre>
 
 <hr />

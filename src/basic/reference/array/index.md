@@ -29,6 +29,27 @@ scores[0] = 90; // 첫 번째 칸 (0번부터 시작!)
 scores[1] = 80;
 ```
 
+```mermaid
+flowchart LR
+    subgraph Stack [스택 영역]
+        Ref[scores]
+    end
+    
+    subgraph Heap [힙 영역]
+        direction LR
+        Arr0[0번 칸\n90] -.- Arr1[1번 칸\n80] -.- Arr2[... 29번 칸]
+    end
+    
+    Ref -->|배열의 시작 주소를 가리킴| Arr0
+    
+    style Stack fill:#eef,stroke:#333
+    style Heap fill:#efe,stroke:#333
+    style Ref fill:#ff9,stroke:#333
+    style Arr0 fill:#bfb,stroke:#333,stroke-width:2px
+    style Arr1 fill:#bfb,stroke:#333,stroke-width:2px
+    style Arr2 fill:#eee,stroke:#333
+```
+
 ## 3. 한 방에 만들기
 
 ```java

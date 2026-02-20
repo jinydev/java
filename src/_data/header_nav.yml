@@ -6,8 +6,7 @@
   url: /part03
 - title: 데이터베이스
   url: /database
-- title: 네트워크
-  url: /network
+
 - title: GUI
   url: /gui
 - title: 백엔드
