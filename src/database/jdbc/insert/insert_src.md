@@ -1,0 +1,88 @@
+---
+layout: part04
+title: "20.6 데이터 저장"
+nav_order: 6
+parent: "Chapter 20. 데이터베이스 입출력"
+grand_parent: "데이터 입출력"
+---
+
+# 20.6 데이터 저장
+
+데이터 저장은 `INSERT` 문을 사용한다. 매개변수화된 SQL 문을 작성하고 `PreparedStatement`를 이용하여 실행한다.
+
+```java
+String sql = "INSERT INTO users (userid, username, userpassword, userage, useremail) VALUES (?, ?, ?, ?, ?)";
+PreparedStatement pstmt = conn.prepareStatement(sql);
+pstmt.setString(1, "winter");
+// ... 값 설정 ...
+int rows = pstmt.executeUpdate();
+```
+
+게시물 저장 시 `SEQ_BNO.NEXTVAL`로 생성된 키 값을 알아내려면 `prepareStatement`의 두 번째 매개값으로 컬럼명을 배열로 전달하고, `executeUpdate()` 후 `getGeneratedKeys()`를 사용한다.
+
+```java
+package ch20.oracle.sec06;
+
+import java.io.FileInputStream;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class BoardWithFileInsertExample {
+	public static void main(String[] args) {
+		Connection conn = null;
+		try {
+			// JDBC Driver 등록
+			Class.forName("oracle.jdbc.OracleDriver");
+
+			// 연결하기
+			conn = DriverManager.getConnection(
+				"jdbc:oracle:thin:@localhost:1521/orcl",
+				"java",
+				"oracle"
+			);
+
+			// 매개변수화된 SQL 문 작성
+			String sql = "" +
+				"INSERT INTO boards (bno, btitle, bcontent, bwriter, bdate, bfilename, bfiledata) " +
+				"VALUES (SEQ_BNO.NEXTVAL, ?, ?, ?, SYSDATE, ?, ?)";
+
+			// PreparedStatement 얻기 및 값 지정
+			PreparedStatement pstmt = conn.prepareStatement(sql, new String[] {"bno"});
+			pstmt.setString(1, "눈 오는 날");
+			pstmt.setString(2, "함박눈이 내려요.");
+			pstmt.setString(3, "winter");
+			pstmt.setString(4, "snow.jpg");
+			pstmt.setBlob(5, BoardWithFileInsertExample.class.getResourceAsStream("snow.jpg"));
+
+			// SQL 문 실행
+			int rows = pstmt.executeUpdate();
+			System.out.println("저장된 행 수: " + rows);
+
+			// bno 값 얻기
+			if (rows == 1) {
+				ResultSet rs = pstmt.getGeneratedKeys();
+				if (rs.next()) {
+					int bno = rs.getInt(1);
+					System.out.println("저장된 bno: " + bno);
+				}
+				rs.close();
+			}
+
+			// PreparedStatement 닫기
+			pstmt.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (conn != null) {
+				try {
+					// 연결 끊기
+					conn.close();
+				} catch (SQLException e) {}
+			}
+		}
+	}
+}
+```

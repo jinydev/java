@@ -1,0 +1,79 @@
+---
+layout: oop
+title: "12.1 API 도큐먼트"
+nav_order: 1
+parent: "Chapter 12. java.base 모듈"
+grand_parent: "객체지향 프로그래밍"
+---
+
+# 12.1 API 도큐먼트
+
+자바 표준 모듈에서 제공하는 라이브러리는 방대하기 때문에 쉽게 찾아서 사용할 수 있도록 도와주는 API(Application Programming Interface) 도큐먼트가 있다. 라이브러리가 클래스와 인터페이스의 집합이라면, API 도큐먼트는 이를 사용하기 위한 방법을 기술한 것이다.
+
+다음 URL을 방문하면 JDK 버전별로 사용할 수 있는 API 도큐먼트를 볼 수 있다.
+
+[https://docs.oracle.com/en/java/javase/index.html](https://docs.oracle.com/en/java/javase/index.html)
+
+자바 버전을 선택하고 왼쪽 메뉴에서 [API Document] 버튼을 클릭하면 다음과 같이 각 버전에 따른 API 도큐먼트 페이지가 열린다.
+
+![API Document](../images/12/api_document.png)
+
+String 도큐먼트를 통해 API 도큐먼트를 읽는 방법을 알아보자.
+
+## String 도큐먼트를 찾는 3가지 방법
+
+1.  **방법 1: 웹 사이트 메뉴 이용**
+    ① [Modules] 탭에서 java.base 모듈을 클릭한다.
+    ② java.base의 Packages 목록에서 java.lang 패키지를 클릭한다.
+    ③ java.lang의 [Classes and Interfaces] 탭에서 String 클래스를 클릭한다.
+
+2.  **방법 2: 웹 사이트 검색 이용**
+    ① 오른쪽 상단의 Search 검색란에 'String'을 입력한다.
+    ② 드롭다운 목록에서 java.lang.String 항목을 선택한다.
+
+3.  **방법 3: 이클립스 이용**
+    ① 자바 코드에서 String 클래스를 마우스로 선택한 다음 [F1] 키를 누르면 Help 뷰가 나타난다.
+    ② Help 뷰에서 Javadoc for 'java.lang.String' 링크를 클릭하면 String 도큐먼트로 이동한다.
+
+## 클래스 선언부 보기
+
+API 도큐먼트에서 String 클래스가 어떻게 정의되었는지 보려면 ① 선언부를 보면 된다. 여기서는 클래스가 final인지 추상(abstract)인지를 알 수 있고, 부모 클래스와 구현 인터페이스를 볼 수 있다. 전체 상속 관계를 보려면 ② 상속 계층도를 보면 된다.
+
+```java
+public final class String
+    extends Object
+    implements Serializable, Comparable<String>, CharSequence, Constable, ConstantDesc
+```
+
+## 구성 멤버 보기
+
+String이 가지고 있는 멤버를 보려면 상단 메뉴의 SUMMARY를 활용한다. SUMMARY는 선언된 멤버별로 이동하는 링크를 제공한다. 링크가 있으면 공개된(public, protected) 멤버가 있다는 뜻이고, 링크가 없으면 공개된 멤버가 없다는 뜻이다.
+
+*   **NESTED**: 중첩 클래스/중첩 인터페이스 목록으로 이동하는 링크
+*   **FIELD**: 필드 목록으로 이동하는 링크
+*   **CONSTR**: 생성자 목록으로 이동하는 링크
+*   **METHOD**: 메소드 목록으로 이동하는 링크
+
+## 필드 보기
+
+SUMMARY에서 FIELD 링크를 클릭하면 필드 목록으로 이동한다.
+
+Modifier and Type에서는 static 여부와 필드 타입을 알 수 있고, Field와 Description은 필드명과 그에 대한 간단한 설명이다. 필드명을 클릭하면 필드 선언부와 상세한 설명이 나온다. 관례적으로 필드 이름이 모두 대문자이면 public static final로 선언된 상수 필드이다.
+
+## 생성자 보기
+
+SUMMARY에서 CONSTR 링크를 클릭하면 생성자 목록으로 이동한다.
+
+Constructor에서는 생성자의 매개변수 타입을 알 수 있고, Description은 이에 대한 간단한 설명이다. String 클래스는 매개변수 타입과 개수를 달리한 10개가 넘는 생성자들이 오버로딩되어 있다. 이 생성자들 중 하나를 이용해서 String 객체를 생성할 수 있다.
+
+## 메소드 보기
+
+SUMMARY에서 METHOD 링크를 클릭하면 메소드 목록으로 이동하는데, 다음과 같이 서브 목록으로 가는 버튼들을 볼 수 있다.
+
+*   **All Methods**: 모든 메소드 목록을 보여 준다.
+*   **Static Methods**: 정적 메소드 목록을 보여 준다.
+*   **Instance Methods**: 인스턴스 메소드 목록을 보여 준다.
+*   **Concrete Methods**: 완전한 실행부를 갖춘 메소드 목록을 보여 준다.
+*   **Deprecated Methods**: 향후 제거될 메소드 목록을 보여 준다.
+
+Modifier and Type에서는 static 여부와 리턴 타입이 무엇인지 알 수 있다. Method에서는 메소드명과 매개변수 타입 및 개수를 알 수 있고, Description은 그에 대한 간단한 설명이다. 각 메소드명을 클릭하면 상세 설명을 읽을 수 있다.

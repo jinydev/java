@@ -1,0 +1,232 @@
+---
+layout: oop
+title: "12.12 어노테이션"
+nav_order: 12
+parent: "Chapter 12. java.base 모듈"
+grand_parent: "객체지향 프로그래밍"
+---
+
+# 12.12 어노테이션
+
+코드에서 @으로 작성되는 요소를 어노테이션(Annotation)이라고 한다. 어노테이션은 클래스 또는 인터페이스를 컴파일하거나 실행할 때 어떻게 처리해야 할 것인지를 알려주는 설정 정보이다. 어노테이션은 다음 세 가지 용도로 사용된다.
+
+1.  컴파일 시 사용하는 정보 전달
+2.  빌드 툴이 코드를 자동으로 생성할 때 사용하는 정보 전달
+3.  실행 시 특정 기능을 처리할 때 사용하는 정보 전달
+
+컴파일 시 사용하는 정보 전달의 대표적인 예는 @Override 어노테이션이다. @Override는 컴파일러가 메소드 재정의 검사를 하도록 설정한다. 정확히 재정의되지 않았다면 컴파일러는 에러를 발생시킨다.
+
+어노테이션은 자바 프로그램을 개발할 때 필수 요소가 되었다. 웹 개발에 많이 사용되는 Spring Framework 또는 Spring Boot는 다양한 종류의 어노테이션을 사용해서 웹 애플리케이션을 설정하는 데 사용된다. 따라서 자바 개발자라면 어노테이션의 사용 방법을 반드시 알아야 한다.
+
+## 어노테이션 타입 정의와 적용
+
+어노테이션도 하나의 타입이므로 어노테이션을 사용하기 위해서는 먼저 정의부터 해야 한다. 어노테이션을 정의하는 방법은 인터페이스를 정의하는 것과 유사하다. 다음과 같이 @interface 뒤에 사용할 어노테이션 이름이 온다.
+
+```java
+public @interface AnnotationName {
+}
+```
+
+이렇게 정의한 어노테이션은 코드에서 다음과 같이 사용된다.
+
+```java
+@AnnotationName
+```
+
+어노테이션은 속성을 가질 수 있다. 속성은 타입과 이름으로 구성되며, 이름 뒤에 괄호를 붙인다. 속성의 기본값은 default 키워드로 지정할 수 있다. 예를 들어 String 타입 prop1과 int 타입의 prop2 속성은 다음과 같이 선언할 수 있다.
+
+```java
+public @interface AnnotationName {
+	String prop1();
+	int prop2() default 1;
+}
+```
+
+이렇게 정의한 어노테이션은 코드에서 다음과 같이 사용할 수 있다. prop1은 기본값이 없기 때문에 반드시 값을 기술해야 하고, prop2는 기본값이 있기 때문에 생략 가능하다.
+
+```java
+@AnnotationName(prop1 = "값")
+@AnnotationName(prop1 = "값", prop2 = 3)
+```
+
+어노테이션은 기본 속성인 value를 다음과 같이 가질 수 있다.
+
+```java
+public @interface AnnotationName {
+	String value();
+	int prop2() default 1;
+}
+```
+
+value 속성을 가진 어노테이션을 코드에서 사용할 때에는 다음과 같이 값만 기술할 수 있다. 이 값은 value 속성에 자동으로 대입된다.
+
+```java
+@AnnotationName("값")
+```
+
+하지만 value 속정과 다른 속정의 값을 동시에 주고 싶다면 value 속성 이름을 반드시 언급해야 한다.
+
+```java
+@AnnotationName(value = "값", prop2 = 3)
+```
+
+## 어노테이션 적용 대상
+
+자바에서 어노테이션은 설정 정보라고 했다. 그렇다면 어떤 대상에 설정 정보를 적용할 것인지, 즉 클래스에 적용할 것인지, 메소드에 적용할 것인지를 명시해야 한다. 적용할 수 있는 대상의 종류는 ElementType 열거 상수로 정의되어 있다.
+
+| ElementType 열거 상수 | 적용 대상                     |
+| :-------------------- | :---------------------------- |
+| TYPE                  | 클래스, 인터페이스, 열거 타입 |
+| ANNOTATION_TYPE       | 어노테이션                    |
+| FIELD                 | 필드                          |
+| CONSTRUCTOR           | 생성자                        |
+| METHOD                | 메소드                        |
+| LOCAL_VARIABLE        | 로컬 변수                     |
+| PACKAGE               | 패키지                        |
+
+적용 대상을 지정할 때에는 @Target 어노테이션을 사용한다. @Target의 기본 속성인 value는 ElementType 배열을 값으로 가진다. 이것은 적용 대상을 복수 개로 지정하기 위해서이다. 예를 들어 다음과 같이 적용 대상을 지정했다고 가정해 보자.
+
+```java
+@Target({ElementType.TYPE, ElementType.FIELD, ElementType.METHOD})
+public @interface AnnotationName {
+}
+```
+
+이 어노테이션은 다음과 같이 클래스, 필드, 메소드에 적용할 수 있고 생성자는 적용할 수 없다.
+
+```java
+@AnnotationName // TYPE(클래스)에 적용
+public class ClassName {
+	@AnnotationName // 필드에 적용
+	private String fieldName;
+
+	//@AnnotationName // @Target에 CONSTRUCTOR가 없으므로 생성자에는 적용 못함
+	public ClassName() { }
+
+	@AnnotationName // 메소드에 적용
+	public void methodName() { }
+}
+```
+
+## 어노테이션 유지 정책
+
+어노테이션을 정의할 때 한 가지 더 추가해야 할 내용은 @AnnotationName을 언제까지 유지할 것인지를 지정하는 것이다. 어노테이션 유지 정책은 RetentionPolicy 열거 상수로 다음과 같이 정의되어 있다.
+
+| RetentionPolicy 열거 상수 | 설명                                                 |
+| :------------------------ | :--------------------------------------------------- |
+| SOURCE                    | 컴파일할 때 적용. 컴파일된 후에 제거됨               |
+| CLASS                     | 메모리로 로딩할 때 적용. 메모리로 로딩된 후에 제거됨 |
+| RUNTIME                   | 실행할 때 적용. 계속 유지됨                          |
+
+유지 정책을 지정할 때에는 @Retention 어노테이션을 사용한다. @Retention의 기본 속성인 value는 RetentionPolicy 열거 상수 값을 가진다. 다음은 실행 시에도 어노테이션 설정 정보를 이용할 수 있도록 유지 정책을 RUNTIME으로 지정한 예이다.
+
+```java
+@Target({ElementType.TYPE, ElementType.FIELD, ElementType.METHOD})
+@Retention(RetentionPolicy.RUNTIME)
+public @interface AnnotationName {
+}
+```
+
+## 어노테이션 설정 정보 이용
+
+어노테이션은 아무런 동작을 가지지 않는 설정 정보일 뿐이다. 이 설정 정보를 이용해서 어떻게 처리할 것인지는 애플리케이션의 몫이다. 애플리케이션은 12.11절에서 학습한 리플렉션을 이용해서 적용 대상으로부터 어노테이션의 정보를 다음 메소드로 얻어낼 수 있다.
+
+| 리턴 타입    | 메소드명(매개변수)                        | 설명                                                                                 |
+| :----------- | :---------------------------------------- | :----------------------------------------------------------------------------------- |
+| boolean      | isAnnotationPresent(AnnotationName.class) | 지정한 어노테이션이 적용되었는지 여부                                                |
+| Annotation   | getAnnotation(AnnotationName.class)       | 지정한 어노테이션이 적용되어 있으면 어노테이션을 리턴하고, 그렇지 않다면 null을 리턴 |
+| Annotation[] | getDeclaredAnnotations()                  | 적용된 모든 어노테이션 리턴                                                          |
+
+다음 예제는 적용 대상을 METHOD, 유지 정책을 RUNTIME으로 하고 구분선에 대한 설정 정보를 속성으로 가지고 있는 @PrintAnnotation을 정의한다.
+
+```java
+package ch12.sec12;
+
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+@Target({ElementType.METHOD}) // 적용 대상: METHOD
+@Retention(RetentionPolicy.RUNTIME) // 유지 정책: RUNTIME
+public @interface PrintAnnotation {
+	String value() default "-"; // value 속성: 선의 종류
+	int number() default 15;    // number 속성: 출력 횟수
+}
+```
+
+@PrintAnnotation을 Service 클래스의 메소드에 적용하면 다음과 같다.
+
+```java
+package ch12.sec12;
+
+public class Service {
+	@PrintAnnotation
+	public void method1() {
+		System.out.println("실행 내용1");
+	}
+
+	@PrintAnnotation("*")
+	public void method2() {
+		System.out.println("실행 내용2");
+	}
+
+	@PrintAnnotation(value = "#", number = 20)
+	public void method3() {
+		System.out.println("실행 내용3");
+	}
+}
+```
+
+실행 클래스인 PrintAnnotationExample에서는 Service 클래스에 선언된 메소드를 리플렉션해서 @PrintAnnotation 설정 정보를 얻어낸 후, 구분선을 출력하고 해당 메소드를 호출시킨다.
+
+```java
+package ch12.sec12;
+
+import java.lang.reflect.Method;
+
+public class PrintAnnotationExample {
+	public static void main(String[] args) throws Exception {
+		Method[] declaredMethods = Service.class.getDeclaredMethods();
+		for (Method method : declaredMethods) {
+			// PrintAnnotation 얻기
+			PrintAnnotation printAnnotation = method.getAnnotation(PrintAnnotation.class);
+
+			// 설정 정보를 이용해서 선 출력
+			printLine(printAnnotation);
+
+			// 메소드 호출
+			method.invoke(new Service());
+
+			// 설정 정보를 이용해서 선 출력
+			printLine(printAnnotation);
+		}
+	}
+
+	public static void printLine(PrintAnnotation printAnnotation) {
+		if (printAnnotation != null) {
+			// number 속성값 얻기
+			int number = printAnnotation.number();
+			for (int i=0; i<number; i++) {
+				// value 속성값 얻기
+				String value = printAnnotation.value();
+				System.out.print(value);
+			}
+			System.out.println();
+		}
+	}
+}
+```
+
+**실행 결과**
+```
+---------------
+실행 내용1
+---------------
+***************
+실행 내용2
+***************
+####################
+실행 내용3
+####################
+```

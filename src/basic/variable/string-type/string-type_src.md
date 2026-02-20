@@ -1,0 +1,134 @@
+---
+layout: basic
+title: "2.6 문자열 타입"
+nav_order: 6
+parent: "Chapter 02. 변수와 타입"
+grand_parent: "객체지향 자바 프로그래밍"
+---
+
+# 2.6 문자열 타입
+
+작은따옴표(`'`)로 감싼 한 개의 문자는 `char` 타입이지만, 큰따옴표(`"`)로 감싼 여러 개의 문자들은 유니코드로 변환되지 않는다. 따라서 다음은 잘못 작성된 코드다.
+
+```java
+char var1 = "A"; //컴파일 에러
+char var2 = "홍길동"; //컴파일 에러
+```
+
+큰따옴표(`"`)로 감싼 문자들을 문자열이라고 부르는데, 문자열을 변수에 저장하고 싶다면 다음과 같이 `String` 타입을 사용해야 한다.
+
+```java
+String var1 = "A";
+String var2 = "홍길동";
+```
+
+> **NOTE:** `String` 타입은 자바 기본 타입에 속하지 않는 참조 타입이다. 참조 타입에 대해서는 5장에서 상세히 설명한다.
+
+문자열 내부에 역슬래쉬(`\`)가 붙은 문자를 사용할 수가 있는데, 이것을 이스케이프(escape) 문자라고 한다. 이스케이프 문자를 사용하면 특정 문자를 포함할 수 있고, 출력에 영향을 미치기도 한다.
+
+**이스케이프 문자**
+* `\"`: " 문자 포함
+* `\'`: ' 문자 포함
+* `\\`: \ 문자 포함
+* `\u16진수`: 16진수 유니코드에 해당하는 문자 포함
+* `\t`: 출력 시 탭만큼 띄움
+* `\n`: 출력 시 줄바꿈(라인피드)
+* `\r`: 출력 시 캐리지 리턴
+
+다음 예제는 이스케이프 문자를 사용하는 방법을 보여 준다. 문자열에 큰따옴표를 넣기 위해 `\"`를 사용했고, 탭만큼 띄워 출력하기 위해 `\t`를, 다음 행으로 이동하기 위해 `\n`을 사용하였다. 역슬래쉬(`\`) 기호가 `₩`로 표시될 수도 있는데, 이것은 폰트 때문이니 상관 없다.
+
+**[예제: StringExample.java]**
+```java
+package ch02.sec06;
+
+public class StringExample {
+    public static void main(String[] args) {
+        String name = "홍길동";
+        String job = "프로그래머";
+        System.out.println(name);
+        System.out.println(job);
+        
+        String str = "나는 \"자바\"를 배웁니다.";
+        System.out.println(str);
+        
+        str = "번호\t이름\t직업";
+        System.out.println(str);
+        
+        System.out.print("나는\n");
+        System.out.print("자바를\n");
+        System.out.print("배웁니다.");
+    }
+}
+```
+
+**실행 결과**
+```
+홍길동
+프로그래머
+나는 "자바"를 배웁니다.
+번호	이름	직업
+나는
+자바를
+배웁니다.
+```
+
+Java 13부터는 다음과 같은 텍스트 블록 문법을 제공한다.
+
+```java
+String str = """
+...
+""";
+```
+
+큰따옴표 3개로 감싸면 이스케이프하거나 라인피드를 할 필요가 없이 작성된 그대로 문자열로 저장된다. 다음 예제에서 `str1`과 `str2`는 동일한 문자열이 저장된다.
+
+**[예제: TextBlockExample.java]**
+```java
+package ch02.sec06;
+
+public class TextBlockExample {
+    public static void main(String[] args) {
+        String str1 = "" +
+        "{\n" +
+        "\t\"id\":\"winter\",\n" +
+        "\t\"name\":\"눈송이\"\n" +
+        "}";
+        
+        String str2 = """
+        {
+            "id":"winter",
+            "name":"눈송이"
+        }
+        """;
+        
+        System.out.println(str1);
+        System.out.println("------------------------------------");
+        System.out.println(str2);
+        System.out.println("------------------------------------");
+        String str = """
+        나는 자바를 \
+        학습합니다.
+        나는 자바 고수가 될 겁니다.
+        """;
+        System.out.println(str);
+    }
+}
+```
+
+**실행 결과**
+```
+{
+	"id":"winter",
+	"name":"눈송이"
+}
+------------------------------------
+{
+	"id":"winter",
+	"name":"눈송이"
+}
+------------------------------------
+나는 자바를 학습합니다.
+나는 자바 고수가 될 겁니다.
+```
+
+텍스트 블록에서 줄바꿈은 `\n`에 해당한다. 만약 줄바꿈을 하지 않고 다음 줄에 이어서 작성하고 싶다면 23라인처럼 맨 끝에 `\`를 붙여 주면 된다. 이 기능은 Java 14부터 제공된다.

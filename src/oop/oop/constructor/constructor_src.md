@@ -1,0 +1,414 @@
+---
+layout: oop
+title: "6.7 생성자 선언과 호출"
+nav_order: 7
+parent: "Chapter 06. 클래스"
+grand_parent: "객체지향 자바 프로그래밍"
+---
+
+# 6.7 생성자 선언과 호출
+
+new 연산자는 객체를 생성한 후 연이어 생성자(Constructor)를 호출해서 객체를 초기화하는 역할을 한다. 객체 초기화란 필드 초기화를 하거나 메소드를 호출해서 객체를 사용할 준비를 하는 것을 말한다.
+
+```java
+클래스 변수 = new 클래스();
+                ↑
+            생성자 호출
+```
+
+생성자가 성공적으로 실행이 끝나면 new 연산자는 객체의 주소를 리턴한다. 리턴된 주소는 클래스 변수에 대입되어 객체의 필드나 메소드에 접근할 때 이용된다.
+
+## 기본 생성자
+
+모든 클래스는 생성자가 존재하며, 하나 이상을 가질 수 있다. 클래스에 생성자 선언이 없으면 컴파일러는 다음과 같은 기본 생성자(Default Constructor)를 바이트코드 파일에 자동으로 추가시킨다.
+
+```java
+[public] 클래스() { }
+```
+
+클래스가 public class로 선언되면 기본 생성자도 public이 붙지만, 클래스가 public 없이 class로만 선언되면 기본 생성자에도 public이 붙지 않는다.
+
+그렇기 때문에 다음과 같이 new 연산자 뒤에 기본 생성자를 호출할 수 있다.
+
+```java
+Car myCar = new Car(); // 기본 생성자 호출
+```
+
+그러나 개발자가 명시적으로 선언한 생성자가 있다면 컴파일러는 기본 생성자를 추가하지 않는다. 개발자가 생성자를 선언하는 이유는 객체를 다양하게 초기화하기 위해서이다.
+
+## 생성자 선언
+
+객체를 다양하게 초기화하기 위해 개발자는 생성자를 다음과 같이 직접 선언할 수 있다.
+
+```java
+클래스(매개변수, ...) {
+    // 객체의 초기화 코드
+}
+```
+
+생성자는 메소드와 비슷한 모양을 가지고 있으나, 리턴 타입이 없고 클래스 이름과 동일하다. 매개변수는 new 연산자로 생성자를 호출할 때 매개값을 생성자 블록 내부로 전달하는 역할을 한다.
+
+예를 들어 다음과 같이 Car 생성자를 호출할 때 3개의 매개값을 블록 내부로 전달한다고 가정해 보자.
+
+```java
+Car myCar = new Car("그랜저", "검정", 300);
+```
+
+3개의 매개값을 순서대로 매개변수로 대입받기 위해서는 다음과 같이 생성자가 선언되어야 한다.
+
+```java
+public class Car {
+    // 생성자 선언
+    Car(String model, String color, int maxSpeed) { ... }
+}
+```
+
+매개변수의 타입은 매개값의 종류에 맞게 작성하면 된다.
+
+**Car.java**
+```java
+package ch06.sec07.exam01;
+
+public class Car {
+    // 생성자 선언
+    Car(String model, String color, int maxSpeed) {
+    }
+}
+```
+
+**CarExample.java**
+```java
+package ch06.sec07.exam01;
+
+public class CarExample {
+    public static void main(String[] args) {
+        Car myCar = new Car("그랜저", "검정", 250);
+        // Car myCar = new Car(); // 기본 생성자 호출 못함
+    }
+}
+```
+
+## 필드 초기화
+
+객체마다 동일한 값을 갖고 있다면 필드 선언 시 초기값을 대입하는 것이 좋고, 객체마다 다른 값을 가져야 한다면 생성자에서 필드를 초기화하는 것이 좋다.
+
+예를 들어 Korean 클래스를 선언한다고 가정해 보자. 한국인이므로 nation(국가)은 대한민국으로 동일한 값을 가지지만, name(이름)과 ssn(주민등록번호)은 한국인마다 다르므로 생성자에서 초기화하는 것이 좋다.
+
+```java
+public class Korean {
+    // 필드 선언
+    String nation = "대한민국";
+    String name;
+    String ssn;
+    
+    // 생성자 선언
+    public Korean(String n, String s) {
+        name = n;
+        ssn = s;
+    }
+}
+```
+
+생성자의 매개값은 new 연산자로 생성자를 호출할 때 주어진다. k1과 k2가 참조하는 객체는 주어진 매개값으로, name과 ssn 필드가 각각 초기화된다.
+
+```java
+Korean k1 = new Korean("박자바", "011225-1234567");
+Korean k2 = new Korean("김자바", "930525-0654321");
+```
+
+**Korean.java**
+```java
+package ch06.sec07.exam02;
+
+public class Korean {
+    // 필드 선언
+    String nation = "대한민국";
+    String name;
+    String ssn;
+    
+    // 생성자 선언
+    public Korean(String n, String s) {
+        name = n;
+        ssn = s;
+    }
+}
+```
+
+**KoreanExample.java**
+```java
+package ch06.sec07.exam02;
+
+public class KoreanExample {
+    public static void main(String[] args) {
+        // Korean 객체 생성
+        Korean k1 = new Korean("박자바", "011225-1234567");
+        // Korean 객체 데이터 읽기
+        System.out.println("k1.nation : " + k1.nation);
+        System.out.println("k1.name : " + k1.name);
+        System.out.println("k1.ssn : " + k1.ssn);
+        System.out.println();
+        
+        // 또 다른 Korean 객체 생성
+        Korean k2 = new Korean("김자바", "930525-0654321");
+        // 또 다른 Korean 객체 데이터 읽기
+        System.out.println("k2.nation : " + k2.nation);
+        System.out.println("k2.name : " + k2.name);
+        System.out.println("k2.ssn : " + k2.ssn);
+    }
+}
+```
+
+**실행 결과**
+```
+k1.nation : 대한민국
+k1.name : 박자바
+k1.ssn : 011225-1234567
+
+k2.nation : 대한민국
+k2.name : 김자바
+k2.ssn : 930525-0654321
+```
+
+위 예제의 Korean 생성자를 보면 매개변수 이름으로 각각 n과 s를 사용했다. 매개변수의 이름이 너무 짧으면 코드 가독성이 좋지 않기 때문에 가능하면 초기화시킬 필드명과 동일한 이름을 사용하는 것이 좋다.
+
+```java
+public Korean(String name, String ssn) {
+    this.name = name;
+    this.ssn = ssn;
+}
+```
+
+위와 같은 경우에는 매개변수명이 필드명과 동일하기 때문에 필드임을 구분하기 위해 this 키워드를 필드명 앞에 붙여 주었다. this는 현재 객체를 말하며, this.name은 현재 객체의 데이터(필드)로서의 name을 뜻한다.
+
+**Korean.java**
+```java
+package ch06.sec07.exam03;
+
+public class Korean {
+    // 필드 선언
+    String nation = "대한민국";
+    String name;
+    String ssn;
+    
+    // 생성자 선언
+    public Korean(String name, String ssn) {
+        this.name = name;
+        this.ssn = ssn;
+    }
+}
+```
+
+> **이클립스에서 필드와 매개변수의 색깔**
+> 이클립스는 필드의 색깔을 파란색, 매개변수의 색깔을 갈색으로 보여주기 때문에 코드를 보면 필드와 매개변수를 쉽게 구별할 수 있다.
+
+## 생성자 오버로딩
+
+매개값으로 객체의 필드를 다양하게 초기화하려면 생성자 오버로딩(Overloading)이 필요하다. 생성자 오버로딩이란 매개변수를 달리하는 생성자를 여러 개 선언하는 것을 말한다. 다음은 Car 클래스에서 생성자를 오버로딩한 예이다.
+
+```java
+public class Car {
+    Car() { ... }
+    Car(String model) { ... }
+    Car(String model, String color) { ... }
+    Car(String model, String color, int maxSpeed) { ... }
+}
+```
+
+매개변수의 타입과 개수 그리고 선언된 순서가 똑같을 경우 매개변수 이름만 바꾸는 것은 생성자 오버로딩이 아니다. 바로 다음과 같은 경우이다.
+
+```java
+Car(String model, String color) { ... }
+Car(String color, String model) { ... } // 오버로딩이 아님. 컴파일 에러 발생
+```
+
+생성자가 오버로딩되어 있을 경우, new 연산자로 생성자를 호출할 때 제공되는 매개값의 타입과 수에 따라 실행될 생성자가 결정된다.
+
+**Car.java**
+```java
+package ch06.sec07.exam04;
+
+public class Car {
+    // 필드 선언
+    String company = "현대자동차";
+    String model;
+    String color;
+    int maxSpeed;
+    
+    // 생성자 선언
+    Car() {} // 1 생성자
+    
+    Car(String model) { // 2 생성자
+        this.model = model;
+    }
+    
+    Car(String model, String color) { // 3 생성자
+        this.model = model;
+        this.color = color;
+    }
+    
+    Car(String model, String color, int maxSpeed) { // 4 생성자
+        this.model = model;
+        this.color = color;
+        this.maxSpeed = maxSpeed;
+    }
+}
+```
+
+**CarExample.java**
+```java
+package ch06.sec07.exam04;
+
+public class CarExample {
+    public static void main(String[] args) {
+        Car car1 = new Car(); // 1 생성자 호출
+        System.out.println("car1.company : " + car1.company);
+        System.out.println();
+        
+        Car car2 = new Car("자가용"); // 2 생성자 호출
+        System.out.println("car2.company : " + car2.company);
+        System.out.println("car2.model : " + car2.model);
+        System.out.println();
+        
+        Car car3 = new Car("자가용", "빨강"); // 3 생성자 호출
+        System.out.println("car3.company : " + car3.company);
+        System.out.println("car3.model : " + car3.model);
+        System.out.println("car3.color : " + car3.color);
+        System.out.println();
+        
+        Car car4 = new Car("택시", "검정", 200); // 4 생성자 호출
+        System.out.println("car4.company : " + car4.company);
+        System.out.println("car4.model : " + car4.model);
+        System.out.println("car4.color : " + car4.color);
+        System.out.println("car4.maxSpeed : " + car4.maxSpeed);
+    }
+}
+```
+
+**실행 결과**
+```
+car1.company : 현대자동차
+
+car2.company : 현대자동차
+car2.model : 자가용
+
+car3.company : 현대자동차
+car3.model : 자가용
+car3.color : 빨강
+
+car4.company : 현대자동차
+car4.model : 택시
+car4.color : 검정
+car4.maxSpeed : 200
+```
+
+## 다른 생성자 호출
+
+생성자 오버로딩이 많아질 경우 생성자 간의 중복된 코드가 발생할 수 있다. 매개변수의 수만 달리하고 필드 초기화 내용이 비슷한 생성자에서 이러한 중복 코드를 많이 볼 수 있다.
+
+```java
+Car(String model) {
+    this.model = model;
+    this.color = "은색";
+    this.maxSpeed = 250;
+}
+
+Car(String model, String color) {
+    this.model = model;
+    this.color = color;
+    this.maxSpeed = 250;
+}
+
+Car(String model, String color, int maxSpeed) {
+    this.model = model;
+    this.color = color;
+    this.maxSpeed = maxSpeed;
+}
+```
+
+이 경우에는 공통 코드를 한 생성자에만 집중적으로 작성하고, 나머지 생성자는 this(...)를 사용하여 공통 코드를 가지고 있는 생성자를 호출하는 방법으로 개선할 수 있다.
+
+```java
+Car(String model) {
+    this(model, "은색", 250);
+}
+
+Car(String model, String color) {
+    this(model, color, 250);
+}
+
+Car(String model, String color, int maxSpeed) {
+    this.model = model;
+    this.color = color;
+    this.maxSpeed = maxSpeed;
+}
+```
+
+this(매개값, ...)는 생성자의 첫 줄에 작성되며 다른 생성자를 호출하는 역할을 한다. 호출하고 싶은 생성자의 매개변수에 맞게 매개값을 제공하면 된다. this() 다음에는 추가적인 실행문을 작성할 수 있는데, 호출되는 생성자의 실행이 끝나면 원래 생성자로 돌아와서 다음 실행문을 실행한다.
+
+**Car.java**
+```java
+package ch06.sec07.exam05;
+
+public class Car {
+    // 필드 선언
+    String company = "현대자동차";
+    String model;
+    String color;
+    int maxSpeed;
+    
+    Car(String model) {
+        this(model, "은색", 250);
+    }
+    
+    Car(String model, String color) {
+        this(model, color, 250);
+    }
+    
+    Car(String model, String color, int maxSpeed) {
+        this.model = model;
+        this.color = color;
+        this.maxSpeed = maxSpeed;
+    }
+}
+```
+
+**CarExample.java**
+```java
+package ch06.sec07.exam05;
+
+public class CarExample {
+    public static void main(String[] args) {
+        Car car1 = new Car("자가용"); // 1 생성자 호출
+        System.out.println("car1.company : " + car1.company);
+        System.out.println("car1.model : " + car1.model);
+        System.out.println();
+        
+        Car car2 = new Car("자가용", "빨강"); // 2 생성자 호출
+        System.out.println("car2.company : " + car2.company);
+        System.out.println("car2.model : " + car2.model);
+        System.out.println("car2.color : " + car2.color);
+        System.out.println();
+        
+        Car car3 = new Car("택시", "검정", 200); // 3 생성자 호출
+        System.out.println("car3.company : " + car3.company);
+        System.out.println("car3.model : " + car3.model);
+        System.out.println("car3.color : " + car3.color);
+        System.out.println("car3.maxSpeed : " + car3.maxSpeed);
+    }
+}
+```
+
+**실행 결과**
+```
+car1.company : 현대자동차
+car1.model : 자가용
+
+car2.company : 현대자동차
+car2.model : 자가용
+car2.color : 빨강
+
+car3.company : 현대자동차
+car3.model : 택시
+car3.color : 검정
+car3.maxSpeed : 200
+```

@@ -1,0 +1,84 @@
+---
+layout: oop
+title: "15.8 수정할 수 없는 컬렉션"
+nav_order: 8
+parent: "Chapter 15. 컬렉션 자료구조"
+grand_parent: "객체지향 프로그래밍"
+---
+
+# 15.8 수정할 수 없는 컬렉션
+
+수정할 수 없는(unmodifiable) 컬렉션이란 요소를 추가, 삭제할 수 없는 컬렉션을 말한다. 컬렉션 생성 시 저장된 요소를 변경하고 싶지 않을 때 유용하다.
+
+1. `of()` 메소드 이용:
+```java
+List<E> immutableList = List.of(E... elements);
+Set<E> immutableSet = Set.of(E... elements);
+Map<K,V> immutableMap = Map.of(K k1, V v1, ...);
+```
+
+2. `copyOf()` 메소드 이용:
+```java
+List<E> immutableList = List.copyOf(Collection<E> coll);
+Set<E> immutableSet = Set.copyOf(Collection<E> coll);
+Map<K,V> immutableMap = Map.copyOf(Map<K,V> map);
+```
+
+3. 배열로부터 `Arrays.asList()` (약간 다름: 추가/삭제 불가하지만 set은 가능할 수 있음, 하지만 여기서는 of/copyOf와 함께 소개됨) - *참고: 책 예제에서는 Arrays.asList(arr)을 사용하여 List 불변 컬렉션 생성을 설명하고 있는데, 엄밀히 말하면 Arrays.asList는 고정 크기 리스트를 반환하며 set()은 허용한다. 하지만 List.of()는 완전 불변이다.*
+
+```java
+package ch15.sec08;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+public class ImmutableExample {
+	public static void main(String[] args) {
+		// List 불변 컬렉션 생성
+		List<String> immutableList1 = List.of("A", "B", "C");
+		// immutableList1.add("D"); (x)
+
+		// Set 불변 컬렉션 생성
+		Set<String> immutableSet1 = Set.of("A", "B", "C");
+		// immutableSet1.remove("A"); (x)
+
+		// Map 불변 컬렉션 생성
+		Map<Integer, String> immutableMap1 = Map.of(
+			1, "A",
+			2, "B",
+			3, "C"
+		);
+		// immutableMap1.put(4, "D"); (x)
+
+		// List 컬렉션을 불변 컬렉션으로 복사
+		List<String> list = new ArrayList<>();
+		list.add("A");
+		list.add("B");
+		list.add("C");
+		List<String> immutableList2 = List.copyOf(list);
+
+		// Set 컬렉션을 불변 컬렉션으로 복사
+		Set<String> set = new HashSet<>();
+		set.add("A");
+		set.add("B");
+		set.add("C");
+		Set<String> immutableSet2 = Set.copyOf(set);
+
+		// Map 컬렉션을 불변 컬렉션으로 복사
+		Map<Integer, String> map = new HashMap<>();
+		map.put(1, "A");
+		map.put(2, "B");
+		map.put(3, "C");
+		Map<Integer, String> immutableMap2 = Map.copyOf(map);
+
+		// 배열로부터 List 불변 컬렉션 생성
+		String[] arr = { "A", "B", "C" };
+		List<String> immutableList3 = Arrays.asList(arr);
+	}
+}
+```

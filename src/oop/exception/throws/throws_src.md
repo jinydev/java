@@ -1,0 +1,93 @@
+---
+layout: oop
+title: "11.5 예외 떠넘기기"
+nav_order: 5
+parent: "Chapter 11. 예외 처리"
+grand_parent: "객체지향 자바 프로그래밍"
+---
+
+# 11.5 예외 떠넘기기
+
+메소드 내부에서 예외가 발생할 때 `try-catch` 블록으로 예외를 처리하는 것이 기본이지만, 메소드를 호출한 곳으로 예외를 떠넘길 수도 있다. 이때 사용하는 키워드가 `throws`이다. `throws`는 메소드 선언부 끝에 작성하는데, 떠넘길 예외 클래스를 쉼표로 구분해서 나열해 주면 된다.
+
+```java
+리턴타입 메소드명(매개변수, ...) throws 예외클래스1, 예외클래스2, ... {
+}
+```
+
+`throws` 키워드가 붙어 있는 메소드에서 해당 예외를 처리하지 않고 떠넘겼기 때문에 이 메소드를 호출하는 곳에서 예외를 받아 처리해야 한다. 예를 들어 다음 코드는 `ClassNotFoundException`을 `throws`하는 `method2()`의 예외를 `method1()`에서 호출할 때 처리하고 있다.
+
+```java
+public void method1() {
+    try {
+        method2(); // method2() 호출
+    } catch(ClassNotFoundException e) {
+        System.out.println("예외 처리: " + e.getMessage());
+    }
+}
+
+public void method2() throws ClassNotFoundException {
+    Class.forName("java.lang.String2");
+}
+```
+
+**ThrowsExample1.java**
+```java
+package ch11.sec05;
+
+public class ThrowsExample1 {
+    public static void main(String[] args) {
+        try {
+            findClass();
+        } catch(ClassNotFoundException e) {
+            System.out.println("예외 처리: " + e.toString());
+        }
+    }
+
+    public static void findClass() throws ClassNotFoundException {
+        Class.forName("java.lang.String2");
+    }
+}
+```
+
+**실행 결과**
+```
+예외 처리: java.lang.ClassNotFoundException: java.lang.String2
+```
+
+나열해야 할 예외 클래스가 많을 경우에는 `throws Exception` 또는 `throws Throwable` 만으로 모든 예외를 간단히 떠넘길 수도 있다.
+
+```java
+리턴타입 메소드명(매개변수, ...) throws Exception {
+}
+```
+
+`main()` 메소드에서도 `throws` 키워드를 사용해서 예외를 떠넘길 수 있는데, 결국 JVM이 최종적으로 예외 처리를 하게 된다. JVM은 예외의 내용을 콘솔에 출력하는 것으로 예외 처리를 한다.
+
+```java
+public static void main(String[] args) throws Exception {
+}
+```
+
+**ThrowsExample2.java**
+```java
+package ch11.sec05;
+
+public class ThrowsExample2 {
+    public static void main(String[] args) throws Exception {
+        findClass();
+    }
+
+    public static void findClass() throws ClassNotFoundException {
+        Class.forName("java.lang.String2");
+    }
+}
+```
+
+**실행 결과**
+```
+Exception in thread "main" java.lang.ClassNotFoundException: java.lang.String2
+	at java.base/java.lang.Class.forName(Class.java:375)
+	at ch11.sec05.ThrowsExample2.findClass(ThrowsExample2.java:9)
+	at ch11.sec05.ThrowsExample2.main(ThrowsExample2.java:5)
+```
