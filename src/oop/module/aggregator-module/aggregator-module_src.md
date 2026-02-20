@@ -8,7 +8,7 @@ grand_parent: "객체지향 자바 프로그래밍"
 
 # 10.7 집합 모듈
 
-집합 모듈은 여러 모듈을 모아놓은 모듈을 말한다. 자주 사용되는 모듈들을 일일이 requires 하는 번거로움을 피하고 싶을 때 집합 모듈을 생성하면 편리하다. 집합 모듈은 자체적인 패키지를 가지지 않고, 모듈 기술자에 전이 의존 설정만 한다.
+집합 모듈은 여러 모듈을 모아놓은 모듈을 말한다. 자주 사용되는 모듈들을 일일이 `requires` 하는 번거로움을 피하고 싶을 때 집합 모듈을 생성하면 편리하다. 집합 모듈은 자체적인 패키지를 가지지 않고, 모듈 기술자에 전이 의존 설정만 한다.
 
 예를 들어 `my_module`은 `my_module_a`와 `my_module_b`을 제공하는 집합 모듈이라고 가정해 보자. `my_module`의 모듈 기술자는 다음과 같이 작성할 수 있다.
 
@@ -19,7 +19,7 @@ module my_module {
 }
 ```
 
-이때 다른 프로젝트에서 `my_module`만 requires 하게 되면 `my_module_a`와 `my_module_b` 모듈 둘 다 사용할 수 있게 된다. 실습을 통해 확인해 보자.
+이때 다른 프로젝트에서 `my_module`만 `requires` 하게 되면 `my_module_a`와 `my_module_b` 모듈 둘 다 사용할 수 있게 된다. 실습을 통해 확인해 보자.
 
 ## my_module 모듈 생성
 
@@ -63,7 +63,7 @@ module my_module {
     }
     ```
 
-    Main 클래스는 수정할 내용이 없으니 실행만 해보자.
+    `Main` 클래스는 수정할 내용이 없으니 실행만 해보자.
 
     **Main.java**
     ```java
@@ -101,4 +101,4 @@ module my_module {
     C-method 실행
     ```
 
-집합 모듈인 `my_module`만 requires 하더라도 `my_module_a`와 `my_module_b` 소속의 클래스 A와 C를 사용하는 데에는 아무런 문제가 발생하지 않는다.
+집합 모듈인 `my_module`만 `requires` 하더라도 `my_module_a`와 `my_module_b` 소속의 클래스 `A`와 `C`를 사용하는 데에는 아무런 문제가 발생하지 않는다.

@@ -10,9 +10,9 @@ grand_parent: "객체지향 자바 프로그래밍"
 
 자바 프로그램이라면 반드시 활용해야 하는 라이브러리가 있다. 바로 JDK가 제공하는 표준 라이브러리이다. 표준 라이브러리는 Java 9부터 모듈화가 되어 Java 21 표준 모듈이 완성되었다.
 
-`java.base`는 모든 모듈이 의존하는 기본 모듈이다. `java.base` 모듈은 requires 하지 않아도 사용할 수 있지만, 다른 모듈들은 모듈 기술자에 requires를 명시하고 사용해야 한다. `java.base` 모듈에는 `java.lang`, `java.util`, `java.io` 등의 핵심 패키지가 있으며, `java.lang`을 제외하고 import해서 사용할 수 있다.
+`java.base`는 모든 모듈이 의존하는 기본 모듈이다. `java.base` 모듈은 `requires` 하지 않아도 사용할 수 있지만, 다른 모듈들은 모듈 기술자에 `requires`를 명시하고 사용해야 한다. `java.base` 모듈에는 `java.lang`, `java.util`, `java.io` 등의 핵심 패키지가 있으며, `java.lang`을 제외하고 import해서 사용할 수 있다.
 
-`java.se`는 JDK가 제공하는 모든 모듈을 제공하는 집합 모듈이다. Java 8 이전 버전과 같이 자바 표준 라이브러리를 제한 없이 사용하고 싶을 경우에는 이 `java.se`를 requires 하면 된다.
+`java.se`는 JDK가 제공하는 모든 모듈을 제공하는 집합 모듈이다. Java 8 이전 버전과 같이 자바 표준 라이브러리를 제한 없이 사용하고 싶을 경우에는 이 `java.se`를 `requires` 하면 된다.
 
 ```java
 module my_application {
@@ -33,4 +33,4 @@ Java 8 이전 버전까지는 응용프로그램이 표준 라이브러리의 5%
 
 > **Java 8의 콤팩트 프로파일**
 >
-> Java 8의 콤팩트 프로파일(compact1, compact2, compact3)도 작은 사이즈의 자바 실행 환경을 위해 도입되었다. 그러나 compact2에 소속된 1개의 클래스만 필요한 경우라도 어쩔 수 없이 compact1보다 더 큰 compact2를 배포해야 하는 단점은 있다.
+> Java 8의 콤팩트 프로파일(`compact1`, `compact2`, `compact3`)도 작은 사이즈의 자바 실행 환경을 위해 도입되었다. 그러나 `compact2`에 소속된 1개의 클래스만 필요한 경우라도 어쩔 수 없이 `compact1`보다 더 큰 `compact2`를 배포해야 하는 단점은 있다.

@@ -41,9 +41,10 @@ grand_parent: "객체지향 자바 프로그래밍"
    **정답:** ④ (다른 모듈도 추가로 의존 설정할 수 있다.)
 
 5. 자바 표준 모듈에 대한 설명으로 틀린 것은 무엇입니까?
-   - ① `java.base` 모듈은 기본 모듈이므로 requires 하지 않아도 사용할 수 있다.
-   - ② `java.base` 모듈에 속한 패키지는 import 없이도 사용할 수 있다.
+4. 자바 표준 모듈에 대한 설명으로 틀린 것은 무엇입니까?
+   - ① `java.base` 모듈은 기본 모듈이므로 `requires` 하지 않아도 사용할 수 있다.
+   - ② `java.base` 모듈에 속한 패키지는 `import` 없이도 사용할 수 있다.
    - ③ `java.se` 모듈은 JDK의 전체 모듈을 사용할 수 있도록 구성된 집합 모듈이다.
    - ④ 자바 표준 모듈은 작은 자바 실행 환경을 만들기 위해 설계되었다.
 
-   **정답:** ② (java.base 모듈의 java.lang 패키지만 import 없이 사용할 수 있다. java.util, java.io 등은 import 해야 한다.)
+   **정답:** ② (`java.base` 모듈의 `java.lang` 패키지만 `import` 없이 사용할 수 있다. `java.util`, `java.io` 등은 `import` 해야 한다.)

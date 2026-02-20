@@ -8,7 +8,7 @@ grand_parent: "객체지향 자바 프로그래밍"
 
 # 10.6 전이 의존
 
-`my_application_2` 프로젝트와 `my_module_a`, `my_module_b` 모듈의 의존 관계는 다음과 같이 표현할 수 있다. `my_application_2`는 직접적으로 두 모듈을 requires 하고 있기 때문이다.
+`my_application_2` 프로젝트와 `my_module_a`, `my_module_b` 모듈의 의존 관계는 다음과 같이 표현할 수 있다. `my_application_2`는 직접적으로 두 모듈을 `requires` 하고 있기 때문이다.
 
 ```
 my_application_2 -> my_module_a
@@ -38,16 +38,16 @@ module my_module_a {
 }
 ```
 
-이렇게 작성하면 `my_application_2`의 Main 클래스는 `my_module_b` 모듈을 사용할 수 없기 때문에 컴파일 오류가 발생한다. `my_application_2`의 모듈 기술자에서 `requires my_module_b`가 빠졌기 때문이다.
+이렇게 작성하면 `my_application_2`의 `Main` 클래스는 `my_module_b` 모듈을 사용할 수 없기 때문에 컴파일 오류가 발생한다. `my_application_2`의 모듈 기술자에서 `requires my_module_b`가 빠졌기 때문이다.
 
-Main 클래스에서 `my_module_b` 패키지 코드를 모두 제거하면 되겠지만, 제거할 수 없는 경우도 있다. 다음과 같이 `my_module_a` 소속의 A 클래스가 `my_module_b` 소속의 C 타입 객체를 리턴하는 경우이다.
+`Main` 클래스에서 `my_module_b` 패키지 코드를 모두 제거하면 되겠지만, 제거할 수 없는 경우도 있다. 다음과 같이 `my_module_a` 소속의 `A` 클래스가 `my_module_b` 소속의 `C` 타입 객체를 리턴하는 경우이다.
 
 ```java
 A a = new A();
 C c = a.method();
 ```
 
-`my_application_2`에서 이 코드를 사용해야 한다면 C 타입이 있기 때문에 `my_application_2`의 모듈 기술자에 `requires my_module_b`를 반드시 추가해야 한다. `my_application_2`는 단지 `my_module_a`만 사용하고 싶었는데도 말이다.
+`my_application_2`에서 이 코드를 사용해야 한다면 `C` 타입이 있기 때문에 `my_application_2`의 모듈 기술자에 `requires my_module_b`를 반드시 추가해야 한다. `my_application_2`는 단지 `my_module_a`만 사용하고 싶었는데도 말이다.
 
 이 문제를 해결할 방법은 `my_module_a`가 가지고 있다. `my_module_a`의 모듈 기술자에 `transitive` 키워드와 함께 `my_module_b`를 의존 설정하면 된다. 그러면 `my_application_2`에서도 `my_module_b`를 사용할 수 있게 된다. 의존 설정이 전이되기 때문이다.
 
@@ -154,4 +154,4 @@ module my_module_a {
     C-method 실행
     ```
 
-`my_application_2` 모듈 기술자에서 `requires my_module_b`를 제거했음에도 불구하고 여전히 Main 클래스에서 `my_module_b` 소속의 `pack3.C` 클래스를 사용할 수 있다. 이는 `my_module_a` 모듈 기술자에서 `transitive`로 `my_module_b`를 의존 설정했기 때문이다.
+`my_application_2` 모듈 기술자에서 `requires my_module_b`를 제거했음에도 불구하고 여전히 `Main` 클래스에서 `my_module_b` 소속의 `pack3.C` 클래스를 사용할 수 있다. 이는 `my_module_a` 모듈 기술자에서 `transitive`로 `my_module_b`를 의존 설정했기 때문이다.
