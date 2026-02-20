@@ -15,9 +15,9 @@ public class 클래스명<A, B, ...> { ... }
 public interface 인터페이스명<A, B, ...> { ... }
 ```
 
-타입 파라미터는 변수명과 동일한 규칙에 따라 작성할 수 있지만 일반적으로 대문자 알파벳 한 글자로 표현한다. 외부에서 제네릭 타입을 사용하려면 타입 파라미터에 구체적인 타입을 지정해야 한다. 만약 지정하지 않으면 Object 타입이 암묵적으로 사용된다.
+타입 파라미터는 변수명과 동일한 규칙에 따라 작성할 수 있지만 일반적으로 대문자 알파벳 한 글자로 표현한다. 외부에서 제네릭 타입을 사용하려면 타입 파라미터에 구체적인 타입을 지정해야 한다. 만약 지정하지 않으면 `Object` 타입이 암묵적으로 사용된다.
 
-다음 예제에서 Product 클래스를 제네릭 타입으로 선언해 보자. kind와 model 필드를 타입 파라미터로 선언하고, Getter의 매개변수와 Setter의 리턴 타입 역시 타입 파라미터로 선언한다. 이렇게 타입 파라미터를 사용하는 이유는 Product에 다양한 종류와 모델 제품을 저장하기 위해서이다.
+다음 예제에서 `Product` 클래스를 제네릭 타입으로 선언해 보자. `kind`와 `model` 필드를 타입 파라미터로 선언하고, Getter의 매개변수와 Setter의 리턴 타입 역시 타입 파라미터로 선언한다. 이렇게 타입 파라미터를 사용하는 이유는 `Product`에 다양한 종류와 모델 제품을 저장하기 위해서이다.
 
 ```java
 package ch13.sec02.exam01;
@@ -36,7 +36,7 @@ public class Product<K, M> {
 }
 ```
 
-Tv와 Car 클래스를 다음과 같이 작성해 보자.
+`Tv`와 `Car` 클래스를 다음과 같이 작성해 보자.
 
 ```java
 package ch13.sec02.exam01;
@@ -52,7 +52,7 @@ public class Car {
 }
 ```
 
-다음 GenericExample 클래스는 Product 제네릭 타입을 이용해서 Tv와 Car를 저장하고 얻는 방법을 보여 준다.
+다음 `GenericExample` 클래스는 `Product` 제네릭 타입을 이용해서 `Tv`와 `Car`를 저장하고 얻는 방법을 보여 준다.
 
 ```java
 package ch13.sec02.exam01;
@@ -62,29 +62,29 @@ public class GenericExample {
 		// K는 Tv로 대체, M은 String으로 대체
 		Product<Tv, String> product1 = new Product<>();
 
-		// Setter 매개값은 반드시 Tv와 String을 제공
+		// Setter 매개값은 반드시 `Tv`와 `String`을 제공
 		product1.setKind(new Tv());
 		product1.setModel("스마트Tv");
 
-		// Getter 리턴값은 Tv와 String이 됨
+		// Getter 리턴값은 `Tv`와 `String`이 됨
 		Tv tv = product1.getKind();
 		String tvModel = product1.getModel();
 
 		// K는 Car로 대체, M은 String으로 대체
 		Product<Car, String> product2 = new Product<>();
 
-		// Setter 매개값은 반드시 Car와 String을 제공
+		// Setter 매개값은 반드시 `Car`와 `String`을 제공
 		product2.setKind(new Car());
 		product2.setModel("SUV자동차");
 
-		// Getter 리턴값은 Car와 String이 됨
+		// Getter 리턴값은 `Car`와 `String`이 됨
 		Car car = product2.getKind();
 		String carModel = product2.getModel();
 	}
 }
 ```
 
-이번에는 Rentable 인터페이스를 제네릭 타입으로 선언해 보자. 다양한 대상을 렌트하기 위해 rent() 메소드의 리턴 타입을 타입 파라미터로 선언한다.
+이번에는 `Rentable` 인터페이스를 제네릭 타입으로 선언해 보자. 다양한 대상을 렌트하기 위해 `rent()` 메소드의 리턴 타입을 타입 파라미터로 선언한다.
 
 ```java
 package ch13.sec02.exam02;
@@ -94,7 +94,7 @@ public interface Rentable<P> {
 }
 ```
 
-렌트 대상인 Home과 Car 클래스를 다음과 같이 작성해 보자.
+렌트 대상인 `Home`과 `Car` 클래스를 다음과 같이 작성해 보자.
 
 ```java
 package ch13.sec02.exam02;
@@ -116,7 +116,7 @@ public class Car {
 }
 ```
 
-다음 HomeAgency와 CarAgency는 집과 자동차를 렌트해주는 대리점 클래스로, Rentable의 타입 파라미터를 Home과 Car로 대체해서 구현하는 방법을 보여 준다.
+다음 `HomeAgency`와 `CarAgency`는 집과 자동차를 렌트해주는 대리점 클래스로, `Rentable`의 타입 파라미터를 `Home`과 `Car`로 대체해서 구현하는 방법을 보여 준다.
 
 ```java
 package ch13.sec02.exam02;
@@ -140,7 +140,7 @@ public class CarAgency implements Rentable<Car> {
 }
 ```
 
-다음 GenericExample 클래스는 HomeAgency와 CarAgency에서 대여한 Home과 Car를 이용하는 방법을 보여 준다.
+다음 `GenericExample` 클래스는 `HomeAgency`와 `CarAgency`에서 대여한 `Home`과 `Car`를 이용하는 방법을 보여 준다.
 
 ```java
 package ch13.sec02.exam02;
@@ -164,7 +164,7 @@ public class GenericExample {
 자동차가 달립니다.
 ```
 
-타입 파라미터는 기본적으로 Object 타입으로 간주되므로 Object가 가지고 있는 메소드를 호출할 수 있다. 다음 예제는 Box의 내용물을 비교하기 위해 타입 파라미터로 Object의 equals() 메소드를 호출한다.
+타입 파라미터는 기본적으로 `Object` 타입으로 간주되므로 `Object`가 가지고 있는 메소드를 호출할 수 있다. 다음 예제는 `Box`의 내용물을 비교하기 위해 타입 파라미터로 `Object`의 `equals()` 메소드를 호출한다.
 
 ```java
 package ch13.sec02.exam03;

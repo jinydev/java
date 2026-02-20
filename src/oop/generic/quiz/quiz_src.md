@@ -16,7 +16,7 @@ grand_parent: "객체지향 프로그래밍"
     > **정답**: ④
     > **해설**: 제네릭 메소드는 리턴 타입 앞에 타입 파라미터를 선언하고, 리턴 타입으로도 사용할 수 있다.
 
-2.  ContainerExample 클래스의 main() 메소드는 Container 제네릭 타입을 사용하고 있습니다. main() 메소드에서 사용하는 방법을 참고해서 Container 제네릭 타입을 선언해 보세요.
+2.  `ContainerExample` 클래스의 `main()` 메소드는 `Container` 제네릭 타입을 사용하고 있습니다. `main()` 메소드에서 사용하는 방법을 참고해서 `Container` 제네릭 타입을 선언해 보세요.
     ```java
     public class ContainerExample {
     	public static void main(String[] args) {
@@ -39,7 +39,7 @@ grand_parent: "객체지향 프로그래밍"
     }
     ```
 
-3.  ContainerExample 클래스의 main() 메소드는 Container 제네릭 타입을 사용하고 있습니다. main() 메소드에서 사용하는 방법을 참고해서 Container 제네릭 타입을 선언해 보세요.
+3.  `ContainerExample` 클래스의 `main()` 메소드는 `Container` 제네릭 타입을 사용하고 있습니다. `main()` 메소드에서 사용하는 방법을 참고해서 `Container` 제네릭 타입을 선언해 보세요.
     ```java
     public class ContainerExample {
     	public static void main(String[] args) {
@@ -76,7 +76,7 @@ grand_parent: "객체지향 프로그래밍"
     }
     ```
 
-4.  다음 Util 클래스의 정적 getValue() 메소드는 첫 번째 매개값으로 Pair 타입과 하위 타입만 받고, 두 번째 매개값으로 키값을 받습니다. 리턴값은 키값이 일치할 경우 Pair에 저장된 값을 리턴하고, 일치하지 않으면 null을 리턴하도록 Util 클래스와 getValue() 제네릭 메소드를 작성해 보세요.
+4.  다음 `Util` 클래스의 정적 `getValue()` 메소드는 첫 번째 매개값으로 `Pair` 타입과 하위 타입만 받고, 두 번째 매개값으로 키값을 받습니다. 리턴값은 키값이 일치할 경우 `Pair`에 저장된 값을 리턴하고, 일치하지 않으면 `null`을 리턴하도록 `Util` 클래스와 `getValue()` 제네릭 메소드를 작성해 보세요.
     ```java
     public class UtilExample {
     	public static void main(String[] args) {
