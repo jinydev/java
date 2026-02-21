@@ -14,6 +14,8 @@ grand_parent: "Part 01. 자바 언어의 기초"
 반면 `switch` 문은 **"값이 1이면 여기, 2면 저기"** 하고 딱딱 정해진 곳으로 바로 이동합니다.
 마치 자판기 버튼을 누르면 해당 음료수가 바로 나오는 것과 비슷합니다.
 
+![그림](./img/switch_vending_machine.png)
+
 ```mermaid
 flowchart TD
     Input([자판기 동전 투입]) --> Switch{어떤 버튼을 눌렀나?}

@@ -13,6 +13,8 @@ grand_parent: "Part 01. 자바 언어의 기초"
 자바 프로그램은 기본적으로 `main()` 메소드의 첫 줄부터 마지막 줄까지 **위에서 아래로** 순서대로 실행됩니다.
 마치 강물이 위에서 아래로 흐르는 것과 같습니다.
 
+![그림](./img/code_flow.png)
+
 ```mermaid
 flowchart TD
     Start([프로그램 시작]) --> Step1[첫 번째 줄 실행: 물 긷기]
@@ -31,6 +33,8 @@ flowchart TD
 
 하지만 항상 위에서 아래로만 흐르면 재미없는 프로그램밖에 못 만듭니다.
 상황에 따라 물길을 바꾸거나(조건문), 물을 가둬서 빙빙 돌려야(반복문) 할 때도 있습니다.
+
+![그림](./img/flow_control_dam.png)
 
 ```mermaid
 flowchart TD

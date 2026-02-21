@@ -13,6 +13,8 @@ grand_parent: "Part 01. 자바 언어의 기초"
 **"만약(if) ~라면, 이걸 해라"**
 가장 기본적인 조건문입니다.
 
+![그림](./img/if_crossroad.png)
+
 ```java
 int score = 90;
 
