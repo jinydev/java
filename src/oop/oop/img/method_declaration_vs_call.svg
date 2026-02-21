@@ -1,9 +1,31 @@
 <svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(10px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .animated-g {
+      opacity: 0;
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+    /* Add sequential delays */
+    .animated-g:nth-of-type(1) { animation-delay: 0.1s; }
+    .animated-g:nth-of-type(2) { animation-delay: 0.3s; }
+    .animated-g:nth-of-type(3) { animation-delay: 0.5s; }
+    .animated-g:nth-of-type(4) { animation-delay: 0.7s; }
+    .animated-g:nth-of-type(5) { animation-delay: 0.9s; }
+    .animated-g:nth-of-type(6) { animation-delay: 1.1s; }
+    .animated-g:nth-of-type(7) { animation-delay: 1.3s; }
+    .animated-g:nth-of-type(8) { animation-delay: 1.5s; }
+    .animated-g:nth-of-type(9) { animation-delay: 1.7s; }
+    .animated-g:nth-of-type(10) { animation-delay: 1.9s; }
+  </style>
+
   <!-- Background -->
   <rect width="800" height="400" fill="#f8f9fa"/>
 
   <!-- Left Side: Method Declaration (Recipe Book) -->
-  <g transform="translate(100, 100)">
+  <g class="animated-g" transform="translate(100, 100)">
     <rect x="0" y="0" width="200" height="250" rx="5" fill="#e74c3c" stroke="#c0392b" stroke-width="3"/>
     <rect x="10" y="10" width="180" height="230" rx="3" fill="white"/>
     <text x="100" y="50" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="#2c3e50" font-weight="bold">Recipe: Ramen</text>
@@ -20,7 +42,7 @@
   <line x1="400" y1="50" x2="400" y2="350" stroke="#95a5a6" stroke-width="3" stroke-dasharray="10,10"/>
 
   <!-- Right Side: Method Call (Cooking) -->
-  <g transform="translate(500, 100)">
+  <g class="animated-g" transform="translate(500, 100)">
     <!-- Pot -->
     <path d="M20,150 L180,150 L170,230 Q165,250 145,250 L55,250 Q35,250 30,230 Z" fill="#95a5a6" stroke="#7f8c8d" stroke-width="3"/>
     <ellipse cx="100" cy="150" rx="80" ry="20" fill="#bdc3c7" stroke="#7f8c8d" stroke-width="3"/>

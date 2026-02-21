@@ -1,23 +1,45 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <style>
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(10px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .animated-g {
+      opacity: 0;
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+    /* Add sequential delays */
+    .animated-g:nth-of-type(1) { animation-delay: 0.1s; }
+    .animated-g:nth-of-type(2) { animation-delay: 0.3s; }
+    .animated-g:nth-of-type(3) { animation-delay: 0.5s; }
+    .animated-g:nth-of-type(4) { animation-delay: 0.7s; }
+    .animated-g:nth-of-type(5) { animation-delay: 0.9s; }
+    .animated-g:nth-of-type(6) { animation-delay: 1.1s; }
+    .animated-g:nth-of-type(7) { animation-delay: 1.3s; }
+    .animated-g:nth-of-type(8) { animation-delay: 1.5s; }
+    .animated-g:nth-of-type(9) { animation-delay: 1.7s; }
+    .animated-g:nth-of-type(10) { animation-delay: 1.9s; }
+  </style>
+
   <rect width="800" height="400" fill="#f0f8ff"/>
   <text x="400" y="50" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" font-weight="bold" fill="#333">Data Exchange (Parameters &amp; Return)</text>
 
   <!-- Object A -->
-  <g transform="translate(50, 150)">
+  <g class="animated-g" transform="translate(50, 150)">
     <rect x="0" y="0" width="120" height="100" rx="10" fill="#ffb6c1" stroke="#db7093" stroke-width="2"/>
     <text x="60" y="55" text-anchor="middle" font-size="18" font-weight="bold">Caller</text>
   </g>
 
   <!-- Object B -->
-  <g transform="translate(630, 150)">
+  <g class="animated-g" transform="translate(630, 150)">
     <rect x="0" y="0" width="120" height="100" rx="10" fill="#add8e6" stroke="#4682b4" stroke-width="2"/>
     <text x="60" y="55" text-anchor="middle" font-size="18" font-weight="bold">Receiver</text>
   </g>
 
   <!-- Data Flow -->
-  <g transform="translate(180, 150)">
+  <g class="animated-g" transform="translate(180, 150)">
     <!-- Parameters -->
-    <g>
+    <g class="animated-g">
       <path d="M 0 30 L 430 30" stroke="#ff4500" stroke-width="3"/>
       <polygon points="430,25 440,30 430,35" fill="#ff4500"/>
       <rect x="180" y="10" width="80" height="40" rx="5" fill="#fff" stroke="#ff4500"/>
@@ -25,7 +47,7 @@
     </g>
 
     <!-- Return Value -->
-    <g transform="translate(0, 60)">
+    <g class="animated-g" transform="translate(0, 60)">
       <path d="M 440 30 L 10 30" stroke="#4169e1" stroke-width="3"/>
       <polygon points="10,25 0,30 10,35" fill="#4169e1"/>
       <rect x="180" y="10" width="80" height="40" rx="5" fill="#fff" stroke="#4169e1"/>

@@ -14,6 +14,7 @@ grand_parent: "객체지향 자바 프로그래밍"
 ### 💡 핵심 비유: 계약서(Contract)와 서명(Sign)
 > **"갑(Interface)이 요구사항을 적은 계약서를 내밀면, 을(Class)은 그 계약서에 서명하고(implements) 모든 조항을 성실히 이행해야 한다."**
 
+![Interface PNG](../img/oop_interface.png)
 ![Interface Declaration](./img/interface_declaration.svg)
 
 ---

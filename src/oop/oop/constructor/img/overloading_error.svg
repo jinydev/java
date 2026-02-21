@@ -1,9 +1,31 @@
 <svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(10px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .animated-g {
+      opacity: 0;
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+    /* Add sequential delays */
+    .animated-g:nth-of-type(1) { animation-delay: 0.1s; }
+    .animated-g:nth-of-type(2) { animation-delay: 0.3s; }
+    .animated-g:nth-of-type(3) { animation-delay: 0.5s; }
+    .animated-g:nth-of-type(4) { animation-delay: 0.7s; }
+    .animated-g:nth-of-type(5) { animation-delay: 0.9s; }
+    .animated-g:nth-of-type(6) { animation-delay: 1.1s; }
+    .animated-g:nth-of-type(7) { animation-delay: 1.3s; }
+    .animated-g:nth-of-type(8) { animation-delay: 1.5s; }
+    .animated-g:nth-of-type(9) { animation-delay: 1.7s; }
+    .animated-g:nth-of-type(10) { animation-delay: 1.9s; }
+  </style>
+
   <!-- Background -->
   <rect width="800" height="400" fill="#f8f9fa"/>
 
   <!-- Confused Compiler Robot -->
-  <g transform="translate(300, 100)">
+  <g class="animated-g" transform="translate(300, 100)">
     <rect x="50" y="50" width="100" height="100" rx="10" fill="#bdc3c7" stroke="#7f8c8d" stroke-width="3"/> <!-- Head -->
     <circle cx="80" cy="90" r="10" fill="white"/> <!-- Eye L -->
     <circle cx="120" cy="90" r="10" fill="white"/> <!-- Eye R -->
@@ -19,13 +41,13 @@
   </g>
 
   <!-- Ambiguous Inputs -->
-  <g transform="translate(100, 250)">
+  <g class="animated-g" transform="translate(100, 250)">
     <rect width="200" height="80" rx="10" fill="#3498db" stroke="#2980b9" stroke-width="3"/>
     <text x="100" y="30" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="white">Constructor 1</text>
     <text x="100" y="55" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="white" font-weight="bold">(String, String)</text>
   </g>
 
-  <g transform="translate(500, 250)">
+  <g class="animated-g" transform="translate(500, 250)">
     <rect width="200" height="80" rx="10" fill="#e74c3c" stroke="#c0392b" stroke-width="3"/>
     <text x="100" y="30" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="white">Constructor 2</text>
     <text x="100" y="55" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="white" font-weight="bold">(String, String)</text>

@@ -1,4 +1,26 @@
 <svg width="600" height="300" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(10px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .animated-g {
+      opacity: 0;
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+    /* Add sequential delays */
+    .animated-g:nth-of-type(1) { animation-delay: 0.1s; }
+    .animated-g:nth-of-type(2) { animation-delay: 0.3s; }
+    .animated-g:nth-of-type(3) { animation-delay: 0.5s; }
+    .animated-g:nth-of-type(4) { animation-delay: 0.7s; }
+    .animated-g:nth-of-type(5) { animation-delay: 0.9s; }
+    .animated-g:nth-of-type(6) { animation-delay: 1.1s; }
+    .animated-g:nth-of-type(7) { animation-delay: 1.3s; }
+    .animated-g:nth-of-type(8) { animation-delay: 1.5s; }
+    .animated-g:nth-of-type(9) { animation-delay: 1.7s; }
+    .animated-g:nth-of-type(10) { animation-delay: 1.9s; }
+  </style>
+
   <!-- Background -->
   <rect width="600" height="300" fill="#fcfcfc"/>
 
@@ -11,14 +33,14 @@
   <text x="250" y="115" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#e74c3c" font-weight="bold">Illegal cast!</text>
 
   <!-- Dog Object -->
-  <g transform="translate(100, 160)">
+  <g class="animated-g" transform="translate(100, 160)">
     <rect width="120" height="80" rx="10" fill="#eceff1" stroke="#607d8b" stroke-width="2"/>
     <text x="60" y="45" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#455a64" font-weight="bold">Dog</text>
     <text x="60" y="65" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#455a64">(멍멍)</text>
   </g>
 
   <!-- Mask (Cat) -->
-  <g transform="translate(350, 160)">
+  <g class="animated-g" transform="translate(350, 160)">
     <rect width="120" height="80" rx="10" fill="#fff3e0" stroke="#ff9800" stroke-width="2" stroke-dasharray="5,5"/>
     <text x="60" y="45" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#e65100" font-weight="bold">Cat?</text>
     <text x="60" y="65" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#e65100">(야옹)</text>

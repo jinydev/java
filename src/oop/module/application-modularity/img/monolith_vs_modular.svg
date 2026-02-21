@@ -1,9 +1,31 @@
 <svg width="600" height="300" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(10px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .animated-g {
+      opacity: 0;
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+    /* Add sequential delays */
+    .animated-g:nth-of-type(1) { animation-delay: 0.1s; }
+    .animated-g:nth-of-type(2) { animation-delay: 0.3s; }
+    .animated-g:nth-of-type(3) { animation-delay: 0.5s; }
+    .animated-g:nth-of-type(4) { animation-delay: 0.7s; }
+    .animated-g:nth-of-type(5) { animation-delay: 0.9s; }
+    .animated-g:nth-of-type(6) { animation-delay: 1.1s; }
+    .animated-g:nth-of-type(7) { animation-delay: 1.3s; }
+    .animated-g:nth-of-type(8) { animation-delay: 1.5s; }
+    .animated-g:nth-of-type(9) { animation-delay: 1.7s; }
+    .animated-g:nth-of-type(10) { animation-delay: 1.9s; }
+  </style>
+
   <!-- Background -->
   <rect width="600" height="300" fill="#ffffff" />
   
   <!-- Monolith -->
-  <g transform="translate(50, 50)">
+  <g class="animated-g" transform="translate(50, 50)">
     <circle cx="100" cy="100" r="80" fill="#efebe9" stroke="#795548" stroke-width="2"/>
     <text x="100" y="30" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#5d4037" text-anchor="middle">Monolith (단일 덩어리)</text>
     
@@ -14,7 +36,7 @@
   </g>
 
   <!-- Modular -->
-  <g transform="translate(350, 50)">
+  <g class="animated-g" transform="translate(350, 50)">
     <!-- Block A -->
     <rect x="0" y="40" width="80" height="60" rx="5" fill="#bbdefb" stroke="#1976d2" stroke-width="2"/>
     <text x="40" y="75" font-family="Arial, sans-serif" font-size="12" fill="#0d47a1" text-anchor="middle">Module A</text>

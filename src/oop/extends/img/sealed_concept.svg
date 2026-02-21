@@ -1,4 +1,26 @@
 <svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(10px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .animated-g {
+      opacity: 0;
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+    /* Add sequential delays */
+    .animated-g:nth-of-type(1) { animation-delay: 0.1s; }
+    .animated-g:nth-of-type(2) { animation-delay: 0.3s; }
+    .animated-g:nth-of-type(3) { animation-delay: 0.5s; }
+    .animated-g:nth-of-type(4) { animation-delay: 0.7s; }
+    .animated-g:nth-of-type(5) { animation-delay: 0.9s; }
+    .animated-g:nth-of-type(6) { animation-delay: 1.1s; }
+    .animated-g:nth-of-type(7) { animation-delay: 1.3s; }
+    .animated-g:nth-of-type(8) { animation-delay: 1.5s; }
+    .animated-g:nth-of-type(9) { animation-delay: 1.7s; }
+    .animated-g:nth-of-type(10) { animation-delay: 1.9s; }
+  </style>
+
   <!-- Background -->
   <rect width="800" height="400" fill="#fcfcfc"/>
 
@@ -7,7 +29,7 @@
   <text x="400" y="70" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#7f8c8d">"허락된 자식만 상속 가능!"</text>
 
   <!-- Parent Class (VIP Room) -->
-  <g transform="translate(250, 100)">
+  <g class="animated-g" transform="translate(250, 100)">
     <rect width="300" height="100" rx="10" fill="#e8eaf6" stroke="#3f51b5" stroke-width="3"/>
     <text x="150" y="35" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#1a237e" font-weight="bold">Person (Sealed)</text>
     <text x="150" y="60" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#3949ab">permits Employee, Manager</text>
@@ -18,7 +40,7 @@
   </g>
 
   <!-- Allowed Child 1 -->
-  <g transform="translate(100, 250)">
+  <g class="animated-g" transform="translate(100, 250)">
     <path d="M 150 -50 L 250 -150" stroke="#4caf50" stroke-width="3" stroke-dasharray="5,5"/>
     
     <rect width="180" height="80" rx="10" fill="#e8f5e9" stroke="#4caf50" stroke-width="2"/>
@@ -27,7 +49,7 @@
   </g>
 
   <!-- Allowed Child 2 -->
-  <g transform="translate(320, 250)">
+  <g class="animated-g" transform="translate(320, 250)">
     <path d="M 90 -50 L 90 -150" stroke="#4caf50" stroke-width="3" stroke-dasharray="5,5"/>
 
     <rect width="180" height="80" rx="10" fill="#e8f5e9" stroke="#4caf50" stroke-width="2"/>
@@ -36,7 +58,7 @@
   </g>
 
   <!-- Denied Child -->
-  <g transform="translate(540, 250)">
+  <g class="animated-g" transform="translate(540, 250)">
     <path d="M 90 -50 L 0 -150" stroke="#f44336" stroke-width="3"/>
 
     <rect width="180" height="80" rx="10" fill="#ffebee" stroke="#f44336" stroke-width="2"/>

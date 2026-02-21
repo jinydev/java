@@ -1,4 +1,26 @@
 <svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(10px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .animated-g {
+      opacity: 0;
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+    /* Add sequential delays */
+    .animated-g:nth-of-type(1) { animation-delay: 0.1s; }
+    .animated-g:nth-of-type(2) { animation-delay: 0.3s; }
+    .animated-g:nth-of-type(3) { animation-delay: 0.5s; }
+    .animated-g:nth-of-type(4) { animation-delay: 0.7s; }
+    .animated-g:nth-of-type(5) { animation-delay: 0.9s; }
+    .animated-g:nth-of-type(6) { animation-delay: 1.1s; }
+    .animated-g:nth-of-type(7) { animation-delay: 1.3s; }
+    .animated-g:nth-of-type(8) { animation-delay: 1.5s; }
+    .animated-g:nth-of-type(9) { animation-delay: 1.7s; }
+    .animated-g:nth-of-type(10) { animation-delay: 1.9s; }
+  </style>
+
   <!-- Background -->
   <rect width="600" height="400" fill="#fcfcfc"/>
 
@@ -6,7 +28,7 @@
   <text x="300" y="40" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="#2c3e50" font-weight="bold">자식 객체를 만들 때 일어나는 일 (메모리)</text>
 
   <!-- Stack: remote control -->
-  <g transform="translate(50, 150)">
+  <g class="animated-g" transform="translate(50, 150)">
     <rect width="100" height="60" fill="#fce4ec" stroke="#e91e63" stroke-width="2"/>
     <text x="50" y="25" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#c2185b" font-weight="bold">child 변수</text>
     <text x="50" y="45" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#880e4f">0x100 (주소)</text>
@@ -21,14 +43,14 @@
   </defs>
 
   <!-- Heap: Child Object -->
-  <g transform="translate(260, 100)">
+  <g class="animated-g" transform="translate(260, 100)">
     <!-- Outer Box (Child Object) -->
     <rect width="250" height="220" rx="10" fill="#e3f2fd" stroke="#2196f3" stroke-width="2"/>
     <text x="125" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#1565c0" font-weight="bold">자식 객체 (Child)</text>
     <text x="125" y="210" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#1565c0">Heap Area @0x100</text>
 
     <!-- Inner Box (Parent Part) -->
-     <g transform="translate(20, 40)">
+     <g class="animated-g" transform="translate(20, 40)">
         <rect width="210" height="100" rx="5" fill="#e8f6f3" stroke="#009688" stroke-width="2" stroke-dasharray="5,3"/>
         <text x="105" y="20" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#00796b" font-weight="bold">부모 영역 (super)</text>
         
@@ -37,7 +59,7 @@
      </g>
 
      <!-- Child Only Part -->
-     <g transform="translate(20, 150)">
+     <g class="animated-g" transform="translate(20, 150)">
         <text x="30" y="15" font-family="Arial, sans-serif" font-size="12" fill="#1565c0">field2 (나의 재산)</text>
         <text x="30" y="40" font-family="Arial, sans-serif" font-size="12" fill="#1565c0">method2() (나의 기술)</text>
      </g>

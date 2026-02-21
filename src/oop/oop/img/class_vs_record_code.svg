@@ -1,14 +1,36 @@
 <svg width="800" height="500" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(10px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .animated-g {
+      opacity: 0;
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+    /* Add sequential delays */
+    .animated-g:nth-of-type(1) { animation-delay: 0.1s; }
+    .animated-g:nth-of-type(2) { animation-delay: 0.3s; }
+    .animated-g:nth-of-type(3) { animation-delay: 0.5s; }
+    .animated-g:nth-of-type(4) { animation-delay: 0.7s; }
+    .animated-g:nth-of-type(5) { animation-delay: 0.9s; }
+    .animated-g:nth-of-type(6) { animation-delay: 1.1s; }
+    .animated-g:nth-of-type(7) { animation-delay: 1.3s; }
+    .animated-g:nth-of-type(8) { animation-delay: 1.5s; }
+    .animated-g:nth-of-type(9) { animation-delay: 1.7s; }
+    .animated-g:nth-of-type(10) { animation-delay: 1.9s; }
+  </style>
+
   <!-- Background -->
   <rect width="800" height="500" fill="#f8f9fa"/>
 
   <!-- Traditional Class -->
-  <g transform="translate(50, 60)">
+  <g class="animated-g" transform="translate(50, 60)">
     <text x="150" y="-20" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="#c0392b" font-weight="bold">기존 Class (지루함)</text>
     <rect width="300" height="400" fill="white" stroke="#bdc3c7" stroke-width="2" rx="5"/>
     
     <!-- Code Lines -->
-    <g transform="translate(20, 30)">
+    <g class="animated-g" transform="translate(20, 30)">
         <text x="0" y="0" font-family="monospace" font-size="12" fill="#7f8c8d">public class Person {</text>
         <text x="20" y="20" font-family="monospace" font-size="12" fill="#2c3e50">private final String name;</text>
         <text x="20" y="40" font-family="monospace" font-size="12" fill="#2c3e50">private final int age;</text>
@@ -34,11 +56,11 @@
   </g>
 
   <!-- Record -->
-  <g transform="translate(450, 60)">
+  <g class="animated-g" transform="translate(450, 60)">
     <text x="150" y="-20" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="#27ae60" font-weight="bold">Record (심플함)</text>
     <rect width="300" height="150" fill="white" stroke="#2ecc71" stroke-width="4" rx="5"/>
     
-    <g transform="translate(20, 70)">
+    <g class="animated-g" transform="translate(20, 70)">
         <text x="0" y="0" font-family="monospace" font-size="14" fill="#2c3e50" font-weight="bold">public record Person(</text>
         <text x="20" y="20" font-family="monospace" font-size="14" fill="#d35400" font-weight="bold">String name, int age</text>
         <text x="0" y="40" font-family="monospace" font-size="14" fill="#2c3e50" font-weight="bold">) {}</text>

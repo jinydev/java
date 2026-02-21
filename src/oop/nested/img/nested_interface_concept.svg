@@ -1,9 +1,31 @@
 <svg width="500" height="300" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(10px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .animated-g {
+      opacity: 0;
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+    /* Add sequential delays */
+    .animated-g:nth-of-type(1) { animation-delay: 0.1s; }
+    .animated-g:nth-of-type(2) { animation-delay: 0.3s; }
+    .animated-g:nth-of-type(3) { animation-delay: 0.5s; }
+    .animated-g:nth-of-type(4) { animation-delay: 0.7s; }
+    .animated-g:nth-of-type(5) { animation-delay: 0.9s; }
+    .animated-g:nth-of-type(6) { animation-delay: 1.1s; }
+    .animated-g:nth-of-type(7) { animation-delay: 1.3s; }
+    .animated-g:nth-of-type(8) { animation-delay: 1.5s; }
+    .animated-g:nth-of-type(9) { animation-delay: 1.7s; }
+    .animated-g:nth-of-type(10) { animation-delay: 1.9s; }
+  </style>
+
   <!-- Background -->
   <rect width="500" height="300" fill="#ffffff" />
   
   <!-- Button Class -->
-  <g transform="translate(50, 50)">
+  <g class="animated-g" transform="translate(50, 50)">
     <rect x="0" y="0" width="200" height="200" rx="20" fill="#eeeeee" stroke="#9e9e9e" stroke-width="2"/>
     <text x="100" y="30" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#616161" text-anchor="middle">Button Class</text>
     
@@ -17,7 +39,7 @@
   </g>
 
   <!-- Implementations (Chips) -->
-  <g transform="translate(300, 80)">
+  <g class="animated-g" transform="translate(300, 80)">
     <!-- Chip 1 -->
     <path d="M0,0 L100,0 L110,15 L100,30 L0,30 L-10,15 Z" fill="#4caf50" stroke="#2e7d32" stroke-width="2"/>
     <text x="50" y="20" font-family="Arial, sans-serif" font-size="12" fill="#fff" text-anchor="middle">Music Listener</text>

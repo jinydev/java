@@ -1,4 +1,26 @@
 <svg width="500" height="300" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(10px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .animated-g {
+      opacity: 0;
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+    /* Add sequential delays */
+    .animated-g:nth-of-type(1) { animation-delay: 0.1s; }
+    .animated-g:nth-of-type(2) { animation-delay: 0.3s; }
+    .animated-g:nth-of-type(3) { animation-delay: 0.5s; }
+    .animated-g:nth-of-type(4) { animation-delay: 0.7s; }
+    .animated-g:nth-of-type(5) { animation-delay: 0.9s; }
+    .animated-g:nth-of-type(6) { animation-delay: 1.1s; }
+    .animated-g:nth-of-type(7) { animation-delay: 1.3s; }
+    .animated-g:nth-of-type(8) { animation-delay: 1.5s; }
+    .animated-g:nth-of-type(9) { animation-delay: 1.7s; }
+    .animated-g:nth-of-type(10) { animation-delay: 1.9s; }
+  </style>
+
   <!-- Background -->
   <rect width="500" height="300" fill="#ffffff" />
   
@@ -7,7 +29,7 @@
   <rect x="70" y="70" width="360" height="160" fill="#37474f"/> <!-- Screen -->
   
   <!-- Suitcase (Module) -->
-  <g transform="translate(150, 100)">
+  <g class="animated-g" transform="translate(150, 100)">
     <!-- Outline -->
     <rect x="0" y="0" width="200" height="100" rx="10" fill="none" stroke="#81d4fa" stroke-width="2" stroke-dasharray="5,5"/>
     <text x="100" y="-10" font-family="Arial, sans-serif" font-size="12" fill="#81d4fa" text-anchor="middle">은닉된 모듈 (Encapsulated)</text>

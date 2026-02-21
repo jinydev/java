@@ -1,4 +1,26 @@
 <svg width="700" height="400" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(10px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .animated-g {
+      opacity: 0;
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+    /* Add sequential delays */
+    .animated-g:nth-of-type(1) { animation-delay: 0.1s; }
+    .animated-g:nth-of-type(2) { animation-delay: 0.3s; }
+    .animated-g:nth-of-type(3) { animation-delay: 0.5s; }
+    .animated-g:nth-of-type(4) { animation-delay: 0.7s; }
+    .animated-g:nth-of-type(5) { animation-delay: 0.9s; }
+    .animated-g:nth-of-type(6) { animation-delay: 1.1s; }
+    .animated-g:nth-of-type(7) { animation-delay: 1.3s; }
+    .animated-g:nth-of-type(8) { animation-delay: 1.5s; }
+    .animated-g:nth-of-type(9) { animation-delay: 1.7s; }
+    .animated-g:nth-of-type(10) { animation-delay: 1.9s; }
+  </style>
+
   <!-- Background -->
   <rect width="700" height="400" fill="#fcfcfc"/>
 
@@ -6,7 +28,7 @@
   <text x="350" y="40" font-family="Arial, sans-serif" font-size="22" text-anchor="middle" fill="#2c3e50" font-weight="bold">메소드 오버라이딩 (덮어쓰기)</text>
 
   <!-- Parent: Basic Ramen Recipe -->
-  <g transform="translate(50, 80)">
+  <g class="animated-g" transform="translate(50, 80)">
     <rect width="250" height="250" rx="10" fill="#e8f6f3" stroke="#1abc9c" stroke-width="3"/>
     <text x="125" y="35" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#16a085" font-weight="bold">부모: 기본 라면</text>
     
@@ -29,7 +51,7 @@
   <text x="350" y="190" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#7f8c8d">상속 (extends)</text>
 
   <!-- Child: Cheese Ramen Recipe -->
-  <g transform="translate(400, 80)">
+  <g class="animated-g" transform="translate(400, 80)">
     <rect width="250" height="250" rx="10" fill="#fff3e0" stroke="#e67e22" stroke-width="3"/>
     <text x="125" y="35" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#d35400" font-weight="bold">자식: 치즈 라면</text>
     
@@ -37,7 +59,7 @@
     <rect x="25" y="60" width="200" height="160" fill="white" stroke="#e67e22" stroke-width="2"/>
     
     <!-- Overwrite Tag -->
-    <g transform="translate(130, -10)">
+    <g class="animated-g" transform="translate(130, -10)">
         <rect width="80" height="24" rx="12" fill="#e74c3c"/>
         <text x="40" y="17" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white" font-weight="bold">@Override</text>
     </g>

@@ -27,7 +27,7 @@ public void method(Vehicle vehicle) {
 }
 ```
 
-Java 12부터는 `instanceof` 연산의 결과가 true일 경우, 우측 타입 변수를 사용할 수 있기 때문에 강제 타입 변환이 필요 없다.
+Java 12부터는 `instanceof` 연산의 결과가 `true`일 경우, 우측 타입 변수를 사용할 수 있기 때문에 강제 타입 변환이 필요 없다.
 
 ```java
 if (vehicle instanceof Bus bus) {

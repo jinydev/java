@@ -1,4 +1,26 @@
 <svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(10px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .animated-g {
+      opacity: 0;
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+    /* Add sequential delays */
+    .animated-g:nth-of-type(1) { animation-delay: 0.1s; }
+    .animated-g:nth-of-type(2) { animation-delay: 0.3s; }
+    .animated-g:nth-of-type(3) { animation-delay: 0.5s; }
+    .animated-g:nth-of-type(4) { animation-delay: 0.7s; }
+    .animated-g:nth-of-type(5) { animation-delay: 0.9s; }
+    .animated-g:nth-of-type(6) { animation-delay: 1.1s; }
+    .animated-g:nth-of-type(7) { animation-delay: 1.3s; }
+    .animated-g:nth-of-type(8) { animation-delay: 1.5s; }
+    .animated-g:nth-of-type(9) { animation-delay: 1.7s; }
+    .animated-g:nth-of-type(10) { animation-delay: 1.9s; }
+  </style>
+
   <!-- Background -->
   <rect width="800" height="400" fill="#f8f9fa"/>
 
@@ -7,14 +29,14 @@
   <text x="400" y="90" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="#2c3e50" font-weight="bold">My Object</text>
 
   <!-- Public Field -->
-  <g transform="translate(200, 120)">
+  <g class="animated-g" transform="translate(200, 120)">
     <rect x="0" y="0" width="400" height="60" rx="5" fill="#2ecc71" opacity="0.2"/>
     <text x="20" y="35" font-family="Arial, sans-serif" font-size="18" fill="#27ae60" font-weight="bold">public int score;</text>
     <text x="250" y="35" font-family="Arial, sans-serif" font-size="14" fill="#27ae60">← 외부에서 마음대로 변경 가능</text>
   </g>
 
   <!-- Private Field -->
-  <g transform="translate(200, 200)">
+  <g class="animated-g" transform="translate(200, 200)">
     <rect x="0" y="0" width="400" height="60" rx="5" fill="#e74c3c" opacity="0.2"/>
     <text x="20" y="35" font-family="Arial, sans-serif" font-size="18" fill="#c0392b" font-weight="bold">private String password;</text>
     <rect x="350" y="15" width="30" height="30" fill="#c0392b"/> <!-- Lock Icon Placeholder -->
@@ -23,7 +45,7 @@
   </g>
   
   <!-- Method Access -->
-  <g transform="translate(200, 280)">
+  <g class="animated-g" transform="translate(200, 280)">
     <text x="200" y="0" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#7f8c8d">비밀번호를 바꾸려면? (Getter/Setter)</text>
     <rect x="100" y="10" width="200" height="40" rx="20" fill="#3498db" stroke="#2980b9" stroke-width="2"/>
     <text x="200" y="35" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="white" font-weight="bold">public void setPassword()</text>

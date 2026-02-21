@@ -1,9 +1,31 @@
 <svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(10px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .animated-g {
+      opacity: 0;
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+    /* Add sequential delays */
+    .animated-g:nth-of-type(1) { animation-delay: 0.1s; }
+    .animated-g:nth-of-type(2) { animation-delay: 0.3s; }
+    .animated-g:nth-of-type(3) { animation-delay: 0.5s; }
+    .animated-g:nth-of-type(4) { animation-delay: 0.7s; }
+    .animated-g:nth-of-type(5) { animation-delay: 0.9s; }
+    .animated-g:nth-of-type(6) { animation-delay: 1.1s; }
+    .animated-g:nth-of-type(7) { animation-delay: 1.3s; }
+    .animated-g:nth-of-type(8) { animation-delay: 1.5s; }
+    .animated-g:nth-of-type(9) { animation-delay: 1.7s; }
+    .animated-g:nth-of-type(10) { animation-delay: 1.9s; }
+  </style>
+
   <!-- Background -->
   <rect width="800" height="400" fill="#ffffff"/>
 
   <!-- Interface (Contract) -->
-  <g transform="translate(50, 50)">
+  <g class="animated-g" transform="translate(50, 50)">
     <rect width="200" height="300" rx="10" fill="#e3f2fd" stroke="#2196f3" stroke-width="3"/>
     <text x="100" y="40" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="#1565c0" font-weight="bold">Interface</text>
     <text x="100" y="70" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#0d47a1">(약속/설계도)</text>
@@ -25,7 +47,7 @@
   <line x1="260" y1="200" x2="340" y2="300" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
 
   <!-- Implementation A (TV) -->
-  <g transform="translate(350, 20)">
+  <g class="animated-g" transform="translate(350, 20)">
     <rect width="350" height="160" rx="10" fill="#fff3e0" stroke="#ff9800" stroke-width="3"/>
     <text x="175" y="30" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#e65100" font-weight="bold">Class TV implements Interface</text>
     
@@ -38,7 +60,7 @@
   </g>
 
   <!-- Implementation B (Audio) -->
-  <g transform="translate(350, 220)">
+  <g class="animated-g" transform="translate(350, 220)">
     <rect width="350" height="160" rx="10" fill="#e8f5e9" stroke="#4caf50" stroke-width="3"/>
     <text x="175" y="30" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#1b5e20" font-weight="bold">Class Audio implements Interface</text>
     

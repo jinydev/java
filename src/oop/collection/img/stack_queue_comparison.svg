@@ -1,9 +1,31 @@
 <svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(10px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .animated-g {
+      opacity: 0;
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+    /* Add sequential delays */
+    .animated-g:nth-of-type(1) { animation-delay: 0.1s; }
+    .animated-g:nth-of-type(2) { animation-delay: 0.3s; }
+    .animated-g:nth-of-type(3) { animation-delay: 0.5s; }
+    .animated-g:nth-of-type(4) { animation-delay: 0.7s; }
+    .animated-g:nth-of-type(5) { animation-delay: 0.9s; }
+    .animated-g:nth-of-type(6) { animation-delay: 1.1s; }
+    .animated-g:nth-of-type(7) { animation-delay: 1.3s; }
+    .animated-g:nth-of-type(8) { animation-delay: 1.5s; }
+    .animated-g:nth-of-type(9) { animation-delay: 1.7s; }
+    .animated-g:nth-of-type(10) { animation-delay: 1.9s; }
+  </style>
+
   <!-- Background -->
   <rect width="600" height="400" fill="#ffffff" />
   
   <!-- Stack (Pringles) -->
-  <g transform="translate(50, 50)">
+  <g class="animated-g" transform="translate(50, 50)">
     <!-- Title -->
     <text x="100" y="30" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#d32f2f" text-anchor="middle">Stack (LIFO)</text>
     <text x="100" y="50" font-family="Arial, sans-serif" font-size="12" fill="#555" text-anchor="middle">"Pringles Can"</text>
@@ -14,7 +36,7 @@
     <ellipse cx="100" cy="100" rx="50" ry="10" fill="none" stroke="#d32f2f" stroke-width="3"/>
 
     <!-- Chips -->
-    <g transform="translate(0, 80)">
+    <g class="animated-g" transform="translate(0, 80)">
        <ellipse cx="100" cy="150" rx="40" ry="8" fill="#ffcc80" stroke="#f57f17" stroke-width="2"/> <!-- Bottom Chip (1) -->
        <text x="100" y="153" font-family="Arial, sans-serif" font-size="10" fill="#e65100" text-anchor="middle">1st In</text>
        
@@ -35,7 +57,7 @@
   </g>
 
   <!-- Queue (Bus Line) -->
-  <g transform="translate(300, 50)">
+  <g class="animated-g" transform="translate(300, 50)">
     <!-- Title -->
     <text x="150" y="30" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#1976d2" text-anchor="middle">Queue (FIFO)</text>
     <text x="150" y="50" font-family="Arial, sans-serif" font-size="12" fill="#555" text-anchor="middle">"Bus Line"</text>
@@ -44,16 +66,16 @@
     <rect x="50" y="100" width="200" height="60" fill="#e3f2fd" stroke="#1976d2" stroke-width="3"/>
     
     <!-- People -->
-    <g transform="translate(220, 110)"> <!-- First Person -->
+    <g class="animated-g" transform="translate(220, 110)"> <!-- First Person -->
       <circle cx="15" cy="15" r="10" fill="#bbdefb" stroke="#1565c0" stroke-width="2"/>
        <text x="15" y="35" font-family="Arial, sans-serif" font-size="10" fill="#0d47a1" text-anchor="middle">1st</text>
     </g>
     
-    <g transform="translate(140, 110)"> <!-- Middle Person -->
+    <g class="animated-g" transform="translate(140, 110)"> <!-- Middle Person -->
        <circle cx="15" cy="15" r="10" fill="#bbdefb" stroke="#1565c0" stroke-width="2"/>
     </g>
 
-    <g transform="translate(60, 110)"> <!-- Last Person -->
+    <g class="animated-g" transform="translate(60, 110)"> <!-- Last Person -->
        <circle cx="15" cy="15" r="10" fill="#bbdefb" stroke="#1565c0" stroke-width="2"/>
        <text x="15" y="35" font-family="Arial, sans-serif" font-size="10" fill="#0d47a1" text-anchor="middle">Last</text>
     </g>

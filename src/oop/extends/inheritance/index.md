@@ -13,6 +13,7 @@ grand_parent: "객체지향 자바 프로그래밍"
 ### 💡 비유: 유전자 상속
 부모님으로부터 눈, 코, 입 생김새를 물려받듯이, 자식 클래스는 부모 클래스의 기능을 그대로 물려받습니다. 여기에 더해 자신만의 특징을 추가할 수도 있습니다.
 
+![Inheritance PNG](../img/oop_inheritance.png)
 ![Inheritance Concept](./img/inheritance_concept.svg)
 
 ## 1. 상속을 왜 할까요? (Why)

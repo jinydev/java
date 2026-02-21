@@ -98,7 +98,8 @@ int result = calculator.add(10, 20);
 알약을 생각해 보세요. 안에 어떤 가루약이 섞여 있는지 모르지만, 우리는 껍질(캡슐)에 싸인 약을 안전하게 먹습니다.
 객체도 마찬가지입니다. 중요한 데이터(필드)와 기능(메소드)을 하나로 묶고, 외부에서 함부로 접근하거나 고장 내지 못하도록 **감추는 것**을 캡슐화라고 합니다.
 
-![Encapsulation](./img/oop_encapsulation_capsule.svg)
+![Encapsulation PNG](../../img/oop_encapsulation.png)
+![Encapsulation SVG](./img/oop_encapsulation_capsule.svg)
 
 ### 상속 (Inheritance) -> "물려받다"
 부모님의 재산을 물려받듯이, 상위 객체(부모)의 필드와 메소드를 하위 객체(자식)가 물려받는 것입니다.
@@ -111,4 +112,5 @@ int result = calculator.add(10, 20);
 같은 사용 방법(버튼 누르기)이지만, 결과가 다양하게 나오는 성질입니다.
 자동차 타이어를 '한국타이어'에서 '금호타이어'로 교체해도, 운전자는 똑같이 운전(메소드 호출)만 하면 됩니다. 하지만 성능(결과)은 달라질 수 있습니다. 이것이 다형성입니다.
 
-![Polymorphism](./img/oop_polymorphism_wheels.svg)
+![Polymorphism PNG](../../img/oop_polymorphism.png)
+![Polymorphism SVG](./img/oop_polymorphism_wheels.svg)

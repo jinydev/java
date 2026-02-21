@@ -1,9 +1,31 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <style>
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(10px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .animated-g {
+      opacity: 0;
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+    /* Add sequential delays */
+    .animated-g:nth-of-type(1) { animation-delay: 0.1s; }
+    .animated-g:nth-of-type(2) { animation-delay: 0.3s; }
+    .animated-g:nth-of-type(3) { animation-delay: 0.5s; }
+    .animated-g:nth-of-type(4) { animation-delay: 0.7s; }
+    .animated-g:nth-of-type(5) { animation-delay: 0.9s; }
+    .animated-g:nth-of-type(6) { animation-delay: 1.1s; }
+    .animated-g:nth-of-type(7) { animation-delay: 1.3s; }
+    .animated-g:nth-of-type(8) { animation-delay: 1.5s; }
+    .animated-g:nth-of-type(9) { animation-delay: 1.7s; }
+    .animated-g:nth-of-type(10) { animation-delay: 1.9s; }
+  </style>
+
   <rect width="800" height="400" fill="#f0f8ff"/>
   <text x="400" y="50" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" font-weight="bold" fill="#333">Polymorphism (Multi-form)</text>
 
   <!-- Interface / Slot -->
-  <g transform="translate(100, 150)">
+  <g class="animated-g" transform="translate(100, 150)">
     <rect x="0" y="0" width="120" height="120" fill="#eee" stroke="#333" stroke-dasharray="5,5"/>
     <text x="60" y="60" text-anchor="middle" font-size="14">Tire Slot</text>
     <text x="60" y="80" text-anchor="middle" font-size="12">(Interface)</text>
@@ -13,10 +35,10 @@
   <polygon points="250,210 300,210 275,230" fill="#333" transform="rotate(-90 275 220) translate(0, -60)"/>
 
   <!-- Implementations -->
-  <g transform="translate(350, 100)">
+  <g class="animated-g" transform="translate(350, 100)">
     
     <!-- Hankook Tire -->
-    <g transform="translate(0, 0)">
+    <g class="animated-g" transform="translate(0, 0)">
       <circle cx="50" cy="50" r="40" fill="#333"/>
       <circle cx="50" cy="50" r="20" fill="#555"/>
       <text x="120" y="55" font-size="16" font-weight="bold">Hankook Tire</text>
@@ -24,7 +46,7 @@
     </g>
 
     <!-- Kumho Tire -->
-    <g transform="translate(0, 120)">
+    <g class="animated-g" transform="translate(0, 120)">
       <circle cx="50" cy="50" r="40" fill="#333" stroke="#f00" stroke-width="2"/>
       <circle cx="50" cy="50" r="20" fill="#555"/>
       <text x="120" y="55" font-size="16" font-weight="bold">Kumho Tire</text>
@@ -33,7 +55,7 @@
 
   </g>
 
-  <g transform="translate(600, 150)">
+  <g class="animated-g" transform="translate(600, 150)">
      <text x="0" y="0" width="200">
        <tspan x="0" y="0" font-weight="bold">Same Method: roll()</tspan>
        <tspan x="0" y="30">Different execution</tspan>

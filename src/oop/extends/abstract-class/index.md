@@ -17,6 +17,7 @@ grand_parent: "객체지향 자바 프로그래밍"
 > 1.  **본사(Abstract Class)**: 가게를 낼 수는 없지만, 가이드라인을 제공함.
 > 2.  **지점(Child Class)**: 본사의 가이드를 따르되, 빈 칸(비법 소스)을 반드시 채워야 오픈 가능.
 
+![Abstraction PNG](../img/oop_abstraction.png)
 ![Abstract Class Concept](./img/abstract_class_concept.svg)
 
 ---

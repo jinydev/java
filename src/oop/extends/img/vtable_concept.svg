@@ -1,4 +1,26 @@
 <svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(10px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .animated-g {
+      opacity: 0;
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+    /* Add sequential delays */
+    .animated-g:nth-of-type(1) { animation-delay: 0.1s; }
+    .animated-g:nth-of-type(2) { animation-delay: 0.3s; }
+    .animated-g:nth-of-type(3) { animation-delay: 0.5s; }
+    .animated-g:nth-of-type(4) { animation-delay: 0.7s; }
+    .animated-g:nth-of-type(5) { animation-delay: 0.9s; }
+    .animated-g:nth-of-type(6) { animation-delay: 1.1s; }
+    .animated-g:nth-of-type(7) { animation-delay: 1.3s; }
+    .animated-g:nth-of-type(8) { animation-delay: 1.5s; }
+    .animated-g:nth-of-type(9) { animation-delay: 1.7s; }
+    .animated-g:nth-of-type(10) { animation-delay: 1.9s; }
+  </style>
+
   <!-- Background -->
   <rect width="800" height="400" fill="#fcfcfc"/>
 
@@ -6,7 +28,7 @@
   <text x="400" y="40" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="#2c3e50" font-weight="bold">메소드 오버라이딩의 원리 (지도 바꾸기)</text>
 
   <!-- Parent Class Logic -->
-  <g transform="translate(50, 100)">
+  <g class="animated-g" transform="translate(50, 100)">
     <rect width="200" height="150" rx="10" fill="#e3f2fd" stroke="#2196f3" stroke-width="2"/>
     <text x="100" y="30" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#1565c0" font-weight="bold">Parent (계산기)</text>
     
@@ -20,7 +42,7 @@
   </g>
 
   <!-- Child Class Logic -->
-  <g transform="translate(550, 100)">
+  <g class="animated-g" transform="translate(550, 100)">
     <rect width="200" height="150" rx="10" fill="#e8eaf6" stroke="#3f51b5" stroke-width="2"/>
     <text x="100" y="30" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#3949ab" font-weight="bold">Child (컴퓨터)</text>
     
@@ -35,7 +57,7 @@
   </g>
 
   <!-- Object Instance -->
-  <g transform="translate(300, 280)">
+  <g class="animated-g" transform="translate(300, 280)">
     <rect width="200" height="100" rx="10" fill="#fff9c4" stroke="#fbc02d" stroke-width="3"/>
     <text x="100" y="30" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#f57f17" font-weight="bold">실제 객체 (Instance)</text>
     <text x="100" y="50" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#f9a825">Type: Child</text>
