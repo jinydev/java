@@ -1092,6 +1092,8 @@
 <p><strong>자동 타입 변환(Promotion)</strong>은 값의 범위가 <strong>작은 타입</strong>을 <strong>큰 타입</strong>으로 옮길 때 일어납니다.
 작은 컵의 물을 큰 양동이에 부으면 절대 넘치지 않겠죠? 그래서 자바가 알아서 바꿔줍니다.</p>
 
+<p><img src="./img/type_promotion.png" alt="그림" /></p>
+
 <pre><code class="language-mermaid">flowchart LR
     SmallCup[작은 컵\nint\n'10'] --&gt;|자동 변환 (안전)| BigBucket[큰 양동이\nlong\n'10']
     

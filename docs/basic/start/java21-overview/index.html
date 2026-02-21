@@ -1101,6 +1101,8 @@
   <li><strong>가상 스레드 (New)</strong>: <strong>경량 드론</strong>. 트럭 짐칸에 수백 개의 드론이 실려 있다가, 필요할 때 날아가서 각자 임무를 수행하고 돌아옵니다.</li>
 </ul>
 
+<p><img src="./img/virtual_threads.png" alt="그림" /></p>
+
 <h3 id="3-구조-시각화">3) 구조 시각화</h3>
 
 <pre><code class="language-mermaid">graph TD
@@ -1133,6 +1135,8 @@
   <li>이제는 모든 순서가 있는 버스(컬렉션)에 표준 <strong>앞문(<code class="language-plaintext highlighter-rouge">getFirst</code>)</strong>과 <strong>뒷문(<code class="language-plaintext highlighter-rouge">getLast</code>)</strong>이 생겼습니다.</li>
 </ul>
 
+<p><img src="./img/sequenced_collections.png" alt="그림" /></p>
+
 <p><strong>예제 코드</strong></p>
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
 <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"Apple"</span><span class="o">);</span>
@@ -1157,6 +1161,8 @@
   <li>예전에는 택배 상자를 받고(객체 확인), 칼로 뜯어서(타입 변환), 물건을 꺼내야(필드 접근) 했습니다.</li>
   <li>이제는 <strong>투시 안경</strong>을 쓰고 상자를 보자마자 내용물이 내 손에 쥐어지는 것과 같습니다.</li>
 </ul>
+
+<p><img src="./img/record_patterns.png" alt="그림" /></p>
 
 <p><strong>예제 코드</strong></p>
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">record</span> <span class="nf">Point</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">)</span> <span class="o">{}</span>

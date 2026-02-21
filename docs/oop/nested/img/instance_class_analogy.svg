@@ -1,9 +1,31 @@
 <svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    .animated-g {
+      opacity: 0;
+      animation: fadeIn 0.8s ease-out forwards;
+    }
+    /* Add sequential delays */
+    .animated-g:nth-of-type(1) { animation-delay: 0.1s; }
+    .animated-g:nth-of-type(2) { animation-delay: 0.3s; }
+    .animated-g:nth-of-type(3) { animation-delay: 0.5s; }
+    .animated-g:nth-of-type(4) { animation-delay: 0.7s; }
+    .animated-g:nth-of-type(5) { animation-delay: 0.9s; }
+    .animated-g:nth-of-type(6) { animation-delay: 1.1s; }
+    .animated-g:nth-of-type(7) { animation-delay: 1.3s; }
+    .animated-g:nth-of-type(8) { animation-delay: 1.5s; }
+    .animated-g:nth-of-type(9) { animation-delay: 1.7s; }
+    .animated-g:nth-of-type(10) { animation-delay: 1.9s; }
+  </style>
+
   <!-- Background -->
   <rect width="400" height="300" fill="#ffffff" />
   
   <!-- Outer Class (Human Body) -->
-  <g transform="translate(150, 50)">
+  <g class="animated-g" transform="translate(150, 50)">
     <!-- Head -->
     <circle cx="50" cy="30" r="30" fill="#bbdefb" stroke="#1976d2" stroke-width="3"/>
     <!-- Body -->
@@ -20,7 +42,7 @@
   </g>
 
   <!-- Inner Class (Heart) -->
-  <g transform="translate(170, 120)">
+  <g class="animated-g" transform="translate(170, 120)">
     <!-- Heart Shape -->
     <path d="M10,10 C10,0 20,-5 25,5 C30,-5 40,0 40,10 C40,20 25,30 25,30 C25,30 10,20 10,10" fill="#f44336" stroke="#b71c1c" stroke-width="2"/>
     

@@ -1,9 +1,31 @@
 <svg width="600" height="300" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    .animated-g {
+      opacity: 0;
+      animation: fadeIn 0.8s ease-out forwards;
+    }
+    /* Add sequential delays */
+    .animated-g:nth-of-type(1) { animation-delay: 0.1s; }
+    .animated-g:nth-of-type(2) { animation-delay: 0.3s; }
+    .animated-g:nth-of-type(3) { animation-delay: 0.5s; }
+    .animated-g:nth-of-type(4) { animation-delay: 0.7s; }
+    .animated-g:nth-of-type(5) { animation-delay: 0.9s; }
+    .animated-g:nth-of-type(6) { animation-delay: 1.1s; }
+    .animated-g:nth-of-type(7) { animation-delay: 1.3s; }
+    .animated-g:nth-of-type(8) { animation-delay: 1.5s; }
+    .animated-g:nth-of-type(9) { animation-delay: 1.7s; }
+    .animated-g:nth-of-type(10) { animation-delay: 1.9s; }
+  </style>
+
   <!-- Background -->
   <rect width="600" height="300" fill="#ffffff" />
   
   <!-- Step 1: Worker -->
-  <g transform="translate(50, 100)">
+  <g class="animated-g" transform="translate(50, 100)">
     <circle cx="30" cy="30" r="25" fill="#bbdefb" stroke="#1976d2" stroke-width="2"/>
     <text x="30" y="70" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#0d47a1" text-anchor="middle">Worker</text>
     <text x="30" y="90" font-family="monospace" font-size="10" fill="#555" text-anchor="middle">method()</text>
@@ -18,7 +40,7 @@
   <text x="150" y="70" font-family="monospace" font-size="12" fill="#d32f2f" text-anchor="middle">throws</text>
 
   <!-- Step 2: Manager -->
-  <g transform="translate(230, 100)">
+  <g class="animated-g" transform="translate(230, 100)">
     <circle cx="30" cy="30" r="25" fill="#c8e6c9" stroke="#388e3c" stroke-width="2"/>
     <text x="30" y="70" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#1b5e20" text-anchor="middle">Manager</text>
     <text x="30" y="90" font-family="monospace" font-size="10" fill="#555" text-anchor="middle">caller()</text>
@@ -29,7 +51,7 @@
   <text x="330" y="70" font-family="monospace" font-size="12" fill="#d32f2f" text-anchor="middle">throws</text>
 
   <!-- Step 3: Main -->
-  <g transform="translate(410, 100)">
+  <g class="animated-g" transform="translate(410, 100)">
     <circle cx="30" cy="30" r="25" fill="#ffecb3" stroke="#ffa000" stroke-width="2"/>
     <text x="30" y="70" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#e65100" text-anchor="middle">Main</text>
   </g>
@@ -39,7 +61,7 @@
   <text x="500" y="70" font-family="monospace" font-size="12" fill="#555" text-anchor="middle">throws</text>
 
   <!-- JVM -->
-  <g transform="translate(530, 50)">
+  <g class="animated-g" transform="translate(530, 50)">
     <rect x="0" y="0" width="60" height="40" rx="5" fill="#CFD8DC" stroke="#607d8b" stroke-width="2"/>
     <text x="30" y="25" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#37474f" text-anchor="middle">JVM</text>
     <text x="30" y="60" font-family="Arial, sans-serif" font-size="10" fill="#d32f2f" text-anchor="middle">Crash!</text>

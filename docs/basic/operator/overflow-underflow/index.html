@@ -1088,7 +1088,9 @@
 <h2 id="1-계기판이-돌아가는-현상-">1. 계기판이 돌아가는 현상 🚗</h2>
 
 <p>자동차 주행 거리계가 <code class="language-plaintext highlighter-rouge">99999</code> 다음에는 다시 <code class="language-plaintext highlighter-rouge">00000</code>이 되죠?
-변수도 담을 수 있는 최대값을 넘어가면 <strong>최소값</strong>으로 돌아가 버립니다.
+변수도 담을 수 있는 최대값을 넘어가면 <strong>최소값</strong>으로 돌아가 버립니다.</p>
+
+<p><img src="./img/overflow_meter.png" alt="그림" />
 이것을 <strong>오버플로우(Overflow)</strong>라고 합니다.</p>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">byte</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">127</span><span class="o">;</span> <span class="c1">// byte의 최대값</span>

@@ -1,4 +1,26 @@
 <svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    .animated-g {
+      opacity: 0;
+      animation: fadeIn 0.8s ease-out forwards;
+    }
+    /* Add sequential delays */
+    .animated-g:nth-of-type(1) { animation-delay: 0.1s; }
+    .animated-g:nth-of-type(2) { animation-delay: 0.3s; }
+    .animated-g:nth-of-type(3) { animation-delay: 0.5s; }
+    .animated-g:nth-of-type(4) { animation-delay: 0.7s; }
+    .animated-g:nth-of-type(5) { animation-delay: 0.9s; }
+    .animated-g:nth-of-type(6) { animation-delay: 1.1s; }
+    .animated-g:nth-of-type(7) { animation-delay: 1.3s; }
+    .animated-g:nth-of-type(8) { animation-delay: 1.5s; }
+    .animated-g:nth-of-type(9) { animation-delay: 1.7s; }
+    .animated-g:nth-of-type(10) { animation-delay: 1.9s; }
+  </style>
+
   <!-- Background -->
   <rect width="800" height="400" fill="#f0f3f5"/>
 
@@ -6,7 +28,7 @@
   <text x="400" y="40" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="#2c3e50" font-weight="bold">접근 제한자 = 우리 집 보안 시스템</text>
 
   <!-- 1. Public (Public Park) -->
-  <g transform="translate(50, 80)">
+  <g class="animated-g" transform="translate(50, 80)">
     <rect x="0" y="0" width="200" height="250" rx="10" fill="#2ecc71" stroke="#27ae60" stroke-width="3"/>
     <text x="100" y="40" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="white" font-weight="bold">public</text>
     <text x="100" y="70" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="white">모두에게 공개</text>
@@ -19,7 +41,7 @@
   </g>
 
   <!-- 2. Protected (Inheritance) -->
-  <g transform="translate(300, 80)">
+  <g class="animated-g" transform="translate(300, 80)">
     <rect x="0" y="0" width="200" height="250" rx="10" fill="#f1c40f" stroke="#f39c12" stroke-width="3"/>
     <text x="100" y="40" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="white" font-weight="bold">protected</text>
     <text x="100" y="70" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="white">자식만 허용</text>
@@ -31,7 +53,7 @@
   </g>
 
   <!-- 3. Private (Safe) -->
-  <g transform="translate(550, 80)">
+  <g class="animated-g" transform="translate(550, 80)">
     <rect x="0" y="0" width="200" height="250" rx="10" fill="#e74c3c" stroke="#c0392b" stroke-width="3"/>
     <text x="100" y="40" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="white" font-weight="bold">private</text>
     <text x="100" y="70" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="white">나만 접근 가능</text>

@@ -1,4 +1,26 @@
 <svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    .animated-g {
+      opacity: 0;
+      animation: fadeIn 0.8s ease-out forwards;
+    }
+    /* Add sequential delays */
+    .animated-g:nth-of-type(1) { animation-delay: 0.1s; }
+    .animated-g:nth-of-type(2) { animation-delay: 0.3s; }
+    .animated-g:nth-of-type(3) { animation-delay: 0.5s; }
+    .animated-g:nth-of-type(4) { animation-delay: 0.7s; }
+    .animated-g:nth-of-type(5) { animation-delay: 0.9s; }
+    .animated-g:nth-of-type(6) { animation-delay: 1.1s; }
+    .animated-g:nth-of-type(7) { animation-delay: 1.3s; }
+    .animated-g:nth-of-type(8) { animation-delay: 1.5s; }
+    .animated-g:nth-of-type(9) { animation-delay: 1.7s; }
+    .animated-g:nth-of-type(10) { animation-delay: 1.9s; }
+  </style>
+
   <!-- Background -->
   <rect width="800" height="400" fill="#f8f9fa"/>
 
@@ -6,18 +28,18 @@
   <text x="400" y="40" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="#2c3e50" font-weight="bold">패키지 = 폴더 (Nested Folders)</text>
 
   <!-- Folder Structure Representation -->
-  <g transform="translate(150, 80)">
+  <g class="animated-g" transform="translate(150, 80)">
     <!-- Root: com -->
     <path d="M0,0 L100,0 L120,20 L300,20 L300,250 L0,250 Z" fill="#f1c40f" stroke="#f39c12" stroke-width="2"/>
     <text x="20" y="50" font-family="Arial, sans-serif" font-size="20" fill="#d35400" font-weight="bold">com</text>
 
     <!-- Sub: mycompany -->
-    <g transform="translate(40, 70)">
+    <g class="animated-g" transform="translate(40, 70)">
       <path d="M0,0 L100,0 L120,20 L240,20 L240,160 L0,160 Z" fill="#f39c12" stroke="#e67e22" stroke-width="2"/>
       <text x="20" y="50" font-family="Arial, sans-serif" font-size="18" fill="white" font-weight="bold">mycompany</text>
 
       <!-- Sub: project -->
-      <g transform="translate(40, 70)">
+      <g class="animated-g" transform="translate(40, 70)">
         <path d="M0,0 L80,0 L100,20 L180,20 L180,70 L0,70 Z" fill="#e67e22" stroke="#d35400" stroke-width="2"/>
         <text x="20" y="50" font-family="Arial, sans-serif" font-size="16" fill="white" font-weight="bold">project</text>
       </g>
@@ -25,7 +47,7 @@
   </g>
 
   <!-- File Representation -->
-  <g transform="translate(500, 150)">
+  <g class="animated-g" transform="translate(500, 150)">
     <rect x="0" y="0" width="120" height="150" fill="white" stroke="#34495e" stroke-width="2"/>
     <path d="M80,0 L120,40 L120,150 L0,150 L0,0 Z" fill="white" stroke="#34495e" stroke-width="2"/>
     <path d="M80,0 L80,40 L120,40" fill="#ecf0f1" stroke="#34495e" stroke-width="2"/>

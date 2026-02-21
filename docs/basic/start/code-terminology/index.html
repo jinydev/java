@@ -1108,11 +1108,15 @@
 <p>패키지는 <strong>관련된 자바 클래스들을 묶어서 관리하는 폴더</strong>와 같습니다.
 컴퓨터에서 파일을 정리할 때 폴더를 만들어서 보관하듯이, 자바에서도 수많은 클래스 파일을 체계적으로 관리하기 위해 패키지를 사용합니다.</p>
 
+<p><img src="./img/package_concept.png" alt="그림" /></p>
+
 <h3 id="2-비유-컴퓨터의-폴더">2) 비유: “컴퓨터의 폴더”</h3>
 <ul>
   <li>우리가 사진을 <code class="language-plaintext highlighter-rouge">사진</code> 폴더에, 문서를 <code class="language-plaintext highlighter-rouge">문서</code> 폴더에 정리하듯, 자바 파일도 성격에 맞는 패키지(폴더)에 넣어 관리합니다.</li>
   <li><code class="language-plaintext highlighter-rouge">package ch01;</code>이라는 선언은 <strong>“이 파일은 <code class="language-plaintext highlighter-rouge">ch01</code>이라는 폴더 안에 소속되어 있다”</strong>는 것을 명시하는 것입니다.</li>
 </ul>
+
+<p><img src="./img/package_analogy.png" alt="그림" /></p>
 
 <h3 id="3-구조-시각화">3) 구조 시각화</h3>
 
@@ -1133,6 +1137,8 @@
   <li><strong>이름 충돌 방지</strong>: 만약 다른 회사의 <code class="language-plaintext highlighter-rouge">Hello</code> 클래스와 내 <code class="language-plaintext highlighter-rouge">Hello</code> 클래스 이름이 같더라도, 패키지 이름이 다르면 서로 다른 파일로 인식됩니다. (예: <code class="language-plaintext highlighter-rouge">com.companyA.Hello</code> vs <code class="language-plaintext highlighter-rouge">com.companyB.Hello</code>)</li>
 </ul>
 
+<p><img src="./img/name_collision.png" alt="그림" /></p>
+
 <hr />
 
 <h2 id="2-클래스-class-">2. 클래스 (Class) 📄</h2>
@@ -1141,11 +1147,15 @@
 <p>클래스는 <strong>자바 프로그램의 기본 단위</strong>이자, 객체를 만들기 위한 <strong>설계도</strong>입니다.
 자바의 모든 코드는 반드시 클래스 안에 존재해야 합니다.</p>
 
+<p><img src="./img/class_concept.png" alt="그림" /></p>
+
 <h3 id="2-비유-파일-자체-또는-설계도">2) 비유: “파일 자체 또는 설계도”</h3>
 <ul>
   <li><code class="language-plaintext highlighter-rouge">Hello.java</code>라는 파일을 만들었다면, 그 안에는 반드시 <code class="language-plaintext highlighter-rouge">Hello</code>라는 이름의 클래스가 있어야 합니다.</li>
   <li>우리가 붕어빵을 만들기 위해 <strong>붕어빵 틀</strong>이 필요하듯이, 프로그램을 만들기 위해서는 <strong>클래스(설계도)</strong>가 필요합니다.</li>
 </ul>
+
+<p><img src="./img/bungeoppang_class.png" alt="그림" /></p>
 
 <h3 id="3-구조">3) 구조</h3>
 
@@ -1174,11 +1184,15 @@
 <p>메인 메소드는 <strong>자바 프로그램의 시작점(Entry Point)</strong>입니다.
 자바 가상 머신(JVM)은 프로그램을 실행할 때 무조건 <code class="language-plaintext highlighter-rouge">main</code> 메소드를 찾아서 실행합니다.</p>
 
+<p><img src="./img/main_entry.png" alt="그림" /></p>
+
 <h3 id="2-비유-자동차의-시동-버튼">2) 비유: “자동차의 시동 버튼”</h3>
 <ul>
   <li>자동차가 아무리 멋져도 시동 버튼을 누르지 않으면 움직이지 않듯이, 자바 프로그램도 <strong>main 메소드</strong>가 없으면 실행되지 않습니다.</li>
   <li>프로그램 실행 = <code class="language-plaintext highlighter-rouge">main</code> 메소드 안의 내용 실행</li>
 </ul>
+
+<p><img src="./img/car_start.png" alt="그림" /></p>
 
 <h3 id="3-실행-흐름">3) 실행 흐름</h3>
 
@@ -1206,17 +1220,24 @@
 <p>실행문은 <strong>컴퓨터에게 내리는 구체적인 명령</strong>입니다.
 변수를 선언하거나, 값을 계산하거나, 메소드를 호출하는 등의 작업을 수행합니다.</p>
 
+<p><img src="./img/statement_orders.png" alt="그림" /></p>
+
 <h3 id="2-비유-문장과-마침표">2) 비유: “문장과 마침표”</h3>
 <ul>
   <li>우리가 글을 쓸 때 문장 끝에 마침표(<code class="language-plaintext highlighter-rouge">.</code>)를 찍듯이, 자바에서는 명령이 끝날 때마다 <strong>세미콜론(<code class="language-plaintext highlighter-rouge">;</code>)</strong>을 찍어야 합니다.</li>
   <li><code class="language-plaintext highlighter-rouge">System.out.println("Hello");</code> 👉 “화면에 Hello라고 출력해라.” (마침표)</li>
 </ul>
 
+<p><img src="./img/sentence_period.png" alt="그림" /></p>
+
 <h3 id="3-상세-설명">3) 상세 설명</h3>
 <ul>
   <li><strong>순차적 실행</strong>: 실행문은 위에서 아래로 순서대로 실행됩니다. (특별한 제어문이 없다면)</li>
   <li><strong>세미콜론(<code class="language-plaintext highlighter-rouge">;</code>) 필수</strong>: 자바 컴파일러는 세미콜론을 보고 “아, 여기까지가 하나의 명령이구나”라고 인식합니다. 빠뜨리면 컴파일 에러가 발생합니다.</li>
 </ul>
+
+<p><img src="./img/semicolon_error.png" alt="그림" /></p>
+
 
 
             <!-- Google AdSense -->

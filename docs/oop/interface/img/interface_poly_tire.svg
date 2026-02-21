@@ -1,9 +1,31 @@
 <svg width="600" height="300" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    .animated-g {
+      opacity: 0;
+      animation: fadeIn 0.8s ease-out forwards;
+    }
+    /* Add sequential delays */
+    .animated-g:nth-of-type(1) { animation-delay: 0.1s; }
+    .animated-g:nth-of-type(2) { animation-delay: 0.3s; }
+    .animated-g:nth-of-type(3) { animation-delay: 0.5s; }
+    .animated-g:nth-of-type(4) { animation-delay: 0.7s; }
+    .animated-g:nth-of-type(5) { animation-delay: 0.9s; }
+    .animated-g:nth-of-type(6) { animation-delay: 1.1s; }
+    .animated-g:nth-of-type(7) { animation-delay: 1.3s; }
+    .animated-g:nth-of-type(8) { animation-delay: 1.5s; }
+    .animated-g:nth-of-type(9) { animation-delay: 1.7s; }
+    .animated-g:nth-of-type(10) { animation-delay: 1.9s; }
+  </style>
+
   <!-- Background -->
   <rect width="600" height="300" fill="#fff" />
 
   <!-- Car -->
-  <g transform="translate(50, 100)">
+  <g class="animated-g" transform="translate(50, 100)">
     <rect width="180" height="100" rx="10" fill="#eceff1" stroke="#455a64" stroke-width="2"/>
     <text x="90" y="40" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#37474f" font-weight="bold">Car</text>
     
@@ -16,21 +38,21 @@
   <text x="300" y="30" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#333" font-weight="bold">부품 교체의 자유 (Polymorphism)</text>
 
   <!-- Tires -->
-  <g transform="translate(300, 50)">
+  <g class="animated-g" transform="translate(300, 50)">
     <!-- Hankook -->
-    <g transform="translate(0, 0)">
+    <g class="animated-g" transform="translate(0, 0)">
       <circle cx="40" cy="40" r="35" fill="#fff3e0" stroke="#ff9800" stroke-width="4" stroke-dasharray="5,2"/>
       <text x="100" y="45" font-family="Arial, sans-serif" font-size="14" fill="#e65100">HankookTire</text>
     </g>
 
     <!-- Kumho -->
-    <g transform="translate(0, 90)">
+    <g class="animated-g" transform="translate(0, 90)">
       <circle cx="40" cy="40" r="35" fill="#e8f5e9" stroke="#4caf50" stroke-width="4" stroke-dasharray="5,2"/>
       <text x="100" y="45" font-family="Arial, sans-serif" font-size="14" fill="#1b5e20">KumhoTire</text>
     </g>
 
     <!-- Michelin -->
-    <g transform="translate(0, 180)">
+    <g class="animated-g" transform="translate(0, 180)">
       <circle cx="40" cy="40" r="35" fill="#e3f2fd" stroke="#2196f3" stroke-width="4" stroke-dasharray="5,2"/>
       <text x="100" y="45" font-family="Arial, sans-serif" font-size="14" fill="#0d47a1">MichelinTire</text>
     </g>

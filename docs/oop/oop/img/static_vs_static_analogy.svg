@@ -1,9 +1,31 @@
 <svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    .animated-g {
+      opacity: 0;
+      animation: fadeIn 0.8s ease-out forwards;
+    }
+    /* Add sequential delays */
+    .animated-g:nth-of-type(1) { animation-delay: 0.1s; }
+    .animated-g:nth-of-type(2) { animation-delay: 0.3s; }
+    .animated-g:nth-of-type(3) { animation-delay: 0.5s; }
+    .animated-g:nth-of-type(4) { animation-delay: 0.7s; }
+    .animated-g:nth-of-type(5) { animation-delay: 0.9s; }
+    .animated-g:nth-of-type(6) { animation-delay: 1.1s; }
+    .animated-g:nth-of-type(7) { animation-delay: 1.3s; }
+    .animated-g:nth-of-type(8) { animation-delay: 1.5s; }
+    .animated-g:nth-of-type(9) { animation-delay: 1.7s; }
+    .animated-g:nth-of-type(10) { animation-delay: 1.9s; }
+  </style>
+
   <!-- Background -->
   <rect width="800" height="400" fill="#f8f9fa"/>
 
   <!-- Static: Wall Clock -->
-  <g transform="translate(350, 40)">
+  <g class="animated-g" transform="translate(350, 40)">
     <rect x="-10" y="-10" width="120" height="120" rx="10" fill="#2c3e50" stroke="#34495e" stroke-width="2"/>
     <circle cx="50" cy="50" r="45" fill="white" stroke="#ecf0f1" stroke-width="5"/>
     <line x1="50" y1="50" x2="50" y2="20" stroke="#c0392b" stroke-width="3"/>
@@ -13,7 +35,7 @@
   </g>
 
   <!-- Instance: Person 1 -->
-  <g transform="translate(150, 220)">
+  <g class="animated-g" transform="translate(150, 220)">
     <circle cx="50" cy="50" r="40" fill="#3498db" opacity="0.8"/>
     <path d="M10,90 Q50,150 90,90 L90,160 L10,160 Z" fill="#3498db" opacity="0.8"/>
     
@@ -26,7 +48,7 @@
   </g>
 
   <!-- Instance: Person 2 -->
-  <g transform="translate(550, 220)">
+  <g class="animated-g" transform="translate(550, 220)">
     <circle cx="50" cy="50" r="40" fill="#e74c3c" opacity="0.8"/>
     <path d="M10,90 Q50,150 90,90 L90,160 L10,160 Z" fill="#e74c3c" opacity="0.8"/>
     

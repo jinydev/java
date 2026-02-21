@@ -1,9 +1,31 @@
 <svg width="800" height="350" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    .animated-g {
+      opacity: 0;
+      animation: fadeIn 0.8s ease-out forwards;
+    }
+    /* Add sequential delays */
+    .animated-g:nth-of-type(1) { animation-delay: 0.1s; }
+    .animated-g:nth-of-type(2) { animation-delay: 0.3s; }
+    .animated-g:nth-of-type(3) { animation-delay: 0.5s; }
+    .animated-g:nth-of-type(4) { animation-delay: 0.7s; }
+    .animated-g:nth-of-type(5) { animation-delay: 0.9s; }
+    .animated-g:nth-of-type(6) { animation-delay: 1.1s; }
+    .animated-g:nth-of-type(7) { animation-delay: 1.3s; }
+    .animated-g:nth-of-type(8) { animation-delay: 1.5s; }
+    .animated-g:nth-of-type(9) { animation-delay: 1.7s; }
+    .animated-g:nth-of-type(10) { animation-delay: 1.9s; }
+  </style>
+
   <!-- Background -->
   <rect width="800" height="350" fill="#ffffff"/>
 
   <!-- Step 1: Interface -->
-  <g transform="translate(50, 50)">
+  <g class="animated-g" transform="translate(50, 50)">
     <text x="120" y="30" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#333" font-weight="bold">1. 계약서 작성 (Interface)</text>
     
     <rect x="20" y="50" width="200" height="250" fill="#fff9c4" stroke="#fbc02d" stroke-width="2"/>
@@ -23,21 +45,21 @@
   <text x="300" y="210" font-family="monospace" font-size="14" text-anchor="middle" fill="#555">implements</text>
 
   <!-- Step 2: Implementation -->
-  <g transform="translate(350, 50)">
+  <g class="animated-g" transform="translate(350, 50)">
     <text x="150" y="30" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#333" font-weight="bold">2. 서명 및 이행 (Class)</text>
     
     <rect x="20" y="50" width="260" height="250" fill="#e1f5fe" stroke="#03a9f4" stroke-width="2"/>
     <text x="150" y="80" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="#0277bd" font-weight="bold">Television</text>
     
-    <g transform="translate(40, 110)">
+    <g class="animated-g" transform="translate(40, 110)">
         <circle cx="10" cy="10" r="5" fill="#4caf50"/>
         <text x="25" y="15" font-family="monospace" font-size="14" fill="#333">turnOn() { 화면 켬 }</text>
     </g>
-    <g transform="translate(40, 150)">
+    <g class="animated-g" transform="translate(40, 150)">
         <circle cx="10" cy="10" r="5" fill="#4caf50"/>
         <text x="25" y="15" font-family="monospace" font-size="14" fill="#333">turnOff() { 화면 끔 }</text>
     </g>
-    <g transform="translate(40, 190)">
+    <g class="animated-g" transform="translate(40, 190)">
         <circle cx="10" cy="10" r="5" fill="#4caf50"/>
         <text x="25" y="15" font-family="monospace" font-size="14" fill="#333">setVol() { 소리 조절 }</text>
     </g>

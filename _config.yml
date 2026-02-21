@@ -46,3 +46,4 @@ exclude:
   - package.json
   - package-lock.json
   - AI_GUIDE.md
+  - "**/*_src.md"

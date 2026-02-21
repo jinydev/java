@@ -1090,6 +1090,8 @@
 <p>자바 프로그램은 기본적으로 <code class="language-plaintext highlighter-rouge">main()</code> 메소드의 첫 줄부터 마지막 줄까지 <strong>위에서 아래로</strong> 순서대로 실행됩니다.
 마치 강물이 위에서 아래로 흐르는 것과 같습니다.</p>
 
+<p><img src="./img/code_flow.png" alt="그림" /></p>
+
 <pre><code class="language-mermaid">flowchart TD
     Start([프로그램 시작]) --&gt; Step1[첫 번째 줄 실행: 물 긷기]
     Step1 --&gt; Step2[두 번째 줄 실행: 물 나르기]
@@ -1107,6 +1109,8 @@
 
 <p>하지만 항상 위에서 아래로만 흐르면 재미없는 프로그램밖에 못 만듭니다.
 상황에 따라 물길을 바꾸거나(조건문), 물을 가둬서 빙빙 돌려야(반복문) 할 때도 있습니다.</p>
+
+<p><img src="./img/flow_control_dam.png" alt="그림" /></p>
 
 <pre><code class="language-mermaid">flowchart TD
     Start([위에서 내려오는 강물]) --&gt; IF_Dam{조건문 댐: 오른쪽? 왼쪽?}
