@@ -1,12 +1,12 @@
 <svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
   <style>
-    @keyframes fadeInUp {
-      0% { opacity: 0; transform: translateY(10px); }
-      100% { opacity: 1; transform: translateY(0); }
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
     }
     .animated-g {
       opacity: 0;
-      animation: fadeInUp 0.8s ease-out forwards;
+      animation: fadeIn 0.8s ease-out forwards;
     }
     /* Add sequential delays */
     .animated-g:nth-of-type(1) { animation-delay: 0.1s; }
