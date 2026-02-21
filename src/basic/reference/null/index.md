@@ -16,6 +16,8 @@ grand_parent: "Part 01. 자바 언어의 기초"
 *   "이 변수는 아직 아무것도 가리키고 있지 않아."
 *   "명함 지갑이 비어있어."
 
+![그림](./img/null_pointer.png)
+
 ```mermaid
 flowchart LR
     subgraph Stack [스택 (Stack)]
