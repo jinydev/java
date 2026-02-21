@@ -37,7 +37,7 @@ flowchart LR
 
 ![그림](./img/coding_recipe.png)
 
-![그림]()
+
 
 **작성 예시 (`Hello.java`)**
 ```java
@@ -56,7 +56,7 @@ public class Hello {
 
 ![그림](./img/compile_translate.png)
 
-![그림]()
+
 
 ### 3단계: 실행 (요리하기)
 *   **비유**: 번역된 레시피를 보고 요리사가 실제로 **요리**를 해서 음식을 내놓는 단계입니다.
@@ -66,7 +66,7 @@ public class Hello {
 
 ![그림](./img/run_cooking.png)
 
-![그림]()
+
 
 ---
 
