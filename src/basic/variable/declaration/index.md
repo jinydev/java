@@ -10,6 +10,8 @@ grand_parent: "Part 01. 자바 언어의 기초"
 
 프로그래밍에서 데이터를 다루는 가장 기본적인 방법, **변수(Variable)**에 대해 알아봅시다.
 
+![그림](./img/variable_box.png)
+
 ---
 
 ## 1. 변수란 무엇인가? (Data Box) 📦

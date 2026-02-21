@@ -17,6 +17,8 @@ grand_parent: "Part 01. 자바 언어의 기초"
 하지만 개발자가 "괜찮아, 안 넘쳐! 내가 책임질게!"라고 강제로 넣을 수 있습니다.
 이것을 **강제 타입 변환(Casting, 캐스팅)**이라고 합니다.
 
+![그림](./img/type_casting.png)
+
 ```mermaid
 flowchart LR
     BigBucket[큰 양동이\ndouble\n'3.14'] -->|강제 압축 (캐스팅)| SmallCup[작은 컵\nint\n'3']
