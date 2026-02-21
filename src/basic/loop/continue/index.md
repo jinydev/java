@@ -13,6 +13,8 @@ grand_parent: "Part 01. 자바 언어의 기초"
 반복문을 아예 종료하는(`break`) 것이 아니라,
 **"이번 바퀴만 쉬고 다음 바퀴로 넘어가라"**는 뜻입니다.
 
+![그림](./img/continue_statement.png)
+
 ```mermaid
 flowchart TD
     Start([반복 회차 시작]) --> Check{건너뛸 조건인가?}

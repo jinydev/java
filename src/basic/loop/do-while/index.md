@@ -15,6 +15,8 @@ grand_parent: "Part 01. 자바 언어의 기초"
 
 **비유**: "일단 한 입 먹어봐. 맛있으면 더 먹어."
 
+![그림](./img/do_while_loop.png)
+
 ```mermaid
 flowchart TD
     Start([시작]) --> Run[실행 블록 (무조건 1회 실행)]

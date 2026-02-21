@@ -13,6 +13,8 @@ grand_parent: "Part 01. 자바 언어의 기초"
 반복문(`for`, `while`)을 실행하다가 **즉시 멈추고 밖으로 나가고 싶을 때** 사용합니다.
 마치 비상 탈출 버튼과 같습니다.
 
+![그림](./img/break_statement.png)
+
 ```mermaid
 flowchart TD
     Start([반복 시작]) --> Run[실행중...]
