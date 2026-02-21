@@ -23,6 +23,8 @@ grand_parent: "Part 01. 자바 언어의 기초"
 *   조건 2: **그리고(&&)**, 보호자가 동반해야 한다.
 *   둘 다 만족해야 놀이기구를 탈 수 있습니다.
 
+![그림](./img/logical_and.png)
+
 ```mermaid
 flowchart LR
     Start([입구]) --> Gate1{키 120cm 이상?}
