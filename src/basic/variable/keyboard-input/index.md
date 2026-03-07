@@ -4,6 +4,95 @@ title: "4.11 키보드 입력"
 nav_order: 11
 parent: "Chapter 04. 변수와 타입"
 grand_parent: "Part 01. 자바 언어의 기초"
+description: "자바 Scanner 클래스를 이용한 키보드 입력 방법과 nextLine(), nextInt() 의 차이, 그리고 System.in.read()를 통한 실시간 바이트 문자 처리에 대해 알아봅니다."
+keywords: "자바, Java, Scanner, 스캐너, 키보드 입력, nextLine, nextInt, System.in.read, 키코드"
+---
+
+# 4.11 키보드 입력
+
+지금까지는 우리가 코드에 정해놓은 값만 출력했습니다.
+이제 막 실행된 프로그램이 사용자와 **대화(입력)**하는 방법을 알아봅니다. ⌨️
+
+---
+
+## 1. 스캐너 (Scanner) 📡
+
+### 1) 개념
+자바 프로그램은 기본적으로 **듣는 기능**이 없습니다.
+키보드로 입력된 내용을 읽어들이기 위해서는 **`Scanner`**라는 도구(클래스)를 사용해야 합니다.
+
+### 2) 비유: "마이크와 통역사"
+*   **키보드**: 사용자의 손가락 (데이터 발신)
+*   **System.in**: 마이크 (키보드 입력을 빨아들이는 1차 통로)
+*   **Scanner**: 통역사 로봇 (`System.in`으로 들어온 거친 신호를 자바가 알아들을 수 있는 예쁜 문자열(`String`)이나 숫자(`int`)로 번역해서 프로그램에 전달)
+
+<br>
+
+![Scanner 통역사 웹툰 일러스트](./img/scanner_interpreter_webtoon.png)
+<br>
+*▲ 키보드에서 쏟아지는 원시적인 전기 신호들을 Scanner 로봇이 야무지게 받아서, 우리가 읽기 편한 텍스트 블록으로 예쁘게 포장해 넘겨줍니다!*
+
+<br>
+
+### 3) 입력 흐름 시각화
+
+```mermaid
+graph LR
+    User[사용자] -->|타이핑| Keyboard[키보드]
+    Keyboard -->|System.in| Scanner[Scanner]
+    Scanner -->|nextLine| Program[자바 프로그램]
+    
+    style User fill:#f9f,stroke:#333
+    style Keyboard fill:#eee,stroke:#333
+    style Scanner fill:#ff9,stroke:#333
+    style Program fill:#bfb,stroke:#333
+```
+
+---
+
+## 2. 사용법 3단계 🛠️
+
+스캐너를 사용하려면 딱 3단계만 기억하면 됩니다.
+
+### 1단계: 도구 꺼내기 (Import)
+자바에게 "나 스캐너 쓸 거야!"라고 알려줍니다. (맨 윗줄에 작성)
+```java
+import java.util.Scanner;
+```
+> **💡 참고**: `Scanner`는 우리가 앞서 배운 `int`, `double` 같은 자바의 기본 자료형(Primitive Type)이 아닙니다. 자바가 미리 만들어둔 복잡한 도구 상자인 **'클래스(Class)'**이기 때문에, 사용하려면 해당 클래스의 위치(`java.util`)를 코드 맨 위에 `import`문으로 명시해서 불러와야만 타입으로 사용할 수 있습니다. 이 부분에 대한 원리는 뒤에 나올 **객체 지향 파트**에서 아주 상세하게 다룰 예정이니, 지금은 "외부 도구를 가져다 쓰기 위한 주문" 정도로만 알아두시면 됩니다!
+
+### 2단계: 스캐너 켜기 (객체 생성)
+`System.in`(입력 장치)에 빨대를 꽂아서 스캐너를 만듭니다.
+```java
+Scanner scanner = new Scanner(System.in);
+```
+
+### 3단계: 입력 받기 (다양한 파트별 도구 사용)
+`Scanner` 객체는 목적에 맞게 사용할 수 있는 여러 가지 맞춤형 파싱(Parsing) 도구들을 가지고 있습니다. 
+
+<br>
+
+![다양한 Scanner 파싱 메소드 애니메이션](./img/scanner_methods_anim.svg)
+<br>
+
+| 메소드 | 설명 | 예시 키보드 입력 |
+| :--- | :--- | :--- |
+| **`nextLine()`** | 문장 전체(스페이스 포함)를 읽고, **엔터까지** 가져옵니다. | `"안녕 하세요\n"` ➔ `"안녕 하세요"` |
+| **`next()`** | 띄어쓰기(공백) 전까지만의 **한 단어**만 읽어옵니다. | `"홍길동 25"` ➔ `"홍길동"` |
+| **`nextInt()`** | 공백 전까지의 숫자를 찾아 **`int`(정수)** 로 변환합니다. | `"홍길동 25"` ➔ `25` |
+| **`nextDouble()`**| 공백 전까지의 실수를 찾아 **`double`(실수)** 로 변환합니다. | `"175.5 68.2"` ➔ `175.5` |
+| **`nextBoolean()`**| "true" 또는 "false" 문자를 **`boolean`(논리)** 값으로 변환합니다.| `"true"` ➔ `true` |
+
+```java
+// 예: "홍길동 25" 라고 치고 엔터를 쳤다면
+String name = scanner.next(); // name 에는 "홍길동"
+int age = scanner.nextInt();  // age 에는 25
+```
+
+---
+
+## 3. 실전 예제: 나이 계산기 🧮
+
 사용자에게 태어난 연도를 입력받아 나이를 계산하는 프로그램입니다.
 
 ```java
@@ -34,9 +123,19 @@ public class AgeCalculator {
 
 ## 4. 자주 하는 실수: nextInt() 사용 시 주의 ⚠️
 
-숫자를 입력받을 때 `scanner.nextInt()`를 사용하면 편해 보이지만, **줄바꿈 문자(Enter)**가 찌꺼기처럼 남아서 다음 입력을 방해할 수 있습니다.
+숫자를 먼저 입력받고 바로 이어서 문자를 입력받을 때, `scanner.nextInt()`를 섞어 쓰면 종종 문제가 발생합니다. 사용자가 숫자를 치고 **'엔터(Enter)'**를 누르면, `nextInt()`는 숫자만 쏙 골라 먹고 **눈에 안 보이는 엔터(`\n`) 찌꺼기**를 입력 통로에 그대로 남겨두기 때문입니다.
 
-> **추천 방법**: 무조건 **`nextLine()`**으로 문자열을 모두 읽어들인 후, 필요하면 **`Integer.parseInt()`** 또는 **`Double.parseDouble()`** 로 변환하는 것이 정신 건강에 좋습니다. 👍
+그 결과, 다음에 오는 입력 명령이 남아있던 찌꺼기 엔터를 보고 "아, 사용자가 아무것도 안 치고 엔터만 치고 넘어갔구나!" 하고 오해해서 입력을 스킵해 버리는 **치명적인 버그**가 생깁니다.
+
+<br>
+
+![nextLine vs nextInt 버그 설명 웹툰 일러스트](./img/nextline_vs_nextint_webtoon.png)
+<br>
+*▲ nextInt() 숟가락으로 숫자만 얌체같이 파먹으면 그릇에 끈적한 '엔터(\n)' 찌꺼기가 남습니다. 모든 걸 한 번에 깔끔하게 푸는 nextLine() 큰 삽을 쓰는 게 안전합니다!*
+
+<br>
+
+> **추천(해결) 방법**: 무조건 **`nextLine()`**으로 한 줄(숫자 리터럴 + 엔터까지 싹 다)을 통째로 문자열로 읽어들여 찌꺼기를 없앤 후, 숫자가 필요할 때만 **`Integer.parseInt()`** 또는 **`Double.parseDouble()`** 로 변환하는 것이 정신 건강에 좋습니다. 👍
 
 ---
 
