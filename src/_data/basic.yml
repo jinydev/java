@@ -1,5 +1,5 @@
 main:
-- title: Chapter 01. 자바 언어 소개
+- title: 01. 자바 언어 소개
   url: /basic/java
   subitems:
   - title: 학습목표
@@ -12,7 +12,7 @@ main:
     url: /basic/java/features
   - title: 1.4 바이트코드 파일과 자바 가상 머신
     url: /basic/java/jvm
-- title: Chapter 02. 개발 환경 구축
+- title: 02. 개발 환경 구축
   url: /basic/setup
   subitems:
   - title: 학습목표
@@ -33,7 +33,7 @@ main:
     url: /basic/setup/vscode-installation
   - title: 2.8 안티그라비티 소개
     url: /basic/setup/antigravity
-- title: Chapter 03. 자바 시작하기
+- title: 03. 자바 시작하기
   url: /basic/start
   subitems:
   - title: 학습목표
@@ -48,7 +48,7 @@ main:
     url: /basic/start/statements
   - title: 확인문제
     url: /basic/start/quiz
-- title: Chapter 04. 변수와 타입
+- title: 04. 변수와 타입
   url: /basic/variable
   subitems:
   - title: 학습목표
@@ -81,7 +81,7 @@ main:
     url: /basic/variable/keyboard-input
   - title: 확인문제
     url: /basic/variable/quiz
-- title: Chapter 05. 연산자
+- title: 05. 연산자
   url: /basic/operator
   subitems:
   - title: 학습목표
@@ -112,7 +112,7 @@ main:
     url: /basic/operator/precedence
   - title: 확인문제
     url: /basic/operator/quiz
-- title: Chapter 06. 조건문
+- title: 06. 조건문
   url: /basic/condition
   subitems:
   - title: 학습목표
@@ -125,7 +125,7 @@ main:
     url: /basic/condition/switch
   - title: 확인문제
     url: /basic/condition/quiz
-- title: Chapter 07. 반복문
+- title: 07. 반복문
   url: /basic/loop
   subitems:
   - title: 학습목표
@@ -142,7 +142,7 @@ main:
     url: /basic/loop/continue
   - title: 확인문제
     url: /basic/loop/quiz
-- title: Chapter 08. 참조 타입
+- title: 08. 참조 타입
   url: /basic/reference
   subitems:
   - title: 학습목표
