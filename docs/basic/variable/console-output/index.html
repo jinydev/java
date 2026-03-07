@@ -5,18 +5,20 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- 기본 메타데이터 --><meta name="description" content="Jiny linux"><meta name="author" content="HojinLee"><!-- 제목 설정 --><title>4.10 콘솔 출력</title>
-  <meta name="title" content="4.10 콘솔 출력" /><!-- 키워드 설정 --><!-- Open Graph 메타데이터 --><meta property="og:title" content="4.10 콘솔 출력"><meta property="og:description" content="Jiny linux"><meta property="og:type" content="website"><meta property="og:locale" content="ko">
+  <!-- 기본 메타데이터 --><meta name="description" content="자바의 콘솔 출력 (print, println, printf)과 서식 지정자(%d, %f, %s 등)의 원리와 사용법을 시각적 예제로 완벽하게 알아봅니다."><meta name="author" content="HojinLee"><!-- 제목 설정 --><title>4.10 콘솔 출력</title>
+  <meta name="title" content="4.10 콘솔 출력" /><!-- 키워드 설정 --><meta name="keywords" content="자바, Java, console, 출력, print, println, printf, 서식 지정자, format specifier, escape 문자, 이스케이프"><!-- Open Graph 메타데이터 --><meta property="og:title" content="4.10 콘솔 출력"><meta property="og:description" content="자바의 콘솔 출력 (print, println, printf)과 서식 지정자(%d, %f, %s 등)의 원리와 사용법을 시각적 예제로 완벽하게 알아봅니다."><meta property="og:type" content="website"><meta property="og:locale" content="ko">
   <meta property="og:site_name" content="linux">
   <meta property="og:url" content="http://localhost:4000/basic/variable/console-output/">
+  <!-- 대표 URL (캐노니컬) -->
+  <link rel="canonical" href="http://localhost:4000/basic/variable/console-output/">
 
-  <!-- Twitter 카드 메타데이터 --><meta name="twitter:card" content="summary"><meta property="twitter:title" content="4.10 콘솔 출력"><!-- Begin Jekyll SEO tag v2.8.0 -->
+  <!-- Twitter 카드 메타데이터 --><meta name="twitter:card" content="summary"><meta property="twitter:title" content="4.10 콘솔 출력"><meta property="twitter:description" content="자바의 콘솔 출력 (print, println, printf)과 서식 지정자(%d, %f, %s 등)의 원리와 사용법을 시각적 예제로 완벽하게 알아봅니다."><!-- Begin Jekyll SEO tag v2.8.0 -->
 <meta name="generator" content="Jekyll v4.4.1" />
 <meta property="og:title" content="4.10 콘솔 출력" />
 <meta name="author" content="Hojin" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
-<meta property="og:description" content="자바 언어를 통한 객체지향 프로그래밍의 이해와 실습" />
+<meta name="description" content="자바의 콘솔 출력 (print, println, printf)과 서식 지정자(%d, %f, %s 등)의 원리와 사용법을 시각적 예제로 완벽하게 알아봅니다." />
+<meta property="og:description" content="자바의 콘솔 출력 (print, println, printf)과 서식 지정자(%d, %f, %s 등)의 원리와 사용법을 시각적 예제로 완벽하게 알아봅니다." />
 <link rel="canonical" href="http://localhost:4000/basic/variable/console-output/" />
 <meta property="og:url" content="http://localhost:4000/basic/variable/console-output/" />
 <meta property="og:site_name" content="객체지향 자바 프로그래밍 (Object-Oriented Java Programming)" />
@@ -24,7 +26,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="4.10 콘솔 출력" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바 언어를 통한 객체지향 프로그래밍의 이해와 실습","headline":"4.10 콘솔 출력","url":"http://localhost:4000/basic/variable/console-output/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"자바의 콘솔 출력 (print, println, printf)과 서식 지정자(%d, %f, %s 등)의 원리와 사용법을 시각적 예제로 완벽하게 알아봅니다.","headline":"4.10 콘솔 출력","url":"http://localhost:4000/basic/variable/console-output/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -337,7 +339,7 @@
             class="bd-links-link bd-links-btn btn d-inline-flex align-items-center rounded border-0 collapsed w-100"
             data-bs-toggle="collapse" data-bs-target="#collapse-1"
             aria-expanded="false">
-            01. 자바 언어 소개
+            Chapter 01. 자바 언어 소개
             <svg class="bi ms-auto" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
               xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd"
@@ -395,7 +397,7 @@
             class="bd-links-link bd-links-btn btn d-inline-flex align-items-center rounded border-0 collapsed w-100"
             data-bs-toggle="collapse" data-bs-target="#collapse-2"
             aria-expanded="false">
-            02. 개발 환경 구축
+            Chapter 02. 개발 환경 구축
             <svg class="bi ms-auto" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
               xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd"
@@ -481,7 +483,7 @@
             class="bd-links-link bd-links-btn btn d-inline-flex align-items-center rounded border-0 collapsed w-100"
             data-bs-toggle="collapse" data-bs-target="#collapse-3"
             aria-expanded="false">
-            03. 자바 시작하기
+            Chapter 03. 자바 시작하기
             <svg class="bi ms-auto" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
               xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd"
@@ -546,7 +548,7 @@
             class="bd-links-link bd-links-btn btn d-inline-flex align-items-center rounded border-0 collapsed w-100"
             data-bs-toggle="collapse" data-bs-target="#collapse-4"
             aria-expanded="false">
-            04. 변수와 타입
+            Chapter 04. 변수와 타입
             <svg class="bi ms-auto" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
               xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd"
@@ -674,7 +676,7 @@
             class="bd-links-link bd-links-btn btn d-inline-flex align-items-center rounded border-0 collapsed w-100"
             data-bs-toggle="collapse" data-bs-target="#collapse-5"
             aria-expanded="false">
-            05. 연산자
+            Chapter 05. 연산자
             <svg class="bi ms-auto" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
               xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd"
@@ -795,7 +797,7 @@
             class="bd-links-link bd-links-btn btn d-inline-flex align-items-center rounded border-0 collapsed w-100"
             data-bs-toggle="collapse" data-bs-target="#collapse-6"
             aria-expanded="false">
-            06. 조건문
+            Chapter 06. 조건문
             <svg class="bi ms-auto" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
               xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd"
@@ -853,7 +855,7 @@
             class="bd-links-link bd-links-btn btn d-inline-flex align-items-center rounded border-0 collapsed w-100"
             data-bs-toggle="collapse" data-bs-target="#collapse-7"
             aria-expanded="false">
-            07. 반복문
+            Chapter 07. 반복문
             <svg class="bi ms-auto" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
               xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd"
@@ -925,7 +927,7 @@
             class="bd-links-link bd-links-btn btn d-inline-flex align-items-center rounded border-0 collapsed w-100"
             data-bs-toggle="collapse" data-bs-target="#collapse-8"
             aria-expanded="false">
-            08. 참조 타입
+            Chapter 08. 참조 타입
             <svg class="bi ms-auto" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
               xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd"
@@ -1102,57 +1104,26 @@
   <li><strong>printf (Print Format)</strong>: <strong>서식(양식)</strong>에 맞춰서 예쁘게 채워 넣기</li>
 </ul>
 
-<p><br /></p>
-
-<p><img src="./img/print_vs_println_webtoon.png" alt="print와 println의 차이 웹툰 일러스트" />
-<br />
-<em>▲ 옆으로 계속 이어서 도장을 찍는 print와, 도장을 찍을 때마다 엔터를 쳐 줄이 바뀌는 println의 차이점!</em></p>
-
-<p><br /></p>
-
 <h3 id="3-출력-차이-시각화">3) 출력 차이 시각화</h3>
-<p>print 와 println 의 차이를 시각적으로 표현한 것이다.</p>
 
 <pre><code class="language-mermaid">graph TD
-    subgraph g1 ["println(&amp;quot;A&amp;quot;); println(&amp;quot;B&amp;quot;);"]
+    subgraph println [println("A"); println("B");]
         L1[A]
         L2[B]
         L1 --&gt; L2
     end
     
-    subgraph g2 ["print(&amp;quot;A&amp;quot;); print(&amp;quot;B&amp;quot;);"]
+    subgraph print [print("A"); print("B");]
         P1[AB]
     end
     
-    style g1 fill:#eef,stroke:#333
-    style g2 fill:#eef,stroke:#333
+    style println fill:#eef,stroke:#333
+    style print fill:#eef,stroke:#333
 </code></pre>
 
 <hr />
 
-<h2 id="2--궁금증-왜-화면에-띄우는데-print출력인쇄라고-할까">2. 🧐 궁금증: 왜 화면에 띄우는데 ‘Print(출력/인쇄)’라고 할까?</h2>
-
-<p>초보자분들이 종종 묻는 질문입니다.</p>
-<blockquote>
-  <p><em>“모니터 화면에 글씨를 띄우는 건데, 왜 하필 종이에 인쇄할 때 쓰는 <strong>print(프린트)</strong>라는 단어를 사용할까요?”</em></p>
-</blockquote>
-
-<p><br /></p>
-
-<p><img src="./img/history_of_print_webtoon.png" alt="print 명령어의 역사 웹툰 일러스트" />
-<br />
-<em>▲ 1970년대의 텔레타이프라이터(Teleprinter)와 현대의 모니터 비교</em></p>
-
-<p><br /></p>
-
-<p><strong>그 이유는 컴퓨터의 역사에 숨어 있습니다! 📜</strong>
-아주 옛날, 모니터(디스플레이 화면)가 발명되기 전에는 컴퓨터가 계산한 결과를 확인하려면 <strong>진짜로 종이에 잉크로 타이핑해서 인쇄(Print)해 주는 기계(텔레타이프라이터)</strong>를 사용했습니다.</p>
-
-<p>이후 기술이 발전하면서 결과를 종이 대신 유리 화면(모니터)에 띄우게 되었지만, 프로그래머들이 오랫동안 사용해 와서 입에 쫙 달라붙은 <strong>“print”</strong>라는 명령어 이름은 시대가 지나도 그대로 굳어져서 지금까지 내려오게 된 것이랍니다.</p>
-
-<hr />
-
-<h2 id="3-자주-쓰는-메소드">3. 자주 쓰는 메소드</h2>
+<h2 id="2-자주-쓰는-메소드">2. 자주 쓰는 메소드</h2>
 
 <h3 id="1-systemoutprintln">1) System.out.println()</h3>
 <p>괄호 안의 내용을 출력하고 <strong>줄을 바꿉니다</strong>. 가장 많이 사용합니다.</p>
@@ -1174,19 +1145,11 @@
 
 <hr />
 
-<h2 id="4-형식-지정-출력-printf-">4. 형식 지정 출력 (printf) 🎨</h2>
+<h2 id="3-형식-지정-출력-printf-">3. 형식 지정 출력 (printf) 🎨</h2>
 
 <h3 id="1-개념-1">1) 개념</h3>
 <p><code class="language-plaintext highlighter-rouge">printf("형식문자열", 값1, 값2, ...)</code> 형태로 사용합니다.
 문자열 안에 <strong>빈칸(서식 지정자)</strong>을 만들어두고, 뒤에 오는 값을 순서대로 채워 넣는 방식입니다.</p>
-
-<p><br /></p>
-
-<p><img src="./img/printf_format_webtoon.png" alt="printf 서식 지정 웹툰 일러스트" />
-<br />
-<em>▲ 빈칸(%s, %d)이 뚫려있는 문장 퍼즐 판에 알맞은 조각(데이터)을 순서대로 끼워 넣는 printf의 원리!</em></p>
-
-<p><br /></p>
 
 <h3 id="2-자주-쓰는-서식-지정자-format-specifier">2) 자주 쓰는 서식 지정자 (Format Specifier)</h3>
 
@@ -1237,187 +1200,9 @@
 <span class="c1">// 출력: 이름: 김자바, 나이: 20세, 키: 180.6cm</span>
 </code></pre></div></div>
 
-<h3 id="4-조금-더-깊게-서식-지정자의-완벽한-해부-전체-구조-">4) 조금 더 깊게: 서식 지정자의 완벽한 해부! (전체 구조) 🔬</h3>
-<p>실제로 <code class="language-plaintext highlighter-rouge">printf</code> 의 서식 지정자 안에는 그냥 <code class="language-plaintext highlighter-rouge">%d</code>만 들어가는 것이 아니라, 여러 가지 기능(너비, 정렬, 소수점 등)을 제어할 수 있는 숨겨진 부품들을 조립할 수 있습니다. 완벽한 조립 공식은 아래와 같습니다.</p>
 
-<p>⭐ <strong><code class="language-plaintext highlighter-rouge">% [순번$] [플래그] [전체너비] [.정밀도] 서식문자</code></strong> (예: <code class="language-plaintext highlighter-rouge">%1$-10.2f</code>)</p>
-
-<p>이 거대한 조립 공장을 하나의 그림으로 비유하면 다음과 같습니다.</p>
-
-<p><br /></p>
-
-<p><img src="./img/printf_all_in_one_webtoon.png" alt="printf 전체 구조 웹툰 일러스트" />
-<br />
-<em>▲ 1.누구를(Index) ➡️ 2.어느쪽으로 밀어서(Flag) ➡️ 3.몇 칸짜리 상자에(Width) ➡️ 4.얼마나 잘라서(Precision) ➡️ 5.포장할까?(Conversion)</em></p>
-
-<p><br /></p>
-
-<p>자, 이제 이 조립 공장의 부품들을 하나씩 자세히 뜯어보겠습니다!</p>
-
-<hr />
-
-<h4 id="-서식-문자-conversion-무슨-타입이야-필수">① 서식 문자 (Conversion): “무슨 타입이야?” (필수)</h4>
-<p>가장 끝에 붙으며 어떤 데이터 타입을 출력할지 결정합니다. 이것만은 절대 생략할 수 없습니다!</p>
-<ul>
-  <li><strong><code class="language-plaintext highlighter-rouge">%d</code> (Decimal)</strong>: 정수 (<code class="language-plaintext highlighter-rouge">int</code>, <code class="language-plaintext highlighter-rouge">long</code>). 예: <code class="language-plaintext highlighter-rouge">10</code>, <code class="language-plaintext highlighter-rouge">-5</code></li>
-  <li><strong><code class="language-plaintext highlighter-rouge">%f</code> (Float)</strong>: 실수 (<code class="language-plaintext highlighter-rouge">double</code>). 예: <code class="language-plaintext highlighter-rouge">3.141592</code></li>
-  <li><strong><code class="language-plaintext highlighter-rouge">%s</code> (String)</strong>: 문자열 (<code class="language-plaintext highlighter-rouge">String</code>). 예: <code class="language-plaintext highlighter-rouge">"Hello"</code></li>
-</ul>
-
-<h4 id="-플래그flags--너비width-자릿수와-정렬-맞추기-">② 플래그(Flags) &amp; 너비(Width): “자릿수와 정렬 맞추기” 🚩📏</h4>
-<p>데이터가 출력될 <strong>전체 칸 수(너비)</strong>를 정비하고, 남는 빈칸을 어떻게 처리할지 정하는 <strong>옵션(플래그)</strong>입니다.</p>
-<ul>
-  <li><strong><code class="language-plaintext highlighter-rouge">너비</code> 숫자 입력</strong>: 입력한 숫자만큼 자리를 잡아놓고 맨 오른쪽으로 붙여 씁니다 (<code class="language-plaintext highlighter-rouge">%5d</code>).</li>
-  <li><strong><code class="language-plaintext highlighter-rouge">-</code> (마이너스 플래그)</strong>: 기본 우측 정렬을 <strong>좌측 정렬</strong>로 바꿉니다 (<code class="language-plaintext highlighter-rouge">%-5d</code>).</li>
-  <li><strong><code class="language-plaintext highlighter-rouge">0</code> (숫자 영 플래그)</strong>: 남는 빈칸을 공백이 아닌 <strong>0으로 꽉 채웁니다</strong> (<code class="language-plaintext highlighter-rouge">%05d</code>).</li>
-</ul>
-
-<p><img src="./img/printf_flags_anim.svg" alt="printf 구조와 플래그 애니메이션" /></p>
-
-<p><br /></p>
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: left">서식 지정자</th>
-      <th style="text-align: left">설명</th>
-      <th style="text-align: left">출력 결과 (값: <code class="language-plaintext highlighter-rouge">99</code>)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: left"><strong><code class="language-plaintext highlighter-rouge">%5d</code></strong></td>
-      <td style="text-align: left">5칸을 확보하고 <strong>오른쪽</strong>으로 정렬 (빈칸은 공백)</td>
-      <td style="text-align: left">`   99`</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><strong><code class="language-plaintext highlighter-rouge">%-5d</code></strong></td>
-      <td style="text-align: left">5칸을 확보하고 <strong>왼쪽</strong>으로 정렬 (<code class="language-plaintext highlighter-rouge">-</code> 부호 사용)</td>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">99   </code></td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><strong><code class="language-plaintext highlighter-rouge">%05d</code></strong></td>
-      <td style="text-align: left">5칸을 확보하되, 앞의 빈칸을 <strong>0</strong>으로 채움</td>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">00099</code></td>
-    </tr>
-  </tbody>
-</table>
-
-<p><br /></p>
-
-<h4 id="-정밀도-precision-어디까지-자를까-️">③ 정밀도 (.precision): “어디까지 자를까?” ✂️</h4>
-<p>소수점이 있는 실수나 긴 문자열을 원하는 길이만큼 날카롭게 잘라내는 역할을 합니다. <strong>반드시 앞에 마침표(<code class="language-plaintext highlighter-rouge">.</code>)를 찍어주어야</strong> 너비(Width) 기호와 구별됩니다.</p>
-<ul>
-  <li><strong>실수(<code class="language-plaintext highlighter-rouge">%f</code>)</strong>에서: 소수점 아래 몇째 자리까지 출력할지 결정합니다. (자동으로 반올림 처리됨)</li>
-  <li><strong>문자열(<code class="language-plaintext highlighter-rouge">%s</code>)</strong>에서: 너무 긴 문장에서 앞부분 몇 글자만 잘라서 화면에 내보냅니다.</li>
-</ul>
-
-<p><img src="./img/printf_precision_anim.svg" alt="printf 정밀도 애니메이션" /></p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">double</span> <span class="n">pi</span> <span class="o">=</span> <span class="mf">3.141592</span><span class="o">;</span>
-<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"소수점 통제: %.2f\n"</span><span class="o">,</span> <span class="n">pi</span><span class="o">);</span> <span class="c1">// 3.14 (자동 반올림)</span>
-
-<span class="nc">String</span> <span class="n">title</span> <span class="o">=</span> <span class="s">"JavaProgramming"</span><span class="o">;</span>
-<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"문자열 통제: %.4s\n"</span><span class="o">,</span> <span class="n">title</span><span class="o">);</span> <span class="c1">// Java (앞 4글자만 추출)</span>
-</code></pre></div></div>
-
-<p><br /></p>
-
-<h4 id="-입력-순번-argument_index-누구-먼저-들어갈래-">④ 입력 순번 (argument_index$): “누구 먼저 들어갈래?” 🔀</h4>
-<p><code class="language-plaintext highlighter-rouge">printf</code> 뒤에 쉼표(<code class="language-plaintext highlighter-rouge">,</code>)로 나열한 값들을 구멍 자리에 넣을 때, 굳이 순서대로 넣지 않고 <strong>“1번째 값!”, “2번째 값!” 이라며 직접 지목(Index)하는 기능</strong>입니다. 숫자 뒤에 <strong>달러 기호(<code class="language-plaintext highlighter-rouge">$</code>)</strong>를 붙입니다.</p>
-<ul>
-  <li>같은 데이터를 한 문장에서 여러 번 반복 출력할 때 아주 유용합니다.</li>
-</ul>
-
-<p><img src="./img/printf_argument_index_anim.svg" alt="printf 순번 매칭 애니메이션" /></p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// "홍길동"은 2번째 값(2$), 25는 1번째 값(1$)을 지칭!</span>
-<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"이름: %2$s, 나이: %1$d"</span><span class="o">,</span> <span class="mi">25</span><span class="o">,</span> <span class="s">"홍길동"</span><span class="o">);</span>
-<span class="c1">// 출력 ➔ 이름: 홍길동, 나이: 25</span>
-
-<span class="c1">// 같은 값(1번)을 무한 재사용 가능!</span>
-<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"점수 점수! %1$d, 또 %1$d, 또 %1$d!"</span><span class="o">,</span> <span class="mi">100</span><span class="o">);</span>
-<span class="c1">// 출력 ➔ 점수 점수! 100, 또 100, 또 100!</span>
-</code></pre></div></div>
-
-<hr />
-
-<h2 id="5-최종-종합-코드-실습-">5. 최종 종합 코드 실습 💻</h2>
-
-<p>위에서 배운 모든 <code class="language-plaintext highlighter-rouge">printf</code> 조립 부품들을 활용한 실전 예제입니다!</p>
-
-<p><strong>[예제: PrintfFormatExample.java]</strong></p>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">PrintfFormatExample</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-        <span class="nc">String</span> <span class="n">name</span> <span class="o">=</span> <span class="s">"춘식"</span><span class="o">;</span>
-        <span class="kt">int</span> <span class="n">price</span> <span class="o">=</span> <span class="mi">50000</span><span class="o">;</span>
-        <span class="kt">double</span> <span class="n">discount</span> <span class="o">=</span> <span class="mf">0.156</span><span class="o">;</span>
-
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"=== 🧾 영수증 ==="</span><span class="o">);</span>
-        
-        <span class="c1">// 1. 순번($)과 그냥 서식문자(%s) 활용</span>
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"고객: %2$s (회원번호: %1$d)\n"</span><span class="o">,</span> <span class="mi">1004</span><span class="o">,</span> <span class="n">name</span><span class="o">);</span>
-        
-        <span class="c1">// 2. 너비와 플래그(-, 0)</span>
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"원가: [%10d]원\n"</span><span class="o">,</span> <span class="n">price</span><span class="o">);</span> <span class="c1">// 우측 10칸</span>
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"원가: [%-10d]원\n"</span><span class="o">,</span> <span class="n">price</span><span class="o">);</span> <span class="c1">// 좌측 10칸</span>
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"원가: [%010d]원\n"</span><span class="o">,</span> <span class="n">price</span><span class="o">);</span> <span class="c1">// 빈칸 0채움</span>
-        
-        <span class="c1">// 3. 정밀도(.precision) 제어</span>
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"할인율: %.2f%%\n"</span><span class="o">,</span> <span class="n">discount</span> <span class="o">*</span> <span class="mi">100</span><span class="o">);</span> <span class="c1">// 15.60%</span>
-        <span class="c1">// (주의: % 기호 자체를 출력하려면 %% 두 번 적어주어야 합니다)</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<hr />
-
-<h2 id="5--궁금증-그냥-printprintln-대신-printf를-쓰면-뭐가-좋을까">5. 🧐 궁금증: 그냥 print/println 대신 printf를 쓰면 뭐가 좋을까?</h2>
-
-<p>위에서 배운 것처럼 굳이 이상한 기호(<code class="language-plaintext highlighter-rouge">%s</code>, <code class="language-plaintext highlighter-rouge">%d</code>)를 외워가면서까지 <code class="language-plaintext highlighter-rouge">printf</code>를 써야 하는 이유가 있을까요? 가장 크고 결정적인 이유는 <strong>지저분한 덧셈(<code class="language-plaintext highlighter-rouge">+</code>) 코드를 깔끔하게 정리</strong>할 수 있기 때문입니다.</p>
-
-<p><br /></p>
-
-<p><img src="./img/printf_vs_println_webtoon.png" alt="println 문자열 결합과 printf 서식 지정의 차이 웹툰 일러스트" />
-<br />
-<em>▲ 끈적이는 ‘+’ 풀로 변수와 문자를 덕지덕지 이어 붙이는 println과 기분 좋게 알맞은 구멍에 변수를 쏙쏙 끼워 넣는 printf의 차이!</em></p>
-
-<p><br /></p>
-
-<p><strong>1) 지저분한 문자열 결합(<code class="language-plaintext highlighter-rouge">+</code>) 방지</strong>
-여러 변수를 하나의 문장에 섞어서 출력하려 할 때, <code class="language-plaintext highlighter-rouge">println</code>을 쓰면 끊임없이 <code class="language-plaintext highlighter-rouge">+</code> 기호와 따옴표를 열고 닫아야 해서 쓰기도 불편하고 오타가 나기도 쉽습니다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">String</span> <span class="n">name</span> <span class="o">=</span> <span class="s">"춘식"</span><span class="o">;</span>
-<span class="kt">int</span> <span class="n">age</span> <span class="o">=</span> <span class="mi">5</span><span class="o">;</span>
-
-<span class="c1">// ❌ println: 따옴표와 + 기호 범벅 (보기 불편함)</span>
-<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"내 고양이의 이름은 "</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s">"이고, 나이는 "</span> <span class="o">+</span> <span class="n">age</span> <span class="o">+</span> <span class="s">"살 입니다."</span><span class="o">);</span>
-
-<span class="c1">// ✅ printf: 문장의 모양(포맷)이 한눈에 보임!</span>
-<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"내 고양이의 이름은 %s이고, 나이는 %d살 입니다.\n"</span><span class="o">,</span> <span class="n">name</span><span class="o">,</span> <span class="n">age</span><span class="o">);</span>
-</code></pre></div></div>
-
-<p><strong>2) 소수점 자르기와 줄 맞추기가 마법처럼 쉬워짐!</strong>
-무한소수를 잘라서 깔끔하게 보여주거나, 영수증처럼 위아래 줄을 맞춰야 할 때 <code class="language-plaintext highlighter-rouge">println</code> 혼자서는 사실상 불가능합니다. 하지만 <code class="language-plaintext highlighter-rouge">printf</code>는 포맷팅 옵션(<code class="language-plaintext highlighter-rouge">%.2f</code>, <code class="language-plaintext highlighter-rouge">%5d</code> 등) 하나면 복잡한 코딩 없이 알아서 척척 예쁘게 정렬해 줍니다. 따라서 <strong>데이터를 예쁘고 깔끔하게 출력해야 할 때는 무조건 <code class="language-plaintext highlighter-rouge">printf</code>가 유리</strong>합니다!</p>
-
-
-            <!-- Google AdSense -->
-<div class="my-4">
-    <!-- 기본 스크립트 로드 -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3321560028329475"
-        crossorigin="anonymous"></script>
-
-    <!-- 디스플레이 광고 (반응형) 자리 -->
-    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-3321560028329475" data-ad-slot="1234567890"
-        <!-- 사용자 슬롯 ID로 교체 필요 -->
-        data-ad-format="auto"
-        data-full-width-responsive="true"></ins>
-
-    <!-- 광고 실행 -->
-    <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-</div>
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3321560028329475"
+    crossorigin="anonymous"></script>
         </div>
 
         <div class="bd-toc mt-3 mb-5 my-lg-0 ps-xl-3 mb-lg-5 text-body-secondary">
