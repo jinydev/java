@@ -4,6 +4,8 @@ title: "2.1 변수 선언"
 nav_order: 1
 parent: "Chapter 02. 변수와 타입"
 grand_parent: "객체지향 자바 프로그래밍"
+description: "2.1 변수 선언 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "2.1 변수 선언, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # 2.1 변수 선언

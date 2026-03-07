@@ -4,6 +4,8 @@ title: "4.2 정수 타입"
 nav_order: 2
 parent: "Chapter 04. 변수와 타입"
 grand_parent: "Part 01. 자바 언어의 기초"
+description: "4.2 정수 타입 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "4.2 정수 타입, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # 4.2 정수 타입

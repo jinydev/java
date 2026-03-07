@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="100%" height="100%">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&amp;display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@700&amp;display=swap');
+      
+      .st-title { font-family: 'Noto Sans KR', sans-serif; font-size: 24px; font-weight: bold; fill: #2c3e50; }
+      .st-desc { font-family: 'Noto Sans KR', sans-serif; font-size: 16px; fill: #555; }
+      
+      .code-main { font-family: 'Fira Code', monospace; font-size: 20px; font-weight: bold; fill: #2c3e50; }
+      
+      .box { fill: #fdf2e9; stroke: #e67e22; stroke-width: 2; rx: 4; }
+      .val-text { font-family: 'Fira Code', monospace; font-size: 24px; font-weight: bold; fill: #d35400; }
+      
+      .cut-line { stroke: #c0392b; stroke-width: 3; stroke-dasharray: 6; }
+      
+      /* Scissors Animation */
+      @keyframes snip {
+        0% { transform: translateY(-30px) rotate(0deg); opacity: 0; }
+        30% { transform: translateY(0px) rotate(0deg); opacity: 1; }
+        40% { transform: translateY(0px) rotate(-15deg); opacity: 1; }
+        50% { transform: translateY(0px) rotate(10deg); opacity: 1; }
+        60% { transform: translateY(0px) rotate(0deg); opacity: 1; }
+        80% { transform: translateY(20px) rotate(0deg); opacity: 0; }
+        100% { opacity: 0; }
+      }
+      
+      @keyframes drop {
+        0% { transform: translateY(0); opacity: 1; }
+        50% { transform: translateY(0); opacity: 1; }
+        60% { transform: translateY(30px); opacity: 0; }
+        100% { opacity: 0; }
+      }
+      
+      .scissor-anim1 { animation: snip 4s infinite ease-in-out; }
+      .scissor-anim2 { animation: snip 4s infinite ease-in-out 1s; }
+      
+      .drop-anim1 { animation: drop 4s infinite ease-in-out; }
+      .drop-anim2 { animation: drop 4s infinite ease-in-out 1s; }
+      
+    </style>
+  </defs>
+
+  <rect width="100%" height="100%" fill="#ffffff" rx="10" />
+  
+  <text x="400" y="50" text-anchor="middle" class="st-title">정밀도 (.precision) 제어 파헤치기 ✂️</text>
+  <text x="400" y="80" text-anchor="middle" class="st-desc">실수(%f)의 소수점 길이를 제한하거나, 문자열(%s)을 원하는 만큼만 잘라냅니다.</text>
+
+  <!-- Row 1: %f -->
+  <g transform="translate(100, 150)">
+    <rect x="0" y="-20" width="140" height="40" fill="#f4f6f7" rx="4" />
+    <text x="70" y="5" text-anchor="middle" class="code-main" fill="#2980b9">%.2f</text>
+    <text x="200" y="5" class="st-desc" fill="#333">소수점 둘째 자리까지 (3.14159...)</text>
+    
+    <!-- Value 3.14159 -->
+    <g transform="translate(450, -15)">
+      <rect x="0" y="0" width="120" height="30" class="box" stroke="transparent" fill="transparent"/>
+      <text x="15" y="22" class="val-text">3</text>
+      <text x="35" y="22" class="val-text">.</text>
+      <text x="55" y="22" class="val-text">1</text>
+      <text x="75" y="22" class="val-text">4</text>
+      
+      <!-- The part to cut -->
+      <g class="drop-anim1" transform="translate(95, 0)">
+        <text x="0" y="22" class="val-text" fill="#bdc3c7">1</text>
+        <text x="20" y="22" class="val-text" fill="#bdc3c7">5</text>
+        <text x="40" y="22" class="val-text" fill="#bdc3c7">9</text>
+      </g>
+      
+      <!-- Snip Line -->
+      <line x1="90" y1="-10" x2="90" y2="40" class="cut-line" />
+      
+      <!-- Scissors -->
+      <g class="scissor-anim1" transform="translate(90, -20)">
+        <text x="-15" y="10" font-size="24">✂️</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Row 2: %s -->
+  <g transform="translate(100, 270)">
+    <rect x="0" y="-20" width="140" height="40" fill="#f4f6f7" rx="4" />
+    <text x="70" y="5" text-anchor="middle" class="code-main" fill="#8e44ad">%.3s</text>
+    <text x="200" y="5" class="st-desc" fill="#333">문자열에서 앞 3글자만 추출 ("JavaProgram")</text>
+    
+    <!-- Value JavaProgram -->
+    <g transform="translate(450, -15)">
+      <rect x="0" y="0" width="120" height="30" class="box" stroke="transparent" fill="transparent"/>
+      <text x="0" y="22" class="val-text">J</text>
+      <text x="20" y="22" class="val-text">a</text>
+      <text x="40" y="22" class="val-text">v</text>
+      
+      <!-- The part to cut -->
+      <g class="drop-anim2" transform="translate(60, 0)">
+        <text x="0" y="22" class="val-text" fill="#bdc3c7">a</text>
+        <text x="20" y="22" class="val-text" fill="#bdc3c7">P</text>
+        <text x="40" y="22" class="val-text" fill="#bdc3c7">r</text>
+        <text x="60" y="22" class="val-text" fill="#bdc3c7">o</text>
+      </g>
+      
+      <!-- Snip Line -->
+      <line x1="55" y1="-10" x2="55" y2="40" class="cut-line" />
+      
+      <!-- Scissors -->
+      <g class="scissor-anim2" transform="translate(55, -20)">
+        <text x="-15" y="10" font-size="24">✂️</text>
+      </g>
+    </g>
+  </g>
+
+  <rect x="0" y="0" width="800" height="400" fill="none" stroke="#e0e0e0" stroke-width="2" rx="10"/>
+</svg>

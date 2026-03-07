@@ -4,6 +4,8 @@ title: "11.9 다형성"
 nav_order: 9
 parent: "Chapter 11. 인터페이스"
 grand_parent: "객체지향 자바 프로그래밍"
+description: "11.9 다형성 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "11.9 다형성, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # 11.9 다형성 (Polymorphism)

@@ -4,6 +4,8 @@ title: "3.1 Spring Boot 개요 및 프로젝트 생성"
 nav_order: 6
 parent: "3주차. Spring Boot 시작하기"
 grand_parent: "백엔드 웹서버 개발"
+description: "3.1 Spring Boot 개요 및 프로젝트 생성 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "3.1 Spring Boot 개요 및 프로젝트 생성, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # 3.1 Spring Boot 개요 및 프로젝트 생성

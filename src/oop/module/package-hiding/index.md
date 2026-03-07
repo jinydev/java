@@ -4,6 +4,8 @@ title: "13.5 패키지 은닉"
 nav_order: 5
 parent: "Chapter 13. 라이브러리와 모듈"
 grand_parent: "객체지향 자바 프로그래밍"
+description: "13.5 패키지 은닉 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "13.5 패키지 은닉, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # 13.5 패키지 은닉 (Package Hiding)

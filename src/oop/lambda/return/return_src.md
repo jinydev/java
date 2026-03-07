@@ -4,6 +4,8 @@ title: "16.4 리턴값이 있는 람다식"
 nav_order: 4
 parent: "Chapter 16. 스트림과 병렬 처리"
 grand_parent: "객체지향 프로그래밍"
+description: "16.4 리턴값이 있는 람다식 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "16.4 리턴값이 있는 람다식, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # 16.4 리턴값이 있는 람다식

@@ -2,6 +2,8 @@
 layout: network
 title: "최신 자바 및 네트워크"
 permalink: /network/
+description: "최신 자바 및 네트워크 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "최신 자바 및 네트워크, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # 최신 자바 및 네트워크

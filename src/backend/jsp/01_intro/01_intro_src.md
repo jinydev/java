@@ -4,6 +4,8 @@ title: "1.1 웹 서버와 WAS"
 nav_order: 1
 parent: "1주차. 웹 서버와 환경 설정"
 grand_parent: "백엔드 웹서버 개발"
+description: "1.1 웹 서버와 WAS 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "1.1 웹 서버와 WAS, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # 1.1 웹 서버와 WAS

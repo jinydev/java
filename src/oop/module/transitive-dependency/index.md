@@ -4,6 +4,8 @@ title: "13.6 전이 의존"
 nav_order: 6
 parent: "Chapter 13. 라이브러리와 모듈"
 grand_parent: "객체지향 자바 프로그래밍"
+description: "13.6 전이 의존 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "13.6 전이 의존, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # 13.6 전이 의존 (Transitive Dependency)

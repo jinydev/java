@@ -4,6 +4,8 @@ title: "Chapter 23. 데이터베이스 입출력 (Oracle)"
 nav_order: 23
 has_children: true
 parent: "데이터 입출력"
+description: "Chapter 23. 데이터베이스 입출력 (Oracle) 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "Chapter 23. 데이터베이스 입출력 (Oracle), 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # Chapter 23. 데이터베이스 입출력 (Oracle)

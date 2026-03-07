@@ -4,6 +4,8 @@ title: "20.7 데이터 수정"
 nav_order: 7
 parent: "MySQL"
 grand_parent: "데이터베이스"
+description: "20.7 데이터 수정 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "20.7 데이터 수정, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # 20.7 데이터 수정

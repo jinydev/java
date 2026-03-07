@@ -4,6 +4,8 @@ title: "8.13 봉인된 인터페이스"
 nav_order: 13
 parent: "Chapter 08. 인터페이스"
 grand_parent: "객체지향 자바 프로그래밍"
+description: "8.13 봉인된 인터페이스 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "8.13 봉인된 인터페이스, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # 8.13 봉인된 인터페이스

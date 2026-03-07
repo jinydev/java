@@ -4,6 +4,8 @@ title: "Chapter 24. MySQL"
 nav_order: 24
 has_children: true
 parent: "데이터베이스"
+description: "Chapter 24. MySQL 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "Chapter 24. MySQL, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # Chapter 24. MySQL

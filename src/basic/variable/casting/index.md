@@ -4,6 +4,8 @@ title: "4.8 강제 타입 변환"
 nav_order: 8
 parent: "Chapter 04. 변수와 타입"
 grand_parent: "Part 01. 자바 언어의 기초"
+description: "4.8 강제 타입 변환 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "4.8 강제 타입 변환, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # 4.8 강제 타입 변환

@@ -1,6 +1,8 @@
 ---
 layout: gui
 title: "04. JavaFX 컨테이너"
+description: "04. JavaFX 컨테이너 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "04. JavaFX 컨테이너, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # 04. JavaFX 컨테이너

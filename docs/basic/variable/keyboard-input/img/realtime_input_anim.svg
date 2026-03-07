@@ -1,0 +1,136 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&amp;display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@700&amp;display=swap');
+      
+      .st-title { font-family: 'Noto Sans KR', sans-serif; font-size: 24px; font-weight: bold; fill: #2c3e50; }
+      .st-desc { font-family: 'Noto Sans KR', sans-serif; font-size: 16px; fill: #555; }
+      
+      .code-main { font-family: 'Fira Code', monospace; font-size: 20px; font-weight: bold; fill: #2c3e50; }
+      
+      .char-box { fill: #fdf2e9; stroke: #e67e22; stroke-width: 2; rx: 8; }
+      
+      .val-text { font-family: 'Fira Code', monospace; font-size: 24px; font-weight: bold; fill: #d35400; }
+      
+      /* Conveyor belt */
+      .conveyor { fill: #95a5a6; rx: 5; }
+      .belt-line { stroke: #bdc3c7; stroke-width: 4; stroke-dasharray: 10; animation: moveBelt 2s linear infinite; }
+      
+      /* Animations */
+      @keyframes moveBelt {
+        from { stroke-dashoffset: 0; }
+        to { stroke-dashoffset: 40; }
+      }
+      
+      @keyframes slideIn {
+        0% { transform: translateX(450px); opacity: 0; }
+        15% { transform: translateX(200px); opacity: 1; }
+        50% { transform: translateX(200px); opacity: 1; }
+        80% { transform: translateX(80px) translateY(80px) scale(0.5); opacity: 0; } /* Tweezer picks it up */
+        100% { transform: translateX(80px) translateY(80px) scale(0.5); opacity: 0; }
+      }
+      
+      @keyframes armMove {
+        0% { transform: translateY(-50px); }
+        30% { transform: translateY(-50px); }
+        50% { transform: translateY(0px); } /* grabs */
+        60% { transform: translateY(-50px); } /* lifts */
+        100% { transform: translateY(-50px); }
+      }
+
+      @keyframes showOutput {
+        0% { opacity: 0; transform: scale(0.8); }
+        60% { opacity: 0; transform: scale(0.8); }
+        70% { opacity: 1; transform: scale(1.1); }
+        80% { opacity: 1; transform: scale(1); }
+        90% { opacity: 1; transform: scale(1); }
+        100% { opacity: 0; transform: scale(0.8); }
+      }
+      
+      .t1-anim { animation: slideIn 6s infinite 0s; }
+      .t2-anim { animation: slideIn 6s infinite 2s; }
+      .t3-anim { animation: slideIn 6s infinite 4s; }
+      
+      .arm-anim1 { animation: armMove 6s infinite 0s; }
+      .arm-anim2 { animation: armMove 6s infinite 2s; }
+      .arm-anim3 { animation: armMove 6s infinite 4s; }
+      
+      .out-anim1 { animation: showOutput 6s infinite 0s; }
+      .out-anim2 { animation: showOutput 6s infinite 2s; }
+      .out-anim3 { animation: showOutput 6s infinite 4s; }
+
+    </style>
+  </defs>
+
+  <rect width="100%" height="100%" fill="#ffffff" rx="10" />
+  
+  <text x="400" y="40" text-anchor="middle" class="st-title">한 글자씩 실시간(원시) 입력받기: System.in.read() 🕹️</text>
+  <text x="400" y="70" text-anchor="middle" class="st-desc">문장 전체가 아닌, 키보드가 눌린 물리적인 '키코드(Key Code)'를 한 땀 한 땀 주워 담습니다.</text>
+
+  <!-- Input Area Background -->
+  <rect x="50" y="100" width="700" height="320" fill="#f8f9fa" rx="10" stroke="#e0e0e0"/>
+
+  <!-- Conveyor Belt -->
+  <rect x="350" y="220" width="300" height="20" class="conveyor" />
+  <line x1="360" y1="230" x2="640" y2="230" class="belt-line" />
+  
+  <!-- "A", "B", "C" Blocks -->
+  <g class="t1-anim">
+    <rect x="-25" y="160" width="50" height="50" class="char-box" />
+    <text x="0" y="195" text-anchor="middle" class="val-text">A</text>
+  </g>
+  
+  <g class="t2-anim">
+    <rect x="-25" y="160" width="50" height="50" class="char-box" />
+    <text x="0" y="195" text-anchor="middle" class="val-text">B</text>
+  </g>
+  
+  <g class="t3-anim">
+    <rect x="-25" y="160" width="50" height="50" class="char-box" />
+    <text x="0" y="195" text-anchor="middle" class="val-text">C</text>
+  </g>
+
+  <!-- Robotic Arm (Reader) -->
+  <!-- We wrap it to apply simultaneous animations by duplicating the arm for each timing, but a trick is to just make one arm and sync the keyframes across the total cycle (6s). 
+       Since 6s has 3 grabs at 0, 2s, 4s, we can make a custom arm animation. -->
+  <style>
+    @keyframes armGrabAll {
+      0%, 15% { transform: translateY(-70px); }
+      20% { transform: translateY(0px); } /* Grab */
+      25%, 48% { transform: translateY(-70px); }
+      53% { transform: translateY(0px); } /* Grab */
+      58%, 81% { transform: translateY(-70px); }
+      86% { transform: translateY(0px); } /* Grab */
+      91%, 100% { transform: translateY(-70px); }
+    }
+  </style>
+  <g transform="translate(550, 160)" style="animation: armGrabAll 6s infinite;">
+    <!-- Arm base -->
+    <rect x="-10" y="-80" width="20" height="80" fill="#7f8c8d" rx="2" />
+    <path d="M -20 0 L -10 -20 L 10 -20 L 20 0" fill="none" stroke="#2c3e50" stroke-width="4" />
+    <text x="0" y="-50" text-anchor="middle" font-weight="bold" fill="white">read()</text>
+  </g>
+
+  <!-- Output Console (Java Program side) -->
+  <rect x="80" y="150" width="220" height="230" fill="#2c3e50" rx="10" />
+  <text x="190" y="180" text-anchor="middle" fill="#ecf0f1" font-family="Noto Sans KR" font-size="16" font-weight="bold">자바 프로그램 (출력)</text>
+
+  <!-- Outputs (A=65, B=66, C=67) -->
+  <g class="out-anim1">
+    <rect x="100" y="200" width="180" height="40" fill="#34495e" rx="5" />
+    <text x="110" y="225" font-family="Fira Code" font-size="14" fill="#2ecc71">키코드 65 ➜ 'A'</text>
+  </g>
+  
+  <g class="out-anim2">
+    <rect x="100" y="250" width="180" height="40" fill="#34495e" rx="5" />
+    <text x="110" y="275" font-family="Fira Code" font-size="14" fill="#2ecc71">키코드 66 ➜ 'B'</text>
+  </g>
+
+  <g class="out-anim3">
+    <rect x="100" y="300" width="180" height="40" fill="#34495e" rx="5" />
+    <text x="110" y="325" font-family="Fira Code" font-size="14" fill="#2ecc71">키코드 67 ➜ 'C'</text>
+  </g>
+
+  <rect x="0" y="0" width="800" height="450" fill="none" stroke="#e0e0e0" stroke-width="2" rx="10"/>
+</svg>

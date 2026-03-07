@@ -4,6 +4,8 @@ title: "15.3 Set 컬렉션"
 nav_order: 3
 parent: "Chapter 15. 컬렉션 자료구조"
 grand_parent: "객체지향 프로그래밍"
+description: "15.3 Set 컬렉션 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "15.3 Set 컬렉션, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # 15.3 Set 컬렉션

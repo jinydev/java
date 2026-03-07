@@ -4,6 +4,8 @@ title: "2. 환경 변수 설정"
 nav_order: 2
 parent: "개발 환경 구축"
 grand_parent: "객체지향 자바 프로그래밍"
+description: "2. 환경 변수 설정 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "2. 환경 변수 설정, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # 1.3 운영체제별 환경 변수 설정

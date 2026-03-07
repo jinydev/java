@@ -4,6 +4,8 @@ title: "14.2 예외 처리 코드"
 nav_order: 2
 parent: "Chapter 14. 예외 처리"
 grand_parent: "객체지향 자바 프로그래밍"
+description: "14.2 예외 처리 코드 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "14.2 예외 처리 코드, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # 14.2 예외 처리 코드 (try-catch-finally)

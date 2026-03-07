@@ -4,6 +4,8 @@ title: "Chapter 18. JDBC"
 nav_order: 18
 has_children: true
 parent: "데이터 입출력"
+description: "Chapter 18. JDBC 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "Chapter 18. JDBC, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # Chapter 18. 데이터 입출력

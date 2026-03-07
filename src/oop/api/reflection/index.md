@@ -4,6 +4,8 @@ title: "12.11 리플렉션"
 nav_order: 11
 parent: "Chapter 12. java.base 모듈"
 grand_parent: "객체지향 프로그래밍"
+description: "12.11 리플렉션 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "12.11 리플렉션, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # 12.11 리플렉션

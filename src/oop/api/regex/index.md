@@ -4,6 +4,8 @@ title: "15.10 정규 표현식 (Regex)"
 nav_order: 10
 parent: "Chapter 15. 자바 기본 API (java.base)"
 grand_parent: "객체지향 자바 프로그래밍"
+description: "15.10 정규 표현식 (Regex) 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "15.10 정규 표현식 (Regex), 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # 15.10 정규 표현식 (Regex)

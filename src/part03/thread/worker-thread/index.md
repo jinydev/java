@@ -4,6 +4,8 @@ title: "14.3 작업 스레드 생성과 실행"
 nav_order: 3
 parent: "Chapter 20. 멀티 스레드"
 grand_parent: "라이브러리 활용"
+description: "14.3 작업 스레드 생성과 실행 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "14.3 작업 스레드 생성과 실행, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # 14.3 작업 스레드 생성과 실행

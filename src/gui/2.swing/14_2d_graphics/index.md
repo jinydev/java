@@ -1,6 +1,8 @@
 ---
 layout: gui
 title: "14. 2D 그래픽스"
+description: "14. 2D 그래픽스 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "14. 2D 그래픽스, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # 14. 2D 그래픽스

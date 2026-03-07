@@ -4,6 +4,8 @@ title: "1.4 바이트코드와 JVM"
 nav_order: 4
 parent: "Chapter 01. 자바 언어 소개"
 grand_parent: "Part 01. 자바 언어의 기초"
+description: "1.4 바이트코드와 JVM 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "1.4 바이트코드와 JVM, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # 1.4 바이트코드와 JVM

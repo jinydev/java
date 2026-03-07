@@ -4,6 +4,8 @@ title: "7.8 다형성"
 nav_order: 8
 parent: "Chapter 07. 상속"
 grand_parent: "객체지향 자바 프로그래밍"
+description: "7.8 다형성 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "7.8 다형성, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # 7.8 다형성

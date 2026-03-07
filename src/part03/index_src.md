@@ -1,6 +1,8 @@
 ---
 layout: part03
 title: "Part 03. 라이브러리 활용"
+description: "Part 03. 라이브러리 활용 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "Part 03. 라이브러리 활용, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # Part 03. 라이브러리 활용

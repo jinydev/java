@@ -4,6 +4,8 @@ title: "6.16 레코드"
 nav_order: 16
 parent: "Chapter 06. 클래스"
 grand_parent: "객체지향 자바 프로그래밍"
+description: "6.16 레코드 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "6.16 레코드, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # 6.16 레코드 (데이터 보관 상자)

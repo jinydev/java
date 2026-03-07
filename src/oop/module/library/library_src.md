@@ -4,6 +4,8 @@ title: "10.1 라이브러리"
 nav_order: 1
 parent: "Chapter 10. 라이브러리와 모듈"
 grand_parent: "객체지향 자바 프로그래밍"
+description: "10.1 라이브러리 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "10.1 라이브러리, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # 10.1 라이브러리

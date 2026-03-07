@@ -4,6 +4,8 @@ title: "Chain of Responsibility"
 nav_order: 13
 parent: "Chapter 19. 디자인 패턴"
 grand_parent: "Part 02. 객체지향 프로그래밍"
+description: "Chain of Responsibility 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "Chain of Responsibility, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # Chain of Responsibility

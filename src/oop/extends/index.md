@@ -4,6 +4,8 @@ title: "Chapter 10. 상속"
 nav_order: 10
 has_children: true
 parent: "객체지향 자바 프로그래밍"
+description: "Chapter 10. 상속 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "Chapter 10. 상속, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # Chapter 10. 상속 (Inheritance)

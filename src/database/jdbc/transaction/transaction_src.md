@@ -4,6 +4,8 @@ title: "20.11 트랜잭션 처리"
 nav_order: 11
 parent: "Chapter 20. 데이터베이스 입출력"
 grand_parent: "데이터 입출력"
+description: "20.11 트랜잭션 처리 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "20.11 트랜잭션 처리, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # 20.11 트랜잭션 처리

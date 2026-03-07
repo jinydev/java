@@ -5,6 +5,8 @@ nav_order: 1
 has_children: true
 parent: "객체지향 자바 프로그래밍"
 grand_parent: "자바 기초"
+description: "자바 언어 소개 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "자바 언어 소개, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # 자바 언어 소개

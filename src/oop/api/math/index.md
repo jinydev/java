@@ -4,6 +4,8 @@ title: "15.7 수학 클래스 (Math)"
 nav_order: 7
 parent: "Chapter 15. 자바 기본 API (java.base)"
 grand_parent: "객체지향 자바 프로그래밍"
+description: "15.7 수학 클래스 (Math) 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "15.7 수학 클래스 (Math), 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # 15.7 수학 클래스 (Math)

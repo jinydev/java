@@ -4,6 +4,8 @@ title: "Chapter 07. 반복문"
 nav_order: 7
 has_children: true
 parent: "Part 01. 자바 언어의 기초"
+description: "Chapter 07. 반복문 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "Chapter 07. 반복문, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # Chapter 07. 반복문

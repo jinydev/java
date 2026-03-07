@@ -1,6 +1,8 @@
 ---
 layout: gui
 title: "10. JavaFX CSS 스타일"
+description: "10. JavaFX CSS 스타일 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "10. JavaFX CSS 스타일, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # 10. JavaFX CSS 스타일

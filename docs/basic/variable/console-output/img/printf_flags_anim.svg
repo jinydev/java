@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="100%" height="100%">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&amp;display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@700&amp;display=swap');
+      
+      .st-title { font-family: 'Noto Sans KR', sans-serif; font-size: 24px; font-weight: bold; fill: #2c3e50; }
+      .st-desc { font-family: 'Noto Sans KR', sans-serif; font-size: 16px; fill: #555; }
+      
+      .code-main { font-family: 'Fira Code', monospace; font-size: 60px; font-weight: bold; fill: #2c3e50; }
+      .code-percent { fill: #95a5a6; }
+      .code-flag { fill: #e74c3c; }
+      .code-width { fill: #3498db; }
+      .code-conv { fill: #27ae60; }
+      
+      .label-text { font-family: 'Noto Sans KR', sans-serif; font-size: 18px; font-weight: bold; }
+      .label-flag { fill: #e74c3c; }
+      .label-width { fill: #3498db; }
+      .label-conv { fill: #27ae60; }
+      
+      .desc-text { font-family: 'Noto Sans KR', sans-serif; font-size: 14px; fill: #7f8c8d; }
+      
+      /* Animations */
+      @keyframes slideUpFade {
+        0% { opacity: 0; transform: translateY(20px); }
+        100% { opacity: 1; transform: translateY(0); }
+      }
+      
+      .anim-1 { opacity: 0; animation: slideUpFade 0.6s ease forwards 0.5s; }
+      .anim-2 { opacity: 0; animation: slideUpFade 0.6s ease forwards 1.2s; }
+      .anim-3 { opacity: 0; animation: slideUpFade 0.6s ease forwards 1.9s; }
+      .anim-4 { opacity: 0; animation: slideUpFade 0.6s ease forwards 2.6s; }
+      
+    </style>
+  </defs>
+
+  <rect width="100%" height="100%" fill="#ffffff" rx="10" />
+  
+  <text x="400" y="50" text-anchor="middle" class="st-title">printf 서식 문자의 해부학 (구조)</text>
+  <text x="400" y="80" text-anchor="middle" class="st-desc">%[플래그][너비]서식문자</text>
+
+  <!-- Big Code Example (Center) -->
+  <g transform="translate(320, 160)" class="anim-1">
+    <text x="0" y="0" class="code-main">
+      <tspan class="code-percent" dx="0">%</tspan><tspan class="code-flag" dx="10">-</tspan><tspan class="code-width" dx="10">5</tspan><tspan class="code-conv" dx="10">d</tspan>
+    </text>
+  </g>
+
+  <!-- Explanation Boxes -->
+  
+  <!-- % (Percent) -->
+  <g transform="translate(40, 240)" class="anim-1">
+    <path d="M 290 -70 L 80 0" stroke="#95a5a6" stroke-width="2" stroke-dasharray="4" fill="none"/>
+    <rect x="0" y="0" width="160" height="80" fill="#f8f9fa" rx="5" stroke="#bdc3c7"/>
+    <text x="80" y="25" text-anchor="middle" class="label-text" fill="#7f8c8d">시작 기호 (%)</text>
+    <text x="80" y="45" text-anchor="middle" class="desc-text">"여기부터 서식 지정</text>
+    <text x="80" y="65" text-anchor="middle" class="desc-text">시작입니다" 알림</text>
+  </g>
+
+  <!-- Flag (-) -->
+  <g transform="translate(225, 260)" class="anim-2">
+    <path d="M 150 -90 L 80 0" stroke="#e74c3c" stroke-width="2" stroke-dasharray="4" fill="none"/>
+    <rect x="0" y="0" width="160" height="100" fill="#fadbd8" rx="5" stroke="#e74c3c"/>
+    <text x="80" y="25" text-anchor="middle" class="label-text label-flag">[플래그] (선택)</text>
+    <text x="80" y="45" text-anchor="middle" class="desc-text">정렬 방향이나 빈칸</text>
+    <text x="80" y="65" text-anchor="middle" class="desc-text">채움 방식 결정</text>
+    <text x="80" y="85" text-anchor="middle" class="desc-text" font-weight="bold">- (좌측), 0 (영채움)</text>
+  </g>
+
+  <!-- Width (5) -->
+  <g transform="translate(410, 260)" class="anim-3">
+    <path d="M 15 -90 L 70 0" stroke="#3498db" stroke-width="2" stroke-dasharray="4" fill="none"/>
+    <rect x="0" y="0" width="140" height="80" fill="#d6eaf8" rx="5" stroke="#3498db"/>
+    <text x="70" y="25" text-anchor="middle" class="label-text label-width">[너비] (선택)</text>
+    <text x="70" y="45" text-anchor="middle" class="desc-text">출력할 전체</text>
+    <text x="70" y="65" text-anchor="middle" class="desc-text">칸 수 (자리) 확보</text>
+  </g>
+
+  <!-- Conversion (d) -->
+  <g transform="translate(580, 240)" class="anim-4">
+    <path d="M -90 -70 L 80 0" stroke="#27ae60" stroke-width="2" stroke-dasharray="4" fill="none"/>
+    <rect x="0" y="0" width="160" height="80" fill="#d5f5e3" rx="5" stroke="#27ae60"/>
+    <text x="80" y="25" text-anchor="middle" class="label-text label-conv">서식문자 (필수)</text>
+    <text x="80" y="45" text-anchor="middle" class="desc-text">데이터 타입 결정</text>
+    <text x="80" y="65" text-anchor="middle" class="desc-text" font-weight="bold">d(정수), f(실수), s(문자)</text>
+  </g>
+
+  <rect x="0" y="0" width="800" height="400" fill="none" stroke="#e0e0e0" stroke-width="2" rx="10"/>
+</svg>

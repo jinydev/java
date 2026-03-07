@@ -4,6 +4,8 @@ title: "6.3 클래스 선언"
 nav_order: 3
 parent: "Chapter 06. 클래스"
 grand_parent: "객체지향 자바 프로그래밍"
+description: "6.3 클래스 선언 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "6.3 클래스 선언, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # 6.3 클래스 선언

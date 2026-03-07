@@ -4,6 +4,8 @@ title: "18.2 매개변수가 없는 람다식"
 nav_order: 2
 parent: "Chapter 18. 람다식"
 grand_parent: "객체지향 자바 프로그래밍"
+description: "18.2 매개변수가 없는 람다식 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "18.2 매개변수가 없는 람다식, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # 18.2 매개변수가 없는 람다식

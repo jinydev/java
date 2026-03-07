@@ -4,6 +4,8 @@ title: "2.1 JDBC와 데이터베이스 연결"
 nav_order: 4
 parent: "2주차. JSP 게시판 만들기"
 grand_parent: "백엔드 웹서버 개발"
+description: "2.1 JDBC와 데이터베이스 연결 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "2.1 JDBC와 데이터베이스 연결, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # 2.1 JDBC와 데이터베이스 연결

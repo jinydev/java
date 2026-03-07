@@ -4,6 +4,8 @@ title: "8.7 다차원 배열"
 nav_order: 7
 parent: "Chapter 08. 참조 타입"
 grand_parent: "Part 01. 자바 언어의 기초"
+description: "8.7 다차원 배열 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "8.7 다차원 배열, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # 8.7 다차원 배열

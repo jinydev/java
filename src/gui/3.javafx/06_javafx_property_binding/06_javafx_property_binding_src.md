@@ -1,6 +1,8 @@
 ---
 layout: gui
 title: "06. JavaFX 속성 감시와 바인딩"
+description: "06. JavaFX 속성 감시와 바인딩 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "06. JavaFX 속성 감시와 바인딩, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # 06. JavaFX 속성 감시와 바인딩

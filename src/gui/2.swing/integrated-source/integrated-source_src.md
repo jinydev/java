@@ -1,6 +1,8 @@
 ---
 layout: gui
 title: "Swing"
+description: "Swing 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "Swing, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # Swing

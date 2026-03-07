@@ -4,6 +4,8 @@ title: "Chapter 12. java.base 모듈"
 nav_order: 12
 has_children: true
 parent: "라이브러리 활용"
+description: "Chapter 12. java.base 모듈 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "Chapter 12. java.base 모듈, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # Chapter 12. java.base 모듈

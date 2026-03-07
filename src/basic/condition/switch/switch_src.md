@@ -4,6 +4,8 @@ title: "4.3 switch 문"
 nav_order: 3
 parent: "Chapter 04. 조건문과 반복문"
 grand_parent: "객체지향 자바 프로그래밍"
+description: "4.3 switch 문 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "4.3 switch 문, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # 4.3 switch 문

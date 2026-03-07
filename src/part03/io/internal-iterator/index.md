@@ -4,6 +4,8 @@ title: "17.2 내부 반복자"
 nav_order: 2
 parent: "Chapter 21. 스트림과 병렬 처리"
 grand_parent: "라이브러리 활용"
+description: "17.2 내부 반복자 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "17.2 내부 반복자, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # 17.2 내부 반복자

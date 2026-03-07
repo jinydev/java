@@ -4,6 +4,8 @@ title: "11.6 다중 인터페이스 구현"
 nav_order: 6
 parent: "Chapter 11. 인터페이스"
 grand_parent: "객체지향 자바 프로그래밍"
+description: "11.6 다중 인터페이스 구현 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "11.6 다중 인터페이스 구현, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # 11.6 다중 인터페이스 구현 (Multi-Role)

@@ -4,6 +4,8 @@ title: "8.8 다중 인터페이스 구현"
 nav_order: 8
 parent: "Chapter 08. 인터페이스"
 grand_parent: "객체지향 자바 프로그래밍"
+description: "8.8 다중 인터페이스 구현 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "8.8 다중 인터페이스 구현, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # 8.8 다중 인터페이스 구현

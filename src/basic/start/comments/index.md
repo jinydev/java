@@ -4,6 +4,8 @@ title: "3.3 코드 주석 달기"
 nav_order: 3
 parent: "Chapter 03. 자바 시작하기"
 grand_parent: "Part 01. 자바 언어의 기초"
+description: "3.3 코드 주석 달기 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "3.3 코드 주석 달기, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # 3.3 코드 주석 달기

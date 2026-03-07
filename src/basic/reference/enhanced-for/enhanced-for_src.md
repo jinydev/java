@@ -4,6 +4,8 @@ title: "5.10 배열 항목 반복을 위한 향상된 for 문"
 nav_order: 10
 parent: "Chapter 05. 참조 타입"
 grand_parent: "객체지향 자바 프로그래밍"
+description: "5.10 배열 항목 반복을 위한 향상된 for 문 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "5.10 배열 항목 반복을 위한 향상된 for 문, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # 5.10 배열 항목 반복을 위한 향상된 for 문

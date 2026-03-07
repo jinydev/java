@@ -1,6 +1,8 @@
 ---
 layout: gui
 title: "01. AWT 개요"
+description: "01. AWT 개요 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "01. AWT 개요, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # 01. AWT 개요

@@ -4,6 +4,8 @@ title: "10.4 모듈 배포용 JAR 파일"
 nav_order: 4
 parent: "Chapter 10. 라이브러리와 모듈"
 grand_parent: "객체지향 자바 프로그래밍"
+description: "10.4 모듈 배포용 JAR 파일 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "10.4 모듈 배포용 JAR 파일, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # 10.4 모듈 배포용 JAR 파일

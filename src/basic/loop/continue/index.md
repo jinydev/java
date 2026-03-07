@@ -4,6 +4,8 @@ title: "7.5 continue 문"
 nav_order: 5
 parent: "Chapter 07. 반복문"
 grand_parent: "Part 01. 자바 언어의 기초"
+description: "7.5 continue 문 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "7.5 continue 문, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # 7.5 continue 문

@@ -4,6 +4,8 @@ title: "1.3 Servlet과 JSP 기초"
 nav_order: 3
 parent: "1주차. 웹 서버와 환경 설정"
 grand_parent: "백엔드 웹서버 개발"
+description: "1.3 Servlet과 JSP 기초 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "1.3 Servlet과 JSP 기초, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # 1.3 Servlet과 JSP 기초

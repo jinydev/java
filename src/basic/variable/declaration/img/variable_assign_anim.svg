@@ -1,0 +1,69 @@
+<svg width="600" height="250" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .title { font-family: 'Malgun Gothic', sans-serif; font-size: 22px; fill: #2f3542; font-weight: bold; }
+      .desc { font-family: 'Malgun Gothic', sans-serif; font-size: 16px; fill: #747d8c; }
+      .code { font-family: 'Courier New', monospace; font-size: 24px; font-weight: bold; fill: #2f3542; }
+      .var-box { fill: #f1f2f6; stroke: #3742fa; stroke-width: 4; stroke-dasharray: 10,5; rx: 15; }
+      .label-badge { fill: #3742fa; rx: 5; }
+      .label-text { font-family: 'Courier New', monospace; font-size: 14px; fill: white; font-weight: bold; }
+      
+      .value-circle { fill: #ff4757; }
+      .value-text { font-family: 'Courier New', monospace; font-size: 28px; fill: white; font-weight: bold; }
+      
+      @keyframes throwContent {
+        0% { transform: translate(0, 0) scale(1); opacity: 0; }
+        15% { transform: translate(0, 0) scale(1); opacity: 1; }
+        50% { transform: translate(-200px, 0) scale(1.2); opacity: 1; }
+        70% { transform: translate(-200px, 0) scale(1); opacity: 1; }
+        100% { transform: translate(-200px, 0) scale(1); opacity: 1; }
+      }
+      
+      .moving-val { animation: throwContent 4s infinite; }
+      
+      @keyframes codeHighlight {
+        0%, 15% { fill: #ff4757; }
+        50%, 100% { fill: #2f3542; }
+      }
+      
+      @keyframes boxHighlight {
+        0%, 40% { stroke: #3742fa; fill: #f1f2f6; stroke-dasharray: 10,5; }
+        50%, 100% { stroke: #2ed573; fill: #e8f8f5; stroke-dasharray: 0; }
+      }
+      
+      .animated-code-val { animation: codeHighlight 4s infinite; }
+      .animated-box { animation: boxHighlight 4s infinite; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="100%" height="100%" rx="15" fill="#ffffff" stroke="#dfe4ea" stroke-width="4"/>
+  
+  <text x="50%" y="40" text-anchor="middle" class="title">대입 연산자 (=)의 진짜 의미 📥</text>
+  <text x="50%" y="65" text-anchor="middle" class="desc">"오른쪽에 있는 값을 왼쪽 상자 안에 집어넣어라!"</text>
+  
+  <!-- Code Line -->
+  <rect x="180" y="90" width="240" height="40" rx="8" fill="#f8f9fa" stroke="#ced4da" stroke-width="2"/>
+  <text x="300" y="118" text-anchor="middle" class="code">age = <tspan class="animated-code-val">25</tspan>;</text>
+
+  <!-- Storage Box -->
+  <g transform="translate(130, 160)">
+    <rect x="-60" y="-30" width="120" height="70" class="var-box animated-box" />
+    <rect x="-30" y="25" width="60" height="20" class="label-badge" />
+    <text x="0" y="40" text-anchor="middle" class="label-text">age</text>
+    <text x="0" y="-40" text-anchor="middle" style="font-family: 'Courier New'; font-size: 14px; fill: #57606f; font-weight: bold;">(int)</text>
+  </g>
+  
+  <!-- The Value Animation -->
+  <g transform="translate(420, 155)">
+    <!-- Equal Sign Arrow -->
+    <path d="M -80 0 L -180 0 L -165 -15 M -180 0 L -165 15" stroke="#a4b0be" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="-130" y="-15" text-anchor="middle" style="font-family: 'Malgun Gothic'; font-size: 16px; fill: #747d8c; font-weight: bold;">대입</text>
+    
+    <!-- Moving 25 -->
+    <g class="moving-val">
+      <circle cx="0" cy="0" r="28" class="value-circle" />
+      <text x="0" y="10" text-anchor="middle" class="value-text">25</text>
+    </g>
+  </g>
+</svg>

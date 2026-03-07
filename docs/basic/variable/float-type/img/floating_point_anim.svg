@@ -1,0 +1,37 @@
+<svg width="600" height="200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .text { font-family: 'Comic Sans MS', 'Arial Rounded MT Bold', sans-serif; font-size: 60px; fill: #2f3542; font-weight: bold; }
+      .dot { font-family: 'Comic Sans MS', sans-serif; font-size: 70px; fill: #ff4757; font-weight: bold; }
+      .label { font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif; font-size: 20px; fill: #57606f; font-weight: bold; }
+      .desc { font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif; font-size: 16px; fill: #747d8c; }
+      @keyframes floatDot {
+        0%, 100% { transform: translateX(0px); }
+        25% { transform: translateX(-80px); }
+        50% { transform: translateX(40px); }
+        75% { transform: translateX(120px); }
+      }
+      .anim-dot {
+        animation: floatDot 6s infinite ease-in-out;
+      }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="100%" height="100%" rx="15" fill="#f1f2f6" stroke="#dfe4ea" stroke-width="4"/>
+  
+  <text x="50%" y="40" text-anchor="middle" class="label">Floating Point (부동 소수점) 🎈</text>
+  <text x="50%" y="180" text-anchor="middle" class="desc">소수점이 물 위에 떠 다니듯(부동, 떠다닐 부 浮) 자유롭게 움직여요!</text>
+  
+  <g transform="translate(180, 120)">
+    <text x="0" y="0" class="text">3</text>
+    <text x="40" y="0" class="text">1</text>
+    <text x="80" y="0" class="text">4</text>
+    <text x="120" y="0" class="text">1</text>
+    <text x="160" y="0" class="text">5</text>
+    <text x="200" y="0" class="text">9</text>
+    
+    <!-- Animated Decimal Point -->
+    <text x="25" y="0" class="dot anim-dot">.</text>
+  </g>
+</svg>

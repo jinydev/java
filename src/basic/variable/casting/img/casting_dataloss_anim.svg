@@ -1,0 +1,81 @@
+<svg width="700" height="350" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .title { font-family: 'Malgun Gothic', sans-serif; font-size: 20px; fill: #2f3542; font-weight: bold; }
+      .code { font-family: 'Courier New', monospace; font-size: 18px; font-weight: bold; fill: #ff4757; }
+      .box-double { fill: #bdf; stroke: #5352ed; stroke-width: 3; rx: 8; }
+      .box-int { fill: #def; stroke: #3742fa; stroke-width: 3; rx: 8; }
+      .data-block { fill: #ffa502; rx: 4; }
+      .data-text { font-family: 'Courier New', monospace; font-size: 16px; fill: white; font-weight: bold; }
+      .loss-text { font-family: 'Malgun Gothic', sans-serif; font-size: 14px; font-weight: bold; fill: #ff4757; }
+      
+      @keyframes pourWater {
+        0%, 15% { transform: translate(0, 0); opacity: 1; }
+        35% { transform: translate(250px, -50px); opacity: 1; }
+        45% { transform: translate(250px, 0px); opacity: 1; }
+        60%, 100% { transform: translate(250px, 0px); opacity: 0; }
+      }
+      
+      @keyframes fillCup {
+        0%, 45% { height: 0; y: 200; opacity: 0; }
+        55%, 100% { height: 60px; y: 140; opacity: 1; }
+      }
+      
+      @keyframes waterSpill {
+        0%, 45% { opacity: 0; transform: translate(0, 0) scale(0.5); }
+        50% { opacity: 1; transform: translate(20px, 20px) scale(1.2); }
+        60% { opacity: 1; transform: translate(40px, 60px) scale(1); }
+        80%, 100% { opacity: 0; transform: translate(60px, 100px) scale(0.5); }
+      }
+      
+      @keyframes showLossText {
+        0%, 50% { opacity: 0; transform: translateY(0); }
+        60%, 80% { opacity: 1; transform: translateY(-10px); }
+        100% { opacity: 0; transform: translateY(-20px); }
+      }
+
+      .pour-anim { animation: pourWater 5s infinite ease-in-out; }
+      .fill-anim { animation: fillCup 5s infinite ease-in-out; }
+      .spill-anim1 { animation: waterSpill 5s infinite ease-out; }
+      .spill-anim2 { animation: waterSpill 5s infinite ease-out; animation-delay: 0.1s; transform-origin: top left; }
+      .loss-text-anim { animation: showLossText 5s infinite ease-out; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="100%" height="100%" rx="15" fill="#ffffff" stroke="#dfe4ea" stroke-width="4"/>
+  
+  <text x="50%" y="35" text-anchor="middle" class="title">강제 타입 변환 (Casting): 데이터 손실 발생 과정</text>
+  <text x="50%" y="65" text-anchor="middle" class="code">int small = (int) 3.14;</text>
+  
+  <g transform="translate(100, 100)">
+    <!-- Big Bucket (double) -->
+    <rect x="0" y="30" width="120" height="120" class="box-double" fill-opacity="0.3" />
+    <text x="60" y="180" text-anchor="middle" class="code" style="fill:#5352ed;">double 양동이\n(3.14)</text>
+
+    <!-- Small Cup (int) -->
+    <rect x="350" y="70" width="80" height="80" class="box-int" fill-opacity="0.3" />
+    <text x="390" y="180" text-anchor="middle" class="code" style="fill:#3742fa;">int 컵\n(3)</text>
+    
+    <!-- Pouring Data (3.14) -->
+    <g class="pour-anim">
+      <!-- Water block representing 3.14 -->
+      <path d="M 20 50 L 100 50 L 90 140 L 30 140 Z" fill="#ffa502" opacity="0.8" />
+      <text x="60" y="100" text-anchor="middle" class="data-text" font-size="24">3.14</text>
+    </g>
+
+    <!-- Filling Data in Small Cup (3) -->
+    <rect x="355" y="140" width="70" height="60" class="data-block fill-anim" />
+    <text x="390" y="125" text-anchor="middle" class="data-text fill-anim" style="fill:#2f3542; font-size:24;">3</text>
+
+    <!-- Spilling Data (.14) -->
+    <g transform="translate(420, 60)">
+      <circle cx="0" cy="0" r="8" fill="#ff4757" class="spill-anim1" />
+      <circle cx="15" cy="5" r="5" fill="#ff4757" class="spill-anim2" />
+      <circle cx="-10" cy="15" r="6" fill="#ff4757" class="spill-anim1" style="animation-delay: 0.2s;" />
+      
+      <!-- Loss Text -->
+      <text x="30" y="20" class="loss-text loss-text-anim">0.14 손실! (잘려나감)</text>
+    </g>
+  </g>
+</svg>

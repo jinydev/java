@@ -4,6 +4,8 @@ title: "확인문제"
 nav_order: 99
 parent: "Chapter 19. 네트워크 입출력"
 grand_parent: "데이터 입출력"
+description: "확인문제 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "확인문제, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # 확인문제

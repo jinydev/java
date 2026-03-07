@@ -4,6 +4,8 @@ title: "3.4 빌드 및 배포"
 nav_order: 9
 parent: "3주차. Spring Boot 시작하기"
 grand_parent: "백엔드 웹서버 개발"
+description: "3.4 빌드 및 배포 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "3.4 빌드 및 배포, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # 3.4 빌드 및 배포

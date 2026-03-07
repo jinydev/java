@@ -4,6 +4,8 @@ title: "8.2 메모리 사용 영역"
 nav_order: 2
 parent: "Chapter 08. 참조 타입"
 grand_parent: "Part 01. 자바 언어의 기초"
+description: "8.2 메모리 사용 영역 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "8.2 메모리 사용 영역, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # 8.2 메모리 사용 영역

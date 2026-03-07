@@ -3,6 +3,8 @@ layout: basic
 title: "Chapter 19. UML 기초"
 nav_order: 19
 parent: "Part 02. 객체지향 프로그래밍"
+description: "Chapter 19. UML 기초 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "Chapter 19. UML 기초, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # Chapter 19. UML (Unified Modeling Language)

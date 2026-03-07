@@ -4,6 +4,8 @@ title: "Chapter 02. 변수와 타입"
 nav_order: 2
 has_children: true
 parent: "객체지향 자바 프로그래밍"
+description: "Chapter 02. 변수와 타입 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "Chapter 02. 변수와 타입, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # Chapter 02. 변수와 타입

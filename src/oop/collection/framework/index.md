@@ -4,6 +4,8 @@ title: "15.1 컬렉션 프레임워크"
 nav_order: 1
 parent: "Chapter 15. 컬렉션 자료구조"
 grand_parent: "객체지향 프로그래밍"
+description: "15.1 컬렉션 프레임워크 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "15.1 컬렉션 프레임워크, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # 15.1 컬렉션 프레임워크

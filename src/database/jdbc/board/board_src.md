@@ -4,6 +4,8 @@ title: "20.12 게시판 구현"
 nav_order: 12
 parent: "Chapter 20. 데이터베이스 입출력"
 grand_parent: "데이터 입출력"
+description: "20.12 게시판 구현 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "20.12 게시판 구현, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # 20.12 게시판 구현

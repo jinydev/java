@@ -4,6 +4,8 @@ title: "12.2 인스턴스 멤버 클래스"
 nav_order: 2
 parent: "Chapter 12. 중첩 선언과 익명 객체"
 grand_parent: "객체지향 자바 프로그래밍"
+description: "12.2 인스턴스 멤버 클래스 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "12.2 인스턴스 멤버 클래스, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # 12.2 인스턴스 멤버 클래스 (Instance Member Class)

@@ -2,6 +2,8 @@
 layout: welcome
 title: "객체지향 자바 프로그래밍"
 permalink: /
+description: "객체지향 자바 프로그래밍 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "객체지향 자바 프로그래밍, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 자바 언어를 통해 객체지향 프로그래밍의 핵심 개념과 원리를 학습합니다.

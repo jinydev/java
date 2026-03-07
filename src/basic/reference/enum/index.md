@@ -4,6 +4,8 @@ title: "8.10 열거(Enum) 타입"
 nav_order: 10
 parent: "Chapter 08. 참조 타입"
 grand_parent: "Part 01. 자바 언어의 기초"
+description: "8.10 열거(Enum) 타입 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "8.10 열거(Enum) 타입, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # 8.10 열거(Enum) 타입

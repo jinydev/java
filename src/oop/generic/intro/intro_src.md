@@ -4,6 +4,8 @@ title: "13.1 제네릭이란?"
 nav_order: 1
 parent: "Chapter 13. 제네릭"
 grand_parent: "객체지향 프로그래밍"
+description: "13.1 제네릭이란? 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "13.1 제네릭이란?, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # 13.1 제네릭이란?

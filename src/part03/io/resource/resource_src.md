@@ -4,6 +4,8 @@ title: "17.4 리소스로부터 스트림 얻기"
 nav_order: 4
 parent: "Chapter 17. 데이터 입출력"
 grand_parent: "라이브러리 활용"
+description: "17.4 리소스로부터 스트림 얻기 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "17.4 리소스로부터 스트림 얻기, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # 17.4 리소스로부터 스트림 얻기

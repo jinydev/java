@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="100%" height="100%">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&amp;display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@700&amp;display=swap');
+      
+      .st-title { font-family: 'Noto Sans KR', sans-serif; font-size: 24px; font-weight: bold; fill: #2c3e50; }
+      .st-desc { font-family: 'Noto Sans KR', sans-serif; font-size: 16px; fill: #555; }
+      
+      .code-main { font-family: 'Fira Code', monospace; font-size: 20px; font-weight: bold; fill: #2c3e50; }
+      .code-var { font-family: 'Fira Code', monospace; font-size: 20px; font-weight: bold; fill: #e67e22; }
+      
+      .val-bubble { fill: #f39c12; rx: 20; }
+      .val-text { font-family: 'Fira Code', monospace; font-size: 18px; font-weight: bold; fill: white; }
+      
+      .hole { fill: #ecf0f1; stroke: #bdc3c7; stroke-width: 2; rx: 10; }
+      .hole-highlight { stroke: #e74c3c; stroke-width: 3; }
+      
+      /* Animations */
+      @keyframes moveV1 {
+        0% { transform: translate(300px, 300px); opacity: 1; }
+        20% { transform: translate(300px, 150px); opacity: 1; }
+        40% { transform: translate(300px, 150px); opacity: 1; }
+        60% { transform: translate(150px, 150px); opacity: 1; }
+        80% { transform: translate(150px, 150px); opacity: 1;}
+        100% { transform: translate(300px, 150px); opacity: 1; } /* Back to second hole %1$*/
+      }
+      
+      @keyframes moveV2 {
+        0% { transform: translate(400px, 300px); opacity: 1; }
+        20% { transform: translate(400px, 200px); opacity: 1;}
+        40% { transform: translate(150px, 200px); opacity: 1; } /* Goes to first hole %2$*/
+        100% { transform: translate(150px, 200px); opacity: 1; }
+      }
+      
+      .v1-anim { animation: moveV1 4s infinite alternate ease-in-out; }
+      .v2-anim { animation: moveV2 4s infinite alternate ease-in-out; }
+      
+    </style>
+  </defs>
+
+  <rect width="100%" height="100%" fill="#ffffff" rx="10" />
+  
+  <text x="400" y="50" text-anchor="middle" class="st-title">순번 지정 (argument_index$) 원리</text>
+  <text x="400" y="80" text-anchor="middle" class="st-desc">값의 순서를 바꿔서 매칭하거나 하나의 값을 여러 번 재사용할 수 있습니다.</text>
+
+  <!-- Code background -->
+  <rect x="50" y="280" width="700" height="60" fill="#f8f9fa" rx="5" stroke="#e0e0e0"/>
+  <text x="70" y="315" class="code-main">printf("이름: <tspan fill="#e74c3c">%2$s</tspan>, 나이: <tspan fill="#3498db">%1$d</tspan>",</text>
+  <text x="500" y="315" class="code-var">25</text>
+  <text x="530" y="315" class="code-main">, </text>
+  <text x="550" y="315" class="code-var">"홍길동"</text>
+  <text x="640" y="315" class="code-main">);</text>
+
+  <text x="510" y="360" class="st-desc" font-size="14" fill="#7f8c8d">첫 번째 값 (1$)</text>
+  <text x="600" y="360" class="st-desc" font-size="14" fill="#7f8c8d">두 번째 값 (2$)</text>
+
+  <!-- Output string template -->
+  <rect x="100" y="130" width="600" height="90" fill="#ebf5fb" rx="10" />
+  <text x="130" y="180" class="code-main">출력 ➔ 이름: </text>
+  
+  <!-- Hole 2$ (receives "홍길동") -->
+  <rect x="290" y="150" width="100" height="40" class="hole hole-highlight" stroke="#e74c3c" />
+  <text x="340" y="175" text-anchor="middle" class="code-main" fill="#e74c3c" opacity="0.3">%2$s</text>
+
+  <text x="410" y="180" class="code-main">, 나이: </text>
+
+  <!-- Hole 1$ (receives 25) -->
+  <rect x="520" y="150" width="80" height="40" class="hole hole-highlight" stroke="#3498db" />
+  <text x="560" y="175" text-anchor="middle" class="code-main" fill="#3498db" opacity="0.3">%1$d</text>
+
+  <!-- Animated Values -->
+  <g class="v1-anim"> <!-- 25 -->
+    <rect x="-30" y="-20" width="60" height="40" class="val-bubble" fill="#3498db" />
+    <text x="0" y="5" text-anchor="middle" class="val-text">25</text>
+  </g>
+
+  <g class="v2-anim"> <!-- "홍길동" -->
+    <rect x="-40" y="-20" width="80" height="40" class="val-bubble" fill="#e74c3c" />
+    <text x="0" y="5" text-anchor="middle" class="val-text">"홍길동"</text>
+  </g>
+
+  <!-- Fixed path guides to show the jumping -->
+  <path d="M 510 270 Q 560 220 560 190" stroke="#3498db" stroke-width="2" stroke-dasharray="5" fill="none" opacity="0.5"/>
+  <path d="M 590 270 Q 340 220 340 190" stroke="#e74c3c" stroke-width="2" stroke-dasharray="5" fill="none" opacity="0.5"/>
+
+  <rect x="0" y="0" width="800" height="400" fill="none" stroke="#e0e0e0" stroke-width="2" rx="10"/>
+</svg>

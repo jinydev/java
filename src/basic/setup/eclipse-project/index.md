@@ -4,6 +4,8 @@ title: "4. 이클립스 프로젝트 생성"
 nav_order: 4
 parent: "개발 환경 구축"
 grand_parent: "객체지향 자바 프로그래밍"
+description: "4. 이클립스 프로젝트 생성 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "4. 이클립스 프로젝트 생성, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # 1.7 이클립스 프로젝트 생성

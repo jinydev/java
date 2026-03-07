@@ -4,6 +4,8 @@ title: "18.11 File과 Files 클래스"
 nav_order: 11
 parent: "Chapter 22. 데이터 입출력"
 grand_parent: "Chapter 22. 데이터 입출력"
+description: "18.11 File과 Files 클래스 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "18.11 File과 Files 클래스, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # 18.11 File과 Files 클래스

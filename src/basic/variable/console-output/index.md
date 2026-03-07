@@ -4,6 +4,8 @@ title: "4.10 콘솔 출력"
 nav_order: 10
 parent: "Chapter 04. 변수와 타입"
 grand_parent: "Part 01. 자바 언어의 기초"
+description: "자바의 콘솔 출력 (print, println, printf)과 서식 지정자(%d, %f, %s 등)의 원리와 사용법을 시각적 예제로 완벽하게 알아봅니다."
+keywords: "자바, Java, console, 출력, print, println, printf, 서식 지정자, format specifier, escape 문자, 이스케이프"
 ---
 
 # 4.10 콘솔 출력

@@ -4,6 +4,8 @@ title: "1.2 코드 용어 이해"
 nav_order: 2
 parent: "Chapter 01. 자바 시작하기"
 grand_parent: "객체지향 자바 프로그래밍"
+description: "1.2 코드 용어 이해 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "1.2 코드 용어 이해, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # 1.2 코드 용어 이해

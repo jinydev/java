@@ -4,6 +4,8 @@ title: "4.1 변수 선언"
 nav_order: 1
 parent: "Chapter 04. 변수와 타입"
 grand_parent: "Part 01. 자바 언어의 기초"
+description: "4.1 변수 선언 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "4.1 변수 선언, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # 4.1 변수 선언과 저장

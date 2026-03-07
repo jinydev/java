@@ -1,6 +1,8 @@
 ---
 layout: gui
 title: "02. JavaFX 프로젝트 생성 및 실행"
+description: "02. JavaFX 프로젝트 생성 및 실행 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "02. JavaFX 프로젝트 생성 및 실행, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # 02. JavaFX 프로젝트 생성 및 실행

@@ -4,6 +4,8 @@ title: "17.6 동기화된 컬렉션"
 nav_order: 6
 parent: "Chapter 17. 컬렉션 자료구조"
 grand_parent: "객체지향 자바 프로그래밍"
+description: "17.6 동기화된 컬렉션 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "17.6 동기화된 컬렉션, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # 17.6 동기화된 컬렉션 (Synchronized)

@@ -4,6 +4,8 @@ title: "3.5 나눗셈 연산 후 NaN과 Infinity 처리"
 nav_order: 5
 parent: "Chapter 03. 연산자"
 grand_parent: "객체지향 자바 프로그래밍"
+description: "3.5 나눗셈 연산 후 NaN과 Infinity 처리 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "3.5 나눗셈 연산 후 NaN과 Infinity 처리, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # 3.5 나눗셈 연산 후 NaN과 Infinity 처리

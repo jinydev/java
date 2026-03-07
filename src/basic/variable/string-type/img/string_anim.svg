@@ -1,0 +1,64 @@
+<svg width="600" height="200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .title { font-family: 'Malgun Gothic', sans-serif; font-size: 22px; fill: #2f3542; font-weight: bold; }
+      .desc { font-family: 'Malgun Gothic', sans-serif; font-size: 16px; fill: #747d8c; }
+      .charbox { fill: #fff; stroke: #3742fa; stroke-width: 3; rx: 8; }
+      .chartext { font-family: 'Courier New', monospace; font-size: 30px; font-weight: bold; fill: #2f3542; }
+      .quote { font-family: 'Georgia', serif; font-size: 50px; font-weight: bold; fill: #ff4757; }
+      .link { stroke: #ced6e0; stroke-width: 4; stroke-dasharray: 5,5; }
+      
+      @keyframes popIn {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.1); fill: #eccc68; }
+      }
+      
+      .anim-box1 { animation: popIn 3s infinite; animation-delay: 0s; transform-origin: center; }
+      .anim-box2 { animation: popIn 3s infinite; animation-delay: 0.5s; transform-origin: center; }
+      .anim-box3 { animation: popIn 3s infinite; animation-delay: 1.0s; transform-origin: center; }
+      .anim-box4 { animation: popIn 3s infinite; animation-delay: 1.5s; transform-origin: center; }
+    </style>
+  </defs>
+
+  <rect width="100%" height="100%" rx="15" fill="#f1f2f6" stroke="#dfe4ea" stroke-width="4"/>
+  
+  <text x="50%" y="40" text-anchor="middle" class="title">문자열(String): 문자들의 연결 🔗</text>
+  <text x="50%" y="70" text-anchor="middle" class="desc">각각의 문자(char)들이 큰따옴표("") 안에서 하나의 단어로 합쳐집니다!</text>
+  
+  <g transform="translate(130, 110)">
+    <!-- Links -->
+    <line x1="50" y1="25" x2="100" y2="25" class="link" />
+    <line x1="130" y1="25" x2="180" y2="25" class="link" />
+    <line x1="210" y1="25" x2="260" y2="25" class="link" />
+    
+    <!-- Left Quote -->
+    <text x="-40" y="45" class="quote">"</text>
+    
+    <!-- Char 1 -->
+    <g transform="translate(0, 0)">
+      <rect x="0" y="0" width="50" height="50" class="charbox anim-box1" />
+      <text x="25" y="35" text-anchor="middle" class="chartext">J</text>
+    </g>
+    
+    <!-- Char 2 -->
+    <g transform="translate(80, 0)">
+      <rect x="0" y="0" width="50" height="50" class="charbox anim-box2" />
+      <text x="25" y="35" text-anchor="middle" class="chartext">A</text>
+    </g>
+    
+    <!-- Char 3 -->
+    <g transform="translate(160, 0)">
+      <rect x="0" y="0" width="50" height="50" class="charbox anim-box3" />
+      <text x="25" y="35" text-anchor="middle" class="chartext">V</text>
+    </g>
+    
+    <!-- Char 4 -->
+    <g transform="translate(240, 0)">
+      <rect x="0" y="0" width="50" height="50" class="charbox anim-box4" />
+      <text x="25" y="35" text-anchor="middle" class="chartext">A</text>
+    </g>
+    
+    <!-- Right Quote -->
+    <text x="310" y="45" class="quote">"</text>
+  </g>
+</svg>

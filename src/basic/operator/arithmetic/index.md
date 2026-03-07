@@ -4,6 +4,8 @@ title: "5.2 산술 연산자"
 nav_order: 2
 parent: "Chapter 05. 연산자"
 grand_parent: "Part 01. 자바 언어의 기초"
+description: "5.2 산술 연산자 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "5.2 산술 연산자, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # 5.2 산술 연산자 (Arithmetic Operators)

@@ -1,0 +1,111 @@
+<svg width="700" height="350" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .title { font-family: 'Malgun Gothic', sans-serif; font-size: 20px; fill: #2f3542; font-weight: bold; }
+      .desc { font-family: 'Malgun Gothic', sans-serif; font-size: 14px; fill: #747d8c; }
+      .code { font-family: 'Courier New', monospace; font-size: 18px; font-weight: bold; }
+      .text-ok { fill: #2ed573; }
+      .text-err { fill: #ff4757; }
+      .box-int { fill: #def; stroke: #3742fa; stroke-width: 3; rx: 8; }
+      .box-long { fill: #bdf; stroke: #5352ed; stroke-width: 3; rx: 8; }
+      .data-block { fill: #ffa502; rx: 4; }
+      .data-text { font-family: 'Courier New', monospace; font-size: 16px; fill: white; font-weight: bold; }
+      
+      @keyframes moveOk {
+        0%, 15% { transform: translate(0, 0); opacity: 1; }
+        45%, 55% { transform: translate(160px, 0); opacity: 1; }
+        85%, 100% { transform: translate(160px, 0); opacity: 0; }
+      }
+      @keyframes moveErr {
+        0%, 15% { transform: translate(0, 0); opacity: 1; }
+        45%, 55% { transform: translate(-140px, 0); opacity: 1; }
+        60% { transform: translate(-145px, 0); opacity: 1; }
+        65% { transform: translate(-135px, 0); opacity: 1; }
+        70% { transform: translate(-140px, 0); opacity: 1; }
+        85%, 100% { transform: translate(-140px, 0); opacity: 0; }
+      }
+      @keyframes showCheck {
+        0%, 45% { opacity: 0; transform: scale(0); }
+        55%, 85% { opacity: 1; transform: scale(1); }
+        100% { opacity: 0; }
+      }
+      @keyframes showCross {
+        0%, 55% { opacity: 0; transform: scale(0); }
+        65%, 85% { opacity: 1; transform: scale(1); }
+        100% { opacity: 0; }
+      }
+      
+      .anim-ok { animation: moveOk 5s infinite ease-in-out; }
+      .anim-err { animation: moveErr 5s infinite ease-in-out; }
+      .check-mark { animation: showCheck 5s infinite cubic-bezier(0.175, 0.885, 0.32, 1.275); transform-origin: center; }
+      .cross-mark { animation: showCross 5s infinite cubic-bezier(0.175, 0.885, 0.32, 1.275); transform-origin: center; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="100%" height="100%" rx="15" fill="#ffffff" stroke="#dfe4ea" stroke-width="4"/>
+  
+  <text x="50%" y="35" text-anchor="middle" class="title">자동 타입 변환: 되는 경우 VS 안 되는 경우</text>
+  
+  <!-- Left Side: OK Case -->
+  <g transform="translate(100, 80)">
+    <text x="120" y="0" text-anchor="middle" class="code text-ok">long big = 10; // (O) 가능</text>
+    <text x="120" y="20" text-anchor="middle" class="desc">작은 타입(int) 👉 큰 타입(long)</text>
+    
+    <!-- int box -->
+    <rect x="-10" y="50" width="80" height="80" class="box-int" />
+    <text x="30" y="150" text-anchor="middle" class="code">int 컵</text>
+    
+    <!-- long box -->
+    <rect x="150" y="30" width="120" height="100" class="box-long" />
+    <text x="210" y="150" text-anchor="middle" class="code">long 양동이</text>
+    
+    <!-- data block moving -->
+    <g class="anim-ok" transform="translate(0, 0)">
+      <rect x="5" y="80" width="50" height="50" class="data-block" />
+      <text x="30" y="110" text-anchor="middle" class="data-text">10</text>
+    </g>
+    
+    <!-- Check mark -->
+    <g class="check-mark" transform="translate(260, 40)">
+      <circle cx="0" cy="0" r="20" fill="#2ed573" />
+      <path d="M-10 0 L-4 6 L10 -8" fill="none" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+  </g>
+
+  <!-- Vertical Divider -->
+  <line x1="350" y1="70" x2="350" y2="320" stroke="#dfe4ea" stroke-width="2" stroke-dasharray="8,4" />
+
+  <!-- Right Side: Error Case -->
+  <g transform="translate(450, 80)">
+    <text x="90" y="0" text-anchor="middle" class="code text-err">int small = 100L; // (X) 에러!</text>
+    <text x="90" y="20" text-anchor="middle" class="desc">큰 타입(long) 👉 작은 타입(int)</text>
+    
+    <!-- long box -->
+    <rect x="100" y="30" width="120" height="100" class="box-long" />
+    <text x="160" y="150" text-anchor="middle" class="code">long 양동이</text>
+    
+    <!-- int box -->
+    <rect x="-40" y="50" width="80" height="80" class="box-int" />
+    <text x="0" y="150" text-anchor="middle" class="code">int 컵</text>
+    
+    <!-- Data block moving -->
+    <g class="anim-err" transform="translate(0, 0)">
+      <rect x="110" y="40" width="100" height="90" class="data-block" fill="#ff6b81" />
+      <text x="160" y="90" text-anchor="middle" class="data-text">100L</text>
+    </g>
+    
+    <!-- Cross mark -->
+    <g class="cross-mark" transform="translate(-50, 40)">
+      <circle cx="0" cy="0" r="20" fill="#ff4757" />
+      <path d="M-8 -8 L8 8 M8 -8 L-8 8" fill="none" stroke="white" stroke-width="4" stroke-linecap="round"/>
+    </g>
+    
+    <!-- Sparks/Bounce Effect near box -->
+    <g class="cross-mark" transform="translate(45, 90)">
+      <path d="M0 -15 L0 -25 M-10 -10 L-20 -20 M10 -10 L20 -20" stroke="#ff4757" stroke-width="3" stroke-linecap="round" />
+    </g>
+  </g>
+  
+  <rect x="0" y="0" width="700" height="350" fill="none" stroke="#dfe4ea" stroke-width="8" rx="15" />
+</svg>

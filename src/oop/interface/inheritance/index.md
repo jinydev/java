@@ -4,6 +4,8 @@ title: "11.7 인터페이스 상속"
 nav_order: 7
 parent: "Chapter 11. 인터페이스"
 grand_parent: "객체지향 자바 프로그래밍"
+description: "11.7 인터페이스 상속 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "11.7 인터페이스 상속, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # 11.7 인터페이스 상속

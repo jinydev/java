@@ -4,6 +4,8 @@ title: "6. 인텔리제이 설치 및 소개"
 nav_order: 6
 parent: "개발 환경 구축"
 grand_parent: "객체지향 자바 프로그래밍"
+description: "6. 인텔리제이 설치 및 소개 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "6. 인텔리제이 설치 및 소개, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
 # 6. 인텔리제이 설치 및 소개
