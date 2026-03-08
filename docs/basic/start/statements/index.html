@@ -8,9 +8,9 @@
   <!-- 기본 메타데이터 --><meta name="description" content="3.4 실행문과 세미콜론 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."><meta name="author" content="HojinLee"><!-- 제목 설정 --><title>3.4 실행문과 세미콜론</title>
   <meta name="title" content="3.4 실행문과 세미콜론" /><!-- 키워드 설정 --><meta name="keywords" content="3.4 실행문과 세미콜론, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"><!-- Open Graph 메타데이터 --><meta property="og:title" content="3.4 실행문과 세미콜론"><meta property="og:description" content="3.4 실행문과 세미콜론 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."><meta property="og:type" content="website"><meta property="og:locale" content="ko">
   <meta property="og:site_name" content="linux">
-  <meta property="og:url" content="https://java.jiny.dev/basic/start/statements/">
+  <meta property="og:url" content="http://localhost:4000/basic/start/statements/">
   <!-- 대표 URL (캐노니컬) -->
-  <link rel="canonical" href="https://java.jiny.dev/basic/start/statements/">
+  <link rel="canonical" href="http://localhost:4000/basic/start/statements/">
 
   <!-- Twitter 카드 메타데이터 --><meta name="twitter:card" content="summary"><meta property="twitter:title" content="3.4 실행문과 세미콜론"><meta property="twitter:description" content="3.4 실행문과 세미콜론 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."><!-- Begin Jekyll SEO tag v2.8.0 -->
 <meta name="generator" content="Jekyll v4.4.1" />
@@ -19,14 +19,14 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="3.4 실행문과 세미콜론 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다." />
 <meta property="og:description" content="3.4 실행문과 세미콜론 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다." />
-<link rel="canonical" href="https://java.jiny.dev/basic/start/statements/" />
-<meta property="og:url" content="https://java.jiny.dev/basic/start/statements/" />
+<link rel="canonical" href="http://localhost:4000/basic/start/statements/" />
+<meta property="og:url" content="http://localhost:4000/basic/start/statements/" />
 <meta property="og:site_name" content="객체지향 자바 프로그래밍 (Object-Oriented Java Programming)" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="3.4 실행문과 세미콜론" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"3.4 실행문과 세미콜론 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다.","headline":"3.4 실행문과 세미콜론","url":"https://java.jiny.dev/basic/start/statements/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"3.4 실행문과 세미콜론 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다.","headline":"3.4 실행문과 세미콜론","url":"http://localhost:4000/basic/start/statements/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -1121,8 +1121,8 @@
 <h3 id="3-실행-흐름-시각화">3) 실행 흐름 시각화</h3>
 
 <pre><code class="language-mermaid">flowchart TD
-    Stmt1[1. 변수 선언: int x;] --&gt; Stmt2[2. 값 저장: x = 10;]
-    Stmt2 --&gt; Stmt3[3. 출력: System.out.println(x);]
+    Stmt1["1. 변수 선언: int x;"] --&gt; Stmt2["2. 값 저장: x = 10;"]
+    Stmt2 --&gt; Stmt3["3. 출력: System.out.println(x);"]
     
     style Stmt1 fill:#f9f,stroke:#333
     style Stmt2 fill:#fff,stroke:#333
@@ -1173,9 +1173,9 @@
 <p><img src="./img/block_group.png" alt="그림" /></p>
 
 <pre><code class="language-mermaid">graph TD
-    Class[클래스 블록 { }] --&gt; Method[메소드 블록 { }]
-    Method --&gt; Stmt1[실행문 1;]
-    Method --&gt; Stmt2[실행문 2;]
+    Class["클래스 블록 { }"] --&gt; Method["메소드 블록 { }"]
+    Method --&gt; Stmt1["실행문 1;"]
+    Method --&gt; Stmt2["실행문 2;"]
     
     style Class fill:#eee,stroke:#333
     style Method fill:#ddd,stroke:#333
@@ -1186,9 +1186,19 @@
 </blockquote>
 
 
-            <script async
-                src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3321560028329475"
-                crossorigin="anonymous"></script>
+            <div class="mt-5">
+                <!-- 구글 디스플레이 광고 (고정 위치용) -->
+                <script async
+                    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3321560028329475"
+                    crossorigin="anonymous"></script>
+                <!-- 아래 data-ad-slot 값을 실제 발급받으신 디스플레이 광고 단위 슬롯 ID 10자리로 변경하셔야 합니다! -->
+                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-3321560028329475"
+                    data-ad-slot="1234567890" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+
         </div>
 
         <div class="bd-toc mt-3 mb-5 my-lg-0 ps-xl-3 mb-lg-5 text-body-secondary">
@@ -1226,6 +1236,8 @@
   </div>
 </div>
     </main>
+
+
 </div>
 
   <footer class="container">

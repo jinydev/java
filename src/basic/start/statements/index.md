@@ -44,8 +44,8 @@ int y = 2;  // (O) 성공!
 
 ```mermaid
 flowchart TD
-    Stmt1[1. 변수 선언: int x;] --> Stmt2[2. 값 저장: x = 10;]
-    Stmt2 --> Stmt3[3. 출력: System.out.println(x);]
+    Stmt1["1. 변수 선언: int x;"] --> Stmt2["2. 값 저장: x = 10;"]
+    Stmt2 --> Stmt3["3. 출력: System.out.println(x);"]
     
     style Stmt1 fill:#f9f,stroke:#333
     style Stmt2 fill:#fff,stroke:#333
@@ -90,9 +90,9 @@ flowchart TD
 
 ```mermaid
 graph TD
-    Class[클래스 블록 { }] --> Method[메소드 블록 { }]
-    Method --> Stmt1[실행문 1;]
-    Method --> Stmt2[실행문 2;]
+    Class["클래스 블록 { }"] --> Method["메소드 블록 { }"]
+    Method --> Stmt1["실행문 1;"]
+    Method --> Stmt2["실행문 2;"]
     
     style Class fill:#eee,stroke:#333
     style Method fill:#ddd,stroke:#333
