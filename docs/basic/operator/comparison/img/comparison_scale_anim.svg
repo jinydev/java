@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 350" width="100%" height="350">
+    <rect width="800" height="350" fill="#f8fafc" rx="15" />
+    <rect width="796" height="346" x="2" y="2" fill="none" stroke="#e2e8f0" stroke-width="4" rx="15" />
+    
+    <text x="400" y="40" font-family="'Segoe UI', Roboto, sans-serif" font-size="24" font-weight="bold" fill="#1e293b" text-anchor="middle">비교 연산자 (양팔 저울) ⚖️</text>
+    <text x="400" y="65" font-family="'Segoe UI', Roboto, sans-serif" font-size="16" fill="#64748b" text-anchor="middle">10 &gt; 5 의 결과는?</text>
+
+    <g transform="translate(400, 250)">
+        <!-- Scale Base -->
+        <path d="M -30 50 L 30 50 L 10 0 L -10 0 Z" fill="#64748b" />
+        <rect x="-5" y="-100" width="10" height="100" fill="#94a3b8" />
+        <circle cx="0" cy="-100" r="8" fill="#cbd5e1" stroke="#475569" stroke-width="2" />
+        
+        <!-- The Balance Beam (Tips right to left because 10 is heavier) -->
+        <g>
+            <animateTransform attributeName="transform" type="rotate" values="0; -15; -15; 0" keyTimes="0; 0.3; 0.8; 1" dur="4s" repeatCount="indefinite" />
+            
+            <rect x="-150" y="-105" width="300" height="10" rx="5" fill="#475569" />
+            
+            <!-- Left Pan (10) -->
+            <g transform="translate(-140, -100)">
+                <animateTransform attributeName="transform" type="rotate" values="0; 15; 15; 0" keyTimes="0; 0.3; 0.8; 1" dur="4s" repeatCount="indefinite" />
+                <path d="M -40 0 L 40 0 L 20 50 L -20 50 Z" fill="#cbd5e1" stroke="#94a3b8" stroke-width="2" />
+                
+                <!-- The weight "10" -->
+                <g transform="translate(0, 10)">
+                    <rect x="-25" y="-40" width="50" height="40" rx="5" fill="#3b82f6" stroke="#2563eb" stroke-width="2" />
+                    <text x="0" y="-15" font-family="monospace" font-size="24" fill="white" font-weight="bold" text-anchor="middle">10</text>
+                </g>
+            </g>
+            
+            <!-- Right Pan (5) -->
+            <g transform="translate(140, -100)">
+                <animateTransform attributeName="transform" type="rotate" values="0; 15; 15; 0" keyTimes="0; 0.3; 0.8; 1" dur="4s" repeatCount="indefinite" />
+                <path d="M -40 0 L 40 0 L 20 50 L -20 50 Z" fill="#cbd5e1" stroke="#94a3b8" stroke-width="2" />
+                
+                <!-- The weight "5" (smaller box) -->
+                <g transform="translate(0, 30)">
+                    <rect x="-20" y="-30" width="40" height="30" rx="5" fill="#ef4444" stroke="#dc2626" stroke-width="2" />
+                    <text x="0" y="-8" font-family="monospace" font-size="20" fill="white" font-weight="bold" text-anchor="middle">5</text>
+                </g>
+            </g>
+        </g>
+    </g>
+
+    <!-- Result Banner -->
+    <g transform="translate(400, 100)">
+        <rect x="-60" y="-25" width="120" height="50" rx="25" fill="#dcfce7" stroke="#22c55e" stroke-width="3" opacity="0">
+             <animate attributeName="opacity" values="0; 0; 1; 1; 0" keyTimes="0; 0.3; 0.4; 0.9; 1" dur="4s" repeatCount="indefinite" />
+        </rect>
+        <text x="0" y="5" font-family="monospace" font-size="24" fill="#15803d" font-weight="bold" text-anchor="middle" opacity="0">
+             true
+             <animate attributeName="opacity" values="0; 0; 1; 1; 0" keyTimes="0; 0.3; 0.4; 0.9; 1" dur="4s" repeatCount="indefinite" />
+        </text>
+    </g>
+
+</svg>

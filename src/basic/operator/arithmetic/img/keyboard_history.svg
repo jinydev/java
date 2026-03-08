@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="100%" height="400">
+    <rect width="800" height="400" fill="#f8fafc" rx="15" />
+    <rect width="796" height="396" x="2" y="2" fill="none" stroke="#e2e8f0" stroke-width="4" rx="15" />
+    
+    <text x="400" y="40" font-family="'Segoe UI', Roboto, sans-serif" font-size="24" font-weight="bold" fill="#1e293b" text-anchor="middle">왜 ✖️와 ➗ 기호를 쓰지 않을까요? ⌨️</text>
+
+    <!-- Traditional Math Box -->
+    <g transform="translate(100, 100)">
+        <rect width="250" height="150" rx="15" fill="#fef08a" stroke="#eab308" stroke-width="3" />
+        <text x="125" y="40" font-family="'Segoe UI', Roboto, sans-serif" font-size="20" fill="#a16207" text-anchor="middle" font-weight="bold">수학 시간의 기호</text>
+        <text x="75" y="100" font-size="40" fill="#854d0e" font-weight="bold">×</text>
+        <text x="175" y="100" font-size="40" fill="#854d0e" font-weight="bold">÷</text>
+        <rect width="250" height="150" rx="15" fill="#ef4444" opacity="0">
+            <animate attributeName="opacity" values="0;0;0.5;0" keyTimes="0;0.3;0.5;1" dur="4s" repeatCount="indefinite" />
+        </rect>
+        <text x="125" y="125" font-family="'Segoe UI', Roboto, sans-serif" font-size="16" fill="#ef4444" text-anchor="middle" font-weight="bold" opacity="0">
+            키보드에 없어요! ❌
+            <animate attributeName="opacity" values="0;0;1;0" keyTimes="0;0.3;0.5;1" dur="4s" repeatCount="indefinite" />
+        </text>
+    </g>
+
+    <!-- Programming Box -->
+    <g transform="translate(450, 100)">
+        <rect width="250" height="150" rx="15" fill="#e0f2fe" stroke="#0ea5e9" stroke-width="3" />
+        <text x="125" y="40" font-family="'Segoe UI', Roboto, sans-serif" font-size="20" fill="#0369a1" text-anchor="middle" font-weight="bold">컴퓨터/프로그래밍</text>
+        <text x="75" y="110" font-size="50" fill="#075985" font-weight="bold">*</text>
+        <text x="175" y="100" font-size="50" fill="#075985" font-weight="bold">/</text>
+        <rect width="250" height="150" rx="15" fill="#22c55e" opacity="0">
+            <animate attributeName="opacity" values="0;0;0;0.4;0" keyTimes="0;0.5;0.6;0.8;1" dur="4s" repeatCount="indefinite" />
+        </rect>
+        <text x="125" y="130" font-family="'Segoe UI', Roboto, sans-serif" font-size="16" fill="#166534" text-anchor="middle" font-weight="bold" opacity="0">
+            타자기 시절부터 쓰던 기호! ✅
+            <animate attributeName="opacity" values="0;0;0;1;0" keyTimes="0;0.5;0.6;0.8;1" dur="4s" repeatCount="indefinite" />
+        </text>
+    </g>
+
+    <!-- Transition Arrow -->
+    <path d="M 360 175 L 430 175" stroke="#94a3b8" stroke-width="5" fill="none" marker-end="url(#arrow)" />
+
+    <!-- Historical Context -->
+    <g transform="translate(50, 280)">
+        <rect width="700" height="80" rx="10" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="2" />
+        <text x="350" y="30" font-family="'Segoe UI', Roboto, sans-serif" font-size="16" fill="#475569" text-anchor="middle" font-weight="bold">📝 역사적 배경 (ASCII 코드 제한)</text>
+        <text x="350" y="55" font-family="'Segoe UI', Roboto, sans-serif" font-size="14" fill="#64748b" text-anchor="middle">초기 컴퓨터 자판은 128개의 문자만 표현 가능한 ASCII 표준에 맞춰져 있었습니다.</text>
+        <text x="350" y="75" font-family="'Segoe UI', Roboto, sans-serif" font-size="14" fill="#64748b" text-anchor="middle">복잡한 수학 기호(×, ÷) 대신 이미 자판에 있던 별표(*)와 슬래시(/)를 대용품으로 선택한 것이 표준이 되었습니다.</text>
+    </g>
+
+    <defs>
+        <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#94a3b8" />
+        </marker>
+    </defs>
+</svg>

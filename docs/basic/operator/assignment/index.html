@@ -1087,107 +1087,176 @@
         <div class="bd-content ps-lg-2">
             <h1 id="56-대입-연산자-assignment-operators">5.6 대입 연산자 (Assignment Operators)</h1>
 
-<p>변수에 값을 저장하거나, 저장된 값을 수정할 때 사용하는 연산자입니다.</p>
+<p>프로그래밍에서 가장 흔하게 쓰이면서도, 초보자들이 수학 기호와 헷갈려 가장 많이 실수하는 연산자가 바로 <strong>대입 연산자(<code class="language-plaintext highlighter-rouge">=</code>)</strong> 입니다.</p>
 
 <hr />
 
 <h2 id="1-기본-대입-연산자--">1. 기본 대입 연산자 (<code class="language-plaintext highlighter-rouge">=</code>) 📥</h2>
 
-<h3 id="1-개념">1) 개념</h3>
-<p>“오른쪽의 값을 왼쪽의 변수에 저장하라”는 명령입니다.
-수학의 “같다”와는 전혀 다른 의미입니다.</p>
+<h3 id="1-수학의--vs-프로그래밍의-">1) 수학의 <code class="language-plaintext highlighter-rouge">=</code> vs 프로그래밍의 <code class="language-plaintext highlighter-rouge">=</code></h3>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">score</span> <span class="o">=</span> <span class="mi">80</span><span class="o">;</span> <span class="c1">// 80을 score 상자에 넣어라</span>
+<p>수학 시간의 <code class="language-plaintext highlighter-rouge">=</code>는 “왼쪽과 오른쪽이 똑같다”라는 상태를 의미합니다. 하지만 컴퓨터 프로그래밍에서 <code class="language-plaintext highlighter-rouge">=</code> 기호는 <strong>명령문</strong>입니다!</p>
+
+<p><img src="./img/assignment_vs_math_webtoon.png" alt="수학 = vs 프로그래밍 = 비교 웹툰" /></p>
+
+<p>웹툰을 보세요! 프로그래밍 세상(자바)에서 <code class="language-plaintext highlighter-rouge">=</code> 기호는 무조건 <strong>오른쪽에 있는 데이터 수식을 다 계산해서, 왼쪽에 있는 상자(변수)에 집어넣어라!</strong> 라는 강력한 동작 명령입니다.
+그래서 우리는 이 기호를 ‘같다’가 아니라 <strong>‘대입(Assignment)하다’</strong> 라고 부릅니다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 수학에서는 말이 안 되지만, 프로그래밍에서는 아주 흔한 정상 코드!</span>
+<span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span><span class="o">;</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span> 
 </code></pre></div></div>
+
+<p>위 코드를 해석하면:</p>
+<ol>
+  <li>내 앞의 <code class="language-plaintext highlighter-rouge">x</code> 상자에 <code class="language-plaintext highlighter-rouge">5</code>가 들어있었습니다.</li>
+  <li><code class="language-plaintext highlighter-rouge">=</code> 기호 오른쪽부터 먼저 봅니다. 원래 들어있던 <code class="language-plaintext highlighter-rouge">x</code> 값(<code class="language-plaintext highlighter-rouge">5</code>)에 <code class="language-plaintext highlighter-rouge">1</code>을 더합니다. -&gt; <code class="language-plaintext highlighter-rouge">6</code></li>
+  <li>그 <code class="language-plaintext highlighter-rouge">6</code>이라는 새로운 값을 왼쪽의 <code class="language-plaintext highlighter-rouge">x</code> 상자에 통째로 다시 욱여넣습니다. (원래 있던 5는 부서지고 6으로 덮어씌워짐)</li>
+</ol>
 
 <hr />
 
 <h2 id="2-복합-대입-연산자-compound-assignment-️">2. 복합 대입 연산자 (Compound Assignment) ⚡️</h2>
 
-<h3 id="1-개념-1">1) 개념</h3>
-<p>산술 연산(<code class="language-plaintext highlighter-rouge">+</code>, <code class="language-plaintext highlighter-rouge">-</code>, <code class="language-plaintext highlighter-rouge">*</code>, <code class="language-plaintext highlighter-rouge">/</code>)과 대입 연산(<code class="language-plaintext highlighter-rouge">=</code>)을 한 번에 처리하는 <strong>단축키</strong>입니다.
-코드를 더 짧고 간결하게 만들어줍니다.</p>
+<h3 id="1-귀차니즘이-만든-발명품">1) 귀차니즘이 만든 발명품</h3>
 
-<h3 id="2-비유-저금통">2) 비유: “저금통”</h3>
-<ul>
-  <li><strong>기본</strong>: “내 저금통에 있는 돈을 꺼내서 500원을 더한 뒤에 다시 저금통에 넣어라.” (<code class="language-plaintext highlighter-rouge">money = money + 500</code>)</li>
-  <li><strong>복합</strong>: “내 저금통에 500원 더 넣어라.” (<code class="language-plaintext highlighter-rouge">money += 500</code>)</li>
-</ul>
+<p>개발자들은 타자 치는 것을 극도로 귀찮아합니다. 
+방금 봤던 <code class="language-plaintext highlighter-rouge">x = x + 1;</code> 이나 <code class="language-plaintext highlighter-rouge">money = money + 500;</code> 처럼 내 변수가 식의 양쪽에 똑같이 두 번 등장하는 경우가 너무 많았습니다. 
+그래서 사칙연산(<code class="language-plaintext highlighter-rouge">+</code>, <code class="language-plaintext highlighter-rouge">-</code>, <code class="language-plaintext highlighter-rouge">*</code>, <code class="language-plaintext highlighter-rouge">/</code>)과 대입 연산(<code class="language-plaintext highlighter-rouge">=</code>)을 하나로 합친 <strong>단축키(복합 대입 연산자)</strong> 를 발명했습니다.</p>
 
-<h3 id="3-종류-및-변환-표">3) 종류 및 변환 표</h3>
+<p><img src="./img/compound_assignment_anim.svg" alt="복합 대입 연산자 애니메이션" /></p>
+
+<p>위 애니메이션처럼 일반 공식은 “저금통 배를 가르고, 돈을 꺼내서, 밖에서 더한 뒤, 다시 배를 꿰매서 넣는” 번거로운 스텝(2단계)을 가집니다.
+반면 <strong>복합 대입 연산자 (<code class="language-plaintext highlighter-rouge">+=</code>)</strong> 는 배를 가를 필요 없이, <strong>저금통 입구 위로 동전을 쏙 밀어 넣기만 하면 알아서 내부에 누적(+500)되는 아주 깔끔한 방식(1단계)</strong> 입니다.</p>
+
+<hr />
+
+<h3 id="2-복합-대입-연산자-총정리-표-별-분류">2) 복합 대입 연산자 총정리 표 (##별 분류)</h3>
+
+<p>어떤 연산을 단축하느냐에 따라 다양한 모양이 존재합니다. 수학 공식을 단축시킨 코드로 읽는 연습을 해보세요!</p>
+
+<h4 id="-a-더하기-빼기-계열">## A. 더하기, 빼기 계열</h4>
+<p>가장 많이 쓰이는 일상적인 누적치, 잔액 계산에 쓰입니다.</p>
 
 <table>
   <thead>
     <tr>
-      <th style="text-align: center">연산자</th>
-      <th style="text-align: left">풀어쓴 코드</th>
-      <th style="text-align: left">설명</th>
+      <th style="text-align: center">단축 연산자</th>
+      <th style="text-align: left">원래 코드 (풀어쓴 모습)</th>
+      <th style="text-align: left">실제 의미</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td style="text-align: center"><strong><code class="language-plaintext highlighter-rouge">+=</code></strong></td>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">A = A + B</code></td>
-      <td style="text-align: left">A에 B를 더해서 저장</td>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">money += 500;</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">money = money + 500;</code></td>
+      <td style="text-align: left">기존 잔액에 500원을 <strong>더해서 누적</strong>하라.</td>
     </tr>
     <tr>
-      <td style="text-align: center"><strong><code class="language-plaintext highlighter-rouge">-=</code></strong></td>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">A = A - B</code></td>
-      <td style="text-align: left">A에서 B를 빼서 저장</td>
-    </tr>
-    <tr>
-      <td style="text-align: center"><strong><code class="language-plaintext highlighter-rouge">*=</code></strong></td>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">A = A * B</code></td>
-      <td style="text-align: left">A에 B를 곱해서 저장</td>
-    </tr>
-    <tr>
-      <td style="text-align: center"><strong><code class="language-plaintext highlighter-rouge">/=</code></strong></td>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">A = A / B</code></td>
-      <td style="text-align: left">A를 B로 나눈 몫을 저장</td>
-    </tr>
-    <tr>
-      <td style="text-align: center"><strong><code class="language-plaintext highlighter-rouge">%=</code></strong></td>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">A = A % B</code></td>
-      <td style="text-align: left">A를 B로 나눈 나머지를 저장</td>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">money -= 200;</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">money = money - 200;</code></td>
+      <td style="text-align: left">기존 잔액에서 200원을 <strong>깎아서 누적</strong>하라.</td>
     </tr>
   </tbody>
 </table>
 
-<h3 id="4-실행-흐름-시각화">4) 실행 흐름 시각화</h3>
+<h4 id="-b-곱하기-나누기-계열">## B. 곱하기, 나누기 계열</h4>
+<p>크기가 배율로 커지거나 줄어드는 계산에 쓰입니다.</p>
 
-<pre><code class="language-mermaid">graph LR
-    Var[money: 1000] --&gt;|읽기| Calc(1000 + 500)
-    Calc --&gt;|쓰기| Result[money: 1500]
-    
-    style Var fill:#eee,stroke:#333
-    style Calc fill:#ff9,stroke:#333
-    style Result fill:#bfb,stroke:#333
-</code></pre>
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">단축 연산자</th>
+      <th style="text-align: left">원래 코드 (풀어쓴 모습)</th>
+      <th style="text-align: left">실제 의미</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">size *= 2;</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">size = size * 2;</code></td>
+      <td style="text-align: left">기존 크기를 2배로 <strong>뻥튀기해서 저장</strong>하라.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">size /= 10;</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">size = size / 10;</code></td>
+      <td style="text-align: left">기존 크기를 10등분으로 <strong>자른 몫을 저장</strong>하라.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="-c-나머지-계열">## C. 나머지 계열</h4>
+<p>순환하는 패턴이나 홀수/짝수 판별 시 누적할 때 쓰입니다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">단축 연산자</th>
+      <th style="text-align: left">원래 코드 (풀어쓴 모습)</th>
+      <th style="text-align: left">실제 의미</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">time %= 60;</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">time = time % 60;</code></td>
+      <td style="text-align: left">60으로 나누고 <strong>남은 짜투리(나머지)만 저장</strong>하라.</td>
+    </tr>
+  </tbody>
+</table>
 
 <hr />
 
-<h2 id="3-코드-예시">3. 코드 예시</h2>
+<h2 id="3-실전-예제-코드로-확인하기">3. 실전 예제 코드로 확인하기</h2>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">money</span> <span class="o">=</span> <span class="mi">1000</span><span class="o">;</span>
+<p>위에서 배운 5가지 복합 대입 연산자가 실제로 코딩에서는 어떻게 쓰이는지 자바 예제로 확인해 봅시다.</p>
 
-<span class="n">money</span> <span class="o">+=</span> <span class="mi">500</span><span class="o">;</span>  <span class="c1">// 1500 (1000 + 500)</span>
-<span class="n">money</span> <span class="o">-=</span> <span class="mi">200</span><span class="o">;</span>  <span class="c1">// 1300 (1500 - 200)</span>
-<span class="n">money</span> <span class="o">*=</span> <span class="mi">2</span><span class="o">;</span>    <span class="c1">// 2600 (1300 * 2)</span>
-<span class="n">money</span> <span class="o">/=</span> <span class="mi">100</span><span class="o">;</span>  <span class="c1">// 26   (2600 / 100)</span>
+<p><strong>[예제: AssignmentOperatorExample.java]</strong></p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch05.sec06</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">AssignmentOperatorExample</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="c1">// 텅 빈 상자 준비</span>
+        
+        <span class="c1">// 1. += 연산자</span>
+        <span class="n">result</span> <span class="o">+=</span> <span class="mi">10</span><span class="o">;</span>   <span class="c1">// result = 0 + 10; =&gt; 10</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"result += 10: "</span> <span class="o">+</span> <span class="n">result</span><span class="o">);</span>
+
+        <span class="c1">// 2. -= 연산자</span>
+        <span class="n">result</span> <span class="o">-=</span> <span class="mi">5</span><span class="o">;</span>    <span class="c1">// result = 10 - 5; =&gt; 5</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"result -= 5: "</span> <span class="o">+</span> <span class="n">result</span><span class="o">);</span>
+
+        <span class="c1">// 3. *= 연산자</span>
+        <span class="n">result</span> <span class="o">*=</span> <span class="mi">3</span><span class="o">;</span>    <span class="c1">// result = 5 * 3; =&gt; 15</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"result *= 3: "</span> <span class="o">+</span> <span class="n">result</span><span class="o">);</span>
+
+        <span class="c1">// 4. /= 연산자</span>
+        <span class="n">result</span> <span class="o">/=</span> <span class="mi">2</span><span class="o">;</span>    <span class="c1">// result = 15 / 2; =&gt; 7 (정수 나눗셈은 소수점 버림)</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"result /= 2: "</span> <span class="o">+</span> <span class="n">result</span><span class="o">);</span>
+
+        <span class="c1">// 5. %= 연산자</span>
+        <span class="n">result</span> <span class="o">%=</span> <span class="mi">4</span><span class="o">;</span>    <span class="c1">// result = 7 % 4; =&gt; 3 (7을 4로 나누면 나머지가 3)</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"result %= 4: "</span> <span class="o">+</span> <span class="n">result</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
 </code></pre></div></div>
 
+<p><strong>실행 결과</strong></p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>result += 10: 10
+result -= 5: 5
+result *= 3: 15
+result /= 2: 7
+result %= 4: 3
+</code></pre></div></div>
 
-            <div class="mt-5">
-                <!-- 구글 디스플레이 광고 (고정 위치용) -->
+<p>이처럼 변수 이름을 두 번 쓰지 않고도 아주 간결하고 우아하게 코드를 설계할 수 있습니다. 앞으로 실무에서 코딩할 때는 <code class="language-plaintext highlighter-rouge">money = money + 500;</code> 대신 무조건 <code class="language-plaintext highlighter-rouge">money += 500;</code> 을 사용하는 습관을 들이세요!</p>
+
+
+            <div class="mt-10">
+                <!-- 구글 에스센스 광고 -->
                 <script async
                     src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3321560028329475"
                     crossorigin="anonymous"></script>
-                <!-- jinydev-java -->
-                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-3321560028329475"
-                    data-ad-slot="9323221865" data-ad-format="auto" data-full-width-responsive="true"></ins>
-                <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
             </div>
 
         </div>

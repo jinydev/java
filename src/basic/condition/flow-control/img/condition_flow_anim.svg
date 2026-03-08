@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="500">
+    <rect width="800" height="500" fill="#f8fafc" rx="15" />
+    <rect width="796" height="496" x="2" y="2" fill="none" stroke="#e2e8f0" stroke-width="4" rx="15" />
+    
+    <text x="400" y="40" font-family="'Segoe UI', Roboto, sans-serif" font-size="24" font-weight="bold" fill="#1e293b" text-anchor="middle">컴퓨터 내부의 점프! (CPU Program Counter 흐름) ⚡</text>
+
+    <!-- Memory Block (Instructions) -->
+    <g transform="translate(50, 80)">
+        <rect width="400" height="360" rx="10" fill="#ffffff" stroke="#94a3b8" stroke-width="3" />
+        <rect width="400" height="40" rx="10" fill="#f1f5f9" />
+        <text x="200" y="27" font-family="monospace" font-size="18" fill="#475569" font-weight="bold" text-anchor="middle">메모리 (Memory) - 프로그램 코드</text>
+
+        <!-- Instruction Lines -->
+        <g font-family="monospace" font-size="16" fill="#0f172a">
+            <text x="20" y="80" fill="#64748b">100번지:</text> <text x="100" y="80">int score = 85;</text>
+            <text x="20" y="120" fill="#64748b">104번지:</text> <text x="100" y="120" fill="#ea580c" font-weight="bold">if (score >= 90)</text>
+            
+            <!-- True Branch -->
+            <rect x="90" y="140" width="280" height="30" fill="#dcfce7" rx="5" />
+            <text x="20" y="160" fill="#64748b">108번지:</text> <text x="100" y="160" fill="#166534">  System.out.println("A");</text>
+            
+            <!-- Jump Instruction (Hidden logic) -->
+            <text x="20" y="200" fill="#64748b">112번지:</text> <text x="100" y="200" fill="#dc2626">  JUMP to 124번지 (건너뛰기!)</text>
+            
+            <!-- False Branch (else) -->
+            <rect x="90" y="220" width="280" height="30" fill="#fef08a" rx="5" />
+            <text x="20" y="240" fill="#64748b">116번지:</text> <text x="100" y="240" fill="#854d0e">else</text>
+            <text x="20" y="280" fill="#64748b">120번지:</text> <text x="100" y="280" fill="#854d0e">  System.out.println("B");</text>
+            
+            <text x="20" y="320" fill="#64748b">124번지:</text> <text x="100" y="320">종료</text>
+        </g>
+    </g>
+
+    <!-- CPU and Program Counter -->
+    <g transform="translate(500, 80)">
+        <rect width="250" height="200" rx="15" fill="#e0f2fe" stroke="#0ea5e9" stroke-width="3" />
+        <text x="125" y="40" font-family="'Segoe UI', Roboto, sans-serif" font-size="22" fill="#0369a1" font-weight="bold" text-anchor="middle">CPU (두뇌)</text>
+        
+        <rect x="25" y="70" width="200" height="100" rx="10" fill="#bae6fd" stroke="#0284c7" stroke-width="2" />
+        <text x="125" y="100" font-family="'Segoe UI', Roboto, sans-serif" font-size="16" fill="#0c4a6e" font-weight="bold" text-anchor="middle">작업 지시서 포인터 (PC)</text>
+        <text x="125" y="140" font-family="monospace" font-size="28" fill="#c2410c" font-weight="bold" text-anchor="middle">
+             <animate attributeName="opacity" values="1;1;0;0;0;0;1" keyTimes="0;0.1;0.15;0.9;0.95;1;1" dur="7s" repeatCount="indefinite" />
+             100번지
+        </text>
+        <text x="125" y="140" font-family="monospace" font-size="28" fill="#c2410c" font-weight="bold" text-anchor="middle" opacity="0">
+             <animate attributeName="opacity" values="0;0;1;1;0;0;0" keyTimes="0;0.15;0.2;0.5;0.55;1;1" dur="7s" repeatCount="indefinite" />
+             104번지
+        </text>
+        <text x="125" y="140" font-family="monospace" font-size="28" fill="#c2410c" font-weight="bold" text-anchor="middle" opacity="0">
+             <!-- If score(85) >= 90 is False, so jump to 116(else) -->
+             <animate attributeName="opacity" values="0;0;0;0;1;1;0" keyTimes="0;0.5;0.55;0.6;0.65;0.9;0.95" dur="7s" repeatCount="indefinite" />
+             116번지
+        </text>
+    </g>
+
+    <!-- Arrow animation tracing execution path -->
+    <g transform="translate(50, 80)">
+        <!-- Pointer Arrow -->
+        <polygon points="0,-10 15,0 0,10" fill="#ef4444">
+            <!-- 100 -> 104 -> (Condition False) -> Jump to 116(else) -> 120 -> 124 -->
+            <!-- 100 -->
+            <animate attributeName="transform" values="translate(0, 75); translate(0, 75); translate(0, 115); translate(0, 115); translate(0, 235); translate(0, 235); translate(0, 275); translate(0, 275); translate(0, 315); translate(0, 315); translate(0, 75)" keyTimes="0; 0.1; 0.2; 0.5; 0.6; 0.7; 0.75; 0.85; 0.9; 0.95; 1" dur="7s" repeatCount="indefinite" />
+        </polygon>
+        
+        <!-- Action text bubble -->
+        <rect x="-10" y="380" width="760" height="60" rx="10" fill="#fef08a" stroke="#ca8a04" stroke-width="2" />
+        <text x="380" y="415" font-family="'Segoe UI', Roboto, sans-serif" font-size="20" fill="#854d0e" font-weight="bold" text-anchor="middle">
+            <tspan opacity="1"><animate attributeName="opacity" values="1;1;0;0;0;0;0;0;0;0;1" keyTimes="0;0.15;0.16;0.3;0.31;0.55;0.56;0.8;0.81;0.95;0.96" dur="7s" repeatCount="indefinite" />1. 메모리 100번지: score = 85 입력 완료</tspan>
+            <tspan opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0;0;0;0;0;0" keyTimes="0;0.15;0.16;0.5;0.51;0.55;0.56;0.8;0.81;0.95;0.96" dur="7s" repeatCount="indefinite" />2. 메모리 104번지: 85 >= 90 인가요? ➔ False!</tspan>
+            <tspan opacity="0"><animate attributeName="opacity" values="0;0;0;0;1;1;0;0;0;0;0" keyTimes="0;0.15;0.16;0.5;0.51;0.7;0.71;0.8;0.81;0.95;0.96" dur="7s" repeatCount="indefinite" />3. 조건이 거짓이므로 108번지는 건너뛰고 116번지로 JUMP!!</tspan>
+            <tspan opacity="0"><animate attributeName="opacity" values="0;0;0;0;0;0;1;1;0;0;0" keyTimes="0;0.15;0.16;0.5;0.51;0.7;0.71;0.9;0.91;0.95;0.96" dur="7s" repeatCount="indefinite" />4. 120번지: 흐름이 바뀌어 "B"를 출력합니다.</tspan>
+        </text>
+    </g>
+
+</svg>

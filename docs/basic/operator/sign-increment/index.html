@@ -1099,12 +1099,29 @@
 <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="o">-</span><span class="n">x</span><span class="o">;</span> <span class="c1">// 100</span>
 </code></pre></div></div>
 
+<blockquote>
+  <p><strong>💡 노트: <code class="language-plaintext highlighter-rouge">int result = -x;</code> 와 같은 식을 계산할 수 있나요?</strong><br />
+네, 정상적으로 계산됩니다! 자바에서 부호 연산자 <code class="language-plaintext highlighter-rouge">-</code>를 변수 앞에 붙이면, 내부적으로 해당 변수의 값에 <strong><code class="language-plaintext highlighter-rouge">-1</code>을 곱한 것과 동일한 원리</strong>로 부호가 반전되어 연산 결과를 산출합니다.</p>
+</blockquote>
+
 <h2 id="2-증감-연산자-----">2. 증감 연산자 (<code class="language-plaintext highlighter-rouge">++</code>, <code class="language-plaintext highlighter-rouge">--</code>) 🔢</h2>
 
 <p>변수의 값을 <strong>1 증가</strong>시키거나 <strong>1 감소</strong>시킵니다.
 <strong>카운터(계수기)</strong>를 누르는 것과 같습니다.</p>
 
-<p><img src="./img/sign_increment.png" alt="그림" /></p>
+<p><img src="./img/sign_operator.svg" alt="부호 연산자 애니메이션" /></p>
+
+<blockquote>
+  <p><strong>💡 노트: <code class="language-plaintext highlighter-rouge">int result = -x;</code> 와 같은 식을 계산할 수 있나요?</strong><br />
+네, 정상적으로 계산됩니다! 자바에서 부호 연산자 <code class="language-plaintext highlighter-rouge">-</code>를 변수 앞에 붙이면, 내부적으로 해당 변수의 값에 <strong><code class="language-plaintext highlighter-rouge">-1</code>을 곱한 것과 동일한 원리</strong>로 부호가 반전되어 연산 결과를 산출합니다. 위 애니메이션을 통해 값의 부호가 변환되는 마법을 확인해 보세요.</p>
+</blockquote>
+
+<h2 id="2-증감-연산자------1">2. 증감 연산자 (<code class="language-plaintext highlighter-rouge">++</code>, <code class="language-plaintext highlighter-rouge">--</code>) 🔢</h2>
+
+<p>변수의 값을 <strong>1 증가</strong>시키거나 <strong>1 감소</strong>시킵니다.
+<strong>카운터(계수기)</strong>를 누르는 것과 같습니다.</p>
+
+<p><img src="./img/increment_operator.svg" alt="증감 연산자 애니메이션" /></p>
 
 <ul>
   <li><code class="language-plaintext highlighter-rouge">++</code>: 1 증가 (<code class="language-plaintext highlighter-rouge">x = x + 1</code>)</li>
@@ -1126,18 +1143,27 @@
 <span class="kt">int</span> <span class="n">result2</span> <span class="o">=</span> <span class="n">y</span><span class="o">++</span> <span class="o">+</span> <span class="mi">10</span><span class="o">;</span> <span class="c1">// 1 + 10을 먼저 하고 -&gt; y가 2가 됨 -&gt; 11</span>
 </code></pre></div></div>
 
+<hr />
 
-            <div class="mt-5">
-                <!-- 구글 디스플레이 광고 (고정 위치용) -->
+<h2 id="3-증감-연산자의-진짜-무대-반복문-미리보기-">3. 증감 연산자의 진짜 무대: 반복문 (미리보기) 🔁</h2>
+
+<p>증감 연산자(<code class="language-plaintext highlighter-rouge">++</code>, <code class="language-plaintext highlighter-rouge">--</code>)는 단독으로 쓰일 때보다 <strong>반복문(for, while)</strong> 과 결합될 때 진정한 위력을 발휘합니다.
+(반복문에 대한 자세한 내용은 <a href="/basic/loop">Chapter 07. 반복문</a>에서 확실하게 배우게 됩니다!)</p>
+
+<p><img src="./img/loop_preview.svg" alt="반복문과 증감 연산자 애니메이션" /></p>
+
+<ul>
+  <li>위 애니메이션처럼 <code class="language-plaintext highlighter-rouge">int i = 0</code>부터 시작해서, 코드가 한 번 실행될 때마다 <strong><code class="language-plaintext highlighter-rouge">i++</code> 가 호출되며 변수 <code class="language-plaintext highlighter-rouge">i</code>를 1씩 증가</strong> 시킵니다.</li>
+  <li>이렇게 <code class="language-plaintext highlighter-rouge">i</code> 가 0, 1, 2 로 꾸준히 증가하다가 지정된 조건(예: <code class="language-plaintext highlighter-rouge">i &lt; 3</code>)을 벗어나면 루프가 안전하게 종료됩니다.</li>
+  <li>증감 연산자가 없다면 컴퓨터는 언제 멈춰야 할지 모르고 영원히 트랙을 달리는 <strong>무한 루프</strong>에 빠지게 됩니다!</li>
+</ul>
+
+
+            <div class="mt-10">
+                <!-- 구글 에스센스 광고 -->
                 <script async
                     src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3321560028329475"
                     crossorigin="anonymous"></script>
-                <!-- jinydev-java -->
-                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-3321560028329475"
-                    data-ad-slot="9323221865" data-ad-format="auto" data-full-width-responsive="true"></ins>
-                <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
             </div>
 
         </div>

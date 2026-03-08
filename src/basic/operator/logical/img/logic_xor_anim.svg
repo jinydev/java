@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 250" width="100%" height="250">
+    <rect width="800" height="250" fill="#f8fafc" rx="15" />
+    <rect width="796" height="246" x="2" y="2" fill="none" stroke="#e2e8f0" stroke-width="4" rx="15" />
+
+    <!-- 4. XOR Gate (Exclusive OR) -->
+    <g transform="translate(50, 60)">
+        <rect width="700" height="130" rx="15" fill="#f3e8ff" stroke="#a855f7" stroke-width="3" />
+        <text x="50" y="30" font-family="'Segoe UI', Roboto, sans-serif" font-size="20" fill="#7e22ce" font-weight="bold">4. 배타적 논리합 (XOR, ^)</text>
+        <text x="50" y="55" font-family="'Segoe UI', Roboto, sans-serif" font-size="14" fill="#581c87" font-weight="bold">심술쟁이 스위치: 둘의 상태가 서로 "달라야만" 불이 들어옴 (OO, XX일 땐 꺼짐! OX, XO일 때만 켜짐)</text>
+        
+        <g transform="translate(150, 100)">
+            <!-- State A -->
+            <text x="0" y="-10" font-family="monospace" font-size="18" fill="#1d4ed8" font-weight="bold">상태 A:</text>
+            <text x="75" y="-10" font-family="monospace" font-size="18" fill="#dc2626" font-weight="bold">
+                 <animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.5;0.6;0.9;1" dur="8s" repeatCount="indefinite" />
+                 ON
+            </text>
+            <text x="75" y="-10" font-family="monospace" font-size="18" fill="#64748b" font-weight="bold" opacity="0">
+                 <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.5;0.6;0.9;1" dur="8s" repeatCount="indefinite" />
+                 OFF
+            </text>
+
+            <!-- State B -->
+            <text x="200" y="-10" font-family="monospace" font-size="18" fill="#1d4ed8" font-weight="bold">상태 B:</text>
+            <text x="275" y="-10" font-family="monospace" font-size="18" fill="#64748b" font-weight="bold">
+                 <animate attributeName="opacity" values="1;1;0;0;0;0;1" keyTimes="0;0.2;0.3;0.6;0.7;0.9;1" dur="8s" repeatCount="indefinite" />
+                 OFF
+            </text>
+            <text x="275" y="-10" font-family="monospace" font-size="18" fill="#dc2626" font-weight="bold" opacity="0">
+                 <animate attributeName="opacity" values="0;0;1;1;1;1;0" keyTimes="0;0.2;0.3;0.6;0.7;0.9;1" dur="8s" repeatCount="indefinite" />
+                 ON
+            </text>
+
+            <text x="400" y="-10" font-family="monospace" font-size="24" fill="#a855f7" font-weight="bold">➤</text>
+
+            <circle cx="500" cy="-15" r="25" fill="#fde047" stroke="#ca8a04" stroke-width="3">
+                 <!-- ON when inputs are different -->
+                 <animate attributeName="fill" values="#fde047;#cbd5e1;#cbd5e1;#fde047;#fde047" keyTimes="0;0.25;0.55;0.65;1" dur="8s" repeatCount="indefinite" />
+            </circle>
+
+            <text x="500" y="-10" font-family="monospace" font-size="16" fill="#854d0e" text-anchor="middle" font-weight="bold">
+                 <animate attributeName="opacity" values="1;0;0;1;1" keyTimes="0;0.25;0.55;0.65;1" dur="8s" repeatCount="indefinite" />
+                 ON
+            </text>
+            <text x="500" y="-10" font-family="monospace" font-size="16" fill="#64748b" text-anchor="middle" font-weight="bold" opacity="0">
+                 <animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.25;0.55;0.65;1" dur="8s" repeatCount="indefinite" />
+                 OFF
+            </text>
+        </g>
+    </g>
+</svg>

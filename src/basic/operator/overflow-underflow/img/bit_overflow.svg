@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="100%" height="400">
+    <rect width="800" height="400" fill="#f8fafc" rx="15" />
+    <rect width="796" height="396" x="2" y="2" fill="none" stroke="#e2e8f0" stroke-width="4" rx="15" />
+    
+    <text x="400" y="40" font-family="'Segoe UI', Roboto, sans-serif" font-size="24" font-weight="bold" fill="#1e293b" text-anchor="middle">비트로 보는 오버플로우의 비밀 🕵️‍♂️</text>
+
+    <!-- Byte Bits (127) -->
+    <g transform="translate(100, 100)">
+        <text x="-40" y="30" font-family="'Segoe UI', Roboto, sans-serif" font-size="18" fill="#64748b" font-weight="bold">127 = </text>
+        
+        <!-- MSB (Sign Bit) -->
+        <rect x="0" y="0" width="60" height="50" rx="8" fill="#dcfce7" stroke="#22c55e" stroke-width="3" />
+        <text x="30" y="33" font-family="monospace" font-size="28" fill="#15803d" text-anchor="middle" font-weight="bold">0</text>
+        <text x="30" y="-10" font-family="'Segoe UI', Roboto, sans-serif" font-size="14" fill="#15803d" text-anchor="middle" font-weight="bold">부호비트(+)</text>
+
+        <!-- Data Bits -->
+        <g transform="translate(70, 0)">
+            <!-- 7 boxes for data -->
+            <rect x="0" y="0" width="50" height="50" rx="8" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="2" />
+            <rect x="60" y="0" width="50" height="50" rx="8" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="2" />
+            <rect x="120" y="0" width="50" height="50" rx="8" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="2" />
+            <rect x="180" y="0" width="50" height="50" rx="8" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="2" />
+            <rect x="240" y="0" width="50" height="50" rx="8" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="2" />
+            <rect x="300" y="0" width="50" height="50" rx="8" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="2" />
+            <rect x="360" y="0" width="50" height="50" rx="8" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="2" />
+
+            <!-- The 1s -->
+            <text x="25" y="33" font-family="monospace" font-size="24" fill="#334155" text-anchor="middle" font-weight="bold">1</text>
+            <text x="85" y="33" font-family="monospace" font-size="24" fill="#334155" text-anchor="middle" font-weight="bold">1</text>
+            <text x="145" y="33" font-family="monospace" font-size="24" fill="#334155" text-anchor="middle" font-weight="bold">1</text>
+            <text x="205" y="33" font-family="monospace" font-size="24" fill="#334155" text-anchor="middle" font-weight="bold">1</text>
+            <text x="265" y="33" font-family="monospace" font-size="24" fill="#334155" text-anchor="middle" font-weight="bold">1</text>
+            <text x="325" y="33" font-family="monospace" font-size="24" fill="#334155" text-anchor="middle" font-weight="bold">1</text>
+            <text x="385" y="33" font-family="monospace" font-size="24" fill="#334155" text-anchor="middle" font-weight="bold">1</text>
+        </g>
+    </g>
+
+    <!-- The Addition -->
+    <g transform="translate(100, 180)">
+        <text x="-40" y="30" font-family="'Segoe UI', Roboto, sans-serif" font-size="28" fill="#0ea5e9" font-weight="bold">+</text>
+        
+        <g transform="translate(70, 0)">
+            <text x="385" y="35" font-family="monospace" font-size="28" fill="#0ea5e9" text-anchor="middle" font-weight="bold">1</text>
+        </g>
+    </g>
+
+    <line x1="100" y1="240" x2="600" y2="240" stroke="#94a3b8" stroke-width="4" stroke-dasharray="8,8" />
+
+    <!-- Byte Bits (-128) -->
+    <g transform="translate(100, 270)">
+        <text x="-40" y="30" font-family="'Segoe UI', Roboto, sans-serif" font-size="18" fill="#ef4444" font-weight="bold">-128 =</text>
+        
+        <!-- Animated MSB (Sign Bit) -->
+        <rect x="0" y="0" width="60" height="50" rx="8" fill="#fee2e2" stroke="#ef4444" stroke-width="3" />
+        <!-- Flip from 0 to 1 -->
+        <text x="30" y="33" font-family="monospace" font-size="28" fill="#b91c1c" text-anchor="middle" font-weight="bold">
+            <tspan opacity="0"><animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.5;0.6;0.9;1" dur="5s" repeatCount="indefinite" />1</tspan>
+            <tspan opacity="1" x="30" y="33"><animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.5;0.6;0.9;1" dur="5s" repeatCount="indefinite" />?</tspan>
+        </text>
+        
+        <!-- Explanation arrow -->
+        <text x="30" y="80" font-family="'Segoe UI', Roboto, sans-serif" font-size="14" fill="#ef4444" text-anchor="middle" font-weight="bold" opacity="0">
+            <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.5;0.6;0.9;1" dur="5s" repeatCount="indefinite" />
+            ↑ 1로 바뀌어 음수가 됨!
+        </text>
+
+        <!-- Data Bits -->
+        <g transform="translate(70, 0)">
+            <rect x="0" y="0" width="50" height="50" rx="8" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="2" />
+            <rect x="60" y="0" width="50" height="50" rx="8" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="2" />
+            <rect x="120" y="0" width="50" height="50" rx="8" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="2" />
+            <rect x="180" y="0" width="50" height="50" rx="8" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="2" />
+            <rect x="240" y="0" width="50" height="50" rx="8" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="2" />
+            <rect x="300" y="0" width="50" height="50" rx="8" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="2" />
+            <rect x="360" y="0" width="50" height="50" rx="8" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="2" />
+
+            <text x="25" y="33" font-family="monospace" font-size="24" fill="#334155" text-anchor="middle" font-weight="bold">
+                <tspan opacity="0"><animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.5;0.6;0.9;1" dur="5s" repeatCount="indefinite" />0</tspan>
+            </text>
+            <text x="85" y="33" font-family="monospace" font-size="24" fill="#334155" text-anchor="middle" font-weight="bold">
+                <tspan opacity="0"><animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.5;0.6;0.9;1" dur="5s" repeatCount="indefinite" />0</tspan>
+            </text>
+            <text x="145" y="33" font-family="monospace" font-size="24" fill="#334155" text-anchor="middle" font-weight="bold">
+                <tspan opacity="0"><animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.5;0.6;0.9;1" dur="5s" repeatCount="indefinite" />0</tspan>
+            </text>
+            <text x="205" y="33" font-family="monospace" font-size="24" fill="#334155" text-anchor="middle" font-weight="bold">
+                <tspan opacity="0"><animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.5;0.6;0.9;1" dur="5s" repeatCount="indefinite" />0</tspan>
+            </text>
+            <text x="265" y="33" font-family="monospace" font-size="24" fill="#334155" text-anchor="middle" font-weight="bold">
+                <tspan opacity="0"><animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.5;0.6;0.9;1" dur="5s" repeatCount="indefinite" />0</tspan>
+            </text>
+            <text x="325" y="33" font-family="monospace" font-size="24" fill="#334155" text-anchor="middle" font-weight="bold">
+                <tspan opacity="0"><animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.5;0.6;0.9;1" dur="5s" repeatCount="indefinite" />0</tspan>
+            </text>
+            <text x="385" y="33" font-family="monospace" font-size="24" fill="#334155" text-anchor="middle" font-weight="bold">
+                <tspan opacity="0"><animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.5;0.6;0.9;1" dur="5s" repeatCount="indefinite" />0</tspan>
+            </text>
+            
+            <text x="205" y="33" font-family="monospace" font-size="24" fill="#94a3b8" text-anchor="middle" font-weight="bold">
+                 <tspan opacity="1"><animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.5;0.6;0.9;1" dur="5s" repeatCount="indefinite" />?</tspan>
+            </text>
+        </g>
+    </g>
+</svg>

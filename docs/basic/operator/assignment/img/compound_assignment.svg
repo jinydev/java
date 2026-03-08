@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 350" width="100%" height="350">
+    <rect width="800" height="350" fill="#f8fafc" rx="15" />
+    <rect width="796" height="346" x="2" y="2" fill="none" stroke="#e2e8f0" stroke-width="4" rx="15" />
+    
+    <text x="400" y="40" font-family="'Segoe UI', Roboto, sans-serif" font-size="24" font-weight="bold" fill="#1e293b" text-anchor="middle">복합 대입 연산자 (저금통 비유) 🐷</text>
+
+    <!-- Normal Assignment Box -->
+    <g transform="translate(100, 80)">
+        <rect width="250" height="220" rx="15" fill="#fef08a" stroke="#eab308" stroke-width="3" />
+        <text x="125" y="40" font-family="'Segoe UI', Roboto, sans-serif" font-size="20" fill="#a16207" text-anchor="middle" font-weight="bold">풀어쓴 코드</text>
+        <text x="125" y="75" font-family="monospace" font-size="16" fill="#854d0e" text-anchor="middle" font-weight="bold">money = money + 500;</text>
+        
+        <!-- Piggy Bank illustration -->
+        <g transform="translate(75, 100)">
+            <ellipse cx="50" cy="40" rx="40" ry="30" fill="#fcd34d" />
+            <circle cx="20" cy="30" r="5" fill="#d97706" />
+            <path d="M 70 30 Q 80 20 90 30" fill="none" stroke="#d97706" stroke-width="3" stroke-linecap="round" />
+            <rect x="40" y="10" width="20" height="5" fill="#b45309" />
+        </g>
+        
+        <text x="125" y="200" font-family="'Segoe UI', Roboto, sans-serif" font-size="14" fill="#a16207" text-anchor="middle" font-weight="bold">
+            "내 돈 꺼내서 500원 합치고 다시 넣어라!"
+        </text>
+    </g>
+
+    <!-- vs Symbol -->
+    <text x="400" y="190" font-family="monospace" font-size="40" fill="#94a3b8" text-anchor="middle" font-weight="bold">vs</text>
+
+    <!-- Compound Assignment Box -->
+    <g transform="translate(450, 80)">
+        <rect width="250" height="220" rx="15" fill="#dcfce7" stroke="#22c55e" stroke-width="3" />
+        <text x="125" y="40" font-family="'Segoe UI', Roboto, sans-serif" font-size="20" fill="#15803d" text-anchor="middle" font-weight="bold">복합 대입</text>
+        <text x="125" y="75" font-family="monospace" font-size="20" fill="#166534" text-anchor="middle" font-weight="bold">money += 500;</text>
+        
+        <!-- Animated Piggy Bank -->
+        <g transform="translate(75, 100)">
+            <ellipse cx="50" cy="40" rx="40" ry="30" fill="#86efac" />
+            <circle cx="20" cy="30" r="5" fill="#166534" />
+            <path d="M 70 30 Q 80 20 90 30" fill="none" stroke="#166534" stroke-width="3" stroke-linecap="round" />
+            <rect x="40" y="10" width="20" height="5" fill="#14532d" />
+            
+            <!-- Coin dropping -->
+            <g>
+                <circle cx="50" cy="-20" r="10" fill="#fbbf24" stroke="#d97706" stroke-width="2" />
+                <text x="50" y="-16" font-family="sans-serif" font-size="12" fill="#92400e" text-anchor="middle" font-weight="bold">+</text>
+                <animateTransform attributeName="transform" type="translate" 
+                    values="0,-20; 0,10; 0,10" 
+                    keyTimes="0; 0.6; 1" dur="2s" repeatCount="indefinite" />
+                <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.5;0.6;1" dur="2s" repeatCount="indefinite" />
+            </g>
+        </g>
+
+        <text x="125" y="200" font-family="'Segoe UI', Roboto, sans-serif" font-size="14" fill="#15803d" text-anchor="middle" font-weight="bold">
+            "내 저금통에 그냥 500원 넣어라!" (간결함)
+        </text>
+    </g>
+
+</svg>

@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 350" width="100%" height="350">
+    <rect width="800" height="350" fill="#f8fafc" rx="15" />
+    <rect width="796" height="346" x="2" y="2" fill="none" stroke="#e2e8f0" stroke-width="4" rx="15" />
+    
+    <text x="400" y="40" font-family="'Segoe UI', Roboto, sans-serif" font-size="24" font-weight="bold" fill="#1e293b" text-anchor="middle">왜 0.1은 이진수로 완벽히 표현할 수 없을까? 🔢</text>
+
+    <!-- 10진수 0.1 Box -->
+    <g transform="translate(100, 80)">
+        <rect width="250" height="200" rx="10" fill="#e0f2fe" stroke="#0ea5e9" stroke-width="2" />
+        <text x="125" y="30" font-family="'Segoe UI', Roboto, sans-serif" font-size="18" fill="#0369a1" font-weight="bold" text-anchor="middle">10진수 세계 (사람)</text>
+        
+        <circle cx="125" cy="110" r="40" fill="#bae6fd" stroke="#0284c7" stroke-width="2" />
+        <text x="125" y="120" font-family="monospace" font-size="32" fill="#0c4a6e" font-weight="bold" text-anchor="middle">0.1</text>
+        
+        <text x="125" y="180" font-family="'Segoe UI', Roboto, sans-serif" font-size="14" fill="#0369a1" font-weight="bold" text-anchor="middle">깔끔하게 떨어짐</text>
+    </g>
+
+    <!-- Arrow -->
+    <text x="400" y="190" font-family="monospace" font-size="40" fill="#94a3b8" font-weight="bold" text-anchor="middle">→</text>
+    <text x="400" y="150" font-family="'Segoe UI', Roboto, sans-serif" font-size="14" fill="#64748b" font-weight="bold" text-anchor="middle">2진수 변환</text>
+
+    <!-- 2진수 변환 계산 과정 Box -->
+    <g transform="translate(450, 80)">
+        <rect width="250" height="200" rx="10" fill="#fef08a" stroke="#eab308" stroke-width="2" />
+        <text x="125" y="30" font-family="'Segoe UI', Roboto, sans-serif" font-size="18" fill="#a16207" font-weight="bold" text-anchor="middle">2진수 세계 (컴퓨터)</text>
+        
+        <g transform="translate(50, 60)">
+             <text x="0" y="0" font-family="monospace" font-size="16" fill="#854d0e" font-weight="bold">
+                 <tspan x="0" y="0">0.1 × 2 = 0.2 <tspan fill="#ef4444">→ 0</tspan></tspan>
+                 <tspan x="0" y="25">0.2 × 2 = 0.4 <tspan fill="#ef4444">→ 0</tspan></tspan>
+                 <tspan x="0" y="50">0.4 × 2 = 0.8 <tspan fill="#ef4444">→ 0</tspan></tspan>
+                 <tspan x="0" y="75">0.8 × 2 = 1.6 <tspan fill="#22c55e">→ 1</tspan></tspan>
+                 <tspan x="0" y="100">0.6 × 2 = 1.2 <tspan fill="#22c55e">→ 1</tspan></tspan>
+             </text>
+             
+             <!-- Animated infinite indicator -->
+             <text x="75" y="130" font-family="'Segoe UI', Roboto, sans-serif" font-size="14" fill="#dc2626" font-weight="bold" text-anchor="middle">
+                 무한 반복 (0011 0011...)
+                 <animate attributeName="opacity" values="1;0.5;1" dur="2s" repeatCount="indefinite" />
+             </text>
+        </g>
+    </g>
+
+    <!-- Bottom Error Message -->
+    <g transform="translate(150, 300)">
+        <rect width="500" height="30" rx="15" fill="#fee2e2" />
+        <text x="250" y="20" font-family="'Segoe UI', Roboto, sans-serif" font-size="14" fill="#ef4444" font-weight="bold" text-anchor="middle">
+            10진수의 유한소수가 2진수로는 무한소수가 되어 "잘림(근사오차)"이 발생!
+        </text>
+    </g>
+</svg>

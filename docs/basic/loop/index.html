@@ -1075,44 +1075,64 @@
     </ol>
 </nav>
         <div class="bd-content ps-lg-2">
-            <h1 id="chapter-07-반복문">Chapter 07. 반복문</h1>
+            <h1 id="chapter-07-반복문-loops">Chapter 07. 반복문 (Loops)</h1>
 
-<h2 id="학습목표">학습목표</h2>
+<h2 id="1-반복문이란-끝없는-쳇바퀴-">1. 반복문이란? 끝없는 쳇바퀴 🐹</h2>
+
+<p>컴퓨터가 인간보다 압도적으로 뛰어난 단 한 가지 능력이 있다면, 그것은 바로 <strong>“지루한 단순 반복 작업을 빛의 속도로 불평 없이 해낸다는 것”</strong> 입니다.
+10만 줄짜리 문서를 복사 붙여넣기 한다고 상상해 볼까요? 사람은 며칠이 걸리겠지만, 컴퓨터는 단 1초면 충분합니다.</p>
+
+<p>이렇게 똑같은 코드를 원하는 만큼 반복하게 만들어주는 문법이 바로 <strong>반복문 (Loop)</strong> 입니다.</p>
+
+<p><img src="./img/loop_hamster_webtoon.png" alt="햄스터 쳇바퀴 반복문 웹툰" /></p>
+
+<p>웹툰 속 귀여운 햄스터가 <code class="language-plaintext highlighter-rouge">for</code>라는 쳇바퀴를 벗어나지 못하고 10바퀴를 꼬박 채울 때까지 계속 뛰는 것처럼, 컴퓨터도 우리가 설정한 ‘조건’이 끝날 때까지 쳇바퀴 안의 코드를 무한 반복해서 실행합니다.</p>
+
+<hr />
+
+<h2 id="2-컴퓨터-하드웨어cpu의-쳇바퀴-clock-cycle-️">2. 컴퓨터 하드웨어(CPU)의 쳇바퀴: Clock Cycle ⚙️</h2>
+
+<p>우리가 소프트웨어에서 <code class="language-plaintext highlighter-rouge">for</code>문이나 <code class="language-plaintext highlighter-rouge">while</code>문을 작성하면, 컴퓨터 내부(CPU)에서는 어떤 일이 벌어질까요?</p>
+
+<p>CPU는 심장 박동처럼 <strong>클럭(Clock)</strong> 이라는 전기 신호에 맞춰 규칙적으로 뜁니다.
+우리가 탈출 조건(예: 10바퀴만 돌아라)을 정해주지 않으면, CPU는 전원이 켜져 있는 한 수억 번, 수백억 번 이 클럭 사이클을 돌며 쳇바퀴 안의 코드를 반복 실행합니다.</p>
+
+<p>단순히 뱅글뱅글 도는 것이 아니라, 4단계의 치밀한 사이클 구조를 가집니다:</p>
+
+<p><img src="./img/loop_cpu_clock_anim.svg" alt="CPU Clock 제어문 애니메이션" /></p>
 
 <ol>
-  <li><strong>반복문</strong>: 코드를 여러 번 실행하게 만드는 <code class="language-plaintext highlighter-rouge">for</code>, <code class="language-plaintext highlighter-rouge">while</code> 문을 배웁니다.</li>
-  <li><strong>제어</strong>: 반복을 중간에 멈추거나(<code class="language-plaintext highlighter-rouge">break</code>), 이번만 건너뛰는(<code class="language-plaintext highlighter-rouge">continue</code>) 방법을 배웁니다.</li>
+  <li><strong>초기화 (Init)</strong>: 햄스터가 달리기 전 “나는 0바퀴부터 시작할거야” 라고 카운터를 0으로 맞춥니다.</li>
+  <li><strong>조건 판단 (Condition)</strong>: “지금 내가 10바퀴를 채웠나?” 매번 뛰기 전에 검사합니다. (못 채웠으면 3번으로, 다 채웠으면 쳇바퀴를 강제로 탈출합니다!)</li>
+  <li><strong>코드 실행 (Execution)</strong>: 진짜로 달립니다. (내가 시킨 반복 코드 1번 실행)</li>
+  <li><strong>증감 (Increment)</strong>: 1바퀴를 뛰었으므로, 카운터를 <code class="language-plaintext highlighter-rouge">+1</code> 시킵니다. 그리고 다시 2번(조건 검사)으로 돌아갑니다.</li>
 </ol>
 
-<h2 id="목차">목차</h2>
+<hr />
 
-<h3 id="71-for-문"><a href="./for">7.1 for 문</a></h3>
-<p>“10번 반복해!”처럼 횟수가 정해진 반복 작업을 처리하는 방법을 배웁니다.</p>
+<h2 id="3-이번-챕터에서-배울-내용">3. 이번 챕터에서 배울 내용</h2>
 
-<h3 id="72-while-문"><a href="./while">7.2 while 문</a></h3>
-<p>“비가 그칠 때까지 반복해!”처럼 조건에 따라 반복하는 방법을 배웁니다.</p>
+<p>기본 원리(쳇바퀴 사이클)는 완벽하게 똑같지만, 상황에 따라 유용하게 쓸 수 있는 다양한 모양의 쳇바퀴 3총사와 부속품들을 배울 것입니다.</p>
 
-<h3 id="73-do-while-문"><a href="./do-while">7.3 do-while 문</a></h3>
-<p>일단 한 번은 실행하고 나서, 계속할지 말지 결정하는 방법을 배웁니다.</p>
+<h3 id="반복문-3총사">반복문 3총사</h3>
+<ul>
+  <li><strong><a href="./for">7.1 for 문</a></strong>: “운동장 10바퀴 돌아!” 처럼 <strong>반복 횟수가 명확할 때</strong> 쓰기 좋은 가장 완벽한 쳇바퀴입니다.</li>
+  <li><strong><a href="./while">7.2 while 문</a></strong>: “비가 그칠 때까지 돌아!” 처럼 횟수보다는 <strong>조건이 만족되는 내내</strong> 무한정 돌리고 싶을 때 사용합니다.</li>
+  <li><strong><a href="./do-while">7.3 do-while 문</a></strong>: 무조건 일단 한 바퀴는 뛰고 나서 조건을 검사하는 특이한 쳇바퀴입니다.</li>
+</ul>
 
-<h3 id="74-break-문"><a href="./break">7.4 break 문</a></h3>
-<p>반복문을 즉시 탈출하는(멈추는) 방법을 배웁니다.</p>
+<h3 id="반복문-제어-브레이크와-점프">반복문 제어 (브레이크와 점프)</h3>
+<ul>
+  <li><strong><a href="./break">7.4 break 문</a></strong>: 10바퀴를 다 안 채웠더라도, 비상사태가 발생하면 쳇바퀴를 ‘즉시 부시고 탈출’ 해버리는 강력한 폭탄입니다.</li>
+  <li><strong><a href="./continue">7.5 continue 문</a></strong>: 달리다가 힘들면, 이번 바퀴는 무효 처리(점프)하고 바로 다음 바퀴 세팅(증감)으로 넘어가 버리는 스킵 기술입니다.</li>
+</ul>
 
-<h3 id="75-continue-문"><a href="./continue">7.5 continue 문</a></h3>
-<p>이번 회차만 건너뛰고 다음 반복으로 넘어가는 방법을 배웁니다.</p>
 
-
-            <div class="mt-5">
-                <!-- 구글 디스플레이 광고 (고정 위치용) -->
+            <div class="mt-10">
+                <!-- 구글 에스센스 광고 -->
                 <script async
                     src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3321560028329475"
                     crossorigin="anonymous"></script>
-                <!-- jinydev-java -->
-                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-3321560028329475"
-                    data-ad-slot="9323221865" data-ad-format="auto" data-full-width-responsive="true"></ins>
-                <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
             </div>
 
         </div>

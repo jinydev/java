@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 350" width="100%" height="350">
+    <rect width="800" height="350" fill="#f8fafc" rx="15" />
+    <rect width="796" height="346" x="2" y="2" fill="none" stroke="#e2e8f0" stroke-width="4" rx="15" />
+    
+    <text x="400" y="40" font-family="'Segoe UI', Roboto, sans-serif" font-size="24" font-weight="bold" fill="#1e293b" text-anchor="middle">컴퓨터의 실수 계산 오류 (부동 소수점) 🍎</text>
+
+    <!-- Math World vs Computer World -->
+    <g transform="translate(100, 80)">
+        <!-- Math Box (Left) -->
+        <g transform="translate(0, 0)">
+            <rect width="250" height="220" rx="15" fill="#fef08a" stroke="#eab308" stroke-width="3" />
+            <text x="125" y="40" font-family="'Segoe UI', Roboto, sans-serif" font-size="20" fill="#a16207" text-anchor="middle" font-weight="bold">우리의 수학 계산</text>
+            
+            <circle cx="125" cy="100" r="40" fill="#ef4444" stroke="#b91c1c" stroke-width="2" />
+            <path d="M 125 50 C 130 50 140 30 140 30" stroke="#15803d" stroke-width="4" fill="none" />
+            <text x="125" y="105" font-family="monospace" font-size="20" fill="white" text-anchor="middle" font-weight="bold">사과 1개</text>
+            
+            <text x="125" y="170" font-family="monospace" font-size="20" fill="#854d0e" text-anchor="middle" font-weight="bold">1.0 - 0.7 = <tspan fill="#16a34a">0.3</tspan></text>
+            <text x="125" y="200" font-family="'Segoe UI', Roboto, sans-serif" font-size="14" fill="#a16207" text-anchor="middle" font-weight="bold">오차 없는 완벽한 정답!</text>
+        </g>
+        
+        <!-- Animated Arrow -->
+        <path d="M 270 140 L 330 140" stroke="#94a3b8" stroke-width="5" stroke-dasharray="10,5" fill="none" marker-end="url(#arrow)">
+             <animate attributeName="stroke-dashoffset" values="15;0" dur="1s" repeatCount="indefinite" />
+        </path>
+
+        <!-- CPU Box (Right) -->
+        <g transform="translate(350, 0)">
+            <rect width="250" height="220" rx="15" fill="#e0f2fe" stroke="#0ea5e9" stroke-width="3" />
+            <text x="125" y="40" font-family="'Segoe UI', Roboto, sans-serif" font-size="20" fill="#0369a1" text-anchor="middle" font-weight="bold">컴퓨터 내부 연산</text>
+            
+            <text x="125" y="80" font-family="monospace" font-size="14" fill="#64748b" text-anchor="middle">
+                0.1 = 0.000110011... (무한)
+            </text>
+            
+            <g transform="translate(75, 100)">
+                 <rect width="100" height="30" rx="5" fill="#0f172a" />
+                 <text x="50" y="20" font-family="monospace" font-size="16" fill="#38bdf8" text-anchor="middle" font-weight="bold">IEEE 754</text>
+            </g>
+
+            <text x="125" y="170" font-family="monospace" font-size="16" fill="#0f172a" text-anchor="middle" font-weight="bold">
+                1.0 - 0.7 = 
+                <tspan fill="#ef4444" opacity="0">
+                    <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.5;0.9;1" dur="4s" repeatCount="indefinite" />
+                    <tspan font-size="14">0.299999993..</tspan>
+                </tspan>
+            </text>
+            <text x="125" y="200" font-family="'Segoe UI', Roboto, sans-serif" font-size="14" fill="#ef4444" text-anchor="middle" font-weight="bold" opacity="0">
+                <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.5;0.9;1" dur="4s" repeatCount="indefinite" />
+                미세한 오차 발생! ⚠️
+            </text>
+        </g>
+    </g>
+
+    <defs>
+        <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#94a3b8" />
+        </marker>
+    </defs>
+</svg>

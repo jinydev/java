@@ -1087,142 +1087,176 @@
         <div class="bd-content ps-lg-2">
             <h1 id="54-비교-연산자-comparison-operators">5.4 비교 연산자 (Comparison Operators)</h1>
 
-<p>“누가 더 키가 큰가?”, “비밀번호가 일치하는가?” 처럼 두 값을 비교할 때 사용하는 연산자입니다.
-결과는 무조건 <strong>참(<code class="language-plaintext highlighter-rouge">true</code>)</strong> 아니면 <strong>거짓(<code class="language-plaintext highlighter-rouge">false</code>)</strong>으로 나옵니다.</p>
+<p>“누가 더 키가 큰가요?”, “내 비밀번호와 똑같은가요?” 처럼 두 개의 값을 놓고 비교해보는 것이 바로 <strong>비교 연산자</strong>입니다! 
+결과는 복잡하게 나올 것 없이 무조건 <strong>“맞아!(true)”</strong> 아니면 <strong>“아니야!(false)”</strong> 두 가지로만 나옵니다.</p>
+
+<p>마치 스무고개 게임을 하는 것처럼 컴퓨터에게 “이 녀석이 저 녀석보다 작니?” 라고 물어보는 과정이에요.</p>
 
 <hr />
 
-<h2 id="1-크기-비교-숫자-️">1. 크기 비교 (숫자) ⚖️</h2>
+<h2 id="1-크기-비교-숫자-비교하기-️">1. 크기 비교 (숫자 비교하기) ⚖️</h2>
 
-<h3 id="1-개념">1) 개념</h3>
-<p>수학 시간에 배운 부등호를 그대로 사용합니다. (단, <code class="language-plaintext highlighter-rouge">≤</code>, <code class="language-plaintext highlighter-rouge">≥</code> 기호는 없어서 <code class="language-plaintext highlighter-rouge">&lt;=</code> 형태로 씁니다.)</p>
+<p>우리가 초등학교, 중학교 수학 시간에 배웠던 부등호 기호들을 컴퓨터에서도 똑같이 사용합니다. 
+(단, 키보드에는 <code class="language-plaintext highlighter-rouge">≤</code>, <code class="language-plaintext highlighter-rouge">≥</code> 기호가 없어서 부등호 옆에 <code class="language-plaintext highlighter-rouge">=</code>를 붙여서 <code class="language-plaintext highlighter-rouge">&lt;=</code>, <code class="language-plaintext highlighter-rouge">&gt;=</code> 형태로 쓰기로 약속했어요!)</p>
+
+<p><img src="./img/comparison_height_webtoon.png" alt="키 재기 웹툰" /></p>
+
+<p>위 그림처럼 서로 등을 맞대고 키를 재는 것과 완벽하게 똑같은 원리입니다!</p>
 
 <table>
   <thead>
     <tr>
       <th style="text-align: center">연산자</th>
-      <th style="text-align: left">설명</th>
-      <th style="text-align: left">예시 (a=10, b=5)</th>
-      <th style="text-align: left">결과</th>
+      <th style="text-align: left">어떤 뜻일까요?</th>
+      <th style="text-align: left">예시 질문 (a=10, b=5 일 때)</th>
+      <th style="text-align: left">대답 (결과)</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td style="text-align: center"><strong><code class="language-plaintext highlighter-rouge">&gt;</code></strong></td>
-      <td style="text-align: left">크다 (초과)</td>
+      <td style="text-align: left"><strong>크다 (초과)</strong>: 왼쪽이 오른쪽보다 커?</td>
       <td style="text-align: left"><code class="language-plaintext highlighter-rouge">10 &gt; 5</code></td>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">true</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">true</code> (맞아!)</td>
     </tr>
     <tr>
       <td style="text-align: center"><strong><code class="language-plaintext highlighter-rouge">&gt;=</code></strong></td>
-      <td style="text-align: left">크거나 같다 (이상)</td>
+      <td style="text-align: left"><strong>크거나 같다 (이상)</strong>: 왼쪽이 크거나 같아?</td>
       <td style="text-align: left"><code class="language-plaintext highlighter-rouge">10 &gt;= 10</code></td>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">true</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">true</code> (응, 같아!)</td>
     </tr>
     <tr>
       <td style="text-align: center"><strong><code class="language-plaintext highlighter-rouge">&lt;</code></strong></td>
-      <td style="text-align: left">작다 (미만)</td>
+      <td style="text-align: left"><strong>작다 (미만)</strong>: 왼쪽이 오른쪽보다 작아?</td>
       <td style="text-align: left"><code class="language-plaintext highlighter-rouge">10 &lt; 5</code></td>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">false</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">false</code> (아닌데?)</td>
     </tr>
     <tr>
       <td style="text-align: center"><strong><code class="language-plaintext highlighter-rouge">&lt;=</code></strong></td>
-      <td style="text-align: left">작거나 같다 (이하)</td>
+      <td style="text-align: left"><strong>작거나 같다 (이하)</strong>: 작거나 같아?</td>
       <td style="text-align: left"><code class="language-plaintext highlighter-rouge">10 &lt;= 5</code></td>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">false</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">false</code> (아니야!)</td>
     </tr>
   </tbody>
 </table>
 
-<h3 id="2-비유-양팔-저울">2) 비유: “양팔 저울”</h3>
-<ul>
-  <li>양쪽에 물건을 올렸을 때 어느 쪽으로 기울어지는지(True/False) 확인하는 것과 같습니다.</li>
-</ul>
+<h3 id="컴퓨터-속의-양팔-저울-️">컴퓨터 속의 “양팔 저울” ⚖️</h3>
+<p>컴퓨터는 비교를 할 때, 머릿속으로 양쪽 접시에 값을 올려놓고 어느 쪽이 더 무거운지(큰지) 확인하는 양팔 저울을 떠올립니다. 숫자를 올려놓았을 때 저울이 기울어지는 방향에 따라 true와 false가 결정됩니다!</p>
 
-<p><img src="./img/comparison_scale.png" alt="그림" /></p>
+<p><img src="./img/comparison_scale_anim.svg" alt="비교 연산자 양팔 저울 애니메이션" /></p>
 
 <hr />
 
-<h2 id="2-등가-비교-같니-다르니-">2. 등가 비교 (같니? 다르니?) 🤝</h2>
+<h2 id="2-등가-비교-완전히-똑같은가-">2. 등가 비교 (완전히 똑같은가?) 🤝</h2>
 
-<p>값이 같은지 다른지 확인할 때 사용합니다.</p>
+<p>이번에는 크기가 아니라 <strong>“둘이 완전히 똑같이 생겼는가?”</strong> 아니면 <strong>“서로 다르게 생겼는가?”</strong> 를 물어볼 때 쓰는 연산자입니다.</p>
 
 <table>
   <thead>
     <tr>
       <th style="text-align: center">연산자</th>
-      <th style="text-align: left">설명</th>
-      <th style="text-align: left">예시</th>
-      <th style="text-align: left">결과</th>
+      <th style="text-align: left">어떤 뜻일까요?</th>
+      <th style="text-align: left">예시 질문</th>
+      <th style="text-align: left">대답 (결과)</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td style="text-align: center"><strong><code class="language-plaintext highlighter-rouge">==</code></strong></td>
-      <td style="text-align: left">같다</td>
+      <td style="text-align: left"><strong>같다</strong>: 둘이 완전 똑같아?</td>
       <td style="text-align: left"><code class="language-plaintext highlighter-rouge">10 == 10</code></td>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">true</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">true</code> (맞아!)</td>
     </tr>
     <tr>
       <td style="text-align: center"><strong><code class="language-plaintext highlighter-rouge">!=</code></strong></td>
-      <td style="text-align: left">다르다</td>
+      <td style="text-align: left"><strong>다르다</strong>: 둘이 서로 달라? (<code class="language-plaintext highlighter-rouge">!</code>는 Not의 의미)</td>
       <td style="text-align: left"><code class="language-plaintext highlighter-rouge">10 != 5</code></td>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">true</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">true</code> (응, 달라!)</td>
     </tr>
   </tbody>
 </table>
 
 <blockquote>
-  <p><strong>주의</strong>: 수학에서는 <code class="language-plaintext highlighter-rouge">=</code>가 같다는 뜻이지만, 자바에서는 <code class="language-plaintext highlighter-rouge">=</code>는 <strong>대입(저장)</strong>이고, <code class="language-plaintext highlighter-rouge">==</code>가 <strong>비교(같다)</strong>입니다.</p>
+  <p>🚨 <strong>초보자들이 가장 많이 하는 실수! (반드시 기억하세요)</strong>
+수학 시간에는 <code class="language-plaintext highlighter-rouge">=</code> 하나만 써도 “같다”라는 뜻이었죠? 
+하지만 자바 프로그래밍에서 <strong><code class="language-plaintext highlighter-rouge">=</code> 하나는 “오른쪽 값을 왼쪽에 저장시켜라!(대입)”</strong> 라는 뜻입니다. 
+진짜로 둘이 같은지 물어보려면 <strong>반드시 <code class="language-plaintext highlighter-rouge">=</code>를 두 번 써서 <code class="language-plaintext highlighter-rouge">==</code></strong> 라고 해야 컴퓨터가 알아듣습니다!</p>
 </blockquote>
 
 <hr />
 
-<h2 id="3-함정-문자열string-비교-">3. 함정: 문자열(String) 비교 🚨</h2>
+<h2 id="3--초보자-탈곡기-비교-연산의-치명적인-함정-3가지와-해결책">3. 😱 초보자 탈곡기: 비교 연산의 치명적인 함정 3가지와 해결책!</h2>
 
-<p>숫자는 <code class="language-plaintext highlighter-rouge">==</code>로 비교하면 되지만, <strong>문자열은 절대로 <code class="language-plaintext highlighter-rouge">==</code>로 비교하면 안 됩니다!</strong></p>
+<p>비교 연산자는 언뜻 보면 세상에서 가장 쉬워 보입니다. “그냥 <code class="language-plaintext highlighter-rouge">==</code> 찍으면 끝 아니야?” 라고 생각하겠지만, 수많은 입문 학생들이 여기서 멘탈이 붕괴됩니다. 자바 세계에서는 <strong>자료형(타입)에 따라 엄청난 반전</strong>이 숨어 있거든요. 하나씩 해결책과 함께 알아볼까요?</p>
 
-<h3 id="1-왜-안-되나요">1) 왜 안 되나요?</h3>
-<p><code class="language-plaintext highlighter-rouge">String</code>은 참조 타입이라서 <code class="language-plaintext highlighter-rouge">==</code>는 “내용이 같은가?”가 아니라 <strong>“같은 물건(주소)인가?”</strong>를 비교하기 때문입니다.
-내용이 같아도 서로 다른 메모리 공간에 저장되어 있으면 <code class="language-plaintext highlighter-rouge">false</code>가 나올 수 있습니다.</p>
+<h3 id="함정-1-실수-비교-통수-엥-01이-01이-아니라고-">함정 1: 실수 비교 통수 “엥? 0.1이 0.1이 아니라고?!” 🥶</h3>
+<ul>
+  <li><strong>문제 발생</strong>: <code class="language-plaintext highlighter-rouge">3 == 3.0</code>은 정수 3과 실수 3.0을 비교하는 거라 당연히 <code class="language-plaintext highlighter-rouge">true</code>가 나옵니다 (자동 형변환 지원). 
+그런데 <code class="language-plaintext highlighter-rouge">0.1f == 0.1</code> 에서는 충격적이게도 <strong><code class="language-plaintext highlighter-rouge">false</code></strong> 가 나와버립니다!</li>
+  <li><strong>왜 그럴까요?</strong>: 컴퓨터가 소수(실수)를 메모리에 저장할 때는 크기에 한계가 있어서 뒷자리를 대충 반올림한 <strong>비슷한 근사값</strong>을 욱여넣습니다. (이전 챕터 “정확한 계산은 정수 연산으로” 참조). 
+가벼운 그릇인 <code class="language-plaintext highlighter-rouge">float</code>(0.1f)가 억지로 담아둔 숫자와, 큰 그릇인 <code class="language-plaintext highlighter-rouge">double</code>(0.1)이 억지로 담아둔 숫자는 <strong>미세한 뒷자리 오차</strong>가 서로 달라져 버린 겁니다.</li>
+  <li><strong>✅ 해결책</strong>:
+    <ol>
+      <li>피연산자를 모두 같은 작은 타입인 <code class="language-plaintext highlighter-rouge">float</code>로 <strong>강제 형변환(Casting)</strong>을 해주고 나서 비교해야 합니다. 예: <code class="language-plaintext highlighter-rouge">(float)0.1 == 0.1f</code></li>
+      <li>혹은 둘 다 10을 곱해서(스케일업) <strong>소수를 떼어버리고 완벽한 정수 형태로 만든 뒤</strong> 비교하세요!</li>
+    </ol>
+  </li>
+</ul>
 
-<h3 id="2-해결책-equals">2) 해결책: <code class="language-plaintext highlighter-rouge">.equals()</code></h3>
-<p>문자열의 <strong>내용</strong>이 같은지 비교하려면 반드시 <strong><code class="language-plaintext highlighter-rouge">.equals()</code></strong> 기능을 써야 합니다.</p>
+<h3 id="함정-2-포장된-정수integer-통수-똑같이-300원인데-다르다고-">함정 2: 포장된 정수(Integer) 통수 “똑같이 300원인데 다르다고?!” 📦</h3>
+<ul>
+  <li><strong>문제 발생</strong>: 자바에는 가벼운 알맹이 숫자(<code class="language-plaintext highlighter-rouge">int</code>)가 있고, 숫자를 상자에 예쁘게 포장해서 도장을 찍은 객체 형태(<code class="language-plaintext highlighter-rouge">Integer</code>)가 있습니다.
+<code class="language-plaintext highlighter-rouge">int a = 300;</code> 과 <code class="language-plaintext highlighter-rouge">Integer b = 300;</code> 을 <code class="language-plaintext highlighter-rouge">a == b</code>로 묻어보면 자바가 포장지를 알아서 뜯어주어 <code class="language-plaintext highlighter-rouge">true</code>가 나옵니다.
+그런데 상자끼리 비교하겠다고 <strong><code class="language-plaintext highlighter-rouge">Integer c = 300;</code> 과 <code class="language-plaintext highlighter-rouge">Integer d = 300;</code> 을 <code class="language-plaintext highlighter-rouge">c == d</code>로 물어보면 눈물 나게도 <code class="language-plaintext highlighter-rouge">false</code>가 나옵니다.</strong></li>
+  <li><strong>왜 그럴까요?</strong>: 포장된 상자(객체/참조형)끼리 <code class="language-plaintext highlighter-rouge">==</code> 기호로 검사하면, 내용물인 300원이 같은지가 궁금한 게 아니라 <strong>“그거 아예 물리적으로 똑같은 상자 공장에서 찍어낸 같은 박스야?!”</strong> 라고 상자(메모리 주소)를 물어보기 때문입니다. 서로 다른 두 박스이므로 무조건 <code class="language-plaintext highlighter-rouge">false</code>입니다.
+    <blockquote>
+      <p>(※ 참고로 자바가 메모리를 아끼려고 -128 ~ 127 사이의 작은 숫자는 똑같은 낡은 박스를 재활용합니다… 그래서 이 구간에서는 <code class="language-plaintext highlighter-rouge">==</code> 가 <code class="language-plaintext highlighter-rouge">true</code>가 나오는 함정도 파놓았습니다! 악마 같죠?)</p>
+    </blockquote>
+  </li>
+  <li><strong>✅ 해결책</strong>: 
+ 상자에 담긴 값(Object)을 비교할 때는 내용물을 까서 보여주는 <strong>마법의 주문 <code class="language-plaintext highlighter-rouge">.equals()</code> 를 사용</strong>해야 합니다! <code class="language-plaintext highlighter-rouge">c.equals(d)</code> 처럼요!</li>
+</ul>
+
+<h3 id="함정-3-문자열string-통수-비밀번호가-같은데-왜-로그인이-안돼-">함정 3: 문자열(String) 통수 “비밀번호가 같은데 왜 로그인이 안돼?!” 📱</h3>
+<ul>
+  <li><strong>문제 발생</strong>: 회원가입 때 적은 “Java”와, 이제 막 로그인하려고 타건한 “Java”를 <code class="language-plaintext highlighter-rouge">==</code> 로 비교하면 <code class="language-plaintext highlighter-rouge">false</code>가 나와서 절대 로그인이 되지 않습니다.</li>
+  <li><strong>왜 그럴까요?</strong>: 문자열(String)도 위 2번 함정의 <strong>“포장된 상자(참조형)”</strong> 기 때문입니다.</li>
+</ul>
+
+<p>아래 웹툰을 보면서 이해해 볼까요?</p>
+
+<p><img src="./img/comparison_string_webtoon.png" alt="문자열 비교 웹툰" /></p>
+
+<p>겉보기에 완전히 똑같이 생긴 쌍둥이 스마트폰 2대가 있다고 상상해 보세요. (화면에는 둘 다 “Java”라고 적혀 있습니다!)</p>
+<ul>
+  <li>
+    <p><strong><code class="language-plaintext highlighter-rouge">==</code> 로 검사하면?</strong> “어라? 1번 폰과 2번 폰은 집 주소가 다른 다른 기계네!” 하고 가차 없이 <code class="language-plaintext highlighter-rouge">false</code>를 뱉습니다.</p>
+  </li>
+  <li>
+    <p><strong>✅ 해결책</strong>:
+기계가 달라도 화면 속 글자(내용물)가 “Java”로 똑같은지를 알고 싶다면, 무조건 문자 뒤에 점(<code class="language-plaintext highlighter-rouge">.</code>)을 찍고 <strong><code class="language-plaintext highlighter-rouge">str1.equals(str2)</code></strong> 라는 마법 주문을 외워야 합니다!</p>
+  </li>
+</ul>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">String</span> <span class="n">str1</span> <span class="o">=</span> <span class="s">"Java"</span><span class="o">;</span>
-<span class="nc">String</span> <span class="n">str2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">(</span><span class="s">"Java"</span><span class="o">);</span> <span class="c1">// 내용은 같지만 주소가 다름</span>
+<span class="nc">String</span> <span class="n">str2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">(</span><span class="s">"Java"</span><span class="o">);</span> <span class="c1">// 내용물은 같지만, 아예 새로운 빈 박스에 포장해서 메모리에 생성함!</span>
 
-<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str1</span> <span class="o">==</span> <span class="n">str2</span><span class="o">);</span>      <span class="c1">// false (주소가 다름) ❌</span>
-<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str1</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">str2</span><span class="o">));</span> <span class="c1">// true (내용이 같음) ✅</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str1</span> <span class="o">==</span> <span class="n">str2</span><span class="o">);</span>      <span class="c1">// false (포장된 박스와 집 주소가 다르잖아!) ❌</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str1</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">str2</span><span class="o">));</span> <span class="c1">// true (오, 박스를 뜯어보니 글자 내용물은 똑같네!) ✅</span>
 </code></pre></div></div>
 
-<h3 id="3-비교-방식-시각화">3) 비교 방식 시각화</h3>
+<h3 id="눈으로-보는-문자열-메모리-비교-방식">눈으로 보는 문자열 메모리 비교 방식</h3>
 
-<pre><code class="language-mermaid">graph TD
-    subgraph Memory
-        Addr1[주소 100번지] --&gt; Val1["Java"]
-        Addr2[주소 200번지] --&gt; Val2["Java"]
-    end
-    
-    Op1["== (주소 비교)"] --&gt;|100번지 == 200번지?| Res1[false]
-    Op2[".equals() (내용 비교)"] --&gt;|"Java" == "Java"?| Res2[true]
-    
-    style Op1 fill:#fbb,stroke:#333
-    style Op2 fill:#bfb,stroke:#333
-</code></pre>
+<p>아래 애니메이션을 통해 <code class="language-plaintext highlighter-rouge">==</code> (물리적 주소 검사) 와 <code class="language-plaintext highlighter-rouge">.equals()</code> (내용물 검사) 가 컴퓨터 속에서 어떻게 다르게 일하는지 직접 확인해 보세요!</p>
+
+<p><img src="./img/string_equals_anim.svg" alt="문자열 비교 메모리 애니메이션" /></p>
 
 
-            <div class="mt-5">
-                <!-- 구글 디스플레이 광고 (고정 위치용) -->
+            <div class="mt-10">
+                <!-- 구글 에스센스 광고 -->
                 <script async
                     src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3321560028329475"
                     crossorigin="anonymous"></script>
-                <!-- jinydev-java -->
-                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-3321560028329475"
-                    data-ad-slot="9323221865" data-ad-format="auto" data-full-width-responsive="true"></ins>
-                <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
             </div>
 
         </div>

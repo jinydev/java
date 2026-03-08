@@ -1087,31 +1087,72 @@
         <div class="bd-content ps-lg-2">
             <h1 id="35-나눗셈-연산-후-nan과-infinity-처리">3.5 나눗셈 연산 후 NaN과 Infinity 처리</h1>
 
-<p>나눗셈(<code class="language-plaintext highlighter-rouge">/</code>) 또는 나머지(<code class="language-plaintext highlighter-rouge">%</code>) 연산에서 좌측 피연산자가 정수이고 우측 피연산자가 0일 경우 예외 (ArithmeticException)가 발생한다. 무한대의 값을 정수로 표현할 수 없기 때문이다.</p>
+<p>자바 프로그래밍에서 숫자를 계산하다 보면 <code class="language-plaintext highlighter-rouge">Infinity</code> 혹은 <code class="language-plaintext highlighter-rouge">NaN</code> 이라는 독특한 단어를 마주칠 때가 있습니다. 이 챕터에서는 왜 이런 결과가 나오는지, 그리고 어떻게 안전하게 처리해야 하는지 구체적인 원리와 함께 학습합니다.</p>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">5</span> <span class="o">/</span> <span class="mi">0</span> <span class="o">-&gt;</span> <span class="n">예외</span> <span class="n">발생</span>
-<span class="mi">5</span> <span class="o">%</span> <span class="mi">0</span> <span class="o">-&gt;</span> <span class="n">예외</span> <span class="n">발생</span>
+<p><img src="./img/nan_infinity_webtoon.png" alt="0으로 나누기 웹툰" /></p>
+
+<hr />
+
+<h2 id="1-infinity-무한대-란-">1. Infinity (무한대) 란? 🚀</h2>
+
+<p><strong>Infinity</strong>는 “끝을 알 수 없을 정도로 한없이 큰 수”를 수학적으로 표현한 것입니다. 컴퓨터의 한정된 메모리 상자(예: 64bit)가 더 이상 감당할 수 없을 정도로 결괏값이 폭발적으로 커질 때, “이 값은 우리 그릇을 초과한 무한대입니다!” 라고 선언해 버리는 특별한 표시라고 생각하면 됩니다. 주로 <strong>실수(double)를 0으로 나눌 때(<code class="language-plaintext highlighter-rouge">/</code>) 발생</strong>합니다.</p>
+
+<p><img src="./img/def_infinity_anim.svg" alt="Infinity 정의 애니메이션" /></p>
+
+<hr />
+
+<h2 id="2-nan-not-a-number-이란-‍️">2. NaN (Not a Number) 이란? 🤷‍♂️</h2>
+
+<p><strong>NaN</strong>은 영어 그대로 “이건 숫자가 아니다”라는 뜻입니다. 수학적으로 전혀 성립할 수 없거나, 컴퓨터가 도저히 해석 결과를 도출할 수 없는 의미 없는 계산을 강제로 시켰을 때 반환하는 <strong>치명적 수학 오류</strong> 표시입니다. 주로 <strong>실수(double)를 0으로 나눈 후 나머지(<code class="language-plaintext highlighter-rouge">%</code>)를 구할 때 발생</strong>합니다. 0으로 나눈 것의 나머지가 존재할 리 없기 때문입니다.</p>
+
+<p><img src="./img/def_nan_anim.svg" alt="NaN 정의 애니메이션" /></p>
+
+<hr />
+
+<h2 id="3-정수와-실수의-근본적인-차이-">3. 정수와 실수의 근본적인 차이 🧐</h2>
+
+<p>나눗셈 연산에 있어 아주 중요한 규칙이 있습니다. 바로 <strong>“정수는 에러를 내고, 실수는 버틴다”</strong> 입니다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">5</span> <span class="o">/</span> <span class="mi">0</span> <span class="o">-&gt;</span> <span class="n">예외</span> <span class="n">발생</span> <span class="o">(</span><span class="nc">ArithmeticException</span><span class="o">)</span>
+<span class="mi">5</span> <span class="o">%</span> <span class="mi">0</span> <span class="o">-&gt;</span> <span class="n">예외</span> <span class="n">발생</span> <span class="o">(</span><span class="nc">ArithmeticException</span><span class="o">)</span>
 </code></pre></div></div>
 
-<p>하지만 좌측 피연산자가 실수이거나 우측 피연산자가 0.0 또는 0.0f이면 예외가 발생하지 않고 연산의 결과는 Infinity(무한대) 또는 NaN(Not a Number)이 된다.</p>
+<p><strong>정수 연산의 경우:</strong>
+정수는 딱 떨어지는 정확한 숫자를 다루는 계산기(ALU)에 가깝습니다. “5개의 사과를 0명에게 나누어라”라는 명령을 받으면, 컴퓨터 논리 장치는 계산을 완료할 수 없다고 판단하고 즉시 <strong>오류(ArithmeticException)</strong> 를 뿜어내며 프로그램을 강제 종료시켜 버립니다.</p>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">5</span> <span class="o">/</span> <span class="mf">0.0</span> <span class="o">-&gt;</span> <span class="nc">Infinity</span>
-<span class="mi">5</span> <span class="o">%</span> <span class="mf">0.0</span> <span class="o">-&gt;</span> <span class="nc">NaN</span>
+<p><strong>실수 연산의 경우:</strong>
+반면 소수점을 포함하는 실수는 애초에 “근삿값”을 다루도록 설계(IEEE 754 표준)되었습니다. 분모가 0에 한없이 가까워질수록 (예: <code class="language-plaintext highlighter-rouge">5 / 0.1 = 50</code>, <code class="language-plaintext highlighter-rouge">5 / 0.001 = 5000</code> …) 그 결과값은 수학적으로 한없이 무한대에 수렴하게 됩니다. 
+따라서 컴퓨터는 에러를 내어 프로그램을 죽이는 대신 <strong><code class="language-plaintext highlighter-rouge">Infinity</code> 거나 <code class="language-plaintext highlighter-rouge">NaN</code></strong> 이라는 특별한 값을 결괏값으로 남겨두고 계속 실행을 진행합니다.</p>
+
+<p><img src="./img/zero_division_math.svg" alt="0으로 나누기 차이 애니메이션" /></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mf">5.0</span> <span class="o">/</span> <span class="mf">0.0</span> <span class="o">-&gt;</span> <span class="nc">Infinity</span> <span class="o">(</span><span class="n">몫은</span> <span class="n">무한대로</span> <span class="n">커진다</span><span class="o">)</span>
+<span class="mf">5.0</span> <span class="o">%</span> <span class="mf">0.0</span> <span class="o">-&gt;</span> <span class="nc">NaN</span> <span class="o">(</span><span class="n">무한대</span> <span class="n">몫의</span> <span class="n">나머지는</span> <span class="n">정의</span> <span class="n">불가</span><span class="o">)</span>
 </code></pre></div></div>
 
-<p>Infinity 또는 NaN 상태에서 계속해서 연산을 수행하면 안 된다. 어떤 연산을 하더라도 결과는 계속해서 Infinity와 NaN이 되므로 데이터가 엉망이 될 수 있다.</p>
+<hr />
+
+<h2 id="4-데이터-훼손의-전염성-주의-">4. 데이터 훼손의 전염성 주의! 🦠</h2>
+
+<p><code class="language-plaintext highlighter-rouge">Infinity</code> 또는 <code class="language-plaintext highlighter-rouge">NaN</code> 상태에서 계속해서 다른 숫자를 연산하면 절대로 안 됩니다. 
+무한대에 무슨 숫자를 더하든 무한대이고, 숫자가 아닌 쓰레기값(NaN)에 숫자를 더해봤자 여전히 쓰레기값입니다. 어떤 연산을 하더라도 계속해서 이 형태가 유지되므로 <strong>데이터 결괏값이 완전히 오염</strong>됩니다.</p>
+
+<p><img src="./img/nan_infinity_blackhole.svg" alt="NaN과 Infinity 전염 애니메이션" /></p>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Infinity</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">-&gt;</span> <span class="nc">Infinity</span>
 <span class="nc">NaN</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">-&gt;</span> <span class="nc">NaN</span>
 </code></pre></div></div>
 
-<p>그렇기 때문에 <code class="language-plaintext highlighter-rouge">/</code>와 <code class="language-plaintext highlighter-rouge">%</code> 연산의 결과가 Infinity 또는 NaN인지 먼저 확인하고 다음 연산을 수행하는 것이 좋다. 이를 확인하기 위해서는 <code class="language-plaintext highlighter-rouge">Double.isInfinite()</code>와 <code class="language-plaintext highlighter-rouge">Double.isNaN()</code>를 사용한다. 이렇게 하면 변수값이 Infinity 또는 NaN일 경우 <code class="language-plaintext highlighter-rouge">true</code>를, 그렇지 않다면 <code class="language-plaintext highlighter-rouge">false</code>를 산출한다.</p>
+<h3 id="어떻게-방어하나요-해결책">어떻게 방어하나요? (해결책)</h3>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">boolean</span> <span class="n">result</span> <span class="o">=</span> <span class="nc">Double</span><span class="o">.</span><span class="na">isInfinite</span><span class="o">(</span><span class="n">변수</span><span class="o">);</span>
-<span class="kt">boolean</span> <span class="n">result</span> <span class="o">=</span> <span class="nc">Double</span><span class="o">.</span><span class="na">isNaN</span><span class="o">(</span><span class="n">변수</span><span class="o">);</span>
+<p>그렇기 때문에 <code class="language-plaintext highlighter-rouge">/</code>와 <code class="language-plaintext highlighter-rouge">%</code> 연산의 결과가 <code class="language-plaintext highlighter-rouge">Infinity</code> 또는 <code class="language-plaintext highlighter-rouge">NaN</code>으로 변질되지 않았는지 먼저 확인하고 다음 연산을 수행해야 데이터를 안전하게 보존할 수 있습니다. 
+이를 위해 자바에서는 <strong><code class="language-plaintext highlighter-rouge">Double.isInfinite()</code></strong> 와 <strong><code class="language-plaintext highlighter-rouge">Double.isNaN()</code></strong> 메서드를 제공합니다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">boolean</span> <span class="n">result1</span> <span class="o">=</span> <span class="nc">Double</span><span class="o">.</span><span class="na">isInfinite</span><span class="o">(</span><span class="n">변수</span><span class="o">);</span> <span class="c1">// Infinity면 true 반환</span>
+<span class="kt">boolean</span> <span class="n">result2</span> <span class="o">=</span> <span class="nc">Double</span><span class="o">.</span><span class="na">isNaN</span><span class="o">(</span><span class="n">변수</span><span class="o">);</span>      <span class="c1">// NaN이면 true 반환</span>
 </code></pre></div></div>
 
-<p>다음 예제에서 7라인과 8라인을 번갈아 주석 처리하며 실행해 보자.</p>
+<p>다음 예제에서 알맞은 코드 방어 로직을 살펴보며 배운 내용을 마무리해 봅시다.</p>
 
 <p><strong>[예제: InfinityAndNaNCheckExample.java]</strong></p>
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch03.sec05</span><span class="o">;</span>
@@ -1120,39 +1161,32 @@
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
         <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span><span class="o">;</span>
         <span class="kt">double</span> <span class="n">y</span> <span class="o">=</span> <span class="mf">0.0</span><span class="o">;</span>
-        <span class="kt">double</span> <span class="n">z</span> <span class="o">=</span> <span class="n">x</span> <span class="o">/</span> <span class="n">y</span><span class="o">;</span>
-        <span class="c1">//double z = x % y;</span>
+        <span class="kt">double</span> <span class="n">z</span> <span class="o">=</span> <span class="n">x</span> <span class="o">/</span> <span class="n">y</span><span class="o">;</span> <span class="c1">// Infinity 발생</span>
+        <span class="c1">//double z = x % y; // 주석 해제 시 NaN 발생</span>
         
-        <span class="c1">//잘못된 코드</span>
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">z</span> <span class="o">+</span> <span class="mi">2</span><span class="o">);</span>
+        <span class="c1">// 잘못된 코드: 오염된 데이터가 계속 계산됨</span>
+        <span class="c1">// System.out.println(z + 2); </span>
         
-        <span class="c1">//알맞은 코드</span>
+        <span class="c1">// 알맞은 코드: isInfinite / isNaN 함수로 데이터 오염 여부 선제적 방어!</span>
         <span class="k">if</span><span class="o">(</span><span class="nc">Double</span><span class="o">.</span><span class="na">isInfinite</span><span class="o">(</span><span class="n">z</span><span class="o">)</span> <span class="o">||</span> <span class="nc">Double</span><span class="o">.</span><span class="na">isNaN</span><span class="o">(</span><span class="n">z</span><span class="o">))</span> <span class="o">{</span>
-            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"값 산출 불가"</span><span class="o">);</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"⚠️ 치명적 오류: 0으로 나눌 수 없어 값 산출이 불가합니다."</span><span class="o">);</span>
         <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">z</span> <span class="o">+</span> <span class="mi">2</span><span class="o">);</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"정상 산출 값: "</span> <span class="o">+</span> <span class="o">(</span><span class="n">z</span> <span class="o">+</span> <span class="mi">2</span><span class="o">));</span>
         <span class="o">}</span>
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div></div>
 
 <p><strong>실행 결과</strong></p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Infinity 또는 NaN
-값 산출 불가
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>⚠️ 치명적 오류: 0으로 나눌 수 없어 값 산출이 불가합니다.
 </code></pre></div></div>
 
 
-            <div class="mt-5">
-                <!-- 구글 디스플레이 광고 (고정 위치용) -->
+            <div class="mt-10">
+                <!-- 구글 에스센스 광고 -->
                 <script async
                     src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3321560028329475"
                     crossorigin="anonymous"></script>
-                <!-- jinydev-java -->
-                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-3321560028329475"
-                    data-ad-slot="9323221865" data-ad-format="auto" data-full-width-responsive="true"></ins>
-                <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
             </div>
 
         </div>

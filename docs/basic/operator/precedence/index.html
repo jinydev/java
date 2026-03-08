@@ -1085,64 +1085,103 @@
     </ol>
 </nav>
         <div class="bd-content ps-lg-2">
-            <h1 id="312-연산의-방향과-우선순위">3.12 연산의 방향과 우선순위</h1>
+            <h1 id="312-연산의-방향과-우선순위-operator-precedence">3.12 연산의 방향과 우선순위 (Operator Precedence)</h1>
 
-<p>산술 연산식에서 덧셈(<code class="language-plaintext highlighter-rouge">+</code>), 뺄셈(<code class="language-plaintext highlighter-rouge">-</code>) 연산자보다는 곱셈(<code class="language-plaintext highlighter-rouge">*</code>), 나눗셈(<code class="language-plaintext highlighter-rouge">/</code>) 연산자가 우선 처리된다는 것을 우리는 이미 알고 있다. 그러면 다른 연산자들의 경우는 어떨까? 예를 들어 다음과 같은 연산식에서 <code class="language-plaintext highlighter-rouge">&amp;&amp;</code> 연산자가 먼저 처리될까? 아니면 <code class="language-plaintext highlighter-rouge">&gt;</code>, <code class="language-plaintext highlighter-rouge">&lt;</code> 연산자가 먼저 처리될까?</p>
+<p>우리가 수학 시간에 “더하기보다 곱하기를 먼저 계산해야 해!”라고 배운 것처럼, 컴퓨터 내부에 있는 계산기(ALU)도 수많은 연산 기호들을 만났을 때 <strong>어떤 것부터 순서대로 처리해야 할지</strong> 철저한 규칙을 지키며 일합니다.</p>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="mi">0</span>
+<p>이 규칙을 이해하면 아무리 길고 복잡한 코드라도 컴퓨터가 어떤 순서로 맛있는 결과물을 요리해 낼지 한눈에 파악할 수 있답니다! 👨‍🍳</p>
+
+<hr />
+
+<h2 id="1-컴퓨터-주방cpu-alu의-주문-처리-순서-">1. 컴퓨터 주방(CPU ALU)의 주문 처리 순서 🍔</h2>
+
+<p>컴퓨터의 두뇌인 CPU 안에는 <strong>ALU(산술논리연산장치)</strong> 라는 수학과 논리를 담당하는 거대한 주방이 있습니다. 이 주방에는 매일 수천만 개의 연산 주문(영수증)이 쏟아집니다.</p>
+
+<p><img src="./img/precedence_cpu_restaurant_webtoon.png" alt="CPU ALU 레스토랑 웹툰" /></p>
+
+<p>웹툰을 보세요! 주방장(ALU)은 주문이 들어온 순서대로 아무거나 대충 요리하지 않습니다. 
+주문서(연산자)마다 <strong>VIP 등급(우선순위)</strong> 이 적혀 있기 때문에, 등급이 높은 주문을 먼저 처리하고, 등급이 낮은 일반 주문은 뒤로 미뤄서 큐(Queue)라는 대기줄에서 기다리게 만듭니다.</p>
+
+<h3 id="-전체-연산자-vip-등급표-피라미드">🏆 전체 연산자 VIP 등급표 (피라미드)</h3>
+
+<p>아래 그림은 자바 주방장이 정해놓은 절대적인 서열 피라미드입니다. 꼭대기에 가까울수록 <strong>먼저 계산(요리)</strong> 됩니다!</p>
+
+<p><img src="./img/operator_precedence_pyramid.svg" alt="연산자 우선순위 피라미드" /></p>
+
+<p><em>(💡 팁: 이 표를 억지로 다 외울 필요는 없습니다! 쓰다 보면 자연스럽게 손에 익습니다.)</em></p>
+
+<h4 id="예를-들어볼까요">예를 들어볼까요?</h4>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">boolean</span> <span class="n">result</span> <span class="o">=</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="o">;</span>
 </code></pre></div></div>
+<p>주방장에게 <code class="language-plaintext highlighter-rouge">&gt;</code> (비교 연산), <code class="language-plaintext highlighter-rouge">&lt;</code> (비교 연산), <code class="language-plaintext highlighter-rouge">&amp;&amp;</code> (논리 연산) 주문이 동시에 들어왔습니다.
+피라미드를 보면 비교 연산(<code class="language-plaintext highlighter-rouge">&gt;</code>,<code class="language-plaintext highlighter-rouge">&lt;</code>)이 논리 연산(<code class="language-plaintext highlighter-rouge">&amp;&amp;</code>)보다 서열이 위에 있습니다.
+그래서 주방장은 <strong>1. <code class="language-plaintext highlighter-rouge">x &gt; 0</code>을 먼저 계산</strong>하고, <strong>2. <code class="language-plaintext highlighter-rouge">y &lt; 0</code>을 계산</strong>한 뒤, <strong>3. 그 두 결과를 가지고 <code class="language-plaintext highlighter-rouge">&amp;&amp;</code> 연산</strong>을 마지막으로 요리합니다.</p>
 
-<p>연산자는 우선순위가 정해져 있다. <code class="language-plaintext highlighter-rouge">&amp;&amp;</code>보다는 <code class="language-plaintext highlighter-rouge">&gt;</code>, <code class="language-plaintext highlighter-rouge">&lt;</code>가 우선순위가 높기 때문에 <code class="language-plaintext highlighter-rouge">x &gt; 0</code>과 <code class="language-plaintext highlighter-rouge">y &lt; 0</code>이 먼저 처리되므로 <code class="language-plaintext highlighter-rouge">&amp;&amp;</code>는 <code class="language-plaintext highlighter-rouge">x &gt; 0</code>과 <code class="language-plaintext highlighter-rouge">y &lt; 0</code>의 산출값을 가지고 연산하게 된다.</p>
+<hr />
 
-<p><strong>우선순위 피라미드 (위쪽이 먼저 실행됨)</strong></p>
-<pre><code class="language-mermaid">graph TD
-    P1["1. 단항 연산자 (+, -, ++, --, !)"] --- P2["2. 산술 연산자 (*, /, % -&gt; +, -)"]
-    P2 --- P3["3. 비교 연산자 (&gt;, &lt;, &gt;=, &lt;=, ==, !=)"]
-    P3 --- P4["4. 논리 연산자 (&amp;&amp;, ||)"]
-    P4 --- P5["5. 대입 연산자 (=, +=, -=)"]
-    
-    style P1 fill:#ff9,stroke:#333
-    style P2 fill:#cfc,stroke:#333
-    style P3 fill:#ccf,stroke:#333
-    style P4 fill:#fcc,stroke:#333
-    style P5 fill:#eee,stroke:#333
-</code></pre>
+<h2 id="2-같은-등급표를-가진-손님끼리-싸움이-났다면-연산의-방향-">2. 같은 등급표를 가진 손님끼리 싸움이 났다면? (연산의 방향) 🤜🤛</h2>
 
-<p>그러면 우선순위가 같은 연산자들끼리는 어떤 순서로 처리될까? 이 경우는 연산의 방향에 따라 달라진다. 대부분의 연산자는 왼쪽에서부터 오른쪽으로(<code class="language-plaintext highlighter-rouge">-&gt;</code>) 연산을 수행한다. 예를 들어 다음 연산식을 보자.</p>
+<p>만약 서열이 똑같은 기호들이 우르르 메뉴를 시켰다면 어떻게 할까요? 이때는 <strong>‘연산의 방향’</strong> 이라는 교통정리 규칙을 따릅니다.</p>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">100</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">/</span> <span class="mi">3</span> <span class="o">%</span> <span class="mi">5</span>
+<h3 id="1-대부분은-왼쪽--오른쪽-먼저-온-사람-먼저">1) 대부분은 왼쪽 ➔ 오른쪽 (먼저 온 사람 먼저!)</h3>
+
+<p>대부분의 연산자(사칙연산, 비교, 논리 등)는 우리글을 읽는 것처럼 <strong>왼쪽에서 오른쪽</strong>으로 처리합니다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">/</span> <span class="mi">3</span> <span class="o">%</span> <span class="mi">5</span><span class="o">;</span>
 </code></pre></div></div>
+<p><code class="language-plaintext highlighter-rouge">*</code>, <code class="language-plaintext highlighter-rouge">/</code>, <code class="language-plaintext highlighter-rouge">%</code> 는 곱셈/나눗셈 계열로 <strong>우선순위 서열이 완벽히 똑같습니다.</strong> 
+그래서 주방장은 먼저 들어온 왼쪽 주문부터 차근차근 처리합니다.</p>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">100 * 2</code> 를 요리해서 <code class="language-plaintext highlighter-rouge">200</code>을 만듦.</li>
+  <li><code class="language-plaintext highlighter-rouge">200 / 3</code> 을 요리해서 몫인 <code class="language-plaintext highlighter-rouge">66</code>을 만듦.</li>
+  <li>마지막으로 <code class="language-plaintext highlighter-rouge">66 % 5</code> 를 요리해서 최종 결과 <code class="language-plaintext highlighter-rouge">1</code>을 쟁반에 내보냄.</li>
+</ol>
 
-<p><code class="language-plaintext highlighter-rouge">*</code>, <code class="language-plaintext highlighter-rouge">/</code>, <code class="language-plaintext highlighter-rouge">%</code>는 같은 우선순위를 갖고 있다. 이 연산자들은 연산 방향이 왼쪽에서 오른쪽으로 수행된다. 따라서 <code class="language-plaintext highlighter-rouge">100 * 2</code>가 제일 먼저 연산되어 200이 산출되고, 그 다음 <code class="language-plaintext highlighter-rouge">200 / 3</code>이 연산되어 66이 산출된다. 그 다음으로 <code class="language-plaintext highlighter-rouge">66 % 5</code>가 연산되어 결과값 1이 나온다.</p>
+<h3 id="2-예외-오른쪽--왼쪽으로-처리하는-청개구리-녀석들-">2) 예외! 오른쪽 ➔ 왼쪽으로 처리하는 청개구리 녀석들 🐸</h3>
 
-<p>하지만 대입 연산자(<code class="language-plaintext highlighter-rouge">=</code>, <code class="language-plaintext highlighter-rouge">+=</code>, <code class="language-plaintext highlighter-rouge">-=</code>, …)는 오른쪽에서 왼쪽(<code class="language-plaintext highlighter-rouge">&lt;-</code>)으로 연산을 수행한다.</p>
+<p>딱 두 종류의 연산자는 특이하게 오른쪽부터 왼쪽으로 거꾸로 처리합니다: 바로 <strong>단항 연산자(<code class="language-plaintext highlighter-rouge">++</code>, <code class="language-plaintext highlighter-rouge">--</code>, <code class="language-plaintext highlighter-rouge">!</code>)</strong> 와 <strong>대입 연산자(<code class="language-plaintext highlighter-rouge">=</code>, <code class="language-plaintext highlighter-rouge">+=</code>, <code class="language-plaintext highlighter-rouge">-=</code>)</strong> 입니다.</p>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="n">b</span> <span class="o">=</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">5</span><span class="o">;</span>
 </code></pre></div></div>
+<p>대입 연산자 <code class="language-plaintext highlighter-rouge">=</code> 는 오른쪽부터 처리됩니다!</p>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">c</code> 상자에 <code class="language-plaintext highlighter-rouge">5</code>를 담습니다.</li>
+  <li><code class="language-plaintext highlighter-rouge">b</code> 상자에 <code class="language-plaintext highlighter-rouge">c</code>의 내용물(<code class="language-plaintext highlighter-rouge">5</code>)을 담습니다.</li>
+  <li><code class="language-plaintext highlighter-rouge">a</code> 상자에 <code class="language-plaintext highlighter-rouge">b</code>의 내용물(<code class="language-plaintext highlighter-rouge">5</code>)을 담습니다.
+결국 세 변수 모두 5가 됩니다.</li>
+</ol>
 
-<p>위 연산식은 <code class="language-plaintext highlighter-rouge">c = 5</code>, <code class="language-plaintext highlighter-rouge">b = c</code>, <code class="language-plaintext highlighter-rouge">a = b</code> 순서로 실행된다. 따라서 실행되고 난 후에는 <code class="language-plaintext highlighter-rouge">a</code>, <code class="language-plaintext highlighter-rouge">b</code>, <code class="language-plaintext highlighter-rouge">c</code>의 값이 모두 5가 된다. 이와 같이 연산자는 우선순위 및 연산 방향이 정해져 있기 때문에 복잡한 연산식에서는 주의가 필요하다.</p>
+<hr />
 
-<p>위 표를 숙지했다 하더라도 여러 가지 연산자들이 섞여 있다면 어느 연산자가 먼저 처리될지 매우 혼란스러울 것이다. 그래서 먼저 처리해야 할 연산을 괄호<code class="language-plaintext highlighter-rouge">()</code>로 묶는 것을 추천한다. 괄호<code class="language-plaintext highlighter-rouge">()</code>는 최우선순위를 가지기 때문이다.</p>
+<h2 id="3-️-에라-모르겠다-무적의-방패-괄호--️">3. 🛡️ 에라, 모르겠다! 무적의 방패 “괄호 ()” 🛡️</h2>
+
+<p>막상 실무에서 코딩을 하다 보면 연산자가 4~5개씩 섞이게 되고, “이게 먼저 계산되던가.. 저게 먼저던가?” 헷갈리기 시작합니다. (전문 개발자들도 자주 헷갈립니다!)</p>
+
+<p><strong>이럴 땐 고민하지 말고 그냥 괄호 <code class="language-plaintext highlighter-rouge">( )</code> 로 묶어버리세요!</strong>
+자바 주방장은 다른 모든 VIP 등급을 다 무시하고, <strong>괄호 쳐진 주문서를 가장 최우선(0순위)으로 무조건 먼저 처리</strong>합니다.</p>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">var1</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
 <span class="kt">int</span> <span class="n">var2</span> <span class="o">=</span> <span class="mi">3</span><span class="o">;</span>
 <span class="kt">int</span> <span class="n">var3</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
-<span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">var1</span> <span class="o">+</span> <span class="n">var2</span> <span class="o">*</span> <span class="n">var3</span><span class="o">;</span> <span class="c1">// 1 + (3 * 2) = 7</span>
-<span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="o">(</span><span class="n">var1</span> <span class="o">+</span> <span class="n">var2</span><span class="o">)</span> <span class="o">*</span> <span class="n">var3</span><span class="o">;</span> <span class="c1">// (1 + 3) * 2 = 8</span>
+
+<span class="c1">// 괄호가 없을 때: 곱셈이 덧셈보다 먼저 요리됨</span>
+<span class="kt">int</span> <span class="n">result1</span> <span class="o">=</span> <span class="n">var1</span> <span class="o">+</span> <span class="n">var2</span> <span class="o">*</span> <span class="n">var3</span><span class="o">;</span> <span class="c1">// 1 + (3 * 2) = 7</span>
+
+<span class="c1">// 괄호를 쳤을 때: 곱셈 서열을 무시하고 괄호부터 요리함!</span>
+<span class="kt">int</span> <span class="n">result2</span> <span class="o">=</span> <span class="o">(</span><span class="n">var1</span> <span class="o">+</span> <span class="n">var2</span><span class="o">)</span> <span class="o">*</span> <span class="n">var3</span><span class="o">;</span> <span class="c1">// (1 + 3) * 2 = 8</span>
 </code></pre></div></div>
 
+<blockquote>
+  <p><strong>👨‍💻 선배 개발자의 조언:</strong>
+“우선순위 규칙에 자신 있더라도, 다른 사람이 내 코드를 읽을 때 헷갈리지 않도록 웬만하면 의미 단위를 괄호 <code class="language-plaintext highlighter-rouge">()</code> 로 확실하게 묶어주는 것이 ‘아름다운 코드 퀄리티(가독성)’를 만드는 핵심 비결입니다!”</p>
+</blockquote>
 
-            <div class="mt-5">
-                <!-- 구글 디스플레이 광고 (고정 위치용) -->
+
+            <div class="mt-10">
+                <!-- 구글 에스센스 광고 -->
                 <script async
                     src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3321560028329475"
                     crossorigin="anonymous"></script>
-                <!-- jinydev-java -->
-                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-3321560028329475"
-                    data-ad-slot="9323221865" data-ad-format="auto" data-full-width-responsive="true"></ins>
-                <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
             </div>
 
         </div>

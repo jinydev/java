@@ -1087,90 +1087,118 @@
         <div class="bd-content ps-lg-2">
             <h1 id="57-삼항-연산자-ternary-operator">5.7 삼항 연산자 (Ternary Operator)</h1>
 
-<p><code class="language-plaintext highlighter-rouge">if-else</code> 문을 단 한 줄로 줄여 쓸 수 있는 마법 같은 연산자입니다. 🪄
-항(피연산자)이 3개라서 <strong>삼항 연산자</strong>라고 부릅니다.</p>
+<p><code class="language-plaintext highlighter-rouge">if-else</code> 문을 여러 줄에 걸쳐 길게 써야 하는 코드를 단 한 줄로 깔끔하게 압축할 수 있는 마법 같은 연산자입니다. 🪄
+이 연산자는 필수 구성 요소(항)가 3개나 필요하기 때문에 유일하게 <strong>‘삼항’ 연산자</strong>라고 부릅니다.</p>
 
 <hr />
 
-<h2 id="1-구조-및-문법-">1. 구조 및 문법 📐</h2>
+<h2 id="1-일상생활의-삼항-연산자-영화관-매표소-">1. 일상생활의 삼항 연산자: 영화관 매표소 🎫</h2>
 
-<h3 id="1-공식">1) 공식</h3>
+<p>삼항 연산자의 핵심은 <strong>“질문에 대한 대답(True/False)에 따라 내어주는 결과물이 완전히 달라진다”</strong> 는 것입니다.</p>
+
+<p>영화관 매표소를 상상해 보세요.</p>
+
+<p><img src="./img/ternary_age_webtoon.png" alt="삼항 연산자 나이 조건 웹툰" /></p>
+
+<p>매표소 직원은 손님에게 딱 한 가지 질문조건을 던집니다. <em>“나이가 19세 이상인가요?”</em></p>
+<ol>
+  <li><strong>네 (True) 🟢</strong>: 직원은 왼쪽 서랍에서 <strong>‘성인 티켓’</strong> 을 꺼내 줍니다.</li>
+  <li><strong>아니오 (False) 🔴</strong>: 직원은 오른쪽 서랍에서 <strong>‘학생 티켓’</strong> 을 꺼내 줍니다.</li>
+</ol>
+
+<p>이처럼 조건에 따라 두 개의 값 중 딱 하나만 선택해서 반환하는 얄짤없는 논리 교차로가 바로 삼항 연산자입니다.</p>
+
+<hr />
+
+<h2 id="2-하드웨어의-삼항-연산자-멀티플렉서-mux-">2. 하드웨어의 삼항 연산자: 멀티플렉서 (MUX) 🚦</h2>
+
+<p>이 논리는 컴퓨터 CPU 내부의 하드웨어 부품인 <strong>멀티플렉서(Multiplexer, 줄여서 MUX)</strong> 와 완벽하게 동일하게 생겼습니다.</p>
+
+<p><img src="./img/ternary_mux_webtoon.png" alt="멀티플렉서 교통경찰 웹툰" /></p>
+
+<p>수많은 데이터(차량)가 지나가는 속에서, 경찰 아저씨(제어 장치)가 쥐고 있는 <strong>판단 스위치(0인지 1인지)</strong> 에 따라 A도로의 차만 지나가게 할지, B도로의 차만 지나가게 할지 순식간에 결정해버리는 물리적인 스위치 부품입니다.</p>
+
+<p>이를 소프트웨어 프로그래밍 언어로 옮겨 놓은 것이 우리의 주인공입니다.</p>
+
+<hr />
+
+<h2 id="3-구조-및-문법-">3. 구조 및 문법 📐</h2>
+
+<h3 id="1-공식-파헤치기">1) 공식 파헤치기</h3>
+<p>코드로 작성해보면 앞서 배운 매표소와 경찰 아저씨의 논리가 그대로 보입니다.</p>
+
 <blockquote>
-  <p><strong>(조건) ? 참일_때_값 : 거짓일_때_값</strong></p>
+  <p><strong>(조건식) ? 참일_때_값 : 거짓일_때_값 ;</strong></p>
 </blockquote>
 
 <ul>
-  <li><strong>물음표(<code class="language-plaintext highlighter-rouge">?</code>)</strong>: “이 조건이 참이니?” 라고 물어보는 것과 같습니다.</li>
-  <li><strong>콜론(<code class="language-plaintext highlighter-rouge">:</code>)</strong>: “아니면 이거!” 라고 대안을 제시하는 것과 같습니다.</li>
+  <li><strong>물음표(<code class="language-plaintext highlighter-rouge">?</code>) 스위치 확인</strong>: “앞의 조건식이 뭐야? 19세 이상(True)이야 아니야(False)?” 하고 컴퓨터에게 강하게 묻는 기호입니다.</li>
+  <li><strong>콜론(<code class="language-plaintext highlighter-rouge">:</code>) 갈림길 분리대</strong>: 참일 때 가져갈 값과 거짓일 때 가져갈 값을 양옆으로 분리해 주는 중앙선 역할을 합니다.</li>
 </ul>
 
-<h3 id="2-비유-양자택일-표지판">2) 비유: “양자택일 표지판”</h3>
-<ul>
-  <li>갈림길에서 표지판을 만났습니다.</li>
-  <li>“오른쪽으로 가면(참) 보물, 왼쪽으로 가면(거짓) 꽝”</li>
-</ul>
+<h3 id="2-파이프라인-시각화-데이터-흐름">2) 파이프라인 시각화 (데이터 흐름)</h3>
+<p>단 1줄짜리 코드 안에서, 데이터가 어떻게 물음표를 통과해 콜론을 거쳐 최종 변수에 담기는지 아래 파이프라인 애니메이션으로 살펴봅시다.</p>
 
-<h3 id="3-흐름-시각화">3) 흐름 시각화</h3>
+<p><img src="./img/ternary_pipeline_anim.svg" alt="삼항 연산자 파이프라인 애니메이션" /></p>
 
-<pre><code class="language-mermaid">graph TD
-    Cond{점수가 90점 이상?}
-    Cond --&gt;|Yes| True[참: 'A']
-    Cond --&gt;|No| False[거짓: 'B']
-    True --&gt; Result((결과))
-    False --&gt; Result
-    
-    style Cond fill:#ff9,stroke:#333
-    style True fill:#bfb,stroke:#333
-    style False fill:#fbb,stroke:#333
-</code></pre>
+<p>위 애니메이션에서 보듯 <code class="language-plaintext highlighter-rouge">age = 15</code> 일 때는 수십 개의 파이프를 통과할 필요 없이, 즉각적으로 <code class="language-plaintext highlighter-rouge">age &gt;= 19</code> 검문소에서 튕겨 나와 거짓(False) 경로인 <strong>“학생”</strong> 값을 들고 최종 조립되어 반환됩니다. <code class="language-plaintext highlighter-rouge">age = 25</code> 일 때는 당연히 윗길인 <strong>“성인”</strong> 을 들고 오겠죠.</p>
 
 <hr />
 
-<h2 id="2-코드-비교-if문-vs-삼항-연산자-️">2. 코드 비교: if문 vs 삼항 연산자 ⚖️</h2>
+<h2 id="4-코드-비교-if문-vs-삼항-연산자-️">4. 코드 비교: if문 vs 삼항 연산자 ⚖️</h2>
 
-<p>점수에 따라 학점을 주는 코드를 비교해 봅시다.</p>
+<p>같은 논리를 두 가지 방식으로 코딩해 봅시다.</p>
 
-<h3 id="1-if-else-문-5줄">1) if-else 문 (5줄)</h3>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">score</span> <span class="o">=</span> <span class="mi">85</span><span class="o">;</span>
-<span class="kt">char</span> <span class="n">grade</span><span class="o">;</span>
+<h3 id="1-일반적인-if-else-문-5줄-이상">1) 일반적인 if-else 문 (5줄 이상)</h3>
+<p>초보자가 가장 생각하기 편한 구조이지만, 단순한 선택을 하기 위해 코드가 너무 세로로 길어집니다.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">age</span> <span class="o">=</span> <span class="mi">15</span><span class="o">;</span>
+<span class="nc">String</span> <span class="n">ticket</span><span class="o">;</span> <span class="c1">// 티켓을 담을 빈 변수</span>
 
-<span class="k">if</span> <span class="o">(</span><span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">90</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">grade</span> <span class="o">=</span> <span class="sc">'A'</span><span class="o">;</span>
+<span class="k">if</span> <span class="o">(</span><span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">19</span><span class="o">)</span> <span class="o">{</span>             <span class="c1">// 조건</span>
+    <span class="n">ticket</span> <span class="o">=</span> <span class="s">"성인 티켓"</span><span class="o">;</span>    <span class="c1">// True일 때</span>
 <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-    <span class="n">grade</span> <span class="o">=</span> <span class="sc">'B'</span><span class="o">;</span>
+    <span class="n">ticket</span> <span class="o">=</span> <span class="s">"학생 티켓"</span><span class="o">;</span>    <span class="c1">// False일 때</span>
 <span class="o">}</span>
 </code></pre></div></div>
 
-<h3 id="2-삼항-연산자-1줄">2) 삼항 연산자 (1줄)</h3>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">score</span> <span class="o">=</span> <span class="mi">85</span><span class="o">;</span>
-<span class="kt">char</span> <span class="n">grade</span> <span class="o">=</span> <span class="o">(</span><span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">90</span><span class="o">)</span> <span class="o">?</span> <span class="sc">'A'</span> <span class="o">:</span> <span class="sc">'B'</span><span class="o">;</span>
+<h3 id="2-삼항-연산자-단-1줄">2) 삼항 연산자 (단 1줄!)</h3>
+<p>위의 6줄짜리 뚱뚱한 코드가, 깔끔하고 우아한 1줄짜리 코드로 환골탈태합니다.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">age</span> <span class="o">=</span> <span class="mi">15</span><span class="o">;</span>
+                                  <span class="c1">// 물음표(?)     (참)       (거짓)</span>
+<span class="nc">String</span> <span class="n">ticket</span> <span class="o">=</span> <span class="o">(</span><span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">19</span><span class="o">)</span> <span class="o">?</span> <span class="s">"성인 티켓"</span> <span class="o">:</span> <span class="s">"학생 티켓"</span><span class="o">;</span>
 </code></pre></div></div>
 
 <hr />
 
-<h2 id="3-주의사항-️">3. 주의사항 ⚠️</h2>
+<h2 id="5-️-치명적인-주의사항-가독성은-생명">5. ⚠️ 치명적인 주의사항 (가독성은 생명)</h2>
 
-<p>코드가 짧아진다고 무조건 좋은 것은 아닙니다.
-삼항 연산자를 너무 많이 중첩해서 쓰면 가독성이 떨어져서 <strong>스파게티 코드</strong>가 될 수 있습니다.</p>
+<p>코드가 1줄로 짧아진다고 해서 삼항 연산자를 무지막지하게 남발하면 절대 안 됩니다.
+<strong>삼항 연산자 안에 또 다른 삼항 연산자를 중첩해서 쓰면 안 됩니다.</strong></p>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// (X) 나쁜 예: 중첩 사용 (읽기 힘듦)</span>
-<span class="nc">String</span> <span class="n">result</span> <span class="o">=</span> <span class="o">(</span><span class="n">score</span> <span class="o">&gt;</span> <span class="mi">90</span><span class="o">)</span> <span class="o">?</span> <span class="s">"A"</span> <span class="o">:</span> <span class="o">((</span><span class="n">score</span> <span class="o">&gt;</span> <span class="mi">80</span><span class="o">)</span> <span class="o">?</span> <span class="s">"B"</span> <span class="o">:</span> <span class="s">"C"</span><span class="o">);</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ❌ 최악의 스파게티 코드 (읽는 사람 눈물 남)</span>
+<span class="c1">// "90점 넘으면 A, 아니면 80점 넘으면 B를 주고, 그것도 아니면 C를 줘라!"</span>
+<span class="nc">String</span> <span class="n">grade</span> <span class="o">=</span> <span class="o">(</span><span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">90</span><span class="o">)</span> <span class="o">?</span> <span class="s">"A"</span> <span class="o">:</span> <span class="o">((</span><span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">80</span><span class="o">)</span> <span class="o">?</span> <span class="s">"B"</span> <span class="o">:</span> <span class="s">"C"</span><span class="o">);</span>
 
-<span class="c1">// (O) 좋은 예: 이럴 땐 그냥 if-else if 문을 쓰세요.</span>
+<span class="c1">// 🟢 좋은 예시 (이럴 땐 깔끔하게 if - else if 문을 쓰세요!)</span>
+<span class="nc">String</span> <span class="n">grade</span><span class="o">;</span>
+<span class="k">if</span> <span class="o">(</span><span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">90</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">grade</span> <span class="o">=</span> <span class="s">"A"</span><span class="o">;</span>
+<span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">80</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">grade</span> <span class="o">=</span> <span class="s">"B"</span><span class="o">;</span>
+<span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+    <span class="n">grade</span> <span class="o">=</span> <span class="s">"C"</span><span class="o">;</span>
+<span class="o">}</span>
 </code></pre></div></div>
 
+<p><strong>👨‍💻 현업 개발자의 꿀팁!</strong>
+<em>“삼항 연산자는 갈림길이 딱 2개(예/아니오)로 심플하고 직관적으로 떨어지는 일에만 쓰고, 조건이 3개 이상으로 늘어나 빙빙 꼬일 것 같으면 미련 없이 <code class="language-plaintext highlighter-rouge">if</code>문으로 돌아가세요!”</em></p>
 
-            <div class="mt-5">
-                <!-- 구글 디스플레이 광고 (고정 위치용) -->
+
+            <div class="mt-10">
+                <!-- 구글 에스센스 광고 -->
                 <script async
                     src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3321560028329475"
                     crossorigin="anonymous"></script>
-                <!-- jinydev-java -->
-                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-3321560028329475"
-                    data-ad-slot="9323221865" data-ad-format="auto" data-full-width-responsive="true"></ins>
-                <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
             </div>
 
         </div>
