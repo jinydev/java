@@ -1085,44 +1085,112 @@
     </ol>
 </nav>
         <div class="bd-content ps-lg-2">
-            <h1 id="73-do-while-문">7.3 do-while 문</h1>
+            <h1 id="73-do-while-문-일단-한-번-해보고-생각하기">7.3 do-while 문 (일단 한 번 해보고 생각하기!)</h1>
 
-<h2 id="1-일단-한-번-해보고-생각하기-">1. 일단 한 번 해보고 생각하기 🤔</h2>
+<h2 id="1-마트-시식-코너의-법칙-">1. 마트 시식 코너의 법칙 🌭</h2>
 
-<p><code class="language-plaintext highlighter-rouge">while</code> 문은 시작할 때 조건을 검사해서, 처음부터 조건이 안 맞으면 아예 실행을 안 합니다.
-하지만 <strong><code class="language-plaintext highlighter-rouge">do-while</code></strong> 문은 <strong>일단 무조건 한 번은 실행</strong>하고 나서, 계속할지 검사합니다.</p>
+<p><code class="language-plaintext highlighter-rouge">while</code> 문이 “조건이 안 맞으면 아예 시작도 안 하는 깐깐한 문지기” 라면, <strong><code class="language-plaintext highlighter-rouge">do-while</code></strong> 문은 <strong>“일단 무조건 한 번은 들여보내 줄게. 그 다음부터 계속할지 말지 결정해!”</strong> 라고 말하는 관대한 문지기입니다.</p>
 
-<p><strong>비유</strong>: “일단 한 입 먹어봐. 맛있으면 더 먹어.”</p>
+<p>가장 완벽한 비유는 <strong>마트의 시식 코너</strong>입니다.</p>
 
-<p><img src="./img/do_while_loop.png" alt="그림" /></p>
+<p><img src="./img/dowhile_tasting_webtoon.png" alt="do-while 문 시식 코너 웹툰" /></p>
 
-<pre><code class="language-mermaid">flowchart TD
-    Start([시작]) --&gt; Run[실행 블록 (무조건 1회 실행)]
+<ol>
+  <li>시식 코너 아주머니는 손님이 오면 <strong>지도 따지지도 않고 일단 입에 소시지를 하나 넣어줍니다. (<code class="language-plaintext highlighter-rouge">do</code> : 무조건 1회 실행)</strong></li>
+  <li>손님이 오물오물 씹어보고 맛을 느낍니다.</li>
+  <li>아주머니가 묻습니다. <strong>“어때, 맛있어? 더 먹을래?” (<code class="language-plaintext highlighter-rouge">while</code> : 조건 검사)</strong></li>
+  <li>맛있으면(True) 1번으로 돌아가 하나 더 먹고, 맛없으면(False) 미련 없이 떠납니다.</li>
+</ol>
+
+<hr />
+
+<h2 id="2-do-while-문-해부학-먼저-때리고-나중에-묻는다-">2. do-while 문 해부학 (먼저 때리고 나중에 묻는다) 🥊</h2>
+
+<p>구조를 보면 왜 ‘선(先)실행 후(後)검사’ 라고 불리는지 직관적으로 알 수 있습니다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 변수 선언</span>
+<span class="kt">boolean</span> <span class="n">isTasty</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span> 
+
+<span class="c1">// 시작하자마자 일단 중괄호 { } 안으로 돌진합니다!</span>
+<span class="k">do</span> <span class="o">{</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"일단 소시지를 하나 먹습니다. 냠냠."</span><span class="o">);</span>
     
-    Run --&gt; Cond{조건식 검사}
-    
-    Cond -- "참 (true)" --&gt; Run
-    Cond -- "거짓 (false)" --&gt; End([종료])
-    
-    style Start fill:#f9f,stroke:#333,stroke-width:2px
-    style End fill:#ccc,stroke:#333,stroke-width:2px
-    style Cond fill:#ff9,stroke:#333,stroke-width:2px
-    style Run fill:#bfb,stroke:#333,stroke-width:2px
-</code></pre>
+    <span class="c1">// 이 시점에서 isTasty 의 상태를 결정하는 코드가 들어갑니다.</span>
+<span class="o">}</span> <span class="k">while</span> <span class="o">(</span> <span class="n">isTasty</span> <span class="o">);</span> <span class="c1">// 다 먹고 나서야 평가합니다. 조심: 끝에 세미콜론(;) 필수!</span>
+</code></pre></div></div>
 
+<p>이 흐름을 애니메이션으로 보면 <code class="language-plaintext highlighter-rouge">while</code> 문과 확실히 다른 점을 알 수 있습니다.</p>
+
+<p><img src="./img/dowhile_flow_anim.svg" alt="do-while 문 흐름 애니메이션" /></p>
+
+<p>가장 큰 특징은 <strong>맨 처음에 진입할 때 조건 검사소가 없다는 것</strong>입니다. 그냥 하이패스로 통과해서 코드를 한 번 시원하게 실행한 뒤, 쳇바퀴 맨 밑바닥에서 다음 바퀴를 돌지 말지 결정합니다.</p>
+
+<blockquote>
+  <p><strong>💡 주의:</strong> <code class="language-plaintext highlighter-rouge">while(조건식)</code> 뒤에 평소와 다르게 <strong>세미콜론(<code class="language-plaintext highlighter-rouge">;</code>)</strong> 이 붙는다는 점을 꼭 잊지 마세요!</p>
+</blockquote>
+
+<hr />
+
+<h2 id="3-언제-써야-할까-사용자-눈치-보기-">3. 언제 써야 할까? (사용자 눈치 보기 👀)</h2>
+
+<p>실무에서 <code class="language-plaintext highlighter-rouge">do-while</code> 문이 압도적으로 활약하는 곳은 바로 <strong>‘사용자 메뉴 입력 검사’</strong> 입니다.</p>
+
+<p>프로그램을 켜면 일단 사용자에게 메뉴(1번: 시작, 2번: 설정, 3번: 종료)를 화면에 <strong>최소 1번은 보여줘야</strong> 사용자가 뭘 누를지 알 수 있습니다. 즉, 검사하기 전에 일단 “메뉴 출력 및 입력받기” 동작이 선행되어야만 하는 상황에 <code class="language-plaintext highlighter-rouge">do-while</code> 문이 찰떡궁합입니다.</p>
+
+<h3 id="-실습-1-스마트폰-패턴-잠금-해제-흉내내기">🎯 실습 1. 스마트폰 패턴 잠금 해제 흉내내기</h3>
+
+<p>사용자가 올바른 비밀번호를 입력할 때까지 계속 물어보는 예제입니다. 일단 무조건 한 번은 암호를 대라고 물어봐야겠죠?</p>
+
+<blockquote>
+  <p><strong>🗣️ 학생 프롬프트 (AI에게 이렇게 명령해 보세요):</strong>
+“자바 do-while문을 써서 비밀번호 맞히기 게임을 짜줘.
+정답 비밀번호는 “1234”야.
+do 블록 안에서 Scanner로 “비밀번호를 입력하세요: “ 라고 묻고 입력을 받아.
+while 조건식에서는 (입력한 비밀번호가 “1234”가 아닐 동안) 계속 루프를 돌게 해.
+루프를 무사히 빠져나오면 “잠금이 해제되었습니다!” 라고 출력해 줘.”</p>
+</blockquote>
+
+<p><strong>[AI가 생성할 자바 코드 예측]</strong></p>
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
 
-<span class="nc">Scanner</span> <span class="n">scanner</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
-<span class="nc">String</span> <span class="n">inputString</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">PasswordUnlock</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Scanner</span> <span class="n">scanner</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+        <span class="nc">String</span> <span class="n">inputPwd</span><span class="o">;</span>
+        <span class="nc">String</span> <span class="n">correctPwd</span> <span class="o">=</span> <span class="s">"1234"</span><span class="o">;</span>
 
-<span class="k">do</span> <span class="o">{</span>
-    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"명령어를 입력하세요: "</span><span class="o">);</span> <span class="c1">// 무조건 한 번은 물어봄</span>
-    <span class="n">inputString</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextLine</span><span class="o">();</span>
-    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"입력값: "</span> <span class="o">+</span> <span class="n">inputString</span><span class="o">);</span>
-<span class="o">}</span> <span class="k">while</span><span class="o">(</span> <span class="o">!</span> <span class="n">inputString</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"q"</span><span class="o">)</span> <span class="o">);</span> <span class="c1">// "q"를 입력하지 않는 동안 계속 반복</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"🔒 스마트폰이 잠겨 있습니다."</span><span class="o">);</span>
 
-<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"프로그램 종료"</span><span class="o">);</span>
+        <span class="c1">// 일단 묻고 봅니다. (do)</span>
+        <span class="k">do</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"비밀번호 4자리를 입력하세요: "</span><span class="o">);</span>
+            <span class="n">inputPwd</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextLine</span><span class="o">();</span>
+            
+            <span class="k">if</span> <span class="o">(!</span><span class="n">inputPwd</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">correctPwd</span><span class="o">))</span> <span class="o">{</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"❌ 삐빅! 비밀번호가 틀렸습니다. 다시 시도하세요.\n"</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span> <span class="k">while</span> <span class="o">(</span> <span class="o">!</span><span class="n">inputPwd</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">correctPwd</span><span class="o">)</span> <span class="o">);</span> 
+        <span class="c1">// 👆 입력한 비밀번호가 "1234"가 "아닌 동안" 계속 쳇바퀴를 돕니다.</span>
+
+        <span class="c1">// 정답을 맞혀서 while 조건이 False가 되면 이곳으로 탈출!</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"🔓 철칵! 잠금이 해제되었습니다 환영합니다!"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
 </code></pre></div></div>
+
+<p><strong>[실행 결과 예시]</strong></p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>🔒 스마트폰이 잠겨 있습니다.
+비밀번호 4자리를 입력하세요: 0000
+❌ 삐빅! 비밀번호가 틀렸습니다. 다시 시도하세요.
+
+비밀번호 4자리를 입력하세요: 1111
+❌ 삐빅! 비밀번호가 틀렸습니다. 다시 시도하세요.
+
+비밀번호 4자리를 입력하세요: 1234
+🔓 철칵! 잠금이 해제되었습니다 환영합니다!
+</code></pre></div></div>
+
+<p>이처럼 사용자 입력 값의 유효성을 검사하고, 틀리면 다시 입력하라고 무한히 괴롭히는(?) UI를 만들 때 <code class="language-plaintext highlighter-rouge">do-while</code> 문은 아주 강력한 무기가 됩니다!</p>
 
 
             <div class="mt-10">

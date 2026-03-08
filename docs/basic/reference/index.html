@@ -1075,57 +1075,101 @@
     </ol>
 </nav>
         <div class="bd-content ps-lg-2">
-            <h1 id="chapter-05-참조-타입-reference-types">Chapter 05. 참조 타입 (Reference Types)</h1>
+            <h1 id="chapter-05-참조-타입-reference-types---리모컨과-거대한-tv">Chapter 05. 참조 타입 (Reference Types) - 리모컨과 거대한 TV</h1>
 
 <h2 id="1-값기본-타입-vs-참조-타입-">1. 값(기본) 타입 vs 참조 타입 🧐</h2>
 
-<p>지금까지 배운 <code class="language-plaintext highlighter-rouge">int</code>, <code class="language-plaintext highlighter-rouge">double</code>, <code class="language-plaintext highlighter-rouge">boolean</code> 같은 기본 타입(Primitive Type) 변수들은 작은 택배 상자와 같습니다. 숫자 <code class="language-plaintext highlighter-rouge">10</code>을 넣으면 그 상자 안에 <code class="language-plaintext highlighter-rouge">10</code>이라는 진짜 데이터가 그대로 들어갑니다.</p>
+<p>지금까지 배운 <code class="language-plaintext highlighter-rouge">int</code>, <code class="language-plaintext highlighter-rouge">double</code>, <code class="language-plaintext highlighter-rouge">boolean</code> 같은 기본 타입(Primitive Type) 변수들은 내 주머니 속의 <strong>‘작은 동전 지갑’</strong> 과 같습니다. 숫자 <code class="language-plaintext highlighter-rouge">10</code>을 넣으면 그 지갑 안에 <code class="language-plaintext highlighter-rouge">10</code>이라는 진짜 데이터가 그대로 쏙 들어갑니다.</p>
 
-<p>하지만 우리가 앞으로 다룰 <strong>문자열(String)</strong>, <strong>배열(Array)</strong>, <strong>클래스(Class)</strong> 같은 데이터는 그 크기가 어마어마하게 큽니다. 학생 10,000명의 이름표를 작은 택배 상자 하나에 욱여넣을 수는 없겠죠?</p>
+<p>하지만 우리가 앞으로 다룰 <strong>문자열(String)</strong>, <strong>배열(Array)</strong>, <strong>클래스(Class)</strong> 같은 데이터는 그 크기가 어마어마하게 큽니다. 학생 10,000명의 이름표 데이터를 내 작은 동전 지갑 하나에 우겨넣을 수는 없겠죠?</p>
 
 <p>그래서 자바는 <strong>‘참조 타입 (Reference Type)’</strong> 이라는 아주 똑똑한 보관 방식을 사용합니다!</p>
 
 <hr />
 
-<h2 id="2-스택stack과-힙heap-리모컨과-거대한-tv-">2. 스택(Stack)과 힙(Heap): 리모컨과 거대한 TV 📺</h2>
+<h2 id="2-스택stack과-힙heap-코앞의-좁은-책상-vs-거대한-물류-창고-">2. 스택(Stack)과 힙(Heap): 코앞의 좁은 책상 vs 거대한 물류 창고 📺</h2>
 
 <p>이 참조 타입을 이해하려면 컴퓨터 메모리의 두 가지 핵심 구역(Stack, Heap)을 알아야 합니다.
-아주 쉬운 비유를 위해 <strong>내 앞의 작은 책상(Stack)</strong> 과 <strong>저 멀리 있는 거대한 창고(Heap)</strong> 를 상상해 봅시다.</p>
+아주 쉬운 비유를 위해 <strong>내 앞의 작은 사무실 책상(Stack)</strong> 과 <strong>저 멀리 있는 초대형 물류 창고(Heap)</strong> 를 상상해 봅시다.</p>
 
-<p><img src="./img/reference_memory_webtoon.png" alt="메모리 구조 웹툰" /></p>
+<p><img src="./img/reference_memory_webtoon.png" alt="스택 힙 메모리 구조 웹툰" /></p>
 
 <ul>
-  <li><strong>스택 (Stack) 영역</strong>: 내 코앞에 있는 작은 책상입니다. 서랍이 좁아서 진짜 데이터(<code class="language-plaintext highlighter-rouge">10</code>, <code class="language-plaintext highlighter-rouge">3.14</code>)나 작고 가벼운 <strong>리모컨(주소값)</strong> 만 올려둘 수 있습니다. 대신 손을 뻗으면 0.001초 만에 바로 꺼낼 수 있어 속도가 엄청 빠릅니다.</li>
-  <li><strong>힙 (Heap) 영역</strong>: 산골짜기에 있는 초대형 물류 창고입니다. 공간이 무한대에 가까워서 엄청나게 거대한 스마트 TV(객체 데이터)나 수만 개의 배열 상자를 마음껏 던져둘 수 있습니다.</li>
+  <li><strong>스택 (Stack) 영역</strong>: 내 코앞에 있는 작은 책상입니다. 서랍이 좁아서 진짜 데이터(<code class="language-plaintext highlighter-rouge">10</code>, <code class="language-plaintext highlighter-rouge">3.14</code> 같은 기본 타입)나 작고 가벼운 <strong>리모컨(참조 주소값)</strong> 만 올려둘 수 있습니다. 대신 나랑 제일 가까워서 손을 뻗으면 0.001초 만에 바로 꺼낼 수 있어 속도가 엄청 빠릅니다!</li>
+  <li><strong>힙 (Heap) 영역</strong>: 산골짜기에 있는 초대형 물류 창고입니다. 공간이 무한대에 가까워서 엄청나게 거대한 스마트 TV나 수만 개의 상자(객체 데이터, 배열)를 마음껏 던져둘 수 있습니다.</li>
 </ul>
 
-<h3 id="-그럼-tv를-어떻게-보나요-참조의-원리">💡 그럼 TV를 어떻게 보나요? (참조의 원리)</h3>
+<h3 id="-그럼-무거운-tv를-어떻게-보나요-참조의-원리">💡 그럼 무거운 TV를 어떻게 보나요? (참조의 원리)</h3>
 
-<p>우리는 무거운 TV(객체)를 끙끙대며 내 좁은 책상(스택)으로 가져오지 않습니다. TV는 창고(힙)에 놔둔 채, 책상에는 <strong>TV와 연결된 작은 만능 리모컨(참조 변수)</strong> 만 올려둡니다.</p>
+<p>우리는 무거운 85인치 TV(객체 데이터)를 끙끙대며 내 좁은 책상(스택) 위로 가져오지 않습니다. TV 본체는 그저 넓은 창고(힙)에 놔둔 채, 내 책상에는 <strong>그 TV와 주파수가 연결된 작은 만능 리모컨(참조 변수)</strong> 만 가볍게 올려둡니다.</p>
 
-<p>여러분이 자바에서 <code class="language-plaintext highlighter-rouge">리모컨.전원켜기()</code> 라고 코드를 입력하면, 스택에 있는 리모컨이 레이저 빔을 쏴서 힙 창고에 있는 100A 번지 TV를 원격으로 조종하는 것입니다!</p>
+<p>여러분이 자바에서 <code class="language-plaintext highlighter-rouge">내티비.전원켜기()</code> 라고 코드를 치면, 스택에 있는 리모컨이 레이저 빔을 쏴서 힙 창고의 100A 번지 구역에 있는 진짜 거대 TV를 원격으로 조종하는 것입니다!</p>
 
-<p><img src="./img/reference_memory_anim.svg" alt="스택 힙 참조 애니메이션" /></p>
+<p><img src="./img/reference_memory_anim.svg" alt="스택 힙 참조 원리 애니메이션" /></p>
 
-<p>위 애니메이션처럼 참조 타입 변수(<code class="language-plaintext highlighter-rouge">myTv</code>) 안에는 진짜 “디즈니+” 라는 데이터가 들어있는 것이 아닙니다. 대신 그 데이터가 숨어있는 <strong>창고의 비밀 지도 좌표(메모리 주소, 예: 0x100A)</strong> 가 적혀 있습니다.</p>
+<p>위 애니메이션처럼 참조 타입 변수(<code class="language-plaintext highlighter-rouge">name</code>)의 지갑을 열어보면 안에는 진짜 “지니개발” 이라는 글자 데이터가 들어있는 것이 아닙니다. 대신 그 글자 덩어리가 숨어있는 <strong>창고의 비밀 지도 좌표(메모리 번지수, 예: 0x100A)</strong> 가 적힌 쪽지가 들어있을 뿐입니다.</p>
 
 <blockquote>
-  <p><strong>핵심 요약:</strong>
-기본 타입 변수는 메모리에 <strong>“진짜 값”</strong> 을 저장하고, 참조 타입 변수는 메모리에 진짜 값이 있는 <strong>“주소 (리모컨 주파수)”</strong> 를 저장한다!</p>
+  <p><strong>💡 핵심 요약! 자다가도 벌떡 일어나 외워야 할 문장:</strong></p>
+  <ol>
+    <li>기본 타입 변수는 메모리(스택)에 <strong>“진짜 데이터 값”</strong> 을 저장한다.</li>
+    <li>참조 타입 변수는 메모리(스택)에 진짜 데이터가 있는 힙 창고의 <strong>“위치(주소, 번지수)”</strong> 를 저장한다!</li>
+  </ol>
 </blockquote>
 
 <hr />
 
 <h2 id="3-참조-타입의-무서운-점-널-포인터-에러-nullpointerexception-">3. 참조 타입의 무서운 점: 널 포인터 에러 (NullPointerException) 💣</h2>
 
-<p>리모컨 비유를 알면, 초보 자바 개발자들이 가장 많이 겪는 지옥의 에러인 <code class="language-plaintext highlighter-rouge">NullPointerException</code> 도 한 번에 이해할 수 있습니다.</p>
+<p>위의 리모컨 비유를 완벽히 이해하셨다면, 초중급 자바 개발자들이 자다가도 식은땀을 흘리며 벌떡 깬다는 그 유명한 지옥의 에러, <strong><code class="language-plaintext highlighter-rouge">NullPointerException</code></strong> 도 단 1초 만에 이해할 수 있습니다.</p>
 
-<p><code class="language-plaintext highlighter-rouge">null</code> 이란 “리모컨은 있는데, 연결된 TV가 없음(주소가 비어있음)!” 이라는 뜻입니다.
-그런데 연결된 TV도 없는 빈 껍데기 리모컨을 들고 <code class="language-plaintext highlighter-rouge">전원켜기()</code> 버튼을 꾹꾹 누르면 어떻게 될까요? 컴퓨터는 무슨 TV를 켜야 할지 몰라 그 자리에서 펑! 하고 프로그램이 터져버립니다. 이것이 바로 그 유명한 <code class="language-plaintext highlighter-rouge">NullPointerException</code> 입니다.</p>
+<p><code class="language-plaintext highlighter-rouge">null</code> 이란 “리모컨은 손에 쥐고 있는데, 아직 이 리모컨이랑 주파수를 맞춘 TV(본체)가 창고에 하나도 없음!” 이라는 뜻입니다. (주소가 비어있음)</p>
+
+<p>그런데 연결된 TV 본체도 없는 ‘빈 껍데기 리모컨’을 들고 허공에 대고 <code class="language-plaintext highlighter-rouge">전원켜기()</code> 버튼을 꾹꾹 누르면 어떻게 될까요? 
+컴퓨터는 허공에 쏜 레이저를 보고 당황하며 “어? 창고에 TV가 없는데 누굴 조종하라는 거야?!” 라며 그 자리에서 펑! 하고 프로그램을 강제로 터뜨려버립니다.</p>
+
+<h3 id="-실습-1-가장-흔한-에러-nullpointerexception-의도적으로-유발하기">🎯 실습 1. 가장 흔한 에러, NullPointerException 의도적으로 유발하기</h3>
+
+<p>가장 좋은 공부는 에러를 겪어보는 것입니다. AI 가이드의 도움을 받아 일부러 자바 프로그램을 폭파시켜 봅시다!</p>
+
+<blockquote>
+  <p><strong>🗣️ 학생 프롬프트 (AI에게 이렇게 명령해 보세요):</strong>
+“자바 언어로 NullPointerException이 터지는 코드를 의도적으로 하나 보여줘.
+String 타입의 변수 str을 만들고 처음에 null 이라고 초기화해 줘. (= TV 없는 빈 리모컨)
+그 다음 줄에서 str.length() 명령어를 써서 글자 수를 세라고 시켜 줘. (= 허공에 대고 버튼 누르기)
+그리고 실행하면 어떤 에러 메시지가 콘솔에 뜨는지 주석으로 설명해 줘.”</p>
+</blockquote>
+
+<p><strong>[AI가 생성할 자바 코드 예측]</strong></p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">NullErrorDemo</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        
+        <span class="c1">// 1. String 타입 리모컨을 만들긴 했지만, 아직 아무 글자 TV와 연결하지 않았습니다!</span>
+        <span class="nc">String</span> <span class="n">str</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span> 
+        
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"프로그램을 시작합니다."</span><span class="o">);</span>
+        
+        <span class="c1">// 2. 💣 펑! (연결된 객체가 없는데 리모컨의 length() 버튼을 눌렀습니다!)</span>
+        <span class="kt">int</span> <span class="n">length</span> <span class="o">=</span> <span class="n">str</span><span class="o">.</span><span class="na">length</span><span class="o">();</span> 
+        
+        <span class="c1">// 3. 위에서 에러가 터지면서 프로그램이 강제 종료되므로, 이 줄은 영원히 출력되지 않습니다.</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"글자 수는 "</span> <span class="o">+</span> <span class="n">length</span> <span class="o">+</span> <span class="s">"개 입니다."</span><span class="o">);</span> 
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>[실행 결과 (에러 발생)]</strong></p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>프로그램을 시작합니다.
+Exception in thread "main" java.lang.NullPointerException
+    at NullErrorDemo.main(NullErrorDemo.java:10)
+</code></pre></div></div>
+<p>이 에러가 뜨면 당황하지 마시고, <strong>“아뿔싸! 내가 리모컨만 쥐고 창고에 진짜 객체 덩어리를 만들어주지(new) 않았구나!”</strong> 라고 깨달으시면 여러분은 이미 중급 개발자의 시야를 갖춘 것입니다!</p>
 
 <hr />
 
 <h2 id="4-이번-챕터에서-배울-내용">4. 이번 챕터에서 배울 내용</h2>
+
+<p>이제 본격적으로 자바의 가장 거대한 세계, ‘참조 타입’의 숲으로 들어가 보겠습니다.</p>
 
 <ul>
   <li><a href="./01/">5.1 데이터 타입 분류</a></li>

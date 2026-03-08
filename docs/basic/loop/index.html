@@ -5,28 +5,28 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- 기본 메타데이터 --><meta name="description" content="Chapter 07. 반복문 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."><meta name="author" content="HojinLee"><!-- 제목 설정 --><title>Chapter 07. 반복문</title>
-  <meta name="title" content="Chapter 07. 반복문" /><!-- 키워드 설정 --><meta name="keywords" content="Chapter 07. 반복문, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"><!-- Open Graph 메타데이터 --><meta property="og:title" content="Chapter 07. 반복문"><meta property="og:description" content="Chapter 07. 반복문 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."><meta property="og:type" content="website"><meta property="og:locale" content="ko">
+  <!-- 기본 메타데이터 --><meta name="description" content="07. 반복문 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."><meta name="author" content="HojinLee"><!-- 제목 설정 --><title>07. 반복문</title>
+  <meta name="title" content="07. 반복문" /><!-- 키워드 설정 --><meta name="keywords" content="07. 반복문, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"><!-- Open Graph 메타데이터 --><meta property="og:title" content="07. 반복문"><meta property="og:description" content="07. 반복문 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."><meta property="og:type" content="website"><meta property="og:locale" content="ko">
   <meta property="og:site_name" content="linux">
   <meta property="og:url" content="https://java.jiny.dev/basic/loop/">
   <!-- 대표 URL (캐노니컬) -->
   <link rel="canonical" href="https://java.jiny.dev/basic/loop/">
 
-  <!-- Twitter 카드 메타데이터 --><meta name="twitter:card" content="summary"><meta property="twitter:title" content="Chapter 07. 반복문"><meta property="twitter:description" content="Chapter 07. 반복문 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."><!-- Begin Jekyll SEO tag v2.8.0 -->
+  <!-- Twitter 카드 메타데이터 --><meta name="twitter:card" content="summary"><meta property="twitter:title" content="07. 반복문"><meta property="twitter:description" content="07. 반복문 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."><!-- Begin Jekyll SEO tag v2.8.0 -->
 <meta name="generator" content="Jekyll v4.4.1" />
-<meta property="og:title" content="Chapter 07. 반복문" />
+<meta property="og:title" content="반복문" />
 <meta name="author" content="Hojin" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Chapter 07. 반복문 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다." />
-<meta property="og:description" content="Chapter 07. 반복문 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다." />
+<meta name="description" content="반복문 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다." />
+<meta property="og:description" content="반복문 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다." />
 <link rel="canonical" href="https://java.jiny.dev/basic/loop/" />
 <meta property="og:url" content="https://java.jiny.dev/basic/loop/" />
 <meta property="og:site_name" content="객체지향 자바 프로그래밍 (Object-Oriented Java Programming)" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Chapter 07. 반복문" />
+<meta property="twitter:title" content="반복문" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"Chapter 07. 반복문 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다.","headline":"Chapter 07. 반복문","url":"https://java.jiny.dev/basic/loop/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"반복문 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다.","headline":"반복문","url":"https://java.jiny.dev/basic/loop/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -1068,14 +1068,14 @@
         
         
         
-        <li class="breadcrumb-item active" aria-current="page">Chapter 07. 반복문</li>
+        <li class="breadcrumb-item active" aria-current="page">07. 반복문</li>
         
         
         
     </ol>
 </nav>
         <div class="bd-content ps-lg-2">
-            <h1 id="chapter-07-반복문-loops">Chapter 07. 반복문 (Loops)</h1>
+            <h1 id="07-반복문-loops">07. 반복문 (Loops)</h1>
 
 <h2 id="1-반복문이란-끝없는-쳇바퀴-">1. 반복문이란? 끝없는 쳇바퀴 🐹</h2>
 
@@ -1094,19 +1094,19 @@
 
 <p>우리가 소프트웨어에서 <code class="language-plaintext highlighter-rouge">for</code>문이나 <code class="language-plaintext highlighter-rouge">while</code>문을 작성하면, 컴퓨터 내부(CPU)에서는 어떤 일이 벌어질까요?</p>
 
-<p>CPU는 심장 박동처럼 <strong>클럭(Clock)</strong> 이라는 전기 신호에 맞춰 규칙적으로 뜁니다.
-우리가 탈출 조건(예: 10바퀴만 돌아라)을 정해주지 않으면, CPU는 전원이 켜져 있는 한 수억 번, 수백억 번 이 클럭 사이클을 돌며 쳇바퀴 안의 코드를 반복 실행합니다.</p>
+<p>CPU는 심장 박동처럼 <strong>클럭(Clock)</strong> 이라는 전기 신호에 맞춰 1초에 수십억 번씩 규칙적으로 뜁니다 (예: 3.0GHz 칩셋).
+우리가 탈출 조건(예: 10바퀴만 돌아라)을 정해주지 않는다면, CPU는 전원이 켜져 있는 한 영원히 이 클럭 사이클을 돌며 쳇바퀴 안의 코드를 반복 실행합니다.</p>
 
-<p>단순히 뱅글뱅글 도는 것이 아니라, 4단계의 치밀한 사이클 구조를 가집니다:</p>
+<p>이 반복 과정은 단순히 뱅글뱅글 도는 것이 아니라, <strong>4단계의 치밀한 구조</strong>를 가집니다:</p>
 
 <p><img src="./img/loop_cpu_clock_anim.svg" alt="CPU Clock 제어문 애니메이션" /></p>
 
-<ol>
-  <li><strong>초기화 (Init)</strong>: 햄스터가 달리기 전 “나는 0바퀴부터 시작할거야” 라고 카운터를 0으로 맞춥니다.</li>
-  <li><strong>조건 판단 (Condition)</strong>: “지금 내가 10바퀴를 채웠나?” 매번 뛰기 전에 검사합니다. (못 채웠으면 3번으로, 다 채웠으면 쳇바퀴를 강제로 탈출합니다!)</li>
-  <li><strong>코드 실행 (Execution)</strong>: 진짜로 달립니다. (내가 시킨 반복 코드 1번 실행)</li>
-  <li><strong>증감 (Increment)</strong>: 1바퀴를 뛰었으므로, 카운터를 <code class="language-plaintext highlighter-rouge">+1</code> 시킵니다. 그리고 다시 2번(조건 검사)으로 돌아갑니다.</li>
-</ol>
+<ul>
+  <li><strong>① 초기화 (Init, 빨간색)</strong>: 햄스터가 달리기 전 “나는 0바퀴부터 시작할거야” 라고 카운터를 0으로 맞춥니다. (루프 진입 시 딱 1번만 실행됨)</li>
+  <li><strong>② 조건 판단 (Condition, 노란색)</strong>: “지금 내가 10바퀴를 채웠나?” 매번 뛰기 전에 검사합니다. (참이면 3번으로 가고, 거짓이면 쳇바퀴를 강제로 탈출하여 루프를 종료합니다!)</li>
+  <li><strong>③ 코드 실행 (Execution, 초록색)</strong>: 진짜로 달립니다. (우리가 <code class="language-plaintext highlighter-rouge">{}</code> 중괄호 안에 시킨 진짜 목적 달성 코드 1회 실행)</li>
+  <li><strong>④ 증감 (Increment, 보라색)</strong>: 1바퀴를 뛰었으므로, 카운터를 <code class="language-plaintext highlighter-rouge">+1</code> 시킵니다. 그리고 다시 ②번(조건 검사)으로 돌아가 사이클을 이어갑니다.</li>
+</ul>
 
 <hr />
 

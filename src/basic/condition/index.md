@@ -1,14 +1,14 @@
 ---
 layout: basic
-title: "Chapter 06. 조건문"
+title: "06. 조건문"
 nav_order: 6
 has_children: true
 parent: "Part 01. 자바 언어의 기초"
-description: "Chapter 06. 조건문 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
-keywords: "Chapter 06. 조건문, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
+description: "06. 조건문 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."
+keywords: "06. 조건문, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
-# Chapter 06. 조건문
+# 06. 조건문
 
 ## 학습목표
 

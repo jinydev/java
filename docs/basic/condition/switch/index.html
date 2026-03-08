@@ -1085,56 +1085,210 @@
     </ol>
 </nav>
         <div class="bd-content ps-lg-2">
-            <h1 id="63-switch-문">6.3 switch 문</h1>
+            <h1 id="63-switch-문-상태-기반-분기">6.3 switch 문 (상태 기반 분기)</h1>
 
-<h2 id="1-자판기-버튼-누르기-">1. 자판기 버튼 누르기 🎰</h2>
+<p><code class="language-plaintext highlighter-rouge">if</code> 문이 “참(True)이냐 거짓(False)이냐?”를 묻는 스무고개라면, <code class="language-plaintext highlighter-rouge">switch</code> 문은 <strong>“네가 지금 가진 값(상태)이 뭐야? 아, 2번이야? 그럼 2번 방으로 바로 들어가!”</strong> 하고 곧바로 꽂아버리는 <strong>상태 기반 라우터(Router)</strong> 입니다.</p>
 
-<p><code class="language-plaintext highlighter-rouge">if</code> 문은 “이거 맞아? 아니면 저거?” 하고 하나씩 물어보는 스무고개와 같습니다.
-반면 <code class="language-plaintext highlighter-rouge">switch</code> 문은 <strong>“값이 1이면 여기, 2면 저기”</strong> 하고 딱딱 정해진 곳으로 바로 이동합니다.
-마치 자판기 버튼을 누르면 해당 음료수가 바로 나오는 것과 비슷합니다.</p>
+<hr />
 
-<p><img src="./img/switch_vending_machine.png" alt="그림" /></p>
+<h2 id="1-자판기-버튼-누르기-동작-원리-">1. 자판기 버튼 누르기 (동작 원리) 🎰</h2>
 
-<pre><code class="language-mermaid">flowchart TD
-    Input([자판기 동전 투입]) --&gt; Switch{어떤 버튼을 눌렀나?}
+<p><code class="language-plaintext highlighter-rouge">switch</code> 문의 핵심은 조건을 하나하나 읽어보며 내려가는 <code class="language-plaintext highlighter-rouge">if-else if</code>와 다르게, 변수가 가진 값(<code class="language-plaintext highlighter-rouge">state</code>)에 해당하는 <code class="language-plaintext highlighter-rouge">case</code> 구간으로 <strong>점프(Jump)</strong> 한다는 점입니다. 마치 자동판매기에서 버튼을 누르면 해당 음료수가 바로 떨어지는 것과 완벽히 같습니다.</p>
+
+<p><img src="./img/switch_vending_machine_webtoon.png" alt="switch 자판기 웹툰" /></p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">if</code> 문 방식: “너 1번 버튼이니? (아뇨) 너 2번 버튼이니? (아뇨) 너 3번 버튼이니? (네!) ➔ 음료 3번 배출”</li>
+  <li><code class="language-plaintext highlighter-rouge">switch</code> 문 방식: “너 무슨 버튼 눌렀어? (3번이요) ➔ <strong>바로 음료 3번으로 직행 및 배출!</strong>”</li>
+</ul>
+
+<h3 id="-파이프라인-애니메이션">💡 파이프라인 애니메이션</h3>
+<p>아래 데이터 흐름을 보면 하나씩 찔러보는 것이 아니라, 입력된 값(<code class="language-plaintext highlighter-rouge">2</code>)의 라인으로 곧바로 직행하는 모습을 볼 수 있습니다.</p>
+
+<p><img src="./img/switch_pipeline_anim.svg" alt="switch 문 파이프라인 애니메이션" /></p>
+
+<hr />
+
+<h2 id="2-구조-및-문법-">2. 구조 및 문법 📐</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">button</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span> <span class="c1">// 학생이 누른 자판기 버튼 </span>
+
+<span class="k">switch</span> <span class="o">(</span><span class="n">button</span><span class="o">)</span> <span class="o">{</span>           <span class="c1">// "누른 버튼(상태값)이 뭐야?"</span>
+    <span class="k">case</span> <span class="mi">1</span><span class="o">:</span>                 <span class="c1">// "1번 상태라면 여기부터 실행해라"</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"콜라가 나왔습니다."</span><span class="o">);</span>
+        <span class="k">break</span><span class="o">;</span>              <span class="c1">// "볼일 다 봤으면 스위치 문을 탈출해라!"</span>
     
-    Switch -- "버튼 1" --&gt; Case1[콜라 나옴]
-    Switch -- "버튼 2" --&gt; Case2[사이다 나옴]
-    Switch -- "버튼 3" --&gt; Case3[환타 나옴]
-    Switch -- "그 외 (default)" --&gt; Default[물 나옴]
-
-    style Input fill:#f9f,stroke:#333,stroke-width:2px
-    style Switch fill:#ff9,stroke:#333,stroke-width:2px
-    style Case1 fill:#bbf,stroke:#333,stroke-width:2px
-    style Case2 fill:#bbf,stroke:#333,stroke-width:2px
-    style Case3 fill:#bbf,stroke:#333,stroke-width:2px
-    style Default fill:#ccc,stroke:#333,stroke-width:2px
-</code></pre>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
-
-<span class="k">switch</span><span class="o">(</span><span class="n">num</span><span class="o">)</span> <span class="o">{</span>
-    <span class="k">case</span> <span class="mi">1</span><span class="o">:</span>
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"1번이 나왔습니다."</span><span class="o">);</span>
+    <span class="k">case</span> <span class="mi">2</span><span class="o">:</span>                 <span class="c1">// "2번 상태라면 (학생이 누른 버튼)"</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"사이다가 나왔습니다."</span><span class="o">);</span> <span class="c1">// &lt;- 이 위치로 바로 점프하여 실행됨</span>
+        <span class="k">break</span><span class="o">;</span>              <span class="c1">// &lt;- 실행 후 탈출!</span>
+    
+    <span class="k">case</span> <span class="mi">3</span><span class="o">:</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"환타가 나왔습니다."</span><span class="o">);</span>
         <span class="k">break</span><span class="o">;</span>
-    <span class="k">case</span> <span class="mi">2</span><span class="o">:</span>
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"2번이 나왔습니다."</span><span class="o">);</span>
-        <span class="k">break</span><span class="o">;</span>
-    <span class="k">default</span><span class="o">:</span>
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"1도 2도 아닙니다."</span><span class="o">);</span>
+
+    <span class="k">default</span><span class="o">:</span>                <span class="c1">// "위의 case 중 아무것도 일치하지 않는다면 (if의 else 역할)"</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"버튼을 잘못 누르셨습니다."</span><span class="o">);</span>
 <span class="o">}</span>
 </code></pre></div></div>
 
-<h2 id="2-break-탈출">2. <code class="language-plaintext highlighter-rouge">break</code> (탈출!)</h2>
+<hr />
 
-<p><code class="language-plaintext highlighter-rouge">case</code> 끝에는 반드시 <strong><code class="language-plaintext highlighter-rouge">break;</code></strong>를 써줘야 합니다.
-안 그러면 멈추지 않고 밑에 있는 코드까지 줄줄이 실행됩니다(Fall-through).
-(물론 의도적으로 <code class="language-plaintext highlighter-rouge">break</code>를 뺄 때도 있지만, 대부분은 실수입니다.)</p>
+<h2 id="3-핵심-규칙-break의-마법-">3. 핵심 규칙: <code class="language-plaintext highlighter-rouge">break</code>의 마법 🚪</h2>
 
-<h2 id="3-default">3. <code class="language-plaintext highlighter-rouge">default</code></h2>
+<p><code class="language-plaintext highlighter-rouge">switch</code> 문에서 가장 주의해야 할 녀석이자 뗄레야 뗄 수 없는 짝꿍이 바로 <strong><code class="language-plaintext highlighter-rouge">break;</code> (탈출 명령어)</strong> 입니다.</p>
 
-<p><code class="language-plaintext highlighter-rouge">if</code> 문의 <code class="language-plaintext highlighter-rouge">else</code>와 같습니다.
-어떤 <code class="language-plaintext highlighter-rouge">case</code>에도 해당하지 않을 때 실행됩니다.</p>
+<h3 id="-break의-진정한-의미-가장-가까운-제어문을-산산조각-내고-탈출하라">🛑 <code class="language-plaintext highlighter-rouge">break</code>의 진정한 의미: “가장 가까운 제어문을 산산조각 내고 탈출하라!”</h3>
+<p>컴퓨터 과학에서 <code class="language-plaintext highlighter-rouge">break</code>는 단순히 멈추라는 뜻이 아니라, 자신이 속해 있는 방(<code class="language-plaintext highlighter-rouge">switch</code>나 반복문 블록 <code class="language-plaintext highlighter-rouge">{}</code>)을 완전히 부수고 바깥으로 빠져나가라는(Escape) 뜻입니다.</p>
+
+<p><img src="./img/break_escape_room_webtoon.png" alt="break 문법 블록 탈출 웹툰" /></p>
+
+<p><code class="language-plaintext highlighter-rouge">switch</code> 문은 똑똑하게 해당 번호로 점프하는 것까지는 잘하지만, <strong>거기서 알아서 멈출 줄은 모릅니다.</strong> 
+만약 <code class="language-plaintext highlighter-rouge">case 2</code>에 도착해서 “사이다”를 출력했는데 밑에 <code class="language-plaintext highlighter-rouge">break</code>가 없다면 어떻게 될까요? 브레이크 고장 난 자동차처럼 밑으로 줄줄 흘러내리면서 <code class="language-plaintext highlighter-rouge">case 3</code>의 “환타”, 심지어 <code class="language-plaintext highlighter-rouge">default</code>까지 싸그리 다 거치며 실행해 버립니다. 이처럼 코드가 아래로 폭포수처럼 쏟아져 내리는 현상을 가리켜 <strong>폴스루(Fall-through)</strong> 라고 부릅니다.</p>
+
+<p>물방울이 밑으로 다 새어버리는 것을 막기 위해, 각 <code class="language-plaintext highlighter-rouge">case</code> 블록의 마지막에는 반드시 <code class="language-plaintext highlighter-rouge">break;</code> 를 자물쇠처럼 걸어서 <strong>“내 블록이 끝났으니 쿨하게 조건문을 빠져나가라!”</strong> 고 컴퓨터에게 명시적으로 알려주어야만 대참사를 막을 수 있습니다.</p>
+
+<blockquote>
+  <p><strong>💡 실무 활용 팁 (의도적인 폴스루):</strong>
+초보자에겐 실수지만, 고수들은 이 ‘멈추지 않는 폭포수 성질’을 오히려 역이용합니다.
+<code class="language-plaintext highlighter-rouge">case 1: case 2: case 3: System.out.println("1분기입니다."); break;</code> 처럼 1, 2, 3월의 상태문을 합쳐서 짤 때 <code class="language-plaintext highlighter-rouge">break</code>를 고의로 생략하여 코드를 묶어버리는 세련된 스킬을 구사하기도 합니다.</p>
+</blockquote>
+
+<hr />
+
+<h2 id="4-바이브-코딩vibe-coding-ai와-함께하는-실습-">4. 바이브 코딩(Vibe Coding): AI와 함께하는 실습 🤖</h2>
+
+<p>AI 프롬프트를 활용하여 <code class="language-plaintext highlighter-rouge">switch</code> 문과 <code class="language-plaintext highlighter-rouge">break</code> 규칙을 가진 실습 예제를 만들어봅시다!</p>
+
+<h3 id="-실습-1-월별-계절-판독기-고의적-폴스루-활용">🎯 실습 1. 월별 계절 판독기 (고의적 폴스루 활용)</h3>
+
+<blockquote>
+  <p><strong>🗣️ 학생 프롬프트 (AI에게 이렇게 명령해 보세요):</strong>
+“자바(Java) 언어로 이번 달(month)이 무슨 계절인지 알려주는 프로그램을 짜줘.
+변수 month는 4야.
+switch-case 문을 사용하고, break를 의도적으로 생략하는 폴스루(Fall-through) 기법을 써서 3~5월은 ‘봄’, 6~8월은 ‘여름’, 9~11월은 ‘가을’, 12~2월은 ‘겨울’이라고 출력되게 해 줘.”</p>
+</blockquote>
+
+<p><strong>[AI가 생성할 자바 코드 예측]</strong></p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SeasonChecker</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">month</span> <span class="o">=</span> <span class="mi">4</span><span class="o">;</span>
+
+        <span class="k">switch</span> <span class="o">(</span><span class="n">month</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">case</span> <span class="mi">3</span><span class="o">:</span>
+            <span class="k">case</span> <span class="mi">4</span><span class="o">:</span>  <span class="c1">// &lt;- 4번으로 점프 후, 밑으로 흘러내려가 실행됨!</span>
+            <span class="k">case</span> <span class="mi">5</span><span class="o">:</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"따뜻한 봄입니다. 🌱"</span><span class="o">);</span>
+                <span class="k">break</span><span class="o">;</span> <span class="c1">// 여기서 탈출!</span>
+            
+            <span class="k">case</span> <span class="mi">6</span><span class="o">:</span> <span class="k">case</span> <span class="mi">7</span><span class="o">:</span> <span class="k">case</span> <span class="mi">8</span><span class="o">:</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"더운 여름입니다. ☀️"</span><span class="o">);</span>
+                <span class="k">break</span><span class="o">;</span>
+                
+            <span class="k">case</span> <span class="mi">9</span><span class="o">:</span> <span class="k">case</span> <span class="mi">10</span><span class="o">:</span> <span class="k">case</span> <span class="mi">11</span><span class="o">:</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"시원한 가을입니다. 🍁"</span><span class="o">);</span>
+                <span class="k">break</span><span class="o">;</span>
+                
+            <span class="k">case</span> <span class="mi">12</span><span class="o">:</span> <span class="k">case</span> <span class="mi">1</span><span class="o">:</span> <span class="k">case</span> <span class="mi">2</span><span class="o">:</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"추운 겨울입니다. ⛄"</span><span class="o">);</span>
+                <span class="k">break</span><span class="o">;</span>
+                
+            <span class="k">default</span><span class="o">:</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"존재하지 않는 달입니다."</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>[실행 결과]</strong></p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>따뜻한 봄입니다. 🌱
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="-실습-2-신호등-색상-판독기-문자열-string-활용">🎯 실습 2. 신호등 색상 판독기 (문자열 <code class="language-plaintext highlighter-rouge">String</code> 활용)</h3>
+
+<blockquote>
+  <p><strong>🗣️ 학생 프롬프트 (AI에게 이렇게 명령해 보세요):</strong>
+“자바 언어로 신호등 색상을 판독하는 switch 문 예제를 짜줘.
+변수 color는 ‘초록’으로 설정하고,
+‘빨강’이면 ‘정지하세요.’, ‘노랑’이면 ‘주의하세요.’, ‘초록’이면 ‘출발하세요.’ 라고 출력되게 해줘. 
+그 외의 색상은 ‘잘못된 신호입니다.’ 라고 처리해 줘.”</p>
+</blockquote>
+
+<p><strong>[AI가 생성할 자바 코드 예측]</strong></p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TrafficLight</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">String</span> <span class="n">color</span> <span class="o">=</span> <span class="s">"초록"</span><span class="o">;</span>
+
+        <span class="k">switch</span> <span class="o">(</span><span class="n">color</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">case</span> <span class="s">"빨강"</span><span class="o">:</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"정지하세요. 🛑"</span><span class="o">);</span>
+                <span class="k">break</span><span class="o">;</span>
+            <span class="k">case</span> <span class="s">"노랑"</span><span class="o">:</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"주의하세요. ⚠️"</span><span class="o">);</span>
+                <span class="k">break</span><span class="o">;</span>
+            <span class="k">case</span> <span class="s">"초록"</span><span class="o">:</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"출발하세요. 🟢"</span><span class="o">);</span>
+                <span class="k">break</span><span class="o">;</span>
+            <span class="k">default</span><span class="o">:</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"잘못된 신호입니다. ❓"</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>[실행 결과]</strong></p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>출발하세요. 🟢
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="-실습-3-atm-기기-메뉴-선택기-정수형-활용">🎯 실습 3. ATM 기기 메뉴 선택기 (정수형 활용)</h3>
+
+<blockquote>
+  <p><strong>🗣️ 학생 프롬프트 (AI에게 이렇게 명령해 보세요):</strong>
+“자바 언어로 ATM 기기 메뉴를 선택하는 switch-case 문 예제를 만들어줘.
+변수 menuNumber는 2로 설정하고,
+1 번이면 ‘예금 조회를 선택하셨습니다.’, 
+2 번이면 ‘현금 출금을 선택하셨습니다.’, 
+3 번이면 ‘계좌 이체를 선택하셨습니다.’ 
+그 외의 번호는 ‘잘못된 번호를 입력하셨습니다.’ 라고 출력되게 해줘.”</p>
+</blockquote>
+
+<p><strong>[AI가 생성할 자바 코드 예측]</strong></p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MenuSelector</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">menuNumber</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
+
+        <span class="k">switch</span> <span class="o">(</span><span class="n">menuNumber</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">case</span> <span class="mi">1</span><span class="o">:</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"예금 조회를 선택하셨습니다. 💳"</span><span class="o">);</span>
+                <span class="k">break</span><span class="o">;</span>
+            <span class="k">case</span> <span class="mi">2</span><span class="o">:</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"현금 출금을 선택하셨습니다. 💵"</span><span class="o">);</span>
+                <span class="k">break</span><span class="o">;</span>
+            <span class="k">case</span> <span class="mi">3</span><span class="o">:</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"계좌 이체를 선택하셨습니다. 💸"</span><span class="o">);</span>
+                <span class="k">break</span><span class="o">;</span>
+            <span class="k">default</span><span class="o">:</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"잘못된 번호를 입력하셨습니다. ❌"</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>[실행 결과]</strong></p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>현금 출금을 선택하셨습니다. 💵
+</code></pre></div></div>
+
+<hr />
+
+<hr />
+
+<blockquote>
+  <p><strong>💡 객체 지향 프로그래밍(OOP)에서의 <code class="language-plaintext highlighter-rouge">switch</code> 문 고도화: 상태 패턴(State Pattern)</strong>
+현업에서 <code class="language-plaintext highlighter-rouge">switch</code> 문 안에 <code class="language-plaintext highlighter-rouge">case</code>가 수십 개씩 늘어나면 코드가 너무 길어지고 관리가 힘들어집니다. 이럴 때 자바와 같은 객체 지향 언어에서는 <strong>‘상태 패턴(State Pattern)’</strong> 이라는 디자인 패턴(설계 기법)을 사용하여 지저분한 <code class="language-plaintext highlighter-rouge">switch</code> 문을 아예 없애버리고, 각각의 상태를 독립된 객체(클래스)로 분리하여 훨씬 깔끔하고 유지보수하기 쉬운 코드로 대체하기도 합니다. (이는 나중에 ‘객체 지향’ 파트에서 다루게 됩니다!)</p>
+</blockquote>
 
 
             <div class="mt-10">

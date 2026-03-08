@@ -1085,38 +1085,103 @@
     </ol>
 </nav>
         <div class="bd-content ps-lg-2">
-            <h1 id="75-continue-문">7.5 continue 문</h1>
+            <h1 id="75-continue-문-이번-턴은-무효-️">7.5 continue 문 (이번 턴은 무효! ⏭️)</h1>
 
-<h2 id="1-이번만-건너뛰기-️">1. 이번만 건너뛰기 ⏭️</h2>
+<h2 id="1-불량품은-골라내고-컨베이어-벨트를-돌려라">1. 불량품은 골라내고 컨베이어 벨트를 돌려라!</h2>
 
-<p>반복문을 아예 종료하는(<code class="language-plaintext highlighter-rouge">break</code>) 것이 아니라,
-<strong>“이번 바퀴만 쉬고 다음 바퀴로 넘어가라”</strong>는 뜻입니다.</p>
+<p>앞서 배운 <code class="language-plaintext highlighter-rouge">break</code> 가 “건물이 불탔으니 완전히 방을 폭파시키고 탈출해!” 라면, <strong><code class="language-plaintext highlighter-rouge">continue</code></strong> 문은 <strong>“이 부품은 불량이니까 이번 차례 작업만 건너뛰고, 바로 다음 부품 가져와!”</strong> 하는 공장장의 지시와 같습니다.</p>
 
-<p><img src="./img/continue_statement.png" alt="그림" /></p>
+<p>루프의 쳇바퀴를 완전히 멈추지 않고, <strong>특정 조건일 때만 밑에 있는 코드 처리를 생략</strong>하고 싶을 때 아주 유용하게 쓰입니다.</p>
 
-<pre><code class="language-mermaid">flowchart TD
-    Start([반복 회차 시작]) --&gt; Check{건너뛸 조건인가?}
-    
-    Check -- "예 (continue! ⏭️)" --&gt; Next([다음 회차로 점프!])
-    Check -- "아니오" --&gt; Run[정상 실행]
-    Run --&gt; Next
-    
-    Next --&gt; Start
-    
-    style Start fill:#f9f,stroke:#333
-    style Check fill:#ff9,stroke:#333
-    style Next fill:#cfc,stroke:#333,stroke-dasharray: 5 5
-    style Run fill:#bfb,stroke:#333
-</code></pre>
+<p><img src="./img/continue_skip_turn_webtoon.png" alt="continue 문 건너뛰기 웹툰" /></p>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 1부터 10까지 짝수만 출력하기</span>
-<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="mi">10</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-    <span class="k">if</span><span class="o">(</span><span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span> <span class="c1">// 홀수라면</span>
-        <span class="k">continue</span><span class="o">;</span> <span class="c1">// 밑에 코드는 실행하지 말고 다음 숫자로 넘어가!</span>
+<p>웹툰을 보세요! 공장 라인(반복문)을 타고 물건이 쏟아져 들어오고 있습니다.
+정상적인 물건은 통과시켜서 포장 로봇이 도장(밑에 줄 코드)을 찍습니다.
+그런데 <strong>불량품(특정 조건 True)</strong> 이 발견되면 작업자는 <strong><code class="language-plaintext highlighter-rouge">continue;</code> 버튼</strong>을 누릅니다. 그러면 포장 로봇은 작업을 무시해버리고, 컨베이어 벨트 모터가 위잉! 하고 돌아 즉시 다음 물건(다음 턴)을 대령합니다.</p>
+
+<hr />
+
+<h2 id="2-continue의-시간-이동-경로-️">2. continue의 시간 이동 경로 ⏱️</h2>
+
+<p><code class="language-plaintext highlighter-rouge">continue</code> 버튼이 눌렸을 때, 과연 코드는 어디로 튕겨 나갈까요? <code class="language-plaintext highlighter-rouge">break</code>처럼 중괄호 <code class="language-plaintext highlighter-rouge">}</code> 밖으로 나갈까요? 아닙니다!</p>
+
+<p>정답은 <strong>“다음 턴을 준비하는 맨 위쪽 출발선(조건식/증감식)으로 순간이동한다!”</strong> 입니다.</p>
+
+<p><img src="./img/continue_flow_anim.svg" alt="continue 문 흐름 애니메이션" /></p>
+
+<p>위의 애니메이션처럼 <code class="language-plaintext highlighter-rouge">for</code> 문 안에서 <code class="language-plaintext highlighter-rouge">continue</code>가 발동(노란색 공)하면, 바로 밑에 있던 3번 구역 코드 시야에서 완전히 사라지면서 맨 꼭대기의 <strong>4번 구역(증감식 <code class="language-plaintext highlighter-rouge">i++</code> 부분)</strong> 으로 솟구쳐 올라갑니다.</p>
+
+<blockquote>
+  <p><strong>💡 반복문 종류별 코드가 향하는 위치! (매우 중요)</strong></p>
+  <ul>
+    <li><strong><code class="language-plaintext highlighter-rouge">for</code> 문에서 <code class="language-plaintext highlighter-rouge">continue</code> 발동 시:</strong> 맨 끝의 <strong>증감식(<code class="language-plaintext highlighter-rouge">i++</code>)</strong> 으로 바로 점프합니다!</li>
+    <li><strong><code class="language-plaintext highlighter-rouge">while</code>, <code class="language-plaintext highlighter-rouge">do-while</code> 문에서 <code class="language-plaintext highlighter-rouge">continue</code> 발동 시:</strong> 맨 위(혹은 바닥)의 <strong>조건식(<code class="language-plaintext highlighter-rouge">i &lt; 10</code>)</strong> 검사소로 바로 점프합니다!</li>
+  </ul>
+</blockquote>
+
+<hr />
+
+<h2 id="3-언제-쓰나요-주요-사용처">3. 언제 쓰나요? (주요 사용처)</h2>
+
+<p>코드 블록 내부에 복잡하고 거대한 <code class="language-plaintext highlighter-rouge">if-else</code> 문 지옥을 피하기 위해, 이른바 <strong>‘입구 컷(Early Return/Continue)’ 패턴</strong>을 만들 때 주로 사용합니다.</p>
+
+<p>게시판 댓글 1,000개를 화면에 뿌리는 루프를 돈다고 칩시다.
+중간에 ‘차단된 사용자’의 댓글이나 ‘삭제된 댓글’ 인지 <code class="language-plaintext highlighter-rouge">if</code>문으로 검사해서 “삭제된 댓글이면 화면에 그리는 코드를 무시하고(<code class="language-plaintext highlighter-rouge">continue</code>) 다음 댓글로 넘어가라!” 라고 지시할 때 가장 완벽한 해답이 됩니다.</p>
+
+<hr />
+
+<h2 id="4-바이브-코딩vibe-coding-ai와-함께-필터링-실습-">4. 바이브 코딩(Vibe Coding): AI와 함께 필터링 실습 🤖</h2>
+
+<p>1부터 10까지 숫자를 출력하되, 아주 심술궂게 “짝수”는 전부 버리고 “홀수”만 골라내어 화면에 찍어내는 프로그램을 완성해봅시다.</p>
+
+<h3 id="-실습-1-짝수는-버리고-홀수만-필터링하기-for--continue">🎯 실습 1. 짝수는 버리고 홀수만 필터링하기! (<code class="language-plaintext highlighter-rouge">for</code> + <code class="language-plaintext highlighter-rouge">continue</code>)</h3>
+
+<blockquote>
+  <p><strong>🗣️ 학생 프롬프트 (AI에게 이렇게 명령해 보세요):</strong>
+“자바 continue 문을 설명하는 코드를 만들어줘.
+for 문을 사용해서 i를 1부터 10까지 반복되게 만들어.
+루프 안에서 if(i % 2 == 0) 을 써서 짝수인지 검사해.
+만약 짝수라면 짝수라는 뜻이니까 continue; 를 써서 밑에 코드를 건너뛰게 만들어.
+if 문 아래에는 System.out.println(i); 를 적어. (continue가 발동하지 않은 홀수만 출력될 거야!)”</p>
+</blockquote>
+
+<p><strong>[AI가 생성할 자바 코드 예측]</strong></p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ContinueExample</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"컨베이어 벨트 가동! 홀수만 포장합니다."</span><span class="o">);</span>
+
+        <span class="c1">// 1부터 10까지 10번 반복하는 쳇바퀴</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            
+            <span class="c1">// 검사소: 혹시 이 숫자가 2로 나누어 떨어지는 짝수인가?</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+                <span class="c1">// 불량품(짝수) 발견! 밑에 포장 코드 무시하고 바로 다음 숫자(i++)로 가라!</span>
+                <span class="k">continue</span><span class="o">;</span> 
+            <span class="o">}</span>
+            
+            <span class="c1">// 짝수라면 여기까지 코드가 도달조차 하지 못합니다.</span>
+            <span class="c1">// 고로 이건 100% 홀수일 때만 실행됩니다!</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"📦 포장 완료: "</span> <span class="o">+</span> <span class="n">i</span><span class="o">);</span>
+        <span class="o">}</span>
+        
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"공장 가동 종료."</span><span class="o">);</span>
     <span class="o">}</span>
-    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">i</span><span class="o">);</span> <span class="c1">// 짝수만 출력됨</span>
 <span class="o">}</span>
 </code></pre></div></div>
+
+<p><strong>[실행 결과 예시]</strong></p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>컨베이어 벨트 가동! 홀수만 포장합니다.
+📦 포장 완료: 1
+📦 포장 완료: 3
+📦 포장 완료: 5
+📦 포장 완료: 7
+📦 포장 완료: 9
+공장 가동 종료.
+</code></pre></div></div>
+
+<p>2, 4, 6, 8, 10 은 어디로 갔을까요? <code class="language-plaintext highlighter-rouge">continue</code> 레이저를 맞고 포장되기도 전에 바로 다음 바퀴로 쫓겨났습니다.
+이처럼 <code class="language-plaintext highlighter-rouge">continue</code>는 코드의 복잡성을 줄이고 예외 케이스(짝수)를 가뿐히 골라내는 훌륭한 핀셋 역할을 합니다!</p>
 
 
             <div class="mt-10">

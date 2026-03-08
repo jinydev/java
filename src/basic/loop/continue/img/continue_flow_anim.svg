@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="500">
+    <rect width="800" height="500" fill="#f8fafc" rx="15" />
+    <rect width="796" height="496" x="2" y="2" fill="none" stroke="#e2e8f0" stroke-width="4" rx="15" />
+    
+    <text x="400" y="40" font-family="'Segoe UI', Roboto, sans-serif" font-size="24" font-weight="bold" fill="#1e293b" text-anchor="middle">continue 문 실행 원리 (이번 턴 건너뛰기) ⏭️</text>
+
+    <!-- Context: for Loop -->
+    <rect x="250" y="80" width="300" height="40" rx="5" fill="#fef08a" stroke="#ca8a04" stroke-width="2" />
+    <text x="400" y="106" font-family="monospace" font-size="18" fill="#a16207" font-weight="bold" text-anchor="middle">for( 초기화; <tspan fill="#b91c1c">조건식</tspan>; <tspan fill="#1d4ed8">증감식</tspan> ) { ... }</text>
+
+    <g transform="translate(400, 150)">
+        
+        <!-- Condition Check Node (Top) -->
+        <polygon points="0,0 80,40 0,80 -80,40" fill="#fee2e2" stroke="#ef4444" stroke-width="2" />
+        <text x="0" y="45" font-family="'Segoe UI', Roboto, sans-serif" font-size="14" fill="#b91c1c" font-weight="bold" text-anchor="middle">1. 조건식 검사</text>
+
+        <!-- Path down -->
+        <path d="M 0 80 L 0 130" fill="none" stroke="#10b981" stroke-width="4" marker-end="url(#arrow-green)" />
+
+        <!-- if(continue condition) Node -->
+        <polygon points="0,130 60,160 0,190 -60,160" fill="#bae6fd" stroke="#0284c7" stroke-width="2" />
+        <text x="0" y="165" font-family="'Segoe UI', Roboto, sans-serif" font-size="12" fill="#0369a1" font-weight="bold" text-anchor="middle">2. if(특정 조건?)</text>
+
+        <!-- False Path (Normal Execution) -->
+        <path d="M 0 190 L 0 240" fill="none" stroke="#64748b" stroke-width="4" stroke-dasharray="5,5" marker-end="url(#arrow-gray)" />
+        <text x="-10" y="220" font-family="'Segoe UI', Roboto, sans-serif" font-size="12" fill="#64748b" font-weight="bold" text-anchor="end">False</text>
+
+        <!-- Normal Execution Block -->
+        <rect x="-80" y="240" width="160" height="40" rx="5" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2" />
+        <text x="0" y="265" font-family="'Segoe UI', Roboto, sans-serif" font-size="14" fill="#475569" font-weight="bold" text-anchor="middle">3-1. 정상 코드 실행</text>
+
+        <!-- False loop back path to increment -->
+        <path d="M 0 280 L 0 310 L -200 310 L -200 -30 L -120 -30" fill="none" stroke="#64748b" stroke-width="4" marker-end="url(#arrow-gray)" />
+
+        <!-- True Path (Continue jump) -->
+        <path d="M 60 160 L 140 160 L 140 -30 L 100 -30" fill="none" stroke="#eab308" stroke-width="6" marker-end="url(#arrow-yellow)" />
+        <rect x="70" y="140" width="80" height="30" rx="5" fill="#fef08a" stroke="#ca8a04" stroke-width="2" />
+        <text x="110" y="160" font-family="monospace" font-size="14" fill="#a16207" font-weight="bold" text-anchor="middle">continue;</text>
+        <text x="150" y="90" font-family="'Segoe UI', Roboto, sans-serif" font-size="14" fill="#ca8a04" font-weight="bold">True (점프!)</text>
+        <text x="180" y="110" font-family="'Segoe UI', Roboto, sans-serif" font-size="12" fill="#b91c1c" font-weight="bold">※ 밑에 코드 무시됨</text>
+
+        <!-- Increment Node (Target of both paths) -->
+        <rect x="-120" y="-50" width="220" height="40" rx="5" fill="#dbeafe" stroke="#3b82f6" stroke-width="2" />
+        <text x="-10" y="-25" font-family="'Segoe UI', Roboto, sans-serif" font-size="14" fill="#1d4ed8" font-weight="bold" text-anchor="middle">4. 증감식 (i++) 으로 즉시 이동!</text>
+        
+        <!-- Path from Increment to Condition -->
+        <path d="M -10 -10 L -10 0" fill="none" stroke="#3b82f6" stroke-width="4" />
+
+        <!-- Animation Dot (Continue) -->
+        <circle cx="0" cy="0" r="8" fill="#eab308">
+            <animate attributeName="opacity" values="0;1;1;1;0" keyTimes="0;0.1;0.5;0.9;1" dur="3s" repeatCount="indefinite"/>
+            <animateMotion dur="3s" repeatCount="indefinite" path="M 0 40 L 0 80 L 0 130 L 60 160 L 140 160 L 140 -30 L 100 -30 L -10 -30" />
+        </circle>
+        
+        <!-- Animation Dot (Normal) -->
+        <circle cx="0" cy="0" r="6" fill="#64748b" opacity="0.6">
+            <animate attributeName="opacity" values="1;1;1;1;0" keyTimes="0;0.2;0.6;0.9;1" dur="4s" repeatCount="indefinite"/>
+            <animateMotion dur="4s" repeatCount="indefinite" path="M 0 40 L 0 80 L 0 130 L 0 160 L 0 190 L 0 240 L 0 280 L 0 310 L -200 310 L -200 -30 L -120 -30" />
+        </circle>
+    </g>
+
+    <text x="400" y="440" font-family="'Segoe UI', Roboto, sans-serif" font-size="15" fill="#475569" font-weight="bold" text-anchor="middle">continue가 발동하면 밑에 있는 [3-1. 정상 실행 코드]를 쳐다보지도 않고 무시합니다.</text>
+    <text x="400" y="465" font-family="'Segoe UI', Roboto, sans-serif" font-size="15" fill="#1d4ed8" font-weight="bold" text-anchor="middle">루프가 끝나는 게 아니라, for문의 [증감식(i++)]이나 while문의 [조건식]으로 즉시 다시 올라갑니다!</text>
+
+    <!-- Arrow Definitions -->
+    <defs>
+        <marker id="arrow-green" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#10b981" /></marker>
+        <marker id="arrow-gray" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#64748b" /></marker>
+        <marker id="arrow-yellow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#eab308" /></marker>
+    </defs>
+</svg>
