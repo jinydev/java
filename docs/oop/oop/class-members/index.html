@@ -1662,6 +1662,36 @@
 
 	<span class="c1">// 메소드 선언</span>
 	<span class="kt">int</span> <span class="nf">methodName</span><span class="o">()</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
+<span class="o">---</span>
+
+<span class="err">#</span> <span class="mf">6.5</span> <span class="n">클래스의</span> <span class="n">구성</span> <span class="n">멤버</span>
+
+<span class="n">클래스</span> <span class="n">선언에는</span> <span class="n">객체</span> <span class="err">`</span><span class="n">초기화</span> <span class="n">역할을</span> <span class="n">담당하는</span> <span class="n">생성자</span><span class="err">`</span><span class="n">와</span> <span class="n">객체에</span> <span class="n">포함될</span> <span class="err">`</span><span class="n">필드</span><span class="err">`</span><span class="n">와</span> <span class="err">`</span><span class="n">메소드</span><span class="err">`</span><span class="n">를</span> <span class="n">선언하는</span> <span class="n">코드가</span> <span class="n">포함된다</span><span class="o">.</span> 
+<span class="o">&gt;</span> <span class="n">생성자와</span> <span class="n">같은</span> <span class="n">메서드를</span> <span class="n">다른</span> <span class="n">언어에서는</span> <span class="err">`</span><span class="n">매직</span> <span class="n">메서드</span><span class="err">`</span><span class="n">라고</span> <span class="n">부른다</span><span class="o">.</span>
+
+<span class="err">##</span> <span class="n">클래스의</span> <span class="n">구성요소들</span>
+<span class="n">클래스는</span> <span class="n">생성자</span><span class="o">,</span> <span class="n">필드</span><span class="o">,</span> <span class="n">메소드를</span> <span class="n">클래스</span> <span class="n">구성</span> <span class="n">멤버라고</span> <span class="n">한다</span><span class="o">.</span> <span class="n">다음은</span> <span class="n">각</span> <span class="n">클래스</span> <span class="n">구성</span> <span class="n">멤버의</span> <span class="n">선언</span> <span class="n">형태이다</span><span class="o">.</span>
+
+<span class="o">*</span> <span class="o">**</span><span class="n">필드</span><span class="o">**:</span> <span class="n">객체의</span> <span class="n">데이터가</span> <span class="n">저장되는</span> <span class="n">곳</span>
+<span class="o">*</span> <span class="o">**</span><span class="n">생성자</span><span class="o">**:</span> <span class="n">객체</span> <span class="n">생성</span> <span class="n">시</span> <span class="n">초기화</span> <span class="n">역할</span> <span class="n">담당</span>
+<span class="o">*</span> <span class="o">**</span><span class="n">메소드</span><span class="o">**:</span> <span class="n">객체의</span> <span class="n">동작으로</span> <span class="n">호출</span> <span class="n">시</span> <span class="n">실행하는</span> <span class="n">블록</span>
+
+<span class="o">![</span><span class="nc">Class</span> <span class="nc">Members</span> <span class="nc">Composition</span><span class="o">](./</span><span class="n">img</span><span class="o">/</span><span class="n">class_members_composition</span><span class="o">.</span><span class="na">png</span><span class="o">)</span>
+
+
+<span class="err">##</span> <span class="n">코드</span> <span class="n">구조</span> <span class="n">예시</span>
+<span class="n">다음은</span> <span class="n">클래스의</span> <span class="n">구성요소들을</span> <span class="n">코드</span> <span class="n">예제로</span> <span class="n">살펴</span> <span class="n">봅니다</span><span class="o">.</span>
+
+<span class="err">```</span><span class="n">java</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ClassName</span> <span class="o">{</span>
+	<span class="c1">// 필드 선언</span>
+	<span class="kt">int</span> <span class="n">fieldName</span><span class="o">;</span>
+
+	<span class="c1">// 생성자 선언</span>
+	<span class="nc">ClassName</span><span class="o">()</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
+
+	<span class="c1">// 메소드 선언</span>
+	<span class="kt">int</span> <span class="nf">methodName</span><span class="o">()</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div></div>
 
@@ -1673,6 +1703,19 @@
 
 <h3 id="메소드"><strong>메소드</strong></h3>
 <p>메소드(Method)는 객체가 수행할 <code class="language-plaintext highlighter-rouge">동작</code>이다. 다른 프로그램 언어에서는 함수라고 하기도 하는데, 객체 내부의 함수는 메소드라고 부른다. 메소드는 객체와 객체 간의 상호작용을 위해 호출된다.</p>
+
+<hr />
+
+<h2 id="코딩-영단어-학습-">코딩 영단어 학습 📝</h2>
+
+<p>코딩에서 영어 단어의 의미만 정확히 이해해도 절반은 성공입니다! 오늘 배운 핵심 영단어들을 다시 한번 짚고 넘어가 볼까요?</p>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">Member</code></strong>: 멤버, 구성원. (클래스라는 하나의 캡슐 안에 소속되어 함께 살아가는 구성 요소들 전부를 일컫는 말)</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">Field</code></strong>: 필드. (객체가 가지는 데이터나 상태를 저장하는 변수. 사람으로 치면 이름, 키, 몸무게 등 ‘명사적 특징’)</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">Constructor</code></strong>: 컨스트럭터, 생성자. (설계도를 바탕으로 객체가 메모리에 처음 지어질 때(Construct), 맨 처음 실행되어 기초 공사와 초기 세팅을 담당하는 특별한 블록)</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">Method</code></strong>: 메소드. (객체가 스스로 수행할 수 있는 동작이나 기능. 사람으로 치면 달리기, 밥 먹기 등 ‘동사적 특징’)</li>
+</ul>
 
 
             <div class="mt-10">

@@ -1792,6 +1792,167 @@
 	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setSpeed</span><span class="o">(</span><span class="kt">int</span> <span class="n">speed</span><span class="o">)</span> <span class="o">{</span>
 		<span class="k">if</span> <span class="o">(</span><span class="n">speed</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
 			<span class="k">this</span><span class="o">.</span><span class="na">speed</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="c1">// 마이너스 속도는 0으로 초기화</span>
+<span class="o">---</span>
+
+<span class="err">#</span> <span class="mf">6.14</span> <span class="nc">Getter와</span> <span class="nc">Setter</span> <span class="o">(</span><span class="n">안전한</span> <span class="n">데이터</span> <span class="n">관리</span><span class="o">)</span>
+
+<span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
+
+<span class="err">##</span> <span class="mf">6.14</span><span class="o">.</span><span class="mi">1</span> <span class="n">직접</span> <span class="n">접근의</span> <span class="n">위험성과</span> <span class="n">데이터</span> <span class="n">무결성</span>
+
+<span class="n">객체가</span> <span class="n">가진</span> <span class="n">데이터</span><span class="o">(</span><span class="n">필드</span><span class="o">)</span><span class="n">는</span> <span class="n">그</span> <span class="n">객체의</span> <span class="n">핵심</span> <span class="n">정보입니다</span><span class="o">.</span> <span class="n">만약</span> <span class="n">외부에서</span> <span class="n">마음대로</span> <span class="n">이</span> <span class="n">데이터를</span> <span class="n">뜯어고칠</span> <span class="n">수</span> <span class="n">있다면</span> <span class="n">심각한</span> <span class="n">문제가</span> <span class="n">생길</span> <span class="n">수</span> <span class="n">있습니다</span><span class="o">.</span>
+
+<span class="n">예를</span> <span class="n">들어</span> <span class="n">자동차의</span> <span class="o">**</span><span class="n">속도</span><span class="o">(</span><span class="n">speed</span><span class="o">)**</span><span class="n">를</span> <span class="n">생각해</span> <span class="n">봅시다</span><span class="o">.</span> <span class="n">물리적으로</span> <span class="n">속도는</span> <span class="n">음수</span><span class="o">(-)</span><span class="n">가</span> <span class="n">될</span> <span class="n">수</span> <span class="n">없습니다</span><span class="o">.</span> <span class="n">그런데</span> <span class="n">누군가</span> <span class="n">실수로</span> <span class="n">속도를</span> <span class="err">`</span><span class="o">-</span><span class="mi">100</span><span class="err">`</span><span class="n">으로</span> <span class="n">설정한다면</span><span class="o">?</span> <span class="n">현실</span> <span class="n">세계라면</span> <span class="n">자동차가</span> <span class="n">고장</span> <span class="n">나거나</span> <span class="n">사고가</span> <span class="n">날</span> <span class="n">것입니다</span><span class="o">.</span> <span class="n">프로그래밍에서도</span> <span class="n">마찬가지로</span> <span class="n">객체의</span> <span class="n">데이터가</span> <span class="n">논리에</span> <span class="n">맞지</span> <span class="n">않는</span> <span class="n">상태가</span> <span class="n">되는</span> <span class="n">것을</span> <span class="o">**</span><span class="s">"무결성(Integrity)이 깨졌다"</span><span class="o">**</span><span class="n">고</span> <span class="n">합니다</span><span class="o">.</span>
+
+<span class="o">&gt;</span> <span class="o">**</span><span class="nl">비유:</span> <span class="n">본넷</span> <span class="n">열고</span> <span class="n">엔진</span> <span class="n">만지기</span><span class="o">**</span>
+<span class="o">&gt;</span> <span class="n">자동차를</span> <span class="n">운전할</span> <span class="n">때</span> <span class="n">가속</span> <span class="n">페달을</span> <span class="n">밟는</span> <span class="n">것이</span> <span class="n">아니라</span><span class="o">,</span> <span class="n">본넷을</span> <span class="n">열고</span> <span class="n">엔진의</span> <span class="n">연료선을</span> <span class="n">직접</span> <span class="n">당기는</span> <span class="n">것은</span> <span class="n">매우</span> <span class="n">위험합니다</span><span class="o">.</span> <span class="n">필드에</span> <span class="n">직접</span> <span class="n">값을</span> <span class="n">대입하는</span> <span class="n">것은</span> <span class="n">이처럼</span> <span class="n">위험한</span> <span class="n">행동입니다</span><span class="o">.</span>
+
+<span class="o">![</span><span class="nc">Getter</span> <span class="nc">Setter</span> <span class="nc">Problem</span><span class="o">](./</span><span class="n">img</span><span class="o">/</span><span class="n">getter_setter_problem</span><span class="o">.</span><span class="na">svg</span><span class="o">)</span>
+
+<span class="err">###</span> <span class="err">💻</span> <span class="n">코드</span> <span class="n">예시</span>
+
+<span class="err">```</span><span class="n">java</span>
+<span class="c1">// 위험한 코드! (누구나 엔진을 직접 만질 수 있음)</span>
+<span class="n">myCar</span><span class="o">.</span><span class="na">speed</span> <span class="o">=</span> <span class="o">-</span><span class="mi">100</span><span class="o">;</span> 
+</code></pre></div></div>
+
+<h3 id="-코드를-다시-한번-원리와-동작을-살펴봅니다-3">🔍 코드를 다시 한번 원리와 동작을 살펴봅니다</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">myCar.speed</code> 필드에 <code class="language-plaintext highlighter-rouge">-100</code>이라는 값을 <strong>직접 대입(=)</strong>하고 있습니다.</li>
+  <li>속도는 음수가 될 수 없지만, 컴파일러는 문법적으로 숫자를 넣는 것이니 막지 않습니다.</li>
+  <li>결과적으로 객체 내부에 <strong>잘못된 데이터</strong>가 저장되고, 객체는 고장 난 상태(무결성 훼손)가 됩니다.</li>
+</ul>
+
+<p><br />
+<br /></p>
+
+<h2 id="6142-setter-검증과-필터링-가속브레이크-페달-1">6.14.2 Setter: 검증과 필터링 (가속/브레이크 페달)</h2>
+
+<p>이러한 문제를 막기 위해 자바에서는 <strong>필드를 <code class="language-plaintext highlighter-rouge">private</code>으로 감추어 외부 접근을 차단</strong>하고, 대신 <strong>안전한 통로(메소드)를 제공</strong>하는 방식을 사용합니다. 이때 데이터를 변경하는 안전한 통로가 바로 <strong>Setter(설정자)</strong>입니다.</p>
+
+<p><strong>Setter</strong>는 외부에서 값을 받아 필드에 저장하기 전에, <strong>“이 값이 유효한가?”를 검사(검증)하는 메소드</strong>입니다. 만약 잘못된 값이 들어오면 이를 차단하거나 적절한 기본값으로 바꿔줄 수 있습니다.</p>
+
+<blockquote>
+  <p><strong>비유: 자동차 페달</strong>
+운전자가 페달을 밟으면 자동차 내부 장치가 안전한 범위 내에서 속도를 조절하듯이, Setter는 잘못된 값이 들어오면 이를 걸러냅니다.</p>
+</blockquote>
+
+<p><img src="./img/setter_logic.svg" alt="Setter Logic" /></p>
+
+<h3 id="-코드-예시-3">💻 코드 예시</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 안전한 코드 (메소드를 통해 데이터 변경)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setSpeed</span><span class="o">(</span><span class="kt">int</span> <span class="n">speed</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">speed</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">speed</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="c1">// 음수가 들어오면 0으로 강제 설정 (보호)</span>
+        <span class="k">return</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">speed</span> <span class="o">=</span> <span class="n">speed</span><span class="o">;</span> <span class="c1">// 유효한 값일 때만 필드에 저장</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="-코드를-다시-한번-원리와-동작을-살펴봅니다-4">🔍 코드를 다시 한번 원리와 동작을 살펴봅니다</h3>
+
+<ul>
+  <li><strong>메소드 호출</strong>: 외부에서는 <code class="language-plaintext highlighter-rouge">speed = -100</code> 대신 <code class="language-plaintext highlighter-rouge">setSpeed(-100)</code>을 호출해야 합니다.</li>
+  <li><strong>if 문 (검문소)</strong>: 메소드 내부의 <code class="language-plaintext highlighter-rouge">if (speed &lt; 0)</code> 문장이 값의 유효성을 검사합니다.</li>
+  <li><strong>데이터 보호</strong>: 음수 값이 들어오면 필드에 저장하지 않고 <code class="language-plaintext highlighter-rouge">0</code>으로 바꾸거나 무시하여, 필드(<code class="language-plaintext highlighter-rouge">this.speed</code>)를 안전하게 지킵니다.</li>
+</ul>
+
+<p><br />
+<br /></p>
+
+<h2 id="6143-getter-가공과-반환-자동차-계기판-1">6.14.3 Getter: 가공과 반환 (자동차 계기판)</h2>
+
+<p><strong>Getter(접근자)</strong>는 필드에 저장된 값을 읽어서 외부로 전달하는 메소드입니다. 단순히 값을 리턴할 수도 있지만, 필요한 경우 <strong>값을 가공해서(단위를 바꾸거나 포맷팅해서) 보여줄 수 있습니다.</strong></p>
+
+<blockquote>
+  <p><strong>비유: 자동차 계기판</strong>
+엔진 내부에서는 복잡한 기계값으로 속도를 관리하지만, 운전자에게는 보기 편한 <code class="language-plaintext highlighter-rouge">km/h</code> 숫자로 보여주는 것과 같습니다.</p>
+</blockquote>
+
+<p><img src="./img/getter_logic.svg" alt="Getter Logic" /></p>
+
+<h3 id="-코드-예시-4">💻 코드 예시</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 내부 데이터 가공해서 전달</span>
+<span class="kd">public</span> <span class="kt">double</span> <span class="nf">getSpeed</span><span class="o">()</span> <span class="o">{</span>
+    <span class="c1">// 내부에서는 mile 단위로 관리하더라도, 외부에는 km 단위로 보여줄 수 있음</span>
+    <span class="kt">double</span> <span class="n">km</span> <span class="o">=</span> <span class="n">speed</span> <span class="o">*</span> <span class="mf">1.6</span><span class="o">;</span>
+    <span class="k">return</span> <span class="n">km</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="-코드를-다시-한번-원리와-동작을-살펴봅니다-5">🔍 코드를 다시 한번 원리와 동작을 살펴봅니다</h3>
+
+<ul>
+  <li><strong>정보 은닉</strong>: 외부에서는 <code class="language-plaintext highlighter-rouge">speed</code> 필드가 실제로 어떻게 저장되어 있는지(단위가 무엇인지) 알 필요가 없습니다.</li>
+  <li><strong>데이터 가공</strong>: <code class="language-plaintext highlighter-rouge">getSpeed()</code> 메소드가 내부의 값을 <code class="language-plaintext highlighter-rouge">* 1.6</code> 하여 보기 편한 형태(<code class="language-plaintext highlighter-rouge">km</code>)로 바꿔서 줍니다.</li>
+  <li><strong>읽기 전용</strong>: Getter만 있고 Setter가 없다면, 외부는 값을 읽을 수만 있고 고칠 수는 없는 <strong>읽기 전용(Read Only)</strong> 객체가 됩니다.</li>
+</ul>
+
+<p><br />
+<br /></p>
+
+<h2 id="6144-gettersetter-작성-규칙-1">6.14.4 Getter/Setter 작성 규칙</h2>
+
+<p>자바에서는 Getter와 Setter를 작성할 때 따르는 약속(관례)이 있습니다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">종류</th>
+      <th style="text-align: left">리턴 타입</th>
+      <th style="text-align: left">메소드 이름 규칙</th>
+      <th style="text-align: left">예시</th>
+      <th style="text-align: left">설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>Setter</strong></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">void</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">set</code> + 필드명(첫 글자 대문자)</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">setSpeed(...)</code></td>
+      <td style="text-align: left">값을 설정</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Getter</strong></td>
+      <td style="text-align: left">일반 타입</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">get</code> + 필드명(첫 글자 대문자)</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">getSpeed()</code></td>
+      <td style="text-align: left">값을 반환</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Getter</strong></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">boolean</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">is</code> + 필드명(첫 글자 대문자)</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">isStop()</code></td>
+      <td style="text-align: left">상태 확인</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="-코드-예시-전체-1">💻 코드 예시 (전체)</h3>
+
+<p><strong>Car.java</strong></p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch06.sec14</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Car</span> <span class="o">{</span>
+	<span class="c1">// 1. 필드는 private으로 보호 (외부 접근 차단)</span>
+	<span class="kd">private</span> <span class="kt">int</span> <span class="n">speed</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="kt">boolean</span> <span class="n">stop</span><span class="o">;</span>
+	
+	<span class="c1">// 2. Getter 메소드 (값 읽기)</span>
+	<span class="kd">public</span> <span class="kt">int</span> <span class="nf">getSpeed</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="n">speed</span><span class="o">;</span>
+	<span class="o">}</span>
+	
+	<span class="c1">// 3. Setter 메소드 (값 검증 및 변경)</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setSpeed</span><span class="o">(</span><span class="kt">int</span> <span class="n">speed</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">if</span> <span class="o">(</span><span class="n">speed</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+			<span class="k">this</span><span class="o">.</span><span class="na">speed</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="c1">// 마이너스 속도는 0으로 초기화</span>
 			<span class="k">return</span><span class="o">;</span>
 		<span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
 			<span class="k">this</span><span class="o">.</span><span class="na">speed</span> <span class="o">=</span> <span class="n">speed</span><span class="o">;</span>
@@ -1810,13 +1971,25 @@
 <span class="o">}</span>
 </code></pre></div></div>
 
-<h3 id="-코드를-다시-한번-원리와-동작을-살펴봅니다-3">🔍 코드를 다시 한번 원리와 동작을 살펴봅니다</h3>
+<h3 id="-코드를-다시-한번-원리와-동작을-살펴봅니다-6">🔍 코드를 다시 한번 원리와 동작을 살펴봅니다</h3>
 
 <ol>
   <li><strong>Private 필드 Declaration</strong>: <code class="language-plaintext highlighter-rouge">speed</code>와 <code class="language-plaintext highlighter-rouge">stop</code> 필드는 <code class="language-plaintext highlighter-rouge">private</code>이므로 <code class="language-plaintext highlighter-rouge">Car</code> 클래스 외부에서 안 보입니다.</li>
   <li><strong>Public 메소드 Open</strong>: 대신 <code class="language-plaintext highlighter-rouge">public</code>으로 열려 있는 <code class="language-plaintext highlighter-rouge">get...</code>, <code class="language-plaintext highlighter-rouge">set...</code> 메소드를 통해서만 대화할 수 있습니다.</li>
   <li><strong>안전한 제어</strong>: <code class="language-plaintext highlighter-rouge">setStop(true)</code>가 호출되면 단순히 <code class="language-plaintext highlighter-rouge">stop</code> 상태만 바꾸는 게 아니라, <code class="language-plaintext highlighter-rouge">speed = 0</code>으로 만드는 추가적인 안전 조치(로직)가 함께 동작합니다. 이것이 캡슐화의 장점입니다.</li>
 </ol>
+
+<hr />
+
+<h2 id="코딩-영단어-학습-">코딩 영단어 학습 📝</h2>
+
+<p>코딩에서 영어 단어의 의미만 정확히 이해해도 절반은 성공입니다! 오늘 배운 핵심 영단어들을 다시 한번 짚고 넘어갈까요?</p>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">Getter</code></strong>: 게터, 접근자. (꽁꽁 숨겨진 <code class="language-plaintext highlighter-rouge">private</code> 필드의 진짜 데이터를 외부로 꺼내서 안전하게 보여주기만 하는 읽기 전용 통로 메소드. 이름이 보통 <code class="language-plaintext highlighter-rouge">get</code>으로 시작함)</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">Setter</code></strong>: 세터, 설정자. (외부에서 들어온 값이 정상적인지 앞단에서 검사하고 걸러내어, 안전할 때만 내부 필드에 변경을 덮어쓰는 쓰기 전용 통로 메소드. 이름이 보통 <code class="language-plaintext highlighter-rouge">set</code>으로 시작함)</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">Integrity</code></strong>: 인테그리티, 무결성. (자동차 속도가 마이너스가 될 수 없듯, 데이터가 흠집 없이 오작동하지 않는 완전무결한 논리적 정상 상태를 유지하는 것)</li>
+</ul>
 
 
             <div class="mt-10">

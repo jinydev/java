@@ -76,6 +76,76 @@ public class StudentExample {
 
 `s1`과 `s2`는 서로 다른 학생 객체를 가리키고 있습니다. 설계도는 같지만, 만들어진 실체는 별개입니다.
 
+---
+
+# 6.4 객체 생성과 클래스 변수
+
+## `new` 연산자 (공장에 주문 넣기)
+
+설계도(클래스)가 준비되었으니, 이제 실제로 물건(객체)을 만들어 달라고 공장에 주문을 넣어야 합니다.
+이때 사용하는 명령어가 바로 **`new`** 입니다.
+
+> **new**: "새로운 거 하나 만들어 주세요!"
+
+```java
+new 클래스();
+```
+
+![New Operator Magic](./img/new_operator_magic.png)
+
+`new` 다음에 오는 `클래스()`는 생성자라고 부르는데, "이 설계도로 초기 설정까지 해서 만들어라"라는 뜻입니다.
+
+## 객체의 주소 (Address)
+
+`new` 연산자가 객체를 뚝딱 만들면, 컴퓨터 메모리 어딘가에 이 객체가 저장됩니다.
+그리고 `new` 연산자는 **"객체가 메모리 몇 번지에 저장되었는지" (주소)**를 알려줍니다. (반환합니다)
+
+우리는 이 주소를 변수에 담아두고, 필요할 때마다 변수를 통해 객체를 찾아가서 사용합니다.
+
+```java
+// 클래스 변수 = new 클래스();
+Car myCar = new Car();
+```
+
+*   `new Car()`: 자동차 한 대를 힙 메모리에 만듭니다.
+*   `Car myCar`: 자동차의 **위치(주소)**를 저장할 수 있는 변수(리모컨)를 만듭니다.
+*   `=`: 만들어진 자동차의 주소를 `myCar` 변수에 저장합니다.
+
+이제 `myCar` 변수를 통해(참조하여) 언제든지 그 자동차를 조종할 수 있습니다.
+
+![Object Reference Return](./img/object_reference_return.png)
+
+## 연습하기
+
+`Student` (학생) 클래스를 만들고, 학생 두 명(`s1`, `s2`)을 입학시켜 봅시다.
+
+**Student.java** (설계도)
+```java
+package ch06.sec04;
+
+public class Student {
+}
+```
+
+**StudentExample.java** (실행 클래스)
+```java
+package ch06.sec04;
+
+public class StudentExample {
+	public static void main(String[] args) {
+		// 첫 번째 학생 생성 (s1 변수가 가리킴)
+		Student s1 = new Student();
+		System.out.println("s1 변수가 Student 객체를 참조합니다.");
+		
+		// 두 번째 학생 생성 (s2 변수가 가리킴)
+		Student s2 = new Student();
+		System.out.println("s2 변수가 또 다른 Student 객체를 참조합니다.");
+	}
+}
+```
+
+`s1`과 `s2`는 서로 다른 학생 객체를 가리키고 있습니다. 설계도는 같지만, 만들어진 실체는 별개입니다.
+
 ![Student Reference Memory](./img/student_reference_memory.png)
 
 ## 클래스의 두 가지 용도
@@ -88,3 +158,14 @@ public class StudentExample {
 프로그램은 보통 **하나의 실행 클래스**가 **여러 개의 라이브러리 클래스(부품)**들을 조립하고 사용하여 돌아갑니다.
 
 ![Library vs Execution Class](./img/library_vs_execution.png)
+
+---
+
+## 코딩 영단어 학습 📝
+
+코딩에서 영어 단어의 의미만 정확히 이해해도 절반은 성공입니다! 오늘 배운 핵심 영단어들을 다시 한번 짚고 넘어가 볼까요?
+
+*   **`Creation`**: 크리에이션, 생성. (종이 위의 밋밋한 설계도를 바탕으로 힙 메모리의 빈 공간에 입체적인 진짜 실물을 만들어내는 마법 같은 작업)
+*   **`Instance`**: 인스턴스, 실체. (설계도를 본떠 메모리에 완성된 개별적인 진짜 물건이나 건물. '객체'와 거의 같은 말로 쓰입니다)
+*   **`new`**: 뉴, 새로운. (컴퓨터 메모리 공장에 "지금 당장 새로운 객체의 방을 하나 파내라!" 라고 긴급 주문을 넣는 자바의 핵심 키워드)
+*   **`Reference` / `Address`**: 리퍼런스 / 어드레스. (거대하게 지어진 객체를 조종하기 위해, 그 객체가 위치한 메모리 번지수(주소)가 적힌 가벼운 리모컨)

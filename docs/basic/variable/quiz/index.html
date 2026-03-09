@@ -1188,6 +1188,121 @@
     </ol>
   </li>
   <li>다음 코드에서 컴파일 에러가 발생하는 라인을 모두 적어 보세요.
+```java
+int v1 = 1;
+System.out.println(“v1: “ + v1);
+if(true) {
+    int v2 = 2;
+    if(true) {
+        int v3 = 2;
+        System.out.println(“v1: “ + v1);
+        System.out.println(“v2: “ + v2);
+—</li>
+</ol>
+
+<h1 id="확인문제-1">확인문제</h1>
+
+<ol>
+  <li>변수에 대해 잘못 설명한 것은 무엇입니까?
+    <ol>
+      <li>변수는 하나의 값만 저장할 수 있다.</li>
+      <li>변수는 선언 시에 사용한 타입의 값만 저장할 수 있다.</li>
+      <li>변수는 변수가 선언된 중괄호 <code class="language-plaintext highlighter-rouge">{}</code> 안에서만 사용 가능하다.</li>
+      <li>변수는 초기값이 저장되지 않은 상태에서 읽을 수 있다.</li>
+    </ol>
+  </li>
+  <li>변수 이름으로 사용할 수 없는 것을 모두 선택하세요.
+    <ol>
+      <li>modelName</li>
+      <li>class</li>
+      <li>6hour</li>
+      <li>$value</li>
+      <li>_age</li>
+      <li>int</li>
+    </ol>
+  </li>
+  <li>
+    <p>다음 표의 빈 칸에 자바의 기본 타입 8개를 적어 보세요.
+| 타입      | 1byte | 2byte    | 4byte | 8byte |
+| :——– | :—- | :——- | :—- | :—- |
+| 정수 타입 | ( )   | ( ), ( ) | ( )   | ( )   |
+| 실수 타입 |       |          | ( )   | ( )   |
+| 논리 타입 | ( )   |          |       |       |</p>
+  </li>
+  <li>다음 코드에서 타입, 변수 이름, 리터럴에 해당하는 것을 적어 보세요.
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
+<span class="n">age</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
+<span class="kt">double</span> <span class="n">price</span> <span class="o">=</span> <span class="mf">3.14</span><span class="o">;</span>
+</code></pre></div>    </div>
+    <p>타입: ( ), ( )
+변수 이름: ( ), ( )
+리터럴: ( ), ( )</p>
+  </li>
+  <li>다음 자동 타입 변환에서 컴파일 에러가 발생하는 것을 선택하세요.
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">byte</span> <span class="n">byteValue</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
+<span class="kt">char</span> <span class="n">charValue</span> <span class="o">=</span> <span class="sc">'A'</span><span class="o">;</span>
+</code></pre></div>    </div>
+    <ol>
+      <li><code class="language-plaintext highlighter-rouge">int intValue = byteValue;</code></li>
+      <li><code class="language-plaintext highlighter-rouge">int intValue = charValue;</code></li>
+      <li><code class="language-plaintext highlighter-rouge">short shortValue = charValue;</code></li>
+      <li><code class="language-plaintext highlighter-rouge">double doubleValue = byteValue;</code></li>
+    </ol>
+  </li>
+  <li>다음 강제 타입 변환에서 컴파일 에러가 발생하는 것을 선택하세요.
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">intValue</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
+<span class="kt">char</span> <span class="n">charValue</span> <span class="o">=</span> <span class="sc">'A'</span><span class="o">;</span>
+<span class="kt">double</span> <span class="n">doubleValue</span> <span class="o">=</span> <span class="mf">5.7</span><span class="o">;</span>
+<span class="nc">String</span> <span class="n">strValue</span> <span class="o">=</span> <span class="s">"A"</span><span class="o">;</span>
+</code></pre></div>    </div>
+    <ol>
+      <li><code class="language-plaintext highlighter-rouge">double var = (double) intValue;</code></li>
+      <li><code class="language-plaintext highlighter-rouge">byte var = (byte) intValue;</code></li>
+      <li><code class="language-plaintext highlighter-rouge">int var = (int) doubleValue;</code></li>
+      <li><code class="language-plaintext highlighter-rouge">char var = (char) strValue;</code></li>
+    </ol>
+  </li>
+  <li>변수를 잘못 초기화한 것은 무엇입니까?
+    <ol>
+      <li><code class="language-plaintext highlighter-rouge">int var1 = 10;</code></li>
+      <li><code class="language-plaintext highlighter-rouge">long var2 = 10000000000L;</code></li>
+      <li><code class="language-plaintext highlighter-rouge">char var3 = '';</code> //작은따옴표 두 개가 붙어 있음</li>
+      <li><code class="language-plaintext highlighter-rouge">float var4 = 10;</code></li>
+      <li><code class="language-plaintext highlighter-rouge">String var5 = "abc\ndef";</code></li>
+      <li><code class="language-plaintext highlighter-rouge">String var6 = """...""";</code></li>
+    </ol>
+  </li>
+  <li>콘솔에 값을 입출력하는 방법에 대해 잘못 설명한 것을 선택하세요.
+    <ol>
+      <li><code class="language-plaintext highlighter-rouge">System.out.print(변수)</code>는 변수값을 출력시키고 행을 바꾸지 않는다.</li>
+      <li><code class="language-plaintext highlighter-rouge">System.out.println(변수)</code>는 변수값을 출력시키고 행을 바꾼다.</li>
+      <li><code class="language-plaintext highlighter-rouge">System.out.printf("형식", 변수)</code>는 주어진 형식대로 변수값을 바꾼다.</li>
+      <li><code class="language-plaintext highlighter-rouge">Scanner</code>의 <code class="language-plaintext highlighter-rouge">nextLine()</code> 메소드는 콘솔에 입력된 내용을 문자열로 읽는다.</li>
+    </ol>
+  </li>
+  <li>연산식의 타입 변환 중에서 컴파일 에러가 발생하는 것을 선택하세요.
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">byte</span> <span class="n">byteValue</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
+<span class="kt">float</span> <span class="n">floatValue</span> <span class="o">=</span> <span class="mf">2.5</span><span class="no">F</span><span class="o">;</span>
+<span class="kt">double</span> <span class="n">doubleValue</span> <span class="o">=</span> <span class="mf">2.5</span><span class="o">;</span>
+</code></pre></div>    </div>
+    <ol>
+      <li><code class="language-plaintext highlighter-rouge">byte result = byteValue + byteValue;</code></li>
+      <li><code class="language-plaintext highlighter-rouge">int result = 5 + byteValue;</code></li>
+      <li><code class="language-plaintext highlighter-rouge">float result = 5 + floatValue;</code></li>
+      <li><code class="language-plaintext highlighter-rouge">double result = 5 + doubleValue;</code></li>
+    </ol>
+  </li>
+  <li>문자열을 기본 타입으로 변환하는 코드로 틀린 것을 고르세요.
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">String</span> <span class="n">str</span> <span class="o">=</span> <span class="s">"5"</span><span class="o">;</span>
+</code></pre></div>    </div>
+    <ol>
+      <li><code class="language-plaintext highlighter-rouge">byte var1 = Byte.parseByte(str);</code></li>
+      <li><code class="language-plaintext highlighter-rouge">int var2 = Int.parseInt(str);</code></li>
+      <li><code class="language-plaintext highlighter-rouge">float var3 = Float.parseFloat(str);</code></li>
+      <li><code class="language-plaintext highlighter-rouge">double var4 = Double.parseDouble(str);</code></li>
+    </ol>
+  </li>
+  <li>다음 코드에서 컴파일 에러가 발생하는 라인을 모두 적어 보세요.
     <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">v1</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
 <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"v1: "</span> <span class="o">+</span> <span class="n">v1</span><span class="o">);</span>
 <span class="k">if</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span> <span class="o">{</span>
@@ -1207,6 +1322,16 @@
 </code></pre></div>    </div>
   </li>
 </ol>
+
+<hr />
+
+<h2 id="코딩-영단어-학습-">코딩 영단어 학습 📝</h2>
+
+<p>코딩에서 영어 단어의 의미만 정확히 이해해도 절반은 성공입니다! 오늘 배운 핵심 영단어들을 다시 한번 짚고 넘어가 볼까요?</p>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">Quiz</code></strong>: 퀴즈, 간단한 시험. (지금까지 배운 변수와 타입에 대한 중요한 기본 지식들을 스스로 재미있게 점검해 보는 알찬 시간)</li>
+</ul>
 
 
             <div class="mt-10">

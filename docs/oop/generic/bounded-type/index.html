@@ -1672,6 +1672,49 @@
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 성공</span>
 <span class="kt">double</span> <span class="n">sum1</span> <span class="o">=</span> <span class="n">add</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="mi">20</span><span class="o">);</span>      <span class="c1">// Integer는 Number의 자식 -&gt; OK</span>
+<span class="o">---</span>
+
+<span class="err">#</span> <span class="mf">16.3</span> <span class="n">제한된</span> <span class="n">타입</span> <span class="n">파라미터</span> <span class="o">(&lt;</span><span class="no">T</span> <span class="kd">extends</span> <span class="o">...&gt;)</span>
+
+
+<span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
+
+<span class="err">##</span> <span class="mi">1</span><span class="o">.</span> <span class="n">아무나</span> <span class="n">들어올</span> <span class="n">수</span> <span class="n">없다</span><span class="o">!</span> <span class="o">(</span><span class="no">VIP</span> <span class="nc">Only</span><span class="o">)</span> <span class="err">🚫</span>
+
+<span class="n">제네릭</span> <span class="err">`</span><span class="o">&lt;</span><span class="no">T</span><span class="o">&gt;</span><span class="err">`</span><span class="n">는</span> <span class="n">기본적으로</span> <span class="n">모든</span> <span class="n">타입</span><span class="o">(</span><span class="err">`</span><span class="nc">Object</span><span class="err">`</span><span class="o">)</span><span class="n">을</span> <span class="n">다</span> <span class="n">받을</span> <span class="n">수</span> <span class="n">있습니다</span><span class="o">.</span>
+<span class="n">하지만</span> <span class="n">계산기</span> <span class="n">프로그램을</span> <span class="n">만드는데</span> <span class="err">`</span><span class="nc">String</span><span class="err">`</span><span class="n">이나</span> <span class="err">`</span><span class="nc">Dog</span><span class="err">`</span> <span class="n">객체가</span> <span class="n">들어오면</span> <span class="n">곤란하겠죠</span><span class="o">?</span>
+<span class="n">이때</span> <span class="o">**</span><span class="s">"숫자(Number) 종류만 들어와!"</span><span class="o">**</span><span class="n">라고</span> <span class="n">문지기를</span> <span class="n">세우는</span> <span class="n">것이</span> <span class="n">바로</span> <span class="o">**</span><span class="n">제한된</span> <span class="n">타입</span> <span class="n">파라미터</span><span class="o">**</span><span class="n">입니다</span><span class="o">.</span>
+
+<span class="o">![</span><span class="nc">Bounded</span> <span class="nc">Generic</span> <span class="nc">Gate</span><span class="o">](./</span><span class="n">img</span><span class="o">/</span><span class="n">bounded_generic_gate</span><span class="o">.</span><span class="na">svg</span><span class="o">)</span>
+
+<span class="o">*</span>   <span class="o">**</span><span class="err">`</span><span class="o">&lt;</span><span class="no">T</span><span class="o">&gt;</span><span class="err">`</span><span class="o">**:</span> <span class="n">개나</span> <span class="n">소나</span> <span class="n">다</span> <span class="n">들어옴</span><span class="o">.</span> <span class="o">(</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Double</span><span class="o">,</span> <span class="nc">Person</span><span class="o">...)</span>
+<span class="o">*</span>   <span class="o">**</span><span class="err">`</span><span class="o">&lt;</span><span class="no">T</span> <span class="kd">extends</span> <span class="nc">Number</span><span class="o">&gt;</span><span class="err">`</span><span class="o">**:</span> <span class="n">오직</span> <span class="err">`</span><span class="nc">Number</span><span class="err">`</span><span class="n">와</span> <span class="n">그</span> <span class="n">자식들</span><span class="o">(</span><span class="err">`</span><span class="nc">Integer</span><span class="err">`</span><span class="o">,</span> <span class="err">`</span><span class="nc">Double</span><span class="err">`</span><span class="o">)</span><span class="n">만</span> <span class="n">입장</span> <span class="n">가능</span><span class="o">.</span>
+
+<span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
+
+
+<span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
+
+<span class="err">##</span> <span class="mi">2</span><span class="o">.</span> <span class="n">선언</span> <span class="n">방법</span> <span class="o">(</span><span class="err">`</span><span class="kd">extends</span><span class="err">`</span><span class="o">)</span>
+
+<span class="err">`</span><span class="kd">extends</span><span class="err">`</span> <span class="n">키워드를</span> <span class="n">사용합니다</span><span class="o">.</span> <span class="o">(</span><span class="n">인터페이스를</span> <span class="n">제한할</span> <span class="n">때도</span> <span class="err">`</span><span class="kd">implements</span><span class="err">`</span><span class="n">가</span> <span class="n">아니라</span> <span class="err">`</span><span class="kd">extends</span><span class="err">`</span><span class="n">를</span> <span class="n">씁니다</span><span class="o">!)</span>
+
+<span class="err">```</span><span class="n">java</span>
+<span class="c1">// T는 반드시 Number이거나 그 자식이어야 한다.</span>
+<span class="kd">public</span> <span class="o">&lt;</span><span class="no">T</span> <span class="kd">extends</span> <span class="nc">Number</span><span class="o">&gt;</span> <span class="kt">double</span> <span class="nf">add</span><span class="o">(</span><span class="no">T</span> <span class="n">t1</span><span class="o">,</span> <span class="no">T</span> <span class="n">t2</span><span class="o">)</span> <span class="o">{</span>
+    <span class="c1">// T가 Number임이 보장되므로, Number의 메소드(doubleValue)를 맘놓고 쓸 수 있다.</span>
+    <span class="k">return</span> <span class="n">t1</span><span class="o">.</span><span class="na">doubleValue</span><span class="o">()</span> <span class="o">+</span> <span class="n">t2</span><span class="o">.</span><span class="na">doubleValue</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p><br /></p>
+
+<h2 id="3-사용-예시-1">3. 사용 예시</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 성공</span>
+<span class="kt">double</span> <span class="n">sum1</span> <span class="o">=</span> <span class="n">add</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="mi">20</span><span class="o">);</span>      <span class="c1">// Integer는 Number의 자식 -&gt; OK</span>
 <span class="kt">double</span> <span class="n">sum2</span> <span class="o">=</span> <span class="n">add</span><span class="o">(</span><span class="mf">3.14</span><span class="o">,</span> <span class="mf">5.5</span><span class="o">);</span>   <span class="c1">// Double은 Number의 자식 -&gt; OK</span>
 
 <span class="c1">// 실패 (컴파일 에러)</span>
@@ -1685,6 +1728,17 @@
     <li>상위 타입의 메소드를 안심하고 사용할 수 있게 해줍니다. (기능성)</li>
   </ol>
 </blockquote>
+
+<hr />
+
+<h2 id="코딩-영단어-학습-">코딩 영단어 학습 📝</h2>
+
+<p>코딩에서 영어 단어의 의미만 정확히 이해해도 절반은 성공입니다! 오늘 배운 핵심 영단어들을 다시 한번 짚고 넘어가 볼까요?</p>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">Bounded</code></strong>: 바운디드, 제한된. (제네릭 상자에 아무거나 다 들어오면 곤란하므로, <code class="language-plaintext highlighter-rouge">extends</code> 키워드를 사용해 “숫자(Number) 종류만 들어와!” 하고 입장 가능한 타입의 울타리(경계)를 치는 것)</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">Extends</code></strong>: 익스텐즈, 연장하다, 확장하다. (보통 클래스 상속에 쓰이지만, 제네릭에서는 “특정 클래스의 자식들만 파라미터로 올 수 있다”는 입장 제한 팻말로 쓰임)</li>
+</ul>
 
 
             <div class="mt-10">

@@ -1695,6 +1695,72 @@
 		<span class="nc">String</span> <span class="n">strValue</span> <span class="o">=</span> <span class="n">box2</span><span class="o">.</span><span class="na">get</span><span class="o">();</span>
 		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">strValue</span><span class="o">);</span>
 	<span class="o">}</span>
+<span class="o">---</span>
+
+<span class="err">#</span> <span class="mf">13.3</span> <span class="n">제네릭</span> <span class="n">메소드</span>
+
+<span class="n">제네릭</span> <span class="n">메소드는</span> <span class="n">타입</span> <span class="n">파라미터를</span> <span class="n">가지고</span> <span class="n">있는</span> <span class="n">메소드를</span> <span class="n">말한다</span><span class="o">.</span> <span class="n">타입</span> <span class="n">파라미터가</span> <span class="n">메소드</span> <span class="n">선언부에</span> <span class="n">정의된다는</span> <span class="n">점에서</span> <span class="n">제네릭</span> <span class="n">타입과</span> <span class="n">차이가</span> <span class="n">있다</span><span class="o">.</span> <span class="n">제네릭</span> <span class="n">메소드는</span> <span class="n">리턴</span> <span class="n">타입</span> <span class="n">앞에</span> <span class="err">`</span><span class="o">&lt;</span> <span class="o">&gt;</span><span class="err">`</span> <span class="n">기호를</span> <span class="n">추가하고</span> <span class="n">타입</span> <span class="n">파라미터를</span> <span class="n">정의한</span> <span class="n">뒤</span><span class="o">,</span> <span class="n">리턴</span> <span class="n">타입과</span> <span class="n">매개변수</span> <span class="n">타입에서</span> <span class="n">사용한다</span><span class="o">.</span>
+
+<span class="err">```</span><span class="n">java</span>
+<span class="kd">public</span> <span class="o">&lt;</span><span class="no">A</span><span class="o">,</span> <span class="no">B</span><span class="o">,</span> <span class="o">...&gt;</span> <span class="n">리턴타입</span> <span class="n">메소드명</span><span class="o">(</span><span class="n">매개변수</span><span class="o">,</span> <span class="o">...)</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
+</code></pre></div></div>
+
+<p>다음 boxing() 메소드는 타입 파라미터로 <code class="language-plaintext highlighter-rouge">&lt;T&gt;</code>를 정의하고 매개변수 타입과 리턴 타입에서 T를 사용한다. 정확한 리턴 타입은 T를 내용물로 갖는 Box 객체이다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="o">&lt;</span><span class="no">T</span><span class="o">&gt;</span> <span class="nc">Box</span><span class="o">&lt;</span><span class="no">T</span><span class="o">&gt;</span> <span class="nf">boxing</span><span class="o">(</span><span class="no">T</span> <span class="n">t</span><span class="o">)</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
+</code></pre></div></div>
+
+<p>타입 파라미터 T는 매개값이 어떤 타입이냐에 따라 컴파일 과정에서 구체적인 타입으로 대체된다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Box</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">box1</span> <span class="o">=</span> <span class="n">boxing</span><span class="o">(</span><span class="mi">100</span><span class="o">);</span>
+<span class="nc">Box</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">box2</span> <span class="o">=</span> <span class="n">boxing</span><span class="o">(</span><span class="s">"안녕하세요"</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>①은 100의 클래스 타입이 Integer이므로 타입 파라미터 T는 Integer로 대체되어 <code class="language-plaintext highlighter-rouge">Box&lt;Integer&gt;</code>가 리턴된다. ②는 “안녕하세요”의 클래스 타입이 String이므로 타입 파라미터 T는 String으로 대체되어 <code class="language-plaintext highlighter-rouge">Box&lt;String&gt;</code>이 리턴된다.</p>
+
+<p>실습을 해보자. 먼저 제네릭 타입인 Box 클래스를 다음과 같이 선언한다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch13.sec03.exam01</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Box</span><span class="o">&lt;</span><span class="no">T</span><span class="o">&gt;</span> <span class="o">{</span>
+	<span class="c1">// 필드</span>
+	<span class="kd">private</span> <span class="no">T</span> <span class="n">t</span><span class="o">;</span>
+
+	<span class="c1">// Getter 메소드</span>
+	<span class="kd">public</span> <span class="no">T</span> <span class="nf">get</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="n">t</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="c1">// Setter 메소드</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">set</span><span class="o">(</span><span class="no">T</span> <span class="n">t</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">t</span> <span class="o">=</span> <span class="n">t</span><span class="o">;</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>다음 GenericExample 클래스는 제네릭 메소드인 boxing을 선언하고 호출하는 방법을 보여 준다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch13.sec03.exam01</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">GenericExample</span> <span class="o">{</span>
+	<span class="c1">// 제네릭 메소드</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="o">&lt;</span><span class="no">T</span><span class="o">&gt;</span> <span class="nc">Box</span><span class="o">&lt;</span><span class="no">T</span><span class="o">&gt;</span> <span class="nf">boxing</span><span class="o">(</span><span class="no">T</span> <span class="n">t</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">Box</span><span class="o">&lt;</span><span class="no">T</span><span class="o">&gt;</span> <span class="n">box</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Box</span><span class="o">&lt;</span><span class="no">T</span><span class="o">&gt;();</span>
+		<span class="n">box</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="n">t</span><span class="o">);</span>
+		<span class="k">return</span> <span class="n">box</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="c1">// 제네릭 메소드 호출</span>
+		<span class="nc">Box</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">box1</span> <span class="o">=</span> <span class="n">boxing</span><span class="o">(</span><span class="mi">100</span><span class="o">);</span>
+		<span class="kt">int</span> <span class="n">intValue</span> <span class="o">=</span> <span class="n">box1</span><span class="o">.</span><span class="na">get</span><span class="o">();</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">intValue</span><span class="o">);</span>
+
+		<span class="c1">// 제네릭 메소드 호출</span>
+		<span class="nc">Box</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">box2</span> <span class="o">=</span> <span class="n">boxing</span><span class="o">(</span><span class="s">"홍길동"</span><span class="o">);</span>
+		<span class="nc">String</span> <span class="n">strValue</span> <span class="o">=</span> <span class="n">box2</span><span class="o">.</span><span class="na">get</span><span class="o">();</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">strValue</span><span class="o">);</span>
+	<span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div></div>
 
@@ -1702,6 +1768,16 @@
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>100
 홍길동
 </code></pre></div></div>
+
+<hr />
+
+<h2 id="코딩-영단어-학습-">코딩 영단어 학습 📝</h2>
+
+<p>코딩에서 영어 단어의 의미만 정확히 이해해도 절반은 성공입니다! 오늘 배운 핵심 영단어들을 다시 한번 짚고 넘어가 볼까요?</p>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">Boxing</code></strong>: 박싱, 상자에 넣기. (포장 센터(제네릭 메소드)에 <code class="language-plaintext highlighter-rouge">100</code>을 던져주면 알아서 <code class="language-plaintext highlighter-rouge">Box&lt;Integer&gt;</code>로 예쁘게 포장해서 내보내는 과정을 보여주는 예제 메소드 이름)</li>
+</ul>
 
 
             <div class="mt-10">

@@ -1664,6 +1664,51 @@
 <p>나중에 넣은 게 먼저 나오는 <strong>“프링글스 통(Stack)”</strong>과 먼저 줄 선 사람이 먼저 타는 <strong>“버스 줄(Queue)”</strong> 자료구조입니다.</p>
 
 <h3 id="176-동기화된-컬렉션"><a href="./synchronized">17.6 동기화된 컬렉션</a></h3>
+<p>여러 스레드가 동시에 접근해도 안전한 <strong>“1인용 화장실”</strong> 같은 컬렉션을 만드는 방법입니다.
+—</p>
+
+<h1 id="chapter-17-컬렉션-자료구조-collection-framework-1">Chapter 17. 컬렉션 자료구조 (Collection Framework)</h1>
+
+<blockquote>
+  <p><strong>“효율적인 데이터 정리를 위한 자바의 정리 정돈 도구들”</strong></p>
+</blockquote>
+
+<p><br /></p>
+
+<h2 id="학습목표-1">학습목표</h2>
+
+<ol>
+  <li><strong>List (순서 O, 중복 O)</strong>: 줄을 서서 기다리는 데이터 관리법을 배웁니다.</li>
+  <li><strong>Set (순서 X, 중복 X)</strong>: 유일한 데이터만 모으는 법을 배웁니다.</li>
+  <li><strong>Map (키-값)</strong>: 짝을 지어 데이터를 관리하는 법을 배웁니다.</li>
+  <li><strong>Tree (정렬)</strong>: 자동으로 순서를 매기며 저장하는 법을 배웁니다.</li>
+  <li><strong>LIFO &amp; FIFO</strong>: 스택과 큐의 구조를 이해합니다.</li>
+</ol>
+
+<p><img src="./img/list_concept_todo.svg" alt="List Concept Todo" /></p>
+
+<hr />
+
+<p><br /></p>
+
+<h2 id="목차-1">목차</h2>
+
+<h3 id="171-list-컬렉션-1"><a href="./list">17.1 List 컬렉션</a></h3>
+<p>순서가 있고 중복을 허용하는 <strong>“할 일 목록(To-Do List)”</strong> 같은 자료구조입니다. (<code class="language-plaintext highlighter-rouge">ArrayList</code>, <code class="language-plaintext highlighter-rouge">LinkedList</code>, <code class="language-plaintext highlighter-rouge">Vector</code>)</p>
+
+<h3 id="172-set-컬렉션-1"><a href="./set">17.2 Set 컬렉션</a></h3>
+<p>순서가 없고 중복을 허용하지 않는 <strong>“보석함(Jewelry Box)”</strong> 같은 자료구조입니다. (<code class="language-plaintext highlighter-rouge">HashSet</code>, <code class="language-plaintext highlighter-rouge">LinkedHashSet</code>)</p>
+
+<h3 id="173-map-컬렉션-1"><a href="./map">17.3 Map 컬렉션</a></h3>
+<p>키(Key)와 값(Value)의 쌍으로 저장되는 <strong>“목욕탕 라커(Locker)”</strong> 같은 자료구조입니다. (<code class="language-plaintext highlighter-rouge">HashMap</code>, <code class="language-plaintext highlighter-rouge">Hashtable</code>, <code class="language-plaintext highlighter-rouge">Properties</code>)</p>
+
+<h3 id="174-검색-기능을-강화시킨-컬렉션-1"><a href="./tree">17.4 검색 기능을 강화시킨 컬렉션</a></h3>
+<p>저장할 때부터 자동으로 정렬되는 <strong>“도서관 책장”</strong> 같은 자료구조입니다. (<code class="language-plaintext highlighter-rouge">TreeSet</code>, <code class="language-plaintext highlighter-rouge">TreeMap</code>)</p>
+
+<h3 id="175-lifo와-fifo-컬렉션-1"><a href="./stack-queue">17.5 LIFO와 FIFO 컬렉션</a></h3>
+<p>나중에 넣은 게 먼저 나오는 <strong>“프링글스 통(Stack)”</strong>과 먼저 줄 선 사람이 먼저 타는 <strong>“버스 줄(Queue)”</strong> 자료구조입니다.</p>
+
+<h3 id="176-동기화된-컬렉션-1"><a href="./synchronized">17.6 동기화된 컬렉션</a></h3>
 <p>여러 스레드가 동시에 접근해도 안전한 <strong>“1인용 화장실”</strong> 같은 컬렉션을 만드는 방법입니다.</p>
 
 <hr />
@@ -1673,6 +1718,17 @@
 <h2 id="확인문제">확인문제</h2>
 <ul>
   <li><a href="./quiz">확인문제</a></li>
+</ul>
+
+<hr />
+
+<h2 id="코딩-영단어-학습-">코딩 영단어 학습 📝</h2>
+
+<p>코딩에서 영어 단어의 의미만 정확히 이해해도 절반은 성공입니다! 오늘 배운 핵심 영단어들을 다시 한번 짚고 넘어가 볼까요?</p>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">Collection</code></strong>: 컬렉션, 수집, 모음. (수많은 데이터를 배열보다 훨씬 똑똑하고 알아서 크기도 늘려가며 다루기 쉽게 모아놓은 자바의 데이터 보관함 세트)</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">Framework</code></strong>: 프레임워크, 뼈대, 구조. (컬렉션을 사용할 때 개발자가 맨땅에 헤딩하지 않도록, 미리 잘 만들어둔 클래스와 인터페이스의 거대한 표준 설계도)</li>
 </ul>
 
 

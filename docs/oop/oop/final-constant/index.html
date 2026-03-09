@@ -1767,6 +1767,144 @@
 		<span class="c1">// 상수 읽기</span>
 		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"지구의 반지름: "</span> <span class="o">+</span> <span class="nc">Earth</span><span class="o">.</span><span class="na">EARTH_RADIUS</span> <span class="o">+</span> <span class="s">" km"</span><span class="o">);</span>
 		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"지구의 표면적: "</span> <span class="o">+</span> <span class="nc">Earth</span><span class="o">.</span><span class="na">EARTH_SURFACE_AREA</span> <span class="o">+</span> <span class="s">" km^2"</span><span class="o">);</span>
+<span class="o">---</span>
+
+<span class="err">#</span> <span class="mf">6.11</span> <span class="kd">final</span> <span class="n">필드와</span> <span class="n">상수</span>
+
+<span class="n">인스턴스</span> <span class="n">필드와</span> <span class="n">정적</span> <span class="n">필드는</span> <span class="n">언제든지</span> <span class="n">값을</span> <span class="n">변경할</span> <span class="n">수</span> <span class="n">있다</span><span class="o">.</span> <span class="n">그러나</span> <span class="n">경우에</span> <span class="n">따라서는</span> <span class="n">값을</span> <span class="n">변경하는</span> <span class="n">것을</span> <span class="n">막고</span> <span class="err">`</span><span class="n">읽기</span><span class="err">`</span><span class="n">만</span> <span class="n">허용해야</span> <span class="n">할</span> <span class="n">때가</span> <span class="n">있다</span><span class="o">.</span> <span class="n">이때</span> <span class="kd">final</span> <span class="n">필드와</span> <span class="n">상수를</span> <span class="n">선언해서</span> <span class="n">사용한다</span><span class="o">.</span>
+
+<span class="err">##</span> <span class="kd">final</span> <span class="n">필드</span> <span class="n">선언</span>
+
+<span class="n">final은</span> <span class="err">'</span><span class="n">최종적</span><span class="err">'</span><span class="n">이란</span> <span class="n">뜻을</span> <span class="n">가지고</span> <span class="n">있다</span><span class="o">.</span> <span class="kd">final</span> <span class="n">필드는</span> <span class="n">초기값이</span> <span class="n">저장되면</span> <span class="n">이것이</span> <span class="n">최종적인</span> <span class="n">값이</span> <span class="n">되어서</span> <span class="n">프로그램</span> <span class="n">실행</span> <span class="n">도중에</span> <span class="n">수정할</span> <span class="n">수</span> <span class="n">없게</span> <span class="n">된다</span><span class="o">.</span> 
+
+<span class="o">![</span><span class="n">그림</span><span class="o">]()</span>
+
+<span class="kd">final</span> <span class="n">필드는</span> <span class="n">다음과</span> <span class="n">같이</span> <span class="n">선언한다</span><span class="o">.</span>
+
+<span class="err">```</span><span class="n">java</span>
+<span class="kd">final</span> <span class="n">타입</span> <span class="n">필드</span> <span class="o">[=</span> <span class="n">초기값</span><span class="o">];</span>
+</code></pre></div></div>
+
+<p>final 필드에 초기값을 줄 수 있는 방법은 다음 두 가지밖에 없다.</p>
+<ol>
+  <li>필드 선언 시에 초기값 대입</li>
+  <li>생성자에서 초기값 대입</li>
+</ol>
+
+<p>고정된 값이라면 필드 선언 시에 주는 것이 가장 간단하다. 하지만 복잡한 초기화 코드가 필요하거나 객체 생성 시에 외부에서 전달된 값으로 초기화한다면 생성자에서 해야 한다.</p>
+
+<p>이 두 방법을 사용하지 않고 final 필드를 그대로 남겨 두면 컴파일 에러가 발생한다.</p>
+
+<p>다음 예제에서 Korean 클래스를 보면 국가(nation)와 주민등록번호(ssn) 필드를 final 필드로 선언했다. nation은 고정값이므로 선언 시에 초기값을 대입했고, ssn은 Korean 객체가 생성될 때 부여되므로 생성자 매개값으로 주민등록번호를 받아 초기값으로 대입했다.</p>
+
+<p><strong>Korean.java</strong></p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch06.sec11.exam01</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Korean</span> <span class="o">{</span>
+	<span class="c1">// 인스턴스 final 필드 선언</span>
+	<span class="kd">final</span> <span class="nc">String</span> <span class="n">nation</span> <span class="o">=</span> <span class="s">"대한민국"</span><span class="o">;</span>
+	<span class="kd">final</span> <span class="nc">String</span> <span class="n">ssn</span><span class="o">;</span>
+	
+	<span class="c1">// 인스턴스 필드 선언</span>
+	<span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+	
+	<span class="c1">// 생성자 선언</span>
+	<span class="kd">public</span> <span class="nf">Korean</span><span class="o">(</span><span class="nc">String</span> <span class="n">ssn</span><span class="o">,</span> <span class="nc">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">ssn</span> <span class="o">=</span> <span class="n">ssn</span><span class="o">;</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>KoreanExample.java</strong></p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch06.sec11.exam01</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">KoreanExample</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="c1">// 객체 생성 시 주민등록번호와 이름 전달</span>
+		<span class="nc">Korean</span> <span class="n">k1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Korean</span><span class="o">(</span><span class="s">"123456-1234567"</span><span class="o">,</span> <span class="s">"감자바"</span><span class="o">);</span>
+		
+		<span class="c1">// 필드값 읽기</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">k1</span><span class="o">.</span><span class="na">nation</span><span class="o">);</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">k1</span><span class="o">.</span><span class="na">ssn</span><span class="o">);</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">k1</span><span class="o">.</span><span class="na">name</span><span class="o">);</span>
+		
+		<span class="c1">// Final 필드는 값을 변경할 수 없음</span>
+		<span class="c1">// k1.nation = "USA";</span>
+		<span class="c1">// k1.ssn = "123-12-1234";</span>
+		
+		<span class="c1">// 비 final 필드는 값 변경 가능</span>
+		<span class="n">k1</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="s">"김자바"</span><span class="o">;</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>실행 결과</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>대한민국
+123456-1234567
+감자바
+</code></pre></div></div>
+
+<h2 id="상수-선언-1">상수 선언</h2>
+
+<p>우리 주변에는 불변의 값이 있다.</p>
+
+<p><img src="" alt="그림" /></p>
+
+<p>불변의 값은 수학에서 사용하는 원주율 파이(π)나 지구의 무게 및 둘레 등이 해당된다. 이런 불변의 값을 저장하는 필드를 자바에서는 상수(constant)라고 부른다.</p>
+
+<p>상수는 객체마다 저장할 필요가 없고, 여러 개의 값을 가져도 안 되기 때문에 static이면서 final인 특성을 가져야 한다.</p>
+
+<p>따라서 상수는 다음과 같이 선언한다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">static</span> <span class="kd">final</span> <span class="n">타입</span> <span class="n">상수</span> <span class="o">[=</span> <span class="n">초기값</span><span class="o">];</span>
+</code></pre></div></div>
+
+<p>초기값은 선언 시에 주는 것이 일반적이지만, 복잡한 초기화가 필요할 경우에는 정적 블록에서 초기화할 수도 있다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">static</span> <span class="kd">final</span> <span class="n">타입</span> <span class="n">상수</span><span class="o">;</span>
+<span class="kd">static</span> <span class="o">{</span>
+    <span class="n">상수</span> <span class="o">=</span> <span class="n">초기값</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>상수 이름은 모두 <code class="language-plaintext highlighter-rouge">대문자</code>로 작성하는 것이 관례이다. 
+만약 서로 다른 단어가 혼합된 이름이라면 언더바(_)로 단어들을 연결한다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">static</span> <span class="kd">final</span> <span class="kt">double</span> <span class="no">PI</span> <span class="o">=</span> <span class="mf">3.14159</span><span class="o">;</span>
+<span class="kd">static</span> <span class="kd">final</span> <span class="kt">double</span> <span class="no">EARTH_SURFACE_AREA</span> <span class="o">=</span> <span class="mf">5.147185403641517E8</span><span class="o">;</span>
+</code></pre></div></div>
+
+<p>또한 상수는 정적 필드이므로 클래스로 접근해서 읽을 수 있다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">클래스명</span><span class="o">.</span><span class="na">상수</span>
+</code></pre></div></div>
+
+<p><strong>Earth.java</strong></p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch06.sec11.exam02</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Earth</span> <span class="o">{</span>
+	<span class="c1">// 상수 선언 및 초기화</span>
+	<span class="kd">static</span> <span class="kd">final</span> <span class="kt">double</span> <span class="no">EARTH_RADIUS</span> <span class="o">=</span> <span class="mi">6400</span><span class="o">;</span>
+	
+	<span class="c1">// 상수 선언</span>
+	<span class="kd">static</span> <span class="kd">final</span> <span class="kt">double</span> <span class="no">EARTH_SURFACE_AREA</span><span class="o">;</span>
+	
+	<span class="c1">// 정적 블록에서 상수 초기화</span>
+	<span class="kd">static</span> <span class="o">{</span>
+		<span class="no">EARTH_SURFACE_AREA</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">*</span> <span class="nc">Math</span><span class="o">.</span><span class="na">PI</span> <span class="o">*</span> <span class="no">EARTH_RADIUS</span> <span class="o">*</span> <span class="no">EARTH_RADIUS</span><span class="o">;</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>EarthExample.java</strong></p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch06.sec11.exam02</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">EarthExample</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="c1">// 상수 읽기</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"지구의 반지름: "</span> <span class="o">+</span> <span class="nc">Earth</span><span class="o">.</span><span class="na">EARTH_RADIUS</span> <span class="o">+</span> <span class="s">" km"</span><span class="o">);</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"지구의 표면적: "</span> <span class="o">+</span> <span class="nc">Earth</span><span class="o">.</span><span class="na">EARTH_SURFACE_AREA</span> <span class="o">+</span> <span class="s">" km^2"</span><span class="o">);</span>
 	<span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div></div>
@@ -1775,6 +1913,17 @@
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>지구의 반지름: 6400.0 km
 지구의 표면적: 5.147185403641517E8 km^2
 </code></pre></div></div>
+
+<hr />
+
+<h2 id="코딩-영단어-학습-">코딩 영단어 학습 📝</h2>
+
+<p>코딩에서 영어 단어의 의미만 정확히 이해해도 절반은 성공입니다! 오늘 배운 핵심 영단어들을 다시 한번 짚고 넘어가 볼까요?</p>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">Final</code></strong>: 파이널, 최종적인. (더 이상 변경될 수 없는, 한 번 정해지면 평생 안 바뀌는 마지막 고정 상태임을 나타내는 자바의 자물쇠 키워드)</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">Constant</code></strong>: 콘스턴트, 상수. (원주율 파이(π)나 1년의 달의 수(12)처럼 세상이 두 쪽 나도 절대 변하지 않는 불변의 진짜 진리 값을 담아두는 그릇. 자바에선 보통 <code class="language-plaintext highlighter-rouge">static final</code> 두 개를 동시에 붙여서 선언함)</li>
+</ul>
 
 
             <div class="mt-10">

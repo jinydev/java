@@ -1701,6 +1701,77 @@
 <span class="o">}</span>
 </code></pre></div></div>
 
+<h2><br /></h2>
+
+<h1 id="75-final-키워드-상속-및-변경-금지-1">7.5 final 키워드 (상속 및 변경 금지)</h1>
+
+<p><code class="language-plaintext highlighter-rouge">final</code>은 “이게 최종이다(마지막이다!)”라는 뜻입니다.
+더 이상 바꿀 수 없다는 의미를 가지며, 클래스와 메소드에 붙였을 때 각각 다른 효과를 냅니다.</p>
+
+<h3 id="-핵심-비유-박제된-문서--불임-시술-1">💡 핵심 비유: 박제된 문서 / 불임 시술</h3>
+<blockquote>
+  <p><strong>“박제된 문서는 수정할 수 없고(오버라이딩 불가), 자손을 남길 수도 없다(상속 불가).”</strong></p>
+</blockquote>
+
+<p><img src="./img/final_concept.svg" alt="Final Concept" /></p>
+
+<hr />
+
+<h2 id="1-final-클래스-자식을-가질-수-없음-1">1. final 클래스: “자식을 가질 수 없음”</h2>
+
+<p>클래스 앞에 <code class="language-plaintext highlighter-rouge">final</code>을 붙이면 <strong>상속을 할 수 없는 클래스</strong>가 됩니다.
+대표적으로 자바의 <code class="language-plaintext highlighter-rouge">String</code> 클래스가 <code class="language-plaintext highlighter-rouge">final</code>로 선언되어 있습니다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// "나는 자식을 낳지 않겠다!"</span>
+<span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="nc">Member</span> <span class="o">{</span> 
+<span class="o">}</span>
+
+<span class="c1">// ❌ 컴파일 에러! Member는 final이라서 상속 불가</span>
+<span class="c1">// public class VIP extends Member { } </span>
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong>왜 쓸까요? (Technical Detail)</strong>
+<code class="language-plaintext highlighter-rouge">String</code> 클래스처럼 시스템 전반에서 중요하게 쓰이는 핵심 클래스를 누군가 마음대로 상속받아 기능을 변조하면 보안상 큰 문제가 생길 수 있습니다.
+이를 원천적으로 차단하기 위해 <code class="language-plaintext highlighter-rouge">final</code>을 사용합니다.</p>
+</blockquote>
+
+<p><br />
+<br /></p>
+
+<hr />
+
+<h2 id="2-final-메소드-오버라이딩수정-금지-1">2. final 메소드: “오버라이딩(수정) 금지”</h2>
+
+<p>메소드 앞에 <code class="language-plaintext highlighter-rouge">final</code>을 붙이면 <strong>자식 클래스가 이 메소드를 수정(오버라이딩)할 수 없습니다.</strong>
+부모가 정해준 로직을 <strong>“절대 바꾸지 말고 그대로 써라”</strong>고 강제할 때 사용합니다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Car</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="n">speed</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">speedUp</span><span class="o">()</span> <span class="o">{</span> <span class="n">speed</span> <span class="o">+=</span> <span class="mi">1</span><span class="o">;</span> <span class="o">}</span>
+
+    <span class="c1">// "이 메소드는 절대 고치지 마! (안전장치)"</span>
+    <span class="kd">public</span> <span class="kd">final</span> <span class="kt">void</span> <span class="nf">stop</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"차를 멈춥니다."</span><span class="o">);</span>
+        <span class="n">speed</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SportsCar</span> <span class="kd">extends</span> <span class="nc">Car</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">speedUp</span><span class="o">()</span> <span class="o">{</span> <span class="n">speed</span> <span class="o">+=</span> <span class="mi">10</span><span class="o">;</span> <span class="o">}</span> <span class="c1">// 가능</span>
+
+    <span class="c1">// ❌ 에러! stop()은 final이라서 오버라이딩 불가</span>
+    <span class="cm">/*
+    @Override
+    public void stop() { 
+        System.out.println("스포츠카 멈춤"); 
+    }
+    */</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
 <p><br />
 <br /></p>
 
@@ -1738,6 +1809,16 @@
     </tr>
   </tbody>
 </table>
+
+<hr />
+
+<h2 id="코딩-영단어-학습-">코딩 영단어 학습 📝</h2>
+
+<p>코딩에서 영어 단어의 의미만 정확히 이해해도 절반은 성공입니다! 오늘 배운 핵심 영단어들을 다시 한번 짚고 넘어가 볼까요?</p>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">Final</code></strong>: 파이널, 최종적인. (더 이상 상속하거나 수정할 수 없도록, 즉 ‘여기가 진짜 끝이다’라고 꽝꽝 못을 박는 단호한 키워드)</li>
+</ul>
 
 
             <div class="mt-10">

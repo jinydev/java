@@ -1117,6 +1117,41 @@
 </code></pre></div></div>
 
 <blockquote>
+  <h2 id="글자-크기를-변경하려면"><strong>글자 크기를 변경하려면</strong></h2>
+</blockquote>
+
+<h1 id="18-이클립스-소스-작성부터-실행까지-1">1.8 이클립스 소스 작성부터 실행까지</h1>
+
+<p>1.5절에서 작성했던 Hello.java 소스 파일을 이클립스에서 작성하고, 실행시켜 보자.</p>
+
+<p>01 Package Explorer 뷰에서 <code class="language-plaintext highlighter-rouge">src</code> 디렉토리를 선택하고, 마우스 오른쪽 버튼으로 클릭하여 [New] - [Package]를 선택한다. Name 입력란에 ‘ch01.sec08’을 입력하고 [Finish] 버튼을 클릭한다.</p>
+
+<blockquote>
+  <p>패키지는 소스 파일과 바이트코드 파일을 관리하기 위한 디렉토리라고 생각하자. 앞으로 모든 예제는 장별, 절별로 패키지를 만들어서 관리할 것이다. 많은 예제 소스 파일을 쉽게 찾기 위해서이다.</p>
+</blockquote>
+
+<p>02 <code class="language-plaintext highlighter-rouge">ch01.sec08</code> 패키지에서 마우스 오른쪽 버튼으로 클릭하여 [New] - [Class]를 선택한다.</p>
+
+<p>03 [New Java Class] 대화상자가 나타나면 Name 입력란에 ‘Hello’를 입력한다. 그리고 <code class="language-plaintext highlighter-rouge">main()</code> 메소드를 자동으로 추가하기 위해 [public static void main(String[] args)]를 체크하고 [Finish] 버튼을 클릭한다.</p>
+
+<blockquote>
+  <p>Name 입력란에 클래스 이름을 입력할 때 주의할 점은 첫 문자가 대문자여야 한다는 것이다. 소문자로 입력하면 경고 메시지가 나타난다. 자바 소스 파일명(Hello.java)과 작성하는 클래스명(Hello)은 대소문자가 일치해야 한다.</p>
+</blockquote>
+
+<p>04 소스 코드 편집 뷰가 열리고 Hello 클래스와 <code class="language-plaintext highlighter-rouge">main()</code> 메소드가 자동으로 생성되면, <code class="language-plaintext highlighter-rouge">main()</code> 메소드 중괄호 <code class="language-plaintext highlighter-rouge">{}</code> 내부에 다음과 같이 작성한다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch01.sec08</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Hello</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Hello, Java"</span><span class="o">);</span>
+    <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<blockquote>
   <p><strong>글자 크기를 변경하려면</strong>
 [Window] - [Editor] - [Zoom In] 또는 [Zoom Out] 메뉴를 이용하거나, 단축키 <code class="language-plaintext highlighter-rouge">Ctrl</code> + <code class="language-plaintext highlighter-rouge">+/-</code>를 이용한다.</p>
 </blockquote>
@@ -1126,6 +1161,18 @@
 <p>06 [Console] 뷰에 “Hello, Java”가 출력된 것을 볼 수 있다.</p>
 
 <p>이클립스는 소스 파일을 저장하면 내부적으로 <code class="language-plaintext highlighter-rouge">javac</code> 명령어를 실행해 컴파일을 수행한다. 그리고 [Run] 아이콘을 클릭하면 내부적으로 <code class="language-plaintext highlighter-rouge">java</code> 명령어를 실행해 컴파일된 바이트코드를 실행한다.</p>
+
+<hr />
+
+<h2 id="코딩-영단어-학습-">코딩 영단어 학습 📝</h2>
+
+<p>코딩에서 영어 단어의 의미만 정확히 이해해도 절반은 성공입니다! 오늘 배운 핵심 영단어들을 다시 한번 짚고 넘어가 볼까요?</p>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">Execution</code></strong>: 익스큐션, 실행. (작성한 코드를 컴퓨터가 실제로 동작하게 만드는 과정)</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">Explorer</code></strong>: 익스플로러, 탐색기. (파일과 폴더 목록을 시각적으로 보여주는 창)</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">Console</code></strong>: 콘솔. (명령어를 치거나 프로그램의 텍스트 출력 결과를 보여주는 프로그램 하단의 검은 화면)</li>
+</ul>
 
 
             <div class="mt-10">

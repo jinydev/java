@@ -57,3 +57,12 @@ Map<String, Integer> safeMap = Collections.synchronizedMap(new HashMap<>());
 ```
 
 > **핵심 요약**: 혼자 쓸 때는 `ArrayList`, `HashMap`을 쓰세요. 여럿이 동시에 써야 한다면 `Collections.synchronized...`로 감싸서 쓰세요.
+
+---
+
+## 코딩 영단어 학습 📝
+
+코딩에서 영어 단어의 의미만 정확히 이해해도 절반은 성공입니다! 오늘 배운 핵심 영단어들을 다시 한번 짚고 넘어가 볼까요?
+
+*   **`Synchronized`**: 싱크로나이즈드, 동기화된. (다수의 스레드(사람)가 동시에 똑같은 데이터(화장실)에 접근하려고 할 때, 한 번에 한 명씩만 들어가도록 꽉 잠가서 충돌 에러를 막아주는 튼튼한 자물쇠 기능)
+*   **`Collections`**: 컬렉션스. (컬렉션(`Collection`)을 다룰 때 유용한 마법 도구들을 꽉꽉 채워둔 자바의 보조 유틸리티 클래스)

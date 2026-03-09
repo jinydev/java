@@ -1146,6 +1146,68 @@
         <span class="c1">// 안쪽에서는 바깥쪽 변수(v1) 사용 가능</span>
         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">v1</span> <span class="o">+</span> <span class="n">v2</span><span class="o">);</span> 
     <span class="o">}</span> <span class="c1">// v2 사망 (메모리에서 사라짐)</span>
+<span class="o">---</span>
+
+<span class="err">#</span> <span class="mf">4.9</span> <span class="n">변수</span> <span class="n">사용</span> <span class="n">범위</span> <span class="o">(</span><span class="nc">Scope</span><span class="o">)</span>
+
+<span class="n">변수는</span> <span class="n">언제</span> <span class="n">태어나서</span> <span class="n">언제</span> <span class="n">사라질까요</span><span class="o">?</span>
+<span class="n">변수의</span> <span class="o">**</span><span class="n">생명</span> <span class="n">주기</span><span class="o">(</span><span class="nc">Life</span> <span class="nc">Cycle</span><span class="o">)**</span><span class="n">와</span> <span class="o">**</span><span class="n">유효</span> <span class="n">범위</span><span class="o">(</span><span class="nc">Scope</span><span class="o">)**</span><span class="n">에</span> <span class="n">대해</span> <span class="n">알아봅니다</span><span class="o">.</span>
+
+<span class="o">---</span>
+
+<span class="err">##</span> <span class="mi">1</span><span class="o">.</span> <span class="n">블록</span> <span class="err">`</span><span class="o">{</span> <span class="o">}</span><span class="err">`</span><span class="n">이</span> <span class="n">곧</span> <span class="n">변수의</span> <span class="n">우주</span> <span class="err">🌌</span>
+
+<span class="err">###</span> <span class="mi">1</span><span class="o">)</span> <span class="n">개념</span>
+<span class="n">변수는</span> <span class="o">**</span><span class="n">자신이</span> <span class="n">선언된</span> <span class="n">중괄호</span> <span class="err">`</span><span class="o">{</span> <span class="o">...</span> <span class="o">}</span><span class="err">`</span> <span class="n">블록</span> <span class="n">안에서만</span><span class="o">**</span> <span class="n">존재하고</span> <span class="n">사용할</span> <span class="n">수</span> <span class="n">있습니다</span><span class="o">.</span>
+<span class="n">블록이</span> <span class="n">끝나는</span> <span class="n">순간</span><span class="o">(</span><span class="err">`</span><span class="o">}</span><span class="err">`</span><span class="o">)</span> <span class="n">변수는</span> <span class="n">메모리에서</span> <span class="n">소멸합니다</span><span class="o">.</span> <span class="o">(</span><span class="n">마치</span> <span class="n">연기처럼</span> <span class="n">사라집니다</span><span class="o">!)</span>
+
+<span class="err">###</span> <span class="mi">2</span><span class="o">)</span> <span class="nl">비유:</span> <span class="s">"썬팅된 유리방"</span>
+<span class="o">*</span>   <span class="o">**</span><span class="n">안에서</span> <span class="n">밖은</span> <span class="n">보인다</span><span class="o">**:</span> <span class="n">유리방</span> <span class="n">안</span><span class="o">(</span><span class="err">`</span><span class="k">if</span><span class="err">`</span><span class="n">문</span> <span class="n">내부</span><span class="o">)</span><span class="n">에</span> <span class="n">있는</span> <span class="n">사람은</span> <span class="n">바깥</span><span class="o">(</span><span class="err">`</span><span class="n">main</span><span class="err">`</span> <span class="n">메소드</span><span class="o">)</span><span class="n">에</span> <span class="n">있는</span> <span class="n">사람을</span> <span class="n">볼</span> <span class="n">수</span> <span class="n">있습니다</span><span class="o">.</span>
+<span class="o">*</span>   <span class="o">**</span><span class="n">밖에서</span> <span class="n">안은</span> <span class="n">안</span> <span class="n">보인다</span><span class="o">**:</span> <span class="n">바깥</span><span class="o">(</span><span class="err">`</span><span class="n">main</span><span class="err">`</span> <span class="n">메소드</span><span class="o">)</span><span class="n">에</span> <span class="n">있는</span> <span class="n">사람은</span> <span class="n">썬팅된</span> <span class="n">유리방</span> <span class="n">안</span><span class="o">(</span><span class="err">`</span><span class="k">if</span><span class="err">`</span><span class="n">문</span> <span class="n">내부</span><span class="o">)</span><span class="n">에</span> <span class="n">있는</span> <span class="n">사람을</span> <span class="n">볼</span> <span class="n">수</span> <span class="n">없습니다</span><span class="o">.</span>
+
+<span class="o">![</span><span class="n">그림</span><span class="o">](./</span><span class="n">img</span><span class="o">/</span><span class="n">variable_scope</span><span class="o">.</span><span class="na">png</span><span class="o">)</span>
+
+<span class="err">###</span> <span class="mi">3</span><span class="o">)</span> <span class="n">범위</span> <span class="n">시각화</span>
+
+<span class="err">###</span> <span class="mi">3</span><span class="o">)</span> <span class="n">범위</span> <span class="n">시각화</span>
+
+<span class="err">```</span><span class="n">mermaid</span>
+<span class="n">graph</span> <span class="no">TD</span>
+    <span class="n">subgraph</span> <span class="nc">Main</span> <span class="o">[</span><span class="n">상위</span> <span class="nl">블록:</span> <span class="n">main</span> <span class="n">메소드</span><span class="o">]</span>
+        <span class="n">v1</span><span class="o">((</span><span class="n">v1</span> <span class="n">변수</span><span class="o">))</span>
+        
+        <span class="n">subgraph</span> <span class="nc">Sub</span> <span class="o">[</span><span class="n">하위</span> <span class="nl">블록:</span> <span class="k">if</span> <span class="n">문</span><span class="o">]</span>
+            <span class="n">v2</span><span class="o">((</span><span class="n">v2</span> <span class="n">변수</span><span class="o">))</span>
+            <span class="nc">Access1</span><span class="o">[</span><span class="n">v1</span> <span class="n">보임</span> <span class="err">👀</span><span class="o">]</span>
+        <span class="n">end</span>
+        
+        <span class="nc">Access2</span><span class="o">[</span><span class="n">v2</span> <span class="n">안</span> <span class="n">보임</span> <span class="err">🙈</span><span class="o">]</span>
+    <span class="n">end</span>
+    
+    <span class="n">v1</span> <span class="o">-.-&gt;</span> <span class="nc">Access1</span>
+    <span class="n">v2</span> <span class="o">-.-&gt;</span> <span class="nc">Access2</span>
+    
+    <span class="n">style</span> <span class="nc">Main</span> <span class="nl">fill:</span><span class="err">#</span><span class="n">eef</span><span class="o">,</span><span class="nl">stroke:</span><span class="err">#</span><span class="mi">333</span><span class="o">,</span><span class="n">stroke</span><span class="o">-</span><span class="nl">width:</span><span class="mi">2</span><span class="n">px</span><span class="o">,</span><span class="n">stroke</span><span class="o">-</span><span class="nl">dasharray:</span> <span class="mi">5</span> <span class="mi">5</span>
+    <span class="n">style</span> <span class="nc">Sub</span> <span class="nl">fill:</span><span class="err">#</span><span class="n">ddf</span><span class="o">,</span><span class="nl">stroke:</span><span class="err">#</span><span class="mi">333</span><span class="o">,</span><span class="n">stroke</span><span class="o">-</span><span class="nl">width:</span><span class="mi">2</span><span class="n">px</span>
+    <span class="n">style</span> <span class="n">v1</span> <span class="nl">fill:</span><span class="err">#</span><span class="n">fff</span><span class="o">,</span><span class="nl">stroke:</span><span class="err">#</span><span class="mi">333</span>
+    <span class="n">style</span> <span class="n">v2</span> <span class="nl">fill:</span><span class="err">#</span><span class="n">fff</span><span class="o">,</span><span class="nl">stroke:</span><span class="err">#</span><span class="mi">333</span>
+    <span class="n">style</span> <span class="nc">Access1</span> <span class="nl">fill:</span><span class="err">#</span><span class="n">bfb</span><span class="o">,</span><span class="nl">stroke:</span><span class="err">#</span><span class="mi">333</span>
+    <span class="n">style</span> <span class="nc">Access2</span> <span class="nl">fill:</span><span class="err">#</span><span class="n">f99</span><span class="o">,</span><span class="nl">stroke:</span><span class="err">#</span><span class="mi">333</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="2-코드-예시--1">2. 코드 예시 🔍</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">v1</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
+    
+    <span class="k">if</span> <span class="o">(</span><span class="n">v1</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">v2</span> <span class="o">=</span> <span class="mi">20</span><span class="o">;</span> <span class="c1">// v2 탄생</span>
+        
+        <span class="c1">// 안쪽에서는 바깥쪽 변수(v1) 사용 가능</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">v1</span> <span class="o">+</span> <span class="n">v2</span><span class="o">);</span> 
+    <span class="o">}</span> <span class="c1">// v2 사망 (메모리에서 사라짐)</span>
     
     <span class="c1">// 바깥쪽에서는 안쪽 변수(v2) 사용 불가</span>
     <span class="c1">// System.out.println(v2); // (X) 에러! v2는 이미 죽었어요.</span>
@@ -1156,6 +1218,18 @@
   <p><strong>핵심 규칙</strong>: <strong>“내려갈 수는 있지만, 올라올 수는 없다.”</strong>
 (상위 블록의 변수는 하위 블록에서 쓸 수 있지만, 하위 블록의 변수는 상위 블록에서 쓸 수 없다.)</p>
 </blockquote>
+
+<hr />
+
+<h2 id="코딩-영단어-학습-">코딩 영단어 학습 📝</h2>
+
+<p>코딩에서 영어 단어의 의미만 정확히 이해해도 절반은 성공입니다! 오늘 배운 핵심 영단어들을 다시 한번 짚고 넘어갈까요?</p>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">Scope</code></strong>: 스코프, 유효 범위. (변수가 당당하게 탄생하고 살아 숨 쉬며 제 역할을 다해 사용될 수 있는 중괄호(<code class="language-plaintext highlighter-rouge">{ }</code>) 내부의 허락된 공간)</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">Life Cycle</code></strong>: 라이프 사이클, 생명 주기. (변수가 메모리에 짠하고 태어났다가 소임을 전부 다하고 흔적도 없이 예쁘게 사라지는 전체 서사 과정)</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">Block</code></strong>: 블록, 구역. (중괄호 <code class="language-plaintext highlighter-rouge">{ }</code> 로 단단하고 안전하게 묶어져 코드가 모여서 실행되는 단절된 독립적인 작은 세상)</li>
+</ul>
 
 
             <div class="mt-10">

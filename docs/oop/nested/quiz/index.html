@@ -1801,6 +1801,170 @@
     <span class="nc">Chat</span> <span class="n">chat</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Chat</span><span class="o">()</span> <span class="o">{</span>
         <span class="nd">@Override</span>
         <span class="kd">public</span> <span class="kt">void</span> <span class="nf">start</span><span class="o">()</span> <span class="o">{</span>
+<span class="o">---</span>
+
+<span class="err">#</span> <span class="n">확인문제</span>
+
+<span class="mi">1</span><span class="o">.</span> <span class="n">중첩</span> <span class="n">멤버</span> <span class="n">클래스에</span> <span class="n">대한</span> <span class="n">설명으로</span> <span class="n">틀린</span> <span class="n">것은</span> <span class="n">무엇입니까</span><span class="o">?</span>
+   <span class="o">-</span> <span class="err">①</span> <span class="n">인스턴스</span> <span class="n">멤버</span> <span class="n">클래스는</span> <span class="n">바깥</span> <span class="n">클래스의</span> <span class="n">객체가</span> <span class="n">있어야</span> <span class="n">사용될</span> <span class="n">수</span> <span class="n">있다</span><span class="o">.</span>
+   <span class="o">-</span> <span class="err">②</span> <span class="n">정적</span> <span class="n">멤버</span> <span class="n">클래스는</span> <span class="n">바깥</span> <span class="n">클래스의</span> <span class="n">객체가</span> <span class="n">없어도</span> <span class="n">사용될</span> <span class="n">수</span> <span class="n">있다</span><span class="o">.</span>
+   <span class="o">-</span> <span class="err">③</span> <span class="n">인스턴스</span> <span class="n">멤버</span> <span class="n">클래스</span> <span class="n">내부에는</span> <span class="n">바깥</span> <span class="n">클래스의</span> <span class="n">모든</span> <span class="n">필드와</span> <span class="n">메소드를</span> <span class="n">사용할</span> <span class="n">수</span> <span class="n">있다</span><span class="o">.</span>
+   <span class="o">-</span> <span class="err">④</span> <span class="n">정적</span> <span class="n">멤버</span> <span class="n">클래스</span> <span class="n">내부에는</span> <span class="n">바깥</span> <span class="n">클래스의</span> <span class="n">인스턴스</span> <span class="n">필드를</span> <span class="n">사용할</span> <span class="n">수</span> <span class="n">있다</span><span class="o">.</span>
+
+   <span class="o">**</span><span class="nl">정답:</span><span class="o">**</span> <span class="err">④</span> <span class="o">(</span><span class="n">정적</span> <span class="n">멤버</span> <span class="n">클래스에서는</span> <span class="n">바깥</span> <span class="n">클래스의</span> <span class="n">정적</span> <span class="n">필드와</span> <span class="n">정적</span> <span class="n">메소드만</span> <span class="n">사용할</span> <span class="n">수</span> <span class="n">있다</span><span class="o">.)</span>
+
+<span class="mi">2</span><span class="o">.</span> <span class="n">로컬</span> <span class="n">클래스에</span> <span class="n">대한</span> <span class="n">설명으로</span> <span class="n">틀린</span> <span class="n">것은</span> <span class="n">무엇입니까</span><span class="o">?</span>
+   <span class="o">-</span> <span class="err">①</span> <span class="n">로컬</span> <span class="n">클래스는</span> <span class="n">메소드</span> <span class="n">내부에</span> <span class="n">선언된</span> <span class="n">클래스를</span> <span class="n">말한다</span><span class="o">.</span>
+   <span class="o">-</span> <span class="err">②</span> <span class="n">로컬</span> <span class="n">클래스는</span> <span class="n">바깥</span> <span class="n">클래스의</span> <span class="n">필드와</span> <span class="n">메소드를</span> <span class="n">사용할</span> <span class="n">수</span> <span class="n">있다</span><span class="o">.</span>
+   <span class="o">-</span> <span class="err">③</span> <span class="n">로컬</span> <span class="n">클래스는</span> <span class="err">`</span><span class="kd">static</span><span class="err">`</span> <span class="n">키워드를</span> <span class="n">이용해서</span> <span class="n">정적</span> <span class="n">클래스로</span> <span class="n">만들</span> <span class="n">수</span> <span class="n">있다</span><span class="o">.</span>
+   <span class="o">-</span> <span class="err">④</span> <span class="err">`</span><span class="kd">final</span><span class="err">`</span> <span class="n">특성을</span> <span class="n">가진</span> <span class="n">매개변수나</span> <span class="n">로컬</span> <span class="n">변수만</span> <span class="n">로컬</span> <span class="n">클래스</span> <span class="n">내부에서</span> <span class="n">사용할</span> <span class="n">수</span> <span class="n">있다</span><span class="o">.</span>
+
+   <span class="o">**</span><span class="nl">정답:</span><span class="o">**</span> <span class="err">③</span> <span class="o">(</span><span class="n">로컬</span> <span class="n">클래스는</span> <span class="err">`</span><span class="kd">static</span><span class="err">`</span><span class="n">을</span> <span class="n">붙일</span> <span class="n">수</span> <span class="n">없다</span><span class="o">.)</span>
+
+<span class="mi">3</span><span class="o">.</span> <span class="n">익명</span> <span class="n">객체에</span> <span class="n">대한</span> <span class="n">설명으로</span> <span class="n">틀린</span> <span class="n">것은</span> <span class="n">무엇입니까</span><span class="o">?</span>
+   <span class="o">-</span> <span class="err">①</span> <span class="n">익명</span> <span class="n">객체는</span> <span class="n">클래스를</span> <span class="n">상속하거나</span> <span class="n">인터페이스를</span> <span class="n">구현해야만</span> <span class="n">생성될</span> <span class="n">수</span> <span class="n">있다</span><span class="o">.</span>
+   <span class="o">-</span> <span class="err">②</span> <span class="n">익명</span> <span class="n">객체는</span> <span class="n">필드</span><span class="o">,</span> <span class="n">매개변수</span><span class="o">,</span> <span class="n">로컬</span> <span class="n">변수의</span> <span class="n">초기값으로</span> <span class="n">주로</span> <span class="n">사용된다</span><span class="o">.</span>
+   <span class="o">-</span> <span class="err">③</span> <span class="n">익명</span> <span class="n">객체에는</span> <span class="n">생성자를</span> <span class="n">선언할</span> <span class="n">수</span> <span class="n">있다</span><span class="o">.</span>
+   <span class="o">-</span> <span class="err">④</span> <span class="n">익명</span> <span class="n">객체는</span> <span class="n">주로</span> <span class="n">재정의된</span> <span class="n">메소드를</span> <span class="n">멤버로</span> <span class="n">가진다</span><span class="o">.</span>
+
+   <span class="o">**</span><span class="nl">정답:</span><span class="o">**</span> <span class="err">③</span> <span class="o">(</span><span class="n">익명</span> <span class="n">객체는</span> <span class="n">클래스</span> <span class="n">이름이</span> <span class="n">없으므로</span> <span class="n">생성자를</span> <span class="n">선언할</span> <span class="n">수</span> <span class="n">없다</span><span class="o">.)</span>
+
+<span class="mi">4</span><span class="o">.</span> <span class="n">다음과</span> <span class="n">같이</span> <span class="err">`</span><span class="nc">Car</span><span class="err">`</span> <span class="n">클래스</span> <span class="n">내부에</span> <span class="err">`</span><span class="nc">Tire</span><span class="err">`</span><span class="n">와</span> <span class="err">`</span><span class="nc">Engine</span><span class="err">`</span> <span class="n">클래스가</span> <span class="n">멤버로</span> <span class="n">선언되어</span> <span class="n">있습니다</span><span class="o">.</span> <span class="err">`</span><span class="nc">CarExample</span><span class="err">`</span> <span class="n">클래스에서</span> <span class="err">`</span><span class="nc">Tire</span><span class="err">`</span><span class="n">와</span> <span class="err">`</span><span class="nc">Engine</span><span class="err">`</span> <span class="n">객체를</span> <span class="n">생성하는</span> <span class="n">코드를</span> <span class="n">작성해</span> <span class="n">보세요</span><span class="o">.</span>
+
+<span class="err">```</span><span class="n">java</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Car</span> <span class="o">{</span>
+    <span class="kd">class</span> <span class="nc">Tire</span> <span class="o">{}</span>
+    <span class="kd">static</span> <span class="kd">class</span> <span class="nc">Engine</span> <span class="o">{}</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CarExample</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Car</span> <span class="n">myCar</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Car</span><span class="o">();</span>
+        
+        <span class="nc">Car</span><span class="o">.</span><span class="na">Tire</span> <span class="n">tire</span> <span class="o">=</span> <span class="n">myCar</span><span class="o">.</span><span class="na">new</span> <span class="nf">Tire</span><span class="o">();</span>
+        <span class="nc">Car</span><span class="o">.</span><span class="na">Engine</span> <span class="n">engine</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Car</span><span class="o">.</span><span class="na">Engine</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">Action</code> 인터페이스는 다음과 같이 <code class="language-plaintext highlighter-rouge">work()</code> 추상 메소드를 가지고 있습니다. <code class="language-plaintext highlighter-rouge">ActionExample</code> 클래스의 <code class="language-plaintext highlighter-rouge">main()</code> 메소드에서 <code class="language-plaintext highlighter-rouge">Action</code>의 익명 구현 객체를 만들어 실행 결과와 동일하게 나오도록 박스 안에 들어갈 코드를 작성해 보세요.</li>
+</ol>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Action</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">work</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ActionExample</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Action</span> <span class="n">action</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Action</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">work</span><span class="o">()</span> <span class="o">{</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"복사를 합니다."</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">};</span>
+        <span class="n">action</span><span class="o">.</span><span class="na">work</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>실행 결과</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>복사를 합니다.
+</code></pre></div></div>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">AnonymousExample</code> 클래스의 실행 결과를 보고, <code class="language-plaintext highlighter-rouge">Vehicle</code> 인터페이스의 익명 구현 객체를 필드와 로컬 변수의 초기값 그리고 메소드의 매개값으로 대입해 보세요.</li>
+</ol>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Vehicle</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Anonymous</span> <span class="o">{</span>
+	<span class="nc">Vehicle</span> <span class="n">field</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Vehicle</span><span class="o">()</span> <span class="o">{</span>
+		<span class="nd">@Override</span>
+		<span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+			<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"자전거가 달립니다."</span><span class="o">);</span>
+		<span class="o">}</span>
+	<span class="o">};</span>
+	
+	<span class="kt">void</span> <span class="nf">method1</span><span class="o">()</span> <span class="o">{</span>
+		<span class="nc">Vehicle</span> <span class="n">localVar</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Vehicle</span><span class="o">()</span> <span class="o">{</span>
+			<span class="nd">@Override</span>
+			<span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+				<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"승용차가 달립니다."</span><span class="o">);</span>
+			<span class="o">}</span>
+		<span class="o">};</span>
+		<span class="n">localVar</span><span class="o">.</span><span class="na">run</span><span class="o">();</span>
+	<span class="o">}</span>
+	
+	<span class="kt">void</span> <span class="nf">method2</span><span class="o">(</span><span class="nc">Vehicle</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+		<span class="n">v</span><span class="o">.</span><span class="na">run</span><span class="o">();</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">AnonymousExample</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">Anonymous</span> <span class="n">anony</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Anonymous</span><span class="o">();</span>
+		<span class="n">anony</span><span class="o">.</span><span class="na">field</span><span class="o">.</span><span class="na">run</span><span class="o">();</span>
+		<span class="n">anony</span><span class="o">.</span><span class="na">method1</span><span class="o">();</span>
+		<span class="n">anony</span><span class="o">.</span><span class="na">method2</span><span class="o">(</span><span class="k">new</span> <span class="nc">Vehicle</span><span class="o">()</span> <span class="o">{</span>
+			<span class="nd">@Override</span>
+			<span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+				<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"트럭이 달립니다."</span><span class="o">);</span>
+			<span class="o">}</span>
+		<span class="o">});</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>실행 결과</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>자전거가 달립니다.
+승용차가 달립니다.
+트럭이 달립니다.
+</code></pre></div></div>
+
+<ol>
+  <li>다음 <code class="language-plaintext highlighter-rouge">Chatting</code> 클래스는 컴파일 에러가 발생합니다. 원인을 설명해 보세요.</li>
+</ol>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Chatting</span> <span class="o">{</span>
+	<span class="kd">class</span> <span class="nc">Chat</span> <span class="o">{</span>
+		<span class="kt">void</span> <span class="nf">start</span><span class="o">()</span> <span class="o">{}</span>
+		<span class="kt">void</span> <span class="nf">sendMessage</span><span class="o">(</span><span class="nc">String</span> <span class="n">message</span><span class="o">)</span> <span class="o">{}</span>
+	<span class="o">}</span>
+	
+	<span class="kt">void</span> <span class="nf">startChat</span><span class="o">(</span><span class="nc">String</span> <span class="n">chatId</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">String</span> <span class="n">nickName</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+		<span class="n">nickName</span> <span class="o">=</span> <span class="n">chatId</span><span class="o">;</span>
+		
+		<span class="nc">Chat</span> <span class="n">chat</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Chat</span><span class="o">()</span> <span class="o">{</span>
+			<span class="nd">@Override</span>
+			<span class="kd">public</span> <span class="kt">void</span> <span class="nf">start</span><span class="o">()</span> <span class="o">{</span>
+				<span class="k">while</span> <span class="o">(</span><span class="kc">true</span><span class="o">)</span> <span class="o">{</span>
+					<span class="nc">String</span> <span class="n">inputData</span> <span class="o">=</span> <span class="s">"안녕하세요"</span><span class="o">;</span>
+					<span class="nc">String</span> <span class="n">message</span> <span class="o">=</span> <span class="s">"["</span> <span class="o">+</span> <span class="n">nickName</span> <span class="o">+</span> <span class="s">"] "</span> <span class="o">+</span> <span class="n">inputData</span><span class="o">;</span>
+					<span class="n">sendMessage</span><span class="o">(</span><span class="n">message</span><span class="o">);</span>
+				<span class="o">}</span>
+			<span class="o">}</span>
+		<span class="o">};</span>
+		<span class="n">chat</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>정답:</strong>
+<code class="language-plaintext highlighter-rouge">startChat()</code> 메소드의 로컬 변수 <code class="language-plaintext highlighter-rouge">nickName</code>은 <code class="language-plaintext highlighter-rouge">chatId</code>로 초기화된 후 <code class="language-plaintext highlighter-rouge">Chat</code> 익명 자식 객체의 <code class="language-plaintext highlighter-rouge">start()</code> 메소드 내부에서 사용되고 있다. 로컬 클래스나 익명 객체 내부에서 사용되는 로컬 변수는 <code class="language-plaintext highlighter-rouge">final</code> 특성을 가져야 하므로 값을 수정할 수 없다. 하지만 13라인(<code class="language-plaintext highlighter-rouge">nickName = chatId;</code>)에서 값을 변경하고 있기 때문에 컴파일 에러가 발생한다. <code class="language-plaintext highlighter-rouge">nickName</code>을 <code class="language-plaintext highlighter-rouge">final</code>로 선언하거나, 초기화 이후 수정하지 말아야 한다. 또는 <code class="language-plaintext highlighter-rouge">chatId</code> 매개변수 자체를 직접 사용해도 된다(Java 8부터 <code class="language-plaintext highlighter-rouge">final</code> 생략 가능).</p>
+
+<p>수정 예시:</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">startChat</span><span class="o">(</span><span class="nc">String</span> <span class="n">chatId</span><span class="o">)</span> <span class="o">{</span>
+    <span class="c1">// nickName을 사용하지 않고 chatId를 바로 사용하거나</span>
+    <span class="c1">// nickName = chatId; 구문을 제거하고 선언 시 초기화</span>
+    <span class="nc">String</span> <span class="n">nickName</span> <span class="o">=</span> <span class="n">chatId</span><span class="o">;</span> 
+    
+    <span class="nc">Chat</span> <span class="n">chat</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Chat</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">start</span><span class="o">()</span> <span class="o">{</span>
             <span class="k">while</span> <span class="o">(</span><span class="kc">true</span><span class="o">)</span> <span class="o">{</span>
                 <span class="nc">String</span> <span class="n">inputData</span> <span class="o">=</span> <span class="s">"안녕하세요"</span><span class="o">;</span>
                 <span class="nc">String</span> <span class="n">message</span> <span class="o">=</span> <span class="s">"["</span> <span class="o">+</span> <span class="n">nickName</span> <span class="o">+</span> <span class="s">"] "</span> <span class="o">+</span> <span class="n">inputData</span><span class="o">;</span>
@@ -1811,6 +1975,17 @@
     <span class="n">chat</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
 <span class="o">}</span>
 </code></pre></div></div>
+
+<hr />
+
+<h2 id="코딩-영단어-학습-">코딩 영단어 학습 📝</h2>
+
+<p>코딩에서 영어 단어의 의미만 정확히 이해해도 절반은 성공입니다! 오늘 배운 핵심 영단어들을 다시 한번 짚고 넘어가 볼까요?</p>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">Review</code></strong>: 리뷰, 복습. (지금까지 배운 복잡한 중첩 선언, 로컬 클래스의 제약, 그리고 마법 같은 익명 객체의 활용법 등 어지러운 개념들을 문제를 통해 퀴즈처럼 즐겁게 머릿속에 정리하는 시간)
+```</li>
+</ul>
 
 
             <div class="mt-10">

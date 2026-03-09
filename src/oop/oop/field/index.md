@@ -194,6 +194,194 @@ public class CarExample {
 		System.out.println("수정된 속도: " + myCar.speed);
 	}
 }
+---
+
+# 6.6 필드 선언과 사용
+
+## 필드의 역할
+필드(Field)는 객체의 데이터를 `저장`하는 역할을 한다. 
+객체의 데이터에는 고유 데이터, 현재 상태 데이터, 부품 데이터가 있다.
+
+![Field Role](./img/field_role.svg)
+
+
+## 예시
+자동차 객체를 예로 들면 제작회사, 모델, 색깔, 최고 속도는 고유 데이터에 해당하고, 현재 속도, 엔진 회전 수는 상태 데이터에 해당한다. 
+그리고 차체, 엔진, 타이어는 부품에 해당한다.
+
+![Car Field Example](./img/car_field_example.svg)
+
+
+이를 코드로 다시 작성해 보면 다음과 같다.
+
+```java
+public class Car {
+	// 고유 데이터를 저장하는 필드 선언
+	String company;
+	String model;
+	String color;
+	int maxSpeed;
+
+	// 상태 데이터를 저장하는 필드 선언
+	int speed;
+	int rpm;
+
+	// 부품 데이터를 저장하는 필드 선언
+	Body body;
+	Engine engine;
+	Tire tire;
+}
+```
+
+
+## 필드 선언
+필드를 선언하는 방법은 변수를 선언하는 방법과 동일하다. 
+단, 반드시 클래스 블록에서 선언되어야만 필드 선언이 된다.
+
+```java
+타입 필드명 [ = 초기값 ];
+```
+
+> **필드와 (로컬)변수의 차이점**
+> (로컬)변수는 생성자와 메소드 블록에서 선언되며 생성자와 메소드 호출 시에만 생성되고 사용된다. 필드는 클래스 블록에서 선언되며, 객체 내부에서 존재하고 객체 내·외부에서 사용 가능하다.
+>
+> | 구분 | 필드 | (로컬)변수 |
+> |---|---|---|
+> | 선언 위치 | 클래스 선언 블록 | 생성자, 메소드 선언 블록 |
+> | 존재 위치 | 객체 내부에 존재 | 생성자, 메소드 호출 시에만 존재 |
+> | 사용 위치 | 객체 내·외부 어디든 사용 | 생성자, 메소드 블록 내부에서만 사용 |
+
+## 필드의 데이터 타입
+타입은 필드에 저장할 데이터의 `종류`를 결정한다. 
+
+* 기본 타입(byte, short, int, long, float, double, boolean)과 
+* 참조 타입(배열, 클래스, 인터페이스)이 모두 가능하다. 
+
+필드명은 첫 문자를 소문자로 하되, 캐멀 스타일로 작성하는 것이 관례이다. 
+
+다음은 Car 클래스의 필드를 선언한 예를 보여 준다.
+
+```java
+public class Car {
+	String model = "그랜저";    // 고유 데이터 필드
+	int speed = 300;            // 상태 데이터 필드
+	boolean start = true;       // 상태 데이터 필드
+	Tire tire = new Tire();     // 부품 객체 필드
+}
+```
+
+## 필드 초기값
+초기값을 제공하지 않을 경우 필드는 객체 생성 시 자동으로 `기본값`으로 초기화된다. 
+
+### 기본 초기값
+다음 표는 필드 타입별 기본값을 보여 준다.
+
+| 분류      | 데이터 타입                           | 초기값                       |
+| --------- | ------------------------------------- | ---------------------------- |
+| 기본 타입 | byte, char, short, int, long          | 0 (char는 '\u0000', 빈 공백) |
+| 실수 타입 | float, double                         | 0.0, 0.0F                    |
+| 논리 타입 | boolean                               | false                        |
+| 참조 타입 | 배열, 클래스(String 포함), 인터페이스 | null                         |
+
+정수 타입 필드는 0, 실수 타입 필드는 0.0, 그리고 boolean 필드는 false로 초기화되는 것을 볼 수 있다. 
+참조 타입은 객체를 참조하고 있지 않은 상태인 `null`로 초기화된다.
+
+## 코드 예제 
+예제를 통하여 좀더 자세히 알아 보도록 합니다.
+
+**Car.java**
+```java
+package ch06.sec06.exam01;
+
+public class Car {
+	// 필드 선언
+	String model;
+	boolean start;
+	int speed;
+}
+```
+
+**CarExample.java**
+```java
+package ch06.sec06.exam01;
+
+public class CarExample {
+	public static void main(String[] args) {
+		// Car 객체 생성
+		Car myCar = new Car();
+		
+		// Car 객체의 필드값 읽기
+		System.out.println("모델명: " + myCar.model);
+		System.out.println("시동여부: " + myCar.start);
+		System.out.println("현재속도: " + myCar.speed);
+	}
+}
+```
+
+**실행 결과**
+```
+모델명: null
+시동여부: false
+현재속도: 0
+```
+
+## 필드를 사욯하기 위해서는 먼저 객체가 필요하다
+
+필드를 사용한다는 것은 필드값을 읽고 변경하는 것을 말한다. 
+
+클래스에서 필드를 선언했다고 해서 바로 사용할 수 있는 것은 아니다. 필드는 객체의 데이터이므로 `객체`가 존재하지 않으면 필드도 존재하지 않는다.
+
+![Field Needs Object](./img/field_needs_object.svg)
+
+
+클래스로부터 객체가 `생성된 후`에 필드를 `사용`할 수 있다. 
+
+## 필드의 접근 범위
+필드는 객체 내부의 생성자와 메소드 내부에서 사용할 수 있고, 객체 외부에서도 접근해서 사용할 수 있다.
+
+![Field Access Scope](./img/field_access_scope.svg)
+
+
+객체 내부에서는 단순히 필드명으로 읽고 변경할 수 있지만 외부 객체에서는 참조 변수와 도트(.) 연산자를 이용해서 필드를 읽고 변경해야 한다. 
+
+> 도트(.)는 객체 접근 연산자로, 객체가 가지고 있는 필드나 메소드에 접근하고자 할 때 참조 변수 뒤에 붙인다.
+
+
+**Car.java**
+```java
+package ch06.sec06.exam02;
+
+public class Car {
+	// 필드 선언
+	String company = "현대자동차";
+	String model = "그랜저";
+	String color = "검정";
+	int maxSpeed = 350;
+	int speed;
+}
+```
+
+**CarExample.java**
+```java
+package ch06.sec06.exam02;
+
+public class CarExample {
+	public static void main(String[] args) {
+		// Car 객체 생성
+		Car myCar = new Car();
+		
+		// Car 객체의 필드값 읽기
+		System.out.println("제작회사: " + myCar.company);
+		System.out.println("모델명: " + myCar.model);
+		System.out.println("색깔: " + myCar.color);
+		System.out.println("최고속도: " + myCar.maxSpeed);
+		System.out.println("현재속도: " + myCar.speed);
+		
+		// Car 객체의 필드값 변경
+		myCar.speed = 60;
+		System.out.println("수정된 속도: " + myCar.speed);
+	}
+}
 ```
 
 **실행 결과**
@@ -205,3 +393,14 @@ public class CarExample {
 현재속도: 0
 수정된 속도: 60
 ```
+
+---
+
+## 코딩 영단어 학습 📝
+
+코딩에서 영어 단어의 의미만 정확히 이해해도 절반은 성공입니다! 오늘 배운 핵심 영단어들을 다시 한번 짚고 넘어가 볼까요?
+
+*   **`Field`**: 필드. (객체가 수명이 다할 때까지 고유하게 간직해야 하는 고정 데이터들이나 현재 상태 값들을 영구적으로 저장하는 전용 변수 저장소)
+*   **`Local Variable`**: 로컬 변수, 지역 변수. (생성자나 메소드 블록 `{ }` 안에서 잠시 생겨나 쓰이다가, 괄호가 닫히면 메모리에서 흔적도 없이 사라지는 임시 변수)
+*   **`Type`**: 타입, 데이터 타입. (이 필드에 담을 내용물이 정수인지, 문자열인지, 혹은 다른 크다란 객체의 리모컨(참조)인지를 정해주는 데이터의 규격)
+*   **`Scope`**: 스코프, 유효 범위. (변수나 필드가 자신을 선언한 위치에 따라 살아 숨 쉬며 진짜로 작동하고 접근할 수 있는 영역적인 한계 범위)

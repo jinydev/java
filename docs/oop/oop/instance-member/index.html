@@ -1759,17 +1759,156 @@
 		<span class="nc">Car</span> <span class="n">yourCar</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Car</span><span class="o">(</span><span class="s">"벤츠"</span><span class="o">);</span>
 		
 		<span class="c1">// 인스턴스 메소드 호출</span>
+<span class="o">---</span>
+
+<span class="err">#</span> <span class="mf">6.9</span> <span class="n">인스턴스</span> <span class="n">멤버</span> <span class="o">(</span><span class="n">객체</span> <span class="n">고유의</span> <span class="n">속성</span><span class="o">)</span>
+
+<span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
+
+<span class="err">##</span> <span class="mf">6.9</span><span class="o">.</span><span class="mi">1</span> <span class="n">인스턴스</span><span class="o">(</span><span class="nc">Instance</span><span class="o">)</span> <span class="n">멤버란</span><span class="o">?</span>
+
+<span class="o">**</span><span class="s">"내 건 내 거고, 네 건 네 거야!"</span><span class="o">**</span>
+
+<span class="n">인스턴스</span> <span class="n">멤버는</span> <span class="o">**</span><span class="n">객체</span><span class="o">(</span><span class="nc">Instance</span><span class="o">)</span><span class="n">를</span> <span class="n">생성해야만</span> <span class="n">사용할</span> <span class="n">수</span> <span class="n">있는</span> <span class="n">멤버</span><span class="o">(</span><span class="n">필드</span><span class="o">,</span> <span class="n">메소드</span><span class="o">)**</span><span class="n">를</span> <span class="n">말합니다</span><span class="o">.</span> <span class="n">쉽게</span> <span class="n">말해</span> <span class="o">**</span><span class="n">객체마다</span> <span class="n">각자</span> <span class="n">가지고</span> <span class="n">있는</span> <span class="n">고유한</span> <span class="n">데이터와</span> <span class="n">기능</span><span class="o">**</span><span class="n">입니다</span><span class="o">.</span>
+
+<span class="o">&gt;</span> <span class="o">**</span><span class="nl">비유:</span> <span class="n">주민등록증</span><span class="o">**</span>
+<span class="o">&gt;</span> <span class="n">사람마다</span> <span class="n">이름과</span> <span class="n">주민등록번호가</span> <span class="n">모두</span> <span class="n">다릅니다</span><span class="o">.</span> <span class="err">'</span><span class="n">홍길동</span><span class="err">'</span><span class="n">의</span> <span class="n">신분증은</span> <span class="err">'</span><span class="n">유관순</span><span class="err">'</span><span class="n">의</span> <span class="n">신분증과</span> <span class="n">완전히</span> <span class="n">다른</span> <span class="n">별개의</span> <span class="n">물건인</span> <span class="n">것처럼</span><span class="o">,</span> <span class="n">객체들도</span> <span class="n">각자</span> <span class="n">독립적인</span> <span class="n">저장</span> <span class="n">공간을</span> <span class="n">가집니다</span><span class="o">.</span>
+
+<span class="o">![</span><span class="nc">Instance</span> <span class="n">vs</span> <span class="nc">Static</span> <span class="nc">Concept</span><span class="o">](./</span><span class="n">img</span><span class="o">/</span><span class="n">instance_vs_static_concept</span><span class="o">.</span><span class="na">svg</span><span class="o">)</span>
+
+<span class="n">하지만</span> <span class="n">비유를</span> <span class="n">넘어</span> <span class="n">기술적으로</span> <span class="n">이해해야</span> <span class="n">합니다</span><span class="o">.</span>
+<span class="o">**</span><span class="n">인스턴스</span> <span class="n">멤버</span><span class="o">**</span><span class="n">는</span> <span class="n">객체가</span> <span class="err">`</span><span class="k">new</span><span class="err">`</span> <span class="n">연산자로</span> <span class="n">힙</span><span class="o">(</span><span class="nc">Heap</span><span class="o">)</span> <span class="n">메모리에</span> <span class="n">생성될</span> <span class="n">때</span><span class="o">,</span> <span class="n">비로소</span> <span class="n">그</span> <span class="n">객체</span> <span class="n">안에</span> <span class="n">공간이</span> <span class="n">할당됩니다</span><span class="o">.</span> <span class="n">따라서</span> <span class="n">객체를</span> <span class="n">생성하지</span> <span class="n">않으면</span> <span class="n">아예</span> <span class="n">존재하지</span> <span class="n">않는</span> <span class="n">멤버들입니다</span><span class="o">.</span>
+
+<span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
+
+<span class="err">##</span> <span class="mf">6.9</span><span class="o">.</span><span class="mi">2</span> <span class="n">인스턴스</span> <span class="n">멤버</span> <span class="n">선언</span> <span class="n">및</span> <span class="n">사용</span>
+
+<span class="n">인스턴스</span> <span class="n">멤버는</span> <span class="n">객체에</span> <span class="n">소속되어</span> <span class="n">있기</span> <span class="n">때문에</span><span class="o">,</span> <span class="n">사용하려면</span> <span class="n">반드시</span> <span class="o">**</span><span class="n">객체를</span> <span class="n">먼저</span> <span class="n">생성</span><span class="o">(</span><span class="err">`</span><span class="k">new</span><span class="err">`</span><span class="o">)**</span><span class="n">해야</span> <span class="n">합니다</span><span class="o">.</span>
+
+<span class="err">###</span> <span class="err">💻</span> <span class="n">코드</span> <span class="n">예시</span>
+
+<span class="err">```</span><span class="n">java</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Car</span> <span class="o">{</span>
+    <span class="c1">// 인스턴스 필드 (차마다의 고유 데이터)</span>
+    <span class="kt">int</span> <span class="n">gas</span><span class="o">;</span>
+    
+    <span class="c1">// 인스턴스 메소드 (차의 동작)</span>
+    <span class="kt">void</span> <span class="nf">setSpeed</span><span class="o">(</span><span class="kt">int</span> <span class="n">speed</span><span class="o">)</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 1. 객체 생성</span>
+<span class="nc">Car</span> <span class="n">myCar</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Car</span><span class="o">();</span> 
+<span class="nc">Car</span> <span class="n">yourCar</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Car</span><span class="o">();</span>
+
+<span class="c1">// 2. 인스턴스 멤버 사용 (객체 참조 변수를 통해 접근)</span>
+<span class="n">myCar</span><span class="o">.</span><span class="na">gas</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
+<span class="n">yourCar</span><span class="o">.</span><span class="na">gas</span> <span class="o">=</span> <span class="mi">20</span><span class="o">;</span> 
+</code></pre></div></div>
+
+<h3 id="-코드를-다시-한번-원리와-동작을-살펴봅니다-2">🔍 코드를 다시 한번 원리와 동작을 살펴봅니다</h3>
+
+<ul>
+  <li><strong>메모리 할당</strong>: <code class="language-plaintext highlighter-rouge">new Car()</code>가 실행되는 순간, 컴퓨터 메모리(Heap)에 <code class="language-plaintext highlighter-rouge">Car</code> 객체를 위한 방이 만들어지고, 그 안에 <code class="language-plaintext highlighter-rouge">gas</code>라는 변수 공간이 생깁니다.</li>
+  <li><strong>독립성</strong>: <code class="language-plaintext highlighter-rouge">myCar</code>가 가리키는 객체와 <code class="language-plaintext highlighter-rouge">yourCar</code>가 가리키는 객체는 서로 다른 주소를 가진 <strong>별개의 존재</strong>입니다.</li>
+  <li><strong>데이터 보존</strong>: <code class="language-plaintext highlighter-rouge">myCar.gas</code>에 10을 넣어도 <code class="language-plaintext highlighter-rouge">yourCar.gas</code>에는 아무런 영향을 주지 않습니다. 이것이 바로 인스턴스 필드가 <strong>객체마다 독립적</strong>이라는 의미입니다.</li>
+</ul>
+
+<p><br />
+<br /></p>
+
+<h2 id="693-this-키워드-현재-객체-참조-1">6.9.3 <code class="language-plaintext highlighter-rouge">this</code> 키워드 (현재 객체 참조)</h2>
+
+<p><strong>“이거(this) = 지금 실행 중인 나 자신”</strong></p>
+
+<p>객체 내부 코드에서 인스턴스 멤버에 접근할 때, <strong>현재 실행 중인 객체 자신을 가리키는 키워드</strong>가 바로 <code class="language-plaintext highlighter-rouge">this</code>입니다.</p>
+
+<p><img src="./img/this_keyword.svg" alt="This Keyword" /></p>
+
+<h3 id="-코드-예시-3">💻 코드 예시</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Car</span> <span class="o">{</span>
+    <span class="nc">String</span> <span class="n">model</span><span class="o">;</span> <span class="c1">// (1) 인스턴스 필드</span>
+    
+    <span class="kd">public</span> <span class="nf">Car</span><span class="o">(</span><span class="nc">String</span> <span class="n">model</span><span class="o">)</span> <span class="o">{</span> <span class="c1">// (2) 매개변수 (외부에서 받은 값)</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">model</span> <span class="o">=</span> <span class="n">model</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="-코드를-다시-한번-원리와-동작을-살펴봅니다-3">🔍 코드를 다시 한번 원리와 동작을 살펴봅니다</h3>
+
+<ul>
+  <li><strong>변수의 이름 충돌</strong>: 위 코드에서 필드 이름도 <code class="language-plaintext highlighter-rouge">model</code>이고, 생성자의 매개변수 이름도 <code class="language-plaintext highlighter-rouge">model</code>입니다. 이 경우 메소드 내부에서는 매개변수 <code class="language-plaintext highlighter-rouge">model</code>이 우선순위를 가집니다. (필드가 가려짐)</li>
+  <li><strong>this의 역할</strong>: 이때 <code class="language-plaintext highlighter-rouge">this.model</code>이라고 쓰면, “지역변수 <code class="language-plaintext highlighter-rouge">model</code>이 아니라, <strong>이 객체가 가지고 있는 필드 <code class="language-plaintext highlighter-rouge">model</code></strong>“을 명확하게 지칭하게 됩니다.</li>
+  <li><strong>주소값</strong>: 기술적으로 <code class="language-plaintext highlighter-rouge">this</code>는 <strong>현재 객체의 참조(주소)값</strong>을 가지고 있습니다. 그래서 <code class="language-plaintext highlighter-rouge">this.model = model;</code>은 “<strong>내 주소지에 있는 <code class="language-plaintext highlighter-rouge">model</code> 변수</strong>에, 전달받은 <code class="language-plaintext highlighter-rouge">model</code> 값을 저장하라”는 명령이 됩니다.</li>
+</ul>
+
+<p><br />
+<br /></p>
+
+<h2 id="694-전체-실행-예제-1">6.9.4 전체 실행 예제</h2>
+
+<h3 id="-코드-예시-4">💻 코드 예시</h3>
+
+<p><strong>Car.java</strong></p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch06.sec09</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Car</span> <span class="o">{</span>
+	<span class="c1">// 인스턴스 필드</span>
+	<span class="nc">String</span> <span class="n">model</span><span class="o">;</span>
+	<span class="kt">int</span> <span class="n">speed</span><span class="o">;</span>
+	
+	<span class="c1">// 생성자</span>
+	<span class="nc">Car</span><span class="o">(</span><span class="nc">String</span> <span class="n">model</span><span class="o">)</span> <span class="o">{</span>
+		<span class="c1">// 매개변수로 받은 model 값을 내 필드(this.model)에 저장</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">model</span> <span class="o">=</span> <span class="n">model</span><span class="o">;</span> 
+	<span class="o">}</span>
+	
+	<span class="c1">// 인스턴스 메소드</span>
+	<span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">10</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="mi">30</span><span class="o">;</span> <span class="n">i</span><span class="o">+=</span><span class="mi">10</span><span class="o">)</span> <span class="o">{</span>
+			<span class="c1">// 내 필드 speed 수정</span>
+			<span class="k">this</span><span class="o">.</span><span class="na">speed</span> <span class="o">=</span> <span class="n">i</span><span class="o">;</span> 
+			<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">model</span> <span class="o">+</span> <span class="s">"가 달립니다.(시속:"</span> <span class="o">+</span> <span class="k">this</span><span class="o">.</span><span class="na">speed</span> <span class="o">+</span> <span class="s">"km/h)"</span><span class="o">);</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>CarExample.java</strong></p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch06.sec09</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CarExample</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="c1">// 객체 생성 (각각 다른 메모리 주소에 할당됨)</span>
+		<span class="nc">Car</span> <span class="n">myCar</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Car</span><span class="o">(</span><span class="s">"포르쉐"</span><span class="o">);</span>
+		<span class="nc">Car</span> <span class="n">yourCar</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Car</span><span class="o">(</span><span class="s">"벤츠"</span><span class="o">);</span>
+		
+		<span class="c1">// 인스턴스 메소드 호출</span>
 		<span class="n">myCar</span><span class="o">.</span><span class="na">run</span><span class="o">();</span>
 		<span class="n">yourCar</span><span class="o">.</span><span class="na">run</span><span class="o">();</span>
 	<span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div></div>
 
-<h3 id="-코드를-다시-한번-원리와-동작을-살펴봅니다-2">🔍 코드를 다시 한번 원리와 동작을 살펴봅니다</h3>
+<h3 id="-코드를-다시-한번-원리와-동작을-살펴봅니다-4">🔍 코드를 다시 한번 원리와 동작을 살펴봅니다</h3>
 
 <ul>
   <li><strong>this의 변화</strong>: <code class="language-plaintext highlighter-rouge">myCar.run()</code>을 호출했을 때의 <code class="language-plaintext highlighter-rouge">this</code>는 <code class="language-plaintext highlighter-rouge">myCar</code> 객체를 가리키고, <code class="language-plaintext highlighter-rouge">yourCar.run()</code>을 호출했을 때의 <code class="language-plaintext highlighter-rouge">this</code>는 <code class="language-plaintext highlighter-rouge">yourCar</code> 객체를 가리킵니다. 즉, <strong>누가 호출했느냐에 따라 <code class="language-plaintext highlighter-rouge">this</code>가 가리키는 대상이 달라집니다.</strong></li>
   <li><strong>상태 유지</strong>: <code class="language-plaintext highlighter-rouge">run()</code> 메소드가 실행되는 동안 <code class="language-plaintext highlighter-rouge">this.speed</code> 값이 계속 변경되지만, 이는 오직 해당 메서드를 호출한 객체의 <code class="language-plaintext highlighter-rouge">speed</code> 필드에만 적용됩니다.</li>
+</ul>
+
+<hr />
+
+<h2 id="코딩-영단어-학습-">코딩 영단어 학습 📝</h2>
+
+<p>코딩에서 영어 단어의 의미만 정확히 이해해도 절반은 성공입니다! 오늘 배운 핵심 영단어들을 다시 한번 짚고 넘어가 볼까요?</p>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">Instance Member</code></strong>: 인스턴스 멤버. (설계도가 아니라, 힙 메모리에 지어진 개별 아파트(객체)들마다 각자 거실에 따로따로 소유하고 있는 전용 변수나 기능들)</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">this</code></strong>: 디스. (‘나 자신’. 지금 당장 코드를 피땀 흘려 실행하고 있는 바로 그 객체 주인의 메모리 주소를 가리키는 1인칭 단수 대명사)</li>
 </ul>
 
 

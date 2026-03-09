@@ -1731,6 +1731,107 @@
 <p>내 통장 잔고(<code class="language-plaintext highlighter-rouge">balance</code>)를 다른 사람이 마음대로 <code class="language-plaintext highlighter-rouge">0</code>원으로 바꾸면 안 되겠죠?
 그래서 중요한 데이터는 <code class="language-plaintext highlighter-rouge">private</code>으로 꽉 잠가둡니다.</p>
 
+<h2 id="코드예시">코드예시</h2>
+
+<h1 id="613-접근-제한자-보안-시스템-1">6.13 접근 제한자 (보안 시스템)</h1>
+
+<h2 id="우리-집-보안-시스템-1">우리 집 보안 시스템</h2>
+
+<p>접근 제한자(Access Modifier)는 쉽게 말해 <strong>‘우리 집 보안 시스템’</strong>과 같습니다.</p>
+
+<p>집에 있는 모든 물건을 아무나 가져가게 둘 수는 없잖아요?
+어떤 건 대문 밖에 내놓고(누구나 가져가도 됨), 어떤 건 안방 금고에 넣어두고(나만 볼 수 있음) 관리해야 안전하겠죠.</p>
+
+<p>자바에서도 마찬가지입니다.</p>
+
+<p>클래스, 필드, 메소드를 <strong>누구에게 어디까지 공개할 것인가</strong>를 결정하는 것이 바로 접근 제한자입니다.</p>
+
+<p><img src="./img/access_modifier_analogy.svg" alt="Access Modifier Analogy" /></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">접근 제한자</th>
+      <th style="text-align: left">의미 (비유)</th>
+      <th style="text-align: left">접근 가능 범위</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>public</strong></td>
+      <td style="text-align: left"><strong>공원</strong> (Public Park)</td>
+      <td style="text-align: left"><strong>누구나</strong> 출입 가능 (모든 패키지)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>protected</strong></td>
+      <td style="text-align: left"><strong>상속 재산</strong></td>
+      <td style="text-align: left"><strong>자식</strong>에게만 물려줌 (+ 같은 패키지)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>default</strong></td>
+      <td style="text-align: left"><strong>동네 친구</strong></td>
+      <td style="text-align: left"><strong>같은 동네(패키지)</strong> 친구들끼리만</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>private</strong></td>
+      <td style="text-align: left"><strong>개인 금고</strong> (Private Safe)</td>
+      <td style="text-align: left"><strong>오직 나(클래스 내부)</strong>만 접근 가능</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="클래스의-접근-제한-1">클래스의 접근 제한</h2>
+
+<p>클래스를 만들 때 <code class="language-plaintext highlighter-rouge">public</code>을 붙일지 말지 결정해야 합니다.</p>
+
+<p><img src="./img/access_class_level.svg" alt="Class Level Access" /></p>
+
+<ul>
+  <li><strong>public class</strong>: “전국적으로 유명한 맛집” (어디서든 찾아올 수 있음)</li>
+  <li><strong>(default) class</strong>: “동네 사람들만 아는 맛집” (같은 패키지 안에서만 사용 가능)</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 전국구 맛집 (어디서든 import 가능)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">A</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
+
+<span class="c1">// 동네 맛집 (같은 패키지에서만 사용 가능)</span>
+<span class="kd">class</span> <span class="nc">B</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="생성자의-접근-제한-열쇠-관리-1">생성자의 접근 제한 (열쇠 관리)</h2>
+
+<p>객체를 생성(<code class="language-plaintext highlighter-rouge">new</code>)한다는 것은, 그 객체의 문을 열고 들어가는 것과 같습니다.
+생성자에 어떤 접근 제한자를 붙이느냐에 따라 <strong>누구에게 열쇠를 줄 것인가</strong>가 결정됩니다.</p>
+
+<p><img src="./img/access_constructor.svg" alt="Constructor Access" /></p>
+
+<p>코드예시</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Car</span> <span class="o">{</span>
+    <span class="c1">// 1. public: 누구나 차를 살 수 있음</span>
+    <span class="kd">public</span> <span class="nf">Car</span><span class="o">()</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
+
+    <span class="c1">// 2. private: 아무도 못 삼 (공장 내부용)</span>
+    <span class="kd">private</span> <span class="nf">Car</span><span class="o">(</span><span class="kt">int</span> <span class="n">secretCode</span><span class="o">)</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">public Car()</code>: 누구나 <code class="language-plaintext highlighter-rouge">new Car()</code>를 호출해서 자동차를 만들 수 있습니다.</li>
+  <li><code class="language-plaintext highlighter-rouge">private Car()</code>: 외부에서는 절대 <code class="language-plaintext highlighter-rouge">new Car()</code>를 할 수 없습니다. (보통 식구들끼리만 쓸 때 사용)</li>
+</ul>
+
+<h2 id="필드와-메소드의-접근-제한-1">필드와 메소드의 접근 제한</h2>
+
+<p>객체 안에 있는 데이터(필드)와 기능(메소드)도 보호해야 합니다.</p>
+
+<p><img src="./img/access_field_method.svg" alt="Field and Method Access" /></p>
+
+<h3 id="데이터-보호-private-field-1">데이터 보호 (Private Field)</h3>
+
+<p>내 통장 잔고(<code class="language-plaintext highlighter-rouge">balance</code>)를 다른 사람이 마음대로 <code class="language-plaintext highlighter-rouge">0</code>원으로 바꾸면 안 되겠죠?
+그래서 중요한 데이터는 <code class="language-plaintext highlighter-rouge">private</code>으로 꽉 잠가둡니다.</p>
+
 <p>코드예시</p>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">BankAccount</span> <span class="o">{</span>
@@ -1750,6 +1851,21 @@
   <li><code class="language-plaintext highlighter-rouge">field</code>는 대문 밖에서 안 보입니다. (<code class="language-plaintext highlighter-rouge">private</code>)</li>
   <li><code class="language-plaintext highlighter-rouge">deposit</code> 버튼은 누구나 누를 수 있습니다. (<code class="language-plaintext highlighter-rouge">public</code>)</li>
   <li>외부 사람은 <code class="language-plaintext highlighter-rouge">deposit</code> 버튼을 통해서만 안전하게 잔고를 바꿀 수 있습니다. 이를 <strong>캡슐화(Encapsulation)</strong>라고 합니다.</li>
+</ul>
+
+<hr />
+
+<h2 id="코딩-영단어-학습-">코딩 영단어 학습 📝</h2>
+
+<p>코딩에서 영어 단어의 의미만 정확히 이해해도 절반은 성공입니다! 오늘 배운 핵심 영단어들을 다시 한번 짚고 넘어가 볼까요?</p>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">Access Modifier</code></strong>: 접근 제한자. (클래스, 필드, 메소드에 누가 어디서 접근할 수 있는지 권한을 통제하는 보안 등급)</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">public</code></strong>: 퍼블릭, 공공의. (어느 패키지에서나 누구나 자유롭게 접근 가능한 완전 개방 상태)</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">protected</code></strong>: 프로텍티드, 보호된. (같은 패키지 주민이거나, 다른 패키지라도 나를 상속받은 자식 클래스까지만 접근 가능)</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">default</code></strong>: 디폴트, 기본값. (접근 제한자를 아무것도 적지 않았을 때 적용되며, 같은 동네(패키지) 내에서만 접근 가능)</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">private</code></strong>: 프라이빗, 사적인, 개인적인. (오로지 해당 클래스 내부에서만 접근할 수 있는 가장 강력한 비밀 형태)</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">Encapsulation</code></strong>: 인캡슐레이션, 캡슐화. (중요한 데이터를 <code class="language-plaintext highlighter-rouge">private</code>으로 꽁꽁 싸매어 보호하고, 안전한 <code class="language-plaintext highlighter-rouge">public</code> 메소드만 외부에 노출시켜 객체의 무결성을 유지하는 객체지향의 핵심 원리)</li>
 </ul>
 
 

@@ -1774,6 +1774,151 @@
 </code></pre></div></div>
 
 <blockquote>
+  <h2 id="결론-상속을-사용하면-phone의-코드를-다시-작성하지-않고도-smartphone이라는-새로운-클래스를-빠르고-효율적으로-만들-수-있습니다"><strong>결론</strong>: 상속을 사용하면, <code class="language-plaintext highlighter-rouge">Phone</code>의 코드를 다시 작성하지 않고도 <code class="language-plaintext highlighter-rouge">SmartPhone</code>이라는 새로운 클래스를 <strong>빠르고 효율적으로</strong> 만들 수 있습니다.</h2>
+</blockquote>
+
+<h1 id="72-클래스-상속-실습-스마트폰-만들기-1">7.2 클래스 상속 실습 (스마트폰 만들기)</h1>
+
+<p>이번에는 실제 코드로 상속을 체험해 봅시다.
+(구형) <strong>일반 전화기</strong>를 상속받아, 기능이 추가된 (신형) <strong>스마트폰</strong>을 만들어 보는 예제입니다.</p>
+
+<h3 id="-핵심-비유-기능-업그레이드-1">💡 핵심 비유: 기능 업그레이드</h3>
+<blockquote>
+  <p><strong>“피처폰(Phone)에 와이파이 기능을 붙이면 스마트폰(SmartPhone)이 된다!”</strong></p>
+</blockquote>
+
+<p><img src="./img/smartphone_inheritance.svg" alt="SmartPhone Inheritance" /></p>
+
+<hr />
+
+<h2 id="1-부모-클래스-phone-일반-전화기-1">1. 부모 클래스: Phone (일반 전화기)</h2>
+
+<p>먼저 기본적인 전화 기능만 있는 <code class="language-plaintext highlighter-rouge">Phone</code> 클래스를 만듭니다.
+이것이 <strong>부모 클래스</strong>가 됩니다.</p>
+
+<p><strong>예시 코드 (Phone.java)</strong></p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Phone</span> <span class="o">{</span>
+    <span class="c1">// 필드 (속성)</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="n">model</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="n">color</span><span class="o">;</span>
+
+    <span class="c1">// 메소드 (기능)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">bell</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"따르릉~ 벨이 울립니다."</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">sendVoice</span><span class="o">(</span><span class="nc">String</span> <span class="n">message</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"나: "</span> <span class="o">+</span> <span class="n">message</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">receiveVoice</span><span class="o">(</span><span class="nc">String</span> <span class="n">message</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"상대방: "</span> <span class="o">+</span> <span class="n">message</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">hangUp</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"전화를 끊습니다."</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><br />
+<br /></p>
+
+<hr />
+
+<h2 id="2-자식-클래스-smartphone-스마트폰-1">2. 자식 클래스: SmartPhone (스마트폰)</h2>
+
+<p>이제 <code class="language-plaintext highlighter-rouge">Phone</code>을 상속받는 <code class="language-plaintext highlighter-rouge">SmartPhone</code>을 만듭니다.
+<code class="language-plaintext highlighter-rouge">extends Phone</code>이라고 적는 순간, <code class="language-plaintext highlighter-rouge">Phone</code>의 모든 기능(벨, 통화 등)은 자동으로 <code class="language-plaintext highlighter-rouge">SmartPhone</code>의 것이 됩니다.
+우리는 <strong>새로운 기능(와이파이, 인터넷)</strong>만 추가하면 됩니다.</p>
+
+<p><strong>예시 코드 (SmartPhone.java)</strong></p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SmartPhone</span> <span class="kd">extends</span> <span class="nc">Phone</span> <span class="o">{</span>
+    <span class="c1">// [추가된 필드]</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="n">wifi</span><span class="o">;</span>
+
+    <span class="c1">// [생성자]</span>
+    <span class="kd">public</span> <span class="nf">SmartPhone</span><span class="o">(</span><span class="nc">String</span> <span class="n">model</span><span class="o">,</span> <span class="nc">String</span> <span class="n">color</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// 부모 필드(model, color)를 마치 내 것처럼 사용</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">model</span> <span class="o">=</span> <span class="n">model</span><span class="o">;</span> 
+        <span class="k">this</span><span class="o">.</span><span class="na">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">;</span> 
+    <span class="o">}</span>
+
+    <span class="c1">// [추가된 메소드]</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setWifi</span><span class="o">(</span><span class="kt">boolean</span> <span class="n">wifi</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">wifi</span> <span class="o">=</span> <span class="n">wifi</span><span class="o">;</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"와이파이 상태를 변경했습니다."</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">internet</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"인터넷에 연결합니다."</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><br />
+<br /></p>
+
+<hr />
+
+<h2 id="3-심화-메모리-구조-확인-deep-dive-1">3. 심화: 메모리 구조 확인 (Deep Dive)</h2>
+
+<p>자식인 <code class="language-plaintext highlighter-rouge">SmartPhone</code> 객체를 만들었을 때, 메모리에서는 어떤 일이 벌어질까요?</p>
+
+<blockquote>
+  <p><strong>“자식 객체 안에 부모 객체가 포함되어 생성됩니다.”</strong></p>
+</blockquote>
+
+<p><img src="./img/smartphone_memory.svg" alt="SmartPhone Memory Structure" /></p>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">new SmartPhone()</code>을 호출하면 Heap 영역에 객체가 하나 생성됩니다.</li>
+  <li>이 객체 내부에는 <strong>부모인 <code class="language-plaintext highlighter-rouge">Phone</code>의 영역(model, color, bell…)</strong>이 먼저 자리 잡습니다.</li>
+  <li>그 다음 <strong>자식인 <code class="language-plaintext highlighter-rouge">SmartPhone</code>의 영역(wifi, internet…)</strong>이 추가됩니다.</li>
+  <li>외부에서는 이 전체를 하나의 <code class="language-plaintext highlighter-rouge">SmartPhone</code> 객체로 취급합니다.</li>
+</ol>
+
+<p><br />
+<br /></p>
+
+<hr />
+
+<h2 id="4-예제-코드-실행-및-결과-1">4. 예제 코드: 실행 및 결과</h2>
+
+<p><strong>SmartPhoneExample.java</strong></p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SmartPhoneExample</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// SmartPhone 객체 생성</span>
+        <span class="nc">SmartPhone</span> <span class="n">myPhone</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">SmartPhone</span><span class="o">(</span><span class="s">"갤럭시"</span><span class="o">,</span> <span class="s">"은색"</span><span class="o">);</span>
+
+        <span class="c1">// 1. Phone(부모)으로부터 물려받은 기능</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"모델: "</span> <span class="o">+</span> <span class="n">myPhone</span><span class="o">.</span><span class="na">model</span><span class="o">);</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"색상: "</span> <span class="o">+</span> <span class="n">myPhone</span><span class="o">.</span><span class="na">color</span><span class="o">);</span>
+        
+        <span class="n">myPhone</span><span class="o">.</span><span class="na">bell</span><span class="o">();</span>
+        <span class="n">myPhone</span><span class="o">.</span><span class="na">sendVoice</span><span class="o">(</span><span class="s">"여보세요?"</span><span class="o">);</span>
+        <span class="n">myPhone</span><span class="o">.</span><span class="na">receiveVoice</span><span class="o">(</span><span class="s">"안녕하세요! 홍길동입니다."</span><span class="o">);</span>
+        <span class="n">myPhone</span><span class="o">.</span><span class="na">hangUp</span><span class="o">();</span>
+
+        <span class="c1">// 2. SmartPhone(자식)만의 추가 기능</span>
+        <span class="n">myPhone</span><span class="o">.</span><span class="na">setWifi</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+        <span class="n">myPhone</span><span class="o">.</span><span class="na">internet</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="실행-결과-1">실행 결과</h3>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>모델: 갤럭시
+색상: 은색
+따르릉~ 벨이 울립니다.
+나: 여보세요?
+상대방: 안녕하세요! 홍길동입니다.
+전화를 끊습니다.
+와이파이 상태를 변경했습니다.
+인터넷에 연결합니다.
+</code></pre></div></div>
+
+<blockquote>
   <p><strong>결론</strong>: 상속을 사용하면, <code class="language-plaintext highlighter-rouge">Phone</code>의 코드를 다시 작성하지 않고도 <code class="language-plaintext highlighter-rouge">SmartPhone</code>이라는 새로운 클래스를 <strong>빠르고 효율적으로</strong> 만들 수 있습니다.</p>
 </blockquote>
 
@@ -1787,6 +1932,17 @@
 (예: <code class="language-plaintext highlighter-rouge">class Child extends Father, Mother</code> ❌)</p>
 
 <p>만약 여러 기능이 필요하다면, 나중에 배울 <strong>인터페이스(Interface)</strong>를 사용해야 합니다.</p>
+
+<hr />
+
+<h2 id="코딩-영단어-학습-">코딩 영단어 학습 📝</h2>
+
+<p>코딩에서 영어 단어의 의미만 정확히 이해해도 절반은 성공입니다! 오늘 배운 핵심 영단어들을 다시 한번 짚고 넘어가 볼까요?</p>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">Extends</code></strong>: 익스텐즈, 확장하다. (자바에서 핏줄을 잇는 상속을 구현할 때 사용하는 키워드. 부모의 기능을 물려받아 내 기능과 함께 더 넓게 확장한다는 의미)</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">Super</code></strong>: 슈퍼, 부모. (상속 관계에서 나에게 재산을 물려준 윗세대, 즉 부모 클래스나 부모의 영역을 지칭하는 단어)</li>
+</ul>
 
 
             <div class="mt-10">

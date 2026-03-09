@@ -1230,6 +1230,153 @@
   <li><code class="language-plaintext highlighter-rouge">System.out.println("Hello");</code> 👉 “화면에 Hello라고 출력해라.” (마침표)</li>
 </ul>
 
+<h2><img src="./img/sentence_period.png" alt="그림" /></h2>
+
+<h1 id="32-코드-용어-이해-1">3.2 코드 용어 이해</h1>
+
+<p>방금 작성한 <code class="language-plaintext highlighter-rouge">Hello.java</code> 코드를 한 줄씩 뜯어보며, 자바 프로그램의 기본 구성 요소를 완벽하게 이해해 봅시다. 🕵️‍♂️</p>
+
+<p><strong>예제 코드</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">ch01</span><span class="o">;</span> <span class="c1">// ① 패키지 선언</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Hello</span> <span class="o">{</span> <span class="c1">// ② 클래스 선언</span>
+    
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span> <span class="c1">// ③ 메인 메소드 선언</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Hello"</span><span class="o">);</span> <span class="c1">// ④ 실행문</span>
+    <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="1-패키지-package--1">1. 패키지 (Package) 📂</h2>
+
+<h3 id="1-개념-4">1) 개념</h3>
+<p>패키지는 <strong>관련된 자바 클래스들을 묶어서 관리하는 폴더</strong>와 같습니다.
+컴퓨터에서 파일을 정리할 때 폴더를 만들어서 보관하듯이, 자바에서도 수많은 클래스 파일을 체계적으로 관리하기 위해 패키지를 사용합니다.</p>
+
+<p><img src="./img/package_concept.png" alt="그림" /></p>
+
+<h3 id="2-비유-컴퓨터의-폴더-1">2) 비유: “컴퓨터의 폴더”</h3>
+<ul>
+  <li>우리가 사진을 <code class="language-plaintext highlighter-rouge">사진</code> 폴더에, 문서를 <code class="language-plaintext highlighter-rouge">문서</code> 폴더에 정리하듯, 자바 파일도 성격에 맞는 패키지(폴더)에 넣어 관리합니다.</li>
+  <li><code class="language-plaintext highlighter-rouge">package ch01;</code>이라는 선언은 <strong>“이 파일은 <code class="language-plaintext highlighter-rouge">ch01</code>이라는 폴더 안에 소속되어 있다”</strong>는 것을 명시하는 것입니다.</li>
+</ul>
+
+<p><img src="./img/package_analogy.png" alt="그림" /></p>
+
+<h3 id="3-구조-시각화-1">3) 구조 시각화</h3>
+
+<pre><code class="language-mermaid">graph TD
+    Project[자바 프로젝트] --&gt; src[src 폴더]
+    src --&gt; ch01[📂 ch01 패키지]
+    ch01 --&gt; Hello[📄 Hello.java]
+    src --&gt; ch02[📂 ch02 패키지]
+    ch02 --&gt; World[📄 World.java]
+    
+    style ch01 fill:#f9f,stroke:#333,stroke-width:2px
+    style Hello fill:#bfb,stroke:#333,stroke-width:2px
+</code></pre>
+
+<h3 id="4-상세-설명-3">4) 상세 설명</h3>
+<ul>
+  <li><strong>물리적 위치</strong>: 실제로 파일 탐색기에서 프로젝트 폴더를 열어보면 <code class="language-plaintext highlighter-rouge">src/ch01</code> 경로에 <code class="language-plaintext highlighter-rouge">Hello.java</code> 파일이 있는 것을 확인할 수 있습니다.</li>
+  <li><strong>이름 충돌 방지</strong>: 만약 다른 회사의 <code class="language-plaintext highlighter-rouge">Hello</code> 클래스와 내 <code class="language-plaintext highlighter-rouge">Hello</code> 클래스 이름이 같더라도, 패키지 이름이 다르면 서로 다른 파일로 인식됩니다. (예: <code class="language-plaintext highlighter-rouge">com.companyA.Hello</code> vs <code class="language-plaintext highlighter-rouge">com.companyB.Hello</code>)</li>
+</ul>
+
+<p><img src="./img/name_collision.png" alt="그림" /></p>
+
+<hr />
+
+<h2 id="2-클래스-class--1">2. 클래스 (Class) 📄</h2>
+
+<h3 id="1-개념-5">1) 개념</h3>
+<p>클래스는 <strong>자바 프로그램의 기본 단위</strong>이자, 객체를 만들기 위한 <strong>설계도</strong>입니다.
+자바의 모든 코드는 반드시 클래스 안에 존재해야 합니다.</p>
+
+<p><img src="./img/class_concept.png" alt="그림" /></p>
+
+<h3 id="2-비유-파일-자체-또는-설계도-1">2) 비유: “파일 자체 또는 설계도”</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Hello.java</code>라는 파일을 만들었다면, 그 안에는 반드시 <code class="language-plaintext highlighter-rouge">Hello</code>라는 이름의 클래스가 있어야 합니다.</li>
+  <li>우리가 붕어빵을 만들기 위해 <strong>붕어빵 틀</strong>이 필요하듯이, 프로그램을 만들기 위해서는 <strong>클래스(설계도)</strong>가 필요합니다.</li>
+</ul>
+
+<p><img src="./img/bungeoppang_class.png" alt="그림" /></p>
+
+<h3 id="3-구조-1">3) 구조</h3>
+
+<pre><code class="language-mermaid">classDiagram
+    class Hello {
+        +main(args : String[]) void
+    }
+    note for Hello "클래스 이름은\n파일 이름과 동일해야 함"
+</code></pre>
+
+<h3 id="4-상세-설명-4">4) 상세 설명</h3>
+<ul>
+  <li><strong>Naming Convention (명명 규칙)</strong>: 클래스 이름은 소스 파일명과 <strong>정확히 일치</strong>해야 합니다. (대소문자 구별)
+    <ul>
+      <li>파일: <code class="language-plaintext highlighter-rouge">Hello.java</code> 👉 클래스: <code class="language-plaintext highlighter-rouge">public class Hello</code></li>
+    </ul>
+  </li>
+  <li><strong>블록 <code class="language-plaintext highlighter-rouge">{ }</code></strong>: 클래스의 시작(<code class="language-plaintext highlighter-rouge">{</code>)과 끝(<code class="language-plaintext highlighter-rouge">}</code>)을 감싸는 중괄호 안에 모든 코드가 작성됩니다.</li>
+</ul>
+
+<hr />
+
+<h2 id="3-메인-메소드-main-method-️-1">3. 메인 메소드 (main method) ▶️</h2>
+
+<h3 id="1-개념-6">1) 개념</h3>
+<p>메인 메소드는 <strong>자바 프로그램의 시작점(Entry Point)</strong>입니다.
+자바 가상 머신(JVM)은 프로그램을 실행할 때 무조건 <code class="language-plaintext highlighter-rouge">main</code> 메소드를 찾아서 실행합니다.</p>
+
+<p><img src="./img/main_entry.png" alt="그림" /></p>
+
+<h3 id="2-비유-자동차의-시동-버튼-1">2) 비유: “자동차의 시동 버튼”</h3>
+<ul>
+  <li>자동차가 아무리 멋져도 시동 버튼을 누르지 않으면 움직이지 않듯이, 자바 프로그램도 <strong>main 메소드</strong>가 없으면 실행되지 않습니다.</li>
+  <li>프로그램 실행 = <code class="language-plaintext highlighter-rouge">main</code> 메소드 안의 내용 실행</li>
+</ul>
+
+<p><img src="./img/car_start.png" alt="그림" /></p>
+
+<h3 id="3-실행-흐름-1">3) 실행 흐름</h3>
+
+<pre><code class="language-mermaid">flowchart LR
+    Start([프로그램 시작]) --&gt; FindMain{main 메소드 찾기}
+    FindMain --&gt;|있음| Execute[코드 실행]
+    FindMain --&gt;|없음| Error[실행 불가 오류]
+    Execute --&gt; End([프로그램 종료])
+    
+    style Start fill:#f96,stroke:#333,stroke-width:2px
+    style Execute fill:#9f6,stroke:#333,stroke-width:2px
+</code></pre>
+
+<h3 id="4-상세-설명-5">4) 상세 설명</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">public static void main(String[] args)</code>: 이 긴 문장은 “여기가 바로 시작점입니다!”라고 선언하는 약속된 문법입니다. 글자 하나라도 틀리면 실행되지 않습니다.</li>
+  <li><strong>진입점</strong>: 프로그램이 시작되면 가장 먼저 호출되는 메소드입니다.</li>
+</ul>
+
+<hr />
+
+<h2 id="4-실행문-statement-️-1">4. 실행문 (Statement) ✍️</h2>
+
+<h3 id="1-개념-7">1) 개념</h3>
+<p>실행문은 <strong>컴퓨터에게 내리는 구체적인 명령</strong>입니다.
+변수를 선언하거나, 값을 계산하거나, 메소드를 호출하는 등의 작업을 수행합니다.</p>
+
+<p><img src="./img/statement_orders.png" alt="그림" /></p>
+
+<h3 id="2-비유-문장과-마침표-1">2) 비유: “문장과 마침표”</h3>
+<ul>
+  <li>우리가 글을 쓸 때 문장 끝에 마침표(<code class="language-plaintext highlighter-rouge">.</code>)를 찍듯이, 자바에서는 명령이 끝날 때마다 <strong>세미콜론(<code class="language-plaintext highlighter-rouge">;</code>)</strong>을 찍어야 합니다.</li>
+  <li><code class="language-plaintext highlighter-rouge">System.out.println("Hello");</code> 👉 “화면에 Hello라고 출력해라.” (마침표)</li>
+</ul>
+
 <p><img src="./img/sentence_period.png" alt="그림" /></p>
 
 <h3 id="3-상세-설명">3) 상세 설명</h3>
@@ -1240,6 +1387,17 @@
 
 <p><img src="./img/semicolon_error.png" alt="그림" /></p>
 
+<hr />
+
+<h2 id="코딩-영단어-학습-">코딩 영단어 학습 📝</h2>
+
+<p>코딩에서 영어 단어의 의미만 정확히 이해해도 절반은 성공입니다! 오늘 배운 핵심 영단어들을 다시 한번 짚고 넘어가 볼까요?</p>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">Package</code></strong>: 패키지, 꾸러미. (비슷한 종류의 클래스 파일들을 명칭 충돌 없이 하나로 묶어 관리하는 폴더)</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">Class</code></strong>: 클래스, 반/학급. (자바 프로그램의 기본 단위이자, 객체를 만들어내기 위한 필수적인 붕어빵 틀(설계도))</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">Main Method</code></strong>: 메인 메소드. (자바 가상 머신(JVM)이 프로그램을 실행할 때 가장 먼저 찾아서 진입하는 시작점, 자동차의 시동 버튼)</li>
+</ul>
 
 
             <div class="mt-10">

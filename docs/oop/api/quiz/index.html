@@ -1776,6 +1776,153 @@
 <p><br /></p>
 
 <h2 id="7-날짜-조작">7. 날짜 조작</h2>
+<p>현재 시간(<code class="language-plaintext highlighter-rouge">now</code>)에서 <strong>“3일 뒤”</strong>를 구하는 올바른 코드는? (Java 8 이상 <code class="language-plaintext highlighter-rouge">LocalDateTime</code> 사용 기준)
+—</p>
+
+<h1 id="확인문제-1">확인문제</h1>
+
+<p><br /></p>
+
+<h2 id="1-api-도큐먼트-1">1. API 도큐먼트</h2>
+<p>API 도큐먼트에 대한 설명으로 <strong>틀린 것</strong>은 무엇입니까?</p>
+<ul>
+  <li>① 자바 표준 라이브러리를 프로그램에서 어떻게 사용할 수 있는지를 설명하고 있다.</li>
+  <li>② 클래스의 상속 관계 및 자식 클래스들이 무엇이 있는지 알 수 있다.</li>
+  <li>③ 생성자 선언부, 필드의 타입, 메소드의 선언부를 확인할 수 있다.</li>
+  <li>④ 모든 <code class="language-plaintext highlighter-rouge">private</code> 멤버들도 상세하게 확인할 수 있다.</li>
+</ul>
+
+<details>
+<summary>정답 확인</summary>
+<div>
+    <p><strong>정답:</strong> ④
+<br />
+<strong>해설:</strong> API 도큐먼트는 주로 외부에서 사용할 수 있는 <code class="language-plaintext highlighter-rouge">public</code>이나 <code class="language-plaintext highlighter-rouge">protected</code> 멤버들을 설명합니다. <code class="language-plaintext highlighter-rouge">private</code> 멤버는 내부 구현이므로 보통 노출되지 않습니다.</p>
+  </div>
+</details>
+
+<p><br /></p>
+
+<p><br /></p>
+
+<h2 id="2-object-클래스-1">2. Object 클래스</h2>
+<p><code class="language-plaintext highlighter-rouge">Object</code> 클래스에 대한 설명 중 <strong>틀린 것</strong>은 무엇입니까?</p>
+<ul>
+  <li>① 모든 자바 클래스의 최상위 부모 클래스이다.</li>
+  <li>② <code class="language-plaintext highlighter-rouge">equals()</code> 메소드는 기본적으로 <code class="language-plaintext highlighter-rouge">==</code> 연산자와 동일하게 주소값을 비교한다.</li>
+  <li>③ <code class="language-plaintext highlighter-rouge">hashCode()</code> 메소드는 객체의 식별값(정수)을 리턴한다.</li>
+  <li>④ <code class="language-plaintext highlighter-rouge">toString()</code> 메소드는 항상 객체의 필드값을 예쁘게 출력해준다.</li>
+</ul>
+
+<details>
+<summary>정답 확인</summary>
+<div>
+    <p><strong>정답:</strong> ④
+<br />
+<strong>해설:</strong> 기본적으로 <code class="language-plaintext highlighter-rouge">toString()</code>은 <code class="language-plaintext highlighter-rouge">클래스명@해시코드</code> 같은 알 수 없는 문자열을 리턴합니다. 필드값을 출력하려면 <strong>반드시 재정의(Override)</strong>해야 합니다.</p>
+  </div>
+</details>
+
+<p><br /></p>
+
+<p><br /></p>
+
+<h2 id="3-system-클래스-1">3. System 클래스</h2>
+<p><code class="language-plaintext highlighter-rouge">System</code> 클래스에 대한 설명 중 <strong>틀린 것</strong>은 무엇입니까?</p>
+<ul>
+  <li>① <code class="language-plaintext highlighter-rouge">System.out</code>은 모니터 출력, <code class="language-plaintext highlighter-rouge">System.in</code>은 키보드 입력을 담당한다.</li>
+  <li>② <code class="language-plaintext highlighter-rouge">currentTimeMillis()</code> 메소드는 현재 시간을 밀리초 단위로 리턴한다.</li>
+  <li>③ <code class="language-plaintext highlighter-rouge">exit(0)</code> 메소드는 프로그램을 강제 종료시킨다.</li>
+  <li>④ <code class="language-plaintext highlighter-rouge">System</code> 클래스는 객체를 생성(<code class="language-plaintext highlighter-rouge">new System()</code>)해서 사용해야 한다.</li>
+</ul>
+
+<details>
+<summary>정답 확인</summary>
+<div>
+    <p><strong>정답:</strong> ④
+<br />
+<strong>해설:</strong> <code class="language-plaintext highlighter-rouge">System</code> 클래스의 모든 멤버는 <strong>정적(static)</strong>이므로 객체 생성 없이 <code class="language-plaintext highlighter-rouge">System.out</code> 처럼 바로 사용합니다.</p>
+  </div>
+</details>
+
+<p><br /></p>
+
+<p><br /></p>
+
+<h2 id="4-string-vs-stringbuilder-1">4. String vs StringBuilder</h2>
+<p>다음 중 <code class="language-plaintext highlighter-rouge">StringBuilder</code>를 사용하기에 가장 적합한 경우는 언제입니까?</p>
+<ul>
+  <li>① 로그인 ID처럼 한 번 정하면 바뀔 일이 없는 문자열을 다룰 때</li>
+  <li>② 화면에 고정된 메뉴 이름을 출력할 때</li>
+  <li>③ 반복문 안에서 문자열을 계속 덧붙이거나 수정해야 할 때</li>
+  <li>④ 두 문자열이 같은지 비교만 할 때</li>
+</ul>
+
+<details>
+<summary>정답 확인</summary>
+<div>
+    <p><strong>정답:</strong> ③
+<br />
+<strong>해설:</strong> 문자열 변경이 잦은 경우 <code class="language-plaintext highlighter-rouge">String</code>을 쓰면 메모리 낭비가 심하므로, 수정 가능한 <code class="language-plaintext highlighter-rouge">StringBuilder</code>를 쓰는 것이 좋습니다.</p>
+  </div>
+</details>
+
+<p><br /></p>
+
+<p><br /></p>
+
+<h2 id="5-wrapper-클래스-박싱언박싱-1">5. Wrapper 클래스 (박싱/언박싱)</h2>
+<p>다음 코드의 실행 결과로 올바른 것은?</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Integer</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">128</span><span class="o">;</span>
+<span class="nc">Integer</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">128</span><span class="o">;</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">a</span> <span class="o">==</span> <span class="n">b</span><span class="o">);</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">a</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">b</span><span class="o">));</span>
+</code></pre></div></div>
+
+<ul>
+  <li>① true, true</li>
+  <li>② true, false</li>
+  <li>③ false, true</li>
+  <li>④ false, false</li>
+</ul>
+
+<details>
+<summary>정답 확인</summary>
+<div>
+    <p><strong>정답:</strong> ③
+<br />
+<strong>해설:</strong> <code class="language-plaintext highlighter-rouge">Integer</code>는 객체이므로 <code class="language-plaintext highlighter-rouge">==</code> 비교 시 주소값을 비교합니다. 128은 캐싱 범위(-128~127)를 벗어나므로 서로 다른 객체가 되어 <code class="language-plaintext highlighter-rouge">false</code>입니다. 값 비교는 <code class="language-plaintext highlighter-rouge">equals()</code>를 써야 하므로 두 번째는 <code class="language-plaintext highlighter-rouge">true</code>입니다.</p>
+  </div>
+</details>
+
+<p><br /></p>
+
+<p><br /></p>
+
+<h2 id="6-math-클래스-1">6. Math 클래스</h2>
+<p>다음 중 <code class="language-plaintext highlighter-rouge">Math</code> 클래스의 메소드 결과가 <strong>잘못된 것</strong>은?</p>
+<ul>
+  <li>① <code class="language-plaintext highlighter-rouge">Math.ceil(5.3)</code> → <code class="language-plaintext highlighter-rouge">6.0</code> (올림)</li>
+  <li>② <code class="language-plaintext highlighter-rouge">Math.floor(5.3)</code> → <code class="language-plaintext highlighter-rouge">5.0</code> (버림)</li>
+  <li>③ <code class="language-plaintext highlighter-rouge">Math.max(5, 10)</code> → <code class="language-plaintext highlighter-rouge">5</code> (최대값)</li>
+  <li>④ <code class="language-plaintext highlighter-rouge">Math.round(5.5)</code> → <code class="language-plaintext highlighter-rouge">6</code> (반올림)</li>
+</ul>
+
+<details>
+<summary>정답 확인</summary>
+<div>
+    <p><strong>정답:</strong> ③
+<br />
+<strong>해설:</strong> <code class="language-plaintext highlighter-rouge">Math.max(5, 10)</code>은 두 수 중 큰 값을 리턴하므로 <code class="language-plaintext highlighter-rouge">10</code>이어야 합니다.</p>
+  </div>
+</details>
+
+<p><br /></p>
+
+<p><br /></p>
+
+<h2 id="7-날짜-조작-1">7. 날짜 조작</h2>
 <p>현재 시간(<code class="language-plaintext highlighter-rouge">now</code>)에서 <strong>“3일 뒤”</strong>를 구하는 올바른 코드는? (Java 8 이상 <code class="language-plaintext highlighter-rouge">LocalDateTime</code> 사용 기준)</p>
 
 <ul>
@@ -1793,6 +1940,16 @@
 <strong>해설:</strong> <code class="language-plaintext highlighter-rouge">java.time</code> 패키지에서는 <code class="language-plaintext highlighter-rouge">plus...</code>, <code class="language-plaintext highlighter-rouge">minus...</code> 메소드를 사용합니다.</p>
   </div>
 </details>
+
+<hr />
+
+<h2 id="코딩-영단어-학습-">코딩 영단어 학습 📝</h2>
+
+<p>코딩에서 영어 단어의 의미만 정확히 이해해도 절반은 성공입니다! 오늘 배운 핵심 영단어들을 다시 한번 짚고 넘어갈 볼까요?</p>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">Review</code></strong>: 리뷰, 복습. (지금까지 배운 자바의 무기 창고(<code class="language-plaintext highlighter-rouge">java.base</code>) 속 <code class="language-plaintext highlighter-rouge">String</code>, <code class="language-plaintext highlighter-rouge">Math</code>, <code class="language-plaintext highlighter-rouge">System</code> 등 핵심 API 공구들의 사용법을 퀴즈를 풀며 손에 착 감기도록 길들이는 시간)</li>
+</ul>
 
 
             <div class="mt-10">

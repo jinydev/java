@@ -1115,6 +1115,38 @@
 
 <h2 id="2-연산에서의-자동-변환">2. 연산에서의 자동 변환</h2>
 
+<h2 id="정수끼리-계산하면-결과도-정수가-나오고">정수끼리 계산하면 결과도 정수가 나오고,</h2>
+
+<h1 id="47-자동-타입-변환-1">4.7 자동 타입 변환</h1>
+
+<h2 id="1-작은-컵의-물을-큰-양동이에-붓기--1">1. 작은 컵의 물을 큰 양동이에 붓기 💧</h2>
+
+<p>데이터 타입을 다른 타입으로 바꾸는 것을 <strong>타입 변환(Type Conversion)</strong>이라고 합니다.</p>
+
+<p><strong>자동 타입 변환(Promotion)</strong>은 값의 범위가 <strong>작은 타입</strong>을 <strong>큰 타입</strong>으로 옮길 때 일어납니다.
+작은 컵의 물을 큰 양동이에 부으면 절대 넘치지 않겠죠? 그래서 자바가 알아서 바꿔줍니다.</p>
+
+<p><img src="./img/type_promotion.png" alt="그림" /></p>
+
+<pre><code class="language-mermaid">flowchart LR
+    SmallCup[작은 컵\nint\n'10'] --&gt;|자동 변환 (안전)| BigBucket[큰 양동이\nlong\n'10']
+    
+    style SmallCup fill:#def,stroke:#333,stroke-width:2px
+    style BigBucket fill:#bdf,stroke:#333,shape:cylinder,stroke-width:2px
+</code></pre>
+
+<blockquote>
+  <p><code class="language-plaintext highlighter-rouge">byte</code> &lt; <code class="language-plaintext highlighter-rouge">short</code> &lt; <code class="language-plaintext highlighter-rouge">int</code> &lt; <code class="language-plaintext highlighter-rouge">long</code> &lt; <code class="language-plaintext highlighter-rouge">float</code> &lt; <code class="language-plaintext highlighter-rouge">double</code></p>
+</blockquote>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">small</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
+<span class="kt">long</span> <span class="n">big</span> <span class="o">=</span> <span class="n">small</span><span class="o">;</span> <span class="c1">// (O) 자동 변환 (int -&gt; long)</span>
+
+<span class="kt">float</span> <span class="n">f</span> <span class="o">=</span> <span class="mi">100</span><span class="o">;</span>    <span class="c1">// (O) 자동 변환 (정수 -&gt; 실수)</span>
+</code></pre></div></div>
+
+<h2 id="2-연산에서의-자동-변환-1">2. 연산에서의 자동 변환</h2>
+
 <p>정수끼리 계산하면 결과도 정수가 나오고,
 실수가 하나라도 끼어있으면 결과는 실수가 됩니다.</p>
 
@@ -1124,6 +1156,17 @@
 <span class="kt">double</span> <span class="n">result</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="o">;</span> <span class="c1">// 10.0 + 2.5 = 12.5</span>
 <span class="c1">// a가 자동으로 double(10.0)로 변해서 계산됨</span>
 </code></pre></div></div>
+
+<hr />
+
+<h2 id="코딩-영단어-학습-">코딩 영단어 학습 📝</h2>
+
+<p>코딩에서 영어 단어의 의미만 정확히 이해해도 절반은 성공입니다! 오늘 배운 핵심 영단어들을 다시 한번 짚고 넘어가 볼까요?</p>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">Type Conversion</code></strong>: 타입 컨버전, 타입(자료형) 변환. (데이터의 모양이나 크기를 컴퓨터 상황에 맞게 유연하게 바꾸는 아주 기본적인 작업)</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">Promotion</code></strong>: 프로모션, 승격 / 자동 타입 변환. (상대적으로 범위가 좁고 작은 타입의 데이터가 더 크고 넉넉한 안전한 곳으로 자동으로 이사하면서 당당하게 모양이 커지는 기분 좋은 변화)</li>
+</ul>
 
 
             <div class="mt-10">

@@ -1692,6 +1692,68 @@
 
 <span class="c1">// InterfaceA 타입으로 변환 -&gt; methodA()만 호출 가능</span>
 <span class="nc">InterfaceA</span> <span class="n">ia</span> <span class="o">=</span> <span class="n">impl</span><span class="o">;</span>
+<span class="o">---</span>
+
+<span class="err">#</span> <span class="mf">11.7</span> <span class="n">인터페이스</span> <span class="n">상속</span>
+
+<span class="n">인터페이스끼리도</span> <span class="n">상속이</span> <span class="n">가능합니다</span><span class="o">.</span> <span class="n">특이한</span> <span class="n">점은</span> <span class="n">클래스와</span> <span class="n">달리</span> <span class="o">**</span><span class="s">"다중 상속(여러 부모를 두는 것)"</span><span class="n">을</span> <span class="n">허용</span><span class="o">**</span><span class="n">한다는</span> <span class="n">것입니다</span><span class="o">.</span>
+<span class="n">상속</span> <span class="n">키워드는</span> <span class="n">클래스와</span> <span class="n">동일하게</span> <span class="err">`</span><span class="kd">extends</span><span class="err">`</span><span class="n">를</span> <span class="n">사용합니다</span><span class="o">.</span>
+
+<span class="err">###</span> <span class="err">💡</span> <span class="n">핵심</span> <span class="nl">비유:</span> <span class="n">족보와</span> <span class="n">유산</span>
+<span class="o">&gt;</span> <span class="o">**</span><span class="s">"할아버지의 재산과 아버지의 재산을 모두 물려받은 손자. 손자는 자신이 번 돈뿐만 아니라 조상님들의 재산까지 모두 관리해야 한다."</span><span class="o">**</span>
+
+<span class="o">![</span><span class="nc">Inheritance</span> <span class="nc">Tree</span><span class="o">](./</span><span class="n">img</span><span class="o">/</span><span class="n">interface_inheritance_tree</span><span class="o">.</span><span class="na">svg</span><span class="o">)</span>
+
+<span class="o">---</span>
+
+
+<span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
+
+<span class="err">##</span> <span class="mi">1</span><span class="o">.</span> <span class="n">인터페이스</span> <span class="n">다중</span> <span class="n">상속</span> <span class="n">문법</span>
+
+<span class="err">```</span><span class="n">java</span>
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">InterfaceA</span> <span class="o">{</span>
+    <span class="kt">void</span> <span class="nf">methodA</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">InterfaceB</span> <span class="o">{</span>
+    <span class="kt">void</span> <span class="nf">methodB</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="c1">// A와 B를 동시에 상속받은 C</span>
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">InterfaceC</span> <span class="kd">extends</span> <span class="nc">InterfaceA</span><span class="o">,</span> <span class="nc">InterfaceB</span> <span class="o">{</span>
+    <span class="kt">void</span> <span class="nf">methodC</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>이제 <code class="language-plaintext highlighter-rouge">InterfaceC</code>는 자신의 기능인 <code class="language-plaintext highlighter-rouge">methodC()</code>뿐만 아니라, 부모인 <code class="language-plaintext highlighter-rouge">A</code>, <code class="language-plaintext highlighter-rouge">B</code>의 기능까지 모두 합쳐서 총 3개의 추상 메소드를 가지게 됩니다.</p>
+
+<p><br /></p>
+
+<h2 id="2-구현-클래스의-막중한-의무-1">2. 구현 클래스의 막중한 의무</h2>
+
+<p><code class="language-plaintext highlighter-rouge">InterfaceC</code>를 구현(<code class="language-plaintext highlighter-rouge">implements</code>)하는 클래스는 <strong>C의 메소드뿐만 아니라 A와 B의 메소드까지 전부 다 구현해야 합니다.</strong> 하나라도 빠지면 에러가 납니다.</p>
+
+<p><img src="./img/interface_inheritance_impl_req.svg" alt="Impl Requirements" /></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ImplClass</span> <span class="kd">implements</span> <span class="nc">InterfaceC</span> <span class="o">{</span>
+    <span class="c1">// 반드시 A, B, C 다 구현해야 함!</span>
+    <span class="nd">@Override</span> <span class="kd">public</span> <span class="kt">void</span> <span class="nf">methodA</span><span class="o">()</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
+    <span class="nd">@Override</span> <span class="kd">public</span> <span class="kt">void</span> <span class="nf">methodB</span><span class="o">()</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
+    <span class="nd">@Override</span> <span class="kd">public</span> <span class="kt">void</span> <span class="nf">methodC</span><span class="o">()</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h2 id="3-타입-변환의-범위-1">3. 타입 변환의 범위</h2>
+
+<p>구현 객체(<code class="language-plaintext highlighter-rouge">ImplClass</code>)는 자식 인터페이스(<code class="language-plaintext highlighter-rouge">C</code>)는 물론, 조상 인터페이스(<code class="language-plaintext highlighter-rouge">A</code>, <code class="language-plaintext highlighter-rouge">B</code>) 타입으로도 변환될 수 있습니다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">ImplClass</span> <span class="n">impl</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ImplClass</span><span class="o">();</span>
+
+<span class="c1">// InterfaceA 타입으로 변환 -&gt; methodA()만 호출 가능</span>
+<span class="nc">InterfaceA</span> <span class="n">ia</span> <span class="o">=</span> <span class="n">impl</span><span class="o">;</span>
 <span class="n">ia</span><span class="o">.</span><span class="na">methodA</span><span class="o">();</span>
 
 <span class="c1">// InterfaceC 타입으로 변환 -&gt; A, B, C 모든 메소드 호출 가능</span>
@@ -1700,6 +1762,17 @@
 <span class="n">ic</span><span class="o">.</span><span class="na">methodB</span><span class="o">();</span>
 <span class="n">ic</span><span class="o">.</span><span class="na">methodC</span><span class="o">();</span> <span class="c1">// 강력함!</span>
 </code></pre></div></div>
+
+<hr />
+
+<h2 id="코딩-영단어-학습-">코딩 영단어 학습 📝</h2>
+
+<p>코딩에서 영어 단어의 의미만 정확히 이해해도 절반은 성공입니다! 오늘 배운 핵심 영단어들을 다시 한번 짚고 넘어가 볼까요?</p>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">Inheritance</code></strong>: 인헤리턴스, 상속. (인터페이스도 클래스처럼 다른 인터페이스의 기능(메소드)들을 그대로 물려받을 수 있는 성질)</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">Multiple Inheritance</code></strong>: 다중 상속. (클래스는 부모가 하나뿐이지만, 인터페이스는 등 뒤에 여러 명의 강력한 부모 인터페이스를 동시에 두어 그 모든 기능을 몽땅 물려받는 것이 허용되는 특별한 능력)</li>
+</ul>
 
 
             <div class="mt-10">

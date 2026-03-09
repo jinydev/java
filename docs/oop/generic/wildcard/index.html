@@ -1694,6 +1694,62 @@
     <span class="c1">// 2. 학생만 등록 가능 (학생 할인 이벤트)</span>
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">registerCourse2</span><span class="o">(</span><span class="nc">Applicant</span><span class="o">&lt;?</span> <span class="kd">extends</span> <span class="nc">Student</span><span class="o">&gt;</span> <span class="n">applicant</span><span class="o">)</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
 
+<span class="o">---</span>
+
+<span class="err">#</span> <span class="mf">16.4</span> <span class="n">와일드카드</span> <span class="n">타입</span> <span class="o">(&lt;?&gt;)</span>
+
+
+<span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
+
+<span class="err">##</span> <span class="mi">1</span><span class="o">.</span> <span class="n">다</span> <span class="n">받아주거나</span><span class="o">,</span> <span class="n">골라서</span> <span class="n">받거나</span> <span class="err">🎯</span>
+
+<span class="n">제네릭</span> <span class="n">타입을</span> <span class="n">매개변수로</span> <span class="n">받을</span> <span class="n">때</span><span class="o">,</span> <span class="o">**</span><span class="n">정확히</span> <span class="n">그</span> <span class="n">타입</span><span class="o">(</span><span class="err">`</span><span class="nc">Box</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span><span class="err">`</span><span class="o">)**</span><span class="n">만</span> <span class="n">받아야</span> <span class="n">한다면</span> <span class="n">너무</span> <span class="n">빡빡합니다</span><span class="o">.</span>
+<span class="n">때로는</span> <span class="s">"학생(Student) 관련된 건 다 받아줘!"</span><span class="n">라거나</span> <span class="s">"직장인(Worker) 위로는 다 받아줘!"</span><span class="n">라고</span> <span class="n">범위를</span> <span class="n">지정하고</span> <span class="n">싶을</span> <span class="n">때가</span> <span class="n">있습니다</span><span class="o">.</span>
+
+<span class="n">이때</span> <span class="n">사용하는</span> <span class="n">것이</span> <span class="o">**</span><span class="n">와일드카드</span><span class="o">(</span><span class="err">`</span><span class="o">?</span><span class="err">`</span><span class="o">)**</span><span class="n">입니다</span><span class="o">.</span>
+
+<span class="o">![</span><span class="nc">Wildcard</span> <span class="nc">Range</span><span class="o">](./</span><span class="n">img</span><span class="o">/</span><span class="n">wildcard_range</span><span class="o">.</span><span class="na">svg</span><span class="o">)</span>
+
+<span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
+
+
+<span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
+
+<span class="err">##</span> <span class="mi">2</span><span class="o">.</span> <span class="n">세</span> <span class="n">가지</span> <span class="n">범위</span>
+
+<span class="err">###</span> <span class="mi">1</span><span class="o">)</span> <span class="err">`</span><span class="o">&lt;?&gt;</span><span class="err">`</span> <span class="o">:</span> <span class="n">모든</span> <span class="n">타입</span> <span class="n">가능</span> <span class="o">(</span><span class="nc">Unbounded</span><span class="o">)</span>
+<span class="o">*</span>   <span class="s">"누구나 오세요!"</span> <span class="o">(</span><span class="err">`</span><span class="nc">Object</span><span class="err">`</span><span class="n">와</span> <span class="n">같음</span><span class="o">)</span>
+<span class="o">*</span>   <span class="o">**</span><span class="n">읽기</span> <span class="n">전용</span><span class="o">**</span><span class="n">으로</span> <span class="n">주로</span> <span class="n">쓰입니다</span><span class="o">.</span>
+
+<span class="err">###</span> <span class="mi">2</span><span class="o">)</span> <span class="err">`</span><span class="o">&lt;?</span> <span class="kd">extends</span> <span class="no">T</span><span class="o">&gt;</span><span class="err">`</span> <span class="o">:</span> <span class="n">상한</span> <span class="n">제한</span> <span class="o">(</span><span class="nc">Upper</span> <span class="nc">Bounded</span><span class="o">)</span>
+<span class="o">*</span>   <span class="o">**</span><span class="s">"T와 그 자식들만 오세요."</span><span class="o">**</span>
+<span class="o">*</span>   <span class="nl">예시:</span> <span class="err">`</span><span class="o">&lt;?</span> <span class="kd">extends</span> <span class="nc">Student</span><span class="o">&gt;</span><span class="err">`</span>
+    <span class="o">*</span>   <span class="err">`</span><span class="nc">Student</span><span class="err">`</span> <span class="o">(</span><span class="no">O</span><span class="o">),</span> <span class="err">`</span><span class="nc">HighStudent</span><span class="err">`</span> <span class="o">(</span><span class="no">O</span><span class="o">),</span> <span class="err">`</span><span class="nc">MiddleStudent</span><span class="err">`</span> <span class="o">(</span><span class="no">O</span><span class="o">)</span>
+    <span class="o">*</span>   <span class="err">`</span><span class="nc">Person</span><span class="err">`</span> <span class="o">(</span><span class="no">X</span><span class="o">),</span> <span class="err">`</span><span class="nc">Worker</span><span class="err">`</span> <span class="o">(</span><span class="no">X</span><span class="o">)</span>
+<span class="o">*</span>   <span class="n">주로</span> <span class="o">**</span><span class="n">데이터를</span> <span class="n">꺼내서</span><span class="o">(</span><span class="nc">Get</span><span class="o">)</span> <span class="n">사용할</span> <span class="n">때</span><span class="o">**</span> <span class="n">유용합니다</span><span class="o">.</span> <span class="o">(</span><span class="n">안에</span> <span class="n">든</span> <span class="n">게</span> <span class="n">최소한</span> <span class="err">`</span><span class="nc">Student</span><span class="err">`</span><span class="n">임은</span> <span class="n">확실하니까</span><span class="o">)</span>
+
+<span class="err">###</span> <span class="mi">3</span><span class="o">)</span> <span class="err">`</span><span class="o">&lt;?</span> <span class="kd">super</span> <span class="no">T</span><span class="o">&gt;</span><span class="err">`</span> <span class="o">:</span> <span class="n">하한</span> <span class="n">제한</span> <span class="o">(</span><span class="nc">Lower</span> <span class="nc">Bounded</span><span class="o">)</span>
+<span class="o">*</span>   <span class="o">**</span><span class="s">"T와 그 부모들만 오세요."</span><span class="o">**</span>
+<span class="o">*</span>   <span class="nl">예시:</span> <span class="err">`</span><span class="o">&lt;?</span> <span class="kd">super</span> <span class="nc">Worker</span><span class="o">&gt;</span><span class="err">`</span>
+    <span class="o">*</span>   <span class="err">`</span><span class="nc">Worker</span><span class="err">`</span> <span class="o">(</span><span class="no">O</span><span class="o">),</span> <span class="err">`</span><span class="nc">Person</span><span class="err">`</span> <span class="o">(</span><span class="no">O</span><span class="o">),</span> <span class="err">`</span><span class="nc">Object</span><span class="err">`</span> <span class="o">(</span><span class="no">O</span><span class="o">)</span>
+    <span class="o">*</span>   <span class="err">`</span><span class="nc">Student</span><span class="err">`</span> <span class="o">(</span><span class="no">X</span><span class="o">)</span>
+<span class="o">*</span>   <span class="n">주로</span> <span class="o">**</span><span class="n">데이터를</span> <span class="n">저장할</span> <span class="n">때</span><span class="o">(</span><span class="nc">Set</span><span class="o">)**</span> <span class="n">유용합니다</span><span class="o">.</span> <span class="o">(</span><span class="err">`</span><span class="nc">Worker</span><span class="err">`</span><span class="n">를</span> <span class="n">담으려면</span> <span class="err">`</span><span class="nc">Worker</span><span class="err">`</span> <span class="n">그릇이나</span> <span class="n">더</span> <span class="n">큰</span> <span class="err">`</span><span class="nc">Person</span><span class="err">`</span> <span class="n">그릇이</span> <span class="n">필요하니까</span><span class="o">)</span>
+
+<span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
+
+
+<span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
+
+<span class="err">##</span> <span class="mi">3</span><span class="o">.</span> <span class="n">코드</span> <span class="n">예시</span>
+
+<span class="err">```</span><span class="n">java</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Course</span> <span class="o">{</span>
+    <span class="c1">// 1. 누구나 등록 가능</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">registerCourse1</span><span class="o">(</span><span class="nc">Applicant</span><span class="o">&lt;?&gt;</span> <span class="n">applicant</span><span class="o">)</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
+
+    <span class="c1">// 2. 학생만 등록 가능 (학생 할인 이벤트)</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">registerCourse2</span><span class="o">(</span><span class="nc">Applicant</span><span class="o">&lt;?</span> <span class="kd">extends</span> <span class="nc">Student</span><span class="o">&gt;</span> <span class="n">applicant</span><span class="o">)</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
+
     <span class="c1">// 3. 직장인과 일반인만 등록 가능 (직장인 과정)</span>
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">registerCourse3</span><span class="o">(</span><span class="nc">Applicant</span><span class="o">&lt;?</span> <span class="kd">super</span> <span class="nc">Worker</span><span class="o">&gt;</span> <span class="n">applicant</span><span class="o">)</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
 <span class="o">}</span>
@@ -1706,6 +1762,18 @@
     <li><strong><code class="language-plaintext highlighter-rouge">super</code></strong>: “나랑 내 위로 집합!” (공급자, 쓰기용)</li>
   </ul>
 </blockquote>
+
+<hr />
+
+<h2 id="코딩-영단어-학습-">코딩 영단어 학습 📝</h2>
+
+<p>코딩에서 영어 단어의 의미만 정확히 이해해도 절반은 성공입니다! 오늘 배운 핵심 영단어들을 다시 한번 짚고 넘어가 볼까요?</p>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">Wildcard</code></strong>: 와일드카드. (카드 게임의 조커처럼, 제네릭에서 <code class="language-plaintext highlighter-rouge">&lt;?&gt;</code> 기호 하나로 “뭐든지 다 상관없어! 다 들어와!” 하고 모든 타입을 통과시켜 주는 만능 프리패스 기호)</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">Upper Bound</code></strong>: 어퍼 바운드, 상한선. (<code class="language-plaintext highlighter-rouge">&lt;? extends T&gt;</code>를 써서 “너비가 T를 넘어가면 안 돼, T와 그 자식들만 일루 와!” 하고 제한선(천장)을 치는 문법)</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">Lower Bound</code></strong>: 로어 바운드, 하한선. (<code class="language-plaintext highlighter-rouge">&lt;? super T&gt;</code>를 써서 “T보다 작으면 안 돼, T와 그 부모, 조상들만 일루 와!” 하고 바닥(하한선)을 깔아주는 문법)</li>
+</ul>
 
 
             <div class="mt-10">

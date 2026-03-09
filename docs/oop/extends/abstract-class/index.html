@@ -1755,6 +1755,126 @@
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
         <span class="c1">// Animal a = new Animal("홍길동"); // ❌ 에러! (미완성이라 생성 불가)</span>
         
+<span class="o">---</span>
+
+<span class="err">#</span> <span class="mf">7.10</span> <span class="n">추상</span> <span class="n">클래스</span> <span class="o">(</span><span class="n">미완성</span> <span class="n">설계도</span><span class="o">)</span>
+
+<span class="n">일반</span> <span class="n">클래스가</span> <span class="err">'</span><span class="n">완성된</span> <span class="n">설계도</span><span class="err">'</span><span class="n">라면</span><span class="o">,</span> <span class="o">**</span><span class="n">추상</span> <span class="n">클래스</span><span class="o">(</span><span class="nc">Abstract</span> <span class="nc">Class</span><span class="o">)</span><span class="n">는</span> <span class="err">'</span><span class="n">실체가</span> <span class="n">없는</span> <span class="n">미완성</span> <span class="n">설계도</span><span class="err">'</span><span class="o">**</span><span class="n">입니다</span><span class="o">.</span>
+<span class="n">이</span> <span class="n">클래스만으로는</span> <span class="n">객체</span><span class="o">(</span><span class="n">제품</span><span class="o">)</span><span class="n">를</span> <span class="n">만들</span> <span class="n">수</span> <span class="n">없고</span><span class="o">,</span> <span class="n">반드시</span> <span class="n">자식</span> <span class="n">클래스가</span> <span class="n">상속받아</span> <span class="n">완성시켜야</span> <span class="n">합니다</span><span class="o">.</span>
+
+<span class="err">###</span> <span class="err">💡</span> <span class="n">핵심</span> <span class="nl">비유:</span> <span class="n">프랜차이즈</span> <span class="n">본사</span> <span class="n">레시피</span>
+<span class="o">&gt;</span> <span class="o">**</span><span class="s">"본사(추상 클래스)가 기본 레시피는 주지만, '비법 소스(추상 메소드)'는 각 지점(자식 클래스)이 알아서 만들어야 한다!"</span><span class="o">**</span>
+<span class="o">&gt;</span>
+<span class="o">&gt;</span> <span class="mi">1</span><span class="o">.</span>  <span class="o">**</span><span class="n">본사</span><span class="o">(</span><span class="nc">Abstract</span> <span class="nc">Class</span><span class="o">)**:</span> <span class="n">가게를</span> <span class="n">낼</span> <span class="n">수는</span> <span class="n">없지만</span><span class="o">,</span> <span class="n">가이드라인을</span> <span class="n">제공함</span><span class="o">.</span>
+<span class="o">&gt;</span> <span class="mi">2</span><span class="o">.</span>  <span class="o">**</span><span class="n">지점</span><span class="o">(</span><span class="nc">Child</span> <span class="nc">Class</span><span class="o">)**:</span> <span class="n">본사의</span> <span class="n">가이드를</span> <span class="n">따르되</span><span class="o">,</span> <span class="n">빈</span> <span class="n">칸</span><span class="o">(</span><span class="n">비법</span> <span class="n">소스</span><span class="o">)</span><span class="n">을</span> <span class="n">반드시</span> <span class="n">채워야</span> <span class="n">오픈</span> <span class="n">가능</span><span class="o">.</span>
+
+<span class="o">![</span><span class="nc">Abstraction</span> <span class="no">PNG</span><span class="o">](../</span><span class="n">img</span><span class="o">/</span><span class="n">oop_abstraction</span><span class="o">.</span><span class="na">png</span><span class="o">)</span>
+<span class="o">![</span><span class="nc">Abstract</span> <span class="nc">Class</span> <span class="nc">Concept</span><span class="o">](./</span><span class="n">img</span><span class="o">/</span><span class="n">abstract_class_concept</span><span class="o">.</span><span class="na">svg</span><span class="o">)</span>
+
+<span class="o">---</span>
+
+<span class="err">##</span> <span class="mi">1</span><span class="o">.</span> <span class="n">추상</span> <span class="n">클래스란</span><span class="o">?</span>
+
+<span class="o">*</span>   <span class="o">**</span><span class="err">`</span><span class="kd">abstract</span><span class="err">`</span> <span class="n">키워드</span><span class="o">**:</span> <span class="n">클래스</span> <span class="n">앞에</span> <span class="n">붙이면</span> <span class="s">"이건 미완성입니다"</span><span class="n">라는</span> <span class="n">뜻입니다</span><span class="o">.</span>
+<span class="o">*</span>   <span class="o">**</span><span class="n">객체</span> <span class="n">생성</span> <span class="n">불가</span><span class="o">**:</span> <span class="err">`</span><span class="k">new</span> <span class="nc">Animal</span><span class="o">()</span><span class="err">`</span> <span class="n">처럼</span> <span class="n">직접</span> <span class="n">실체</span><span class="o">(</span><span class="n">인스턴스</span><span class="o">)</span><span class="n">를</span> <span class="n">만들</span> <span class="n">수</span> <span class="n">없습니다</span><span class="o">.</span> <span class="o">(</span><span class="n">미완성이니까요</span><span class="o">!)</span>
+<span class="o">*</span>   <span class="o">**</span><span class="n">용도</span><span class="o">**:</span> <span class="n">자식</span> <span class="n">클래스들의</span> <span class="o">**</span><span class="n">공통점</span><span class="o">(</span><span class="n">필드</span><span class="o">,</span> <span class="n">메소드</span><span class="o">)</span><span class="n">을</span> <span class="n">통일</span><span class="o">**</span><span class="n">하고</span><span class="o">,</span> <span class="o">**</span><span class="n">규격</span><span class="o">(</span><span class="n">설계</span><span class="o">)**</span><span class="n">을</span> <span class="n">강제하는</span> <span class="n">역할을</span> <span class="n">합니다</span><span class="o">.</span>
+
+<span class="o">![</span><span class="nc">Abstract</span> <span class="nc">Instance</span> <span class="nc">Error</span><span class="o">](./</span><span class="n">img</span><span class="o">/</span><span class="n">abstract_instance_error</span><span class="o">.</span><span class="na">svg</span><span class="o">)</span>
+
+<span class="err">```</span><span class="n">java</span>
+<span class="c1">// "나는 실체가 없다.. 자식이 완성해 줘.."</span>
+<span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Animal</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="n">kind</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">breathe</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"숨을 쉽니다."</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="2-추상-메소드-숙제-내주기-1">2. 추상 메소드 (숙제 내주기)</h2>
+
+<p>추상 클래스 안에는 <strong>실행 내용(<code class="language-plaintext highlighter-rouge">{}</code>)이 없는 추상 메소드</strong>를 만들 수 있습니다.
+이것은 자식 클래스에게 <strong>“이 기능은 네가 알아서 반드시 만들어야 해!”</strong>라고 강제로 시키는 것과 같습니다.</p>
+
+<p><img src="./img/abstract_recipe.svg" alt="Abstract Recipe" /></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Animal</span> <span class="o">{</span>
+    <span class="c1">// 1. 일반 메소드 (물려주기만 함 -&gt; 자식이 그대로 써도 됨)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">breathe</span><span class="o">()</span> <span class="o">{</span> 
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"숨을 쉽니다."</span><span class="o">);</span> 
+    <span class="o">}</span>
+
+    <span class="c1">// 2. 추상 메소드 (내용 없음 -&gt; 자식이 반드시 채워야 함)</span>
+    <span class="c1">// "소리는 동물마다 다르니까, 자식이 직접 구현해라!"</span>
+    <span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">sound</span><span class="o">();</span> 
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="상속받은-자식의-의무-숙제-해결-1">상속받은 자식의 의무 (숙제 해결)</h3>
+
+<p>자식 클래스는 추상 메소드를 <strong>반드시 재정의(Overriding)</strong>해서 내용을 채워야 합니다.
+그렇지 않으면 자식 클래스도 컴파일 에러가 나서 생성될 수 없습니다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Dog</span> <span class="kd">extends</span> <span class="nc">Animal</span> <span class="o">{</span>
+    <span class="c1">// 부모가 숙제로 낸 sound()를 반드시 해결해야 함</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">sound</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"멍멍"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Cat</span> <span class="kd">extends</span> <span class="nc">Animal</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">sound</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"야옹"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="3-왜-이렇게-귀찮게-할까요-1">3. 왜 이렇게 귀찮게 할까요?</h2>
+
+<p>그냥 일반 클래스로 만들고 오버라이딩하면 되지 않을까요?
+왜 굳이 <code class="language-plaintext highlighter-rouge">abstract</code>를 써서 강제할까요?</p>
+
+<blockquote>
+  <p><strong>“실수를 방지하기 위해서입니다!”</strong></p>
+</blockquote>
+
+<p>만약 <code class="language-plaintext highlighter-rouge">sound()</code>를 일반 메소드로 비워뒀다면, 실수로 자식 클래스에서 오버라이딩을 안 해도 에러가 안 납니다.
+그러면 강아지 객체가 소리를 못 내는 버그가 생기겠죠?
+<strong>추상 메소드로 만들면, 개발자가 까먹고 구현을 안 했을 때 빨간 줄(에러)을 띄워줍니다.</strong></p>
+
+<hr />
+
+<h2 id="4-실습-예제-1">4. 실습 예제</h2>
+
+<p><strong>Animal.java (본사지침)</strong></p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Animal</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="n">owner</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">Animal</span><span class="o">(</span><span class="nc">String</span> <span class="n">owner</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">owner</span> <span class="o">=</span> <span class="n">owner</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">breathe</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"숨을 쉽니다."</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="c1">// 추상 메소드: 자식이 반드시 구현해야 함</span>
+    <span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">sound</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>Main.java (실행)</strong></p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// Animal a = new Animal("홍길동"); // ❌ 에러! (미완성이라 생성 불가)</span>
+        
         <span class="c1">// 1. 강아지 생성</span>
         <span class="nc">Dog</span> <span class="n">dog</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Dog</span><span class="o">(</span><span class="s">"철수"</span><span class="o">);</span>
         <span class="n">dog</span><span class="o">.</span><span class="na">sound</span><span class="o">();</span>   <span class="c1">// "멍멍" (자식이 구현한 내용)</span>
@@ -1766,6 +1886,17 @@
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div></div>
+
+<hr />
+
+<h2 id="코딩-영단어-학습-">코딩 영단어 학습 📝</h2>
+
+<p>코딩에서 영어 단어의 의미만 정확히 이해해도 절반은 성공입니다! 오늘 배운 핵심 영단어들을 다시 한번 짚고 넘어가 볼까요?</p>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">Abstract</code></strong>: 앱스트랙트, 추상적인. (아직 구체화되지 않고 뼈대만 있는, 즉 ‘미완성’이라는 의미를 클래스나 메소드에 부여하는 키워드)</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">Override</code></strong>: 오버라이드, 재정의하다. (추상 클래스 부모님이 남겨둔 텅 빈 미완성 메소드(숙제)를 자식 클래스가 책임지고 강제로 완성해야 할 때 쓰는 어노테이션)</li>
+</ul>
 
 
             <div class="mt-10">

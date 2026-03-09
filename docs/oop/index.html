@@ -1803,6 +1803,202 @@
   <li><a href="/oop/pattern/proxy">20.12 Proxy Pattern</a></li>
   <li><a href="/oop/pattern/chain-of-responsibility">20.13 Chain of Responsibility</a></li>
   <li><a href="/oop/pattern/command">20.14 Command Pattern</a></li>
+  <li>
+    <h2 id="2015-interpreter-pattern"><a href="/oop/pattern/interpreter">20.15 Interpreter Pattern</a></h2>
+  </li>
+</ul>
+
+<h1 id="part-02-객체지향-프로그래밍-1">Part 02. 객체지향 프로그래밍</h1>
+
+<h2 id="객체지향-프로그래밍-1">객체지향 프로그래밍</h2>
+
+<p>이 파트에서는 객체지향 프로그래밍(OOP)의 핵심 원리를 깊이 있게 이해하고, 자바 언어를 통해 이를 효과적으로 구현하는 방법을 학습합니다.</p>
+
+<p>클래스(Class), 상속(Inheritance), 인터페이스(Interface), 다형성(Polymorphism) 등 객체지향의 4대 핵심 요소를 마스터하며, 나아가 효율적인 라이브러리 및 모듈 설계 방법까지 다룹니다. 또한, 안정적인 소프트웨어 운영을 위한 필수 역량인 예외 처리(Exception Handling) 기법도 상세히 배울 수 있습니다.</p>
+
+<p>이 과정을 마치면 단순한 코딩을 넘어, 복잡한 자바 애플리케이션의 아키텍처를 이해하고 분석할 수 있는 전문적인 시각을 갖추게 될 것입니다.</p>
+
+<h2 id="학습-목표-1">학습 목표</h2>
+
+<ul>
+  <li>객체지향 프로그래밍의 특징과 절차지향 프로그래밍과의 차이점을 이해한다.</li>
+  <li>클래스, 객체, 인스턴스의 개념을 이해하고 클래스를 설계하는 방법을 학습한다.</li>
+  <li>상속과 다형성을 통해 코드의 재사용성과 확장성을 높이는 방법을 익힌다.</li>
+  <li>인터페이스를 활용하여 유연하고 결합도가 낮은 코드를 작성하는 방법을 배운다.</li>
+  <li>자바의 참조 타입과 메모리 관리 메커니즘을 이해한다.</li>
+  <li>예외 처리를 통해 안정적인 프로그램을 작성하는 방법을 학습한다.</li>
+  <li>자바 표준 라이브러리와 모듈 시스템을 활용하여 효율적인 개발 방법을 익힌다.</li>
+</ul>
+
+<h3 id="05-참조-타입-1">05. 참조 타입</h3>
+<ul>
+  <li><a href="/oop/reference/classification">5.1 데이터 타입 분류</a></li>
+  <li><a href="/oop/reference/memory-area">5.2 메모리 사용 영역</a></li>
+  <li><a href="/oop/reference/equality">5.3 참조 타입 변수의 ==, != 연산</a></li>
+  <li><a href="/oop/reference/null">5.4 null과 NullPointerException</a></li>
+  <li><a href="/oop/reference/string">5.5 문자열(String) 타입</a></li>
+  <li><a href="/oop/reference/array">5.6 배열(Array) 타입</a></li>
+  <li><a href="/oop/reference/multidimensional-array">5.7 다차원 배열</a></li>
+  <li><a href="/oop/reference/object-array">5.8 객체를 참조하는 배열</a></li>
+  <li><a href="/oop/reference/array-copy">5.9 배열 복사</a></li>
+  <li><a href="/oop/reference/enhanced-for">5.10 배열 항목 반복을 위한 향상된 for 문</a></li>
+  <li><a href="/oop/reference/main-arguments">5.11 main() 메소드의 String[] 매개변수 용도</a></li>
+  <li><a href="/oop/reference/enum">5.12 열거(Enum) 타입</a></li>
+</ul>
+
+<h3 id="06-클래스-1">06. 클래스</h3>
+<ul>
+  <li><a href="/oop/oop/oop">6.1 객체지향 프로그래밍</a></li>
+  <li><a href="/oop/oop/object-class">6.2 객체와 클래스</a></li>
+  <li><a href="/oop/oop/class-declaration">6.3 클래스 선언</a></li>
+  <li><a href="/oop/oop/instance-creation">6.4 객체 생성과 클래스 변수</a></li>
+  <li><a href="/oop/oop/class-members">6.5 클래스의 구성 멤버</a></li>
+  <li><a href="/oop/oop/field">6.6 필드 선언과 사용</a></li>
+  <li><a href="/oop/oop/constructor">6.7 생성자 선언과 호출</a></li>
+  <li><a href="/oop/oop/method">6.8 메소드 선언과 호출</a></li>
+  <li><a href="/oop/oop/instance-member">6.9 인스턴스 멤버</a></li>
+  <li><a href="/oop/oop/static-member">6.10 정적 멤버</a></li>
+  <li><a href="/oop/oop/final-constant">6.11 final 필드와 상수</a></li>
+  <li><a href="/oop/oop/package">6.12 패키지</a></li>
+  <li><a href="/oop/oop/access-modifier">6.13 접근 제한자</a></li>
+  <li><a href="/oop/oop/getter-setter">6.14 Getter와 Setter</a></li>
+  <li><a href="/oop/oop/singleton">6.15 싱글톤 패턴</a></li>
+</ul>
+
+<h3 id="07-상속-1">07. 상속</h3>
+<ul>
+  <li><a href="/oop/extends/inheritance">7.1 상속 개념</a></li>
+  <li><a href="/oop/extends/class-inheritance">7.2 클래스 상속</a></li>
+  <li><a href="/oop/extends/super-constructor">7.3 부모 생성자 호출</a></li>
+  <li><a href="/oop/extends/method-overriding">7.4 메소드 재정의</a></li>
+  <li><a href="/oop/extends/final">7.5 final 클래스와 final 메소드</a></li>
+  <li><a href="/oop/extends/protected">7.6 protected 접근 제한자</a></li>
+  <li><a href="/oop/extends/casting">7.7 타입 변환</a></li>
+  <li><a href="/oop/extends/polymorphism">7.8 다형성</a></li>
+  <li><a href="/oop/extends/instanceof">7.9 객체 타입 확인</a></li>
+  <li><a href="/oop/extends/abstract-class">7.10 추상 클래스</a></li>
+  <li><a href="/oop/extends/sealed-class">7.11 봉인된 클래스</a></li>
+</ul>
+
+<h3 id="08-인터페이스-1">08. 인터페이스</h3>
+<ul>
+  <li><a href="/oop/interface/role">8.1 인터페이스의 역할</a></li>
+  <li><a href="/oop/interface/declaration">8.2 인터페이스와 구현 클래스 선언</a></li>
+  <li><a href="/oop/interface/constant-field">8.3 상수 필드</a></li>
+  <li><a href="/oop/interface/abstract-method">8.4 추상 메소드</a></li>
+  <li><a href="/oop/interface/default-method">8.5 디폴트 메소드</a></li>
+  <li><a href="/oop/interface/static-method">8.6 정적 메소드</a></li>
+  <li><a href="/oop/interface/private-method">8.7 private 메소드</a></li>
+  <li><a href="/oop/interface/multiple-implementation">8.8 다중 인터페이스 구현</a></li>
+  <li><a href="/oop/interface/inheritance">8.9 인터페이스 상속</a></li>
+  <li><a href="/oop/interface/casting">8.10 타입 변환</a></li>
+  <li><a href="/oop/interface/polymorphism">8.11 다형성</a></li>
+  <li><a href="/oop/interface/instanceof">8.12 객체 타입 확인</a></li>
+  <li><a href="/oop/interface/sealed-interface">8.13 봉인된 인터페이스</a></li>
+</ul>
+
+<h3 id="09-중첩-선언과-익명-객체-1">09. 중첩 선언과 익명 객체</h3>
+<ul>
+  <li><a href="/oop/nested/nested-class">9.1 중첩 클래스</a></li>
+  <li><a href="/oop/nested/instance-member-class">9.2 인스턴스 멤버 클래스</a></li>
+  <li><a href="/oop/nested/static-member-class">9.3 정적 멤버 클래스</a></li>
+  <li><a href="/oop/nested/local-class">9.4 로컬 클래스</a></li>
+  <li><a href="/oop/nested/access-outer">9.5 바깥 멤버 접근</a></li>
+  <li><a href="/oop/nested/nested-interface">9.6 중첩 인터페이스</a></li>
+  <li><a href="/oop/nested/anonymous-object">9.7 익명 객체</a></li>
+</ul>
+
+<h3 id="10-라이브러리와-모듈-1">10. 라이브러리와 모듈</h3>
+<ul>
+  <li><a href="/oop/module/library">10.1 라이브러리</a></li>
+  <li><a href="/oop/module/module">10.2 모듈</a></li>
+  <li><a href="/oop/module/application-modularity">10.3 응용프로그램 모듈화</a></li>
+  <li><a href="/oop/module/modular-jar">10.4 모듈 배포용 JAR 파일</a></li>
+  <li><a href="/oop/module/package-hiding">10.5 패키지 은닉</a></li>
+  <li><a href="/oop/module/transitive-dependency">10.6 전이 의존</a></li>
+  <li><a href="/oop/module/aggregator-module">10.7 집합 모듈</a></li>
+  <li><a href="/oop/module/reflection">10.8 리플렉션 허용</a></li>
+  <li><a href="/oop/module/standard-modules">10.9 자바 표준 모듈</a></li>
+</ul>
+
+<h3 id="11-예외-처리-1">11. 예외 처리</h3>
+<ul>
+  <li><a href="/oop/exception/exception-class">11.1 예외와 예외 클래스</a></li>
+  <li><a href="/oop/exception/handling-code">11.2 예외 처리 코드</a></li>
+  <li><a href="/oop/exception/handling-by-type">11.3 예외 종류에 따른 처리</a></li>
+  <li><a href="/oop/exception/try-with-resources">11.4 리소스 자동 닫기</a></li>
+  <li><a href="/oop/exception/throws">11.5 예외 떠넘기기</a></li>
+  <li><a href="/oop/exception/custom-exception">11.6 사용자 정의 예외</a></li>
+</ul>
+
+<h3 id="13-제네릭-1">13. 제네릭</h3>
+<ul>
+  <li><a href="/oop/generic/intro">13.1 제네릭이란?</a></li>
+  <li><a href="/oop/generic/type">13.2 제네릭 타입</a></li>
+  <li><a href="/oop/generic/method">13.3 제네릭 메소드</a></li>
+  <li><a href="/oop/generic/bounded-type">13.4 제한된 타입 파라미터</a></li>
+  <li><a href="/oop/generic/wildcard">13.5 와일드카드 타입 파라미터</a></li>
+</ul>
+
+<h3 id="16-람다식-1">16. 람다식</h3>
+<ul>
+  <li><a href="/oop/lambda/intro">16.1 람다식이란?</a></li>
+  <li><a href="/oop/lambda/no-parameter">16.2 매개변수가 없는 람다식</a></li>
+  <li><a href="/oop/lambda/parameter">16.3 매개변수가 있는 람다식</a></li>
+  <li><a href="/oop/lambda/return">16.4 리턴값이 있는 람da식</a></li>
+  <li><a href="/oop/lambda/method-reference">16.5 메소드 참조</a></li>
+  <li><a href="/oop/lambda/constructor-reference">16.6 생성자 참조</a></li>
+</ul>
+
+<h3 id="15-컬렉션-자료구조-1">15. 컬렉션 자료구조</h3>
+<ul>
+  <li><a href="/oop/collection/framework">15.1 컬렉션 프레임워크</a></li>
+  <li><a href="/oop/collection/list">15.2 List 컬렉션</a></li>
+  <li><a href="/oop/collection/set">15.3 Set 컬렉션</a></li>
+  <li><a href="/oop/collection/map">15.4 Map 컬렉션</a></li>
+  <li><a href="/oop/collection/search">15.5 검색 기능을 강화시킨 컬렉션</a></li>
+  <li><a href="/oop/collection/stack-queue">15.6 LIFO와 FIFO 컬렉션</a></li>
+  <li><a href="/oop/collection/synchronized">15.7 동기화된 컬렉션</a></li>
+  <li><a href="/oop/collection/unmodifiable">15.8 수정할 수 없는 컬렉션</a></li>
+</ul>
+
+<h3 id="12-javabase-모듈-1">12. java.base 모듈</h3>
+<ul>
+  <li><a href="/oop/api/documentation">12.1 API 도큐먼트</a></li>
+  <li><a href="/oop/api/java-base">12.2 java.base 모듈</a></li>
+  <li><a href="/oop/api/object">12.3 Object 클래스</a></li>
+  <li><a href="/oop/api/system">12.4 System 클래스</a></li>
+  <li><a href="/oop/api/string">12.5 문자열 클래스</a></li>
+  <li><a href="/oop/api/wrapper">12.6 포장 클래스</a></li>
+  <li><a href="/oop/api/math">12.7 수학 클래스</a></li>
+  <li><a href="/oop/api/date-time">12.8 날짜와 시간 클래스</a></li>
+  <li><a href="/oop/api/format">12.9 형식 클래스</a></li>
+  <li><a href="/oop/api/regex">12.10 정규 표현식 클래스</a></li>
+  <li><a href="/oop/api/reflection">12.11 리플렉션</a></li>
+  <li><a href="/oop/api/annotation">12.12 어노테이션</a></li>
+</ul>
+
+<h3 id="19-uml-unified-modeling-language-1">19. UML (Unified Modeling Language)</h3>
+<ul>
+  <li><a href="/oop/uml">19.1 UML 기초</a></li>
+</ul>
+
+<h3 id="20-디자인-패턴-1">20. 디자인 패턴</h3>
+<ul>
+  <li><a href="/oop/pattern/singleton">20.1 Singleton Pattern</a></li>
+  <li><a href="/oop/pattern/factory-method">20.2 Factory Method Pattern</a></li>
+  <li><a href="/oop/pattern/abstract-factory">20.3 Abstract Factory Pattern</a></li>
+  <li><a href="/oop/pattern/builder">20.4 Builder Pattern</a></li>
+  <li><a href="/oop/pattern/prototype">20.5 Prototype Pattern</a></li>
+  <li><a href="/oop/pattern/adapter">20.6 Adapter Pattern</a></li>
+  <li><a href="/oop/pattern/bridge">20.7 Bridge Pattern</a></li>
+  <li><a href="/oop/pattern/composite">20.8 Composite Pattern</a></li>
+  <li><a href="/oop/pattern/decorator">20.9 Decorator Pattern</a></li>
+  <li><a href="/oop/pattern/facade">20.10 Facade Pattern</a></li>
+  <li><a href="/oop/pattern/flyweight">20.11 Flyweight Pattern</a></li>
+  <li><a href="/oop/pattern/proxy">20.12 Proxy Pattern</a></li>
+  <li><a href="/oop/pattern/chain-of-responsibility">20.13 Chain of Responsibility</a></li>
+  <li><a href="/oop/pattern/command">20.14 Command Pattern</a></li>
   <li><a href="/oop/pattern/interpreter">20.15 Interpreter Pattern</a></li>
   <li><a href="/oop/pattern/iterator">20.16 Iterator Pattern</a></li>
   <li><a href="/oop/pattern/mediator">20.17 Mediator Pattern</a></li>
@@ -1812,6 +2008,17 @@
   <li><a href="/oop/pattern/strategy">20.21 Strategy Pattern</a></li>
   <li><a href="/oop/pattern/template-method">20.22 Template Method Pattern</a></li>
   <li><a href="/oop/pattern/visitor">20.23 Visitor Pattern</a></li>
+</ul>
+
+<hr />
+
+<h2 id="코딩-영단어-학습-">코딩 영단어 학습 📝</h2>
+
+<p>코딩에서 영어 단어의 의미만 정확히 이해해도 절반은 성공입니다! 오늘 배운 핵심 영단어들을 다시 한번 짚고 넘어가 볼까요?</p>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">Object-Oriented Programming (OOP)</code></strong>: 객체지향 프로그래밍. (프로그램을 단순한 명령어의 나열(절차)이 아니라, 서로 역할을 분담하고 협력하는 수많은 작은 부품(객체)들의 모임으로 파악하는 프로그래밍 패러다임)</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">Architecture</code></strong>: 아키텍처, 건축 양식. (건물의 뼈대와 기본 구조를 의미하듯, 소프트웨어를 구성하는 여러 컴포넌트 간의 상호작용과 전체적인 뼈대(구조)를 설계하는 것)</li>
 </ul>
 
 

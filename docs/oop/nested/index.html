@@ -1666,6 +1666,53 @@
 <p>클래스 안에 선언된 인터페이스로, 주로 UI 프로그래밍(버튼 이벤트 처리 등)에서 사용되는 패턴을 알아봅니다.</p>
 
 <h3 id="127-익명-객체"><a href="./anonymous-object">12.7 익명 객체</a></h3>
+<p>이름을 짓지 않고 즉석에서 만들어 쓰는 “일회용 객체”입니다. 상속과 인터페이스 구현을 통해 코드를 획기적으로 줄이는 방법을 배웁니다.
+—</p>
+
+<h1 id="chapter-12-중첩-선언과-익명-객체-1">Chapter 12. 중첩 선언과 익명 객체</h1>
+
+<blockquote>
+  <p><strong>“클래스 안에 클래스를 품다.”</strong></p>
+</blockquote>
+
+<p><br /></p>
+
+<h2 id="학습목표-1">학습목표</h2>
+
+<ol>
+  <li>클래스 내부에 클래스를 선언하는 <strong>중첩 클래스</strong>의 개념과 목적을 이해합니다.</li>
+  <li><strong>인스턴스 멤버 클래스</strong>와 <strong>정적(static) 멤버 클래스</strong>의 차이를 구분합니다.</li>
+  <li>메소드 안에 선언하는 <strong>로컬 클래스</strong>의 특징을 알아봅니다.</li>
+  <li>이름 없는 객체, <strong>익명 객체(Anonymous Object)</strong>의 활용법을 익힙니다.</li>
+</ol>
+
+<p><img src="./img/nested_class_kangaroo.svg" alt="Nested Class Concept" /></p>
+
+<hr />
+
+<p><br /></p>
+
+<h2 id="목차-1">목차</h2>
+
+<h3 id="121-중첩-클래스란-1"><a href="./nested-class">12.1 중첩 클래스란?</a></h3>
+<p>“캥거루 뱃속의 아기 캥거루”처럼 클래스 안에 선언된 클래스의 개념과 사용하는 이유(캡슐화, 관계 형성)를 알아봅니다.</p>
+
+<h3 id="122-인스턴스-멤버-클래스-1"><a href="./instance-member-class">12.2 인스턴스 멤버 클래스</a></h3>
+<p>객체를 생성해야만 사용할 수 있는 가장 일반적인 중첩 클래스입니다. “내(바깥 객체)가 있어야 너(안쪽 객체)도 있다”는 관계를 배웁니다.</p>
+
+<h3 id="123-정적static-멤버-클래스-1"><a href="./static-member-class">12.3 정적(static) 멤버 클래스</a></h3>
+<p>바깥 클래스의 객체가 없어도 독자적으로 사용할 수 있는 중첩 클래스입니다. <code class="language-plaintext highlighter-rouge">static</code> 키워드가 붙었을 때 접근 범위가 어떻게 달라지는지 확인합니다.</p>
+
+<h3 id="124-로컬-클래스-1"><a href="./local-class">12.4 로컬 클래스</a></h3>
+<p>메소드가 실행될 때만 잠깐 생겨났다가 사라지는 ‘임시 클래스’입니다. 메소드 내부에서의 독특한 동작 방식을 배웁니다.</p>
+
+<h3 id="125-바깥-멤버-접근-1"><a href="./access-outer">12.5 바깥 멤버 접근</a></h3>
+<p>“안에서 밖을 보는 창문”처럼, 중첩 클래스 내부에서 바깥 클래스의 필드와 메소드를 어떻게 가져다 쓰는지(<code class="language-plaintext highlighter-rouge">this</code> 키워드 활용) 배웁니다.</p>
+
+<h3 id="126-중첩-인터페이스-1"><a href="./nested-interface">12.6 중첩 인터페이스</a></h3>
+<p>클래스 안에 선언된 인터페이스로, 주로 UI 프로그래밍(버튼 이벤트 처리 등)에서 사용되는 패턴을 알아봅니다.</p>
+
+<h3 id="127-익명-객체-1"><a href="./anonymous-object">12.7 익명 객체</a></h3>
 <p>이름을 짓지 않고 즉석에서 만들어 쓰는 “일회용 객체”입니다. 상속과 인터페이스 구현을 통해 코드를 획기적으로 줄이는 방법을 배웁니다.</p>
 
 <hr />
@@ -1675,6 +1722,17 @@
 <h2 id="확인문제">확인문제</h2>
 <ul>
   <li><a href="./quiz">확인문제</a></li>
+</ul>
+
+<hr />
+
+<h2 id="코딩-영단어-학습-">코딩 영단어 학습 📝</h2>
+
+<p>코딩에서 영어 단어의 의미만 정확히 이해해도 절반은 성공입니다! 오늘 배운 핵심 영단어들을 다시 한번 짚고 넘어갈 볼까요?</p>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">Nested Class</code></strong>: 네스티드 클래스, 중첩 클래스. (하나의 클래스 ‘둥지(Nest)’ 안에 알을 품듯 또 다른 클래스를 고이 품어 선언해 놓은 독특한 형태)</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">Anonymous Object</code></strong>: 어노니머스 오브젝트, 익명 객체. (이름 없이 태어나 코드 한 줄에서 자신의 임무를 즉석으로 완수하고 흔적 없이 사라지는 일회용 객체)</li>
 </ul>
 
 

@@ -1674,6 +1674,61 @@
 <p>숫자와 날짜를 예쁘게 출력하는 <code class="language-plaintext highlighter-rouge">DecimalFormat</code>, <code class="language-plaintext highlighter-rouge">SimpleDateFormat</code>을 배웁니다.</p>
 
 <h3 id="1510-정규-표현식-regex"><a href="./regex">15.10 정규 표현식 (Regex)</a></h3>
+<p>문자열의 패턴(이메일, 전화번호 등)을 검사하는 정규 표현식을 배웁니다.
+—</p>
+
+<h1 id="chapter-15-자바-기본-api-javabase-1">Chapter 15. 자바 기본 API (java.base)</h1>
+
+<blockquote>
+  <p><strong>“자바 프로그래밍의 기초 공구 세트”</strong></p>
+</blockquote>
+
+<p><br /></p>
+
+<h2 id="학습목표-1">학습목표</h2>
+
+<ol>
+  <li><strong>java.base 모듈</strong>: 자바의 가장 기본이 되는 모듈과 패키지를 이해합니다.</li>
+  <li><strong>Object 클래스</strong>: 자바의 모든 클래스의 조상인 Object의 주요 메소드(<code class="language-plaintext highlighter-rouge">equals</code>, <code class="language-plaintext highlighter-rouge">toString</code> 등)를 익힙니다.</li>
+  <li><strong>유용한 클래스들</strong>: <code class="language-plaintext highlighter-rouge">String</code>, <code class="language-plaintext highlighter-rouge">Wrapper</code>, <code class="language-plaintext highlighter-rouge">Math</code>, <code class="language-plaintext highlighter-rouge">Date/Time</code> 등 자주 사용하는 도구들을 배웁니다.</li>
+</ol>
+
+<p><img src="./img/object_ancestor.svg" alt="Object Ancestor" /></p>
+
+<hr />
+
+<p><br /></p>
+
+<h2 id="목차-1">목차</h2>
+
+<h3 id="151-api-도큐먼트-1"><a href="./01/">15.1 API 도큐먼트</a></h3>
+<p>방대한 자바 라이브러리 설명서(API Document)를 보는 법을 배웁니다.</p>
+
+<h3 id="152-javabase-모듈-1"><a href="./02/">15.2 java.base 모듈</a></h3>
+<p>모든 자바 프로그램의 기초가 되는 <code class="language-plaintext highlighter-rouge">java.base</code> 모듈을 알아봅니다.</p>
+
+<h3 id="153-object-클래스-1"><a href="./object">15.3 Object 클래스</a></h3>
+<p>모든 클래스의 최상위 부모, <code class="language-plaintext highlighter-rouge">Object</code> 클래스의 핵심 기능을 배웁니다.</p>
+
+<h3 id="154-system-클래스-1"><a href="./system">15.4 System 클래스</a></h3>
+<p>운영체제(OS)와 소통하는 <code class="language-plaintext highlighter-rouge">System</code> 클래스(<code class="language-plaintext highlighter-rouge">out</code>, <code class="language-plaintext highlighter-rouge">in</code>, <code class="language-plaintext highlighter-rouge">exit</code>)를 배웁니다.</p>
+
+<h3 id="155-문자열-클래스-string-1"><a href="./string">15.5 문자열 클래스 (String)</a></h3>
+<p>문자열을 다루는 <code class="language-plaintext highlighter-rouge">String</code>, <code class="language-plaintext highlighter-rouge">StringBuilder</code>, <code class="language-plaintext highlighter-rouge">StringTokenizer</code>를 배웁니다.</p>
+
+<h3 id="156-포장-클래스-wrapper-1"><a href="./wrapper">15.6 포장 클래스 (Wrapper)</a></h3>
+<p>기본 타입(<code class="language-plaintext highlighter-rouge">int</code>, <code class="language-plaintext highlighter-rouge">double</code>)을 객체로 감싸는 <code class="language-plaintext highlighter-rouge">Integer</code>, <code class="language-plaintext highlighter-rouge">Double</code> 등을 배웁니다.</p>
+
+<h3 id="157-수학-클래스-math-1"><a href="./math">15.7 수학 클래스 (Math)</a></h3>
+<p>수학 계산을 돕는 <code class="language-plaintext highlighter-rouge">Math</code> 클래스와 난수 생성 <code class="language-plaintext highlighter-rouge">Random</code>을 배웁니다.</p>
+
+<h3 id="158-날짜와-시간-클래스-1"><a href="./date-time">15.8 날짜와 시간 클래스</a></h3>
+<p>날짜와 시간을 다루는 <code class="language-plaintext highlighter-rouge">Date</code>, <code class="language-plaintext highlighter-rouge">Calendar</code>, <code class="language-plaintext highlighter-rouge">LocalDateTime</code>을 배웁니다.</p>
+
+<h3 id="159-형식-클래스-format-1"><a href="./format">15.9 형식 클래스 (Format)</a></h3>
+<p>숫자와 날짜를 예쁘게 출력하는 <code class="language-plaintext highlighter-rouge">DecimalFormat</code>, <code class="language-plaintext highlighter-rouge">SimpleDateFormat</code>을 배웁니다.</p>
+
+<h3 id="1510-정규-표현식-regex-1"><a href="./regex">15.10 정규 표현식 (Regex)</a></h3>
 <p>문자열의 패턴(이메일, 전화번호 등)을 검사하는 정규 표현식을 배웁니다.</p>
 
 <hr />
@@ -1683,6 +1738,17 @@
 <h2 id="확인문제">확인문제</h2>
 <ul>
   <li><a href="./quiz">확인문제</a></li>
+</ul>
+
+<hr />
+
+<h2 id="코딩-영단어-학습-">코딩 영단어 학습 📝</h2>
+
+<p>코딩에서 영어 단어의 의미만 정확히 이해해도 절반은 성공입니다! 오늘 배운 핵심 영단어들을 다시 한번 짚고 넘어가 볼까요?</p>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">Base</code></strong>: 베이스, 기초, 기반. (자바 프로그램이 돌아가기 위해 없어서는 안 될 가장 핵심적이고 기본적인 부품들이 모여 있는 필수 모듈 <code class="language-plaintext highlighter-rouge">java.base</code>를 의미)</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">API (Application Programming Interface)</code></strong>: (어플리케이션 프로그래밍 인터페이스). (다른 개발자들이 미리 정교하게 잘 만들어둔 부품(클래스, 메소드)들을 내가 쉽게 가져다 쓸 수 있도록 열어둔 연결 통로/설명서)</li>
 </ul>
 
 

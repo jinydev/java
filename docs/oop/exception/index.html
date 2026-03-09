@@ -1664,6 +1664,51 @@
 <p>메소드 내부에서 발생한 예외를 직접 처리하지 않고, 메소드를 호출한 곳으로 책임을 넘기는 방법을 배웁니다.</p>
 
 <h3 id="146-사용자-정의-예외"><a href="./custom-exception">14.6 사용자 정의 예외</a></h3>
+<p>자바 표준 예외 외에 내 프로그램에 맞는 커스텀 예외를 만들고 발생시키는 방법을 배웁니다.
+—</p>
+
+<h1 id="chapter-14-예외-처리-exception-handling-1">Chapter 14. 예외 처리 (Exception Handling)</h1>
+
+<blockquote>
+  <p><strong>“사고(Bug)를 예방하고, 사고가 나도 수습하는 안전장치”</strong></p>
+</blockquote>
+
+<p><br /></p>
+
+<h2 id="학습목표-1">학습목표</h2>
+
+<ol>
+  <li>예외(Exception)와 에러(Error)의 차이를 이해합니다.</li>
+  <li><strong>일반 예외(Checked)</strong>와 <strong>실행 예외(Unchecked)</strong>의 종류와 특징을 구별합니다.</li>
+  <li><code class="language-plaintext highlighter-rouge">try-catch-finally</code> 블록을 사용하여 예외를 안전하게 처리하는 방법을 익힙니다.</li>
+  <li><code class="language-plaintext highlighter-rouge">try-with-resources</code>를 통해 리소스를 자동으로 닫는 방법을 배웁니다.</li>
+  <li><code class="language-plaintext highlighter-rouge">throws</code> 키워드로 예외를 떠넘기는 방법과 사용자 정의 예외를 만드는 법을 배웁니다.</li>
+</ol>
+
+<p><img src="./img/exception_hierarchy.svg" alt="Exception Hierarchy" /></p>
+
+<hr />
+
+<p><br /></p>
+
+<h2 id="목차-1">목차</h2>
+
+<h3 id="141-예외와-예외-클래스-1"><a href="./exception-class">14.1 예외와 예외 클래스</a></h3>
+<p>프로그램 실행 중 발생하는 오류의 종류와 자바의 예외 클래스 계층 구조를 배웁니다.</p>
+
+<h3 id="142-예외-처리-코드-try-catch-finally-1"><a href="./handling-code">14.2 예외 처리 코드 (try-catch-finally)</a></h3>
+<p>예외가 발생했을 때 프로그램이 종료되지 않도록 안전하게 처리하는 기본 문법을 배웁니다.</p>
+
+<h3 id="143-예외-종류에-따른-처리-1"><a href="./handling-by-type">14.3 예외 종류에 따른 처리</a></h3>
+<p>다양한 예외 상황(숫자 포맷 오류, 널 포인터 등)을 각각 다르게 처리하는 다중 <code class="language-plaintext highlighter-rouge">catch</code> 기법을 배웁니다.</p>
+
+<h3 id="144-리소스-자동-닫기-try-with-resources-1"><a href="./try-with-resources">14.4 리소스 자동 닫기 (try-with-resources)</a></h3>
+<p>파일이나 네트워크 연결 같은 리소스를 사용 후 자동으로 닫아주는(<code class="language-plaintext highlighter-rouge">close</code>) 편리한 문법을 배웁니다.</p>
+
+<h3 id="145-예외-떠넘기기-throws-1"><a href="./throws">14.5 예외 떠넘기기 (throws)</a></h3>
+<p>메소드 내부에서 발생한 예외를 직접 처리하지 않고, 메소드를 호출한 곳으로 책임을 넘기는 방법을 배웁니다.</p>
+
+<h3 id="146-사용자-정의-예외-1"><a href="./custom-exception">14.6 사용자 정의 예외</a></h3>
 <p>자바 표준 예외 외에 내 프로그램에 맞는 커스텀 예외를 만들고 발생시키는 방법을 배웁니다.</p>
 
 <hr />
@@ -1673,6 +1718,17 @@
 <h2 id="확인문제">확인문제</h2>
 <ul>
   <li><a href="./quiz">확인문제</a></li>
+</ul>
+
+<hr />
+
+<h2 id="코딩-영단어-학습-">코딩 영단어 학습 📝</h2>
+
+<p>코딩에서 영어 단어의 의미만 정확히 이해해도 절반은 성공입니다! 오늘 배운 핵심 영단어들을 다시 한번 짚고 넘어가 볼까요?</p>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">Exception</code></strong>: 익셉션, 예외. (프로그램 실행 중 예기치 않게 발생하는, 그러나 미리 대비하면 충분히 수습 가능한 가벼운 접촉 사고 같은 오류)</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">Handling</code></strong>: 핸들링, 처리. (예외 상황이 터졌을 때 프로그램이 허무하게 뻗어버리지 않도록, 안전하게 운전대를 꽉 붙잡고 상황을 수습하는 조치)</li>
 </ul>
 
 

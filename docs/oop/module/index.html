@@ -1672,6 +1672,59 @@
 <p>은닉된 패키지라도 실행 중에 내부를 들여다봐야 하는 경우(리플렉션)를 위해 <code class="language-plaintext highlighter-rouge">opens</code> 키워드를 사용하는 법을 배웁니다.</p>
 
 <h3 id="139-자바-표준-모듈-standard"><a href="./standard-modules">13.9 자바 표준 모듈 (Standard)</a></h3>
+<p>JDK에 이미 포함되어 있는 수많은 표준 모듈들(java.base 등)의 구조와 활용법을 배웁니다.
+—</p>
+
+<h1 id="chapter-13-라이브러리와-모듈-module-system-1">Chapter 13. 라이브러리와 모듈 (Module System)</h1>
+
+<blockquote>
+  <p><strong>“프로그램의 부품을 체계적으로 관리하는 물류 시스템”</strong></p>
+</blockquote>
+
+<p><br /></p>
+
+<h2 id="학습목표-1">학습목표</h2>
+
+<ol>
+  <li>라이브러리의 개념과 모듈(Module)이 등장한 배경을 이해합니다.</li>
+  <li><strong>모듈 기술자(<code class="language-plaintext highlighter-rouge">module-info.java</code>)</strong>의 역할과 <code class="language-plaintext highlighter-rouge">exports</code>, <code class="language-plaintext highlighter-rouge">requires</code> 키워드를 익힙니다.</li>
+  <li>응용프로그램을 여러 모듈로 쪼개고 조립하는 방법을 배웁니다.</li>
+  <li>패키지 은닉과 전이 의존 등 모듈 시스템의 고급 기능을 알아봅니다.</li>
+</ol>
+
+<p><img src="./img/module_concept_container.svg" alt="Module Concept" /></p>
+
+<hr />
+
+<p><br /></p>
+
+<h2 id="목차-1">목차</h2>
+
+<h3 id="131-라이브러리-1"><a href="./library">13.1 라이브러리</a></h3>
+<p>프로그램 개발에 필요한 부품(클래스, 인터페이스)을 모아놓은 JAR 파일의 개념을 배웁니다.</p>
+
+<h3 id="132-모듈이란-1"><a href="./module">13.2 모듈이란?</a></h3>
+<p>패키지 관리 기능이 포함된 새로운 라이브러리 형식인 모듈의 개념을 “배송 컨테이너”에 비유하여 이해합니다.</p>
+
+<h3 id="133-응용프로그램-모듈화-1"><a href="./application-modularity">13.3 응용프로그램 모듈화</a></h3>
+<p>거대한 하나의 프로젝트를 기능별로 여러 모듈로 나누어 개발하는 방법과 장점을 배웁니다.</p>
+
+<h3 id="134-모듈-배포용-jar-1"><a href="./modular-jar">13.4 모듈 배포용 JAR</a></h3>
+<p>개발한 모듈을 다른 사람이 사용할 수 있도록 JAR 파일로 압축하고 배포하는 방법을 알아봅니다.</p>
+
+<h3 id="135-패키지-은닉-exports-1"><a href="./package-hiding">13.5 패키지 은닉 (Exports)</a></h3>
+<p>모듈 내부의 중요한 패키지를 외부에 감추고, 허락된 패키지만 공개(<code class="language-plaintext highlighter-rouge">exports</code>)하는 보안 메커니즘을 배웁니다.</p>
+
+<h3 id="136-전이-의존-transitive-1"><a href="./transitive-dependency">13.6 전이 의존 (Transitive)</a></h3>
+<p>“A가 B를 필요로 하고, B가 C를 필요로 할 때”, A가 C를 자동으로 사용할 수 있게 해주는 <code class="language-plaintext highlighter-rouge">requires transitive</code> 키워드를 배웁니다.</p>
+
+<h3 id="137-집합-모듈-aggregator-1"><a href="./aggregator-module">13.7 집합 모듈 (Aggregator)</a></h3>
+<p>여러 모듈을 묶어서 한 번에 <code class="language-plaintext highlighter-rouge">requires</code> 할 수 있게 해주는 편리한 집합 모듈 패턴을 알아봅니다.</p>
+
+<h3 id="138-리플렉션-허용-opens-1"><a href="./reflection">13.8 리플렉션 허용 (Opens)</a></h3>
+<p>은닉된 패키지라도 실행 중에 내부를 들여다봐야 하는 경우(리플렉션)를 위해 <code class="language-plaintext highlighter-rouge">opens</code> 키워드를 사용하는 법을 배웁니다.</p>
+
+<h3 id="139-자바-표준-모듈-standard-1"><a href="./standard-modules">13.9 자바 표준 모듈 (Standard)</a></h3>
 <p>JDK에 이미 포함되어 있는 수많은 표준 모듈들(java.base 등)의 구조와 활용법을 배웁니다.</p>
 
 <hr />
@@ -1681,6 +1734,17 @@
 <h2 id="확인문제">확인문제</h2>
 <ul>
   <li><a href="./quiz">확인문제</a></li>
+</ul>
+
+<hr />
+
+<h2 id="코딩-영단어-학습-">코딩 영단어 학습 📝</h2>
+
+<p>코딩에서 영어 단어의 의미만 정확히 이해해도 절반은 성공입니다! 오늘 배운 핵심 영단어들을 다시 한번 짚고 넘어가 볼까요?</p>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">Module</code></strong>: 모듈. (프로그램의 부품들을 모아놓은 상자. 그냥 상자가 아니라 ‘어떤 부품은 공개하고 어떤 부품은 숨길지’를 철저히 관리하는 스마트 컨테이너)</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">System</code></strong>: 시스템, 체계. (모듈들을 안전하게 조립하고 배포할 수 있도록 자바 플랫폼 전체를 뒷받침하는 거대한 체계)</li>
 </ul>
 
 

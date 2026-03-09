@@ -1764,6 +1764,150 @@
 
 <hr />
 
+<hr />
+
+<h1 id="chapter-09-클래스-완전-정복-1">Chapter 09. 클래스 완전 정복</h1>
+
+<p>자바 프로그래밍의 가장 중요한 핵심인 ‘클래스(Class)’를 배우는 챕터입니다. 어렵게 느껴질 수 있는 개념을 우리 주변의 사물에 비유하여 쉽게 설명했습니다.</p>
+
+<h2 id="️-학습-로드맵-1">🗺️ 학습 로드맵</h2>
+
+<p>먼저 전체 그림을 보고 시작해 보세요.</p>
+
+<p><img src="./img/chapter_roadmap.svg" alt="Chapter Roadmap" /></p>
+
+<p><br />
+<br /></p>
+
+<h2 id="목차-1">목차</h2>
+
+<h3 id="61-객체지향-프로그래밍-부품-조립-1">6.1 객체지향 프로그래밍 (부품 조립)</h3>
+<blockquote>
+  <p><strong>“자동차를 만들 때 엔진, 바퀴, 핸들을 조립하듯이 소프트웨어도 부품(객체)을 조립해서 만듭니다.”</strong>
+복잡한 프로그램을 작고 관리하기 쉬운 부품 단위로 나누어 개발하는 방법입니다.</p>
+</blockquote>
+
+<p>👉 <a href="./oop"><strong>학습하기</strong></a></p>
+
+<hr />
+
+<h3 id="62-객체와-클래스-설계도와-제품-1">6.2 객체와 클래스 (설계도와 제품)</h3>
+<blockquote>
+  <p><strong>“붕어빵 틀(클래스)이 있으면 붕어빵(객체)을 수천 개도 만들 수 있습니다.”</strong>
+클래스는 객체를 만들기 위한 <strong>설계도</strong>이고, 객체는 그 설계도로 만들어진 <strong>실제품</strong>입니다.</p>
+</blockquote>
+
+<p>👉 <a href="./object-class"><strong>학습하기</strong></a></p>
+
+<hr />
+
+<h3 id="63-클래스-선언-설계도-그리기-1">6.3 클래스 선언 (설계도 그리기)</h3>
+<blockquote>
+  <p><strong>“어떤 이름의 자동차를 만들지, 어떤 부품이 필요한지 설계도에 적는 과정입니다.”</strong>
+<code class="language-plaintext highlighter-rouge">class</code> 키워드를 사용해 새로운 종류의 객체를 정의합니다.</p>
+</blockquote>
+
+<p>👉 <a href="./class-declaration"><strong>학습하기</strong></a></p>
+
+<hr />
+
+<h3 id="64-객체-생성과-클래스-변수-주문과-배송-1">6.4 객체 생성과 클래스 변수 (주문과 배송)</h3>
+<blockquote>
+  <p><strong>“<code class="language-plaintext highlighter-rouge">new</code>는 공장에 ‘이 설계도로 제품 하나 만들어주세요!’라고 주문 넣는 것과 같습니다.”</strong>
+메모리 어딘가에 실제 제품(객체)이 만들어지고, 우리는 그 위치(주소)를 리모컨(변수)에 저장해서 사용합니다.</p>
+</blockquote>
+
+<p>👉 <a href="./instance-creation"><strong>학습하기</strong></a></p>
+
+<hr />
+
+<h3 id="65--68-클래스의-구성-멤버-자동차의-구성-요소-1">6.5 ~ 6.8 클래스의 구성 멤버 (자동차의 구성 요소)</h3>
+<blockquote>
+  <p>자동차에 엔진, 핸들, 기능이 있듯이 클래스도 3가지 요소로 이루어집니다.</p>
+  <ul>
+    <li><strong>6.6 필드</strong>: <strong>데이터</strong> (자동차의 속도, 색상)</li>
+    <li><strong>6.7 생성자</strong>: <strong>초기 설정</strong> (출고 시 색상 결정)</li>
+    <li><strong>6.8 메소드</strong>: <strong>동작</strong> (달린다, 멈춘다)</li>
+  </ul>
+</blockquote>
+
+<p>👉 <a href="./class-members"><strong>학습하기 (6.5 구성 멤버)</strong></a>
+👉 <a href="./field"><strong>학습하기 (6.6 필드)</strong></a>
+👉 <a href="./constructor"><strong>학습하기 (6.7 생성자)</strong></a>
+👉 <a href="./method"><strong>학습하기 (6.8 메소드)</strong></a></p>
+
+<hr />
+
+<h3 id="69-인스턴스-멤버-개인-물건-1">6.9 인스턴스 멤버 (개인 물건)</h3>
+<blockquote>
+  <p><strong>“내 주머니 속의 스마트폰은 나만의 것입니다.”</strong>
+객체마다 각각 따로 가지고 있는 데이터입니다. (<code class="language-plaintext highlighter-rouge">this</code> = 나 자신)</p>
+</blockquote>
+
+<p>👉 <a href="./instance-member"><strong>학습하기</strong></a></p>
+
+<hr />
+
+<h3 id="610-정적-멤버-공용-물건-1">6.10 정적 멤버 (공용 물건)</h3>
+<blockquote>
+  <p><strong>“교실 벽에 걸린 시계는 모든 학생이 함께 봅니다.”</strong>
+모든 객체가 공유하는 데이터입니다. (<code class="language-plaintext highlighter-rouge">static</code> = 공용)</p>
+</blockquote>
+
+<p>👉 <a href="./static-member"><strong>학습하기</strong></a></p>
+
+<hr />
+
+<h3 id="611-final-필드와-상수-불변의-법칙-1">6.11 final 필드와 상수 (불변의 법칙)</h3>
+<blockquote>
+  <p><strong>“주민등록번호는 태어날 때 정해지면 평생 바꿀 수 없습니다.”</strong>
+한 번 값을 정하면 수정할 수 없는 데이터입니다. (<code class="language-plaintext highlighter-rouge">final</code>)</p>
+</blockquote>
+
+<p>👉 <a href="./final-constant"><strong>학습하기</strong></a></p>
+
+<hr />
+
+<h3 id="612-패키지-폴더-정리-1">6.12 패키지 (폴더 정리)</h3>
+<blockquote>
+  <p><strong>“파일이 너무 많으면 폴더별로 정리하듯이, 클래스도 패키지로 정리합니다.”</strong>
+비슷한 성격의 클래스들을 모아두는 디렉토리함입니다.</p>
+</blockquote>
+
+<p>👉 <a href="./package"><strong>학습하기</strong></a></p>
+
+<hr />
+
+<h3 id="613-접근-제한자-보안-장치-1">6.13 접근 제한자 (보안 장치)</h3>
+<blockquote>
+  <p><strong>“우리 집 안방은 가족만 들어올 수 있고, 대문은 누구나 볼 수 있습니다.”</strong>
+<code class="language-plaintext highlighter-rouge">public</code>, <code class="language-plaintext highlighter-rouge">private</code> 등을 이용해 중요 데이터에 아무나 접근하지 못하게 막습니다.</p>
+</blockquote>
+
+<p>👉 <a href="./access-modifier"><strong>학습하기</strong></a></p>
+
+<hr />
+
+<h3 id="614-getter와-setter-안전-장치-1">6.14 Getter와 Setter (안전 장치)</h3>
+<blockquote>
+  <p><strong>“자동차 속도계는 눈으로만 보고(Get), 속도 조절은 브레이크/액셀 페달(Set)로만 합니다.”</strong>
+데이터를 직접 건드리지 않고, 메소드를 통해 안전하게 확인하거나 변경하는 방법입니다.</p>
+</blockquote>
+
+<p>👉 <a href="./getter-setter"><strong>학습하기</strong></a></p>
+
+<hr />
+
+<h3 id="615-싱글톤-패턴-유일한-존재-1">6.15 싱글톤 패턴 (유일한 존재)</h3>
+<blockquote>
+  <p><strong>“우리 회사의 CEO는 단 한 명뿐입니다.”</strong>
+프로그램 전체에서 딱 하나만 존재해야 하는 객체를 만드는 방법입니다.</p>
+</blockquote>
+
+<p>👉 <a href="./singleton"><strong>학습하기</strong></a></p>
+
+<hr />
+
 <h3 id="616-레코드-택배-상자">6.16 레코드 (택배 상자)</h3>
 <blockquote>
   <p><strong>“데이터를 안전하게 배송하기 위해 밀봉된 상자입니다.”</strong>
@@ -1776,6 +1920,18 @@
 
 <h2 id="확인문제">확인문제</h2>
 <p>👉 <a href="./quiz"><strong>확인문제 풀러 가기</strong></a></p>
+
+<hr />
+
+<h2 id="코딩-영단어-학습-">코딩 영단어 학습 📝</h2>
+
+<p>코딩에서 영어 단어의 의미만 정확히 이해해도 절반은 성공입니다! 오늘 배운 핵심 영단어들을 다시 한번 짚고 넘어가 볼까요?</p>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">Object-Oriented Programming (OOP)</code></strong>: 객체지향 프로그래밍. (거대한 프로그램을 만들 때 아무렇게나 코드를 섞어 짜는 게 아니라, 독립된 부품(객체)들을 하나하나 만들고 이들을 조립해서 시스템을 완성해가는 현대적인 소프트웨어 개발 방식)</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">Object</code></strong>: 오브젝트, 객체, 사물. (소프트웨어 세계 안에서 구현하고자 하는 구체적인 형태를 띤 모든 것. 예: 플레이어, 몬스터, 총알, 자동차 등)</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">Oriented</code></strong>: 오리엔티드, ~지향의. (방향성이나 목표가 무언가를 중심에 두고 향하고 있다는 뜻)</li>
+</ul>
 
 
             <div class="mt-10">

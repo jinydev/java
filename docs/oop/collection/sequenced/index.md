@@ -51,3 +51,12 @@ grand_parent: "Part 03. 라이브러리 활용"
 *   `Collections.unmodifiableSequencedCollection(sequencedCollection)`
 *   `Collections.unmodifiableSequencedSet(sequencedSet)`
 *   `Collections.unmodifiableSequencedMap(sequencedMap)`
+
+---
+
+## 코딩 영단어 학습 📝
+
+코딩에서 영어 단어의 의미만 정확히 이해해도 절반은 성공입니다! 오늘 배운 핵심 영단어들을 다시 한번 짚고 넘어가 볼까요?
+
+*   **`Sequenced`**: 시퀀스드, 순서를 매긴. (데이터의 양 끝단(`First`, `Last`)에 빠르게 접근하거나 요소를 거꾸로(`reversed`) 뒤집는 최신(Java 21) 컬렉션 기술)
+*   **`Poll`**: 폴, 꺼내기. (`pollFirstEntry()` 처럼 가장 앞에 있는 데이터를 조회할 뿐만 아니라 컬렉션 안에서 쏙 빼서(제거해서) 가져오는 동작)
