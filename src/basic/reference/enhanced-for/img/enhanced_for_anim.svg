@@ -1,0 +1,100 @@
+<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="450" fill="#f8f9fa"/>
+  <style>
+    @keyframes move-belt {
+      0% { stroke-dashoffset: 0; }
+      100% { stroke-dashoffset: -40; }
+    }
+    @keyframes serve-sushi {
+      0%, 15% { transform: translate(550px, 140px); opacity: 1; }
+      25%, 75% { transform: translate(300px, 250px) scale(1.5); opacity: 1; filter: drop-shadow(0 0 10px #ffc107); }
+      85%, 100% { transform: translate(300px, 250px) scale(1.5); opacity: 0; }
+    }
+    @keyframes next-sushi-1 {
+      0%, 15% { transform: translate(700px, 140px); }
+      25%, 100% { transform: translate(550px, 140px); }
+    }
+    @keyframes next-sushi-2 {
+      0%, 15% { transform: translate(850px, 140px); }
+      25%, 100% { transform: translate(700px, 140px); }
+    }
+    @keyframes code-highlight {
+      0%, 20% { fill: #fff; }
+      25%, 80% { fill: #fff3cd; }
+      85%, 100% { fill: #fff; }
+    }
+
+    .belt { animation: move-belt 2s linear infinite; }
+    .sushi-serve { animation: serve-sushi 4s infinite; }
+    .sushi-wait1 { animation: next-sushi-1 4s infinite; }
+    .sushi-wait2 { animation: next-sushi-2 4s infinite; }
+    .code-bg { animation: code-highlight 4s infinite; }
+
+    .title { font-family: sans-serif; font-size: 24px; font-weight: bold; fill: #333; text-anchor: middle; }
+    .code { font-family: monospace; font-size: 18px; font-weight: bold; }
+    .label { font-family: sans-serif; font-size: 14px; font-weight: bold; fill: #fff; text-anchor: middle; }
+  </style>
+
+  <text x="400" y="50" class="title">향상된 for 문 (for-each) 작동 원리 🍣</text>
+
+  <!-- 좌측 코드 영역 -->
+  <rect x="50" y="80" width="370" height="150" rx="10" fill="#212529" stroke="#495057" stroke-width="4"/>
+  <text x="70" y="115" class="code" fill="#e83e8c">for <tspan fill="#fff">(int </tspan><tspan fill="#20c997">score</tspan> <tspan fill="#fff">: </tspan><tspan fill="#0dcaf0">scores</tspan><tspan fill="#fff">) {</tspan></text>
+  
+  <rect x="90" y="130" width="280" height="30" rx="3" fill="#fff" class="code-bg" opacity="0.2"/>
+  <text x="100" y="150" class="code" fill="#fff">System.out.println(<tspan fill="#20c997">score</tspan>);</text>
+  
+  <text x="70" y="190" class="code" fill="#fff">}</text>
+
+  <!-- 화살표 (공급) -->
+  <path d="M 450 150 Q 380 150 350 200" fill="none" class="anim-zap" stroke="#20c997" stroke-width="4" stroke-dasharray="10 5" marker-end="url(#arrow-green)"/>
+
+  <!-- 우측 컨베이어 벨트 (scores 배열) -->
+  <g transform="translate(450, 100)">
+    <rect x="-20" y="60" width="370" height="20" fill="#6c757d"/>
+    <line x1="-20" y1="80" x2="350" y2="80" stroke="#495057" stroke-width="8" stroke-dasharray="20 20" class="belt"/>
+    <text x="160" y="120" font-family="monospace" font-size="18" font-weight="bold" fill="#0dcaf0" text-anchor="middle">배열 scores (컨베이어 벨트)</text>
+  </g>
+
+  <!-- 초밥 접시들 (데이터) -->
+  <defs>
+    <g id="sushi">
+      <ellipse cx="0" cy="15" rx="35" ry="10" fill="#e9ecef" stroke="#adb5bd" stroke-width="2"/>
+      <rect x="-20" y="-10" width="40" height="20" rx="5" fill="#f8f9fa"/>
+      <rect x="-25" y="-15" width="50" height="15" rx="5" fill="#dc3545"/>
+      <rect x="-5" y="-15" width="10" height="25" fill="#212529"/> <!-- 김 띠 -->
+    </g>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#20c997"/>
+    </marker>
+  </defs>
+
+  <!-- 대기 중인 초밥들 -->
+  <g class="sushi-wait2">
+    <use href="#sushi"/>
+    <text x="0" y="5" class="code" fill="#fff" text-anchor="middle">84</text>
+  </g>
+
+  <g class="sushi-wait1">
+    <use href="#sushi"/>
+    <text x="0" y="5" class="code" fill="#fff" text-anchor="middle">71</text>
+  </g>
+
+  <!-- 서빙되는 초밥 (score 변수) -->
+  <g class="sushi-serve">
+    <use href="#sushi"/>
+    <text x="0" y="5" class="code" fill="#fff" text-anchor="middle">95</text>
+  </g>
+
+  <!-- 내 접시 (score 변수 그릇) -->
+  <g transform="translate(300, 270)">
+    <ellipse cx="0" cy="0" rx="80" ry="25" fill="#d1e7dd" stroke="#198754" stroke-width="4"/>
+    <text x="0" y="45" font-family="monospace" font-size="20" font-weight="bold" fill="#198754" text-anchor="middle">변수 score (내 앞접시)</text>
+  </g>
+
+  <!-- 하단 설명 -->
+  <rect x="50" y="370" width="700" height="50" rx="10" fill="#e2e3e5" stroke="#adb5bd" stroke-width="2"/>
+  <text x="400" y="395" font-family="sans-serif" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">개발자가 직접 `i++` 하며 인덱스를 계산할 필요 없이,</text>
+  <text x="400" y="415" font-family="sans-serif" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">배열이 끝날 때까지 알아서 다음 데이터를 앞접시(`score`)에 배달해 줍니다!</text>
+
+</svg>

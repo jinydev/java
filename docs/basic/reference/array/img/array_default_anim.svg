@@ -1,0 +1,80 @@
+<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="450" fill="#f8f9fa"/>
+  <style>
+    @keyframes fade-in-out {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+    @keyframes drop-in {
+      0% { transform: translateY(-30px); opacity: 0; }
+      20%, 80% { transform: translateY(0); opacity: 1; }
+      100% { opacity: 0; }
+    }
+    .anim-ghost { animation: fade-in-out 4s infinite; }
+    .anim-assign { animation: drop-in 4s infinite; }
+    
+    .title { font-family: sans-serif; font-size: 24px; font-weight: bold; fill: #333; text-anchor: middle; }
+    .code { font-family: monospace; font-size: 16px; font-weight: bold; }
+    .type-label { font-family: sans-serif; font-size: 14px; fill: #6c757d; text-anchor: middle; }
+    .value { font-family: monospace; font-size: 30px; font-weight: bold; text-anchor: middle; }
+  </style>
+
+  <text x="400" y="50" class="title">new 예약어의 마법: 빈 방은 절대 없다! (자동 초기화) ✨</text>
+
+  <!-- 배열 선언 배경 (아파트) -->
+  <rect x="50" y="100" width="700" height="240" rx="10" fill="#e9ecef" stroke="#ced4da" stroke-width="3"/>
+  
+  <text x="400" y="90" font-family="sans-serif" font-size="16" font-weight="bold" fill="#0dcaf0" text-anchor="middle">"일단 4칸짜리 기차(배열)를 주세요!"</text>
+
+  <!-- 방 1: int (0) -->
+  <g transform="translate(70, 130)">
+    <rect width="150" height="150" rx="8" fill="#fff" stroke="#adb5bd" stroke-width="2"/>
+    <text x="75" y="30" class="type-label">int[] array</text>
+    <text x="75" y="100" class="value anim-ghost" fill="#6c757d">0</text>
+    <text x="75" y="135" class="code" fill="#0d6efd" text-anchor="middle">정수는 0</text>
+  </g>
+
+  <!-- 방 2: double (0.0) -->
+  <g transform="translate(240, 130)">
+    <rect width="150" height="150" rx="8" fill="#fff" stroke="#adb5bd" stroke-width="2"/>
+    <text x="75" y="30" class="type-label">double[] array</text>
+    <text x="75" y="100" class="value anim-ghost" fill="#6c757d">0.0</text>
+    <text x="75" y="135" class="code" fill="#20c997" text-anchor="middle">실수는 0.0</text>
+  </g>
+
+  <!-- 방 3: boolean (false) -->
+  <g transform="translate(410, 130)">
+    <rect width="150" height="150" rx="8" fill="#fff" stroke="#adb5bd" stroke-width="2"/>
+    <text x="75" y="30" class="type-label">boolean[] array</text>
+    <text x="75" y="100" class="value anim-ghost" fill="#6c757d">false</text>
+    <text x="75" y="135" class="code" fill="#fd7e14" text-anchor="middle">논리는 false</text>
+  </g>
+
+  <!-- 방 4: String 등 참조타입 (null) -->
+  <g transform="translate(580, 130)">
+    <rect width="150" height="150" rx="8" fill="#fff" stroke="#adb5bd" stroke-width="2"/>
+    <text x="75" y="30" class="type-label">String[] array</text>
+    <text x="75" y="100" class="value anim-ghost" fill="#dc3545">null</text>
+    <text x="75" y="135" class="code" fill="#dc3545" text-anchor="middle">참조는 null</text>
+  </g>
+
+  <!-- 나중에 값 할당하는 애니메이션 -->
+  <g transform="translate(70, 130)">
+    <!-- 첫 번째 방에 값 할당 -->
+    <g class="anim-assign">
+      <rect width="150" height="150" rx="8" fill="#cfe2ff" stroke="#0d6efd" stroke-width="3"/>
+      <text x="75" y="100" class="value" fill="#000">100</text>
+      <path d="M 75 -20 L 75 40" stroke="#0d6efd" stroke-width="4" marker-end="url(#arrow-blue)"/>
+      <text x="75" y="-30" class="code" fill="#0d6efd" text-anchor="middle">arr[0] = 100;</text>
+    </g>
+  </g>
+
+  <rect x="150" y="380" width="500" height="40" rx="10" fill="#fff3cd" stroke="#ffc107" stroke-width="2"/>
+  <text x="400" y="406" font-family="sans-serif" font-size="16" font-weight="bold" fill="#856404" text-anchor="middle">💡 new 로 공간을 확보하면, 자바가 알아서 기본값(Default)으로 싹 청소해 줍니다!</text>
+
+  <defs>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0d6efd"/>
+    </marker>
+  </defs>
+</svg>

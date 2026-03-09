@@ -1087,9 +1087,9 @@
         <div class="bd-content ps-lg-2">
             <h1 id="81-데이터-타입-분류">8.1 데이터 타입 분류</h1>
 
-<h2 id="1-기본-타입-vs-참조-타입">1. 기본 타입 vs 참조 타입</h2>
+<h2 id="1-기본-타입-vs-참조-타입-현금--vs-보물지도-️">1. 기본 타입 vs 참조 타입 (현금 💵 vs 보물지도 🗺️)</h2>
 
-<p>자바의 데이터 타입은 크게 두 가지로 나뉩니다.</p>
+<p>자바 세상의 모든 데이터는 보관하는 방식에 따라 크게 두 가지 파벌로 나뉩니다.</p>
 
 <table>
   <thead>
@@ -1097,7 +1097,7 @@
       <th style="text-align: left">종류</th>
       <th style="text-align: left">영어</th>
       <th style="text-align: left">비유</th>
-      <th style="text-align: left">설명</th>
+      <th style="text-align: left">특징</th>
     </tr>
   </thead>
   <tbody>
@@ -1105,37 +1105,45 @@
       <td style="text-align: left"><strong>기본 타입</strong></td>
       <td style="text-align: left">Primitive Type</td>
       <td style="text-align: left"><strong>현금</strong> 💵</td>
-      <td style="text-align: left">변수 안에 <strong>실제 값</strong>이 들어있습니다. (<code class="language-plaintext highlighter-rouge">int</code>, <code class="language-plaintext highlighter-rouge">double</code> 등)</td>
+      <td style="text-align: left">지갑(변수) 안에 <strong>실제 돈(값)</strong>이 직접 들어있습니다. (<code class="language-plaintext highlighter-rouge">int</code>, <code class="language-plaintext highlighter-rouge">double</code>, <code class="language-plaintext highlighter-rouge">boolean</code> 등)</td>
     </tr>
     <tr>
       <td style="text-align: left"><strong>참조 타입</strong></td>
       <td style="text-align: left">Reference Type</td>
-      <td style="text-align: left"><strong>통장</strong> 💳</td>
-      <td style="text-align: left">변수 안에 <strong>주소(번지)</strong>가 들어있습니다. (배열, 열거, 클래스, 인터페이스)</td>
+      <td style="text-align: left"><strong>지도</strong> 🗺️</td>
+      <td style="text-align: left">지갑(변수) 안에 진짜 보물이 아니라, 보물이 숨겨진 <strong>주소(좌표)</strong>만 들어있습니다. (배열, 열거, 클래스 등)</td>
     </tr>
   </tbody>
 </table>
 
-<p><img src="./img/reference_types.png" alt="그림" /></p>
+<h3 id="-비유-내-주머니-속-현금-vs-창고-키">🎨 비유: 내 주머니 속 현금 vs 창고 키</h3>
 
-<h2 id="2-참조reference란">2. 참조(Reference)란?</h2>
+<p>직접 5만 원짜리 지폐(가벼운 데이터)를 주머니에 넣고 다니는 것과, 어마어마한 보물 상자(무겁고 거대한 데이터)의 위치가 적힌 지도를 들고 다니는 것의 차이입니다.</p>
 
-<p>참조 타입 변수는 객체가 힙(Heap) 메모리 어딘가에 있고, 그 <strong>위치(주소)</strong>를 가지고 있습니다.
-마치 “서울시 강남구…“라는 주소가 적힌 명함과 같습니다.
-우리가 그 명함(변수)을 보고 찾아가야 실제 집(객체)을 만날 수 있습니다.</p>
+<p><img src="./img/primitive_vs_ref.png" alt="기본타입과 참조타입 비유 웹툰" /></p>
+
+<p>위 그림처럼, 참조 타입 변수는 아무리 거대한 객체라도 변수 상자 자체는 무거워지지 않습니다. 그저 “100번지에 가면 있어~”라는 작은 메모표만 가지고 있을 뿐이죠.</p>
+
+<hr />
+
+<h2 id="2-메모리-구조와-참조reference의-비밀-">2. 메모리 구조와 참조(Reference)의 비밀 🧠</h2>
+
+<p>우리가 참조 타입 변수(<code class="language-plaintext highlighter-rouge">String</code>, 배열 등)를 부르면, 컴퓨터 내부에서는 엄청나게 빠른 속도로 <strong>‘지도에 적힌 주소를 보고 창고(Heap)로 달려가는’</strong> 택배 기사들의 움직임이 일어납니다.</p>
+
+<p><img src="./img/anim_classification.svg" alt="분류 애니메이션" /></p>
 
 <pre><code class="language-mermaid">flowchart LR
-    subgraph Stack [스택(Stack) 영역 - 변수 상자]
+    subgraph Stack["스택 영역 (내 지갑/책상)"]
         direction TB
-        Prim[기본 타입 변수\nint age = 25]
-        Ref[참조 타입 변수\nString name = '100번지']
+        Prim["기본 타입 변수&lt;br/&gt;int age = 25&lt;br/&gt;(직접 보관 완료)"]
+        Ref["참조 타입 변수&lt;br/&gt;String name = 100번지&lt;br/&gt;(포스트잇 메모)"]
     end
     
-    subgraph Heap [힙(Heap) 영역 - 실제 객체]
-        Obj[실제 데이터\n'100번지: 홍길동']
+    subgraph Heap["힙 영역 (거대한 물류 창고)"]
+        Obj["실제 데이터&lt;br/&gt;100번지: 홍길동"]
     end
     
-    Ref --&gt;|주소를 참조| Obj
+    Ref --&gt;|"주소를 보고 찾아감(참조)"| Obj
     
     style Stack fill:#eef,stroke:#333
     style Heap fill:#efe,stroke:#333
@@ -1143,6 +1151,45 @@
     style Ref fill:#ff9,stroke:#333
     style Obj fill:#bfb,stroke:#333,stroke-width:2px
 </code></pre>
+
+<hr />
+
+<h2 id="3--vibe-코딩-복사할-때-일어나는-소름-돋는-차이">3. 🎧 Vibe 코딩: 복사할 때 일어나는 소름 돋는 차이</h2>
+
+<p>이 “현금 vs 지도”의 차이는 다른 사람에게 빌려줄 때(변수 복사) 가장 극명하게 나타납니다.</p>
+
+<blockquote>
+  <p><strong>🗣️ 학생 프롬프트 (AI에게 이렇게 명령해 보세요):</strong>
+“자바에서 기본 타입(int) 변수를 복사할 때와 참조 타입(배열이나 객체) 변수를 복사할 때, 값을 수정하면 원본에 어떤 영향을 미치는지 보여주는 코드를 짜 줘. 주석으로 ‘값 복사’와 ‘주소 복사’의 차이점도 명확하게 설명해 줘.”</p>
+</blockquote>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">VibeClassification</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"--- 💵 기본 타입(현금) 복사 ---"</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">myMoney</span> <span class="o">=</span> <span class="mi">50000</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">friendMoney</span> <span class="o">=</span> <span class="n">myMoney</span><span class="o">;</span> <span class="c1">// 돈(값)을 똑같이 복사해서 줌</span>
+        
+        <span class="n">friendMoney</span> <span class="o">=</span> <span class="mi">10000</span><span class="o">;</span> <span class="c1">// 친구가 자기 돈을 써버림</span>
+        
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"내 돈: "</span> <span class="o">+</span> <span class="n">myMoney</span><span class="o">);</span> <span class="c1">// 50000 (안전함! 내 지갑은 영향 없음)</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"친구 돈: "</span> <span class="o">+</span> <span class="n">friendMoney</span><span class="o">);</span> <span class="c1">// 10000</span>
+        
+        
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\n--- 🗺️ 참조 타입(현관 비번) 복사 ---"</span><span class="o">);</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">myHousePass</span> <span class="o">=</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">};</span> <span class="c1">// 비밀번호 목록이 든 집(객체)</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">friendHousePass</span> <span class="o">=</span> <span class="n">myHousePass</span><span class="o">;</span>  <span class="c1">// 집을 통째로 준 게 아니라, '현관 주소'만 알려줌!</span>
+        
+        <span class="n">friendHousePass</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="mi">9</span><span class="o">;</span> <span class="c1">// 친구가 알려준 주소로 찾아가 비번의 앞자리를 9로 바꿔버림!</span>
+        
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"내 집 1번 비번: "</span> <span class="o">+</span> <span class="n">myHousePass</span><span class="o">[</span><span class="mi">0</span><span class="o">]);</span> <span class="c1">// 9 (헉! 내 집 비번도 털림!)</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"친구 집 1번 비번: "</span> <span class="o">+</span> <span class="n">friendHousePass</span><span class="o">[</span><span class="mi">0</span><span class="o">]);</span> <span class="c1">// 9</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong>🔥 꿀팁</strong>: 참조 타입을 남에게 넘겨줄 때(복사할 때)는 “진짜 내용물을 복제해 준 건지, 아니면 하나뿐인 우리 집 현관문 주소를 공유한 건지”를 반드시 명심해야 합니다!</p>
+</blockquote>
 
 
             <div class="mt-10">

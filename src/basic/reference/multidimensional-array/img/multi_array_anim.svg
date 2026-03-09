@@ -1,0 +1,110 @@
+<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="450" fill="#f8f9fa"/>
+  <style>
+    @keyframes create-main {
+      0%, 10% { opacity: 0; transform: translateY(-20px); }
+      15%, 100% { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes create-sub1 {
+      0%, 30% { opacity: 0; transform: scale(0.8); }
+      35%, 100% { opacity: 1; transform: scale(1); }
+    }
+    @keyframes create-sub2 {
+      0%, 55% { opacity: 0; transform: scale(0.8); }
+      60%, 100% { opacity: 1; transform: scale(1); }
+    }
+    @keyframes link1 {
+      0%, 40% { stroke-dashoffset: 100; opacity: 0; }
+      45%, 100% { stroke-dashoffset: 0; opacity: 1; }
+    }
+    @keyframes link2 {
+      0%, 65% { stroke-dashoffset: 100; opacity: 0; }
+      70%, 100% { stroke-dashoffset: 0; opacity: 1; }
+    }
+    @keyframes access {
+      0%, 80% { opacity: 0; transform: translateY(-10px); }
+      85%, 95% { opacity: 1; transform: translateY(0); filter: drop-shadow(0 0 10px #ffc107); }
+      100% { opacity: 0; }
+    }
+
+    .anim-main { animation: create-main 8s infinite; }
+    .anim-sub1 { animation: create-sub1 8s infinite; }
+    .anim-sub2 { animation: create-sub2 8s infinite; }
+    .anim-link1 { animation: link1 8s infinite forwards; stroke-dasharray: 100; }
+    .anim-link2 { animation: link2 8s infinite forwards; stroke-dasharray: 100; }
+    .anim-access { animation: access 8s infinite; }
+
+    .title { font-family: sans-serif; font-size: 24px; font-weight: bold; fill: #333; text-anchor: middle; }
+    .code { font-family: monospace; font-size: 18px; font-weight: bold; }
+    .box-text { font-family: monospace; font-size: 16px; font-weight: bold; text-anchor: middle; fill: #495057; }
+    .label { font-family: sans-serif; font-size: 14px; font-weight: bold; fill: #fff; text-anchor: middle; }
+  </style>
+
+  <text x="400" y="50" class="title">"배열의 배열" (Array of Arrays) 생성 과정 분해 🔍</text>
+  <text x="400" y="80" class="code" fill="#0d6efd" text-anchor="middle">int[][] scores = new int[2][3];</text>
+
+  <!-- 메인 배열 (층수 관리소) -->
+  <g class="anim-main" transform="translate(150, 150)">
+    <rect x="-10" y="-30" width="120" height="150" fill="#e9ecef" rx="10"/>
+    <text x="50" y="-10" font-family="sans-serif" font-size="14" font-weight="bold" fill="#495057" text-anchor="middle">Main Array (길이: 2)</text>
+    
+    <rect x="0" y="10" width="100" height="40" rx="5" fill="#0dcaf0" stroke="#087990" stroke-width="2"/>
+    <text x="50" y="35" class="label">scores[0]</text>
+    
+    <rect x="0" y="60" width="100" height="40" rx="5" fill="#0dcaf0" stroke="#087990" stroke-width="2"/>
+    <text x="50" y="85" class="label">scores[1]</text>
+  </g>
+
+  <!-- 연결선 -->
+  <path d="M 250 180 C 350 180, 350 130, 450 130" fill="none" class="anim-link1" stroke="#0dcaf0" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M 250 230 C 350 230, 350 280, 450 280" fill="none" class="anim-link2" stroke="#0dcaf0" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- 서브 배열 1 -->
+  <g class="anim-sub1" transform="translate(450, 110)">
+    <rect x="-10" y="-30" width="220" height="80" fill="#e9ecef" rx="10"/>
+    <text x="100" y="-10" font-family="sans-serif" font-size="14" font-weight="bold" fill="#495057" text-anchor="middle">Sub Array 0 (길이: 3)</text>
+    
+    <rect x="0" y="0" width="60" height="40" rx="5" fill="#fff" stroke="#adb5bd" stroke-width="2"/>
+    <rect x="70" y="0" width="60" height="40" rx="5" fill="#fff" stroke="#adb5bd" stroke-width="2"/>
+    <rect x="140" y="0" width="60" height="40" rx="5" fill="#fff" stroke="#adb5bd" stroke-width="2"/>
+    
+    <text x="30" y="26" class="box-text">0</text>
+    <text x="100" y="26" class="box-text">0</text>
+    <text x="170" y="26" class="box-text">0</text>
+  </g>
+
+  <!-- 서브 배열 2 -->
+  <g class="anim-sub2" transform="translate(450, 260)">
+    <rect x="-10" y="-30" width="220" height="80" fill="#e9ecef" rx="10"/>
+    <text x="100" y="-10" font-family="sans-serif" font-size="14" font-weight="bold" fill="#495057" text-anchor="middle">Sub Array 1 (길이: 3)</text>
+    
+    <rect x="0" y="0" width="60" height="40" rx="5" fill="#fff" stroke="#adb5bd" stroke-width="2"/>
+    <rect x="70" y="0" width="60" height="40" rx="5" fill="#fff" stroke="#adb5bd" stroke-width="2"/>
+    <rect x="140" y="0" width="60" height="40" rx="5" fill="#fff" stroke="#adb5bd" stroke-width="2"/>
+    
+    <text x="30" y="26" class="box-text">0</text>
+    <text x="100" y="26" class="box-text">0</text>
+    <text x="170" y="26" class="box-text">0</text>
+  </g>
+
+  <!-- 데이터 대입 과정 (scores[0][1] = 90) -->
+  <g class="anim-access" transform="translate(450, 110)">
+    <rect x="70" y="0" width="60" height="40" rx="5" fill="#ffc107" stroke="#fd7e14" stroke-width="3"/>
+    <text x="100" y="26" class="box-text" fill="#000" font-size="20">90</text>
+    <path d="M 100 -50 L 100 -10" stroke="#fd7e14" stroke-width="3" marker-end="url(#arrow-orange)"/>
+    <text x="100" y="-60" class="code" fill="#fd7e14" text-anchor="middle">scores[0][1] = 90;</text>
+  </g>
+
+  <!-- 하단 툴팁 -->
+  <rect x="100" y="380" width="600" height="50" rx="10" fill="#fff3cd" stroke="#ffc107" stroke-width="2"/>
+  <text x="400" y="412" font-family="sans-serif" font-size="16" font-weight="bold" fill="#856404" text-anchor="middle">💡 진짜 2차원 통짜 블록을 깎아내는 게 아니라, 배열들이 서로를 리모컨으로 가리킵니다!</text>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0dcaf0"/>
+    </marker>
+    <marker id="arrow-orange" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#fd7e14"/>
+    </marker>
+  </defs>
+</svg>

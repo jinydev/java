@@ -1,0 +1,88 @@
+<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="450" fill="#f8f9fa"/>
+  <style>
+    @keyframes fail-stretch {
+      0%, 20% { transform: scaleX(1); }
+      40% { transform: scaleX(1.1); }
+      50% { transform: scaleX(1); }
+      60%, 100% { transform: scaleX(1); }
+    }
+    @keyframes show-x {
+      0%, 45% { opacity: 0; transform: scale(0.5); }
+      50%, 60% { opacity: 1; transform: scale(1); }
+      70%, 100% { opacity: 0; }
+    }
+    @keyframes new-array {
+      0%, 65% { opacity: 0; transform: translateY(20px); }
+      75%, 100% { opacity: 1; transform: translateY(0); }
+    }
+    
+    .anim-stretch { animation: fail-stretch 6s infinite; transform-origin: left center; }
+    .anim-x { animation: show-x 6s infinite; }
+    .anim-new { animation: new-array 6s infinite; }
+    
+    .code-text { font-family: monospace; font-size: 16px; font-weight: bold; fill: #20c997; }
+    .box-char { font-family: sans-serif; font-size: 20px; font-weight: bold; text-anchor: middle; fill: #495057; }
+    .title { font-family: sans-serif; font-size: 24px; font-weight: bold; fill: #333; text-anchor: middle; }
+    .comment { font-family: sans-serif; font-size: 14px; fill: #dc3545; font-weight: bold; text-anchor: middle; }
+  </style>
+
+  <text x="400" y="50" class="title">배열의 크기는 불변(Fixed)입니다! (.length)</text>
+
+  <!-- 길이 측정 자 -->
+  <g transform="translate(150, 100)">
+    <rect width="500" height="40" fill="#e2e3e5" stroke="#adb5bd" stroke-width="2" rx="5"/>
+    <path d="M 0 40 L 0 50 M 500 40 L 500 50" stroke="#adb5bd" stroke-width="2"/>
+    <path d="M 0 45 L 500 45" stroke="#adb5bd" stroke-width="2"/>
+    
+    <text x="250" y="27" font-family="monospace" font-size="20" font-weight="bold" fill="#0d6efd" text-anchor="middle">arr.length == 3</text>
+  </g>
+
+  <!-- 기존 배열 공간 -->
+  <g transform="translate(150, 180)">
+    <text x="250" y="-10" font-family="sans-serif" font-size="14" fill="#6c757d" text-anchor="middle">기존 3칸짜리 기차 (수정 불가)</text>
+    
+    <!-- 칸 늘리기 시도 애니메이션 -->
+    <g class="anim-stretch">
+      <rect width="300" height="60" rx="8" fill="#fff" stroke="#6c757d" stroke-width="3"/>
+      
+      <!-- 구획선 -->
+      <line x1="100" y1="0" x2="100" y2="60" stroke="#6c757d" stroke-width="2"/>
+      <line x1="200" y1="0" x2="200" y2="60" stroke="#6c757d" stroke-width="2"/>
+      
+      <!-- 데이터 -->
+      <text x="50" y="38" class="box-char">10</text>
+      <text x="150" y="38" class="box-char">20</text>
+      <text x="250" y="38" class="box-char">30</text>
+    </g>
+
+    <!-- 불가능 X 표시 -->
+    <g transform="translate(350, 30)" class="anim-x">
+      <path d="M -20 -20 L 20 20 M -20 20 L 20 -20" stroke="#dc3545" stroke-width="8" stroke-linecap="round"/>
+      <text x="50" y="5" class="comment">칸 추가 절대 불가!</text>
+    </g>
+  </g>
+
+  <!-- 새로운 크기의 배열 생성 (해결법) -->
+  <g transform="translate(90, 310)" class="anim-new">
+    <text x="310" y="-10" font-family="sans-serif" font-size="14" fill="#198754" font-weight="bold" text-anchor="middle">✓ 해결법: 아예 새롭고 더 긴 기차를 만들어서 통째로 이사해야 함!</text>
+    
+    <!-- 5칸짜리 새 배열 -->
+    <rect width="500" height="60" rx="8" fill="#d1e7dd" stroke="#198754" stroke-width="3" stroke-dasharray="5 5"/>
+    
+    <!-- 구획선 -->
+    <line x1="100" y1="0" x2="100" y2="60" stroke="#198754" stroke-width="2"/>
+    <line x1="200" y1="0" x2="200" y2="60" stroke="#198754" stroke-width="2"/>
+    <line x1="300" y1="0" x2="300" y2="60" stroke="#198754" stroke-width="2"/>
+    <line x1="400" y1="0" x2="400" y2="60" stroke="#198754" stroke-width="2"/>
+    
+    <text x="50" y="38" class="box-char">10</text>
+    <text x="150" y="38" class="box-char">20</text>
+    <text x="250" y="38" class="box-char">30</text>
+    <text x="350" y="38" class="box-char" fill="#198754">New</text>
+    <text x="450" y="38" class="box-char" fill="#198754">New</text>
+    
+    <text x="600" y="35" font-family="monospace" font-size="16" font-weight="bold" fill="#198754">new int[5];</text>
+  </g>
+
+</svg>

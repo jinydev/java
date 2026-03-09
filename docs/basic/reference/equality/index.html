@@ -1087,52 +1087,66 @@
         <div class="bd-content ps-lg-2">
             <h1 id="83-참조-변수의-비교">8.3 참조 변수의 비교</h1>
 
-<h2 id="1-의-배신-">1. <code class="language-plaintext highlighter-rouge">==</code>의 배신 💔</h2>
+<h2 id="1--연산자의-배신-주소-비교-">1. <code class="language-plaintext highlighter-rouge">==</code> 연산자의 배신 (주소 비교) 💔</h2>
 
-<p>기본 타입(<code class="language-plaintext highlighter-rouge">int</code>, <code class="language-plaintext highlighter-rouge">double</code>)은 <code class="language-plaintext highlighter-rouge">==</code>로 비교하면 값이 같은지 확인합니다.
-하지만 참조 타입(String, 배열 등)은 <code class="language-plaintext highlighter-rouge">==</code>로 비교하면 <strong>“주소”가 같은지</strong> 확인합니다.</p>
+<p>우리가 지금까지 즐겨 쓰던 <code class="language-plaintext highlighter-rouge">==</code> 연산자는 <code class="language-plaintext highlighter-rouge">int</code>나 <code class="language-plaintext highlighter-rouge">double</code> 같은 기본 타입에서는 수학의 “같다”처럼 값(내용)이 똑같은지 비교해 주었습니다.
+하지만 <strong>참조 타입(String, 배열, 클래스 등)을 만나는 순간, <code class="language-plaintext highlighter-rouge">==</code> 연산자의 성격이 완전히 달라집니다.</strong></p>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">String</span> <span class="n">s1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">(</span><span class="s">"안녕"</span><span class="o">);</span>
-<span class="nc">String</span> <span class="n">s2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">(</span><span class="s">"안녕"</span><span class="o">);</span>
+<p>참조 타입에서 <code class="language-plaintext highlighter-rouge">==</code> 연산자는 상자 안의 내용물이 아니라, 오직 <strong>“두 변수가 가리키는 메모리 주소(번지수)가 완벽히 똑같은가?”</strong> 만 검사합니다.</p>
 
-<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">s1</span> <span class="o">==</span> <span class="n">s2</span><span class="o">);</span> <span class="c1">// false! (주소가 다름)</span>
+<p><img src="./img/equality_houses.png" alt="참조타입 비교 비유 웹툰" /></p>
+
+<p>위 그림처럼 완전히 똑같이 생긴 쌍둥이 집(객체)을 두 채 지었더라도, 내비게이션에 찍히는 <strong>주소(100번지 vs 200번지)가 다르면 <code class="language-plaintext highlighter-rouge">==</code> 연산자는 매정하게 <code class="language-plaintext highlighter-rouge">false</code></strong>를 던집니다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">String</span> <span class="n">s1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">(</span><span class="s">"안녕"</span><span class="o">);</span> <span class="c1">// 100번지에 새 집(객체) 건축</span>
+<span class="nc">String</span> <span class="n">s2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">(</span><span class="s">"안녕"</span><span class="o">);</span> <span class="c1">// 200번지에 새 집(객체) 건축</span>
+
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">s1</span> <span class="o">==</span> <span class="n">s2</span><span class="o">);</span> <span class="c1">// ❌ false! (글자는 같지만, 집 주소가 다름)</span>
 </code></pre></div></div>
-<p>내용은 같아도, 힙 영역에 따로따로 지어진 집이기 때문에 주소가 다릅니다.</p>
 
 <pre><code class="language-mermaid">flowchart TD
-    subgraph Stack [변수]
-        s1[변수 s1]
-        s2[변수 s2]
+    subgraph Stack ["스택 (Stack) 내 책상"]
+        s1["변수 s1 (100번지)"]
+        s2["변수 s2 (200번지)"]
     end
     
-    subgraph Heap [객체 (집)]
-        obj1[번지1: '안녕']
-        obj2[번지2: '안녕']
+    subgraph Heap ["힙 (Heap) 창고"]
+        obj1["100번지: '안녕'"]
+        obj2["200번지: '안녕'"]
     end
     
-    s1 --&gt;|가리킴| obj1
-    s2 --&gt;|가리킴| obj2
+    s1 --&gt;|"가리킴"| obj1
+    s2 --&gt;|"가리킴"| obj2
     
-    s1 -. "=="은 화살표 도착지가 같은지 비교 .-&gt; s2
-    obj1 -. "equals()"는 상자 안의 내용물이 같은지 비교 .-&gt; obj2
+    s1 -. "'=='은 화살표 도착지(주소)가 같은지 비교" .-&gt; s2
+    obj1 -. "'equals()'는 상자 안의 내용물(글자)이 같은지 비교" .-&gt; obj2
     
     style Stack fill:#eef,stroke:#333
     style Heap fill:#efe,stroke:#333
 </code></pre>
 
-<h2 id="2-equals를-써야-하는-이유">2. <code class="language-plaintext highlighter-rouge">equals()</code>를 써야 하는 이유</h2>
+<hr />
 
-<p>내용물(실제 값)이 같은지 비교하려면 <strong><code class="language-plaintext highlighter-rouge">equals()</code></strong> 메소드를 써야 합니다.</p>
+<h2 id="2-equals-를-써야-하는-진짜-이유-️">2. <code class="language-plaintext highlighter-rouge">.equals()</code> 를 써야 하는 진짜 이유 🛡️</h2>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">s1</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">s2</span><span class="o">));</span> <span class="c1">// true (내용이 같음)</span>
+<p>따라서 자바 아키텍트들은 내용물(실제 데이터 값)이 같은지 꼼꼼하게 비교하고 싶을 때 쓰라고 <strong><code class="language-plaintext highlighter-rouge">.equals()</code></strong> 라는 전용 메소드를 만들어 두었습니다.</p>
+
+<p><img src="./img/equals_anim.svg" alt="equals 동작 원리 애니메이션" /></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">String</span> <span class="n">s1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">(</span><span class="s">"안녕"</span><span class="o">);</span>
+<span class="nc">String</span> <span class="n">s2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">(</span><span class="s">"안녕"</span><span class="o">);</span>
+
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">s1</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">s2</span><span class="o">));</span> <span class="c1">// ✅ true! (주소는 달라도 내용물이 같음)</span>
 </code></pre></div></div>
 
 <blockquote>
-  <p><strong>비유</strong>:</p>
+  <p><strong>🔥 생존 요약 노트 (이것만은 꼭!)</strong></p>
   <ul>
-    <li><code class="language-plaintext highlighter-rouge">==</code>: “너네 둘이 <strong>주민등록번호(주소)</strong>가 같아?” (동일 인물인가?)</li>
-    <li><code class="language-plaintext highlighter-rouge">equals()</code>: “너네 둘이 <strong>생김새(내용)</strong>가 같아?” (일란성 쌍둥이인가?)</li>
+    <li><code class="language-plaintext highlighter-rouge">==</code> 연산자: “너네 둘이 <strong>주민등록번호(메모리 주소)</strong>가 완전히 동일한 한 사람이야?”</li>
+    <li><code class="language-plaintext highlighter-rouge">.equals()</code> 메소드: “너네 둘이 <strong>생김새(실제 내용물)</strong>가 똑같은 쌍둥이야?”</li>
   </ul>
+
+  <p>문자열(String)의 글자가 같은지 확인할 때는 <strong>무조건 <code class="language-plaintext highlighter-rouge">.equals()</code></strong>를 사용하세요!</p>
 </blockquote>
 
 

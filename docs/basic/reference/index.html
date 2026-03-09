@@ -5,28 +5,28 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- 기본 메타데이터 --><meta name="description" content="Chapter 05. 참조 타입 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."><meta name="author" content="HojinLee"><!-- 제목 설정 --><title>Chapter 05. 참조 타입</title>
-  <meta name="title" content="Chapter 05. 참조 타입" /><!-- 키워드 설정 --><meta name="keywords" content="Chapter 05. 참조 타입, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"><!-- Open Graph 메타데이터 --><meta property="og:title" content="Chapter 05. 참조 타입"><meta property="og:description" content="Chapter 05. 참조 타입 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."><meta property="og:type" content="website"><meta property="og:locale" content="ko">
+  <!-- 기본 메타데이터 --><meta name="description" content="Chapter 08. 참조 타입 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."><meta name="author" content="HojinLee"><!-- 제목 설정 --><title>Chapter 08. 참조 타입</title>
+  <meta name="title" content="Chapter 08. 참조 타입" /><!-- 키워드 설정 --><meta name="keywords" content="Chapter 08. 참조 타입, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"><!-- Open Graph 메타데이터 --><meta property="og:title" content="Chapter 08. 참조 타입"><meta property="og:description" content="Chapter 08. 참조 타입 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."><meta property="og:type" content="website"><meta property="og:locale" content="ko">
   <meta property="og:site_name" content="linux">
   <meta property="og:url" content="https://java.jiny.dev/basic/reference/">
   <!-- 대표 URL (캐노니컬) -->
   <link rel="canonical" href="https://java.jiny.dev/basic/reference/">
 
-  <!-- Twitter 카드 메타데이터 --><meta name="twitter:card" content="summary"><meta property="twitter:title" content="Chapter 05. 참조 타입"><meta property="twitter:description" content="Chapter 05. 참조 타입 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."><!-- Begin Jekyll SEO tag v2.8.0 -->
+  <!-- Twitter 카드 메타데이터 --><meta name="twitter:card" content="summary"><meta property="twitter:title" content="Chapter 08. 참조 타입"><meta property="twitter:description" content="Chapter 08. 참조 타입 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."><!-- Begin Jekyll SEO tag v2.8.0 -->
 <meta name="generator" content="Jekyll v4.4.1" />
-<meta property="og:title" content="Chapter 05. 참조 타입" />
+<meta property="og:title" content="Chapter 08. 참조 타입" />
 <meta name="author" content="Hojin" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Chapter 05. 참조 타입 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다." />
-<meta property="og:description" content="Chapter 05. 참조 타입 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다." />
+<meta name="description" content="Chapter 08. 참조 타입 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다." />
+<meta property="og:description" content="Chapter 08. 참조 타입 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다." />
 <link rel="canonical" href="https://java.jiny.dev/basic/reference/" />
 <meta property="og:url" content="https://java.jiny.dev/basic/reference/" />
 <meta property="og:site_name" content="객체지향 자바 프로그래밍 (Object-Oriented Java Programming)" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Chapter 05. 참조 타입" />
+<meta property="twitter:title" content="Chapter 08. 참조 타입" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"Chapter 05. 참조 타입 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다.","headline":"Chapter 05. 참조 타입","url":"https://java.jiny.dev/basic/reference/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"Chapter 08. 참조 타입 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다.","headline":"Chapter 08. 참조 타입","url":"https://java.jiny.dev/basic/reference/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -1068,124 +1068,70 @@
         
         
         
-        <li class="breadcrumb-item active" aria-current="page">Chapter 05. 참조 타입</li>
+        <li class="breadcrumb-item active" aria-current="page">Chapter 08. 참조 타입</li>
         
         
         
     </ol>
 </nav>
         <div class="bd-content ps-lg-2">
-            <h1 id="chapter-05-참조-타입-reference-types---리모컨과-거대한-tv">Chapter 05. 참조 타입 (Reference Types) - 리모컨과 거대한 TV</h1>
+            <h1 id="chapter-08-참조-타입-reference-types">Chapter 08. 참조 타입 (Reference Types)</h1>
 
-<h2 id="1-값기본-타입-vs-참조-타입-">1. 값(기본) 타입 vs 참조 타입 🧐</h2>
+<h3 id="학습-목표-learning-objectives-">학습 목표 (Learning Objectives) 🎯</h3>
 
-<p>지금까지 배운 <code class="language-plaintext highlighter-rouge">int</code>, <code class="language-plaintext highlighter-rouge">double</code>, <code class="language-plaintext highlighter-rouge">boolean</code> 같은 기본 타입(Primitive Type) 변수들은 내 주머니 속의 <strong>‘작은 동전 지갑’</strong> 과 같습니다. 숫자 <code class="language-plaintext highlighter-rouge">10</code>을 넣으면 그 지갑 안에 <code class="language-plaintext highlighter-rouge">10</code>이라는 진짜 데이터가 그대로 쏙 들어갑니다.</p>
-
-<p>하지만 우리가 앞으로 다룰 <strong>문자열(String)</strong>, <strong>배열(Array)</strong>, <strong>클래스(Class)</strong> 같은 데이터는 그 크기가 어마어마하게 큽니다. 학생 10,000명의 이름표 데이터를 내 작은 동전 지갑 하나에 우겨넣을 수는 없겠죠?</p>
-
-<p>그래서 자바는 <strong>‘참조 타입 (Reference Type)’</strong> 이라는 아주 똑똑한 보관 방식을 사용합니다!</p>
-
-<hr />
-
-<h2 id="2-스택stack과-힙heap-코앞의-좁은-책상-vs-거대한-물류-창고-">2. 스택(Stack)과 힙(Heap): 코앞의 좁은 책상 vs 거대한 물류 창고 📺</h2>
-
-<p>이 참조 타입을 이해하려면 컴퓨터 메모리의 두 가지 핵심 구역(Stack, Heap)을 알아야 합니다.
-아주 쉬운 비유를 위해 <strong>내 앞의 작은 사무실 책상(Stack)</strong> 과 <strong>저 멀리 있는 초대형 물류 창고(Heap)</strong> 를 상상해 봅시다.</p>
-
-<p><img src="./img/reference_memory_webtoon.png" alt="스택 힙 메모리 구조 웹툰" /></p>
-
-<ul>
-  <li><strong>스택 (Stack) 영역</strong>: 내 코앞에 있는 작은 책상입니다. 서랍이 좁아서 진짜 데이터(<code class="language-plaintext highlighter-rouge">10</code>, <code class="language-plaintext highlighter-rouge">3.14</code> 같은 기본 타입)나 작고 가벼운 <strong>리모컨(참조 주소값)</strong> 만 올려둘 수 있습니다. 대신 나랑 제일 가까워서 손을 뻗으면 0.001초 만에 바로 꺼낼 수 있어 속도가 엄청 빠릅니다!</li>
-  <li><strong>힙 (Heap) 영역</strong>: 산골짜기에 있는 초대형 물류 창고입니다. 공간이 무한대에 가까워서 엄청나게 거대한 스마트 TV나 수만 개의 상자(객체 데이터, 배열)를 마음껏 던져둘 수 있습니다.</li>
-</ul>
-
-<h3 id="-그럼-무거운-tv를-어떻게-보나요-참조의-원리">💡 그럼 무거운 TV를 어떻게 보나요? (참조의 원리)</h3>
-
-<p>우리는 무거운 85인치 TV(객체 데이터)를 끙끙대며 내 좁은 책상(스택) 위로 가져오지 않습니다. TV 본체는 그저 넓은 창고(힙)에 놔둔 채, 내 책상에는 <strong>그 TV와 주파수가 연결된 작은 만능 리모컨(참조 변수)</strong> 만 가볍게 올려둡니다.</p>
-
-<p>여러분이 자바에서 <code class="language-plaintext highlighter-rouge">내티비.전원켜기()</code> 라고 코드를 치면, 스택에 있는 리모컨이 레이저 빔을 쏴서 힙 창고의 100A 번지 구역에 있는 진짜 거대 TV를 원격으로 조종하는 것입니다!</p>
-
-<p><img src="./img/reference_memory_anim.svg" alt="스택 힙 참조 원리 애니메이션" /></p>
-
-<p>위 애니메이션처럼 참조 타입 변수(<code class="language-plaintext highlighter-rouge">name</code>)의 지갑을 열어보면 안에는 진짜 “지니개발” 이라는 글자 데이터가 들어있는 것이 아닙니다. 대신 그 글자 덩어리가 숨어있는 <strong>창고의 비밀 지도 좌표(메모리 번지수, 예: 0x100A)</strong> 가 적힌 쪽지가 들어있을 뿐입니다.</p>
-
-<blockquote>
-  <p><strong>💡 핵심 요약! 자다가도 벌떡 일어나 외워야 할 문장:</strong></p>
-  <ol>
-    <li>기본 타입 변수는 메모리(스택)에 <strong>“진짜 데이터 값”</strong> 을 저장한다.</li>
-    <li>참조 타입 변수는 메모리(스택)에 진짜 데이터가 있는 힙 창고의 <strong>“위치(주소, 번지수)”</strong> 를 저장한다!</li>
-  </ol>
-</blockquote>
+<p>이 챕터를 마치면 여러분은 다음과 같은 능력을 갖추게 됩니다:</p>
+<ol>
+  <li><strong>메모리 구조 이해</strong>: 스택(Stack)과 힙(Heap) 메모리의 차이를 알고 데이터를 어떻게 분류하는지 설명할 수 있습니다.</li>
+  <li><strong>참조의 개념 마스터</strong>: 변수가 실제 값이 아닌 ‘메모리 주소’를 가리킨다는 참조 타입의 핵심 원리를 완벽히 이해합니다.</li>
+  <li><strong>배열 뽀개기</strong>: 자바에서 가장 많이 쓰이는 자료구조인 배열(Array)과 다차원 배열을 자유자재로 만들고 다룰 수 있습니다.</li>
+  <li><strong>문자열 능숙도 향상</strong>: <code class="language-plaintext highlighter-rouge">String</code> 객체가 메모리에서 어떻게 동작하는지 파악하고 효율적으로 활용합니다.</li>
+  <li><strong>에러 대처 능력</strong>: ‘NullPointerException’의 원인을 파악하고 스스로 해결할 수 있습니다.</li>
+</ol>
 
 <hr />
 
-<h2 id="3-참조-타입의-무서운-점-널-포인터-에러-nullpointerexception-">3. 참조 타입의 무서운 점: 널 포인터 에러 (NullPointerException) 💣</h2>
+<h3 id="강의-목차-table-of-contents-">강의 목차 (Table of Contents) 📋</h3>
 
-<p>위의 리모컨 비유를 완벽히 이해하셨다면, 초중급 자바 개발자들이 자다가도 식은땀을 흘리며 벌떡 깬다는 그 유명한 지옥의 에러, <strong><code class="language-plaintext highlighter-rouge">NullPointerException</code></strong> 도 단 1초 만에 이해할 수 있습니다.</p>
+<p>원하는 주제를 클릭하여 상세 학습 페이지로 이동하세요!</p>
 
-<p><code class="language-plaintext highlighter-rouge">null</code> 이란 “리모컨은 손에 쥐고 있는데, 아직 이 리모컨이랑 주파수를 맞춘 TV(본체)가 창고에 하나도 없음!” 이라는 뜻입니다. (주소가 비어있음)</p>
+<h3 id="81-데이터-타입-분류"><a href="./classification/">8.1 데이터 타입 분류</a></h3>
+<p>기본 타입(현금)과 참조 타입(통장)의 근본적인 차이에 대해 알아봅니다.</p>
 
-<p>그런데 연결된 TV 본체도 없는 ‘빈 껍데기 리모컨’을 들고 허공에 대고 <code class="language-plaintext highlighter-rouge">전원켜기()</code> 버튼을 꾹꾹 누르면 어떻게 될까요? 
-컴퓨터는 허공에 쏜 레이저를 보고 당황하며 “어? 창고에 TV가 없는데 누굴 조종하라는 거야?!” 라며 그 자리에서 펑! 하고 프로그램을 강제로 터뜨려버립니다.</p>
+<h3 id="82-메모리-사용-영역"><a href="./memory-area/">8.2 메모리 사용 영역</a></h3>
+<p>자바 프로그램이 사용하는 메모리 공간(메소드, 힙, 스택)을 도서관에 비유해 쉽게 이해합니다.</p>
 
-<h3 id="-실습-1-가장-흔한-에러-nullpointerexception-의도적으로-유발하기">🎯 실습 1. 가장 흔한 에러, NullPointerException 의도적으로 유발하기</h3>
+<h3 id="83-참조-타입-변수의---연산"><a href="./equality/">8.3 참조 타입 변수의 ==, != 연산</a></h3>
+<p>참조 타입에서 <code class="language-plaintext highlighter-rouge">==</code> 연산자가 값 비교가 아닌 ‘주소 비교’를 한다는 중요한 사실을 배웁니다.</p>
 
-<p>가장 좋은 공부는 에러를 겪어보는 것입니다. AI 가이드의 도움을 받아 일부러 자바 프로그램을 폭파시켜 봅시다!</p>
+<h3 id="84-null과-nullpointerexception"><a href="./null/">8.4 null과 NullPointerException</a></h3>
+<p>텅 빈 리모컨(<code class="language-plaintext highlighter-rouge">null</code>)을 눌렀을 때 터지는 지옥의 에러 원인과 예방책을 알아봅니다.</p>
 
-<blockquote>
-  <p><strong>🗣️ 학생 프롬프트 (AI에게 이렇게 명령해 보세요):</strong>
-“자바 언어로 NullPointerException이 터지는 코드를 의도적으로 하나 보여줘.
-String 타입의 변수 str을 만들고 처음에 null 이라고 초기화해 줘. (= TV 없는 빈 리모컨)
-그 다음 줄에서 str.length() 명령어를 써서 글자 수를 세라고 시켜 줘. (= 허공에 대고 버튼 누르기)
-그리고 실행하면 어떤 에러 메시지가 콘솔에 뜨는지 주석으로 설명해 줘.”</p>
-</blockquote>
+<h3 id="85-문자열string-타입"><a href="./string/">8.5 문자열(String) 타입</a></h3>
+<p>자바에서 문자열 객체가 메모리에 어떻게 생성되고 관리되는지 심층 탐구합니다.</p>
 
-<p><strong>[AI가 생성할 자바 코드 예측]</strong></p>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">NullErrorDemo</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-        
-        <span class="c1">// 1. String 타입 리모컨을 만들긴 했지만, 아직 아무 글자 TV와 연결하지 않았습니다!</span>
-        <span class="nc">String</span> <span class="n">str</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span> 
-        
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"프로그램을 시작합니다."</span><span class="o">);</span>
-        
-        <span class="c1">// 2. 💣 펑! (연결된 객체가 없는데 리모컨의 length() 버튼을 눌렀습니다!)</span>
-        <span class="kt">int</span> <span class="n">length</span> <span class="o">=</span> <span class="n">str</span><span class="o">.</span><span class="na">length</span><span class="o">();</span> 
-        
-        <span class="c1">// 3. 위에서 에러가 터지면서 프로그램이 강제 종료되므로, 이 줄은 영원히 출력되지 않습니다.</span>
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"글자 수는 "</span> <span class="o">+</span> <span class="n">length</span> <span class="o">+</span> <span class="s">"개 입니다."</span><span class="o">);</span> 
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
+<h3 id="86-배열array-타입"><a href="./array/">8.6 배열(Array) 타입</a></h3>
+<p>같은 종류의 데이터 수십만 개를 하나의 기차 묶음으로 처리하는 배열을 배웁니다.</p>
 
-<p><strong>[실행 결과 (에러 발생)]</strong></p>
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>프로그램을 시작합니다.
-Exception in thread "main" java.lang.NullPointerException
-    at NullErrorDemo.main(NullErrorDemo.java:10)
-</code></pre></div></div>
-<p>이 에러가 뜨면 당황하지 마시고, <strong>“아뿔싸! 내가 리모컨만 쥐고 창고에 진짜 객체 덩어리를 만들어주지(new) 않았구나!”</strong> 라고 깨달으시면 여러분은 이미 중급 개발자의 시야를 갖춘 것입니다!</p>
+<h3 id="87-다차원-배열"><a href="./multidimensional-array/">8.7 다차원 배열</a></h3>
+<p>행과 열로 이루어진 2차원 표 형태의 데이터를 다루는 방법을 익힙니다.</p>
 
-<hr />
+<h3 id="88-객체를-참조하는-배열"><a href="./object-array/">8.8 객체를 참조하는 배열</a></h3>
+<p>숫자나 문자가 아닌, 거대한 TV(객체)들의 주소를 담아둔 배열에 대해 알아봅니다.</p>
 
-<h2 id="4-이번-챕터에서-배울-내용">4. 이번 챕터에서 배울 내용</h2>
+<h3 id="89-배열-복사"><a href="./array-copy/">8.9 배열 복사</a></h3>
+<p><code class="language-plaintext highlighter-rouge">System.arraycopy()</code> 등을 사용하여 안전하고 빠르게 배열을 복제하는 기술을 배웁니다.</p>
 
-<p>이제 본격적으로 자바의 가장 거대한 세계, ‘참조 타입’의 숲으로 들어가 보겠습니다.</p>
+<h3 id="810-향상된-for-문"><a href="./enhanced-for/">8.10 향상된 for 문</a></h3>
+<p>복잡한 배열 데이터를 아주 간결명료하게 순회하는 최신 반복문 문법을 실습합니다.</p>
 
-<ul>
-  <li><a href="./01/">5.1 데이터 타입 분류</a></li>
-  <li><a href="./02/">5.2 메모리 사용 영역</a></li>
-  <li><a href="./03/">5.3 참조 타입 변수의 ==, != 연산</a></li>
-  <li><a href="./04/">5.4 null과 NullPointerException</a></li>
-  <li><a href="./05/">5.5 문자열(String) 타입</a></li>
-  <li><a href="./06/">5.6 배열(Array) 타입</a></li>
-  <li><a href="./07/">5.7 다차원 배열</a></li>
-  <li><a href="./08/">5.8 객체를 참조하는 배열</a></li>
-  <li><a href="./09/">5.9 배열 복사</a></li>
-  <li><a href="./10/">5.10 향상된 for 문</a></li>
-  <li><a href="./11/">5.11 main() 메소드의 String[] 매개변수</a></li>
-  <li><a href="./12/">5.12 열거(Enum) 타입</a></li>
-  <li><a href="./quiz">확인문제</a></li>
-</ul>
+<h3 id="811-main-메소드의-string-매개변수"><a href="./main-arguments/">8.11 main() 메소드의 String[] 매개변수</a></h3>
+<p>우리가 무심코 쓰던 <code class="language-plaintext highlighter-rouge">public static void main(String[] args)</code>에서 <code class="language-plaintext highlighter-rouge">args</code>의 진짜 용도를 파악합니다.</p>
+
+<h3 id="812-열거enum-타입"><a href="./enum/">8.12 열거(Enum) 타입</a></h3>
+<p>월화수목금토일, 봄여름가을겨울처럼 정해진 상숫값만 안전하게 저장하는 요술 주머니를 배웁니다.</p>
+
+<h3 id="확인문제"><a href="./quiz/">확인문제</a></h3>
+<p>지금까지 배운 참조 타입의 핵심 개념들을 퀴즈를 통해 완벽하게 복습합니다!</p>
 
 
             <div class="mt-10">

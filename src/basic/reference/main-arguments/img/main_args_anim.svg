@@ -1,0 +1,118 @@
+<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="450" fill="#f8f9fa"/>
+  <style>
+    @keyframes typing {
+      0%, 15% { opacity: 0; }
+      20%, 90% { opacity: 1; }
+      95%, 100% { opacity: 0; }
+    }
+    @keyframes fly-in-1 {
+      0%, 25% { transform: translate(-100px, 0); opacity: 0; }
+      35%, 85% { transform: translate(450px, 120px); opacity: 1; filter: drop-shadow(0 0 10px #198754); }
+      95%, 100% { opacity: 0; }
+    }
+    @keyframes fly-in-2 {
+      0%, 35% { transform: translate(-100px, 0); opacity: 0; }
+      45%, 85% { transform: translate(600px, 120px); opacity: 1; filter: drop-shadow(0 0 10px #198754); }
+      95%, 100% { opacity: 0; }
+    }
+    @keyframes create-array {
+      0%, 50% { opacity: 0; transform: scale(0.9); }
+      60%, 85% { opacity: 1; transform: scale(1); filter: drop-shadow(0 0 5px #ffc107); }
+      95%, 100% { opacity: 0; }
+    }
+    @keyframes link-args {
+      0%, 65% { stroke-dashoffset: 200; opacity: 0; }
+      75%, 85% { stroke-dashoffset: 0; opacity: 1; }
+      95%, 100% { opacity: 0; }
+    }
+
+    .anim-type1 { animation: typing 8s infinite; }
+    .anim-type2 { animation: typing 8s infinite 0.5s; }
+    
+    .anim-fly1 { animation: fly-in-1 8s infinite; }
+    .anim-fly2 { animation: fly-in-2 8s infinite; }
+    
+    .anim-array { animation: create-array 8s infinite; }
+    .anim-link { animation: link-args 8s infinite; stroke-dasharray: 200; }
+    
+    .title { font-family: sans-serif; font-size: 24px; font-weight: bold; fill: #333; text-anchor: middle; }
+    .code { font-family: monospace; font-size: 18px; font-weight: bold; }
+    .term { font-family: monospace; font-size: 16px; font-weight: bold; fill: #20c997; }
+  </style>
+
+  <text x="400" y="40" class="title">"java Sum 10 20" 실행 시 메모리 내부의 기적 ✨</text>
+
+  <!-- 좌측: 터미널 (입력창) -->
+  <g transform="translate(50, 80)">
+    <rect x="0" y="0" width="300" height="200" rx="10" fill="#212529" stroke="#495057" stroke-width="4"/>
+    <circle cx="20" cy="20" r="6" fill="#dc3545"/>
+    <circle cx="40" cy="20" r="6" fill="#ffc107"/>
+    <circle cx="60" cy="20" r="6" fill="#198754"/>
+    <line x1="0" y1="40" x2="300" y2="40" stroke="#495057" stroke-width="2"/>
+    
+    <text x="20" y="70" class="code" fill="#f8f9fa">&gt; <tspan fill="#e83e8c">java</tspan> Sum</text>
+    <text x="120" y="70" class="code anim-type1" fill="#fff">10</text>
+    <text x="150" y="70" class="code anim-type2" fill="#fff">20</text>
+    
+    <rect x="180" y="55" width="10" height="20" fill="#fff" class="anim-type2">
+      <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite"/>
+    </rect>
+    
+    <text x="20" y="110" font-family="sans-serif" font-size="14" fill="#adb5bd">운영체제가 공백을 기준</text>
+    <text x="20" y="130" font-family="sans-serif" font-size="14" fill="#adb5bd">으로 단어를 쪼갭니다!</text>
+  </g>
+
+  <!-- 우측: 자바 메모리 공간 (Heap & Stack) -->
+  <g transform="translate(400, 80)">
+    <!-- Heap 영역 (문자열 객체들) -->
+    <rect x="0" y="0" width="350" height="150" rx="10" fill="#e9ecef" stroke="#adb5bd" stroke-width="2" stroke-dasharray="5 5"/>
+    <text x="175" y="25" font-family="sans-serif" font-size="16" font-weight="bold" fill="#6c757d" text-anchor="middle">Heap (문자열 객체 생성소)</text>
+
+    <!-- 날아온 데이터 1 -->
+    <g class="anim-fly1" transform="translate(0, 0)"> <!-- 실제 이동은 CSS transform이 덮어씀 -->
+      <rect x="-40" y="-30" width="80" height="60" rx="8" fill="#d1e7dd" stroke="#198754" stroke-width="3"/>
+      <text x="0" y="0" class="code" fill="#198754" text-anchor="middle">"10"</text>
+      <text x="0" y="20" font-size="12" fill="#6c757d" text-anchor="middle">객체 (String)</text>
+    </g>
+
+    <!-- 날아온 데이터 2 -->
+    <g class="anim-fly2">
+      <rect x="-40" y="-30" width="80" height="60" rx="8" fill="#d1e7dd" stroke="#198754" stroke-width="3"/>
+      <text x="0" y="0" class="code" fill="#198754" text-anchor="middle">"20"</text>
+      <text x="0" y="20" font-size="12" fill="#6c757d" text-anchor="middle">객체 (String)</text>
+    </g>
+
+    <!-- Stack 영역 (args 배열 리모컨) -->
+    <rect x="0" y="180" width="350" height="130" rx="10" fill="#ffeeba" stroke="#ffc107" stroke-width="2" stroke-dasharray="5 5"/>
+    <text x="175" y="205" font-family="sans-serif" font-size="16" font-weight="bold" fill="#856404" text-anchor="middle">Stack (main 메소드 공간)</text>
+
+    <!-- args 변수와 배열 포장 -->
+    <g class="anim-array" transform="translate(175, 260)">
+      <!-- 배열 객체 구조 -->
+      <rect x="-120" y="-40" width="240" height="70" rx="8" fill="#fff3cd" stroke="#ffc107" stroke-width="3"/>
+      
+      <!-- 리모컨 화살표 출발점 -->
+      <path d="M -80 -40 L -120 -80" fill="none" class="anim-link" stroke="#fd7e14" stroke-width="3" marker-end="url(#arrow-orange)"/>
+      <path d="M 80 -40 L 120 -80" fill="none" class="anim-link" stroke="#fd7e14" stroke-width="3" marker-end="url(#arrow-orange)"/>
+      
+      <rect x="-100" y="-25" width="90" height="40" rx="4" fill="#fff"/>
+      <text x="-55" y="0" class="code" fill="#000" text-anchor="middle">[0] 리모컨</text>
+      
+      <rect x="10" y="-25" width="90" height="40" rx="4" fill="#fff"/>
+      <text x="55" y="0" class="code" fill="#000" text-anchor="middle">[1] 리모컨</text>
+      
+      <text x="0" y="45" class="code" fill="#856404" text-anchor="middle">String[] args (배열.length = 2)</text>
+    </g>
+  </g>
+
+  <!-- 하단 요약 -->
+  <rect x="50" y="400" width="700" height="40" rx="10" fill="#e2e3e5" stroke="#adb5bd" stroke-width="2"/>
+  <text x="400" y="426" font-family="sans-serif" font-size="15" font-weight="bold" fill="#333" text-anchor="middle">💡 띄어쓰기로 던진 단어 개수만큼 자동으로 String[] 배열 아파트가 지어집니다!</text>
+
+  <defs>
+    <marker id="arrow-orange" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#fd7e14"/>
+    </marker>
+  </defs>
+</svg>

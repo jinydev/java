@@ -1,0 +1,84 @@
+<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="450" fill="#f8f9fa"/>
+  <style>
+    @keyframes slide-in { 0% { transform: translateY(100px); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
+    @keyframes fade-in { 0%, 50% { opacity: 0; } 100% { opacity: 1; } }
+    @keyframes dash-flow { to { stroke-dashoffset: -20; } }
+    
+    .stack-frame-1 { animation: slide-in 1s ease-out forwards; }
+    .stack-frame-2 { animation: slide-in 1s ease-out 2s forwards; opacity: 0; }
+    .heap-obj-1 { animation: fade-in 1.5s ease-out forwards; }
+    .heap-obj-2 { animation: fade-in 3s ease-out forwards; }
+    .link-line { stroke: #0d6efd; stroke-width: 3; stroke-dasharray: 5 5; animation: dash-line 1s linear infinite; }
+  </style>
+
+  <text x="400" y="40" font-family="sans-serif" font-size="24" font-weight="bold" fill="#333" text-anchor="middle">메모리 할당: 스택과 힙의 상호작용</text>
+
+  <!-- 스택 영역 -->
+  <g transform="translate(100, 80)">
+    <rect width="200" height="320" rx="5" fill="#e9ecef" stroke="#adb5bd" stroke-width="2"/>
+    <text x="100" y="30" font-family="sans-serif" font-size="18" font-weight="bold" fill="#495057" text-anchor="middle">스택 영역 (Stack)</text>
+    <text x="100" y="50" font-family="sans-serif" font-size="12" fill="#6c757d" text-anchor="middle">"메소드 실행 책상"</text>
+
+    <!-- 바닥 -->
+    <path d="M 0 320 L 200 320" stroke="#adb5bd" stroke-width="6"/>
+
+    <!-- 프레임 1 (main) -->
+    <g class="stack-frame-1" transform="translate(10, 200)">
+      <rect width="180" height="100" rx="5" fill="#fff" stroke="#0d6efd" stroke-width="2"/>
+      <text x="90" y="25" font-family="sans-serif" font-size="16" font-weight="bold" fill="#0d6efd" text-anchor="middle">main() 책상</text>
+      
+      <!-- 지역 변수 -->
+      <rect x="20" y="40" width="140" height="20" rx="3" fill="#cff4fc"/>
+      <text x="90" y="54" font-family="monospace" font-size="12" fill="#055160" text-anchor="middle">int age = 20;</text>
+
+      <rect x="20" y="65" width="140" height="20" rx="3" fill="#cfe2ff"/>
+      <text x="90" y="79" font-family="monospace" font-size="12" fill="#084298" font-weight="bold" text-anchor="middle">String str1 = xA</text>
+    </g>
+
+    <!-- 프레임 2 (methodCall) -->
+    <g class="stack-frame-2" transform="translate(10, 80)">
+      <rect width="180" height="100" rx="5" fill="#fff" stroke="#198754" stroke-width="2"/>
+      <text x="90" y="25" font-family="sans-serif" font-size="16" font-weight="bold" fill="#198754" text-anchor="middle">sayHello() 책상</text>
+      
+      <rect x="20" y="40" width="140" height="20" rx="3" fill="#d1e7dd"/>
+      <text x="90" y="54" font-family="monospace" font-size="12" fill="#0f5132" text-anchor="middle">int count = 5;</text>
+
+      <rect x="20" y="65" width="140" height="20" rx="3" fill="#cfe2ff"/>
+      <text x="90" y="79" font-family="monospace" font-size="12" fill="#084298" font-weight="bold" text-anchor="middle">String str2 = xB</text>
+    </g>
+  </g>
+
+  <!-- 힙 영역 -->
+  <g transform="translate(450, 80)">
+    <rect width="300" height="320" rx="5" fill="#e9ecef" stroke="#adb5bd" stroke-width="2"/>
+    <text x="150" y="30" font-family="sans-serif" font-size="18" font-weight="bold" fill="#495057" text-anchor="middle">힙 영역 (Heap)</text>
+    <text x="150" y="50" font-family="sans-serif" font-size="12" fill="#6c757d" text-anchor="middle">"데이터 물류 창고"</text>
+
+    <!-- 객체 1 -->
+    <g class="heap-obj-1" transform="translate(40, 180)">
+      <rect width="220" height="60" rx="5" fill="#fff" stroke="#ffc107" stroke-width="2"/>
+      <text x="110" y="25" font-family="sans-serif" font-size="14" font-weight="bold" fill="#664d03" text-anchor="middle">xA 번지 (객체)</text>
+      <rect x="20" y="30" width="180" height="20" rx="3" fill="#fff3cd"/>
+      <text x="110" y="44" font-family="sans-serif" font-size="14" fill="#664d03" text-anchor="middle">"Java"</text>
+    </g>
+
+    <!-- 객체 2 -->
+    <g class="heap-obj-2" transform="translate(60, 80)">
+      <rect width="200" height="60" rx="5" fill="#fff" stroke="#ffc107" stroke-width="2"/>
+      <text x="100" y="25" font-family="sans-serif" font-size="14" font-weight="bold" fill="#664d03" text-anchor="middle">xB 번지 (객체)</text>
+      <rect x="20" y="30" width="160" height="20" rx="3" fill="#fff3cd"/>
+      <text x="100" y="44" font-family="sans-serif" font-size="14" fill="#664d03" text-anchor="middle">"Hello"</text>
+    </g>
+  </g>
+
+  <!-- 생성된 링크 선 (SVG CSS 호환성 문제시 단순 표시) -->
+  <path d="M 270 345 Q 380 345 490 290" fill="none" stroke="#0d6efd" stroke-width="2" stroke-dasharray="5 5" marker-end="url(#arrow)"/>
+  <path d="M 270 225 Q 380 225 510 190" fill="none" stroke="#0d6efd" stroke-width="2" stroke-dasharray="5 5" marker-end="url(#arrow)"/>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0d6efd"/>
+    </marker>
+  </defs>
+</svg>

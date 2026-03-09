@@ -1,0 +1,125 @@
+<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="450" fill="#f8f9fa"/>
+  <style>
+    @keyframes slice {
+      0%, 20% { transform: translateY(-50px); opacity: 0; }
+      30%, 60% { transform: translateY(0); opacity: 1; }
+      80%, 100% { transform: translateY(0); opacity: 1; }
+    }
+    @keyframes pull-out {
+      0%, 40% { transform: translateY(0); }
+      60%, 100% { transform: translateY(80px); }
+    }
+    @keyframes fade-out {
+      0%, 60% { opacity: 1; }
+      80%, 100% { opacity: 0.2; }
+    }
+    .anim-slice { animation: slice 5s infinite; }
+    .anim-pull { animation: pull-out 5s infinite; }
+    .anim-fade { animation: fade-out 5s infinite; }
+    .box { fill: #fff; stroke: #6c757d; stroke-width: 2; }
+    .box-char { font-family: monospace; font-size: 28px; font-weight: bold; fill: #212529; text-anchor: middle; }
+    .idx-text { font-family: sans-serif; font-size: 14px; fill: #dc3545; font-weight: bold; text-anchor: middle; }
+    .code-text { font-family: monospace; font-size: 18px; font-weight: bold; fill: #20c997; }
+  </style>
+
+  <text x="400" y="50" font-family="sans-serif" font-size="24" font-weight="bold" fill="#333" text-anchor="middle">substring() 으로 원하는 텍스트 오려내기</text>
+
+  <!-- 코드 블록 -->
+  <g transform="translate(150, 80)">
+    <rect width="500" height="80" rx="10" fill="#212529" stroke="none"/>
+    <text x="30" y="45" class="code-text"><tspan fill="#e83e8c">String</tspan> email = <tspan fill="#ffc107">"jiny@naver.com"</tspan>;</text>
+    <text x="30" y="65" font-family="sans-serif" font-size="14" fill="#6c757d">↳ 인덱스 번호를 정확히 헤아리는 것이 관건!</text>
+  </g>
+
+  <!-- 문자열 배열(기차) -->
+  <g transform="translate(60, 220)">
+    <!-- 바탕 블록들 -->
+    <!-- 0: j -->
+    <g transform="translate(0, 0)" class="anim-fade">
+      <rect width="40" height="50" class="box" rx="5"/>
+      <text x="20" y="35" class="box-char">j</text>
+      <text x="20" y="-10" class="idx-text">0</text>
+    </g>
+    <!-- 1: i -->
+    <g transform="translate(45, 0)" class="anim-fade">
+      <rect width="40" height="50" class="box" rx="5"/>
+      <text x="20" y="35" class="box-char">i</text>
+      <text x="20" y="-10" class="idx-text">1</text>
+    </g>
+    <!-- 2: n -->
+    <g transform="translate(90, 0)" class="anim-fade">
+      <rect width="40" height="50" class="box" rx="5"/>
+      <text x="20" y="35" class="box-char">n</text>
+      <text x="20" y="-10" class="idx-text">2</text>
+    </g>
+    <!-- 3: y -->
+    <g transform="translate(135, 0)" class="anim-fade">
+      <rect width="40" height="50" class="box" rx="5"/>
+      <text x="20" y="35" class="box-char">y</text>
+      <text x="20" y="-10" class="idx-text">3</text>
+    </g>
+    
+    <!-- @ 골뱅이 마커 -->
+    <g transform="translate(180, 0)">
+      <rect width="40" height="50" fill="#ffe69c" stroke="#ffc107" stroke-width="2" rx="5"/>
+      <text x="20" y="35" class="box-char">@</text>
+      <text x="20" y="-10" class="idx-text">4</text>
+    </g>
+    
+    <!-- 이후 글자들 -->
+    <g class="anim-pull">
+      <g transform="translate(225, 0)">
+        <rect width="40" height="50" fill="#d1e7dd" stroke="#198754" stroke-width="2" rx="5"/>
+        <text x="20" y="35" class="box-char">n</text>
+        <text x="20" y="-10" class="idx-text">5</text>
+      </g>
+      <g transform="translate(270, 0)">
+        <rect width="40" height="50" fill="#d1e7dd" stroke="#198754" stroke-width="2" rx="5"/>
+        <text x="20" y="35" class="box-char">a</text>
+        <text x="20" y="-10" class="idx-text">6</text>
+      </g>
+      <g transform="translate(315, 0)">
+        <rect width="40" height="50" fill="#d1e7dd" stroke="#198754" stroke-width="2" rx="5"/>
+        <text x="20" y="35" class="box-char">v</text>
+        <text x="20" y="-10" class="idx-text">7</text>
+      </g>
+      <g transform="translate(360, 0)">
+        <rect width="40" height="50" fill="#d1e7dd" stroke="#198754" stroke-width="2" rx="5"/>
+        <text x="20" y="35" class="box-char">e</text>
+        <text x="20" y="-10" class="idx-text">8</text>
+      </g>
+      <g transform="translate(405, 0)">
+        <rect width="40" height="50" fill="#d1e7dd" stroke="#198754" stroke-width="2" rx="5"/>
+        <text x="20" y="35" class="box-char">r</text>
+        <text x="20" y="-10" class="idx-text">9</text>
+      </g>
+      <!-- ".com" -->
+      <text x="500" y="35" class="box-char" fill="#6c757d">...</text>
+      
+      <!-- 도출 결과 텍스트 -->
+      <text x="335" y="80" font-family="monospace" font-size="18" font-weight="bold" fill="#198754" text-anchor="middle">"naver"</text>
+    </g>
+    
+    <!-- 절단기 (칼) 1: 인덱스 5 시작점 -->
+    <g transform="translate(225, 0)" class="anim-slice">
+      <path d="M 0 -30 L 0 60" fill="none" stroke="#0d6efd" stroke-width="4" stroke-dasharray="8 4"/>
+      <polygon points="-8,-40 8,-40 0,-20" fill="#0d6efd"/>
+      <text x="0" y="-50" font-family="sans-serif" font-size="14" font-weight="bold" fill="#0d6efd" text-anchor="middle">시작: 5</text>
+    </g>
+
+    <!-- 절단기 (칼) 2: 인덱스 10 끝점 -->
+    <g transform="translate(450, 0)" class="anim-slice">
+      <path d="M 0 -30 L 0 60" fill="none" stroke="#0d6efd" stroke-width="4" stroke-dasharray="8 4"/>
+      <polygon points="-8,-40 8,-40 0,-20" fill="#0d6efd"/>
+      <text x="0" y="-50" font-family="sans-serif" font-size="14" font-weight="bold" fill="#0d6efd" text-anchor="middle">끝: 10 (미포함)</text>
+    </g>
+
+  </g>
+
+  <!-- 명령어 결과식 -->
+  <g transform="translate(250, 420)">
+    <text x="150" y="0" font-family="monospace" font-size="20" font-weight="bold" fill="#333" text-anchor="middle">email.<tspan fill="#0d6efd">substring(5, 10)</tspan></text>
+  </g>
+
+</svg>

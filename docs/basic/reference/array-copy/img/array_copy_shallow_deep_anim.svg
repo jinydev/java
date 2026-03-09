@@ -1,0 +1,105 @@
+<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="450" fill="#f8f9fa"/>
+  <style>
+    @keyframes share-key {
+      0%, 20% { stroke-dashoffset: 100; opacity: 0; }
+      30%, 80% { stroke-dashoffset: 0; opacity: 1; filter: drop-shadow(0 0 8px #dc3545); }
+      90%, 100% { stroke-dashoffset: 0; opacity: 0; }
+    }
+    @keyframes clone-house {
+      0%, 40% { opacity: 0; transform: translateX(-50px) scale(0.9); }
+      50%, 90% { opacity: 1; transform: translateX(0) scale(1); filter: drop-shadow(0 0 15px #198754); }
+      100% { opacity: 0; transform: translateX(0) scale(1); }
+    }
+    
+    .anim-shallow { animation: share-key 6s infinite; stroke-dasharray: 100; }
+    .anim-deep { animation: clone-house 6s infinite; }
+    
+    .title { font-family: sans-serif; font-size: 24px; font-weight: bold; fill: #333; text-anchor: middle; }
+    .subtitle { font-family: sans-serif; font-size: 20px; font-weight: bold; text-anchor: middle; }
+    .desc { font-family: sans-serif; font-size: 14px; fill: #6c757d; text-anchor: middle; }
+    .code { font-family: monospace; font-size: 16px; font-weight: bold; fill: #000; text-anchor: middle; }
+  </style>
+
+  <text x="400" y="40" class="title">얕은 복사(Shallow Copy) vs 깊은 복사(Deep Copy) 🪞</text>
+
+  <!-- 파티션 나누기 -->
+  <line x1="400" y1="70" x2="400" y2="380" stroke="#ced4da" stroke-width="3" stroke-dasharray="10 5"/>
+
+  <!-- 좌측: 얕은 복사 (Shallow Copy) -->
+  <g transform="translate(100, 100)">
+    <text x="100" y="0" class="subtitle" fill="#dc3545">얕은 복사 (주소만 복사)</text>
+    <text x="100" y="25" class="code">System.arraycopy(...)</text>
+    
+    <!-- 오리지널 배열 / 새 배열 리모컨들 -->
+    <rect x="-20" y="50" width="80" height="50" rx="5" fill="#e9ecef" stroke="#adb5bd" stroke-width="2"/>
+    <text x="20" y="80" class="code">arr1</text>
+    
+    <rect x="-20" y="150" width="80" height="50" rx="5" fill="#f8d7da" stroke="#dc3545" stroke-width="2"/>
+    <text x="20" y="180" class="code" fill="#dc3545">arr2</text>
+    
+    <!-- 중앙의 단일 진짜 객체 -->
+    <g transform="translate(180, 85)">
+      <rect x="0" y="0" width="80" height="80" rx="10" fill="#fff2cc" stroke="#d6b656" stroke-width="4"/>
+      <circle cx="40" cy="40" r="20" fill="#d6b656"/>
+      <text x="40" y="105" class="desc" font-weight="bold">단일 원본 객체</text>
+    </g>
+
+    <!-- 참조 화살표 (공유) -->
+    <path d="M 60 75 L 175 110" fill="none" stroke="#adb5bd" stroke-width="3" marker-end="url(#arrow-gray)"/>
+    <path d="M 60 175 L 175 140" fill="none" class="anim-shallow" stroke="#dc3545" stroke-width="4" marker-end="url(#arrow-red)"/>
+    
+    <text x="100" y="260" font-family="sans-serif" font-size="14" font-weight="bold" fill="#dc3545" text-anchor="middle">🚨 하나를 바꾸면 둘 다 바뀜!</text>
+  </g>
+
+  <!-- 우측: 깊은 복사 (Deep Copy) -->
+  <g transform="translate(500, 100)">
+    <text x="100" y="0" class="subtitle" fill="#198754">깊은 복사 (알맹이 복제)</text>
+    <text x="100" y="25" class="code">clone() / for문 수제복사</text>
+    
+    <!-- 오리지널 배열 / 새 배열 리모컨들 -->
+    <rect x="-40" y="50" width="80" height="50" rx="5" fill="#e9ecef" stroke="#adb5bd" stroke-width="2"/>
+    <text x="0" y="80" class="code">arr1</text>
+    
+    <rect x="-40" y="150" width="80" height="50" rx="5" fill="#d1e7dd" stroke="#198754" stroke-width="2"/>
+    <text x="0" y="180" class="code" fill="#198754">arr2</text>
+    
+    <!-- 원본 객체 -->
+    <g transform="translate(140, 35)">
+      <rect x="0" y="0" width="80" height="80" rx="10" fill="#fff2cc" stroke="#d6b656" stroke-width="4"/>
+      <circle cx="40" cy="40" r="20" fill="#d6b656"/>
+      <text x="40" y="105" class="desc" font-weight="bold">원본 객체</text>
+    </g>
+
+    <!-- 완벽히 복제된 쌍둥이 객체 -->
+    <g class="anim-deep" transform="translate(140, 135)">
+      <!-- 번쩍이는 생성 효과 -->
+      <rect x="-10" y="-10" width="100" height="100" fill="#198754" opacity="0.2" rx="15"/>
+      <rect x="0" y="0" width="80" height="80" rx="10" fill="#fff2cc" stroke="#198754" stroke-width="4"/>
+      <circle cx="40" cy="40" r="20" fill="#198754"/>
+      <text x="40" y="105" class="desc" fill="#198754" font-weight="bold">쌍둥이 객체</text>
+    </g>
+
+    <!-- 참조 화살표 (독립적) -->
+    <path d="M 40 75 L 135 75" fill="none" stroke="#adb5bd" stroke-width="3" marker-end="url(#arrow-gray)"/>
+    <path d="M 40 175 L 135 175" fill="none" stroke="#198754" stroke-width="3" marker-end="url(#arrow-green)"/>
+    
+    <text x="100" y="260" font-family="sans-serif" font-size="14" font-weight="bold" fill="#198754" text-anchor="middle">✨ 서로 완벽하게 독립적인 복제본!</text>
+  </g>
+
+  <!-- 하단 요약 -->
+  <rect x="80" y="390" width="640" height="40" rx="10" fill="#fff3cd" stroke="#ffc107" stroke-width="2"/>
+  <text x="400" y="416" font-family="sans-serif" font-size="15" font-weight="bold" fill="#856404" text-anchor="middle">💡 얕은 복사: "열쇠(주소)만 줬다" / 깊은 복사: "집(객체)을 통째로 복사해서 새로 지어줬다"</text>
+
+  <defs>
+    <marker id="arrow-gray" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#adb5bd"/>
+    </marker>
+    <marker id="arrow-red" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#dc3545"/>
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#198754"/>
+    </marker>
+  </defs>
+</svg>

@@ -1,0 +1,90 @@
+<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="450" fill="#f8f9fa"/>
+  <style>
+    @keyframes pulse-red { 0%, 100% { fill: #dc3545; } 50% { fill: #ff4757; } }
+    @keyframes pulse-green { 0%, 100% { fill: #198754; } 50% { fill: #28a745; } }
+    @keyframes check-line { 0% { stroke-dashoffset: 100; } 100% { stroke-dashoffset: 0; } }
+    @keyframes scan { 0% { transform: translateY(-20px); opacity: 0; } 50% { opacity: 1; } 100% { transform: translateY(20px); opacity: 0; } }
+    
+    .laser-red { stroke: #dc3545; stroke-width: 3; stroke-dasharray: 10 10; animation: check-line 1s linear infinite reverse; }
+    .laser-green { stroke: #198754; stroke-width: 3; stroke-dasharray: 10 10; animation: check-line 1s linear infinite reverse; }
+    .scanner { fill: #0d6efd; opacity: 0.5; animation: scan 2s infinite; }
+  </style>
+
+  <!-- 제목 영역 -->
+  <text x="400" y="40" font-family="sans-serif" font-size="24" font-weight="bold" fill="#333" text-anchor="middle">String 비교: == vs .equals()</text>
+
+  <!-- == 연산자 비교 (주소 비교) -->
+  <g transform="translate(50, 80)">
+    <rect width="320" height="320" rx="10" fill="#fff" stroke="#adb5bd" stroke-width="2"/>
+    <rect width="320" height="40" rx="10" fill="#e9ecef" stroke="none"/>
+    <text x="160" y="27" font-family="monospace" font-size="20" font-weight="bold" fill="#495057" text-anchor="middle">name1 == name2</text>
+    
+    <!-- 리모컨 1 -->
+    <rect x="30" y="80" width="100" height="50" rx="5" fill="#cff4fc" stroke="#0dcaf0" stroke-width="2"/>
+    <text x="80" y="100" font-family="sans-serif" font-size="14" font-weight="bold" fill="#055160" text-anchor="middle">리모컨 1</text>
+    <text x="80" y="120" font-family="monospace" font-size="12" fill="#055160" text-anchor="middle">0x100A</text>
+
+    <!-- 리모컨 2 -->
+    <rect x="190" y="80" width="100" height="50" rx="5" fill="#fff3cd" stroke="#ffc107" stroke-width="2"/>
+    <text x="240" y="100" font-family="sans-serif" font-size="14" font-weight="bold" fill="#664d03" text-anchor="middle">리모컨 2</text>
+    <text x="240" y="120" font-family="monospace" font-size="12" fill="#664d03" text-anchor="middle">0x200B</text>
+
+    <!-- 비교선 -->
+    <path d="M 130 105 L 190 105" fill="none" class="laser-red"/>
+    <circle cx="160" cy="105" r="15" fill="#dc3545" style="animation: pulse-red 1s infinite;"/>
+    <text x="160" y="110" font-family="sans-serif" font-size="16" font-weight="bold" fill="#fff" text-anchor="middle">X</text>
+    
+    <text x="160" y="170" font-family="sans-serif" font-size="16" fill="#dc3545" font-weight="bold" text-anchor="middle">서로 다른 리모컨!</text>
+    <text x="160" y="200" font-family="sans-serif" font-size="14" fill="#6c757d" text-anchor="middle">`==`는 리모컨(주소)만 봅니다.</text>
+    
+    <!-- TV들 -->
+    <rect x="30" y="230" width="100" height="70" rx="5" fill="#e2e3e5" stroke="#adb5bd" stroke-width="2"/>
+    <text x="80" y="270" font-family="sans-serif" font-size="18" fill="#333" text-anchor="middle">"자바"</text>
+    
+    <rect x="190" y="230" width="100" height="70" rx="5" fill="#e2e3e5" stroke="#adb5bd" stroke-width="2"/>
+    <text x="240" y="270" font-family="sans-serif" font-size="18" fill="#333" text-anchor="middle">"자바"</text>
+    
+    <path d="M 80 130 L 80 230" fill="none" stroke="#adb5bd" stroke-width="2" stroke-dasharray="5 5"/>
+    <path d="M 240 130 L 240 230" fill="none" stroke="#adb5bd" stroke-width="2" stroke-dasharray="5 5"/>
+  </g>
+
+  <!-- .equals() 비교 (내용 비교) -->
+  <g transform="translate(430, 80)">
+    <rect width="320" height="320" rx="10" fill="#fff" stroke="#adb5bd" stroke-width="2"/>
+    <rect width="320" height="40" rx="10" fill="#e9ecef" stroke="none"/>
+    <text x="160" y="27" font-family="monospace" font-size="20" font-weight="bold" fill="#495057" text-anchor="middle">name1.equals(name2)</text>
+    
+    <!-- 리모컨 1 -->
+    <rect x="30" y="80" width="100" height="50" rx="5" fill="#cff4fc" stroke="#0dcaf0" stroke-width="2"/>
+    <text x="80" y="100" font-family="sans-serif" font-size="14" font-weight="bold" fill="#055160" text-anchor="middle">리모컨 1</text>
+    <text x="80" y="120" font-family="monospace" font-size="12" fill="#055160" text-anchor="middle">0x100A</text>
+
+    <!-- 리모컨 2 -->
+    <rect x="190" y="80" width="100" height="50" rx="5" fill="#fff3cd" stroke="#ffc107" stroke-width="2"/>
+    <text x="240" y="100" font-family="sans-serif" font-size="14" font-weight="bold" fill="#664d03" text-anchor="middle">리모컨 2</text>
+    <text x="240" y="120" font-family="monospace" font-size="12" fill="#664d03" text-anchor="middle">0x200B</text>
+
+    <!-- TV들 -->
+    <rect x="30" y="230" width="100" height="70" rx="5" fill="#e2e3e5" stroke="#adb5bd" stroke-width="2"/>
+    <text x="80" y="270" font-family="sans-serif" font-size="18" font-weight="bold" fill="#198754" text-anchor="middle">"자바"</text>
+    
+    <rect x="190" y="230" width="100" height="70" rx="5" fill="#e2e3e5" stroke="#adb5bd" stroke-width="2"/>
+    <text x="240" y="270" font-family="sans-serif" font-size="18" font-weight="bold" fill="#198754" text-anchor="middle">"자바"</text>
+
+    <!-- 스캐너 애니메이션 -->
+    <rect class="scanner" x="30" y="250" width="100" height="5"/>
+    <rect class="scanner" x="190" y="250" width="100" height="5"/>
+    
+    <path d="M 80 130 L 80 230" fill="none" stroke="#adb5bd" stroke-width="2" stroke-dasharray="5 5"/>
+    <path d="M 240 130 L 240 230" fill="none" stroke="#adb5bd" stroke-width="2" stroke-dasharray="5 5"/>
+
+    <!-- 비교선 -->
+    <path d="M 130 265 L 190 265" fill="none" class="laser-green"/>
+    <circle cx="160" cy="265" r="15" fill="#198754" style="animation: pulse-green 1s infinite;"/>
+    <text x="160" y="272" font-family="sans-serif" font-size="16" font-weight="bold" fill="#fff" text-anchor="middle">O</text>
+    
+    <text x="160" y="170" font-family="sans-serif" font-size="16" fill="#198754" font-weight="bold" text-anchor="middle">내용(TV 화면)이 똑같다!</text>
+    <text x="160" y="200" font-family="sans-serif" font-size="14" fill="#6c757d" text-anchor="middle">`equals()`는 실제 텍스트를 검사합니다.</text>
+  </g>
+</svg>

@@ -1,0 +1,87 @@
+<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="450" fill="#f8f9fa"/>
+  <style>
+    @keyframes link-var1 {
+      0%, 20% { stroke-dashoffset: 200; opacity: 0; }
+      30%, 80% { stroke-dashoffset: 0; opacity: 1; stroke: #0dcaf0; }
+      90%, 100% { stroke-dashoffset: 0; opacity: 0; }
+    }
+    @keyframes link-var2 {
+      0%, 40% { stroke-dashoffset: 200; opacity: 0; }
+      50%, 80% { stroke-dashoffset: 0; opacity: 1; stroke: #d63384; }
+      90%, 100% { stroke-dashoffset: 0; opacity: 0; }
+    }
+    @keyframes highlight-enum {
+      0%, 20% { filter: none; transform: scale(1); }
+      30%, 80% { filter: drop-shadow(0 0 15px #ffc107); transform: scale(1.1); }
+      90%, 100% { filter: none; transform: scale(1); }
+    }
+    @keyframes compare-true {
+      0%, 60% { opacity: 0; transform: scale(0.5); }
+      70%, 80% { opacity: 1; transform: scale(1.2); }
+      90%, 100% { opacity: 0; transform: scale(0.5); }
+    }
+
+    .anim-link1 { animation: link-var1 6s infinite; stroke-dasharray: 200; }
+    .anim-link2 { animation: link-var2 6s infinite; stroke-dasharray: 200; }
+    .anim-enum { animation: highlight-enum 6s infinite; transform-origin: center; }
+    .anim-true { animation: compare-true 6s infinite; transform-origin: center; }
+
+    .title { font-family: sans-serif; font-size: 24px; font-weight: bold; fill: #333; text-anchor: middle; }
+    .code { font-family: monospace; font-size: 16px; font-weight: bold; }
+    .region-title { font-family: sans-serif; font-size: 18px; font-weight: bold; text-anchor: middle; fill: #495057; }
+  </style>
+
+  <text x="400" y="50" class="title">Enum 메모리의 비밀 (Method Area에 단 1개만!) 🧠</text>
+
+  <!-- 좌측: Stack 영역 (변수들) -->
+  <rect x="50" y="100" width="250" height="250" rx="10" fill="#e9ecef" stroke="#adb5bd" stroke-width="4" stroke-dasharray="8 4"/>
+  <text x="175" y="135" class="region-title">Stack 영역 (내 지갑)</text>
+  
+  <rect x="75" y="160" width="200" height="60" rx="8" fill="#fff" stroke="#0dcaf0" stroke-width="3"/>
+  <text x="175" y="185" class="code" fill="#000" text-anchor="middle">Week day1</text>
+  <text x="175" y="210" font-family="sans-serif" font-size="14" fill="#0dcaf0" text-anchor="middle">(16진수: xM 리모컨)</text>
+
+  <rect x="75" y="240" width="200" height="60" rx="8" fill="#fff" stroke="#d63384" stroke-width="3"/>
+  <text x="175" y="265" class="code" fill="#000" text-anchor="middle">Week day2</text>
+  <text x="175" y="290" font-family="sans-serif" font-size="14" fill="#d63384" text-anchor="middle">(16진수: xM 리모컨)</text>
+
+  <!-- 우측: Method Area (메타데이터 영역) -->
+  <rect x="500" y="100" width="250" height="250" rx="10" fill="#fff3cd" stroke="#ffc107" stroke-width="4"/>
+  <text x="625" y="135" class="region-title">Method Area (본사 금고)</text>
+  
+  <text x="625" y="165" font-family="sans-serif" font-size="14" fill="#856404" text-anchor="middle">프로그램 시작 시 딱 1번 생성!</text>
+
+  <!-- Enum 싱글톤 객체들 -->
+  <rect x="525" y="180" width="200" height="40" rx="4" fill="#ffeeba"/>
+  <text x="625" y="205" class="code" fill="#6c757d" text-anchor="middle">SUNDAY (번지: xS)</text>
+
+  <g class="anim-enum" transform="translate(525, 230)">
+    <rect x="0" y="0" width="200" height="50" rx="8" fill="#28a745" stroke="#198754" stroke-width="3"/>
+    <text x="100" y="22" class="code" fill="#fff" text-anchor="middle">MONDAY</text>
+    <text x="100" y="42" font-family="sans-serif" font-size="14" font-weight="bold" fill="#fff" text-anchor="middle">(고유 번지수: xM)</text>
+  </g>
+
+  <rect x="525" y="290" width="200" height="40" rx="4" fill="#ffeeba"/>
+  <text x="625" y="315" class="code" fill="#6c757d" text-anchor="middle">TUESDAY (번지: xT)</text>
+
+  <!-- 연결망 화살표 -->
+  <path d="M 275 190 Q 400 150 525 245" fill="none" class="anim-link1" stroke-width="4" marker-end="url(#arrow-cyan)"/>
+  <path d="M 275 270 Q 400 310 525 265" fill="none" class="anim-link2" stroke-width="4" marker-end="url(#arrow-pink)"/>
+
+  <!-- 정답 판정 (True) -->
+  <g class="anim-true" transform="translate(400, 230)">
+    <circle cx="0" cy="0" r="40" fill="#198754" filter="drop-shadow(0 0 10px #28a745)"/>
+    <text x="0" y="8" font-family="sans-serif" font-size="20" font-weight="bold" fill="#fff" text-anchor="middle">TRUE!</text>
+    <text x="0" y="55" font-family="sans-serif" font-size="14" font-weight="bold" fill="#198754" text-anchor="middle">day1 == day2</text>
+  </g>
+
+  <!-- 하단 요약 -->
+  <rect x="50" y="380" width="700" height="40" rx="10" fill="#e2e3e5" stroke="#adb5bd" stroke-width="2"/>
+  <text x="400" y="406" font-family="sans-serif" font-size="15" font-weight="bold" fill="#333" text-anchor="middle">💡 MONDAY 객체는 평생 1개뿐! 그래서 `==` (주소 비교)를 해도 무조건 `true`가 나옵니다!</text>
+
+  <defs>
+    <marker id="arrow-cyan" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#0dcaf0"/></marker>
+    <marker id="arrow-pink" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#d63384"/></marker>
+  </defs>
+</svg>

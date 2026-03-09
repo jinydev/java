@@ -1,0 +1,71 @@
+<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="450" fill="#f8f9fa"/>
+  <style>
+    @keyframes toss-arg {
+      0%, 20% { transform: translate(-300px, 150px) scale(0.5); opacity: 0; }
+      30%, 40% { transform: translate(100px, -50px) scale(1.2); opacity: 1; filter: drop-shadow(0 0 10px #ffc107); }
+      50%, 80% { transform: translate(450px, 150px) scale(1); opacity: 1; filter: none; }
+      90%, 100% { transform: translate(450px, 150px) scale(1); opacity: 0; }
+    }
+    @keyframes pulse-param {
+      0%, 45% { stroke: #adb5bd; stroke-width: 3; fill: #e9ecef; }
+      50%, 80% { stroke: #fd7e14; stroke-width: 5; fill: #fff3cd; }
+      85%, 100% { stroke: #adb5bd; stroke-width: 3; fill: #e9ecef; }
+    }
+    
+    .anim-arg { animation: toss-arg 6s infinite ease-in-out; }
+    .anim-param { animation: pulse-param 6s infinite; }
+    
+    .title { font-family: sans-serif; font-size: 24px; font-weight: bold; fill: #333; text-anchor: middle; }
+    .subtitle { font-family: sans-serif; font-size: 18px; font-weight: bold; fill: #495057; text-anchor: middle; }
+    .code { font-family: monospace; font-size: 20px; font-weight: bold; text-anchor: middle; }
+    .desc { font-family: sans-serif; font-size: 15px; fill: #6c757d; text-anchor: middle; }
+  </style>
+
+  <text x="400" y="50" class="title">가장 많이 헷갈리는 용어: 매개변수 vs 인자(인수) 🥊</text>
+
+  <!-- 파티션 나누기 -->
+  <line x1="400" y1="80" x2="400" y2="350" stroke="#ced4da" stroke-width="3" stroke-dasharray="10 5"/>
+
+  <!-- 좌측: Argument (인자/인수) -->
+  <g transform="translate(100, 100)">
+    <text x="100" y="0" class="subtitle" fill="#0d6efd">Argument (인자/인수)</text>
+    <text x="100" y="25" class="desc">"우리가 실제로 던져넣는 진짜 데이터 값"</text>
+    
+    <!-- 터미널 입력 창 -->
+    <rect x="-30" y="60" width="260" height="150" rx="10" fill="#212529" stroke="#495057" stroke-width="4"/>
+    <text x="100" y="100" class="code" fill="#f8f9fa">&gt; java Sum <tspan fill="#ffc107">10 20</tspan></text>
+    <text x="100" y="130" font-family="sans-serif" font-size="24" text-anchor="middle">👇</text>
+    
+    <rect x="-10" y="150" width="220" height="40" rx="5" fill="#343a40"/>
+    <text x="100" y="177" font-family="sans-serif" font-size="16" font-weight="bold" fill="#ffc107" text-anchor="middle">이 "10"과 "20"이 바로 Argument!</text>
+  </g>
+
+  <!-- 우측: Parameter (매개변수) -->
+  <g transform="translate(500, 100)">
+    <text x="100" y="0" class="subtitle" fill="#fd7e14">Parameter (매개변수)</text>
+    <text x="100" y="25" class="desc">"데이터가 들어갈 빈 바구니(변수 자리)"</text>
+    
+    <!-- 자바 코드 영역 -->
+    <rect x="-30" y="60" width="280" height="150" rx="10" fill="#f8f9fa" stroke="#adb5bd" stroke-width="4"/>
+    <text x="110" y="95" font-family="monospace" font-size="16" font-weight="bold" fill="#0d6efd" text-anchor="middle">void main( <tspan fill="#fd7e14">String[] args</tspan> ) {</text>
+    
+    <!-- 변수 바구니 (애니메이션 됨) -->
+    <rect x="0" y="120" width="200" height="70" rx="10" class="anim-param"/>
+    <text x="100" y="145" class="code" fill="#fd7e14">args 바구니</text>
+    <text x="100" y="175" font-family="sans-serif" font-size="14" fill="#6c757d" text-anchor="middle">(기다리는 중...)</text>
+  </g>
+
+  <!-- 데이터가 날아가는 애니메이션 -->
+  <g class="anim-arg">
+    <!-- 편지봉투 / 데이터 뭉치 -->
+    <path d="M -40 -20 L 40 -20 L 40 20 L -40 20 Z" fill="#ffc107" stroke="#fd7e14" stroke-width="3"/>
+    <path d="M -40 -20 L 0 5 L 40 -20" fill="none" stroke="#fd7e14" stroke-width="3"/>
+    <text x="0" y="8" font-family="monospace" font-size="18" font-weight="bold" fill="#000" text-anchor="middle">["10", "20"]</text>
+  </g>
+
+  <!-- 하단 요약 -->
+  <rect x="50" y="380" width="700" height="40" rx="10" fill="#e2e3e5" stroke="#adb5bd" stroke-width="2"/>
+  <text x="400" y="406" font-family="sans-serif" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">💡 '인자'라는 택배 상자가 날아가서, '매개변수'라는 우편함에 꽂히는 것입니다!</text>
+
+</svg>

@@ -1,0 +1,72 @@
+<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="450" fill="#f8f9fa"/>
+  <style>
+    @keyframes pulse-good {
+      0%, 100% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(25,135,84,0.5)); }
+      50% { transform: scale(1.02); filter: drop-shadow(0 0 20px rgba(25,135,84,0.8)); }
+    }
+    @keyframes float-bad {
+      0%, 100% { transform: translateY(0); filter: drop-shadow(0 0 2px rgba(108,117,125,0.5)); }
+      50% { transform: translateY(-5px); filter: drop-shadow(0 0 10px rgba(108,117,125,0.3)); }
+    }
+    .anim-good { animation: pulse-good 3s infinite; transform-origin: center; }
+    .anim-bad { animation: float-bad 4s infinite; transform-origin: center; opacity: 0.8; }
+    
+    .code-text { font-family: monospace; font-size: 26px; font-weight: bold; }
+    .label-text { font-family: sans-serif; font-size: 18px; font-weight: bold; text-anchor: middle; }
+    .desc-text { font-family: sans-serif; font-size: 14px; fill: #495057; text-anchor: middle; }
+    .title { font-family: sans-serif; font-size: 24px; font-weight: bold; fill: #333; text-anchor: middle; }
+  </style>
+
+  <text x="400" y="50" class="title">배열을 선언하는 두 가지 방법 (Java vs C)</text>
+
+  <!-- 1. Java 권장 스타일 -->
+  <g transform="translate(100, 150)">
+    <g class="anim-good">
+      <!-- 배경 카드 -->
+      <rect width="280" height="150" rx="15" fill="#d1e7dd" stroke="#198754" stroke-width="4"/>
+      
+      <!-- 뱃지 -->
+      <rect x="70" y="-15" width="140" height="30" rx="15" fill="#198754"/>
+      <text x="140" y="5" font-family="sans-serif" font-size="14" font-weight="bold" fill="#fff" text-anchor="middle">👑 Java 권장 스타일</text>
+  
+      <!-- 코드 -->
+      <text x="40" y="70" class="code-text">
+        <tspan fill="#000">int</tspan><tspan fill="#d63384">[]</tspan> <tspan fill="#0d6efd">scores</tspan>;
+      </text>
+  
+      <!-- 설명 -->
+      <text x="140" y="110" class="desc-text">"이 변수는 'int 배열' 타입이다!"</text>
+      <text x="140" y="130" class="desc-text">의미가 명확하게 다가옴 👍</text>
+    </g>
+  </g>
+
+  <!-- VS 마크 -->
+  <text x="400" y="230" font-family="sans-serif" font-size="28" font-weight="bold" fill="#adb5bd" text-anchor="middle" font-style="italic">VS</text>
+
+  <!-- 2. C언어 호환 스타일 -->
+  <g transform="translate(420, 150)">
+    <g class="anim-bad">
+      <!-- 배경 카드 -->
+      <rect width="280" height="150" rx="15" fill="#e9ecef" stroke="#6c757d" stroke-width="2" stroke-dasharray="5 5"/>
+      
+      <!-- 뱃지 -->
+      <rect x="50" y="-15" width="180" height="30" rx="15" fill="#6c757d"/>
+      <text x="140" y="5" font-family="sans-serif" font-size="14" font-weight="bold" fill="#fff" text-anchor="middle">👴 C언어 레거시 (비권장)</text>
+  
+      <!-- 코드 -->
+      <text x="40" y="70" class="code-text" fill="#6c757d">
+        <tspan fill="#000">int</tspan> <tspan fill="#0d6efd">scores</tspan><tspan fill="#d63384">[]</tspan>;
+      </text>
+  
+      <!-- 설명 -->
+      <text x="140" y="110" class="desc-text">과거 C/C++ 개발자들의</text>
+      <text x="140" y="130" class="desc-text">적응을 위해 남겨둔 문법 😅</text>
+    </g>
+  </g>
+
+  <!-- 하단 결론 -->
+  <rect x="150" y="360" width="500" height="50" rx="10" fill="#fff3cd" stroke="#ffc107" stroke-width="2"/>
+  <text x="400" y="392" font-family="sans-serif" font-size="16" font-weight="bold" fill="#856404" text-anchor="middle">💡 실무에서는 10명 중 9.9명이 "타입[] 변수명;" 방식을 사용합니다!</text>
+
+</svg>

@@ -1,0 +1,98 @@
+<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="450" fill="#f8f9fa"/>
+  <style>
+    @keyframes move-accept {
+      0%, 20% { transform: translateY(-50px); opacity: 0; }
+      40% { transform: translateY(0); opacity: 1; }
+      60%, 100% { transform: translateY(0); opacity: 1; }
+    }
+    @keyframes move-reject-1 {
+      0%, 40% { transform: translateY(-50px); opacity: 0; }
+      50% { transform: translateY(0); opacity: 1; }
+      60%, 100% { transform: translateY(-20px) rotate(-15deg); opacity: 0; }
+    }
+    @keyframes show-error {
+      0%, 55% { opacity: 0; transform: scale(0.5); }
+      60%, 100% { opacity: 1; transform: scale(1); }
+    }
+    
+    .anim-accept { animation: move-accept 5s infinite; }
+    .anim-reject { animation: move-reject-1 5s infinite; }
+    .anim-error { animation: show-error 5s infinite; }
+    
+    .code-text { font-family: monospace; font-size: 16px; font-weight: bold; fill: #20c997; }
+    .box-char { font-family: sans-serif; font-size: 20px; font-weight: bold; text-anchor: middle; }
+    .title { font-family: sans-serif; font-size: 24px; font-weight: bold; fill: #333; text-anchor: middle; }
+  </style>
+
+  <text x="400" y="50" class="title">배열의 단일 타입(Single Type) 저장 규칙</text>
+
+  <!-- 코드 블록 -->
+  <g transform="translate(150, 80)">
+    <rect width="500" height="80" rx="10" fill="#212529" stroke="none"/>
+    <text x="30" y="45" class="code-text"><tspan fill="#fd7e14">int</tspan>[] myArr = <tspan fill="#e83e8c">new</tspan> <tspan fill="#fd7e14">int</tspan>[3];</text>
+    <text x="30" y="65" font-family="sans-serif" font-size="14" fill="#6c757d">↳ 오직 정수(int)만 입장 가능한 공간 창조!</text>
+  </g>
+
+  <!-- 배열 기차 객실 -->
+  <g transform="translate(250, 300)">
+    <rect width="300" height="80" rx="8" fill="#e9ecef" stroke="#adb5bd" stroke-width="3"/>
+    <text x="150" y="110" font-family="sans-serif" font-size="16" font-weight="bold" fill="#495057" text-anchor="middle">int 배열 공간</text>
+    
+    <!-- 방 3개 -->
+    <rect x="20" y="15" width="80" height="50" rx="5" fill="#fff" stroke="#adb5bd"/>
+    <rect x="110" y="15" width="80" height="50" rx="5" fill="#fff" stroke="#adb5bd"/>
+    <rect x="200" y="15" width="80" height="50" rx="5" fill="#fff" stroke="#adb5bd"/>
+  </g>
+
+  <!-- 값 대입 시뮬레이션 -->
+  <g transform="translate(250, 200)">
+    
+    <!-- 1번 시도 (정상) -->
+    <g transform="translate(20, 0)" class="anim-accept">
+      <rect width="80" height="40" rx="5" fill="#d1e7dd" stroke="#198754" stroke-width="2"/>
+      <text x="40" y="27" class="box-char" fill="#198754">100</text>
+      <text x="40" y="-10" font-family="monospace" font-size="12" fill="#198754" text-anchor="middle">myArr[0] = 100;</text>
+      <path d="M 40 45 L 40 100" fill="none" stroke="#198754" stroke-width="3" marker-end="url(#arrow-green)"/>
+    </g>
+
+    <!-- 2번 시도 (실패 - 문자열) -->
+    <g transform="translate(110, 0)" class="anim-reject">
+      <rect width="80" height="40" rx="5" fill="#f8d7da" stroke="#dc3545" stroke-width="2"/>
+      <text x="40" y="27" class="box-char" fill="#dc3545">"자바"</text>
+      <text x="40" y="-10" font-family="monospace" font-size="12" fill="#dc3545" text-anchor="middle">myArr[1] = "자바";</text>
+      <path d="M 40 45 L 40 100" fill="none" stroke="#dc3545" stroke-width="3" marker-end="url(#arrow-red)"/>
+    </g>
+
+    <!-- 에러 표시 X -->
+    <g transform="translate(150, 70)" class="anim-error">
+      <circle cx="0" cy="0" r="25" fill="#dc3545"/>
+      <path d="M -10 -10 L 10 10 M -10 10 L 10 -10" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+      <text x="0" y="45" font-family="sans-serif" font-size="14" font-weight="bold" fill="#dc3545" text-anchor="middle">Type Mismatch!</text>
+    </g>
+
+    <!-- 3번 시도 (실패 - 실수) -->
+    <g transform="translate(200, 0)" class="anim-reject" style="animation-delay: 1s;">
+      <rect width="80" height="40" rx="5" fill="#f8d7da" stroke="#dc3545" stroke-width="2"/>
+      <text x="40" y="27" class="box-char" fill="#dc3545">3.14</text>
+      <text x="40" y="-10" font-family="monospace" font-size="12" fill="#dc3545" text-anchor="middle">myArr[2] = 3.14;</text>
+      <path d="M 40 45 L 40 100" fill="none" stroke="#dc3545" stroke-width="3" marker-end="url(#arrow-red)"/>
+    </g>
+
+    <!-- 에러 표시 X -->
+    <g transform="translate(240, 70)" class="anim-error" style="animation-delay: 1s;">
+      <circle cx="0" cy="0" r="25" fill="#dc3545"/>
+      <path d="M -10 -10 L 10 10 M -10 10 L 10 -10" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+    </g>
+
+  </g>
+
+  <defs>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#198754"/>
+    </marker>
+    <marker id="arrow-red" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#dc3545"/>
+    </marker>
+  </defs>
+</svg>

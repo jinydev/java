@@ -1,0 +1,74 @@
+<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="450" fill="#f8f9fa"/>
+  <style>
+    @keyframes drop-old {
+      0%, 20% { transform: translateY(0); opacity: 1; }
+      40%, 100% { transform: translateY(100px); opacity: 0; }
+    }
+    @keyframes drop-new {
+      0%, 30% { transform: translateY(-100px); opacity: 0; }
+      50%, 80% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+    .anim-drop-old { animation: drop-old 6s infinite; }
+    .anim-drop-new { animation: drop-new 6s infinite; }
+    .code-text { font-family: monospace; font-size: 16px; font-weight: bold; fill: #20c997; }
+    .box-text { font-family: sans-serif; font-size: 20px; font-weight: bold; text-anchor: middle; }
+    .title { font-family: sans-serif; font-size: 24px; font-weight: bold; fill: #333; text-anchor: middle; }
+  </style>
+
+  <text x="400" y="50" class="title">replace() 메소드의 불변성 (Immutability)</text>
+
+  <!-- 원본 데이터 구역 -->
+  <g transform="translate(150, 100)">
+    <rect width="500" height="120" rx="10" fill="#212529" stroke="none"/>
+    <text x="20" y="40" class="code-text"><tspan fill="#e83e8c">String</tspan> oldStr = <tspan fill="#ffc107">"자바"</tspan>;</text>
+    <text x="20" y="80" class="code-text"><tspan fill="#e83e8c">String</tspan> newStr = oldStr.<tspan fill="#0dcaf0">replace</tspan>("자바", <tspan fill="#ffc107">"Java"</tspan>);</text>
+  </g>
+
+  <!-- 메모리 공간 시각화 -->
+  <g transform="translate(100, 260)">
+    <!-- 원본 힙 메모리 객체 (사라지지 않음) -->
+    <rect x="0" y="0" width="200" height="120" rx="8" fill="#e9ecef" stroke="#adb5bd" stroke-width="2"/>
+    <text x="100" y="30" font-family="sans-serif" font-size="14" fill="#6c757d" text-anchor="middle">기존 힙 객체 (x100)</text>
+    
+    <g transform="translate(50, 50)">
+      <rect width="100" height="50" rx="5" fill="#f8d7da" stroke="#dc3545" stroke-width="2"/>
+      <text x="50" y="32" class="box-text" fill="#dc3545">"자바"</text>
+    </g>
+
+    <!-- 화살표 (치환의 마술) -->
+    <path d="M 220 60 L 380 60" fill="none" stroke="#6f42c1" stroke-width="4" stroke-dasharray="10 5" marker-end="url(#arrow-purple)"/>
+    <text x="300" y="45" font-family="sans-serif" font-size="14" font-weight="bold" fill="#6f42c1" text-anchor="middle">.replace() 실행</text>
+    
+    <!-- 새로운 힙 메모리 객체 -->
+    <g transform="translate(400, 0)">
+      <rect x="0" y="0" width="200" height="120" rx="8" fill="#e9ecef" stroke="#adb5bd" stroke-width="2"/>
+      <text x="100" y="30" font-family="sans-serif" font-size="14" fill="#6c757d" text-anchor="middle">새로운 힙 객체 창조 (x200)</text>
+      
+      <!-- 교체 연출 -->
+      <g transform="translate(50, 50)">
+        <!-- 떨어지는 자바 -->
+        <g class="anim-drop-old">
+          <rect width="100" height="50" rx="5" fill="#f8d7da" stroke="#dc3545" stroke-width="2"/>
+          <text x="50" y="32" class="box-text" fill="#dc3545">"자바"</text>
+        </g>
+        
+        <!-- 등장하는 Java -->
+        <g class="anim-drop-new">
+          <rect width="100" height="50" rx="5" fill="#d1e7dd" stroke="#198754" stroke-width="2"/>
+          <text x="50" y="32" class="box-text" fill="#198754">"Java"</text>
+        </g>
+      </g>
+    </g>
+  </g>
+
+  <!-- 원본은 그대로라는 강조 텍스트 -->
+  <text x="400" y="420" font-family="sans-serif" font-size="16" font-weight="bold" fill="#dc3545" text-anchor="middle">※ 주의: 원본 "자바" 객체는 변형되는 것이 아니라 그대로 남아있고, 새로운 "Java" 객체가 힙에 새로 태어납니다!</text>
+
+  <defs>
+    <marker id="arrow-purple" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#6f42c1"/>
+    </marker>
+  </defs>
+</svg>

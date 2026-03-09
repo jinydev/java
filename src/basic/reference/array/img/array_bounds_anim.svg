@@ -1,0 +1,74 @@
+<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="450" fill="#f8f9fa"/>
+  <style>
+    @keyframes try-access {
+      0%, 20% { transform: translateY(0); opacity: 1; filter: none; }
+      30%, 40% { transform: translateY(-30px); opacity: 1; filter: none; }
+      45%, 55% { transform: translateY(-30px) translateX(20px); opacity: 1; filter: none; }
+      60% { transform: translateY(50px) translateX(30px) rotate(45deg); opacity: 1; filter: drop-shadow(0 0 10px red); }
+      70%, 100% { transform: translateY(100px) translateX(30px) rotate(90deg); opacity: 0; }
+    }
+    @keyframes alert-flash {
+      0%, 55% { opacity: 0; transform: scale(0.5); }
+      60%, 80% { opacity: 1; transform: scale(1); }
+      90%, 100% { opacity: 0; transform: scale(0.5); }
+    }
+    
+    .anim-fall { animation: try-access 5s infinite; transform-origin: center; }
+    .anim-alert { animation: alert-flash 5s infinite; transform-origin: center; }
+    
+    .title { font-family: sans-serif; font-size: 24px; font-weight: bold; fill: #333; text-anchor: middle; }
+    .code { font-family: monospace; font-size: 18px; font-weight: bold; }
+    .idx-text { font-family: monospace; font-size: 20px; font-weight: bold; text-anchor: middle; }
+  </style>
+
+  <text x="400" y="50" class="title">가장 흔한 에러: ArrayIndexOutOfBoundsException 🚨</text>
+
+  <!-- 배열 기차 기단 -->
+  <g transform="translate(100, 200)">
+    <!-- 레일 -->
+    <path d="M 0 60 L 400 60" stroke="#adb5bd" stroke-width="4" stroke-dasharray="20 10"/>
+    
+    <!-- 방 4개 (인덱스 0~3) -->
+    <rect x="0" y="0" width="80" height="60" rx="5" fill="#d1e7dd" stroke="#198754" stroke-width="3"/>
+    <rect x="100" y="0" width="80" height="60" rx="5" fill="#d1e7dd" stroke="#198754" stroke-width="3"/>
+    <rect x="200" y="0" width="80" height="60" rx="5" fill="#d1e7dd" stroke="#198754" stroke-width="3"/>
+    <rect x="300" y="0" width="80" height="60" rx="5" fill="#d1e7dd" stroke="#198754" stroke-width="3"/>
+    
+    <!-- 인덱스 번호 -->
+    <text x="40" y="-10" class="idx-text" fill="#198754">[0]</text>
+    <text x="140" y="-10" class="idx-text" fill="#198754">[1]</text>
+    <text x="240" y="-10" class="idx-text" fill="#198754">[2]</text>
+    <text x="340" y="-10" class="idx-text" fill="#198754">[3]</text>
+
+    <!-- 값 -->
+    <text x="40" y="38" class="idx-text" fill="#000">10</text>
+    <text x="140" y="38" class="idx-text" fill="#000">20</text>
+    <text x="240" y="38" class="idx-text" fill="#000">30</text>
+    <text x="340" y="38" class="idx-text" fill="#000">40</text>
+    
+    <!-- 절벽 (인덱스 4) -->
+    <path d="M 400 60 L 550 200 L 550 400 L 400 400 Z" fill="#e9ecef"/>
+    <text x="460" y="-10" class="idx-text" fill="#dc3545" opacity="0.5">[4] (없음)</text>
+    
+    <!-- 덜렁덜렁 접근 시도 (애니메이션) -->
+    <g class="anim-fall" transform="translate(420, 0)">
+      <rect width="80" height="60" rx="5" fill="#f8d7da" stroke="#dc3545" stroke-width="3" stroke-dasharray="5 5"/>
+      <text x="40" y="38" class="idx-text" fill="#dc3545">?</text>
+      <!-- 포인터 (손가락) -->
+      <path d="M 40 60 L 40 90 L 30 90 L 50 120 L 70 90 L 60 90 L 60 60 Z" fill="#dc3545"/>
+    </g>
+    
+    <!-- 에러 폭발 메세지 -->
+    <g class="anim-alert" transform="translate(460, -50)">
+      <path d="M -120 -40 L 120 -40 L 120 40 L 20 40 L 0 60 L -20 40 L -120 40 Z" fill="#dc3545"/>
+      <text x="0" y="-5" font-family="sans-serif" font-size="16" font-weight="bold" fill="#fff" text-anchor="middle">🔥 OutOfBoundsException!</text>
+      <text x="0" y="15" font-family="sans-serif" font-size="14" fill="#fff" text-anchor="middle">절벽으로 추락했습니다!</text>
+    </g>
+  </g>
+
+  <!-- 하단 설명 텍스트 -->
+  <rect x="100" y="380" width="600" height="50" rx="10" fill="#fff3cd" stroke="#ffc107" stroke-width="2"/>
+  <text x="400" y="412" font-family="sans-serif" font-size="16" font-weight="bold" fill="#856404" text-anchor="middle">💡 명심하세요! 배열의 길이가 4라면, 안전한 마지막 좌석 번호는 무조건 [3] 입니다.</text>
+
+</svg>

@@ -1,0 +1,93 @@
+<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="450" fill="#f8f9fa"/>
+  <style>
+    @keyframes try-enter-bad {
+      0%, 15% { transform: translateX(-150px); opacity: 0; }
+      25%, 35% { transform: translateX(100px); opacity: 1; }
+      40%, 45% { transform: translateX(80px); opacity: 1; } /* 튕겨남 */
+      50%, 100% { transform: translateX(-150px); opacity: 0; }
+    }
+    @keyframes try-enter-good {
+      0%, 55% { transform: translateX(-150px); opacity: 0; }
+      65%, 75% { transform: translateX(100px); opacity: 1; }
+      85%, 95% { transform: translateX(350px); opacity: 1; filter: drop-shadow(0 0 10px #198754); } /* 통과 */
+      100% { transform: translateX(350px); opacity: 0; }
+    }
+    @keyframes bouncer-block {
+      0%, 30% { opacity: 0; transform: scale(0.5); }
+      35%, 45% { opacity: 1; transform: scale(1.2); fill: #dc3545; }
+      50%, 100% { opacity: 0; }
+    }
+    @keyframes bouncer-allow {
+      0%, 70% { opacity: 0; transform: scale(0.5); }
+      75%, 85% { opacity: 1; transform: scale(1.2); fill: #198754; }
+      90%, 100% { opacity: 0; }
+    }
+
+    .anim-bad-guy { animation: try-enter-bad 8s infinite ease-out; }
+    .anim-good-guy { animation: try-enter-good 8s infinite ease-out; }
+    .anim-block { animation: bouncer-block 8s infinite; transform-origin: center; }
+    .anim-allow { animation: bouncer-allow 8s infinite; transform-origin: center; }
+
+    .title { font-family: sans-serif; font-size: 24px; font-weight: bold; fill: #333; text-anchor: middle; }
+    .code { font-family: monospace; font-size: 16px; font-weight: bold; }
+    .label { font-family: sans-serif; font-size: 14px; font-weight: bold; fill: #fff; text-anchor: middle; }
+  </style>
+
+  <text x="400" y="50" class="title">Enum: 철통 보안을 자랑하는 VIP 예약자 명단 📋</text>
+
+  <!-- 클럽 입구 (Enum 타입 변수) -->
+  <g transform="translate(450, 100)">
+    <rect x="0" y="0" width="200" height="250" rx="10" fill="#212529" stroke="#ffc107" stroke-width="6"/>
+    <text x="100" y="40" class="code" fill="#ffc107" text-anchor="middle">Week today</text>
+    
+    <!-- VIP 명단 명패 -->
+    <rect x="20" y="60" width="160" height="170" rx="5" fill="#343a40"/>
+    <text x="100" y="85" font-family="sans-serif" font-size="14" fill="#6c757d" text-anchor="middle">--- 허가된 VIP ---</text>
+    <text x="100" y="115" class="code" fill="#d1e7dd" text-anchor="middle">MONDAY</text>
+    <text x="100" y="145" class="code" fill="#d1e7dd" text-anchor="middle">TUESDAY</text>
+    <text x="100" y="175" class="code" fill="#d1e7dd" text-anchor="middle">WEDNESDAY</text>
+    <text x="100" y="205" font-family="sans-serif" font-size="14" fill="#6c757d" text-anchor="middle">... 등 7명뿐 ...</text>
+  </g>
+
+  <!-- 보안 요원 (컴파일러) -->
+  <g transform="translate(380, 200)">
+    <circle cx="0" cy="-30" r="25" fill="#495057"/> <!-- 머리 -->
+    <rect x="-30" y="0" width="60" height="80" rx="10" fill="#000"/> <!-- 몸통 -->
+    <text x="0" y="45" font-family="sans-serif" font-size="12" font-weight="bold" fill="#ffc107" text-anchor="middle">컴파일러</text>
+    
+    <!-- 차단 마크 (에러) -->
+    <g class="anim-block" transform="translate(-40, -40)">
+      <circle cx="0" cy="0" r="30" fill="#dc3545"/>
+      <path d="M -15 -15 L 15 15 M -15 15 L 15 -15" stroke="#fff" stroke-width="6"/>
+      <text x="-15" y="-40" class="code" fill="#dc3545">Error!</text>
+    </g>
+
+    <!-- 통과 마크 (성공) -->
+    <g class="anim-allow" transform="translate(60, -40)">
+      <circle cx="0" cy="0" r="30" fill="#198754"/>
+      <path d="M -15 0 L -5 10 L 15 -15" fill="none" stroke="#fff" stroke-width="6"/>
+      <text x="15" y="-40" class="code" fill="#198754">Pass!</text>
+    </g>
+  </g>
+
+  <!-- 입장 시도 1: 불청객 (String) -->
+  <g class="anim-bad-guy" transform="translate(200, 240)">
+    <rect x="-60" y="-30" width="120" height="50" rx="25" fill="#f8d7da" stroke="#dc3545" stroke-width="3"/>
+    <text x="0" y="0" class="code" fill="#dc3545" text-anchor="middle">"Monday"</text>
+    <text x="0" y="35" class="code" font-size="12" fill="#6c757d" text-anchor="middle">(그냥 String 타입)</text>
+  </g>
+
+  <!-- 입장 시도 2: 진짜 VIP (Enum 상수) -->
+  <g class="anim-good-guy" transform="translate(200, 240)">
+    <rect x="-70" y="-30" width="140" height="50" rx="25" fill="#d1e7dd" stroke="#198754" stroke-width="4"/>
+    <text x="0" y="0" class="code" fill="#198754" text-anchor="middle">Week.MONDAY</text>
+    <text x="0" y="35" class="code" font-size="12" fill="#6c757d" text-anchor="middle">(공식 발급된 Enum)</text>
+  </g>
+
+  <!-- 하단 요약 -->
+  <rect x="50" y="380" width="700" height="50" rx="10" fill="#fff3cd" stroke="#ffc107" stroke-width="2"/>
+  <text x="400" y="405" font-family="sans-serif" font-size="15" font-weight="bold" fill="#856404" text-anchor="middle">💡 `String`은 아무 글자나 다 적을 수 있어 위험하지만,</text>
+  <text x="400" y="425" font-family="sans-serif" font-size="15" font-weight="bold" fill="#856404" text-anchor="middle">`Enum`은 내가 정해둔 7개의 키워드가 아니면 아예 문법 검사를 통과하지 못합니다!</text>
+
+</svg>

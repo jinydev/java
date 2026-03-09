@@ -1,0 +1,93 @@
+<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="450" fill="#f8f9fa"/>
+  <style>
+    @keyframes move-outer {
+      0%, 45% { transform: translateY(0); }
+      50%, 95% { transform: translateY(120px); }
+      100% { transform: translateY(0); }
+    }
+    @keyframes move-inner {
+      0%, 5%, 50%, 55% { transform: translateX(0); opacity: 1; }
+      10%, 15%, 60%, 65% { transform: translateX(110px); opacity: 1; }
+      20%, 25%, 70%, 75% { transform: translateX(220px); opacity: 1; }
+      30%, 45%, 80%, 95% { transform: translateX(330px); opacity: 0; }
+    }
+    @keyframes highlight-cell {
+      0%, 9% { fill: #fff; }
+      10%, 100% { fill: #fff3cd; }
+    }
+    
+    .anim-outer { animation: move-outer 8s infinite; }
+    .anim-inner { animation: move-inner 8s infinite; }
+    
+    .title { font-family: sans-serif; font-size: 24px; font-weight: bold; fill: #333; text-anchor: middle; }
+    .code { font-family: monospace; font-size: 16px; font-weight: bold; }
+    .label { font-family: sans-serif; font-size: 14px; font-weight: bold; fill: #6c757d; }
+  </style>
+
+  <text x="400" y="50" class="title">중첩 for문의 환상적인 콤비 플레이 ⚡</text>
+
+  <!-- 코드 블록 영역 -->
+  <rect x="50" y="80" width="340" height="180" rx="8" fill="#212529" stroke="#495057" stroke-width="2"/>
+  <text x="70" y="110" class="code" fill="#e83e8c">for <tspan fill="#fff">(int row=0; row&lt;2; row++) {</tspan></text>
+  <text x="100" y="140" class="code" fill="#0dcaf0">for <tspan fill="#fff">(int col=0; col&lt;3; col++) {</tspan></text>
+  <text x="130" y="170" class="code" fill="#ffc107">방문완료(row, col);</text>
+  <text x="100" y="200" class="code" fill="#fff">}</text>
+  <text x="70" y="230" class="code" fill="#fff">}</text>
+
+  <!-- 바깥 for문 하이라이트 박스 -->
+  <rect x="65" y="90" width="310" height="28" fill="none" class="anim-outer" stroke="#e83e8c" stroke-width="3" rx="4"/>
+  
+  <!-- 아파트 도면 영역 -->
+  <g transform="translate(420, 110)">
+    <!-- 0층 -->
+    <text x="-50" y="30" class="label" fill="#e83e8c">row 0</text>
+    <rect x="0" y="0" width="100" height="50" stroke="#adb5bd" stroke-width="2" fill="#fff">
+      <animate attributeName="fill" values="#fff;#fff3cd;#fff3cd" keyTimes="0;0.1;1" dur="8s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="110" y="0" width="100" height="50" stroke="#adb5bd" stroke-width="2" fill="#fff">
+      <animate attributeName="fill" values="#fff;#fff3cd;#fff3cd" keyTimes="0;0.12;1" dur="8s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="220" y="0" width="100" height="50" stroke="#adb5bd" stroke-width="2" fill="#fff">
+      <animate attributeName="fill" values="#fff;#fff3cd;#fff3cd" keyTimes="0;0.22;1" dur="8s" repeatCount="indefinite"/>
+    </rect>
+    
+    <text x="30" y="30" font-family="monospace" fill="#000">[0][0]</text>
+    <text x="140" y="30" font-family="monospace" fill="#000">[0][1]</text>
+    <text x="250" y="30" font-family="monospace" fill="#000">[0][2]</text>
+
+    <!-- 1층 -->
+    <text x="-50" y="150" class="label" fill="#e83e8c">row 1</text>
+    <rect x="0" y="120" width="100" height="50" stroke="#adb5bd" stroke-width="2" fill="#fff">
+      <animate attributeName="fill" values="#fff;#fff3cd;#fff3cd" keyTimes="0;0.6;1" dur="8s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="110" y="120" width="100" height="50" stroke="#adb5bd" stroke-width="2" fill="#fff">
+      <animate attributeName="fill" values="#fff;#fff3cd;#fff3cd" keyTimes="0;0.62;1" dur="8s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="220" y="120" width="100" height="50" stroke="#adb5bd" stroke-width="2" fill="#fff">
+      <animate attributeName="fill" values="#fff;#fff3cd;#fff3cd" keyTimes="0;0.72;1" dur="8s" repeatCount="indefinite"/>
+    </rect>
+    
+    <text x="30" y="150" font-family="monospace" fill="#000">[1][0]</text>
+    <text x="140" y="150" font-family="monospace" fill="#000">[1][1]</text>
+    <text x="250" y="150" font-family="monospace" fill="#000">[1][2]</text>
+
+    <!-- 이동하는 포인터 세트 -->
+    <g class="anim-outer">
+      <!-- 안쪽 for문 이동 포인터 -->
+      <g class="anim-inner">
+        <rect x="10" y="10" width="80" height="30" rx="4" fill="none" stroke="#0dcaf0" stroke-width="4"/>
+        <!-- 번쩍이는 효과 -->
+        <circle cx="50" cy="25" r="30" fill="#0dcaf0" opacity="0.3">
+          <animate attributeName="transform" type="scale" values="1;1.2;1" dur="0.3s" repeatCount="indefinite"/>
+        </circle>
+      </g>
+    </g>
+  </g>
+
+  <!-- 하단 설명 -->
+  <rect x="50" y="360" width="700" height="60" rx="10" fill="#e2e3e5" stroke="#adb5bd" stroke-width="2"/>
+  <text x="400" y="385" font-family="sans-serif" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">바깥 `row`가 한 층을 꽉 잡고 인내하는 동안, 안쪽 `col`이 그 층의 모든 방을 미친듯이 순회합니다!</text>
+  <text x="400" y="405" font-family="sans-serif" font-size="14" fill="#6c757d" text-anchor="middle">(기어 변속비율: 바깥쪽이 1칸 움직일 때, 안쪽은 3바퀴를 돕니다)</text>
+
+</svg>
