@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="100%" height="100%">
+  <!-- Background -->
+  <rect width="800" height="400" fill="#fff5f5" rx="15" />
+  
+  <text x="400" y="40" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#c62828" text-anchor="middle">동기화(잠금) 미적용 시 발생하는 대참사 (Data Race)</text>
+
+  <!-- Restroom / Shared Object -->
+  <rect x="250" y="100" width="300" height="250" fill="#fff" stroke="#999" stroke-width="4" rx="10"/>
+  <text x="400" y="140" font-family="Arial" font-size="20" font-weight="bold" fill="#333" text-anchor="middle">공용 화장실 (공유 객체)</text>
+  
+  <text x="400" y="170" font-family="Arial" font-size="16" font-weight="bold" fill="#d32f2f" text-anchor="middle">문이 활짝 열려있음! (잠금 장치 없음)</text>
+
+  <!-- Inside Worker -->
+  <circle cx="330" cy="250" r="30" fill="#e3f2fd" stroke="#1565c0" stroke-width="3"/>
+  <text x="330" y="255" font-family="Arial" font-size="18" font-weight="bold" fill="#1565c0" text-anchor="middle">스레드 A</text>
+  <text x="330" y="310" font-family="Arial" font-size="14" fill="#1565c0" text-anchor="middle">"나 사용중인데?!"</text>
+
+  <!-- Invading Worker -->
+  <circle cx="470" cy="250" r="30" fill="#e8f5e9" stroke="#2e7d32" stroke-width="3"/>
+  <text x="470" y="255" font-family="Arial" font-size="18" font-weight="bold" fill="#2e7d32" text-anchor="middle">스레드 B</text>
+  <text x="470" y="310" font-family="Arial" font-size="14" fill="#2e7d32" text-anchor="middle">"어? 문 열렸네!"</text>
+  
+  <!-- Explosion / Crash -->
+  <path d="M 400 200 L 420 220 L 450 210 L 430 240 L 460 260 L 420 270 L 400 300 L 380 270 L 340 260 L 370 240 L 350 210 L 380 220 Z" fill="#ffca28" stroke="#f57f17" stroke-width="3"/>
+  <text x="400" y="255" font-family="Arial" font-size="16" font-weight="bold" fill="#d84315" text-anchor="middle">충돌!!</text>
+
+  <!-- Labels -->
+  <rect x="50" y="150" width="160" height="80" fill="#ffebee" stroke="#c62828" stroke-width="2" rx="5"/>
+  <text x="130" y="180" font-family="Arial" font-size="14" font-weight="bold" fill="#c62828" text-anchor="middle">동시에 같은 데이터를</text>
+  <text x="130" y="200" font-family="Arial" font-size="14" font-weight="bold" fill="#c62828" text-anchor="middle">수정하려고 함</text>
+  <text x="130" y="220" font-family="Arial" font-size="14" font-weight="bold" fill="#c62828" text-anchor="middle">➔ 데이터 꼬임 발생!</text>
+
+</svg>

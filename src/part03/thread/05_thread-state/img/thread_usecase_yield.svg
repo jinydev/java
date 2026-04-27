@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 350" width="100%" height="100%">
+  <!-- Background -->
+  <rect width="800" height="350" fill="#fcfcfc" rx="15" />
+  
+  <text x="400" y="40" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#333" text-anchor="middle">yield() 주요 사용처: 유연한 상태 감시 (Polling)</text>
+  <text x="400" y="65" font-family="Arial" font-size="14" fill="#666" text-anchor="middle">"틈틈이 확인하되, 헛바퀴 돌며 남을 방해하지는 않는다!"</text>
+
+  <!-- Thread B (Door/Network) -->
+  <rect x="100" y="100" width="250" height="150" fill="#f5f5f5" stroke="#999" stroke-width="3" rx="10"/>
+  <text x="225" y="130" font-family="Arial" font-size="16" font-weight="bold" fill="#666" text-anchor="middle">외부 환경 (네트워크/파일 등)</text>
+  
+  <text x="225" y="170" font-family="monospace" font-size="14" fill="#333" text-anchor="middle">데이터 다운로드 중...</text>
+  
+  <rect x="150" y="210" width="150" height="30" fill="#ffb300" rx="5"/>
+  <text x="225" y="230" font-family="Arial" font-size="14" font-weight="bold" fill="#fff" text-anchor="middle">work = false 상태 유지</text>
+  
+  <text x="225" y="270" font-family="Arial" font-size="12" fill="#1b5e20" text-anchor="middle">※ 언젠가 다운로드가 끝나면 true로 바뀜</text>
+
+  <!-- Arrow (Checking) -->
+  <path d="M 450 150 C 400 130, 350 130, 350 175 C 350 220, 400 220, 450 200" fill="none" stroke="#e53935" stroke-width="3" stroke-dasharray="5,5" marker-end="url(#arrow-red)"/>
+  <text x="400" y="130" font-family="Arial" font-size="12" font-weight="bold" fill="#c62828" text-anchor="middle">"다 됐어?"</text>
+
+  <!-- Main Thread (Monitor) -->
+  <rect x="450" y="100" width="250" height="150" fill="#e8f5e9" stroke="#43a047" stroke-width="3" rx="10"/>
+  <text x="575" y="130" font-family="Arial" font-size="16" font-weight="bold" fill="#2e7d32" text-anchor="middle">메인 스레드 (감시자)</text>
+  
+  <text x="575" y="170" font-family="Arial" font-size="14" fill="#1b5e20" text-anchor="middle">"아직 다운로드 중이네..."</text>
+  
+  <rect x="490" y="200" width="170" height="30" fill="#43a047" rx="5"/>
+  <text x="575" y="220" font-family="monospace" font-size="14" font-weight="bold" fill="#fff" text-anchor="middle">Thread.yield();</text>
+
+  <rect x="450" y="270" width="250" height="40" fill="#fff" stroke="#43a047" stroke-width="2" rx="5"/>
+  <text x="575" y="295" font-family="Arial" font-size="14" font-weight="bold" fill="#2e7d32" text-anchor="middle">➔ 쿨하게 대기열 맨 뒤로 양보!</text>
+
+  <defs>
+    <marker id="arrow-red" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#e53935" />
+    </marker>
+  </defs>
+</svg>

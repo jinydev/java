@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 350" width="100%" height="100%">
+  <!-- Background -->
+  <rect width="750" height="350" fill="#fcfcfc" rx="15" />
+  
+  <text x="375" y="40" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#333" text-anchor="middle">스레드 이름표 (Name Tag) 비유</text>
+
+  <!-- Main Thread -->
+  <g transform="translate(60, 90)">
+    <!-- Worker Body -->
+    <path d="M 50 180 C 50 120, 150 120, 150 180" fill="#bbdefb" stroke="#1e88e5" stroke-width="3"/>
+    <circle cx="100" cy="80" r="35" fill="#ffe0b2" stroke="#fb8c00" stroke-width="2"/>
+    
+    <!-- Name Tag -->
+    <rect x="60" y="140" width="80" height="30" fill="#fff" stroke="#1e88e5" stroke-width="2" rx="3"/>
+    <rect x="60" y="140" width="80" height="8" fill="#1e88e5" rx="2"/>
+    <text x="100" y="162" font-family="Arial" font-size="14" font-weight="bold" fill="#1565c0" text-anchor="middle">main</text>
+
+    <!-- Description -->
+    <text x="100" y="210" font-family="Arial" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">메인 스레드</text>
+    <text x="100" y="230" font-family="Arial" font-size="12" fill="#666" text-anchor="middle">(고정된 이름표)</text>
+  </g>
+
+  <!-- Default Worker Thread -->
+  <g transform="translate(280, 90)">
+    <!-- Worker Body -->
+    <path d="M 50 180 C 50 120, 150 120, 150 180" fill="#e8f5e9" stroke="#43a047" stroke-width="3"/>
+    <circle cx="100" cy="80" r="35" fill="#ffe0b2" stroke="#fb8c00" stroke-width="2"/>
+    
+    <!-- Name Tag -->
+    <rect x="60" y="140" width="80" height="30" fill="#fff" stroke="#43a047" stroke-width="2" rx="3"/>
+    <rect x="60" y="140" width="80" height="8" fill="#43a047" rx="2"/>
+    <text x="100" y="162" font-family="Arial" font-size="12" font-weight="bold" fill="#2e7d32" text-anchor="middle">Thread-0</text>
+
+    <!-- Description -->
+    <text x="100" y="210" font-family="Arial" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">일반 작업 스레드</text>
+    <text x="100" y="230" font-family="Arial" font-size="12" fill="#666" text-anchor="middle">(자동 부여된 번호)</text>
+  </g>
+
+  <!-- Custom Worker Thread -->
+  <g transform="translate(500, 90)">
+    <!-- Worker Body -->
+    <path d="M 50 180 C 50 120, 150 120, 150 180" fill="#ffebee" stroke="#e53935" stroke-width="3"/>
+    <circle cx="100" cy="80" r="35" fill="#ffe0b2" stroke="#fb8c00" stroke-width="2"/>
+    
+    <!-- Name Tag -->
+    <rect x="50" y="140" width="100" height="30" fill="#fff" stroke="#e53935" stroke-width="2" rx="3"/>
+    <rect x="50" y="140" width="100" height="8" fill="#e53935" rx="2"/>
+    <text x="100" y="162" font-family="Arial" font-size="12" font-weight="bold" fill="#c62828" text-anchor="middle">chat-thread</text>
+
+    <!-- Description -->
+    <text x="100" y="210" font-family="Arial" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">맞춤형 작업 스레드</text>
+    <text x="100" y="230" font-family="Arial" font-size="12" fill="#666" text-anchor="middle">(setName으로 변경)</text>
+  </g>
+
+  <!-- Arrows & Code Callout -->
+  <path d="M 450 180 C 470 140, 480 140, 520 155" fill="none" stroke="#e53935" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#arrow)"/>
+  <rect x="360" y="165" width="120" height="25" fill="#ffebee" rx="4"/>
+  <text x="420" y="182" font-family="monospace" font-size="12" font-weight="bold" fill="#c62828" text-anchor="middle">setName(...)</text>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#e53935" />
+    </marker>
+  </defs>
+</svg>

@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 400" width="100%" height="100%">
+  <!-- Background -->
+  <rect width="750" height="400" fill="#fcfcfc" rx="15" />
+  
+  <text x="375" y="40" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#333" text-anchor="middle">메인 스레드와 프로세스 종료 규칙 (회사 비유)</text>
+
+  <!-- Process Box (The Company) -->
+  <rect x="50" y="80" width="650" height="280" fill="#f0f4f8" stroke="#cfd8dc" stroke-width="2" rx="10"/>
+  <text x="375" y="110" font-family="Arial" font-size="16" font-weight="bold" fill="#546e7a" text-anchor="middle">프로세스 (Process) : 회사</text>
+
+  <!-- Timelines Background -->
+  <line x1="100" y1="160" x2="650" y2="160" stroke="#e0e0e0" stroke-width="2" stroke-dasharray="4,4"/>
+  <line x1="100" y1="240" x2="650" y2="240" stroke="#e0e0e0" stroke-width="2" stroke-dasharray="4,4"/>
+  <line x1="100" y1="320" x2="650" y2="320" stroke="#e0e0e0" stroke-width="2" stroke-dasharray="4,4"/>
+
+  <!-- Main Thread -->
+  <rect x="120" y="145" width="200" height="30" fill="#e3f2fd" stroke="#1e88e5" stroke-width="2" rx="5"/>
+  <text x="220" y="165" font-family="Arial" font-size="14" font-weight="bold" fill="#1565c0" text-anchor="middle">메인 스레드 (팀장님)</text>
+  <text x="360" y="165" font-family="Arial" font-size="12" font-weight="bold" fill="#d32f2f" text-anchor="middle">팀장님 일찍 퇴근! (종료)</text>
+  <circle cx="330" cy="160" r="6" fill="#d32f2f"/>
+
+  <!-- Worker Thread 1 -->
+  <rect x="250" y="225" width="250" height="30" fill="#e8f5e9" stroke="#43a047" stroke-width="2" rx="5"/>
+  <text x="375" y="245" font-family="Arial" font-size="14" font-weight="bold" fill="#2e7d32" text-anchor="middle">작업 스레드 A (팀원 1)</text>
+  <circle cx="510" cy="240" r="6" fill="#d32f2f"/>
+
+  <!-- Worker Thread 2 -->
+  <rect x="300" y="305" width="300" height="30" fill="#e8f5e9" stroke="#43a047" stroke-width="2" rx="5"/>
+  <text x="450" y="325" font-family="Arial" font-size="14" font-weight="bold" fill="#2e7d32" text-anchor="middle">작업 스레드 B (팀원 2 : 야근중)</text>
+  <circle cx="610" cy="320" r="6" fill="#d32f2f"/>
+
+  <!-- Process Termination Line -->
+  <line x1="610" y1="120" x2="610" y2="360" stroke="#e65100" stroke-width="3" stroke-dasharray="8,4"/>
+  <rect x="525" y="130" width="170" height="35" fill="#fff3e0" stroke="#ef6c00" stroke-width="2" rx="5"/>
+  <text x="610" y="152" font-family="Arial" font-size="12" font-weight="bold" fill="#e65100" text-anchor="middle">모두 퇴근해야 회사 문 닫음</text>
+  <text x="610" y="380" font-family="Arial" font-size="14" font-weight="bold" fill="#e65100" text-anchor="middle">프로세스 최종 종료</text>
+
+  <!-- Arrows from Main to Workers -->
+  <path d="M 230 175 L 230 205 C 230 220, 240 225, 250 225" fill="none" stroke="#666" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="190" y="210" font-family="Arial" font-size="12" fill="#666" text-anchor="middle">스레드 생성</text>
+
+  <path d="M 280 175 L 280 285 C 280 300, 290 305, 300 305" fill="none" stroke="#666" stroke-width="2" marker-end="url(#arrow)"/>
+  
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#666" />
+    </marker>
+  </defs>
+</svg>

@@ -22,15 +22,17 @@ keywords: "Part 03. 라이브러리 활용, 자바, Java, 프로그래밍, 백�
 운영체제는 실행 중인 프로그램을 프로세스(Process)로 관리하며, 멀티 태스킹을 위해 프로세스 내에서 멀티 스레드(Thread)를 사용합니다. 이 장에서는 자바에서 스레드를 생성하고 실행하는 방법, 스레드의 상태 제어, 그리고 공유 객체 동기화 문제를 해결하는 방법을 학습합니다.
 
 ### [목차](thread/)
-- [20.1 멀티 스레드 개념](thread/01/)
-- [20.2 메인 스레드](thread/02/)
-- [20.3 작업 스레드 생성과 실행](thread/03/)
-- [20.4 스레드 이름](thread/04/)
-- [20.5 스레드 상태](thread/05/)
-- [20.6 스레드 동기화](thread/06/)
-- [20.7 스레드 안전 종료](thread/07/)
-- [20.8 데몬 스레드](thread/08/)
-- [20.9 스레드풀](thread/09/)
+- [20.1 멀티 스레드 개념](thread/01_concept/)
+- [20.2 메인 스레드](thread/02_main-thread/)
+- [20.3 작업 스레드 생성과 실행](thread/03_worker-thread/)
+- [20.4 스레드 이름](thread/04_thread-name/)
+- [20.5 스레드 상태](thread/05_thread-state/)
+- [20.6 스레드 동기화](thread/06_synchronization/)
+- [20.7 스레드 안전 종료](thread/07_safe-stop/)
+- [20.8 데몬 스레드](thread/08_daemon/)
+- [20.9 스레드풀](thread/09_thread-pool/)
+- [20.10 가상 스레드](thread/10_virtual-thread/)
+- [확인문제](thread/11_quiz/)
 
 ---
 

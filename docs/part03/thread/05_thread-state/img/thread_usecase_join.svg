@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 350" width="100%" height="100%">
+  <!-- Background -->
+  <rect width="800" height="350" fill="#fcfcfc" rx="15" />
+  
+  <text x="400" y="40" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#333" text-anchor="middle">join() 주요 사용처: 완벽한 결과 의존성</text>
+  <text x="400" y="65" font-family="Arial" font-size="14" fill="#666" text-anchor="middle">"계산이 다 끝나야만 영수증을 뽑을 수 있다!"</text>
+
+  <!-- Thread B (Calculator) -->
+  <rect x="100" y="100" width="250" height="150" fill="#e8f5e9" stroke="#43a047" stroke-width="3" rx="10"/>
+  <text x="225" y="130" font-family="Arial" font-size="16" font-weight="bold" fill="#2e7d32" text-anchor="middle">작업 스레드 B (계산기)</text>
+  
+  <text x="225" y="165" font-family="monospace" font-size="14" fill="#333" text-anchor="middle">1 + 2 + 3 + ... + 100</text>
+  <text x="225" y="190" font-family="monospace" font-size="14" fill="#333" text-anchor="middle">열심히 계산 중 ⏳</text>
+  
+  <rect x="150" y="210" width="150" height="30" fill="#43a047" rx="5"/>
+  <text x="225" y="230" font-family="Arial" font-size="14" font-weight="bold" fill="#fff" text-anchor="middle">최종 합계: 5050 산출!</text>
+
+  <!-- Arrow -->
+  <path d="M 350 175 L 450 175" fill="none" stroke="#666" stroke-width="4" marker-end="url(#arrow-dark)"/>
+  <text x="400" y="165" font-family="Arial" font-size="14" font-weight="bold" fill="#c62828" text-anchor="middle">결과물 전달</text>
+  <text x="400" y="195" font-family="Arial" font-size="12" fill="#d32f2f" text-anchor="middle">(종료 시점)</text>
+
+  <!-- Main Thread (Printer) -->
+  <rect x="450" y="100" width="250" height="150" fill="#e3f2fd" stroke="#1e88e5" stroke-width="3" rx="10"/>
+  <text x="575" y="130" font-family="Arial" font-size="16" font-weight="bold" fill="#1565c0" text-anchor="middle">메인 스레드 (영수증 출력기)</text>
+  
+  <!-- Lock / Wait visual -->
+  <circle cx="575" cy="180" r="25" fill="#ffebee" stroke="#e53935" stroke-width="2"/>
+  <text x="575" y="185" font-family="Arial" font-size="18" font-weight="bold" fill="#c62828" text-anchor="middle">대기</text>
+  
+  <text x="575" y="230" font-family="Arial" font-size="14" font-weight="bold" fill="#1565c0" text-anchor="middle">"합계가 없으면 꼼짝도 안함"</text>
+  
+  <rect x="450" y="270" width="250" height="40" fill="#fff" stroke="#1e88e5" stroke-width="2" rx="5" stroke-dasharray="4,4"/>
+  <text x="575" y="295" font-family="Arial" font-size="14" font-weight="bold" fill="#1565c0" text-anchor="middle">➔ 결과 수신 후 영수증 출력 재개!</text>
+
+  <defs>
+    <marker id="arrow-dark" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#666" />
+    </marker>
+  </defs>
+</svg>

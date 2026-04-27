@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="100%" height="100%">
+  <!-- Background -->
+  <rect width="800" height="400" fill="#f5f5f5" rx="15" />
+  
+  <text x="400" y="40" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#333" text-anchor="middle">방법 1. 플래그(boolean)를 이용한 안전 종료</text>
+
+  <!-- Worker Area -->
+  <rect x="100" y="80" width="350" height="250" fill="#fff" stroke="#1565c0" stroke-width="4" rx="10"/>
+  <text x="275" y="110" font-family="Arial" font-size="18" font-weight="bold" fill="#1565c0" text-anchor="middle">일꾼 스레드 (while 루프)</text>
+
+  <!-- Worker -->
+  <circle cx="200" cy="220" r="40" fill="#e3f2fd" stroke="#1565c0" stroke-width="3"/>
+  <text x="200" y="225" font-family="Arial" font-size="16" font-weight="bold" fill="#1565c0" text-anchor="middle">작업 중</text>
+
+  <!-- Look at flag -->
+  <path d="M 240 190 Q 300 150 350 150" fill="none" stroke="#666" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#arrow-gray)"/>
+  <text x="290" y="140" font-family="Arial" font-size="14" fill="#666" text-anchor="middle">"깃발 올라갔나?"</text>
+
+  <!-- Flag -->
+  <rect x="550" y="150" width="120" height="80" fill="#fff3e0" stroke="#f57c00" stroke-width="3" rx="5"/>
+  <text x="610" y="180" font-family="Arial" font-size="16" font-weight="bold" fill="#e65100" text-anchor="middle">퇴근 깃발</text>
+  <text x="610" y="200" font-family="monospace" font-size="16" font-weight="bold" fill="#e65100" text-anchor="middle">stop = true</text>
+  
+  <!-- Boss -->
+  <circle cx="610" cy="90" r="30" fill="#ffebee" stroke="#c62828" stroke-width="3"/>
+  <text x="610" y="95" font-family="Arial" font-size="16" font-weight="bold" fill="#c62828" text-anchor="middle">메인</text>
+  <path d="M 610 120 L 610 145" fill="none" stroke="#c62828" stroke-width="2" marker-end="url(#arrow-red)"/>
+  
+  <!-- Clean up and exit -->
+  <path d="M 240 250 Q 300 300 450 300" fill="none" stroke="#2e7d32" stroke-width="3" marker-end="url(#arrow-green)"/>
+  <text x="350" y="290" font-family="Arial" font-size="14" font-weight="bold" fill="#2e7d32" text-anchor="middle">루프 탈출! (짐 싸기)</text>
+  
+  <rect x="460" y="270" width="140" height="60" fill="#e8f5e9" stroke="#2e7d32" stroke-width="3" rx="10"/>
+  <text x="530" y="300" font-family="Arial" font-size="16" font-weight="bold" fill="#2e7d32" text-anchor="middle">안전 퇴근</text>
+
+  <defs>
+    <marker id="arrow-gray" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#666" />
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2e7d32" />
+    </marker>
+    <marker id="arrow-red" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#c62828" />
+    </marker>
+  </defs>
+</svg>

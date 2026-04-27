@@ -5,27 +5,26 @@ main:
   - title: 학습목표
     url: /part03/thread
   - title: 21.1 멀티 스레드 개념
-    url: /part03/thread/concept
+    url: /part03/thread/01_concept
   - title: 21.2 메인 스레드
-    url: /part03/thread/main-thread
+    url: /part03/thread/02_main-thread
   - title: 21.3 작업 스레드 생성과 실행
-    url: /part03/thread/worker-thread
+    url: /part03/thread/03_worker-thread
   - title: 21.4 스레드 이름
-    url: /part03/thread/thread-name
+    url: /part03/thread/04_thread-name
   - title: 21.5 스레드 상태
-    url: /part03/thread/thread-state
+    url: /part03/thread/05_thread-state
   - title: 21.6 스레드 동기화
-    url: /part03/thread/synchronization
+    url: /part03/thread/06_synchronization
   - title: 21.7 스레드 안전 종료
-    url: /part03/thread/safe-stop
+    url: /part03/thread/07_safe-stop
   - title: 21.8 데몬 스레드
-    url: /part03/thread/daemon
+    url: /part03/thread/08_daemon
   - title: 21.9 스레드풀
-    url: /part03/thread/thread-pool
+    url: /part03/thread/09_thread-pool
   - title: 21.10 가상 스레드
-    url: /part03/thread/virtual-thread
-  - title: 확인문제
-    url: /part03/thread/quiz
+    url: /part03/thread/10_virtual-thread
+
 - title: 22. 스트림과 병렬 처리
   url: /part03/io
   subitems:

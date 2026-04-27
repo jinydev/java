@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 350" width="100%" height="100%">
+  <!-- Background -->
+  <rect width="800" height="350" fill="#f8f9fa" rx="15" />
+  
+  <text x="400" y="40" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#333" text-anchor="middle">스레드 안전 종료 비유 (퇴근 지시하기)</text>
+
+  <!-- 1. 강제 종료 (stop() - 금지) -->
+  <g transform="translate(40, 80)">
+    <rect width="340" height="230" fill="#fff" stroke="#e53935" stroke-width="2" rx="10"/>
+    <rect width="340" height="40" fill="#ffebee" rx="10" />
+    <path d="M 0 30 L 340 30 L 340 40 L 0 40 Z" fill="#ffebee" />
+    <text x="170" y="26" font-family="Arial" font-size="16" font-weight="bold" fill="#c62828" text-anchor="middle">❌ 강제 종료 (stop() 메소드)</text>
+    
+    <text x="170" y="65" font-family="Arial" font-size="14" fill="#555" text-anchor="middle">"컴퓨터 플러그 뽑아버리기"</text>
+
+    <!-- Shocked Worker -->
+    <circle cx="170" cy="120" r="35" fill="#ffcdd2" stroke="#e53935" stroke-width="2"/>
+    <text x="170" y="125" font-family="Arial" font-size="14" font-weight="bold" fill="#c62828" text-anchor="middle">일꾼</text>
+    
+    <!-- Lightning Bolt -->
+    <path d="M 230 80 L 210 110 L 220 110 L 200 140 L 210 140 L 190 170" fill="none" stroke="#fbc02d" stroke-width="4"/>
+
+    <!-- Desk Mess -->
+    <rect x="130" y="170" width="80" height="30" fill="#cfd8dc" rx="2"/>
+    <line x1="140" y1="170" x2="130" y2="160" stroke="#78909c" stroke-width="2"/>
+    <line x1="160" y1="170" x2="170" y2="160" stroke="#78909c" stroke-width="2"/>
+    <line x1="180" y1="170" x2="190" y2="160" stroke="#78909c" stroke-width="2"/>
+
+    <text x="170" y="215" font-family="Arial" font-size="14" font-weight="bold" fill="#c62828" text-anchor="middle">책상 정리(리소스 반납) 못하고 강제 쫓겨남</text>
+  </g>
+
+  <!-- 2. 안전 종료 -->
+  <g transform="translate(420, 80)">
+    <rect width="340" height="230" fill="#fff" stroke="#43a047" stroke-width="2" rx="10"/>
+    <rect width="340" height="40" fill="#e8f5e9" rx="10" />
+    <path d="M 0 30 L 340 30 L 340 40 L 0 40 Z" fill="#e8f5e9" />
+    <text x="170" y="26" font-family="Arial" font-size="16" font-weight="bold" fill="#2e7d32" text-anchor="middle">✅ 안전 종료 (flag 또는 interrupt)</text>
+    
+    <text x="170" y="65" font-family="Arial" font-size="14" fill="#555" text-anchor="middle">"일 마무리하고 퇴근하라고 지시하기"</text>
+
+    <!-- Normal Worker -->
+    <circle cx="100" cy="120" r="35" fill="#c8e6c9" stroke="#43a047" stroke-width="2"/>
+    <text x="100" y="125" font-family="Arial" font-size="14" font-weight="bold" fill="#2e7d32" text-anchor="middle">일꾼</text>
+
+    <!-- Notification -->
+    <path d="M 140 100 C 160 80, 200 80, 220 100" fill="none" stroke="#1e88e5" stroke-width="2" stroke-dasharray="2,2"/>
+    <text x="180" y="90" font-family="Arial" font-size="12" font-weight="bold" fill="#1e88e5" text-anchor="middle">"퇴근하세요!"</text>
+
+    <!-- Clean Desk -->
+    <rect x="200" y="115" width="80" height="40" fill="#fff9c4" stroke="#fbc02d" stroke-width="2" rx="2"/>
+    <text x="240" y="140" font-family="Arial" font-size="12" fill="#f57f17" text-anchor="middle">정리된 책상</text>
+
+    <!-- Arrows -->
+    <path d="M 100 165 L 100 185 L 170 185" fill="none" stroke="#43a047" stroke-width="2" marker-end="url(#arrow-green)"/>
+    <text x="230" y="190" font-family="Arial" font-size="14" font-weight="bold" fill="#2e7d32" text-anchor="middle">리소스 반납 후 정상 퇴근</text>
+  </g>
+
+  <defs>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#43a047" />
+    </marker>
+  </defs>
+</svg>
