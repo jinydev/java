@@ -30,23 +30,7 @@ keywords: "03. Swing 컨테이너, 자바, Java, 프로그래밍, 백엔드, 개
 
 최상위 컨테이너(`JFrame`, `JDialog`, `JWindow` 등)는 **루트 팬(Root Pane)**이라는 구조를 가집니다.
 
-```mermaid
-classDiagram
-    class RootPane {
-        +GlassPane
-        +LayeredPane
-    }
-    class LayeredPane {
-        +JMenuBar (Optional)
-        +ContentPane
-    }
-    class GlassPane
-    class ContentPane
-    
-    RootPane *-- GlassPane
-    RootPane *-- LayeredPane
-    LayeredPane *-- ContentPane
-```
+![최상위 컨테이너의 루트 팬 구조](./img/root_pane.svg)
 
 ### 1) GlassPane
 `GlassPane`은 다른 패널들 가장 위에 존재하는 투명한 판입니다. 기본적으로는 비활성화되어 있지만, 활성화하면 마우스 이벤트를 가로채거나 화면 전체에 그림을 그리는 등의 효과를 낼 수 있습니다. (예: 전체 화면 로딩 표시 등)
@@ -70,6 +54,16 @@ jFrame.getContentPane().add(new JButton("확인"), BorderLayout.SOUTH);
 
 ## 2. JWindow
 `JWindow`는 제목 표시줄, 버튼, 테두리가 없는 윈도우입니다. 주로 애플리케이션 시작 시 보여주는 **스플래시 화면(Splash Screen)**이나 커스텀 디자인 윈도우를 만들 때 사용합니다.
+
+* **실습 예제 파일**: [JWindowExample.java](file:///d:/site/jinysite/java/src/gui/2.swing/03_swing_containers/sample/sec03/exam02_jwindow/JWindowExample.java) (경로: `sample/sec03/exam02_jwindow/JWindowExample.java`)
+* **실행 방법**:
+  ```powershell
+  # 1. 03_swing_containers 디렉토리로 이동 후 컴파일
+  javac -d sample sample/sec03/exam02_jwindow/JWindowExample.java
+  
+  # 2. 실행 (실행된 이미지를 클릭하면 윈도우가 닫힙니다)
+  java -cp sample sec03.exam02_jwindow.JWindowExample
+  ```
 
 ```java
 package sec03.exam02_jwindow;
@@ -129,6 +123,16 @@ public class JWindowExample extends JWindow {
     - `DISPOSE_ON_CLOSE`: 리소스 해제 및 닫기.
     - `EXIT_ON_CLOSE`: 애플리케이션 종료 (`System.exit(0)`).
 
+* **실습 예제 파일**: [JFrameExample.java](file:///d:/site/jinysite/java/src/gui/2.swing/03_swing_containers/sample/sec03/exam03_jframe/JFrameExample.java) (경로: `sample/sec03/exam03_jframe/JFrameExample.java`)
+* **실행 방법**:
+  ```powershell
+  # 1. 03_swing_containers 디렉토리로 이동 후 컴파일
+  javac -d sample sample/sec03/exam03_jframe/JFrameExample.java
+  
+  # 2. 실행
+  java -cp sample sec03.exam03_jframe.JFrameExample
+  ```
+
 ```java
 package sec03.exam03_jframe;
 
@@ -168,6 +172,16 @@ public class JFrameExample extends JFrame {
 
 ## 4. JTabbedPane
 `JTabbedPane`은 탭을 통해 여러 화면을 전환하며 보여주는 컨테이너입니다. `addTab()` 메서드로 탭 이름과 컴포넌트(주로 `JPanel`)를 추가합니다.
+
+* **실습 예제 파일**: [JTabbedPaneExample.java](file:///d:/site/jinysite/java/src/gui/2.swing/03_swing_containers/sample/sec03/exam04_jtabbedpane/JTabbedPaneExample.java) (경로: `sample/sec03/exam04_jtabbedpane/JTabbedPaneExample.java`)
+* **실행 방법**:
+  ```powershell
+  # 1. 03_swing_containers 디렉토리로 이동 후 컴파일
+  javac -d sample sample/sec03/exam04_jtabbedpane/JTabbedPaneExample.java
+  
+  # 2. 실행
+  java -cp sample sec03.exam04_jtabbedpane.JTabbedPaneExample
+  ```
 
 ```java
 package sec03.exam04_jtabbedpane;
@@ -240,6 +254,16 @@ public class JTabbedPaneExample extends JFrame {
 // 사용법
 JScrollPane scrollPane = new JScrollPane(targetComponent);
 ```
+
+* **실습 예제 파일**: [JScrollPaneExample.java](file:///d:/site/jinysite/java/src/gui/2.swing/03_swing_containers/sample/sec03/exam05_jscrollpane/JScrollPaneExample.java) (경로: `sample/sec03/exam05_jscrollpane/JScrollPaneExample.java`)
+* **실행 방법**:
+  ```powershell
+  # 1. 03_swing_containers 디렉토리로 이동 후 컴파일
+  javac -d sample sample/sec03/exam05_jscrollpane/JScrollPaneExample.java
+  
+  # 2. 실행
+  java -cp sample sec03.exam05_jscrollpane.JScrollPaneExample
+  ```
 
 ```java
 package sec03.exam05_jscrollpane;

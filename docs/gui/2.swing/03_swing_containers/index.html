@@ -689,6 +689,7 @@
         
     </ol>
 </nav>
+
         <div class="bd-content ps-lg-2">
             <h1 id="03-swing-컨테이너">03. Swing 컨테이너</h1>
 
@@ -753,22 +754,7 @@
 
 <p>최상위 컨테이너(<code class="language-plaintext highlighter-rouge">JFrame</code>, <code class="language-plaintext highlighter-rouge">JDialog</code>, <code class="language-plaintext highlighter-rouge">JWindow</code> 등)는 <strong>루트 팬(Root Pane)</strong>이라는 구조를 가집니다.</p>
 
-<pre><code class="language-mermaid">classDiagram
-    class RootPane {
-        +GlassPane
-        +LayeredPane
-    }
-    class LayeredPane {
-        +JMenuBar (Optional)
-        +ContentPane
-    }
-    class GlassPane
-    class ContentPane
-    
-    RootPane *-- GlassPane
-    RootPane *-- LayeredPane
-    LayeredPane *-- ContentPane
-</code></pre>
+<p><img src="./img/root_pane.svg" alt="최상위 컨테이너의 루트 팬 구조" /></p>
 
 <h3 id="1-glasspane">1) GlassPane</h3>
 <p><code class="language-plaintext highlighter-rouge">GlassPane</code>은 다른 패널들 가장 위에 존재하는 투명한 판입니다. 기본적으로는 비활성화되어 있지만, 활성화하면 마우스 이벤트를 가로채거나 화면 전체에 그림을 그리는 등의 효과를 낼 수 있습니다. (예: 전체 화면 로딩 표시 등)</p>
@@ -793,6 +779,18 @@
 
 <h2 id="2-jwindow">2. JWindow</h2>
 <p><code class="language-plaintext highlighter-rouge">JWindow</code>는 제목 표시줄, 버튼, 테두리가 없는 윈도우입니다. 주로 애플리케이션 시작 시 보여주는 <strong>스플래시 화면(Splash Screen)</strong>이나 커스텀 디자인 윈도우를 만들 때 사용합니다.</p>
+
+<ul>
+  <li><strong>실습 예제 파일</strong>: <a href="file:///d:/site/jinysite/java/src/gui/2.swing/03_swing_containers/sample/sec03/exam02_jwindow/JWindowExample.java">JWindowExample.java</a> (경로: <code class="language-plaintext highlighter-rouge">sample/sec03/exam02_jwindow/JWindowExample.java</code>)</li>
+  <li><strong>실행 방법</strong>:
+    <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 1. 03_swing_containers 디렉토리로 이동 후 컴파일</span><span class="w">
+</span><span class="n">javac</span><span class="w"> </span><span class="nt">-d</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sample/sec03/exam02_jwindow/JWindowExample.java</span><span class="w">
+  
+</span><span class="c"># 2. 실행 (실행된 이미지를 클릭하면 윈도우가 닫힙니다)</span><span class="w">
+</span><span class="n">java</span><span class="w"> </span><span class="nt">-cp</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sec03.exam02_jwindow.JWindowExample</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+</ul>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">sec03.exam02_jwindow</span><span class="o">;</span>
 
@@ -854,6 +852,15 @@
       <li><code class="language-plaintext highlighter-rouge">EXIT_ON_CLOSE</code>: 애플리케이션 종료 (<code class="language-plaintext highlighter-rouge">System.exit(0)</code>).</li>
     </ul>
   </li>
+  <li><strong>실습 예제 파일</strong>: <a href="file:///d:/site/jinysite/java/src/gui/2.swing/03_swing_containers/sample/sec03/exam03_jframe/JFrameExample.java">JFrameExample.java</a> (경로: <code class="language-plaintext highlighter-rouge">sample/sec03/exam03_jframe/JFrameExample.java</code>)</li>
+  <li><strong>실행 방법</strong>:
+    <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 1. 03_swing_containers 디렉토리로 이동 후 컴파일</span><span class="w">
+</span><span class="n">javac</span><span class="w"> </span><span class="nt">-d</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sample/sec03/exam03_jframe/JFrameExample.java</span><span class="w">
+  
+</span><span class="c"># 2. 실행</span><span class="w">
+</span><span class="n">java</span><span class="w"> </span><span class="nt">-cp</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sec03.exam03_jframe.JFrameExample</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
 </ul>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">sec03.exam03_jframe</span><span class="o">;</span>
@@ -894,6 +901,18 @@
 
 <h2 id="4-jtabbedpane">4. JTabbedPane</h2>
 <p><code class="language-plaintext highlighter-rouge">JTabbedPane</code>은 탭을 통해 여러 화면을 전환하며 보여주는 컨테이너입니다. <code class="language-plaintext highlighter-rouge">addTab()</code> 메서드로 탭 이름과 컴포넌트(주로 <code class="language-plaintext highlighter-rouge">JPanel</code>)를 추가합니다.</p>
+
+<ul>
+  <li><strong>실습 예제 파일</strong>: <a href="file:///d:/site/jinysite/java/src/gui/2.swing/03_swing_containers/sample/sec03/exam04_jtabbedpane/JTabbedPaneExample.java">JTabbedPaneExample.java</a> (경로: <code class="language-plaintext highlighter-rouge">sample/sec03/exam04_jtabbedpane/JTabbedPaneExample.java</code>)</li>
+  <li><strong>실행 방법</strong>:
+    <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 1. 03_swing_containers 디렉토리로 이동 후 컴파일</span><span class="w">
+</span><span class="n">javac</span><span class="w"> </span><span class="nt">-d</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sample/sec03/exam04_jtabbedpane/JTabbedPaneExample.java</span><span class="w">
+  
+</span><span class="c"># 2. 실행</span><span class="w">
+</span><span class="n">java</span><span class="w"> </span><span class="nt">-cp</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sec03.exam04_jtabbedpane.JTabbedPaneExample</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+</ul>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">sec03.exam04_jtabbedpane</span><span class="o">;</span>
 
@@ -964,6 +983,18 @@
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 사용법</span>
 <span class="nc">JScrollPane</span> <span class="n">scrollPane</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JScrollPane</span><span class="o">(</span><span class="n">targetComponent</span><span class="o">);</span>
 </code></pre></div></div>
+
+<ul>
+  <li><strong>실습 예제 파일</strong>: <a href="file:///d:/site/jinysite/java/src/gui/2.swing/03_swing_containers/sample/sec03/exam05_jscrollpane/JScrollPaneExample.java">JScrollPaneExample.java</a> (경로: <code class="language-plaintext highlighter-rouge">sample/sec03/exam05_jscrollpane/JScrollPaneExample.java</code>)</li>
+  <li><strong>실행 방법</strong>:
+    <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 1. 03_swing_containers 디렉토리로 이동 후 컴파일</span><span class="w">
+</span><span class="n">javac</span><span class="w"> </span><span class="nt">-d</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sample/sec03/exam05_jscrollpane/JScrollPaneExample.java</span><span class="w">
+  
+</span><span class="c"># 2. 실행</span><span class="w">
+</span><span class="n">java</span><span class="w"> </span><span class="nt">-cp</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sec03.exam05_jscrollpane.JScrollPaneExample</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+</ul>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">sec03.exam05_jscrollpane</span><span class="o">;</span>
 

@@ -689,10 +689,13 @@
         
     </ol>
 </nav>
+
         <div class="bd-content ps-lg-2">
             <h1 id="09-테이블-컴포넌트">09. 테이블 컴포넌트</h1>
 
 <p><code class="language-plaintext highlighter-rouge">JTable</code>은 데이터를 행(Row)과 열(Column)로 구성된 표 형식으로 보여주고 편집할 수 있는 강력한 컴포넌트입니다.</p>
+
+<p><img src="./img/table_architecture.svg" alt="테이블 컴포넌트 구조" /></p>
 
 <h2 id="1-jtable-구조">1. JTable 구조</h2>
 <p>테이블은 <strong>컬럼 헤더(Column Header)</strong>, <strong>행(Row)</strong>, <strong>셀(Cell)</strong>로 구성됩니다.</p>
@@ -723,6 +726,18 @@
 <hr />
 
 <h2 id="3-예제-기본-jtable">3. 예제: 기본 JTable</h2>
+
+<ul>
+  <li><strong>실습 예제 파일</strong>: <a href="file:///d:/site/jinysite/java/src/gui/2.swing/09_table_component/sample/sec09/exam01_jtable/JTableBasicExample.java">JTableBasicExample.java</a> (경로: <code class="language-plaintext highlighter-rouge">sample/sec09/exam01_jtable/JTableBasicExample.java</code>)</li>
+  <li><strong>실행 방법</strong>:
+    <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 1. 09_table_component 디렉토리로 이동 후 컴파일</span><span class="w">
+</span><span class="n">javac</span><span class="w"> </span><span class="nt">-d</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sample/sec09/exam01_jtable/JTableBasicExample.java</span><span class="w">
+  
+</span><span class="c"># 2. 실행</span><span class="w">
+</span><span class="n">java</span><span class="w"> </span><span class="nt">-cp</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sec09.exam01_jtable.JTableBasicExample</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+</ul>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">sec09.exam01_jtable</span><span class="o">;</span>
 
@@ -810,7 +825,19 @@
 <span class="o">}</span>
 </code></pre></div></div>
 
-<h3 id="종합-예제-code-jtablecellrendererexample">종합 예제 Code (<code class="language-plaintext highlighter-rouge">JTableCellRendererExample</code>)</h3>
+<h3 id="종합-예제-code-jtablecustomexample">종합 예제 Code (<code class="language-plaintext highlighter-rouge">JTableCustomExample</code>)</h3>
+
+<ul>
+  <li><strong>실습 예제 파일</strong>: <a href="file:///d:/site/jinysite/java/src/gui/2.swing/09_table_component/sample/sec09/exam03_cellrenderer/JTableCustomExample.java">JTableCustomExample.java</a> (경로: <code class="language-plaintext highlighter-rouge">sample/sec09/exam03_cellrenderer/JTableCustomExample.java</code>)</li>
+  <li><strong>실행 방법</strong>:
+    <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 1. 09_table_component 디렉토리로 이동 후 컴파일</span><span class="w">
+</span><span class="n">javac</span><span class="w"> </span><span class="nt">-d</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sample/sec09/exam03_cellrenderer/JTableCustomExample.java</span><span class="w">
+  
+</span><span class="c"># 2. 실행 (실행 전 같은 패키지 폴더 내의 key.gif 및 start.gif 리소스가 필요합니다)</span><span class="w">
+</span><span class="n">java</span><span class="w"> </span><span class="nt">-cp</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sec09.exam03_cellrenderer.JTableCustomExample</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+</ul>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">sec09.exam03_cellrenderer</span><span class="o">;</span>
 
@@ -944,7 +971,18 @@
 </ul>
 
 <h3 id="crud-예제-code-jtableeditorexample">CRUD 예제 Code (<code class="language-plaintext highlighter-rouge">JTableEditorExample</code>)</h3>
-<p>사용자 입력을 받아 테이블에 행을 추가, 수정, 삭제하는 예제입니다.</p>
+
+<ul>
+  <li><strong>실습 예제 파일</strong>: <a href="file:///d:/site/jinysite/java/src/gui/2.swing/09_table_component/sample/sec09/exam04_eventhandling/JTableEditorExample.java">JTableEditorExample.java</a> (경로: <code class="language-plaintext highlighter-rouge">sample/sec09/exam04_eventhandling/JTableEditorExample.java</code>)</li>
+  <li><strong>실행 방법</strong>:
+    <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 1. 09_table_component 디렉토리로 이동 후 컴파일</span><span class="w">
+</span><span class="n">javac</span><span class="w"> </span><span class="nt">-d</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sample/sec09/exam04_eventhandling/JTableEditorExample.java</span><span class="w">
+  
+</span><span class="c"># 2. 실행</span><span class="w">
+</span><span class="n">java</span><span class="w"> </span><span class="nt">-cp</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sec09.exam04_eventhandling.JTableEditorExample</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+</ul>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">sec09.exam04_eventhandling</span><span class="o">;</span>
 
@@ -1073,45 +1111,47 @@
 <span class="o">}</span>
 </code></pre></div></div>
 
-<p>Vector(전체 행 관리)
-|– Vector(0 인덱스 행 데이터)
-|– Vector(1 인덱스 행 데이터)
-|– …</p>
+<h3 id="vector를-이용한-데이터-다이렉트-수정">Vector를 이용한 데이터 다이렉트 수정</h3>
+<p><code class="language-plaintext highlighter-rouge">DefaultTableModel</code> 내부에서 전체 행 데이터는 <code class="language-plaintext highlighter-rouge">Vector&lt;Vector&gt;</code> 형태로 보관됩니다. <code class="language-plaintext highlighter-rouge">getDataVector()</code> 메서드를 사용하면 이 벡터 데이터에 직접 접근할 수 있습니다.</p>
 
-<p>DefaultTableModel에서 전체 행을 관리하는 Vector는 getDataVector ( ) 메소드로 얻을 수</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Vector(전체 행 관리)
+|-- Vector(0 인덱스 행 데이터)
+|-- Vector(1 인덱스 행 데이터)
+|-- ...
+</code></pre></div></div>
 
-<p>있습니다.</p>
+<p><code class="language-plaintext highlighter-rouge">DefaultTableModel</code>에서 전체 행을 관리하는 Vector는 다음과 같이 얻을 수 있습니다.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Vector</span><span class="o">&lt;</span><span class="nc">Vector</span><span class="o">&gt;</span> <span class="n">rows</span> <span class="o">=</span> <span class="n">tableModel</span><span class="o">.</span><span class="na">getDataVector</span><span class="o">();</span>
+</code></pre></div></div>
 
-<p>Vector<Vector> rows  =  tableModel.getDataVector();</Vector></p>
+<p>그리고 각 행의 Vector는 행 인덱스를 주어 다음과 같이 가져옵니다.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Vector</span> <span class="n">row</span> <span class="o">=</span> <span class="n">rows</span><span class="o">.</span><span class="na">elementAt</span><span class="o">(</span><span class="n">행인덱스</span><span class="o">);</span>
+</code></pre></div></div>
 
-<p>그리고 각 행의 Vector는 행 인덱스를 주고 다음과 같이 얻을 수 있습니다.</p>
+<p>행 Vector의 내부 요소를 변경하기 위해서는 Vector의 <code class="language-plaintext highlighter-rouge">set()</code> 메소드를 이용하는데, 첫 번째 매개값은 컬럼의 인덱스 번호이고, 두 번째 매개값은 컬럼의 값입니다.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">row</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="n">changeValue</span><span class="o">);</span>    <span class="c1">// 0번 컬럼의 값을 changeValue로 수정</span>
+<span class="n">row</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">changeValue</span><span class="o">);</span>    <span class="c1">// 1번 컬럼의 값을 changeValue로 수정</span>
+</code></pre></div></div>
 
-<p>Vector row  =  rows.elementAt(행인덱스);</p>
+<p>행 Vector를 직접 수정한 경우, <code class="language-plaintext highlighter-rouge">JTable</code>이 변경 사항을 다시 그리도록 <code class="language-plaintext highlighter-rouge">DefaultTableModel</code>의 <code class="language-plaintext highlighter-rouge">fireTableDataChanged()</code> 메소드를 호출해야 합니다.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tableModel</span><span class="o">.</span><span class="na">fireTableDataChanged</span><span class="o">();</span>
+</code></pre></div></div>
 
-<p>행 Vector의 내부 요소를 변경하기 위해서는 Vector의 set ( ) 메소드를 이용하면 되는데, 첫 번째</p>
+<hr />
 
-<p>매개값은 컬럼의 인덱스 번호이고, 두 번째 매개값은 컬럼의 값입니다.</p>
+<h3 id="vector-활용-종합-예제-jtableexample">Vector 활용 종합 예제 (<code class="language-plaintext highlighter-rouge">JTableExample</code>)</h3>
 
-<p>row.set(0, changeValue);    //0번 컬럼의 값을 changeValue로 수정
-row.set(1, changeValue);    //1번 컬럼의 값을 changeValue로 수정</p>
-
-<p>행  Vector를  이용해서  행의  데이터를  수정하였다면  JTable을  다시  렌더링할  수  있도록</p>
-
-<p>DefaultTableModel의 fireTableDataChanged ( ) 메소드를 호출해야 합니다.</p>
-
-<p>tableModel.fireTableDataChanged();</p>
-
-<p>다음 예제는 사용자가 입력한 내용을 JTable의 행으로 넣는다. 그리고 선택된 행의 데이터를 수정</p>
-
-<p>하고 삭제할 수 있습니다.</p>
-
-<blockquote>
-  <blockquote>
-    <blockquote>
-      <p>JTableExample.java</p>
-    </blockquote>
-  </blockquote>
-</blockquote>
+<ul>
+  <li><strong>실습 예제 파일</strong>: <a href="file:///d:/site/jinysite/java/src/gui/2.swing/09_table_component/sample/sec09/exam05_row_add_update_delete/JTableExample.java">JTableExample.java</a> (경로: <code class="language-plaintext highlighter-rouge">sample/sec09/exam05_row_add_update_delete/JTableExample.java</code>)</li>
+  <li><strong>실행 방법</strong>:
+    <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 1. 09_table_component 디렉토리로 이동 후 컴파일</span><span class="w">
+</span><span class="n">javac</span><span class="w"> </span><span class="nt">-d</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sample/sec09/exam05_row_add_update_delete/JTableExample.java</span><span class="w">
+  
+</span><span class="c"># 2. 실행</span><span class="w">
+</span><span class="n">java</span><span class="w"> </span><span class="nt">-cp</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sec09.exam05_row_add_update_delete.JTableExample</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+</ul>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">sec09.exam05_row_add_update_delete</span><span class="o">;</span>
 
@@ -1133,207 +1173,162 @@ row.set(1, changeValue);    //1번 컬럼의 값을 changeValue로 수정</p>
 <span class="kn">import</span> <span class="nn">javax.swing.table.DefaultTableModel</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">JTableExample</span> <span class="kd">extends</span> <span class="nc">JFrame</span> <span class="o">{</span>
-<span class="kd">private</span> <span class="nc">JTable</span> <span class="n">jTable</span><span class="o">;</span>
-<span class="kd">private</span> <span class="nc">JPanel</span> <span class="n">pSouth</span><span class="o">;</span>
-<span class="kd">private</span> <span class="nc">JTextField</span> <span class="n">txtName</span><span class="o">,</span> <span class="n">txtAge</span><span class="o">;</span>
-<span class="kd">private</span> <span class="nc">JButton</span> <span class="n">btnInsert</span><span class="o">,</span> <span class="n">btnUpdate</span><span class="o">,</span> <span class="n">btnDelete</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">JTable</span> <span class="n">jTable</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">JPanel</span> <span class="n">pSouth</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">JTextField</span> <span class="n">txtName</span><span class="o">,</span> <span class="n">txtAge</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">JButton</span> <span class="n">btnInsert</span><span class="o">,</span> <span class="n">btnUpdate</span><span class="o">,</span> <span class="n">btnDelete</span><span class="o">;</span>
+
+    <span class="c1">// 메인 윈도우 설정</span>
+    <span class="kd">public</span> <span class="nf">JTableExample</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">setTitle</span><span class="o">(</span><span class="s">"JTableExample"</span><span class="o">);</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">setDefaultCloseOperation</span><span class="o">(</span><span class="nc">JFrame</span><span class="o">.</span><span class="na">EXIT_ON_CLOSE</span><span class="o">);</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">getContentPane</span><span class="o">().</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">JScrollPane</span><span class="o">(</span><span class="n">getJTable</span><span class="o">()),</span> <span class="nc">BorderLayout</span><span class="o">.</span><span class="na">CENTER</span><span class="o">);</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">getContentPane</span><span class="o">().</span><span class="na">add</span><span class="o">(</span><span class="n">getPSouth</span><span class="o">(),</span> <span class="nc">BorderLayout</span><span class="o">.</span><span class="na">SOUTH</span><span class="o">);</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">setSize</span><span class="o">(</span><span class="mi">250</span><span class="o">,</span> <span class="mi">250</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="c1">// JTable 생성</span>
+    <span class="kd">public</span> <span class="nc">JTable</span> <span class="nf">getJTable</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">jTable</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">jTable</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JTable</span><span class="o">();</span>
+            <span class="kd">final</span> <span class="nc">DefaultTableModel</span> <span class="n">tableModel</span> <span class="o">=</span> <span class="o">(</span><span class="nc">DefaultTableModel</span><span class="o">)</span> <span class="n">jTable</span><span class="o">.</span><span class="na">getModel</span><span class="o">();</span>
+            <span class="n">tableModel</span><span class="o">.</span><span class="na">addColumn</span><span class="o">(</span><span class="s">"이름"</span><span class="o">);</span>
+            <span class="n">tableModel</span><span class="o">.</span><span class="na">addColumn</span><span class="o">(</span><span class="s">"나이"</span><span class="o">);</span>
+            
+            <span class="c1">// 행을 선택했을 때 이벤트 처리</span>
+            <span class="n">jTable</span><span class="o">.</span><span class="na">addMouseListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">MouseAdapter</span><span class="o">()</span> <span class="o">{</span>
+                <span class="nd">@Override</span>
+                <span class="kd">public</span> <span class="kt">void</span> <span class="nf">mouseClicked</span><span class="o">(</span><span class="nc">MouseEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="kt">int</span> <span class="n">rowIndex</span> <span class="o">=</span> <span class="n">jTable</span><span class="o">.</span><span class="na">getSelectedRow</span><span class="o">();</span>
+                    <span class="k">if</span> <span class="o">(</span><span class="n">rowIndex</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+                        <span class="nc">String</span> <span class="n">name</span> <span class="o">=</span> <span class="o">(</span><span class="nc">String</span><span class="o">)</span> <span class="n">tableModel</span><span class="o">.</span><span class="na">getValueAt</span><span class="o">(</span><span class="n">rowIndex</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
+                        <span class="nc">String</span> <span class="n">age</span> <span class="o">=</span> <span class="o">(</span><span class="nc">String</span><span class="o">)</span> <span class="n">tableModel</span><span class="o">.</span><span class="na">getValueAt</span><span class="o">(</span><span class="n">rowIndex</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span>
+                        <span class="n">txtName</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">name</span><span class="o">);</span>
+                        <span class="n">txtAge</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">age</span><span class="o">);</span>
+                    <span class="o">}</span>
+                <span class="o">}</span>
+            <span class="o">});</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">jTable</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="c1">// 사용자 입력 JPanel 생성</span>
+    <span class="kd">public</span> <span class="nc">JPanel</span> <span class="nf">getPSouth</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">pSouth</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">pSouth</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JPanel</span><span class="o">();</span>
+            <span class="n">pSouth</span><span class="o">.</span><span class="na">setLayout</span><span class="o">(</span><span class="k">new</span> <span class="nc">GridLayout</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="mi">1</span><span class="o">));</span>
+
+            <span class="nc">JPanel</span> <span class="n">pNameInput</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JPanel</span><span class="o">();</span>
+            <span class="n">pNameInput</span><span class="o">.</span><span class="na">setLayout</span><span class="o">(</span><span class="k">new</span> <span class="nc">GridLayout</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">));</span>
+            <span class="n">pNameInput</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">JLabel</span><span class="o">(</span><span class="s">"이름"</span><span class="o">,</span> <span class="nc">JLabel</span><span class="o">.</span><span class="na">CENTER</span><span class="o">));</span>
+            <span class="n">pNameInput</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">getTxtName</span><span class="o">());</span>
+            <span class="n">pSouth</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">pNameInput</span><span class="o">);</span>
+
+            <span class="nc">JPanel</span> <span class="n">pAgeInput</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JPanel</span><span class="o">();</span>
+            <span class="n">pAgeInput</span><span class="o">.</span><span class="na">setLayout</span><span class="o">(</span><span class="k">new</span> <span class="nc">GridLayout</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">));</span>
+            <span class="n">pAgeInput</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">JLabel</span><span class="o">(</span><span class="s">"나이"</span><span class="o">,</span> <span class="nc">JLabel</span><span class="o">.</span><span class="na">CENTER</span><span class="o">));</span>
+            <span class="n">pAgeInput</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">getTxtAge</span><span class="o">());</span>
+            <span class="n">pSouth</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">pAgeInput</span><span class="o">);</span>
+
+            <span class="nc">JPanel</span> <span class="n">pButton</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JPanel</span><span class="o">();</span>
+            <span class="n">pButton</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">getBtnInsert</span><span class="o">());</span>
+            <span class="n">pButton</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">getBtnUpdate</span><span class="o">());</span>
+            <span class="n">pButton</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">getBtnDelete</span><span class="o">());</span>
+            <span class="n">pSouth</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">pButton</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">pSouth</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nc">JTextField</span> <span class="nf">getTxtName</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">txtName</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">txtName</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JTextField</span><span class="o">();</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">txtName</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nc">JTextField</span> <span class="nf">getTxtAge</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">txtAge</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">txtAge</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JTextField</span><span class="o">();</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">txtAge</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="c1">// 행 삽입 버튼 생성</span>
+    <span class="kd">public</span> <span class="nc">JButton</span> <span class="nf">getBtnInsert</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">btnInsert</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">btnInsert</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JButton</span><span class="o">();</span>
+            <span class="n">btnInsert</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">"추가"</span><span class="o">);</span>
+            <span class="n">btnInsert</span><span class="o">.</span><span class="na">addActionListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">ActionListener</span><span class="o">()</span> <span class="o">{</span>
+                <span class="nd">@Override</span>
+                <span class="kd">public</span> <span class="kt">void</span> <span class="nf">actionPerformed</span><span class="o">(</span><span class="nc">ActionEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="nc">Object</span><span class="o">[]</span> <span class="n">rowData</span> <span class="o">=</span> <span class="o">{</span> <span class="n">txtName</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">txtAge</span><span class="o">.</span><span class="na">getText</span><span class="o">()</span> <span class="o">};</span>
+                    <span class="nc">DefaultTableModel</span> <span class="n">tableModel</span> <span class="o">=</span> <span class="o">(</span><span class="nc">DefaultTableModel</span><span class="o">)</span> <span class="n">getJTable</span><span class="o">().</span><span class="na">getModel</span><span class="o">();</span>
+                    <span class="n">tableModel</span><span class="o">.</span><span class="na">addRow</span><span class="o">(</span><span class="n">rowData</span><span class="o">);</span>
+                    <span class="n">txtName</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">""</span><span class="o">);</span>
+                    <span class="n">txtAge</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">""</span><span class="o">);</span>
+                <span class="o">}</span>
+            <span class="o">});</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">btnInsert</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="c1">// 행 수정 버튼 생성</span>
+    <span class="kd">public</span> <span class="nc">JButton</span> <span class="nf">getBtnUpdate</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">btnUpdate</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">btnUpdate</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JButton</span><span class="o">();</span>
+            <span class="n">btnUpdate</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">"수정"</span><span class="o">);</span>
+            <span class="n">btnUpdate</span><span class="o">.</span><span class="na">addActionListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">ActionListener</span><span class="o">()</span> <span class="o">{</span>
+                <span class="nd">@Override</span>
+                <span class="kd">public</span> <span class="kt">void</span> <span class="nf">actionPerformed</span><span class="o">(</span><span class="nc">ActionEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="kt">int</span> <span class="n">selectedRow</span> <span class="o">=</span> <span class="n">jTable</span><span class="o">.</span><span class="na">getSelectedRow</span><span class="o">();</span>
+                    <span class="k">if</span> <span class="o">(</span><span class="n">selectedRow</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+                        <span class="nc">DefaultTableModel</span> <span class="n">tableModel</span> <span class="o">=</span> <span class="o">(</span><span class="nc">DefaultTableModel</span><span class="o">)</span> <span class="n">getJTable</span><span class="o">().</span><span class="na">getModel</span><span class="o">();</span>
+                        <span class="nc">Vector</span><span class="o">&lt;</span><span class="nc">Vector</span><span class="o">&gt;</span> <span class="n">rows</span> <span class="o">=</span> <span class="n">tableModel</span><span class="o">.</span><span class="na">getDataVector</span><span class="o">();</span>
+                        <span class="nc">Vector</span> <span class="n">row</span> <span class="o">=</span> <span class="n">rows</span><span class="o">.</span><span class="na">elementAt</span><span class="o">(</span><span class="n">selectedRow</span><span class="o">);</span>
+                        <span class="n">row</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="n">txtName</span><span class="o">.</span><span class="na">getText</span><span class="o">());</span>
+                        <span class="n">row</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">txtAge</span><span class="o">.</span><span class="na">getText</span><span class="o">());</span>
+                        <span class="n">tableModel</span><span class="o">.</span><span class="na">fireTableDataChanged</span><span class="o">();</span>
+                        <span class="n">txtName</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">""</span><span class="o">);</span>
+                        <span class="n">txtAge</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">""</span><span class="o">);</span>
+                    <span class="o">}</span>
+                <span class="o">}</span>
+            <span class="o">});</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">btnUpdate</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="c1">// 행 삭제 버튼 생성</span>
+    <span class="kd">public</span> <span class="nc">JButton</span> <span class="nf">getBtnDelete</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">btnDelete</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">btnDelete</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JButton</span><span class="o">();</span>
+            <span class="n">btnDelete</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">"삭제"</span><span class="o">);</span>
+            <span class="n">btnDelete</span><span class="o">.</span><span class="na">addActionListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">ActionListener</span><span class="o">()</span> <span class="o">{</span>
+                <span class="nd">@Override</span>
+                <span class="kd">public</span> <span class="kt">void</span> <span class="nf">actionPerformed</span><span class="o">(</span><span class="nc">ActionEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="kt">int</span> <span class="n">rowIndex</span> <span class="o">=</span> <span class="n">getJTable</span><span class="o">().</span><span class="na">getSelectedRow</span><span class="o">();</span>
+                    <span class="k">if</span> <span class="o">(</span><span class="n">rowIndex</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+                        <span class="nc">DefaultTableModel</span> <span class="n">tableModel</span> <span class="o">=</span> <span class="o">(</span><span class="nc">DefaultTableModel</span><span class="o">)</span> <span class="n">getJTable</span><span class="o">().</span><span class="na">getModel</span><span class="o">();</span>
+                        <span class="n">tableModel</span><span class="o">.</span><span class="na">removeRow</span><span class="o">(</span><span class="n">rowIndex</span><span class="o">);</span>
+                        <span class="n">txtName</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">""</span><span class="o">);</span>
+                        <span class="n">txtAge</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">""</span><span class="o">);</span>
+                    <span class="o">}</span>
+                <span class="o">}</span>
+            <span class="o">});</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">btnDelete</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">SwingUtilities</span><span class="o">.</span><span class="na">invokeLater</span><span class="o">(</span><span class="k">new</span> <span class="nc">Runnable</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+                <span class="nc">JTableExample</span> <span class="n">jFrame</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JTableExample</span><span class="o">();</span>
+                <span class="n">jFrame</span><span class="o">.</span><span class="na">setVisible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+<span class="o">}</span>
 </code></pre></div></div>
-
-<p>//메인 윈도우 설정
-public JTableExample() {
-this.setTitle(“JTableExample”);
-this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-this.getContentPane().add(new JScrollPane(getJTable()),
-BorderLayout.CENTER);
-this.getContentPane().add(getPSouth(), BorderLayout.SOUTH);
-this.setSize(250, 250);</p>
-
-<p>}</p>
-
-<p>//JTable 생성
-public JTable getJTable() {
-if (jTable  = =  null) {</p>
-
-<p>jTable  =  new JTable();
-final DefaultTableModel tableModel  =  (DefaultTableModel)
-jTable.getModel();
-tableModel.addColumn(“이름”);
-tableModel.addColumn(“나이”);
-//행을 선택했을 때 이벤트 처리
-jTable.addMouseListener(new MouseAdapter() {</p>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">void</span> <span class="nf">mouseClicked</span><span class="o">(</span><span class="nc">MouseEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-<span class="kt">int</span> <span class="n">rowIndex</span>  <span class="o">=</span>  <span class="n">jTable</span><span class="o">.</span><span class="na">getSelectedRow</span><span class="o">();</span>
-<span class="k">if</span> <span class="o">(</span><span class="n">rowIndex</span> <span class="o">!=</span>  <span class="o">-</span><span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
-<span class="nc">String</span> <span class="n">name</span>  <span class="o">=</span>  <span class="o">(</span><span class="nc">String</span><span class="o">)</span> <span class="n">tableModel</span><span class="o">.</span><span class="na">getValueAt</span><span class="o">(</span><span class="n">rowIndex</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
-<span class="nc">String</span> <span class="n">age</span>  <span class="o">=</span>  <span class="o">(</span><span class="nc">String</span><span class="o">)</span> <span class="n">tableModel</span><span class="o">.</span><span class="na">getValueAt</span><span class="o">(</span><span class="n">rowIndex</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span>
-<span class="n">txtName</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">name</span><span class="o">);</span>
-<span class="n">txtAge</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">age</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
-
-<span class="o">}</span>
-
-<span class="o">}</span>
-
-<span class="o">});</span>
-
-<span class="o">}</span>
-<span class="k">return</span> <span class="n">jTable</span><span class="o">;</span>
-
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p>//사용자 입력 JPanel 생성
-public JPanel getPSouth() {
-if (pSouth  = =  null) {
-pSouth  =  new JPanel();</p>
-
-<p>pSouth.setLayout(new GridLayout(3, 1));</p>
-
-<p>JPanel pNameInput  =  new JPanel();
-pNameInput.setLayout(new GridLayout(1, 2));
-pNameInput.add(new JLabel(“이름”, JLabel.CENTER));
-pNameInput.add(getTxtName());
-pSouth.add(pNameInput);</p>
-
-<p>JPanel pAgeInput  =  new JPanel();
-pAgeInput.setLayout(new GridLayout(1, 2));
-pAgeInput.add(new JLabel(“나이”, JLabel.CENTER));
-pAgeInput.add(getTxtAge());
-pSouth.add(pAgeInput);</p>
-
-<p>JPanel pButton  =  new JPanel();
-pButton.add(getBtnInsert());
-pButton.add(getBtnUpdate());
-pButton.add(getBtnDelete());
-pSouth.add(pButton);</p>
-
-<p>}
-return pSouth;</p>
-
-<p>}</p>
-
-<p>public JTextField getTxtName() {
-if (txtName  = =  null) {
-txtName  =  new JTextField();</p>
-
-<p>}
-return txtName;</p>
-
-<p>}</p>
-
-<p>public JTextField getTxtAge() {
-if (txtAge  = =  null) {
-txtAge  =  new JTextField();</p>
-
-<p>}
-return txtAge;</p>
-
-<p>}</p>
-
-<p>//행 삽입 버튼 생성
-public JButton getBtnInsert() {
-if (btnInsert  = =  null) {
-btnInsert  =  new JButton();
-btnInsert.setText(“추가”);
-btnInsert.addActionListener(new ActionListener() {</p>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">void</span> <span class="nf">actionPerformed</span><span class="o">(</span><span class="nc">ActionEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-<span class="nc">Object</span><span class="o">[]</span> <span class="n">rowData</span>  <span class="o">=</span>  <span class="o">{</span> <span class="n">txtName</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">txtAge</span><span class="o">.</span><span class="na">getText</span><span class="o">()</span> <span class="o">};</span>
-<span class="nc">DefaultTableModel</span> <span class="n">tableModel</span>  <span class="o">=</span>  <span class="o">(</span><span class="nc">DefaultTableModel</span><span class="o">)</span>
-<span class="n">getJTable</span><span class="o">().</span><span class="na">getModel</span><span class="o">();</span>
-<span class="n">tableModel</span><span class="o">.</span><span class="na">addRow</span><span class="o">(</span><span class="n">rowData</span><span class="o">);</span>
-<span class="n">txtName</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">""</span><span class="o">);</span>
-<span class="n">txtAge</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">""</span><span class="o">);</span>
-
-<span class="o">}</span>
-
-<span class="o">});</span>
-
-<span class="o">}</span>
-<span class="k">return</span> <span class="n">btnInsert</span><span class="o">;</span>
-
-
-
-
-
-
-
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p>//행 수정 버튼 생성
-public JButton getBtnUpdate() {
-if (btnUpdate  = =  null) {
-btnUpdate  =  new JButton();
-btnUpdate.setText(“수정”);
-btnUpdate.addActionListener(new ActionListener() {</p>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">void</span> <span class="nf">actionPerformed</span><span class="o">(</span><span class="nc">ActionEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-<span class="nc">DefaultTableModel</span> <span class="n">tableModel</span>  <span class="o">=</span>  <span class="o">(</span><span class="nc">DefaultTableModel</span><span class="o">)</span>
-<span class="n">getJTable</span><span class="o">().</span><span class="na">getModel</span><span class="o">();</span>
-<span class="nc">Vector</span><span class="o">&lt;</span><span class="nc">Vector</span><span class="o">&gt;</span> <span class="n">rows</span>  <span class="o">=</span>  <span class="n">tableModel</span><span class="o">.</span><span class="na">getDataVector</span><span class="o">();</span>
-<span class="nc">Vector</span> <span class="n">row</span>  <span class="o">=</span>  <span class="n">rows</span><span class="o">.</span><span class="na">elementAt</span><span class="o">(</span><span class="n">jTable</span><span class="o">.</span><span class="na">getSelectedRow</span><span class="o">());</span>
-<span class="n">row</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="n">txtName</span><span class="o">.</span><span class="na">getText</span><span class="o">());</span>
-<span class="n">row</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">txtAge</span><span class="o">.</span><span class="na">getText</span><span class="o">());</span>
-<span class="n">tableModel</span><span class="o">.</span><span class="na">fireTableDataChanged</span><span class="o">();</span>
-<span class="n">txtName</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">""</span><span class="o">);</span>
-<span class="n">txtAge</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">""</span><span class="o">);</span>
-
-<span class="o">}</span>
-
-<span class="o">});</span>
-
-<span class="o">}</span>
-<span class="k">return</span> <span class="n">btnUpdate</span><span class="o">;</span>
-
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p>//행 삭제 버튼 생성
-public JButton getBtnDelete() {
-if (btnDelete  = =  null) {
-btnDelete  =  new JButton();
-btnDelete.setText(“삭제”);
-btnDelete.addActionListener(new ActionListener() {</p>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">void</span> <span class="nf">actionPerformed</span><span class="o">(</span><span class="nc">ActionEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-<span class="kt">int</span> <span class="n">rowIndex</span>  <span class="o">=</span>  <span class="n">getJTable</span><span class="o">().</span><span class="na">getSelectedRow</span><span class="o">();</span>
-<span class="k">if</span> <span class="o">(</span><span class="n">rowIndex</span> <span class="o">!=</span>  <span class="o">-</span><span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
-<span class="nc">DefaultTableModel</span> <span class="n">tableModel</span>  <span class="o">=</span>  <span class="o">(</span><span class="nc">DefaultTableModel</span><span class="o">)</span>
-<span class="n">getJTable</span><span class="o">().</span><span class="na">getModel</span><span class="o">();</span>
-<span class="n">tableModel</span><span class="o">.</span><span class="na">removeRow</span><span class="o">(</span><span class="n">rowIndex</span><span class="o">);</span>
-<span class="n">txtName</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">""</span><span class="o">);</span>
-<span class="n">txtAge</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">""</span><span class="o">);</span>
-
-<span class="o">}</span>
-
-<span class="o">}</span>
-
-
-
-
-
-<span class="o">});</span>
-
-<span class="o">}</span>
-<span class="k">return</span> <span class="n">btnDelete</span><span class="o">;</span>
-
-<span class="o">}</span>
-
-<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-<span class="nc">SwingUtilities</span><span class="o">.</span><span class="na">invokeLater</span><span class="o">(</span><span class="k">new</span> <span class="nc">Runnable</span><span class="o">()</span> <span class="o">{</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
-<span class="nc">JTableExample</span> <span class="n">jFrame</span>  <span class="o">=</span>  <span class="k">new</span> <span class="nc">JTableExample</span><span class="o">();</span>
-<span class="n">jFrame</span><span class="o">.</span><span class="na">setVisible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
-
-<span class="o">}</span>
-
-<span class="o">});</span>
-
-<span class="o">}</span>
-
-<span class="o">}</span>
-
-</code></pre></div></div>
-
-<p>실행 결과</p>
-
 
 
 

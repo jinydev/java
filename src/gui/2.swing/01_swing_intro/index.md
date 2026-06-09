@@ -20,6 +20,16 @@ AWT는 OS의 컴포넌트를 사용하므로 속도가 빠르지만 디자인이
 ## 1. AWT 예제
 다음은 AWT로 작성한 간단한 윈도우 프로그램입니다. `Frame`을 상속받아 윈도우를 만듭니다.
 
+* **실습 예제 파일**: [App.java (AWT)](file:///d:/site/jinysite/java/src/gui/2.swing/01_swing_intro/sample/sec01/exam01_awt/App.java) (경로: `sample/sec01/exam01_awt/App.java`)
+* **실행 방법**:
+  ```powershell
+  # 1. 01_swing_intro 디렉토리로 이동 후 컴파일
+  javac -d sample sample/sec01/exam01_awt/App.java
+  
+  # 2. 실행
+  java -cp sample sec01.exam01_awt.App
+  ```
+
 ```java
 package sec01.exam01_awt;
 
@@ -60,6 +70,16 @@ public class App extends Frame {
 
 ## 2. Swing 예제
 다음은 Swing으로 작성한 윈도우 프로그램입니다. AWT의 `Frame` 대신 `JFrame`을 상속받고, `Button` 대신 `JButton`을 사용합니다. Swing 컴포넌트는 클래스 이름 앞에 `J`가 붙는 것이 특징입니다.
+
+* **실습 예제 파일**: [App.java (Swing)](file:///d:/site/jinysite/java/src/gui/2.swing/01_swing_intro/sample/sec01/exam02_swing/App.java) (경로: `sample/sec01/exam02_swing/App.java`)
+* **실행 방법**:
+  ```powershell
+  # 1. 01_swing_intro 디렉토리로 이동 후 컴파일
+  javac -d sample sample/sec01/exam02_swing/App.java
+  
+  # 2. 실행
+  java -cp sample sec01.exam02_swing.App
+  ```
 
 ```java
 package sec01.exam02_swing;

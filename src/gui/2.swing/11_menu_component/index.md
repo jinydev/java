@@ -9,6 +9,8 @@ keywords: "11. 메뉴 컴포넌트, 자바, Java, 프로그래밍, 백엔드, �
 
 UI 프로그램에서 메뉴는 필수적인 구성 요소입니다. Swing은 `javax.swing` 패키지를 통해 다양한 메뉴 컴포넌트를 제공합니다.
 
+![메뉴 컴포넌트 구조](./img/menu_hierarchy.svg)
+
 | 컴포넌트                   | 설명                                                 |
 | :------------------------- | :--------------------------------------------------- |
 | **`JMenuBar`**             | 윈도우 상단에 위치하는 메뉴 바                       |
@@ -46,6 +48,16 @@ frame.setJMenuBar(menuBar);
 
 ## 2. 메뉴 예제 (`JMenuExample`)
 다음은 파일 및 도움말 메뉴를 구성하고, 체크박스 메뉴 아이템과 아이콘을 사용하는 예제입니다.
+
+* **실습 예제 파일**: [JMenuExample.java](file:///d:/site/jinysite/java/src/gui/2.swing/11_menu_component/sample/sec11/exam01_jmenu/JMenuExample.java) (경로: `sample/sec11/exam01_jmenu/JMenuExample.java`)
+* **실행 방법**:
+  ```powershell
+  # 1. 11_menu_component 디렉토리로 이동 후 컴파일
+  javac -d sample sample/sec11/exam01_jmenu/JMenuExample.java
+  
+  # 2. 실행 (실행 전 같은 패키지 폴더 내의 open.gif 리소스가 필요합니다)
+  java -cp sample sec11.exam01_jmenu.JMenuExample
+  ```
 
 ```java
 package sec11.exam01_jmenu;
@@ -188,5 +200,3 @@ public class JMenuExample extends JFrame {
 - `e.getActionCommand()`: 메뉴 텍스트 반환
 
 체크박스 메뉴(`JCheckBoxMenuItem`)나 라디오 메뉴(`JRadioButtonMenuItem`)는 `isSelected()` 메서드로 현재 상태를 확인할 수 있습니다.
-
-

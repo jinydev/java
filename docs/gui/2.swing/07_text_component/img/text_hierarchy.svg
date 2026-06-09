@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 420" width="100%" height="420">
+  <defs>
+    <!-- Drop Shadow Filter -->
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="1" dy="3" stdDeviation="3" flood-opacity="0.08" flood-color="#000000" />
+    </filter>
+    <!-- Inheritance Arrow Marker -->
+    <marker id="inheritance" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#FFFFFF" stroke="#4A5568" stroke-width="1.5" />
+    </marker>
+  </defs>
+
+  <style>
+    .class-name { font-family: system-ui, -apple-system, sans-serif; font-size: 13px; font-weight: bold; fill: #1A202C; text-anchor: middle; }
+    .member-text { font-family: system-ui, -apple-system, sans-serif; font-size: 11px; fill: #4A5568; }
+    .class-box { stroke-width: 2; }
+    .base-box { fill: #EDF2F7; stroke: #4A5568; }
+    .component-box { fill: #F5F3FF; stroke: #7C3AED; }
+    .concrete-box { fill: #EBF8FF; stroke: #3182CE; }
+    .relation-line { stroke: #4A5568; stroke-width: 1.5; fill: none; }
+  </style>
+
+  <!-- Connectors -->
+  <!-- JComponent to JLabel & JTextComponent -->
+  <path class="relation-line" d="M 350 60 L 350 80 L 145 80 L 145 100" marker-end="url(#inheritance)" />
+  <path class="relation-line" d="M 350 80 L 445 80 L 445 100" marker-end="url(#inheritance)" />
+
+  <!-- JTextComponent to JTextField, JTextArea & JEditorPane -->
+  <path class="relation-line" d="M 445 195 L 445 215 L 190 215 L 190 240" marker-end="url(#inheritance)" />
+  <path class="relation-line" d="M 445 215 L 350 215 L 350 240" marker-end="url(#inheritance)" />
+  <path class="relation-line" d="M 445 215 L 510 215 L 510 240" marker-end="url(#inheritance)" />
+
+  <!-- JTextField to JPasswordField -->
+  <path class="relation-line" d="M 190 285 L 190 330" marker-end="url(#inheritance)" />
+
+  <!-- JEditorPane to JTextPane -->
+  <path class="relation-line" d="M 510 285 L 510 330" marker-end="url(#inheritance)" />
+
+  <!-- JComponent Node -->
+  <g transform="translate(250, 20)" filter="url(#shadow)">
+    <rect class="class-box base-box" width="200" height="40" rx="6" />
+    <text x="100" y="24" class="class-name">JComponent</text>
+  </g>
+
+  <!-- JLabel Node -->
+  <g transform="translate(70, 100)" filter="url(#shadow)">
+    <rect class="class-box concrete-box" width="150" height="50" rx="6" />
+    <text x="75" y="29" class="class-name">JLabel</text>
+  </g>
+
+  <!-- JTextComponent Node -->
+  <g transform="translate(320, 100)" filter="url(#shadow)">
+    <rect class="class-box component-box" width="250" height="95" rx="6" />
+    <text x="125" y="22" class="class-name" fill="#5B21B6">JTextComponent</text>
+    <line x1="0" y1="32" x2="250" y2="32" stroke="#7C3AED" stroke-width="1" />
+    <text x="15" y="50" class="member-text">+setText(String t)</text>
+    <text x="15" y="65" class="member-text">+getText() String</text>
+    <text x="15" y="80" class="member-text">+setEditable(boolean b)</text>
+  </g>
+
+  <!-- JTextField Node -->
+  <g transform="translate(120, 240)" filter="url(#shadow)">
+    <rect class="class-box concrete-box" width="140" height="45" rx="6" />
+    <text x="70" y="27" class="class-name">JTextField</text>
+  </g>
+
+  <!-- JPasswordField Node -->
+  <g transform="translate(120, 330)" filter="url(#shadow)">
+    <rect class="class-box concrete-box" width="140" height="45" rx="6" />
+    <text x="70" y="27" class="class-name">JPasswordField</text>
+  </g>
+
+  <!-- JTextArea Node -->
+  <g transform="translate(280, 240)" filter="url(#shadow)">
+    <rect class="class-box concrete-box" width="140" height="45" rx="6" />
+    <text x="70" y="27" class="class-name">JTextArea</text>
+  </g>
+
+  <!-- JEditorPane Node -->
+  <g transform="translate(440, 240)" filter="url(#shadow)">
+    <rect class="class-box concrete-box" width="140" height="45" rx="6" />
+    <text x="70" y="27" class="class-name">JEditorPane</text>
+  </g>
+
+  <!-- JTextPane Node -->
+  <g transform="translate(440, 330)" filter="url(#shadow)">
+    <rect class="class-box concrete-box" width="140" height="45" rx="6" />
+    <text x="70" y="27" class="class-name">JTextPane</text>
+  </g>
+</svg>

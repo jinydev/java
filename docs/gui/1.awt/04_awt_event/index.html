@@ -5,28 +5,28 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- 기본 메타데이터 --><meta name="description" content="04. AWT Event Handling 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."><meta name="author" content="HojinLee"><!-- 제목 설정 --><title>04. AWT Event Handling</title>
-  <meta name="title" content="04. AWT Event Handling" /><!-- 키워드 설정 --><meta name="keywords" content="04. AWT Event Handling, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"><!-- Open Graph 메타데이터 --><meta property="og:title" content="04. AWT Event Handling"><meta property="og:description" content="04. AWT Event Handling 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."><meta property="og:type" content="website"><meta property="og:locale" content="ko">
+  <!-- 기본 메타데이터 --><meta name="description" content="04. AWT 이벤트 처리 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."><meta name="author" content="HojinLee"><!-- 제목 설정 --><title>04. AWT 이벤트 처리</title>
+  <meta name="title" content="04. AWT 이벤트 처리" /><!-- 키워드 설정 --><meta name="keywords" content="04. AWT 이벤트 처리, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"><!-- Open Graph 메타데이터 --><meta property="og:title" content="04. AWT 이벤트 처리"><meta property="og:description" content="04. AWT 이벤트 처리 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."><meta property="og:type" content="website"><meta property="og:locale" content="ko">
   <meta property="og:site_name" content="linux">
   <meta property="og:url" content="https://java.jiny.dev/gui/1.awt/04_awt_event/">
   <!-- 대표 URL (캐노니컬) -->
   <link rel="canonical" href="https://java.jiny.dev/gui/1.awt/04_awt_event/">
 
-  <!-- Twitter 카드 메타데이터 --><meta name="twitter:card" content="summary"><meta property="twitter:title" content="04. AWT Event Handling"><meta property="twitter:description" content="04. AWT Event Handling 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."><!-- Begin Jekyll SEO tag v2.8.0 -->
+  <!-- Twitter 카드 메타데이터 --><meta name="twitter:card" content="summary"><meta property="twitter:title" content="04. AWT 이벤트 처리"><meta property="twitter:description" content="04. AWT 이벤트 처리 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."><!-- Begin Jekyll SEO tag v2.8.0 -->
 <meta name="generator" content="Jekyll v4.4.1" />
-<meta property="og:title" content="AWT Event Handling" />
+<meta property="og:title" content="AWT 이벤트 처리" />
 <meta name="author" content="Hojin" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="AWT Event Handling 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다." />
-<meta property="og:description" content="AWT Event Handling 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다." />
+<meta name="description" content="AWT 이벤트 처리 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다." />
+<meta property="og:description" content="AWT 이벤트 처리 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다." />
 <link rel="canonical" href="https://java.jiny.dev/gui/1.awt/04_awt_event/" />
 <meta property="og:url" content="https://java.jiny.dev/gui/1.awt/04_awt_event/" />
 <meta property="og:site_name" content="객체지향 자바 프로그래밍 (Object-Oriented Java Programming)" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="AWT Event Handling" />
+<meta property="twitter:title" content="AWT 이벤트 처리" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"AWT Event Handling 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다.","headline":"AWT Event Handling","url":"https://java.jiny.dev/gui/1.awt/04_awt_event/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"AWT 이벤트 처리 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다.","headline":"AWT 이벤트 처리","url":"https://java.jiny.dev/gui/1.awt/04_awt_event/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -683,36 +683,37 @@
         
         
         
-        <li class="breadcrumb-item active" aria-current="page">04. AWT Event Handling</li>
+        <li class="breadcrumb-item active" aria-current="page">04. AWT 이벤트 처리</li>
         
         
         
     </ol>
 </nav>
-        <div class="bd-content ps-lg-2">
-            <h1 id="04-awt-event-handling">04. AWT Event Handling</h1>
 
-<h2 id="1-event-delegation-model">1. Event Delegation Model</h2>
-<p>Java AWT uses the <strong>Delegation Event Model</strong>.</p>
+        <div class="bd-content ps-lg-2">
+            <h1 id="04-awt-이벤트-처리">04. AWT 이벤트 처리</h1>
+
+<h2 id="1-이벤트-위임-모델-event-delegation-model">1. 이벤트 위임 모델 (Event Delegation Model)</h2>
+<p>자바 AWT는 <strong>이벤트 위임 모델(Delegation Event Model)</strong>을 사용합니다.</p>
 <ul>
-  <li><strong>Event Source</strong>: The component where the event occurs (e.g., Button).</li>
-  <li><strong>Event Listener</strong>: The code to be executed when an event happens (Implementation of an Interface).</li>
-  <li><strong>Event Object</strong>: Information about the occurred event (e.g., clicked button, mouse coordinates).</li>
+  <li><strong>이벤트 소스(Event Source)</strong>: 이벤트가 발생하는 컴포넌트입니다 (예: 버튼).</li>
+  <li><strong>이벤트 리스너(Event Listener)</strong>: 이벤트가 발생했을 때 실행될 코드입니다 (인터페이스를 구현함).</li>
+  <li><strong>이벤트 객체(Event Object)</strong>: 발생한 이벤트에 대한 정보입니다 (예: 클릭된 버튼, 마우스 좌표 등).</li>
 </ul>
 
-<p>In other words, you <strong>register a listener (add) to an event source</strong>, and when an event occurs, the <strong>listener’s method is called</strong>.</p>
+<p>즉, <strong>이벤트 소스에 리스너를 등록(add)</strong>하고, 해당 이벤트가 발생하면 <strong>리스너의 메서드가 자동으로 호출</strong>되는 방식입니다.</p>
 
 <hr />
 
-<h2 id="2-major-events-and-listeners">2. Major Events and Listeners</h2>
+<h2 id="2-주요-이벤트와-리스너">2. 주요 이벤트와 리스너</h2>
 
 <table>
   <thead>
     <tr>
-      <th style="text-align: left">Component</th>
-      <th style="text-align: left">Event Class</th>
-      <th style="text-align: left">Listener Interface</th>
-      <th style="text-align: left">Major Method</th>
+      <th style="text-align: left">컴포넌트</th>
+      <th style="text-align: left">이벤트 클래스</th>
+      <th style="text-align: left">리스너 인터페이스</th>
+      <th style="text-align: left">주요 메서드</th>
     </tr>
   </thead>
   <tbody>
@@ -741,13 +742,13 @@
       <td style="text-align: left"><code class="language-plaintext highlighter-rouge">windowClosing(WindowEvent e)</code></td>
     </tr>
     <tr>
-      <td style="text-align: left">Mouse</td>
+      <td style="text-align: left">마우스 (Mouse)</td>
       <td style="text-align: left"><code class="language-plaintext highlighter-rouge">MouseEvent</code></td>
       <td style="text-align: left"><code class="language-plaintext highlighter-rouge">MouseListener</code></td>
       <td style="text-align: left"><code class="language-plaintext highlighter-rouge">mouseClicked</code>, <code class="language-plaintext highlighter-rouge">mousePressed</code>, …</td>
     </tr>
     <tr>
-      <td style="text-align: left">Keyboard</td>
+      <td style="text-align: left">키보드 (Keyboard)</td>
       <td style="text-align: left"><code class="language-plaintext highlighter-rouge">KeyEvent</code></td>
       <td style="text-align: left"><code class="language-plaintext highlighter-rouge">KeyListener</code></td>
       <td style="text-align: left"><code class="language-plaintext highlighter-rouge">keyPressed</code>, <code class="language-plaintext highlighter-rouge">keyReleased</code>, …</td>
@@ -757,10 +758,10 @@
 
 <hr />
 
-<h2 id="3-how-to-handle-events">3. How to Handle Events</h2>
+<h2 id="3-이벤트-처리-방법">3. 이벤트 처리 방법</h2>
 
-<h3 id="method-1-implementing-the-listener-interface-directly">Method 1: Implementing the Listener Interface Directly</h3>
-<p>This method involves making the class itself act as a listener.</p>
+<h3 id="방법-1-리스너-인터페이스-직접-구현하기">방법 1: 리스너 인터페이스 직접 구현하기</h3>
+<p>클래스 자체가 리스너 역할을 하도록 인터페이스를 직접 구현하는 방식입니다.</p>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.awt.*</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">java.awt.event.*</span><span class="o">;</span>
@@ -774,7 +775,7 @@
         <span class="n">f</span><span class="o">.</span><span class="na">setLayout</span><span class="o">(</span><span class="k">new</span> <span class="nc">FlowLayout</span><span class="o">());</span>
 
         <span class="n">b</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Button</span><span class="o">(</span><span class="s">"Click Me"</span><span class="o">);</span>
-        <span class="n">b</span><span class="o">.</span><span class="na">addActionListener</span><span class="o">(</span><span class="k">this</span><span class="o">);</span> <span class="c1">// Register the listener (myself) to the button</span>
+        <span class="n">b</span><span class="o">.</span><span class="na">addActionListener</span><span class="o">(</span><span class="k">this</span><span class="o">);</span> <span class="c1">// 버튼에 리스너(자기 자신) 등록</span>
 
         <span class="n">f</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">b</span><span class="o">);</span>
         <span class="n">f</span><span class="o">.</span><span class="na">setSize</span><span class="o">(</span><span class="mi">300</span><span class="o">,</span> <span class="mi">200</span><span class="o">);</span>
@@ -792,8 +793,8 @@
 <span class="o">}</span>
 </code></pre></div></div>
 
-<h3 id="method-2-using-anonymous-inner-classes">Method 2: Using Anonymous Inner Classes</h3>
-<p>This method implements the listener on the spot without creating a separate class implementation. It is the most common approach.</p>
+<h3 id="방법-2-익명-내부-클래스-anonymous-inner-class-사용하기">방법 2: 익명 내부 클래스 (Anonymous Inner Class) 사용하기</h3>
+<p>따로 클래스 구현을 정의하지 않고, 즉석에서 리스너를 구현하는 방식입니다. 가장 널리 사용되는 방법입니다.</p>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.awt.*</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">java.awt.event.*</span><span class="o">;</span>
@@ -806,7 +807,7 @@
 
         <span class="nc">Button</span> <span class="n">b</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Button</span><span class="o">(</span><span class="s">"Close Window"</span><span class="o">);</span>
 
-        <span class="c1">// 1. Handling Button Click (ActionListener)</span>
+        <span class="c1">// 1. 버튼 클릭 처리 (ActionListener)</span>
         <span class="n">b</span><span class="o">.</span><span class="na">addActionListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">ActionListener</span><span class="o">()</span> <span class="o">{</span>
             <span class="nd">@Override</span>
             <span class="kd">public</span> <span class="kt">void</span> <span class="nf">actionPerformed</span><span class="o">(</span><span class="nc">ActionEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
@@ -815,8 +816,8 @@
             <span class="o">}</span>
         <span class="o">});</span>
 
-        <span class="c1">// 2. Handling Window 'X' Button (WindowListener -&gt; WindowAdapter)</span>
-        <span class="c1">// Since WindowListener has 7 methods, we use the Adapter class to override only what we need.</span>
+        <span class="c1">// 2. 윈도우 'X' 버튼 처리 (WindowListener -&gt; WindowAdapter)</span>
+        <span class="c1">// WindowListener는 구현해야 할 메서드가 7개나 되므로, 필요한 메서드만 재정의할 수 있게 어댑터 클래스를 사용합니다.</span>
         <span class="n">f</span><span class="o">.</span><span class="na">addWindowListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">WindowAdapter</span><span class="o">()</span> <span class="o">{</span>
             <span class="nd">@Override</span>
             <span class="kd">public</span> <span class="kt">void</span> <span class="nf">windowClosing</span><span class="o">(</span><span class="nc">WindowEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
@@ -830,13 +831,13 @@
 <span class="o">}</span>
 </code></pre></div></div>
 
-<h3 id="-adapter-class">* Adapter Class</h3>
-<p>When it is cumbersome to implement all methods of an interface (e.g., <code class="language-plaintext highlighter-rouge">WindowListener</code> has 7 methods), you can inherit from an <strong>Adapter Class</strong> (like <code class="language-plaintext highlighter-rouge">WindowAdapter</code>) which has empty implementations of these methods, and <strong>override only the necessary methods</strong>.</p>
+<h3 id="-어댑터adapter-클래스란">* 어댑터(Adapter) 클래스란?</h3>
+<p>인터페이스의 모든 메서드를 구현하는 것이 번거로울 때(예: <code class="language-plaintext highlighter-rouge">WindowListener</code>는 7개의 메서드가 있음), 빈 껍데기 메서드들로 미리 구현되어 있는 <strong>어댑터 클래스</strong>(예: <code class="language-plaintext highlighter-rouge">WindowAdapter</code>)를 상속받아 <strong>필요한 메서드만 재정의(Override)</strong>하여 사용할 수 있도록 제공되는 클래스입니다.</p>
 <ul>
   <li><code class="language-plaintext highlighter-rouge">WindowListener</code> -&gt; <code class="language-plaintext highlighter-rouge">WindowAdapter</code></li>
   <li><code class="language-plaintext highlighter-rouge">MouseListener</code> -&gt; <code class="language-plaintext highlighter-rouge">MouseAdapter</code></li>
   <li><code class="language-plaintext highlighter-rouge">KeyListener</code> -&gt; <code class="language-plaintext highlighter-rouge">KeyAdapter</code></li>
-  <li>(Since <code class="language-plaintext highlighter-rouge">ActionListener</code> has only one method, it does not have an adapter.)</li>
+  <li>(단, <code class="language-plaintext highlighter-rouge">ActionListener</code>는 구현할 메서드가 하나뿐이므로 별도의 어댑터가 존재하지 않습니다.)</li>
 </ul>
 
 

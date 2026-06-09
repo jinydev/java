@@ -30,29 +30,21 @@ jFrame.getContentPane().setLayout(new FlowLayout());
 ## 1. BorderLayout
 `BorderLayout`은 컨테이너를 **North, South, East, West, Center**의 5개 영역으로 나눕니다.
 
-```mermaid
-graph TD
-    N[North]
-    W[West]
-    C[Center]
-    E[East]
-    S[South]
-    
-    N --- C
-    S --- C
-    W --- C
-    E --- C
-    
-    style N fill:#f9f,stroke:#333
-    style S fill:#f9f,stroke:#333
-    style W fill:#9ff,stroke:#333
-    style E fill:#9ff,stroke:#333
-    style C fill:#ff9,stroke:#333
-```
+![BorderLayout 구조](./img/border_layout.svg)
 
 - **North/South**: 컴포넌트의 높이는 유지되고, 폭은 컨테이너에 맞춰집니다.
 - **East/West**: 컴포넌트의 폭은 유지되고, 높이는 컨테이너에 맞춰집니다.
 - **Center**: 남은 모든 공간을 차지합니다.
+
+* **실습 예제 파일**: [BorderLayoutExample.java](file:///d:/site/jinysite/java/src/gui/2.swing/04_component_layout/sample/sec04/exam01_borderlayout/BorderLayoutExample.java) (경로: `sample/sec04/exam01_borderlayout/BorderLayoutExample.java`)
+* **실행 방법**:
+  ```powershell
+  # 1. 04_component_layout 디렉토리로 이동 후 컴파일
+  javac -d sample sample/sec04/exam01_borderlayout/BorderLayoutExample.java
+  
+  # 2. 실행
+  java -cp sample sec04.exam01_borderlayout.BorderLayoutExample
+  ```
 
 ```java
 package sec04.exam01_borderlayout;
@@ -120,6 +112,16 @@ public class BorderLayoutExample extends JFrame {
 ## 2. FlowLayout
 `FlowLayout`은 컴포넌트를 왼쪽에서 오른쪽으로 차례대로 배치합니다. 한 줄이 꽉 차면 다음 줄로 넘어갑니다. 컴포넌트의 크기는 각 컴포넌트의 적정 크기(Preferred Size)로 유지됩니다.
 
+* **실습 예제 파일**: [FlowLayoutExample.java](file:///d:/site/jinysite/java/src/gui/2.swing/04_component_layout/sample/sec04/exam02_flowlayout/FlowLayoutExample.java) (경로: `sample/sec04/exam02_flowlayout/FlowLayoutExample.java`)
+* **실행 방법**:
+  ```powershell
+  # 1. 04_component_layout 디렉토리로 이동 후 컴파일
+  javac -d sample sample/sec04/exam02_flowlayout/FlowLayoutExample.java
+  
+  # 2. 실행
+  java -cp sample sec04.exam02_flowlayout.FlowLayoutExample
+  ```
+
 ```java
 package sec04.exam02_flowlayout;
 
@@ -169,6 +171,16 @@ public class FlowLayoutExample extends JFrame {
 
 ### JPanel과 Layout
 `JPanel`은 기본적으로 `FlowLayout`을 사용합니다. 복잡한 배치를 할 때 `JFrame`(`BorderLayout`)의 각 영역에 `JPanel`을 배치하고, 그 `JPanel` 안에 다시 컴포넌트들을 `FlowLayout` 등으로 배치하는 방식(중첩 레이아웃)을 많이 사용합니다.
+
+* **실습 예제 파일**: [JPanelExample.java](file:///d:/site/jinysite/java/src/gui/2.swing/04_component_layout/sample/sec04/exam03_jpanel/JPanelExample.java) (경로: `sample/sec04/exam03_jpanel/JPanelExample.java`)
+* **실행 방법**:
+  ```powershell
+  # 1. 04_component_layout 디렉토리로 이동 후 컴파일
+  javac -d sample sample/sec04/exam03_jpanel/JPanelExample.java
+  
+  # 2. 실행
+  java -cp sample sec04.exam03_jpanel.JPanelExample
+  ```
 
 ```java
 package sec04.exam03_jpanel;
@@ -228,6 +240,16 @@ public class JPanelExample extends JFrame {
 ## 3. GridLayout
 `GridLayout`은 컨테이너를 행(Row)과 열(Column)로 나누어 모든 구획을 **동일한 크기**로 만듭니다. 컴포넌트가 추가되면 왼쪽→오른쪽, 위→아래 순서로 채워집니다.
 
+* **실습 예제 파일**: [GridLayoutExample.java](file:///d:/site/jinysite/java/src/gui/2.swing/04_component_layout/sample/sec04/exam04_gridlayout/GridLayoutExample.java) (경로: `sample/sec04/exam04_gridlayout/GridLayoutExample.java`)
+* **실행 방법**:
+  ```powershell
+  # 1. 04_component_layout 디렉토리로 이동 후 컴파일
+  javac -d sample sample/sec04/exam04_gridlayout/GridLayoutExample.java
+  
+  # 2. 실행
+  java -cp sample sec04.exam04_gridlayout.GridLayoutExample
+  ```
+
 ```java
 package sec04.exam04_gridlayout;
 
@@ -279,6 +301,16 @@ public class GridLayoutExample extends JFrame {
 
 ## 4. CardLayout
 `CardLayout`은 여러 컴포넌트(주로 패널)를 같은 위치에 겹쳐 놓고, 한 번에 하나만 보여줍니다. `first()`, `last()`, `next()`, `show()` 메서드로 보여줄 카드를 전환합니다.
+
+* **실습 예제 파일**: [CardLayoutExample.java](file:///d:/site/jinysite/java/src/gui/2.swing/04_component_layout/sample/sec04/exam05_cardlayout/CardLayoutExample.java) (경로: `sample/sec04/exam05_cardlayout/CardLayoutExample.java`)
+* **실행 방법**:
+  ```powershell
+  # 1. 04_component_layout 디렉토리로 이동 후 컴파일
+  javac -d sample sample/sec04/exam05_cardlayout/CardLayoutExample.java
+  
+  # 2. 실행 (실행 시 1초 간격으로 카드 컬러 패널이 순차 전환됩니다)
+  java -cp sample sec04.exam05_cardlayout.CardLayoutExample
+  ```
 
 ```java
 package sec04.exam05_cardlayout;
@@ -357,6 +389,16 @@ public class CardLayoutExample extends JFrame {
 ## 5. NullLayout (절대 위치)
 배치 관리자를 `null`로 설정하고, `setBounds(x, y, width, height)`를 사용하여 컴포넌트의 위치와 크기를 픽셀 단위로 직접 지정합니다. 컨테이너 크기가 변해도 컴포넌트 위치가 변하지 않습니다.
 
+* **실습 예제 파일**: [NullLayoutExample.java](file:///d:/site/jinysite/java/src/gui/2.swing/04_component_layout/sample/sec04/exam06_nulllayout/NullLayoutExample.java) (경로: `sample/sec04/exam06_nulllayout/NullLayoutExample.java`)
+* **실행 방법**:
+  ```powershell
+  # 1. 04_component_layout 디렉토리로 이동 후 컴파일
+  javac -d sample sample/sec04/exam06_nulllayout/NullLayoutExample.java
+  
+  # 2. 실행
+  java -cp sample sec04.exam06_nulllayout.NullLayoutExample
+  ```
+
 ```java
 package sec04.exam06_nulllayout;
 
@@ -400,6 +442,16 @@ public class NullLayoutExample extends JFrame {
 
 ## 6. Pack
 `pack()` 메서드는 컨테이너 내부의 컴포넌트들이 선호하는 크기(Preferred Size)에 맞춰서 컨테이너(윈도우)의 크기를 자동으로 조절해줍니다. `setSize()` 대신 사용하면 내용물에 딱 맞는 윈도우 크기를 얻을 수 있습니다.
+
+* **실습 예제 파일**: [PackExample.java](file:///d:/site/jinysite/java/src/gui/2.swing/04_component_layout/sample/sec04/exam07_pack/PackExample.java) (경로: `sample/sec04/exam07_pack/PackExample.java`)
+* **실행 방법**:
+  ```powershell
+  # 1. 04_component_layout 디렉토리로 이동 후 컴파일
+  javac -d sample sample/sec04/exam07_pack/PackExample.java
+  
+  # 2. 실행
+  java -cp sample sec04.exam07_pack.PackExample
+  ```
 
 ```java
 package sec04.exam07_pack;

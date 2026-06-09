@@ -5,28 +5,28 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- 기본 메타데이터 --><meta name="description" content="03. AWT Layout Manager 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."><meta name="author" content="HojinLee"><!-- 제목 설정 --><title>03. AWT Layout Manager</title>
-  <meta name="title" content="03. AWT Layout Manager" /><!-- 키워드 설정 --><meta name="keywords" content="03. AWT Layout Manager, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"><!-- Open Graph 메타데이터 --><meta property="og:title" content="03. AWT Layout Manager"><meta property="og:description" content="03. AWT Layout Manager 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."><meta property="og:type" content="website"><meta property="og:locale" content="ko">
+  <!-- 기본 메타데이터 --><meta name="description" content="03. AWT 레이아웃 매니저 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."><meta name="author" content="HojinLee"><!-- 제목 설정 --><title>03. AWT 레이아웃 매니저</title>
+  <meta name="title" content="03. AWT 레이아웃 매니저" /><!-- 키워드 설정 --><meta name="keywords" content="03. AWT 레이아웃 매니저, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"><!-- Open Graph 메타데이터 --><meta property="og:title" content="03. AWT 레이아웃 매니저"><meta property="og:description" content="03. AWT 레이아웃 매니저 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."><meta property="og:type" content="website"><meta property="og:locale" content="ko">
   <meta property="og:site_name" content="linux">
   <meta property="og:url" content="https://java.jiny.dev/gui/1.awt/03_awt_layout/">
   <!-- 대표 URL (캐노니컬) -->
   <link rel="canonical" href="https://java.jiny.dev/gui/1.awt/03_awt_layout/">
 
-  <!-- Twitter 카드 메타데이터 --><meta name="twitter:card" content="summary"><meta property="twitter:title" content="03. AWT Layout Manager"><meta property="twitter:description" content="03. AWT Layout Manager 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."><!-- Begin Jekyll SEO tag v2.8.0 -->
+  <!-- Twitter 카드 메타데이터 --><meta name="twitter:card" content="summary"><meta property="twitter:title" content="03. AWT 레이아웃 매니저"><meta property="twitter:description" content="03. AWT 레이아웃 매니저 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."><!-- Begin Jekyll SEO tag v2.8.0 -->
 <meta name="generator" content="Jekyll v4.4.1" />
-<meta property="og:title" content="AWT Layout Manager" />
+<meta property="og:title" content="AWT 레이아웃 매니저" />
 <meta name="author" content="Hojin" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="AWT Layout Manager 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다." />
-<meta property="og:description" content="AWT Layout Manager 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다." />
+<meta name="description" content="AWT 레이아웃 매니저 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다." />
+<meta property="og:description" content="AWT 레이아웃 매니저 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다." />
 <link rel="canonical" href="https://java.jiny.dev/gui/1.awt/03_awt_layout/" />
 <meta property="og:url" content="https://java.jiny.dev/gui/1.awt/03_awt_layout/" />
 <meta property="og:site_name" content="객체지향 자바 프로그래밍 (Object-Oriented Java Programming)" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="AWT Layout Manager" />
+<meta property="twitter:title" content="AWT 레이아웃 매니저" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"AWT Layout Manager 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다.","headline":"AWT Layout Manager","url":"https://java.jiny.dev/gui/1.awt/03_awt_layout/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"AWT 레이아웃 매니저 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다.","headline":"AWT 레이아웃 매니저","url":"https://java.jiny.dev/gui/1.awt/03_awt_layout/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -683,41 +683,42 @@
         
         
         
-        <li class="breadcrumb-item active" aria-current="page">03. AWT Layout Manager</li>
+        <li class="breadcrumb-item active" aria-current="page">03. AWT 레이아웃 매니저</li>
         
         
         
     </ol>
 </nav>
-        <div class="bd-content ps-lg-2">
-            <h1 id="03-awt-layout-manager">03. AWT Layout Manager</h1>
 
-<h2 id="1-what-is-a-layout-manager">1. What is a Layout Manager?</h2>
-<p>A class that determines <strong>how components are arranged</strong> inside a container (Frame, Panel, etc.).
-It uses classes that implement the <code class="language-plaintext highlighter-rouge">java.awt.LayoutManager</code> interface.</p>
+        <div class="bd-content ps-lg-2">
+            <h1 id="03-awt-레이아웃-매니저">03. AWT 레이아웃 매니저</h1>
+
+<h2 id="1-레이아웃-매니저layout-manager란">1. 레이아웃 매니저(Layout Manager)란?</h2>
+<p>컨테이너(Frame, Panel 등) 내부에서 <strong>컴포넌트들이 배치되는 방식을 결정하는</strong> 클래스입니다.
+<code class="language-plaintext highlighter-rouge">java.awt.LayoutManager</code> 인터페이스를 구현한 클래스들을 사용합니다.</p>
 
 <ul>
-  <li><strong>Containers usually have a default layout manager.</strong>
+  <li><strong>컨테이너는 일반적으로 기본 레이아웃 매니저를 가지고 있습니다.</strong>
     <ul>
-      <li>Default for <code class="language-plaintext highlighter-rouge">Frame</code>: <code class="language-plaintext highlighter-rouge">BorderLayout</code></li>
-      <li>Default for <code class="language-plaintext highlighter-rouge">Panel</code>: <code class="language-plaintext highlighter-rouge">FlowLayout</code></li>
+      <li><code class="language-plaintext highlighter-rouge">Frame</code>의 기본값: <code class="language-plaintext highlighter-rouge">BorderLayout</code></li>
+      <li><code class="language-plaintext highlighter-rouge">Panel</code>의 기본값: <code class="language-plaintext highlighter-rouge">FlowLayout</code></li>
     </ul>
   </li>
 </ul>
 
 <hr />
 
-<h2 id="2-major-layout-managers">2. Major Layout Managers</h2>
+<h2 id="2-주요-레이아웃-매니저">2. 주요 레이아웃 매니저</h2>
 
 <h3 id="1-flowlayout">1) FlowLayout</h3>
 <ul>
-  <li>Arranges components <strong>from left to right, like flowing water</strong>.</li>
-  <li>If the window width is too narrow, it automatically wraps to the next line.</li>
-  <li>This is the default layout manager for <code class="language-plaintext highlighter-rouge">Panel</code>.</li>
+  <li>컴포넌트를 <strong>물 흐르듯 왼쪽에서 오른쪽으로</strong> 배치합니다.</li>
+  <li>윈도우 너비가 너무 좁아지면 자동으로 다음 줄로 줄 바꿈됩니다.</li>
+  <li><code class="language-plaintext highlighter-rouge">Panel</code>의 기본 레이아웃 매니저입니다.</li>
 </ul>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Frame</span> <span class="n">f</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Frame</span><span class="o">();</span>
-<span class="n">f</span><span class="o">.</span><span class="na">setLayout</span><span class="o">(</span><span class="k">new</span> <span class="nc">FlowLayout</span><span class="o">());</span> <span class="c1">// Set FlowLayout</span>
+<span class="n">f</span><span class="o">.</span><span class="na">setLayout</span><span class="o">(</span><span class="k">new</span> <span class="nc">FlowLayout</span><span class="o">());</span> <span class="c1">// FlowLayout 설정</span>
 
 <span class="n">f</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Button</span><span class="o">(</span><span class="s">"1"</span><span class="o">));</span>
 <span class="n">f</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Button</span><span class="o">(</span><span class="s">"2"</span><span class="o">));</span>
@@ -726,9 +727,9 @@ It uses classes that implement the <code class="language-plaintext highlighter-r
 
 <h3 id="2-borderlayout">2) BorderLayout</h3>
 <ul>
-  <li>Divides the container into 5 regions: <strong>East, West, South, North, Center</strong>.</li>
-  <li>Only one component can be added to each region.</li>
-  <li>This is the default layout manager for <code class="language-plaintext highlighter-rouge">Frame</code>.</li>
+  <li>컨테이너 영역을 5개 방향(<strong>동, 서, 남, 북, 중앙</strong>)으로 분할하여 배치합니다.</li>
+  <li>각 영역에는 하나의 컴포넌트만 추가할 수 있습니다.</li>
+  <li><code class="language-plaintext highlighter-rouge">Frame</code>의 기본 레이아웃 매니저입니다.</li>
 </ul>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Frame</span> <span class="n">f</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Frame</span><span class="o">();</span>
@@ -737,18 +738,18 @@ It uses classes that implement the <code class="language-plaintext highlighter-r
 <span class="n">f</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Button</span><span class="o">(</span><span class="s">"North"</span><span class="o">),</span> <span class="nc">BorderLayout</span><span class="o">.</span><span class="na">NORTH</span><span class="o">);</span>
 <span class="n">f</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Button</span><span class="o">(</span><span class="s">"South"</span><span class="o">),</span> <span class="nc">BorderLayout</span><span class="o">.</span><span class="na">SOUTH</span><span class="o">);</span>
 <span class="n">f</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Button</span><span class="o">(</span><span class="s">"Center"</span><span class="o">),</span> <span class="nc">BorderLayout</span><span class="o">.</span><span class="na">CENTER</span><span class="o">);</span>
-<span class="c1">// East and West can be omitted</span>
+<span class="c1">// 동(East)과 서(West)는 생략 가능</span>
 </code></pre></div></div>
 
 <h3 id="3-gridlayout">3) GridLayout</h3>
 <ul>
-  <li>Divides the container uniformly into a <strong>grid (rows, columns)</strong>.</li>
-  <li>All components are set to the same size.</li>
-  <li>Useful for creating UIs like a calculator button pad.</li>
+  <li>컨테이너를 <strong>격자(행, 열)</strong> 모양으로 균등하게 분할하여 배치합니다.</li>
+  <li>모든 컴포넌트의 크기가 동일하게 설정됩니다.</li>
+  <li>계산기 버튼 패드 같은 UI를 만들 때 유용합니다.</li>
 </ul>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Frame</span> <span class="n">f</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Frame</span><span class="o">();</span>
-<span class="n">f</span><span class="o">.</span><span class="na">setLayout</span><span class="o">(</span><span class="k">new</span> <span class="nc">GridLayout</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">));</span> <span class="c1">// 2 rows, 3 columns</span>
+<span class="n">f</span><span class="o">.</span><span class="na">setLayout</span><span class="o">(</span><span class="k">new</span> <span class="nc">GridLayout</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">));</span> <span class="c1">// 2행 3열</span>
 
 <span class="n">f</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Button</span><span class="o">(</span><span class="s">"1"</span><span class="o">));</span>
 <span class="n">f</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Button</span><span class="o">(</span><span class="s">"2"</span><span class="o">));</span>
@@ -758,14 +759,14 @@ It uses classes that implement the <code class="language-plaintext highlighter-r
 <span class="n">f</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Button</span><span class="o">(</span><span class="s">"6"</span><span class="o">));</span>
 </code></pre></div></div>
 
-<h3 id="4-null-layout-absolute-positioning">4) Null Layout (Absolute Positioning)</h3>
+<h3 id="4-null-layout-절대-좌표-배치">4) Null Layout (절대 좌표 배치)</h3>
 <ul>
-  <li>Does not use a layout manager; the developer manually specifies coordinates (x, y) and size (width, height).</li>
-  <li>Component positions remain fixed even if the window size changes.</li>
+  <li>레이아웃 매니저를 사용하지 않고, 개발자가 직접 컴포넌트의 위치(x, y)와 크기(width, height)를 수동으로 지정합니다.</li>
+  <li>창의 크기가 변경되더라도 컴포넌트의 위치와 크기가 고정됩니다.</li>
 </ul>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Frame</span> <span class="n">f</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Frame</span><span class="o">();</span>
-<span class="n">f</span><span class="o">.</span><span class="na">setLayout</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span> <span class="c1">// Remove layout manager</span>
+<span class="n">f</span><span class="o">.</span><span class="na">setLayout</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span> <span class="c1">// 레이아웃 매니저 제거</span>
 
 <span class="nc">Button</span> <span class="n">b</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Button</span><span class="o">(</span><span class="s">"Click"</span><span class="o">);</span>
 <span class="n">b</span><span class="o">.</span><span class="na">setBounds</span><span class="o">(</span><span class="mi">50</span><span class="o">,</span> <span class="mi">50</span><span class="o">,</span> <span class="mi">100</span><span class="o">,</span> <span class="mi">30</span><span class="o">);</span> <span class="c1">// x=50, y=50, w=100, h=30</span>
@@ -775,7 +776,7 @@ It uses classes that implement the <code class="language-plaintext highlighter-r
 
 <hr />
 
-<h2 id="3-layout-manager-example-calculator-style">3. Layout Manager Example (Calculator Style)</h2>
+<h2 id="3-레이아웃-매니저-종합-예제-계산기-스타일">3. 레이아웃 매니저 종합 예제 (계산기 스타일)</h2>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.awt.*</span><span class="o">;</span>
 
@@ -783,15 +784,15 @@ It uses classes that implement the <code class="language-plaintext highlighter-r
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
         <span class="nc">Frame</span> <span class="n">f</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Frame</span><span class="o">(</span><span class="s">"Calculator Layout"</span><span class="o">);</span>
         <span class="n">f</span><span class="o">.</span><span class="na">setSize</span><span class="o">(</span><span class="mi">300</span><span class="o">,</span> <span class="mi">400</span><span class="o">);</span>
-        <span class="n">f</span><span class="o">.</span><span class="na">setLayout</span><span class="o">(</span><span class="k">new</span> <span class="nc">BorderLayout</span><span class="o">());</span> <span class="c1">// Use BorderLayout globally</span>
+        <span class="n">f</span><span class="o">.</span><span class="na">setLayout</span><span class="o">(</span><span class="k">new</span> <span class="nc">BorderLayout</span><span class="o">());</span> <span class="c1">// 전체적으로 BorderLayout 사용</span>
 
-        <span class="c1">// Top: Result display (TextField)</span>
+        <span class="c1">// 상단: 결과 표시창 (TextField)</span>
         <span class="nc">TextField</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TextField</span><span class="o">(</span><span class="s">"0"</span><span class="o">);</span>
         <span class="n">f</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">result</span><span class="o">,</span> <span class="nc">BorderLayout</span><span class="o">.</span><span class="na">NORTH</span><span class="o">);</span>
 
-        <span class="c1">// Center: Buttons (Panel + GridLayout)</span>
+        <span class="c1">// 중앙: 버튼 배치 (Panel + GridLayout)</span>
         <span class="nc">Panel</span> <span class="n">p</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Panel</span><span class="o">();</span>
-        <span class="n">p</span><span class="o">.</span><span class="na">setLayout</span><span class="o">(</span><span class="k">new</span> <span class="nc">GridLayout</span><span class="o">(</span><span class="mi">4</span><span class="o">,</span> <span class="mi">3</span><span class="o">));</span> <span class="c1">// 4 rows, 3 columns</span>
+        <span class="n">p</span><span class="o">.</span><span class="na">setLayout</span><span class="o">(</span><span class="k">new</span> <span class="nc">GridLayout</span><span class="o">(</span><span class="mi">4</span><span class="o">,</span> <span class="mi">3</span><span class="o">));</span> <span class="c1">// 4행 3열</span>
 
         <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">9</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
             <span class="n">p</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Button</span><span class="o">(</span><span class="nc">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">i</span><span class="o">)));</span>

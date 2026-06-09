@@ -689,10 +689,13 @@
         
     </ol>
 </nav>
+
         <div class="bd-content ps-lg-2">
             <h1 id="13-다이얼로그">13. 다이얼로그</h1>
 
 <p>다이얼로그(Dialog)는 주 윈도우에서 사용자의 입력을 받거나 메시지를 전달하기 위해 띄우는 서브 윈도우입니다. 다이얼로그를 띄우는 주 윈도우를 <strong>소유자(Owner)</strong>라고 합니다.</p>
+
+<p><img src="./img/dialog_hierarchy.svg" alt="다이얼로그 계층 구조" /></p>
 
 <h2 id="1-다이얼로그-종류">1. 다이얼로그 종류</h2>
 <ul>
@@ -783,6 +786,19 @@
 </ul>
 
 <h3 id="예제-joptionpaneexample">예제 (<code class="language-plaintext highlighter-rouge">JOptionPaneExample</code>)</h3>
+
+<ul>
+  <li><strong>실습 예제 파일</strong>: <a href="file:///d:/site/jinysite/java/src/gui/2.swing/13_dialog/sample/sec13/exam02_joptionpane/JOptionPaneExample.java">JOptionPaneExample.java</a> (경로: <code class="language-plaintext highlighter-rouge">sample/sec13/exam02_joptionpane/JOptionPaneExample.java</code>)</li>
+  <li><strong>실행 방법</strong>:
+    <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 1. 13_dialog 디렉토리로 이동 후 컴파일</span><span class="w">
+</span><span class="n">javac</span><span class="w"> </span><span class="nt">-d</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sample/sec13/exam02_joptionpane/JOptionPaneExample.java</span><span class="w">
+  
+</span><span class="c"># 2. 실행</span><span class="w">
+</span><span class="n">java</span><span class="w"> </span><span class="nt">-cp</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sec13.exam02_joptionpane.JOptionPaneExample</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+</ul>
+
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">sec13.exam02_joptionpane</span><span class="o">;</span>
 
 <span class="kn">import</span> <span class="nn">java.awt.GridLayout</span><span class="o">;</span>
@@ -905,6 +921,19 @@
 </ul>
 
 <h3 id="예제-jfilechooserexample">예제 (<code class="language-plaintext highlighter-rouge">JFileChooserExample</code>)</h3>
+
+<ul>
+  <li><strong>실습 예제 파일</strong>: <a href="file:///d:/site/jinysite/java/src/gui/2.swing/13_dialog/sample/sec13/exam03_jfilechooser/JFileChooserExample.java">JFileChooserExample.java</a> (경로: <code class="language-plaintext highlighter-rouge">sample/sec13/exam03_jfilechooser/JFileChooserExample.java</code>)</li>
+  <li><strong>실행 방법</strong>:
+    <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 1. 13_dialog 디렉토리로 이동 후 컴파일</span><span class="w">
+</span><span class="n">javac</span><span class="w"> </span><span class="nt">-d</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sample/sec13/exam03_jfilechooser/JFileChooserExample.java</span><span class="w">
+  
+</span><span class="c"># 2. 실행</span><span class="w">
+</span><span class="n">java</span><span class="w"> </span><span class="nt">-cp</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sec13.exam03_jfilechooser.JFileChooserExample</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+</ul>
+
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">sec13.exam03_jfilechooser</span><span class="o">;</span>
 
 <span class="kn">import</span> <span class="nn">java.awt.GridLayout</span><span class="o">;</span>
@@ -982,7 +1011,6 @@
     <span class="n">component</span><span class="o">.</span><span class="na">setBackground</span><span class="o">(</span><span class="n">selectedColor</span><span class="o">);</span>
 <span class="o">}</span>
 </code></pre></div></div>
-
 
 
 

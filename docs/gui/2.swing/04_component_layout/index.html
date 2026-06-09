@@ -689,6 +689,7 @@
         
     </ol>
 </nav>
+
         <div class="bd-content ps-lg-2">
             <h1 id="04-컴포넌트-배치">04. 컴포넌트 배치</h1>
 
@@ -740,29 +741,23 @@
 <h2 id="1-borderlayout">1. BorderLayout</h2>
 <p><code class="language-plaintext highlighter-rouge">BorderLayout</code>은 컨테이너를 <strong>North, South, East, West, Center</strong>의 5개 영역으로 나눕니다.</p>
 
-<pre><code class="language-mermaid">graph TD
-    N[North]
-    W[West]
-    C[Center]
-    E[East]
-    S[South]
-    
-    N --- C
-    S --- C
-    W --- C
-    E --- C
-    
-    style N fill:#f9f,stroke:#333
-    style S fill:#f9f,stroke:#333
-    style W fill:#9ff,stroke:#333
-    style E fill:#9ff,stroke:#333
-    style C fill:#ff9,stroke:#333
-</code></pre>
+<p><img src="./img/border_layout.svg" alt="BorderLayout 구조" /></p>
 
 <ul>
   <li><strong>North/South</strong>: 컴포넌트의 높이는 유지되고, 폭은 컨테이너에 맞춰집니다.</li>
   <li><strong>East/West</strong>: 컴포넌트의 폭은 유지되고, 높이는 컨테이너에 맞춰집니다.</li>
-  <li><strong>Center</strong>: 남은 모든 공간을 차지합니다.</li>
+  <li>
+    <p><strong>Center</strong>: 남은 모든 공간을 차지합니다.</p>
+  </li>
+  <li><strong>실습 예제 파일</strong>: <a href="file:///d:/site/jinysite/java/src/gui/2.swing/04_component_layout/sample/sec04/exam01_borderlayout/BorderLayoutExample.java">BorderLayoutExample.java</a> (경로: <code class="language-plaintext highlighter-rouge">sample/sec04/exam01_borderlayout/BorderLayoutExample.java</code>)</li>
+  <li><strong>실행 방법</strong>:
+    <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 1. 04_component_layout 디렉토리로 이동 후 컴파일</span><span class="w">
+</span><span class="n">javac</span><span class="w"> </span><span class="nt">-d</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sample/sec04/exam01_borderlayout/BorderLayoutExample.java</span><span class="w">
+  
+</span><span class="c"># 2. 실행</span><span class="w">
+</span><span class="n">java</span><span class="w"> </span><span class="nt">-cp</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sec04.exam01_borderlayout.BorderLayoutExample</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
 </ul>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">sec04.exam01_borderlayout</span><span class="o">;</span>
@@ -830,6 +825,18 @@
 <h2 id="2-flowlayout">2. FlowLayout</h2>
 <p><code class="language-plaintext highlighter-rouge">FlowLayout</code>은 컴포넌트를 왼쪽에서 오른쪽으로 차례대로 배치합니다. 한 줄이 꽉 차면 다음 줄로 넘어갑니다. 컴포넌트의 크기는 각 컴포넌트의 적정 크기(Preferred Size)로 유지됩니다.</p>
 
+<ul>
+  <li><strong>실습 예제 파일</strong>: <a href="file:///d:/site/jinysite/java/src/gui/2.swing/04_component_layout/sample/sec04/exam02_flowlayout/FlowLayoutExample.java">FlowLayoutExample.java</a> (경로: <code class="language-plaintext highlighter-rouge">sample/sec04/exam02_flowlayout/FlowLayoutExample.java</code>)</li>
+  <li><strong>실행 방법</strong>:
+    <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 1. 04_component_layout 디렉토리로 이동 후 컴파일</span><span class="w">
+</span><span class="n">javac</span><span class="w"> </span><span class="nt">-d</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sample/sec04/exam02_flowlayout/FlowLayoutExample.java</span><span class="w">
+  
+</span><span class="c"># 2. 실행</span><span class="w">
+</span><span class="n">java</span><span class="w"> </span><span class="nt">-cp</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sec04.exam02_flowlayout.FlowLayoutExample</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+</ul>
+
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">sec04.exam02_flowlayout</span><span class="o">;</span>
 
 <span class="kn">import</span> <span class="nn">java.awt.FlowLayout</span><span class="o">;</span>
@@ -878,6 +885,18 @@
 
 <h3 id="jpanel과-layout">JPanel과 Layout</h3>
 <p><code class="language-plaintext highlighter-rouge">JPanel</code>은 기본적으로 <code class="language-plaintext highlighter-rouge">FlowLayout</code>을 사용합니다. 복잡한 배치를 할 때 <code class="language-plaintext highlighter-rouge">JFrame</code>(<code class="language-plaintext highlighter-rouge">BorderLayout</code>)의 각 영역에 <code class="language-plaintext highlighter-rouge">JPanel</code>을 배치하고, 그 <code class="language-plaintext highlighter-rouge">JPanel</code> 안에 다시 컴포넌트들을 <code class="language-plaintext highlighter-rouge">FlowLayout</code> 등으로 배치하는 방식(중첩 레이아웃)을 많이 사용합니다.</p>
+
+<ul>
+  <li><strong>실습 예제 파일</strong>: <a href="file:///d:/site/jinysite/java/src/gui/2.swing/04_component_layout/sample/sec04/exam03_jpanel/JPanelExample.java">JPanelExample.java</a> (경로: <code class="language-plaintext highlighter-rouge">sample/sec04/exam03_jpanel/JPanelExample.java</code>)</li>
+  <li><strong>실행 방법</strong>:
+    <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 1. 04_component_layout 디렉토리로 이동 후 컴파일</span><span class="w">
+</span><span class="n">javac</span><span class="w"> </span><span class="nt">-d</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sample/sec04/exam03_jpanel/JPanelExample.java</span><span class="w">
+  
+</span><span class="c"># 2. 실행</span><span class="w">
+</span><span class="n">java</span><span class="w"> </span><span class="nt">-cp</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sec04.exam03_jpanel.JPanelExample</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+</ul>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">sec04.exam03_jpanel</span><span class="o">;</span>
 
@@ -936,6 +955,18 @@
 <h2 id="3-gridlayout">3. GridLayout</h2>
 <p><code class="language-plaintext highlighter-rouge">GridLayout</code>은 컨테이너를 행(Row)과 열(Column)로 나누어 모든 구획을 <strong>동일한 크기</strong>로 만듭니다. 컴포넌트가 추가되면 왼쪽→오른쪽, 위→아래 순서로 채워집니다.</p>
 
+<ul>
+  <li><strong>실습 예제 파일</strong>: <a href="file:///d:/site/jinysite/java/src/gui/2.swing/04_component_layout/sample/sec04/exam04_gridlayout/GridLayoutExample.java">GridLayoutExample.java</a> (경로: <code class="language-plaintext highlighter-rouge">sample/sec04/exam04_gridlayout/GridLayoutExample.java</code>)</li>
+  <li><strong>실행 방법</strong>:
+    <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 1. 04_component_layout 디렉토리로 이동 후 컴파일</span><span class="w">
+</span><span class="n">javac</span><span class="w"> </span><span class="nt">-d</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sample/sec04/exam04_gridlayout/GridLayoutExample.java</span><span class="w">
+  
+</span><span class="c"># 2. 실행</span><span class="w">
+</span><span class="n">java</span><span class="w"> </span><span class="nt">-cp</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sec04.exam04_gridlayout.GridLayoutExample</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+</ul>
+
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">sec04.exam04_gridlayout</span><span class="o">;</span>
 
 <span class="kn">import</span> <span class="nn">java.awt.GridLayout</span><span class="o">;</span>
@@ -986,6 +1017,18 @@
 
 <h2 id="4-cardlayout">4. CardLayout</h2>
 <p><code class="language-plaintext highlighter-rouge">CardLayout</code>은 여러 컴포넌트(주로 패널)를 같은 위치에 겹쳐 놓고, 한 번에 하나만 보여줍니다. <code class="language-plaintext highlighter-rouge">first()</code>, <code class="language-plaintext highlighter-rouge">last()</code>, <code class="language-plaintext highlighter-rouge">next()</code>, <code class="language-plaintext highlighter-rouge">show()</code> 메서드로 보여줄 카드를 전환합니다.</p>
+
+<ul>
+  <li><strong>실습 예제 파일</strong>: <a href="file:///d:/site/jinysite/java/src/gui/2.swing/04_component_layout/sample/sec04/exam05_cardlayout/CardLayoutExample.java">CardLayoutExample.java</a> (경로: <code class="language-plaintext highlighter-rouge">sample/sec04/exam05_cardlayout/CardLayoutExample.java</code>)</li>
+  <li><strong>실행 방법</strong>:
+    <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 1. 04_component_layout 디렉토리로 이동 후 컴파일</span><span class="w">
+</span><span class="n">javac</span><span class="w"> </span><span class="nt">-d</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sample/sec04/exam05_cardlayout/CardLayoutExample.java</span><span class="w">
+  
+</span><span class="c"># 2. 실행 (실행 시 1초 간격으로 카드 컬러 패널이 순차 전환됩니다)</span><span class="w">
+</span><span class="n">java</span><span class="w"> </span><span class="nt">-cp</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sec04.exam05_cardlayout.CardLayoutExample</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+</ul>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">sec04.exam05_cardlayout</span><span class="o">;</span>
 
@@ -1063,6 +1106,18 @@
 <h2 id="5-nulllayout-절대-위치">5. NullLayout (절대 위치)</h2>
 <p>배치 관리자를 <code class="language-plaintext highlighter-rouge">null</code>로 설정하고, <code class="language-plaintext highlighter-rouge">setBounds(x, y, width, height)</code>를 사용하여 컴포넌트의 위치와 크기를 픽셀 단위로 직접 지정합니다. 컨테이너 크기가 변해도 컴포넌트 위치가 변하지 않습니다.</p>
 
+<ul>
+  <li><strong>실습 예제 파일</strong>: <a href="file:///d:/site/jinysite/java/src/gui/2.swing/04_component_layout/sample/sec04/exam06_nulllayout/NullLayoutExample.java">NullLayoutExample.java</a> (경로: <code class="language-plaintext highlighter-rouge">sample/sec04/exam06_nulllayout/NullLayoutExample.java</code>)</li>
+  <li><strong>실행 방법</strong>:
+    <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 1. 04_component_layout 디렉토리로 이동 후 컴파일</span><span class="w">
+</span><span class="n">javac</span><span class="w"> </span><span class="nt">-d</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sample/sec04/exam06_nulllayout/NullLayoutExample.java</span><span class="w">
+  
+</span><span class="c"># 2. 실행</span><span class="w">
+</span><span class="n">java</span><span class="w"> </span><span class="nt">-cp</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sec04.exam06_nulllayout.NullLayoutExample</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+</ul>
+
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">sec04.exam06_nulllayout</span><span class="o">;</span>
 
 <span class="kn">import</span> <span class="nn">javax.swing.JButton</span><span class="o">;</span>
@@ -1105,6 +1160,18 @@
 
 <h2 id="6-pack">6. Pack</h2>
 <p><code class="language-plaintext highlighter-rouge">pack()</code> 메서드는 컨테이너 내부의 컴포넌트들이 선호하는 크기(Preferred Size)에 맞춰서 컨테이너(윈도우)의 크기를 자동으로 조절해줍니다. <code class="language-plaintext highlighter-rouge">setSize()</code> 대신 사용하면 내용물에 딱 맞는 윈도우 크기를 얻을 수 있습니다.</p>
+
+<ul>
+  <li><strong>실습 예제 파일</strong>: <a href="file:///d:/site/jinysite/java/src/gui/2.swing/04_component_layout/sample/sec04/exam07_pack/PackExample.java">PackExample.java</a> (경로: <code class="language-plaintext highlighter-rouge">sample/sec04/exam07_pack/PackExample.java</code>)</li>
+  <li><strong>실행 방법</strong>:
+    <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 1. 04_component_layout 디렉토리로 이동 후 컴파일</span><span class="w">
+</span><span class="n">javac</span><span class="w"> </span><span class="nt">-d</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sample/sec04/exam07_pack/PackExample.java</span><span class="w">
+  
+</span><span class="c"># 2. 실행</span><span class="w">
+</span><span class="n">java</span><span class="w"> </span><span class="nt">-cp</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sec04.exam07_pack.PackExample</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+</ul>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">sec04.exam07_pack</span><span class="o">;</span>
 

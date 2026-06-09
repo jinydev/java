@@ -15,18 +15,7 @@ UI 프로그램은 사용자와 상호작용하며 코드를 실행합니다. �
 
 예를 들어, 사용자가 `JButton`(이벤트 소스)을 클릭하면 `ActionEvent`가 발생하고, 버튼에 등록된 `ActionListener`(이벤트 처리 객체)의 메서드가 호출됩니다.
 
-```mermaid
-sequenceDiagram
-    participant User
-    participant Source as Event Source<br>(Component)
-    participant Listener as Event Listener<br>(Handler)
-
-    User->>Source: Action (Click)
-    Note over Source: Event Created
-    Source->>Listener: Event Fired
-    Listener->>Listener: actionPerformed()
-    Note over Listener: Execute Code
-```
+![이벤트 처리 위임 모델](./img/event_delegation.svg)
 
 1. **이벤트 소스 (Event Source)**: 이벤트가 발생하는 컴포넌트 (예: `JButton`, `JTextField`)
 2. **이벤트 객체 (Event Object)**: 발생한 이벤트에 대한 정보 (예: `ActionEvent`, `MouseEvent`)
@@ -99,6 +88,16 @@ class MyWindowListener extends WindowAdapter {
 ### 예제: WindowListener와 ActionListener
 창 닫기 버튼을 눌렀을 때(`WindowListener`)와 "닫기" 버튼을 눌렀을 때(`ActionListener`) 프로그램을 종료하는 예제입니다.
 
+* **실습 예제 파일**: [ClosableExample1.java](file:///d:/site/jinysite/java/src/gui/2.swing/05_event_handling/sample/sec05/exam01_windowadpater/ClosableExample1.java) (경로: `sample/sec05/exam01_windowadpater/ClosableExample1.java`)
+* **실행 방법**:
+  ```powershell
+  # 1. 05_event_handling 디렉토리로 이동 후 컴파일
+  javac -d sample sample/sec05/exam01_windowadpater/ClosableExample1.java
+  
+  # 2. 실행
+  java -cp sample sec05.exam01_windowadpater.ClosableExample1
+  ```
+
 ```java
 package sec05.exam01_windowadpater;
 
@@ -163,6 +162,16 @@ public class ClosableExample1 extends JFrame {
 ## 익명 객체 (Anonymous Object)
 리스너 클래스를 별도로 만들지 않고, **익명 객체**를 사용하여 코드를 간결하게 작성하는 것이 일반적입니다. 특히 이벤트 처리 코드가 짧을 때 유용합니다.
 
+* **실습 예제 파일**: [ClosableExample2.java](file:///d:/site/jinysite/java/src/gui/2.swing/05_event_handling/sample/sec05/exam01_windowadpater/ClosableExample2.java) (경로: `sample/sec05/exam01_windowadpater/ClosableExample2.java`)
+* **실행 방법**:
+  ```powershell
+  # 1. 05_event_handling 디렉토리로 이동 후 컴파일
+  javac -d sample sample/sec05/exam01_windowadpater/ClosableExample2.java
+  
+  # 2. 실행
+  java -cp sample sec05.exam01_windowadpater.ClosableExample2
+  ```
+
 ```java
 package sec05.exam01_windowadpater;
 
@@ -221,6 +230,16 @@ public class ClosableExample2 extends JFrame {
 
 ## 다중 컴포넌트 이벤트 처리
 하나의 리스너 객체로 여러 컴포넌트의 이벤트를 처리할 수도 있습니다. 이때는 `e.getSource()` 메서드를 사용하여 어떤 컴포넌트에서 이벤트가 발생했는지 확인합니다.
+
+* **실습 예제 파일**: [ActionListenerExample.java](file:///d:/site/jinysite/java/src/gui/2.swing/05_event_handling/sample/sec05/exam02_actionlistener/ActionListenerExample.java) (경로: `sample/sec05/exam02_actionlistener/ActionListenerExample.java`)
+* **실행 방법**:
+  ```powershell
+  # 1. 05_event_handling 디렉토리로 이동 후 컴파일
+  javac -d sample sample/sec05/exam02_actionlistener/ActionListenerExample.java
+  
+  # 2. 실행
+  java -cp sample sec05.exam02_actionlistener.ActionListenerExample
+  ```
 
 ```java
 package sec05.exam02_actionlistener;

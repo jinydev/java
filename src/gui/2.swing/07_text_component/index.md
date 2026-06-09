@@ -9,29 +9,7 @@ keywords: "07. 텍스트 컴포넌트, 자바, Java, 프로그래밍, 백엔드,
 
 Swing에서 텍스트를 다루는 컴포넌트는 크게 **편집 불가능한 컴포넌트**(`JLabel`)와 **편집 가능한 컴포넌트**(`JTextComponent` 상속 클래스)로 나뉩니다.
 
-```mermaid
-classDiagram
-    class JComponent
-    class JLabel
-    class JTextComponent {
-        +setText(String t)
-        +getText() String
-        +setEditable(boolean b)
-    }
-    class JTextField
-    class JPasswordField
-    class JTextArea
-    class JEditorPane
-    class JTextPane
-
-    JComponent <|-- JLabel
-    JComponent <|-- JTextComponent
-    JTextComponent <|-- JTextField
-    JTextField <|-- JPasswordField
-    JTextComponent <|-- JTextArea
-    JTextComponent <|-- JEditorPane
-    JEditorPane <|-- JTextPane
-```
+![텍스트 컴포넌트 계층 구조](./img/text_hierarchy.svg)
 
 - **JLabel**: 짧은 텍스트나 이미지를 표시 (편집 불가).
 - **JTextField**: 한 줄 텍스트 입력.
@@ -55,6 +33,16 @@ classDiagram
 | `setVerticalTextPosition(int)`   | 이미지 기준 텍스트의 세로 위치               |
 | `setIconTextGap(int)`            | 텍스트와 이미지 사이의 간격 (픽셀)           |
 | `setBorder(Border)`              | 경계선 설정 (예: `EtchedBorder`)             |
+
+* **실습 예제 파일**: [JLabelExample.java](file:///d:/site/jinysite/java/src/gui/2.swing/07_text_component/sample/sec07/exam01_jlabel/JLabelExample.java) (경로: `sample/sec07/exam01_jlabel/JLabelExample.java`)
+* **실행 방법**:
+  ```powershell
+  # 1. 07_text_component 디렉토리로 이동 후 컴파일
+  javac -d sample sample/sec07/exam01_jlabel/JLabelExample.java
+  
+  # 2. 실행
+  java -cp sample sec07.exam01_jlabel.JLabelExample
+  ```
 
 ```java
 package sec07.exam01_jlabel;
@@ -148,6 +136,16 @@ public class JLabelExample extends JFrame {
     - `KeyEvent`: 키를 누를 때마다 발생 (`KeyListener` 사용).
     - `ActionEvent`: 입력 후 Enter 키를 누르면 발생 (`ActionListener` 사용).
 
+* **실습 예제 파일**: [JTextFieldJPasswordFieldExample.java](file:///d:/site/jinysite/java/src/gui/2.swing/07_text_component/sample/sec07/exam02_jtextfield_jpasswordfield/JTextFieldJPasswordFieldExample.java) (경로: `sample/sec07/exam02_jtextfield_jpasswordfield/JTextFieldJPasswordFieldExample.java`)
+* **실행 방법**:
+  ```powershell
+  # 1. 07_text_component 디렉토리로 이동 후 컴파일
+  javac -d sample sample/sec07/exam02_jtextfield_jpasswordfield/JTextFieldJPasswordFieldExample.java
+  
+  # 2. 실행 (실행 후 ID 필드에 키 입력 시 터미널 콘솔 로그가 표시되며, 패스워드 입력 후 Enter 키를 누르면 입력값 팝업이 뜹니다)
+  java -cp sample sec07.exam02_jtextfield_jpasswordfield.JTextFieldJPasswordFieldExample
+  ```
+
 ```java
 package sec07.exam02_jtextfield_jpasswordfield;
 
@@ -237,6 +235,16 @@ JScrollPane jScrollPane = new JScrollPane(jTextArea);
 jTextArea.setCaretPosition(jTextArea.getText().length());
 ```
 
+* **실습 예제 파일**: [JTextAreaExample.java](file:///d:/site/jinysite/java/src/gui/2.swing/07_text_component/sample/sec07/exam03_jtextarea/JTextAreaExample.java) (경로: `sample/sec07/exam03_jtextarea/JTextAreaExample.java`)
+* **실행 방법**:
+  ```powershell
+  # 1. 07_text_component 디렉토리로 이동 후 컴파일
+  javac -d sample sample/sec07/exam03_jtextarea/JTextAreaExample.java
+  
+  # 2. 실행 (실행 후 하단 입력 필드에 텍스트를 넣고 전송/엔터키 입력 시 상단 화면에 텍스트가 누적 출력됩니다)
+  java -cp sample sec07.exam03_jtextarea.JTextAreaExample
+  ```
+
 ```java
 package sec07.exam03_jtextarea;
 
@@ -325,6 +333,16 @@ public class JTextAreaExample extends JFrame {
 `JEditorPane`은 HTML 같은 서식 있는 텍스트를 보여주거나 간단한 브라우저 기능을 구현할 때 사용할 수 있습니다.
 - HTML 로드: `setPage(URL)`
 - 링크 클릭 처리: `addHyperlinkListener`
+
+* **실습 예제 파일**: [JEditorPaneExample.java](file:///d:/site/jinysite/java/src/gui/2.swing/07_text_component/sample/sec07/exam04_jeditpane/JEditorPaneExample.java) (경로: `sample/sec07/exam04_jeditpane/JEditorPaneExample.java`)
+* **실행 방법**:
+  ```powershell
+  # 1. 07_text_component 디렉토리로 이동 후 컴파일
+  javac -d sample sample/sec07/exam04_jeditpane/JEditorPaneExample.java
+  
+  # 2. 실행 (실행 전 같은 패키지 폴더 내의 HTML 문서 리소스가 필요합니다)
+  java -cp sample sec07.exam04_jeditpane.JEditorPaneExample
+  ```
 
 ```java
 package sec07.exam04_jeditpane;

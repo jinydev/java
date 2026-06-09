@@ -689,33 +689,13 @@
         
     </ol>
 </nav>
+
         <div class="bd-content ps-lg-2">
             <h1 id="07-텍스트-컴포넌트">07. 텍스트 컴포넌트</h1>
 
 <p>Swing에서 텍스트를 다루는 컴포넌트는 크게 <strong>편집 불가능한 컴포넌트</strong>(<code class="language-plaintext highlighter-rouge">JLabel</code>)와 <strong>편집 가능한 컴포넌트</strong>(<code class="language-plaintext highlighter-rouge">JTextComponent</code> 상속 클래스)로 나뉩니다.</p>
 
-<pre><code class="language-mermaid">classDiagram
-    class JComponent
-    class JLabel
-    class JTextComponent {
-        +setText(String t)
-        +getText() String
-        +setEditable(boolean b)
-    }
-    class JTextField
-    class JPasswordField
-    class JTextArea
-    class JEditorPane
-    class JTextPane
-
-    JComponent &lt;|-- JLabel
-    JComponent &lt;|-- JTextComponent
-    JTextComponent &lt;|-- JTextField
-    JTextField &lt;|-- JPasswordField
-    JTextComponent &lt;|-- JTextArea
-    JTextComponent &lt;|-- JEditorPane
-    JEditorPane &lt;|-- JTextPane
-</code></pre>
+<p><img src="./img/text_hierarchy.svg" alt="텍스트 컴포넌트 계층 구조" /></p>
 
 <ul>
   <li><strong>JLabel</strong>: 짧은 텍스트나 이미지를 표시 (편집 불가).</li>
@@ -741,6 +721,18 @@
 | <code class="language-plaintext highlighter-rouge">setVerticalTextPosition(int)</code>   | 이미지 기준 텍스트의 세로 위치               |
 | <code class="language-plaintext highlighter-rouge">setIconTextGap(int)</code>            | 텍스트와 이미지 사이의 간격 (픽셀)           |
 | <code class="language-plaintext highlighter-rouge">setBorder(Border)</code>              | 경계선 설정 (예: <code class="language-plaintext highlighter-rouge">EtchedBorder</code>)             |</p>
+
+<ul>
+  <li><strong>실습 예제 파일</strong>: <a href="file:///d:/site/jinysite/java/src/gui/2.swing/07_text_component/sample/sec07/exam01_jlabel/JLabelExample.java">JLabelExample.java</a> (경로: <code class="language-plaintext highlighter-rouge">sample/sec07/exam01_jlabel/JLabelExample.java</code>)</li>
+  <li><strong>실행 방법</strong>:
+    <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 1. 07_text_component 디렉토리로 이동 후 컴파일</span><span class="w">
+</span><span class="n">javac</span><span class="w"> </span><span class="nt">-d</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sample/sec07/exam01_jlabel/JLabelExample.java</span><span class="w">
+  
+</span><span class="c"># 2. 실행</span><span class="w">
+</span><span class="n">java</span><span class="w"> </span><span class="nt">-cp</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sec07.exam01_jlabel.JLabelExample</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+</ul>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">sec07.exam01_jlabel</span><span class="o">;</span>
 
@@ -838,6 +830,15 @@
       <li><code class="language-plaintext highlighter-rouge">ActionEvent</code>: 입력 후 Enter 키를 누르면 발생 (<code class="language-plaintext highlighter-rouge">ActionListener</code> 사용).</li>
     </ul>
   </li>
+  <li><strong>실습 예제 파일</strong>: <a href="file:///d:/site/jinysite/java/src/gui/2.swing/07_text_component/sample/sec07/exam02_jtextfield_jpasswordfield/JTextFieldJPasswordFieldExample.java">JTextFieldJPasswordFieldExample.java</a> (경로: <code class="language-plaintext highlighter-rouge">sample/sec07/exam02_jtextfield_jpasswordfield/JTextFieldJPasswordFieldExample.java</code>)</li>
+  <li><strong>실행 방법</strong>:
+    <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 1. 07_text_component 디렉토리로 이동 후 컴파일</span><span class="w">
+</span><span class="n">javac</span><span class="w"> </span><span class="nt">-d</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sample/sec07/exam02_jtextfield_jpasswordfield/JTextFieldJPasswordFieldExample.java</span><span class="w">
+  
+</span><span class="c"># 2. 실행 (실행 후 ID 필드에 키 입력 시 터미널 콘솔 로그가 표시되며, 패스워드 입력 후 Enter 키를 누르면 입력값 팝업이 뜹니다)</span><span class="w">
+</span><span class="n">java</span><span class="w"> </span><span class="nt">-cp</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sec07.exam02_jtextfield_jpasswordfield.JTextFieldJPasswordFieldExample</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
 </ul>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">sec07.exam02_jtextfield_jpasswordfield</span><span class="o">;</span>
@@ -926,6 +927,18 @@
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">jTextArea</span><span class="o">.</span><span class="na">setCaretPosition</span><span class="o">(</span><span class="n">jTextArea</span><span class="o">.</span><span class="na">getText</span><span class="o">().</span><span class="na">length</span><span class="o">());</span>
 </code></pre></div></div>
 
+<ul>
+  <li><strong>실습 예제 파일</strong>: <a href="file:///d:/site/jinysite/java/src/gui/2.swing/07_text_component/sample/sec07/exam03_jtextarea/JTextAreaExample.java">JTextAreaExample.java</a> (경로: <code class="language-plaintext highlighter-rouge">sample/sec07/exam03_jtextarea/JTextAreaExample.java</code>)</li>
+  <li><strong>실행 방법</strong>:
+    <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 1. 07_text_component 디렉토리로 이동 후 컴파일</span><span class="w">
+</span><span class="n">javac</span><span class="w"> </span><span class="nt">-d</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sample/sec07/exam03_jtextarea/JTextAreaExample.java</span><span class="w">
+  
+</span><span class="c"># 2. 실행 (실행 후 하단 입력 필드에 텍스트를 넣고 전송/엔터키 입력 시 상단 화면에 텍스트가 누적 출력됩니다)</span><span class="w">
+</span><span class="n">java</span><span class="w"> </span><span class="nt">-cp</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sec07.exam03_jtextarea.JTextAreaExample</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+</ul>
+
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">sec07.exam03_jtextarea</span><span class="o">;</span>
 
 <span class="kn">import</span> <span class="nn">java.awt.BorderLayout</span><span class="o">;</span>
@@ -1013,7 +1026,18 @@
 <p><code class="language-plaintext highlighter-rouge">JEditorPane</code>은 HTML 같은 서식 있는 텍스트를 보여주거나 간단한 브라우저 기능을 구현할 때 사용할 수 있습니다.</p>
 <ul>
   <li>HTML 로드: <code class="language-plaintext highlighter-rouge">setPage(URL)</code></li>
-  <li>링크 클릭 처리: <code class="language-plaintext highlighter-rouge">addHyperlinkListener</code></li>
+  <li>
+    <p>링크 클릭 처리: <code class="language-plaintext highlighter-rouge">addHyperlinkListener</code></p>
+  </li>
+  <li><strong>실습 예제 파일</strong>: <a href="file:///d:/site/jinysite/java/src/gui/2.swing/07_text_component/sample/sec07/exam04_jeditpane/JEditorPaneExample.java">JEditorPaneExample.java</a> (경로: <code class="language-plaintext highlighter-rouge">sample/sec07/exam04_jeditpane/JEditorPaneExample.java</code>)</li>
+  <li><strong>실행 방법</strong>:
+    <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 1. 07_text_component 디렉토리로 이동 후 컴파일</span><span class="w">
+</span><span class="n">javac</span><span class="w"> </span><span class="nt">-d</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sample/sec07/exam04_jeditpane/JEditorPaneExample.java</span><span class="w">
+  
+</span><span class="c"># 2. 실행 (실행 전 같은 패키지 폴더 내의 HTML 문서 리소스가 필요합니다)</span><span class="w">
+</span><span class="n">java</span><span class="w"> </span><span class="nt">-cp</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sec07.exam04_jeditpane.JEditorPaneExample</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
 </ul>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">sec07.exam04_jeditpane</span><span class="o">;</span>

@@ -7,3 +7,6 @@ vendor/
 .DS_Store
 *.pdf
 source/
+
+# Custom Exclusions
+/quiz/

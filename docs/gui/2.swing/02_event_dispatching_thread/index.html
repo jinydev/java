@@ -689,6 +689,7 @@
         
     </ol>
 </nav>
+
         <div class="bd-content ps-lg-2">
             <h1 id="02-이벤트-디스패칭-스레드">02. 이벤트 디스패칭 스레드</h1>
 
@@ -699,16 +700,23 @@
 
 <p>작업 스레드에서 UI를 업데이트해야 할 때는, 작업을 <code class="language-plaintext highlighter-rouge">Runnable</code> 객체로 만들어 <strong>이벤트 큐(Event Queue)</strong>에 넣어야 합니다. 그러면 EDT가 큐에서 작업을 하나씩 꺼내어 실행합니다.</p>
 
-<pre><code class="language-mermaid">graph LR
-    T1[작업 스레드 A] --&gt;|Runnable| Q(이벤트 큐)
-    T2[작업 스레드 B] --&gt;|Runnable| Q
-    Q --&gt;|순차 실행| EDT[이벤트 디스패칭 스레드]
-    EDT --&gt; UI[UI 생성 및 변경]
-</code></pre>
+<p><img src="./img/edt_flow.svg" alt="이벤트 디스패칭 스레드 동작 원리" /></p>
 
 <h2 id="2-invokelater-메소드">2. invokeLater() 메소드</h2>
 
 <p>작업 스레드는 <code class="language-plaintext highlighter-rouge">SwingUtilities.invokeLater()</code> 메소드를 사용하여 <code class="language-plaintext highlighter-rouge">Runnable</code> 객체를 이벤트 큐에 저장할 수 있습니다. 메서드 이름이 <code class="language-plaintext highlighter-rouge">invokeLater</code>인 이유는 큐에 대기 중인 다른 이벤트들이 처리된 후, “나중에” 실행되기 때문입니다.</p>
+
+<ul>
+  <li><strong>실습 예제 파일</strong>: <a href="file:///d:/site/jinysite/java/src/gui/2.swing/02_event_dispatching_thread/sample/sec02/exam01_invokeLater/App.java">App.java</a> (경로: <code class="language-plaintext highlighter-rouge">sample/sec02/exam01_invokeLater/App.java</code>)</li>
+  <li><strong>실행 방법</strong>:
+    <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 1. 02_event_dispatching_thread 디렉토리로 이동 후 컴파일</span><span class="w">
+</span><span class="n">javac</span><span class="w"> </span><span class="nt">-d</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sample/sec02/exam01_invokeLater/App.java</span><span class="w">
+  
+</span><span class="c"># 2. 실행</span><span class="w">
+</span><span class="n">java</span><span class="w"> </span><span class="nt">-cp</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sec02.exam01_invokeLater.App</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+</ul>
 
 <h3 id="예제-코드">예제 코드</h3>
 

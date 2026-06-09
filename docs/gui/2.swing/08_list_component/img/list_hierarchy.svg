@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 380" width="100%" height="380">
+  <defs>
+    <!-- Drop Shadow Filter -->
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="1" dy="3" stdDeviation="3" flood-opacity="0.08" flood-color="#000000" />
+    </filter>
+    <!-- Inheritance Arrow Marker -->
+    <marker id="inheritance" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#FFFFFF" stroke="#4A5568" stroke-width="1.5" />
+    </marker>
+    <!-- Association Arrow Marker -->
+    <marker id="association" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10" fill="none" stroke="#718096" stroke-width="1.5" />
+    </marker>
+  </defs>
+
+  <style>
+    .class-name { font-family: system-ui, -apple-system, sans-serif; font-size: 13px; font-weight: bold; fill: #1A202C; text-anchor: middle; }
+    .interface-name { font-family: system-ui, -apple-system, sans-serif; font-size: 13px; font-weight: bold; font-style: italic; fill: #2C5282; text-anchor: middle; }
+    .member-text { font-family: system-ui, -apple-system, sans-serif; font-size: 11px; fill: #4A5568; }
+    .class-box { stroke-width: 2; }
+    .base-box { fill: #EDF2F7; stroke: #4A5568; }
+    .list-box { fill: #EBF8FF; stroke: #3182CE; }
+    .combo-box { fill: #F0FDF4; stroke: #22C55E; }
+    .interface-box { fill: #EFF6FF; stroke: #3B82F6; stroke-dasharray: 4 4; }
+    .relation-line { stroke: #4A5568; stroke-width: 1.5; fill: none; }
+    .dashed-relation { stroke: #718096; stroke-width: 1.2; stroke-dasharray: 3 3; fill: none; }
+  </style>
+
+  <!-- Connectors -->
+  <!-- JComponent to JList & JComboBox -->
+  <path class="relation-line" d="M 350 60 L 350 85 L 200 85 L 200 120" marker-end="url(#inheritance)" />
+  <path class="relation-line" d="M 350 85 L 500 85 L 500 120" marker-end="url(#inheritance)" />
+
+  <!-- JList to ListModel -->
+  <path class="dashed-relation" d="M 200 215 L 200 270" marker-end="url(#association)" />
+
+  <!-- JComboBox to ComboBoxModel -->
+  <path class="dashed-relation" d="M 500 215 L 500 270" marker-end="url(#association)" />
+
+  <!-- JComponent Node -->
+  <g transform="translate(275, 20)" filter="url(#shadow)">
+    <rect class="class-box base-box" width="150" height="40" rx="6" />
+    <text x="75" y="24" class="class-name">JComponent</text>
+  </g>
+
+  <!-- JList Node -->
+  <g transform="translate(90, 120)" filter="url(#shadow)">
+    <rect class="class-box list-box" width="220" height="95" rx="6" />
+    <text x="110" y="22" class="class-name" fill="#1D4ED8">JList&lt;E&gt;</text>
+    <line x1="0" y1="32" x2="220" y2="32" stroke="#3182CE" stroke-width="1" />
+    <text x="15" y="50" class="member-text">+getSelectedIndex() : int</text>
+    <text x="15" y="68" class="member-text">+getSelectedValue() : E</text>
+    <text x="15" y="86" class="member-text">+setListData(items : E[]) : void</text>
+  </g>
+
+  <!-- JComboBox Node -->
+  <g transform="translate(390, 120)" filter="url(#shadow)">
+    <rect class="class-box combo-box" width="220" height="95" rx="6" />
+    <text x="110" y="22" class="class-name" fill="#15803D">JComboBox&lt;E&gt;</text>
+    <line x1="0" y1="32" x2="220" y2="32" stroke="#22C55E" stroke-width="1" />
+    <text x="15" y="50" class="member-text">+getSelectedIndex() : int</text>
+    <text x="15" y="68" class="member-text">+getSelectedItem() : Object</text>
+    <text x="15" y="86" class="member-text">+addItem(item : E) : void</text>
+  </g>
+
+  <!-- ListModel Node -->
+  <g transform="translate(90, 270)" filter="url(#shadow)">
+    <rect class="class-box interface-box" width="220" height="60" rx="6" />
+    <text x="110" y="24" class="interface-name">&lt;&lt;interface&gt;&gt;</text>
+    <text x="110" y="42" class="interface-name">ListModel&lt;E&gt;</text>
+  </g>
+
+  <!-- ComboBoxModel Node -->
+  <g transform="translate(390, 270)" filter="url(#shadow)">
+    <rect class="class-box interface-box" width="220" height="60" rx="6" />
+    <text x="110" y="24" class="interface-name">&lt;&lt;interface&gt;&gt;</text>
+    <text x="110" y="42" class="interface-name">ComboBoxModel&lt;E&gt;</text>
+  </g>
+</svg>

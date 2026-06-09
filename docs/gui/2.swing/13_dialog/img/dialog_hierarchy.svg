@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 380" width="100%" height="380">
+  <style>
+    .class-name { font-family: system-ui, -apple-system, sans-serif; font-size: 13px; font-weight: bold; fill: #1A202C; text-anchor: middle; }
+    .class-box { stroke-width: 2; }
+    .base-box { fill: #EDF2F7; stroke: #4A5568; }
+    .middle-box { fill: #EFF6FF; stroke: #3B82F6; }
+    .concrete-box { fill: #F0FDF4; stroke: #22C55E; }
+    .relation-line { stroke: #4A5568; stroke-width: 1.5; fill: none; }
+  </style>
+
+  <defs>
+    <!-- Drop Shadow Filter -->
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="1" dy="3" stdDeviation="3" flood-opacity="0.08" flood-color="#000000" />
+    </filter>
+    <!-- Inheritance Arrow Marker -->
+    <marker id="inheritance" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#FFFFFF" stroke="#4A5568" stroke-width="1.5" />
+    </marker>
+  </defs>
+
+  <!-- Connectors -->
+  <!-- Container to Component -->
+  <path class="relation-line" d="M 350 90 L 350 60" marker-end="url(#inheritance)" />
+
+  <!-- JComponent to Container -->
+  <path class="relation-line" d="M 175 170 L 175 140 L 350 140 L 350 130" marker-end="url(#inheritance)" />
+
+  <!-- Window to Container -->
+  <path class="relation-line" d="M 525 170 L 525 140 L 350 140 L 350 130" marker-end="url(#inheritance)" />
+
+  <!-- JOptionPane to JComponent -->
+  <path class="relation-line" d="M 175 250 L 175 210" marker-end="url(#inheritance)" />
+
+  <!-- Frame to Window -->
+  <path class="relation-line" d="M 425 240 L 425 220 L 525 220 L 525 210" marker-end="url(#inheritance)" />
+
+  <!-- Dialog to Window -->
+  <path class="relation-line" d="M 575 240 L 575 220 L 525 220 L 525 210" marker-end="url(#inheritance)" />
+
+  <!-- JFrame to Frame -->
+  <path class="relation-line" d="M 425 310 L 425 280" marker-end="url(#inheritance)" />
+
+  <!-- JDialog to Dialog -->
+  <path class="relation-line" d="M 575 310 L 575 280" marker-end="url(#inheritance)" />
+
+  <!-- Component Node -->
+  <g transform="translate(275, 20)" filter="url(#shadow)">
+    <rect class="class-box base-box" width="150" height="40" rx="6" />
+    <text x="75" y="24" class="class-name">Component (AWT)</text>
+  </g>
+
+  <!-- Container Node -->
+  <g transform="translate(275, 90)" filter="url(#shadow)">
+    <rect class="class-box base-box" width="150" height="40" rx="6" />
+    <text x="75" y="24" class="class-name">Container (AWT)</text>
+  </g>
+
+  <!-- JComponent Node -->
+  <g transform="translate(100, 170)" filter="url(#shadow)">
+    <rect class="class-box base-box" width="150" height="40" rx="6" />
+    <text x="75" y="24" class="class-name">JComponent</text>
+  </g>
+
+  <!-- JOptionPane Node -->
+  <g transform="translate(100, 250)" filter="url(#shadow)">
+    <rect class="class-box concrete-box" width="150" height="40" rx="6" />
+    <text x="75" y="24" class="class-name">JOptionPane</text>
+  </g>
+
+  <!-- Window Node -->
+  <g transform="translate(450, 170)" filter="url(#shadow)">
+    <rect class="class-box base-box" width="150" height="40" rx="6" />
+    <text x="75" y="24" class="class-name">Window (AWT)</text>
+  </g>
+
+  <!-- Frame Node -->
+  <g transform="translate(360, 240)" filter="url(#shadow)">
+    <rect class="class-box middle-box" width="130" height="40" rx="6" />
+    <text x="65" y="24" class="class-name">Frame (AWT)</text>
+  </g>
+
+  <!-- Dialog Node -->
+  <g transform="translate(510, 240)" filter="url(#shadow)">
+    <rect class="class-box middle-box" width="130" height="40" rx="6" />
+    <text x="65" y="24" class="class-name">Dialog (AWT)</text>
+  </g>
+
+  <!-- JFrame Node -->
+  <g transform="translate(360, 310)" filter="url(#shadow)">
+    <rect class="class-box concrete-box" width="130" height="40" rx="6" />
+    <text x="65" y="24" class="class-name" fill="#15803D">JFrame</text>
+  </g>
+
+  <!-- JDialog Node -->
+  <g transform="translate(510, 310)" filter="url(#shadow)">
+    <rect class="class-box concrete-box" width="130" height="40" rx="6" />
+    <text x="65" y="24" class="class-name" fill="#15803D">JDialog</text>
+  </g>
+</svg>

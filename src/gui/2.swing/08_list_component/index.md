@@ -9,6 +9,8 @@ keywords: "08. 리스트 컴포넌트, 자바, Java, 프로그래밍, 백엔드,
 
 리스트 컴포넌트는 여러 항목 중 하나 이상을 선택할 수 있는 UI 요소입니다. Swing에서는 `JList`와 `JComboBox`를 제공합니다.
 
+![리스트 컴포넌트 계층 구조](./img/list_hierarchy.svg)
+
 - **JList**: 목록이 펼쳐져 있는 형태. 다중 선택 가능. 스크롤바 미포함(별도 추가 필요).
 - **JComboBox**: 텍스트 필드와 화살표 버튼이 결합된 형태(콤보박스). 단일 선택만 가능.
 
@@ -54,6 +56,16 @@ list.addListSelectionListener(e -> {
 
 ### JList 예제
 좌측 리스트에서 과일 이름을 선택하면 우측에 해당 이미지를 보여주는 예제입니다.
+
+* **실습 예제 파일**: [JListExample.java](file:///d:/site/jinysite/java/src/gui/2.swing/08_list_component/sample/sec08/exam01_jlist/JListExample.java) (경로: `sample/sec08/exam01_jlist/JListExample.java`)
+* **실행 방법**:
+  ```powershell
+  # 1. 08_list_component 디렉토리로 이동 후 컴파일
+  javac -d sample sample/sec08/exam01_jlist/JListExample.java
+  
+  # 2. 실행 (실행 전 같은 패키지 폴더 내의 fruit*.jpg 리소스가 필요합니다)
+  java -cp sample sec08.exam01_jlist.JListExample
+  ```
 
 ```java
 package sec08.exam01_jlist;
@@ -172,6 +184,16 @@ comboBox.addActionListener(e -> {
 
 ### JComboBox 예제
 상단의 콤보박스에서 과일을 선택하면 하단에 이미지를 표시하는 예제입니다.
+
+* **실습 예제 파일**: [JComboBoxExample.java](file:///d:/site/jinysite/java/src/gui/2.swing/08_list_component/sample/sec08/exam02_jcombobox/JComboBoxExample.java) (경로: `sample/sec08/exam02_jcombobox/JComboBoxExample.java`)
+* **실행 방법**:
+  ```powershell
+  # 1. 08_list_component 디렉토리로 이동 후 컴파일
+  javac -d sample sample/sec08/exam02_jcombobox/JComboBoxExample.java
+  
+  # 2. 실행 (실행 전 같은 패키지 폴더 내의 fruit*.jpg 리소스가 필요합니다)
+  java -cp sample sec08.exam02_jcombobox.JComboBoxExample
+  ```
 
 ```java
 package sec08.exam02_jcombobox;

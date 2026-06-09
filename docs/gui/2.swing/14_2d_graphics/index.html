@@ -689,6 +689,7 @@
         
     </ol>
 </nav>
+
         <div class="bd-content ps-lg-2">
             <h1 id="14-2d-그래픽스">14. 2D 그래픽스</h1>
 
@@ -704,16 +705,7 @@
 <h3 id="그리기-매커니즘">그리기 매커니즘</h3>
 <p><code class="language-plaintext highlighter-rouge">Canvas</code>는 화면에 보일 준비가 되면 <code class="language-plaintext highlighter-rouge">paint(Graphics g)</code> 메서드를 호출하여 그림을 그립니다.</p>
 
-<pre><code class="language-mermaid">sequenceDiagram
-    participant System
-    participant Canvas
-    participant Graphics
-    
-    System-&gt;&gt;Canvas: 드로잉 요청 (최초, 크기변경 등)
-    Canvas-&gt;&gt;Canvas: paint(Graphics g) 호출
-    Canvas-&gt;&gt;Graphics: 그림 그리기 메서드 호출
-    Graphics--&gt;&gt;Canvas: 화면에 출력
-</code></pre>
+<p><img src="./img/paint_sequence.svg" alt="드로잉 매커니즘" /></p>
 
 <h3 id="paint-메서드가-호출되는-시점"><code class="language-plaintext highlighter-rouge">paint()</code> 메서드가 호출되는 시점</h3>
 <ol>
@@ -724,6 +716,19 @@
 </ol>
 
 <h3 id="예제-canvaspaintexample">예제 (<code class="language-plaintext highlighter-rouge">CanvasPaintExample</code>)</h3>
+
+<ul>
+  <li><strong>실습 예제 파일</strong>: <a href="file:///d:/site/jinysite/java/src/gui/2.swing/14_2d_graphics/sample/sec14/exam01_paint/CanvasPaintExample.java">CanvasPaintExample.java</a> (경로: <code class="language-plaintext highlighter-rouge">sample/sec14/exam01_paint/CanvasPaintExample.java</code>)</li>
+  <li><strong>실행 방법</strong>:
+    <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 1. 14_2d_graphics 디렉토리로 이동 후 컴파일</span><span class="w">
+</span><span class="n">javac</span><span class="w"> </span><span class="nt">-d</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sample/sec14/exam01_paint/CanvasPaintExample.java</span><span class="w">
+  
+</span><span class="c"># 2. 실행</span><span class="w">
+</span><span class="n">java</span><span class="w"> </span><span class="nt">-cp</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sec14.exam01_paint.CanvasPaintExample</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+</ul>
+
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">sec14.exam01_paint</span><span class="o">;</span>
 
 <span class="kn">import</span> <span class="nn">java.awt.BorderLayout</span><span class="o">;</span>
@@ -735,6 +740,7 @@
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">CanvasPaintExample</span> <span class="kd">extends</span> <span class="nc">JFrame</span> <span class="o">{</span>
     <span class="kd">public</span> <span class="nf">CanvasPaintExample</span><span class="o">()</span> <span class="o">{</span>
         <span class="n">setTitle</span><span class="o">(</span><span class="s">"paint() 메서드 호출 시점"</span><span class="o">);</span>
+        <span class="n">setDefaultCloseOperation</span><span class="o">(</span><span class="nc">JFrame</span><span class="o">.</span><span class="na">EXIT_ON_CLOSE</span><span class="o">);</span>
         <span class="n">getContentPane</span><span class="o">().</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">MyCanvas</span><span class="o">(),</span> <span class="nc">BorderLayout</span><span class="o">.</span><span class="na">CENTER</span><span class="o">);</span>
         <span class="n">setSize</span><span class="o">(</span><span class="mi">300</span><span class="o">,</span> <span class="mi">200</span><span class="o">);</span>
     <span class="o">}</span>
@@ -777,6 +783,19 @@
 </code></pre></div></div>
 
 <h3 id="예제-마우스-드래그로-그림-그리기-repaintexample">예제: 마우스 드래그로 그림 그리기 (<code class="language-plaintext highlighter-rouge">RepaintExample</code>)</h3>
+
+<ul>
+  <li><strong>실습 예제 파일</strong>: <a href="file:///d:/site/jinysite/java/src/gui/2.swing/14_2d_graphics/sample/sec14/exam02_repaint/RepaintExample.java">RepaintExample.java</a> (경로: <code class="language-plaintext highlighter-rouge">sample/sec14/exam02_repaint/RepaintExample.java</code>)</li>
+  <li><strong>실행 방법</strong>:
+    <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 1. 14_2d_graphics 디렉토리로 이동 후 컴파일</span><span class="w">
+</span><span class="n">javac</span><span class="w"> </span><span class="nt">-d</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sample/sec14/exam02_repaint/RepaintExample.java</span><span class="w">
+  
+</span><span class="c"># 2. 실행</span><span class="w">
+</span><span class="n">java</span><span class="w"> </span><span class="nt">-cp</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sec14.exam02_repaint.RepaintExample</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+</ul>
+
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">sec14.exam02_repaint</span><span class="o">;</span>
 
 <span class="kn">import</span> <span class="nn">java.awt.BorderLayout</span><span class="o">;</span>
@@ -790,6 +809,7 @@
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">RepaintExample</span> <span class="kd">extends</span> <span class="nc">JFrame</span> <span class="o">{</span>
     <span class="kd">public</span> <span class="nf">RepaintExample</span><span class="o">()</span> <span class="o">{</span>
         <span class="n">setTitle</span><span class="o">(</span><span class="s">"재 드로잉"</span><span class="o">);</span>
+        <span class="n">setDefaultCloseOperation</span><span class="o">(</span><span class="nc">JFrame</span><span class="o">.</span><span class="na">EXIT_ON_CLOSE</span><span class="o">);</span>
         <span class="n">getContentPane</span><span class="o">().</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">MyCanvas</span><span class="o">(),</span> <span class="nc">BorderLayout</span><span class="o">.</span><span class="na">CENTER</span><span class="o">);</span>
         <span class="n">setSize</span><span class="o">(</span><span class="mi">500</span><span class="o">,</span> <span class="mi">400</span><span class="o">);</span>
     <span class="o">}</span>
@@ -856,12 +876,57 @@
 | <strong>다각형</strong>      | <code class="language-plaintext highlighter-rouge">drawPolygon(...)</code>         | <code class="language-plaintext highlighter-rouge">fillPolygon(...)</code>      | 점들의 배열을 이어 만든 다각형      |</p>
 
 <h3 id="예제-shapeexample">예제 (<code class="language-plaintext highlighter-rouge">ShapeExample</code>)</h3>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// paint 내부</span>
-<span class="n">g</span><span class="o">.</span><span class="na">drawOval</span><span class="o">(</span><span class="mi">50</span><span class="o">,</span> <span class="mi">50</span><span class="o">,</span> <span class="mi">50</span><span class="o">,</span> <span class="mi">50</span><span class="o">);</span> <span class="c1">// 원</span>
-<span class="n">g</span><span class="o">.</span><span class="na">setColor</span><span class="o">(</span><span class="nc">Color</span><span class="o">.</span><span class="na">RED</span><span class="o">);</span>
-<span class="n">g</span><span class="o">.</span><span class="na">drawLine</span><span class="o">(</span><span class="mi">50</span><span class="o">,</span> <span class="mi">100</span><span class="o">,</span> <span class="mi">100</span><span class="o">,</span> <span class="mi">150</span><span class="o">);</span> <span class="c1">// 선</span>
-<span class="n">g</span><span class="o">.</span><span class="na">setColor</span><span class="o">(</span><span class="nc">Color</span><span class="o">.</span><span class="na">BLUE</span><span class="o">);</span>
-<span class="n">g</span><span class="o">.</span><span class="na">drawRoundRect</span><span class="o">(</span><span class="mi">200</span><span class="o">,</span> <span class="mi">50</span><span class="o">,</span> <span class="mi">120</span><span class="o">,</span> <span class="mi">80</span><span class="o">,</span> <span class="mi">30</span><span class="o">,</span> <span class="mi">30</span><span class="o">);</span> <span class="c1">// 둥근 사각형</span>
+
+<ul>
+  <li><strong>실습 예제 파일</strong>: <a href="file:///d:/site/jinysite/java/src/gui/2.swing/14_2d_graphics/sample/sec14/exam03_shape/ShapeExample.java">ShapeExample.java</a> (경로: <code class="language-plaintext highlighter-rouge">sample/sec14/exam03_shape/ShapeExample.java</code>)</li>
+  <li><strong>실행 방법</strong>:
+    <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 1. 14_2d_graphics 디렉토리로 이동 후 컴파일</span><span class="w">
+</span><span class="n">javac</span><span class="w"> </span><span class="nt">-d</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sample/sec14/exam03_shape/ShapeExample.java</span><span class="w">
+  
+</span><span class="c"># 2. 실행</span><span class="w">
+</span><span class="n">java</span><span class="w"> </span><span class="nt">-cp</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sec14.exam03_shape.ShapeExample</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">sec14.exam03_shape</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.awt.BorderLayout</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.Canvas</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.Color</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.Font</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.Graphics</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.swing.JFrame</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.swing.SwingUtilities</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ShapeExample</span> <span class="kd">extends</span> <span class="nc">JFrame</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">ShapeExample</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">setTitle</span><span class="o">(</span><span class="s">"도형 그리기 예제"</span><span class="o">);</span>
+        <span class="n">setDefaultCloseOperation</span><span class="o">(</span><span class="nc">JFrame</span><span class="o">.</span><span class="na">EXIT_ON_CLOSE</span><span class="o">);</span>
+        <span class="n">getContentPane</span><span class="o">().</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">MyCanvas</span><span class="o">(),</span> <span class="nc">BorderLayout</span><span class="o">.</span><span class="na">CENTER</span><span class="o">);</span>
+        <span class="n">setSize</span><span class="o">(</span><span class="mi">400</span><span class="o">,</span> <span class="mi">300</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">class</span> <span class="nc">MyCanvas</span> <span class="kd">extends</span> <span class="nc">Canvas</span> <span class="o">{</span>
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">paint</span><span class="o">(</span><span class="nc">Graphics</span> <span class="n">g</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">g</span><span class="o">.</span><span class="na">setFont</span><span class="o">(</span><span class="k">new</span> <span class="nc">Font</span><span class="o">(</span><span class="s">"맑은 고딕"</span><span class="o">,</span> <span class="nc">Font</span><span class="o">.</span><span class="na">BOLD</span><span class="o">,</span> <span class="mi">14</span><span class="o">));</span>
+            <span class="n">g</span><span class="o">.</span><span class="na">drawString</span><span class="o">(</span><span class="s">"다양한 도형 그리기"</span><span class="o">,</span> <span class="mi">20</span><span class="o">,</span> <span class="mi">30</span><span class="o">);</span>
+
+            <span class="n">g</span><span class="o">.</span><span class="na">drawOval</span><span class="o">(</span><span class="mi">50</span><span class="o">,</span> <span class="mi">50</span><span class="o">,</span> <span class="mi">50</span><span class="o">,</span> <span class="mi">50</span><span class="o">);</span> <span class="c1">// 원</span>
+            <span class="n">g</span><span class="o">.</span><span class="na">setColor</span><span class="o">(</span><span class="nc">Color</span><span class="o">.</span><span class="na">RED</span><span class="o">);</span>
+            <span class="n">g</span><span class="o">.</span><span class="na">drawLine</span><span class="o">(</span><span class="mi">50</span><span class="o">,</span> <span class="mi">120</span><span class="o">,</span> <span class="mi">150</span><span class="o">,</span> <span class="mi">200</span><span class="o">);</span> <span class="c1">// 선</span>
+            <span class="n">g</span><span class="o">.</span><span class="na">setColor</span><span class="o">(</span><span class="nc">Color</span><span class="o">.</span><span class="na">BLUE</span><span class="o">);</span>
+            <span class="n">g</span><span class="o">.</span><span class="na">drawRoundRect</span><span class="o">(</span><span class="mi">200</span><span class="o">,</span> <span class="mi">50</span><span class="o">,</span> <span class="mi">120</span><span class="o">,</span> <span class="mi">80</span><span class="o">,</span> <span class="mi">30</span><span class="o">,</span> <span class="mi">30</span><span class="o">);</span> <span class="c1">// 둥근 사각형</span>
+            <span class="n">g</span><span class="o">.</span><span class="na">setColor</span><span class="o">(</span><span class="nc">Color</span><span class="o">.</span><span class="na">GREEN</span><span class="o">);</span>
+            <span class="n">g</span><span class="o">.</span><span class="na">fillRect</span><span class="o">(</span><span class="mi">200</span><span class="o">,</span> <span class="mi">150</span><span class="o">,</span> <span class="mi">120</span><span class="o">,</span> <span class="mi">60</span><span class="o">);</span> <span class="c1">// 채워진 사각형</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">SwingUtilities</span><span class="o">.</span><span class="na">invokeLater</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="k">new</span> <span class="nc">ShapeExample</span><span class="o">().</span><span class="na">setVisible</span><span class="o">(</span><span class="kc">true</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
 </code></pre></div></div>
 
 <hr />
@@ -919,24 +984,66 @@
 </ol>
 
 <h3 id="예제-backgroundimageexample">예제 (<code class="language-plaintext highlighter-rouge">BackgroundImageExample</code>)</h3>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyPanel</span> <span class="kd">extends</span> <span class="nc">JPanel</span> <span class="o">{</span>
-    <span class="kd">private</span> <span class="nc">Image</span> <span class="n">bgImage</span><span class="o">;</span>
 
-    <span class="kd">public</span> <span class="nf">MyPanel</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">setLayout</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
-        <span class="n">bgImage</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ImageIcon</span><span class="o">(</span><span class="n">getClass</span><span class="o">().</span><span class="na">getResource</span><span class="o">(</span><span class="s">"bg.jpg"</span><span class="o">)).</span><span class="na">getImage</span><span class="o">();</span>
-        <span class="c1">// 자식 컴포넌트 추가</span>
-        <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">JButton</span><span class="o">(</span><span class="s">"버튼"</span><span class="o">));</span>
+<ul>
+  <li><strong>실습 예제 파일</strong>: <a href="file:///d:/site/jinysite/java/src/gui/2.swing/14_2d_graphics/sample/sec14/exam06_background/BackgroundImageExample.java">BackgroundImageExample.java</a> (경로: <code class="language-plaintext highlighter-rouge">sample/sec14/exam06_background/BackgroundImageExample.java</code>)</li>
+  <li><strong>실행 방법</strong>:
+    <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 1. 14_2d_graphics 디렉토리로 이동 후 컴파일</span><span class="w">
+</span><span class="n">javac</span><span class="w"> </span><span class="nt">-d</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sample/sec14/exam06_background/BackgroundImageExample.java</span><span class="w">
+  
+</span><span class="c"># 2. 실행 (실행 전 같은 패키지 폴더 내의 bg.jpg 리소스가 필요합니다)</span><span class="w">
+</span><span class="n">java</span><span class="w"> </span><span class="nt">-cp</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sec14.exam06_background.BackgroundImageExample</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">sec14.exam06_background</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.awt.BorderLayout</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.Graphics</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.Image</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.swing.ImageIcon</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.swing.JButton</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.swing.JFrame</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.swing.JPanel</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.swing.SwingUtilities</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BackgroundImageExample</span> <span class="kd">extends</span> <span class="nc">JFrame</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">BackgroundImageExample</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">setTitle</span><span class="o">(</span><span class="s">"JPanel 배경 이미지 넣기"</span><span class="o">);</span>
+        <span class="n">setDefaultCloseOperation</span><span class="o">(</span><span class="nc">JFrame</span><span class="o">.</span><span class="na">EXIT_ON_CLOSE</span><span class="o">);</span>
+        <span class="n">getContentPane</span><span class="o">().</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">MyPanel</span><span class="o">(),</span> <span class="nc">BorderLayout</span><span class="o">.</span><span class="na">CENTER</span><span class="o">);</span>
+        <span class="n">setSize</span><span class="o">(</span><span class="mi">400</span><span class="o">,</span> <span class="mi">300</span><span class="o">);</span>
     <span class="o">}</span>
 
-    <span class="nd">@Override</span>
-    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">paintComponent</span><span class="o">(</span><span class="nc">Graphics</span> <span class="n">g</span><span class="o">)</span> <span class="o">{</span>
-        <span class="kd">super</span><span class="o">.</span><span class="na">paintComponent</span><span class="o">(</span><span class="n">g</span><span class="o">);</span> <span class="c1">// 기본 그리기 수행</span>
-        <span class="n">g</span><span class="o">.</span><span class="na">drawImage</span><span class="o">(</span><span class="n">bgImage</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">getWidth</span><span class="o">(),</span> <span class="n">getHeight</span><span class="o">(),</span> <span class="k">this</span><span class="o">);</span> <span class="c1">// 배경 그리기</span>
+    <span class="kd">class</span> <span class="nc">MyPanel</span> <span class="kd">extends</span> <span class="nc">JPanel</span> <span class="o">{</span>
+        <span class="kd">private</span> <span class="nc">Image</span> <span class="n">bgImage</span><span class="o">;</span>
+
+        <span class="kd">public</span> <span class="nf">MyPanel</span><span class="o">()</span> <span class="o">{</span>
+            <span class="n">setLayout</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
+            <span class="c1">// 리소스 로드</span>
+            <span class="n">bgImage</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ImageIcon</span><span class="o">(</span><span class="n">getClass</span><span class="o">().</span><span class="na">getResource</span><span class="o">(</span><span class="s">"bg.jpg"</span><span class="o">)).</span><span class="na">getImage</span><span class="o">();</span>
+            
+            <span class="c1">// 자식 컴포넌트 추가</span>
+            <span class="nc">JButton</span> <span class="n">button</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JButton</span><span class="o">(</span><span class="s">"버튼"</span><span class="o">);</span>
+            <span class="n">button</span><span class="o">.</span><span class="na">setBounds</span><span class="o">(</span><span class="mi">150</span><span class="o">,</span> <span class="mi">120</span><span class="o">,</span> <span class="mi">100</span><span class="o">,</span> <span class="mi">30</span><span class="o">);</span>
+            <span class="n">add</span><span class="o">(</span><span class="n">button</span><span class="o">);</span>
+        <span class="o">}</span>
+
+        <span class="nd">@Override</span>
+        <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">paintComponent</span><span class="o">(</span><span class="nc">Graphics</span> <span class="n">g</span><span class="o">)</span> <span class="o">{</span>
+            <span class="kd">super</span><span class="o">.</span><span class="na">paintComponent</span><span class="o">(</span><span class="n">g</span><span class="o">);</span> <span class="c1">// 기본 그리기 수행</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">bgImage</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">g</span><span class="o">.</span><span class="na">drawImage</span><span class="o">(</span><span class="n">bgImage</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">getWidth</span><span class="o">(),</span> <span class="n">getHeight</span><span class="o">(),</span> <span class="k">this</span><span class="o">);</span> <span class="c1">// 배경 그리기</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">SwingUtilities</span><span class="o">.</span><span class="na">invokeLater</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="k">new</span> <span class="nc">BackgroundImageExample</span><span class="o">().</span><span class="na">setVisible</span><span class="o">(</span><span class="kc">true</span><span class="o">));</span>
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div></div>
-
 
 
 

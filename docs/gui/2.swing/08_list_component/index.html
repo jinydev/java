@@ -689,10 +689,13 @@
         
     </ol>
 </nav>
+
         <div class="bd-content ps-lg-2">
             <h1 id="08-리스트-컴포넌트">08. 리스트 컴포넌트</h1>
 
 <p>리스트 컴포넌트는 여러 항목 중 하나 이상을 선택할 수 있는 UI 요소입니다. Swing에서는 <code class="language-plaintext highlighter-rouge">JList</code>와 <code class="language-plaintext highlighter-rouge">JComboBox</code>를 제공합니다.</p>
+
+<p><img src="./img/list_hierarchy.svg" alt="리스트 컴포넌트 계층 구조" /></p>
 
 <ul>
   <li><strong>JList</strong>: 목록이 펼쳐져 있는 형태. 다중 선택 가능. 스크롤바 미포함(별도 추가 필요).</li>
@@ -741,6 +744,18 @@
 
 <h3 id="jlist-예제">JList 예제</h3>
 <p>좌측 리스트에서 과일 이름을 선택하면 우측에 해당 이미지를 보여주는 예제입니다.</p>
+
+<ul>
+  <li><strong>실습 예제 파일</strong>: <a href="file:///d:/site/jinysite/java/src/gui/2.swing/08_list_component/sample/sec08/exam01_jlist/JListExample.java">JListExample.java</a> (경로: <code class="language-plaintext highlighter-rouge">sample/sec08/exam01_jlist/JListExample.java</code>)</li>
+  <li><strong>실행 방법</strong>:
+    <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 1. 08_list_component 디렉토리로 이동 후 컴파일</span><span class="w">
+</span><span class="n">javac</span><span class="w"> </span><span class="nt">-d</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sample/sec08/exam01_jlist/JListExample.java</span><span class="w">
+  
+</span><span class="c"># 2. 실행 (실행 전 같은 패키지 폴더 내의 fruit*.jpg 리소스가 필요합니다)</span><span class="w">
+</span><span class="n">java</span><span class="w"> </span><span class="nt">-cp</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sec08.exam01_jlist.JListExample</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+</ul>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">sec08.exam01_jlist</span><span class="o">;</span>
 
@@ -859,6 +874,18 @@
 
 <h3 id="jcombobox-예제">JComboBox 예제</h3>
 <p>상단의 콤보박스에서 과일을 선택하면 하단에 이미지를 표시하는 예제입니다.</p>
+
+<ul>
+  <li><strong>실습 예제 파일</strong>: <a href="file:///d:/site/jinysite/java/src/gui/2.swing/08_list_component/sample/sec08/exam02_jcombobox/JComboBoxExample.java">JComboBoxExample.java</a> (경로: <code class="language-plaintext highlighter-rouge">sample/sec08/exam02_jcombobox/JComboBoxExample.java</code>)</li>
+  <li><strong>실행 방법</strong>:
+    <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 1. 08_list_component 디렉토리로 이동 후 컴파일</span><span class="w">
+</span><span class="n">javac</span><span class="w"> </span><span class="nt">-d</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sample/sec08/exam02_jcombobox/JComboBoxExample.java</span><span class="w">
+  
+</span><span class="c"># 2. 실행 (실행 전 같은 패키지 폴더 내의 fruit*.jpg 리소스가 필요합니다)</span><span class="w">
+</span><span class="n">java</span><span class="w"> </span><span class="nt">-cp</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sec08.exam02_jcombobox.JComboBoxExample</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+</ul>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">sec08.exam02_jcombobox</span><span class="o">;</span>
 

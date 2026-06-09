@@ -9,6 +9,8 @@ keywords: "09. 테이블 컴포넌트, 자바, Java, 프로그래밍, 백엔드,
 
 `JTable`은 데이터를 행(Row)과 열(Column)로 구성된 표 형식으로 보여주고 편집할 수 있는 강력한 컴포넌트입니다.
 
+![테이블 컴포넌트 구조](./img/table_architecture.svg)
+
 ## 1. JTable 구조
 테이블은 **컬럼 헤더(Column Header)**, **행(Row)**, **셀(Cell)**로 구성됩니다.
 - **컬럼(Column)**: 열. 각 컬럼은 동일한 데이터 타입을 가집니다.
@@ -35,6 +37,16 @@ JTable table = new JTable(rowData, columnNames);
 ---
 
 ## 3. 예제: 기본 JTable
+
+* **실습 예제 파일**: [JTableBasicExample.java](file:///d:/site/jinysite/java/src/gui/2.swing/09_table_component/sample/sec09/exam01_jtable/JTableBasicExample.java) (경로: `sample/sec09/exam01_jtable/JTableBasicExample.java`)
+* **실행 방법**:
+  ```powershell
+  # 1. 09_table_component 디렉토리로 이동 후 컴파일
+  javac -d sample sample/sec09/exam01_jtable/JTableBasicExample.java
+  
+  # 2. 실행
+  java -cp sample sec09.exam01_jtable.JTableBasicExample
+  ```
 
 ```java
 package sec09.exam01_jtable;
@@ -122,7 +134,17 @@ public class MyCellRenderer extends JLabel implements TableCellRenderer {
 }
 ```
 
-### 종합 예제 Code (`JTableCellRendererExample`)
+### 종합 예제 Code (`JTableCustomExample`)
+
+* **실습 예제 파일**: [JTableCustomExample.java](file:///d:/site/jinysite/java/src/gui/2.swing/09_table_component/sample/sec09/exam03_cellrenderer/JTableCustomExample.java) (경로: `sample/sec09/exam03_cellrenderer/JTableCustomExample.java`)
+* **실행 방법**:
+  ```powershell
+  # 1. 09_table_component 디렉토리로 이동 후 컴파일
+  javac -d sample sample/sec09/exam03_cellrenderer/JTableCustomExample.java
+  
+  # 2. 실행 (실행 전 같은 패키지 폴더 내의 key.gif 및 start.gif 리소스가 필요합니다)
+  java -cp sample sec09.exam03_cellrenderer.JTableCustomExample
+  ```
 
 ```java
 package sec09.exam03_cellrenderer;
@@ -244,7 +266,6 @@ public class JTableCustomExample extends JFrame {
 }
 ```
 
-
 ---
 
 ## 6. 행 추가, 수정, 삭제 (CRUD)
@@ -256,7 +277,16 @@ public class JTableCustomExample extends JFrame {
 - `fireTableDataChanged()`: 데이터 변경 통지 (일반적으로 `setDataVector` 등을 쓸 때 필요하지만, `DefaultTableModel` 메서드들은 자동 통지됨)
 
 ### CRUD 예제 Code (`JTableEditorExample`)
-사용자 입력을 받아 테이블에 행을 추가, 수정, 삭제하는 예제입니다.
+
+* **실습 예제 파일**: [JTableEditorExample.java](file:///d:/site/jinysite/java/src/gui/2.swing/09_table_component/sample/sec09/exam04_eventhandling/JTableEditorExample.java) (경로: `sample/sec09/exam04_eventhandling/JTableEditorExample.java`)
+* **실행 방법**:
+  ```powershell
+  # 1. 09_table_component 디렉토리로 이동 후 컴파일
+  javac -d sample sample/sec09/exam04_eventhandling/JTableEditorExample.java
+  
+  # 2. 실행
+  java -cp sample sec09.exam04_eventhandling.JTableEditorExample
+  ```
 
 ```java
 package sec09.exam04_eventhandling;
@@ -386,45 +416,50 @@ public class JTableEditorExample extends JFrame {
 }
 ```
 
+### Vector를 이용한 데이터 다이렉트 수정
+`DefaultTableModel` 내부에서 전체 행 데이터는 `Vector<Vector>` 형태로 보관됩니다. `getDataVector()` 메서드를 사용하면 이 벡터 데이터에 직접 접근할 수 있습니다.
 
-
+```
 Vector(전체 행 관리)
 |-- Vector(0 인덱스 행 데이터)
 |-- Vector(1 인덱스 행 데이터)
 |-- ...
+```
 
-DefaultTableModel에서 전체 행을 관리하는 Vector는 getDataVector ( ) 메소드로 얻을 수
+`DefaultTableModel`에서 전체 행을 관리하는 Vector는 다음과 같이 얻을 수 있습니다.
+```java
+Vector<Vector> rows = tableModel.getDataVector();
+```
 
-있습니다.
+그리고 각 행의 Vector는 행 인덱스를 주어 다음과 같이 가져옵니다.
+```java
+Vector row = rows.elementAt(행인덱스);
+```
 
-Vector<Vector> rows  =  tableModel.getDataVector();
+행 Vector의 내부 요소를 변경하기 위해서는 Vector의 `set()` 메소드를 이용하는데, 첫 번째 매개값은 컬럼의 인덱스 번호이고, 두 번째 매개값은 컬럼의 값입니다.
+```java
+row.set(0, changeValue);    // 0번 컬럼의 값을 changeValue로 수정
+row.set(1, changeValue);    // 1번 컬럼의 값을 changeValue로 수정
+```
 
-그리고 각 행의 Vector는 행 인덱스를 주고 다음과 같이 얻을 수 있습니다.
-
-Vector row  =  rows.elementAt(행인덱스);
-
-행 Vector의 내부 요소를 변경하기 위해서는 Vector의 set ( ) 메소드를 이용하면 되는데, 첫 번째
-
-매개값은 컬럼의 인덱스 번호이고, 두 번째 매개값은 컬럼의 값입니다.
-
-row.set(0, changeValue);    //0번 컬럼의 값을 changeValue로 수정
-row.set(1, changeValue);    //1번 컬럼의 값을 changeValue로 수정
-
-행  Vector를  이용해서  행의  데이터를  수정하였다면  JTable을  다시  렌더링할  수  있도록
-
-DefaultTableModel의 fireTableDataChanged ( ) 메소드를 호출해야 합니다.
-
+행 Vector를 직접 수정한 경우, `JTable`이 변경 사항을 다시 그리도록 `DefaultTableModel`의 `fireTableDataChanged()` 메소드를 호출해야 합니다.
+```java
 tableModel.fireTableDataChanged();
+```
 
-다음 예제는 사용자가 입력한 내용을 JTable의 행으로 넣는다. 그리고 선택된 행의 데이터를 수정
+---
 
-하고 삭제할 수 있습니다.
+### Vector 활용 종합 예제 (`JTableExample`)
 
-
-
->>> JTableExample.java
-
-
+* **실습 예제 파일**: [JTableExample.java](file:///d:/site/jinysite/java/src/gui/2.swing/09_table_component/sample/sec09/exam05_row_add_update_delete/JTableExample.java) (경로: `sample/sec09/exam05_row_add_update_delete/JTableExample.java`)
+* **실행 방법**:
+  ```powershell
+  # 1. 09_table_component 디렉토리로 이동 후 컴파일
+  javac -d sample sample/sec09/exam05_row_add_update_delete/JTableExample.java
+  
+  # 2. 실행
+  java -cp sample sec09.exam05_row_add_update_delete.JTableExample
+  ```
 
 ```java
 package sec09.exam05_row_add_update_delete;
@@ -447,218 +482,159 @@ import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 
 public class JTableExample extends JFrame {
-private JTable jTable;
-private JPanel pSouth;
-private JTextField txtName, txtAge;
-private JButton btnInsert, btnUpdate, btnDelete;
-```
+    private JTable jTable;
+    private JPanel pSouth;
+    private JTextField txtName, txtAge;
+    private JButton btnInsert, btnUpdate, btnDelete;
 
-//메인 윈도우 설정
-public JTableExample() {
-this.setTitle("JTableExample");
-this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-this.getContentPane().add(new JScrollPane(getJTable()),
-BorderLayout.CENTER);
-this.getContentPane().add(getPSouth(), BorderLayout.SOUTH);
-this.setSize(250, 250);
+    // 메인 윈도우 설정
+    public JTableExample() {
+        this.setTitle("JTableExample");
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.getContentPane().add(new JScrollPane(getJTable()), BorderLayout.CENTER);
+        this.getContentPane().add(getPSouth(), BorderLayout.SOUTH);
+        this.setSize(250, 250);
+    }
 
-}
+    // JTable 생성
+    public JTable getJTable() {
+        if (jTable == null) {
+            jTable = new JTable();
+            final DefaultTableModel tableModel = (DefaultTableModel) jTable.getModel();
+            tableModel.addColumn("이름");
+            tableModel.addColumn("나이");
+            
+            // 행을 선택했을 때 이벤트 처리
+            jTable.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    int rowIndex = jTable.getSelectedRow();
+                    if (rowIndex != -1) {
+                        String name = (String) tableModel.getValueAt(rowIndex, 0);
+                        String age = (String) tableModel.getValueAt(rowIndex, 1);
+                        txtName.setText(name);
+                        txtAge.setText(age);
+                    }
+                }
+            });
+        }
+        return jTable;
+    }
 
-//JTable 생성
-public JTable getJTable() {
-if (jTable  = =  null) {
+    // 사용자 입력 JPanel 생성
+    public JPanel getPSouth() {
+        if (pSouth == null) {
+            pSouth = new JPanel();
+            pSouth.setLayout(new GridLayout(3, 1));
 
+            JPanel pNameInput = new JPanel();
+            pNameInput.setLayout(new GridLayout(1, 2));
+            pNameInput.add(new JLabel("이름", JLabel.CENTER));
+            pNameInput.add(getTxtName());
+            pSouth.add(pNameInput);
 
+            JPanel pAgeInput = new JPanel();
+            pAgeInput.setLayout(new GridLayout(1, 2));
+            pAgeInput.add(new JLabel("나이", JLabel.CENTER));
+            pAgeInput.add(getTxtAge());
+            pSouth.add(pAgeInput);
 
+            JPanel pButton = new JPanel();
+            pButton.add(getBtnInsert());
+            pButton.add(getBtnUpdate());
+            pButton.add(getBtnDelete());
+            pSouth.add(pButton);
+        }
+        return pSouth;
+    }
 
-jTable  =  new JTable();
-final DefaultTableModel tableModel  =  (DefaultTableModel)
-jTable.getModel();
-tableModel.addColumn("이름");
-tableModel.addColumn("나이");
-//행을 선택했을 때 이벤트 처리
-jTable.addMouseListener(new MouseAdapter() {
-```java
-public void mouseClicked(MouseEvent e) {
-int rowIndex  =  jTable.getSelectedRow();
-if (rowIndex !=  -1) {
-String name  =  (String) tableModel.getValueAt(rowIndex, 0);
-String age  =  (String) tableModel.getValueAt(rowIndex, 1);
-txtName.setText(name);
-txtAge.setText(age.toString());
+    public JTextField getTxtName() {
+        if (txtName == null) {
+            txtName = new JTextField();
+        }
+        return txtName;
+    }
 
-}
+    public JTextField getTxtAge() {
+        if (txtAge == null) {
+            txtAge = new JTextField();
+        }
+        return txtAge;
+    }
 
-}
+    // 행 삽입 버튼 생성
+    public JButton getBtnInsert() {
+        if (btnInsert == null) {
+            btnInsert = new JButton();
+            btnInsert.setText("추가");
+            btnInsert.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    Object[] rowData = { txtName.getText(), txtAge.getText() };
+                    DefaultTableModel tableModel = (DefaultTableModel) getJTable().getModel();
+                    tableModel.addRow(rowData);
+                    txtName.setText("");
+                    txtAge.setText("");
+                }
+            });
+        }
+        return btnInsert;
+    }
 
-});
+    // 행 수정 버튼 생성
+    public JButton getBtnUpdate() {
+        if (btnUpdate == null) {
+            btnUpdate = new JButton();
+            btnUpdate.setText("수정");
+            btnUpdate.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    int selectedRow = jTable.getSelectedRow();
+                    if (selectedRow != -1) {
+                        DefaultTableModel tableModel = (DefaultTableModel) getJTable().getModel();
+                        Vector<Vector> rows = tableModel.getDataVector();
+                        Vector row = rows.elementAt(selectedRow);
+                        row.set(0, txtName.getText());
+                        row.set(1, txtAge.getText());
+                        tableModel.fireTableDataChanged();
+                        txtName.setText("");
+                        txtAge.setText("");
+                    }
+                }
+            });
+        }
+        return btnUpdate;
+    }
 
-}
-return jTable;
+    // 행 삭제 버튼 생성
+    public JButton getBtnDelete() {
+        if (btnDelete == null) {
+            btnDelete = new JButton();
+            btnDelete.setText("삭제");
+            btnDelete.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    int rowIndex = getJTable().getSelectedRow();
+                    if (rowIndex != -1) {
+                        DefaultTableModel tableModel = (DefaultTableModel) getJTable().getModel();
+                        tableModel.removeRow(rowIndex);
+                        txtName.setText("");
+                        txtAge.setText("");
+                    }
+                }
+            });
+        }
+        return btnDelete;
+    }
 
-}
-```
-
-//사용자 입력 JPanel 생성
-public JPanel getPSouth() {
-if (pSouth  = =  null) {
-pSouth  =  new JPanel();
-
-pSouth.setLayout(new GridLayout(3, 1));
-
-JPanel pNameInput  =  new JPanel();
-pNameInput.setLayout(new GridLayout(1, 2));
-pNameInput.add(new JLabel("이름", JLabel.CENTER));
-pNameInput.add(getTxtName());
-pSouth.add(pNameInput);
-
-JPanel pAgeInput  =  new JPanel();
-pAgeInput.setLayout(new GridLayout(1, 2));
-pAgeInput.add(new JLabel("나이", JLabel.CENTER));
-pAgeInput.add(getTxtAge());
-pSouth.add(pAgeInput);
-
-
-
-
-
-
-
-
-JPanel pButton  =  new JPanel();
-pButton.add(getBtnInsert());
-pButton.add(getBtnUpdate());
-pButton.add(getBtnDelete());
-pSouth.add(pButton);
-
-}
-return pSouth;
-
-}
-
-public JTextField getTxtName() {
-if (txtName  = =  null) {
-txtName  =  new JTextField();
-
-}
-return txtName;
-
-}
-
-public JTextField getTxtAge() {
-if (txtAge  = =  null) {
-txtAge  =  new JTextField();
-
-}
-return txtAge;
-
-}
-
-//행 삽입 버튼 생성
-public JButton getBtnInsert() {
-if (btnInsert  = =  null) {
-btnInsert  =  new JButton();
-btnInsert.setText("추가");
-btnInsert.addActionListener(new ActionListener() {
-```java
-public void actionPerformed(ActionEvent e) {
-Object[] rowData  =  { txtName.getText(), txtAge.getText() };
-DefaultTableModel tableModel  =  (DefaultTableModel)
-getJTable().getModel();
-tableModel.addRow(rowData);
-txtName.setText("");
-txtAge.setText("");
-
-}
-
-});
-
-}
-return btnInsert;
-
-
-
-
-
-
-
-}
-```
-
-//행 수정 버튼 생성
-public JButton getBtnUpdate() {
-if (btnUpdate  = =  null) {
-btnUpdate  =  new JButton();
-btnUpdate.setText("수정");
-btnUpdate.addActionListener(new ActionListener() {
-```java
-public void actionPerformed(ActionEvent e) {
-DefaultTableModel tableModel  =  (DefaultTableModel)
-getJTable().getModel();
-Vector<Vector> rows  =  tableModel.getDataVector();
-Vector row  =  rows.elementAt(jTable.getSelectedRow());
-row.set(0, txtName.getText());
-row.set(1, txtAge.getText());
-tableModel.fireTableDataChanged();
-txtName.setText("");
-txtAge.setText("");
-
-}
-
-});
-
-}
-return btnUpdate;
-
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                JTableExample jFrame = new JTableExample();
+                jFrame.setVisible(true);
+            }
+        });
+    }
 }
 ```
-
-//행 삭제 버튼 생성
-public JButton getBtnDelete() {
-if (btnDelete  = =  null) {
-btnDelete  =  new JButton();
-btnDelete.setText("삭제");
-btnDelete.addActionListener(new ActionListener() {
-```java
-public void actionPerformed(ActionEvent e) {
-int rowIndex  =  getJTable().getSelectedRow();
-if (rowIndex !=  -1) {
-DefaultTableModel tableModel  =  (DefaultTableModel)
-getJTable().getModel();
-tableModel.removeRow(rowIndex);
-txtName.setText("");
-txtAge.setText("");
-
-}
-
-}
-
-
-
-
-
-});
-
-}
-return btnDelete;
-
-}
-
-public static void main(String[] args) {
-SwingUtilities.invokeLater(new Runnable() {
-public void run() {
-JTableExample jFrame  =  new JTableExample();
-jFrame.setVisible(true);
-
-}
-
-});
-
-}
-
-}
-
-```
-
-실행 결과
-

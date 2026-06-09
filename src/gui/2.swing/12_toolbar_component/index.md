@@ -9,6 +9,8 @@ keywords: "12. 툴바 컴포넌트, 자바, Java, 프로그래밍, 백엔드, �
 
 툴바(Toolbar)는 메뉴보다 빠르게 주요 기능을 선택할 수 있도록, 버튼이나 콤보박스 등의 컴포넌트를 모아놓은 컨테이너입니다.
 
+![툴바 컴포넌트 구조](./img/toolbar_layout.svg)
+
 ## 1. JToolBar
 | 컴포넌트                 | 설명                        |
 | :----------------------- | :-------------------------- |
@@ -36,6 +38,16 @@ frame.add(toolBar, BorderLayout.NORTH);
 
 ## 2. 툴바 예제 (`JToolBarExample`)
 이미지 아이콘이 있는 버튼들로 구성된 툴바를 만들고, 클릭 이벤트를 처리하는 예제입니다.
+
+* **실습 예제 파일**: [JToolBarExample.java](file:///d:/site/jinysite/java/src/gui/2.swing/12_toolbar_component/sample/sec12/exam01_jtoolbar/JToolBarExample.java) (경로: `sample/sec12/exam01_jtoolbar/JToolBarExample.java`)
+* **실행 방법**:
+  ```powershell
+  # 1. 12_toolbar_component 디렉토리로 이동 후 컴파일
+  javac -d sample sample/sec12/exam01_jtoolbar/JToolBarExample.java
+  
+  # 2. 실행 (실행 전 같은 패키지 폴더 내의 new.gif, save.gif, copy.gif, paste.gif 리소스가 필요합니다)
+  java -cp sample sec12.exam01_jtoolbar.JToolBarExample
+  ```
 
 ```java
 package sec12.exam01_jtoolbar;
@@ -163,6 +175,3 @@ public class JToolBarExample extends JFrame {
         });
     }
 }
-```
-
-

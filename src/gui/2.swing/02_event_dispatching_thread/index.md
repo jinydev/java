@@ -14,17 +14,21 @@ Swing은 **스레드에 안전하지 않기(Not Thread-Safe)** 때문에, 여러
 
 작업 스레드에서 UI를 업데이트해야 할 때는, 작업을 `Runnable` 객체로 만들어 **이벤트 큐(Event Queue)**에 넣어야 합니다. 그러면 EDT가 큐에서 작업을 하나씩 꺼내어 실행합니다.
 
-```mermaid
-graph LR
-    T1[작업 스레드 A] -->|Runnable| Q(이벤트 큐)
-    T2[작업 스레드 B] -->|Runnable| Q
-    Q -->|순차 실행| EDT[이벤트 디스패칭 스레드]
-    EDT --> UI[UI 생성 및 변경]
-```
+![이벤트 디스패칭 스레드 동작 원리](./img/edt_flow.svg)
 
 ## 2. invokeLater() 메소드
 
 작업 스레드는 `SwingUtilities.invokeLater()` 메소드를 사용하여 `Runnable` 객체를 이벤트 큐에 저장할 수 있습니다. 메서드 이름이 `invokeLater`인 이유는 큐에 대기 중인 다른 이벤트들이 처리된 후, "나중에" 실행되기 때문입니다.
+
+* **실습 예제 파일**: [App.java](file:///d:/site/jinysite/java/src/gui/2.swing/02_event_dispatching_thread/sample/sec02/exam01_invokeLater/App.java) (경로: `sample/sec02/exam01_invokeLater/App.java`)
+* **실행 방법**:
+  ```powershell
+  # 1. 02_event_dispatching_thread 디렉토리로 이동 후 컴파일
+  javac -d sample sample/sec02/exam01_invokeLater/App.java
+  
+  # 2. 실행
+  java -cp sample sec02.exam01_invokeLater.App
+  ```
 
 ### 예제 코드
 

@@ -9,24 +9,7 @@ keywords: "06. 버튼 컴포넌트, 자바, Java, 프로그래밍, 백엔드, �
 
 버튼 컴포넌트는 사용자가 클릭했을 때 이벤트를 발생시키는 가장 기본적인 컴포넌트입니다. Swing의 모든 버튼은 `AbstractButton` 클래스를 상속받습니다.
 
-```mermaid
-classDiagram
-    class AbstractButton {
-        +setText(String text)
-        +setIcon(Icon icon)
-        +addActionListener(ActionListener l)
-        +addItemListener(ItemListener l)
-    }
-    class JButton
-    class JToggleButton
-    class JCheckBox
-    class JRadioButton
-
-    AbstractButton <|-- JButton
-    AbstractButton <|-- JToggleButton
-    JToggleButton <|-- JCheckBox
-    JToggleButton <|-- JRadioButton
-```
+![버튼 계층 구조](./img/button_hierarchy.svg)
 
 - **JButton**: 일반적인 푸시 버튼.
 - **JToggleButton**: 눌린 상태와 눌리지 않은 상태를 가지는 버튼.
@@ -37,6 +20,16 @@ classDiagram
 
 ## 1. JButton
 `JButton`은 텍스트, 이미지, 또는 둘 다를 포함할 수 있는 버튼입니다. 클릭 시 `ActionEvent`가 발생합니다.
+
+* **실습 예제 파일**: [JButtonExample.java](file:///d:/site/jinysite/java/src/gui/2.swing/06_button_component/sample/sec06/exam01_jbutton/JButtonExample.java) (경로: `sample/sec06/exam01_jbutton/JButtonExample.java`)
+* **실행 방법**:
+  ```powershell
+  # 1. 06_button_component 디렉토리로 이동 후 컴파일
+  javac -d sample sample/sec06/exam01_jbutton/JButtonExample.java
+  
+  # 2. 실행
+  java -cp sample sec06.exam01_jbutton.JButtonExample
+  ```
 
 ```java
 package sec06.exam01_jbutton;
@@ -115,6 +108,16 @@ public class JButtonExample extends JFrame {
 ## 2. JToggleButton
 `JToggleButton`은 토글(On/Off) 기능을 가진 버튼입니다. 클릭할 때마다 선택(Selected)/해제(Deselected) 상태가 바뀝니다.
 상태 변화를 감지하기 위해 `ItemListener`를 사용하는 것이 좋습니다.
+
+* **실습 예제 파일**: [JToggleButtonExample.java](file:///d:/site/jinysite/java/src/gui/2.swing/06_button_component/sample/sec06/exam02_jtogglebutton/JToggleButtonExample.java) (경로: `sample/sec06/exam02_jtogglebutton/JToggleButtonExample.java`)
+* **실행 방법**:
+  ```powershell
+  # 1. 06_button_component 디렉토리로 이동 후 컴파일
+  javac -d sample sample/sec06/exam02_jtogglebutton/JToggleButtonExample.java
+  
+  # 2. 실행
+  java -cp sample sec06.exam02_jtogglebutton.JToggleButtonExample
+  ```
 
 ```java
 package sec06.exam02_jtogglebutton;
@@ -214,6 +217,16 @@ public class JToggleButtonExample extends JFrame {
 ## 3. JRadioButton
 `JRadioButton`은 여러 옵션 중 **하나만 선택**해야 할 때 사용합니다. 반드시 `ButtonGroup`으로 묶어주어야 배타적 선택이 동작합니다.
 
+* **실습 예제 파일**: [JRadioButtonExample.java](file:///d:/site/jinysite/java/src/gui/2.swing/06_button_component/sample/sec06/exam03_jradiobutton/JRadioButtonExample.java) (경로: `sample/sec06/exam03_jradiobutton/JRadioButtonExample.java`)
+* **실행 방법**:
+  ```powershell
+  # 1. 06_button_component 디렉토리로 이동 후 컴파일
+  javac -d sample sample/sec06/exam03_jradiobutton/JRadioButtonExample.java
+  
+  # 2. 실행
+  java -cp sample sec06.exam03_jradiobutton.JRadioButtonExample
+  ```
+
 ```java
 package sec06.exam03_jradiobutton;
 
@@ -298,6 +311,16 @@ public class JRadioButtonExample extends JFrame {
 
 ## 4. JCheckBox
 `JCheckBox`는 **다중 선택**이 가능한 버튼입니다. 각 체크박스는 독립적으로 선택/해제 상태를 가집니다. `isSelected()` 메서드로 상태를 확인할 수 있습니다.
+
+* **실습 예제 파일**: [JCheckBoxExample.java](file:///d:/site/jinysite/java/src/gui/2.swing/06_button_component/sample/sec06/exam04_jcheckbox/JCheckBoxExample.java) (경로: `sample/sec06/exam04_jcheckbox/JCheckBoxExample.java`)
+* **실행 방법**:
+  ```powershell
+  # 1. 06_button_component 디렉토리로 이동 후 컴파일
+  javac -d sample sample/sec06/exam04_jcheckbox/JCheckBoxExample.java
+  
+  # 2. 실행
+  java -cp sample sec06.exam04_jcheckbox.JCheckBoxExample
+  ```
 
 ```java
 package sec06.exam04_jcheckbox;

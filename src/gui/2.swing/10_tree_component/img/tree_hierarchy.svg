@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 380" width="100%" height="380">
+  <style>
+    .class-name { font-family: system-ui, -apple-system, sans-serif; font-size: 13px; font-weight: bold; fill: #1A202C; text-anchor: middle; }
+    .interface-name { font-family: system-ui, -apple-system, sans-serif; font-size: 13px; font-weight: bold; font-style: italic; fill: #2C5282; text-anchor: middle; }
+    .member-text { font-family: system-ui, -apple-system, sans-serif; font-size: 11px; fill: #4A5568; }
+    .class-box { stroke-width: 2; }
+    .base-box { fill: #EDF2F7; stroke: #4A5568; }
+    .tree-box { fill: #EBF8FF; stroke: #3182CE; }
+    .concrete-box { fill: #F0FDF4; stroke: #22C55E; }
+    .interface-box { fill: #EFF6FF; stroke: #3B82F6; stroke-dasharray: 4 4; }
+    .relation-line { stroke: #4A5568; stroke-width: 1.5; fill: none; }
+    .dashed-relation { stroke: #718096; stroke-width: 1.2; stroke-dasharray: 3 3; fill: none; }
+  </style>
+
+  <defs>
+    <!-- Drop Shadow Filter -->
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="1" dy="3" stdDeviation="3" flood-opacity="0.08" flood-color="#000000" />
+    </filter>
+    <!-- Inheritance Arrow Marker -->
+    <marker id="inheritance" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#FFFFFF" stroke="#4A5568" stroke-width="1.5" />
+    </marker>
+    <!-- Association Arrow Marker -->
+    <marker id="association" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10" fill="none" stroke="#718096" stroke-width="1.5" />
+    </marker>
+  </defs>
+
+  <!-- Connectors -->
+  <!-- JComponent to JTree -->
+  <path class="relation-line" d="M 350 60 L 350 100" marker-end="url(#inheritance)" />
+
+  <!-- TreeModel to DefaultTreeModel -->
+  <path class="relation-line" d="M 125 150 L 125 210" marker-end="url(#inheritance)" />
+
+  <!-- TreeNode to MutableTreeNode -->
+  <path class="relation-line" d="M 575 70 L 575 120" marker-end="url(#inheritance)" />
+
+  <!-- MutableTreeNode to DefaultMutableTreeNode -->
+  <path class="relation-line" d="M 575 170 L 575 220" marker-end="url(#inheritance)" />
+
+  <!-- JTree to TreeModel -->
+  <path class="dashed-relation" d="M 275 130 L 210 130" marker-end="url(#association)" />
+
+  <!-- JTree to TreeNode (Root Node) -->
+  <path class="dashed-relation" d="M 425 130 L 470 130" marker-end="url(#association)" />
+
+  <!-- JComponent Node -->
+  <g transform="translate(275, 20)" filter="url(#shadow)">
+    <rect class="class-box base-box" width="150" height="40" rx="6" />
+    <text x="75" y="24" class="class-name">JComponent</text>
+  </g>
+
+  <!-- JTree Node -->
+  <g transform="translate(275, 100)" filter="url(#shadow)">
+    <rect class="class-box tree-box" width="150" height="70" rx="6" />
+    <text x="75" y="25" class="class-name" fill="#1D4ED8">JTree</text>
+    <line x1="0" y1="35" x2="150" y2="35" stroke="#3182CE" stroke-width="1" />
+    <text x="10" y="52" class="member-text">+getModel() : TreeModel</text>
+  </g>
+
+  <!-- TreeModel Interface -->
+  <g transform="translate(40, 100)" filter="url(#shadow)">
+    <rect class="class-box interface-box" width="170" height="50" rx="6" />
+    <text x="85" y="20" class="interface-name">&lt;&lt;interface&gt;&gt;</text>
+    <text x="85" y="36" class="interface-name">TreeModel</text>
+  </g>
+
+  <!-- DefaultTreeModel Concrete Class -->
+  <g transform="translate(40, 210)" filter="url(#shadow)">
+    <rect class="class-box concrete-box" width="170" height="60" rx="6" />
+    <text x="85" y="25" class="class-name" fill="#15803D">DefaultTreeModel</text>
+    <line x1="0" y1="35" x2="170" y2="35" stroke="#22C55E" stroke-width="1" />
+    <text x="10" y="50" class="member-text">+getRoot() : Object</text>
+  </g>
+
+  <!-- TreeNode Interface -->
+  <g transform="translate(490, 20)" filter="url(#shadow)">
+    <rect class="class-box interface-box" width="170" height="50" rx="6" />
+    <text x="85" y="20" class="interface-name">&lt;&lt;interface&gt;&gt;</text>
+    <text x="85" y="36" class="interface-name">TreeNode</text>
+  </g>
+
+  <!-- MutableTreeNode Interface -->
+  <g transform="translate(490, 120)" filter="url(#shadow)">
+    <rect class="class-box interface-box" width="170" height="50" rx="6" />
+    <text x="85" y="20" class="interface-name">&lt;&lt;interface&gt;&gt;</text>
+    <text x="85" y="36" class="interface-name">MutableTreeNode</text>
+  </g>
+
+  <!-- DefaultMutableTreeNode Concrete Class -->
+  <g transform="translate(470, 220)" filter="url(#shadow)">
+    <rect class="class-box concrete-box" width="210" height="90" rx="6" />
+    <text x="105" y="22" class="class-name" fill="#15803D">DefaultMutableTreeNode</text>
+    <line x1="0" y1="32" x2="210" y2="32" stroke="#22C55E" stroke-width="1" />
+    <text x="10" y="48" class="member-text">+add(newChild: MutableTreeNode)</text>
+    <text x="10" y="64" class="member-text">+remove(child: MutableTreeNode)</text>
+    <text x="10" y="80" class="member-text">+getUserObject() : Object</text>
+  </g>
+</svg>

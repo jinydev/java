@@ -9,6 +9,8 @@ keywords: "13. 다이얼로그, 자바, Java, 프로그래밍, 백엔드, 개발
 
 다이얼로그(Dialog)는 주 윈도우에서 사용자의 입력을 받거나 메시지를 전달하기 위해 띄우는 서브 윈도우입니다. 다이얼로그를 띄우는 주 윈도우를 **소유자(Owner)**라고 합니다.
 
+![다이얼로그 계층 구조](./img/dialog_hierarchy.svg)
+
 ## 1. 다이얼로그 종류
 - **모달(Modal)**: 다이얼로그를 닫기 전까지 소유자 윈도우를 사용할 수 없음. (입력 강제)
 - **모달리스(Modeless)**: 다이얼로그가 떠 있어도 소유자 윈도우를 계속 사용할 수 있음.
@@ -68,6 +70,17 @@ Swing은 자주 사용되는 다이얼로그를 `JOptionPane` 클래스로 제�
 - `CLOSED_OPTION`: X 버튼
 
 ### 예제 (`JOptionPaneExample`)
+
+* **실습 예제 파일**: [JOptionPaneExample.java](file:///d:/site/jinysite/java/src/gui/2.swing/13_dialog/sample/sec13/exam02_joptionpane/JOptionPaneExample.java) (경로: `sample/sec13/exam02_joptionpane/JOptionPaneExample.java`)
+* **실행 방법**:
+  ```powershell
+  # 1. 13_dialog 디렉토리로 이동 후 컴파일
+  javac -d sample sample/sec13/exam02_joptionpane/JOptionPaneExample.java
+  
+  # 2. 실행
+  java -cp sample sec13.exam02_joptionpane.JOptionPaneExample
+  ```
+
 ```java
 package sec13.exam02_joptionpane;
 
@@ -189,6 +202,17 @@ public class JOptionPaneExample extends JFrame {
 - `FileNameExtensionFilter`: 확장자 필터링.
 
 ### 예제 (`JFileChooserExample`)
+
+* **실습 예제 파일**: [JFileChooserExample.java](file:///d:/site/jinysite/java/src/gui/2.swing/13_dialog/sample/sec13/exam03_jfilechooser/JFileChooserExample.java) (경로: `sample/sec13/exam03_jfilechooser/JFileChooserExample.java`)
+* **실행 방법**:
+  ```powershell
+  # 1. 13_dialog 디렉토리로 이동 후 컴파일
+  javac -d sample sample/sec13/exam03_jfilechooser/JFileChooserExample.java
+  
+  # 2. 실행
+  java -cp sample sec13.exam03_jfilechooser.JFileChooserExample
+  ```
+
 ```java
 package sec13.exam03_jfilechooser;
 
@@ -268,5 +292,3 @@ if (selectedColor != null) {
     component.setBackground(selectedColor);
 }
 ```
-
-

@@ -689,10 +689,13 @@
         
     </ol>
 </nav>
+
         <div class="bd-content ps-lg-2">
             <h1 id="12-툴바-컴포넌트">12. 툴바 컴포넌트</h1>
 
 <p>툴바(Toolbar)는 메뉴보다 빠르게 주요 기능을 선택할 수 있도록, 버튼이나 콤보박스 등의 컴포넌트를 모아놓은 컨테이너입니다.</p>
+
+<p><img src="./img/toolbar_layout.svg" alt="툴바 컴포넌트 구조" /></p>
 
 <h2 id="1-jtoolbar">1. JToolBar</h2>
 <p>| 컴포넌트                 | 설명                        |
@@ -726,133 +729,144 @@
 <h2 id="2-툴바-예제-jtoolbarexample">2. 툴바 예제 (<code class="language-plaintext highlighter-rouge">JToolBarExample</code>)</h2>
 <p>이미지 아이콘이 있는 버튼들로 구성된 툴바를 만들고, 클릭 이벤트를 처리하는 예제입니다.</p>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">sec12.exam01_jtoolbar</span><span class="o">;</span>
+<ul>
+  <li><strong>실습 예제 파일</strong>: <a href="file:///d:/site/jinysite/java/src/gui/2.swing/12_toolbar_component/sample/sec12/exam01_jtoolbar/JToolBarExample.java">JToolBarExample.java</a> (경로: <code class="language-plaintext highlighter-rouge">sample/sec12/exam01_jtoolbar/JToolBarExample.java</code>)</li>
+  <li><strong>실행 방법</strong>:
+    <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 1. 12_toolbar_component 디렉토리로 이동 후 컴파일</span><span class="w">
+</span><span class="n">javac</span><span class="w"> </span><span class="nt">-d</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sample/sec12/exam01_jtoolbar/JToolBarExample.java</span><span class="w">
+  
+</span><span class="c"># 2. 실행 (실행 전 같은 패키지 폴더 내의 new.gif, save.gif, copy.gif, paste.gif 리소스가 필요합니다)</span><span class="w">
+</span><span class="n">java</span><span class="w"> </span><span class="nt">-cp</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sec12.exam01_jtoolbar.JToolBarExample</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+</ul>
 
-<span class="kn">import</span> <span class="nn">java.awt.BorderLayout</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.awt.event.ActionEvent</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.awt.event.ActionListener</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">javax.swing.ImageIcon</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">javax.swing.JButton</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">javax.swing.JFrame</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">javax.swing.JMenu</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">javax.swing.JMenuBar</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">javax.swing.JOptionPane</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">javax.swing.JToolBar</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">javax.swing.SwingUtilities</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">javax.swing.border.SoftBevelBorder</span><span class="o">;</span>
+<p>```java
+package sec12.exam01_jtoolbar;</p>
 
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">JToolBarExample</span> <span class="kd">extends</span> <span class="nc">JFrame</span> <span class="o">{</span>
-    <span class="kd">private</span> <span class="nc">JMenuBar</span> <span class="n">jMenuBar</span><span class="o">;</span>
-    <span class="kd">private</span> <span class="nc">JToolBar</span> <span class="n">jToolBar</span><span class="o">;</span>
-    <span class="kd">private</span> <span class="nc">JButton</span> <span class="n">btnNew</span><span class="o">,</span> <span class="n">btnSave</span><span class="o">,</span> <span class="n">btnCopy</span><span class="o">,</span> <span class="n">btnPaste</span><span class="o">;</span>
+<p>import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JOptionPane;
+import javax.swing.JToolBar;
+import javax.swing.SwingUtilities;
+import javax.swing.border.SoftBevelBorder;</p>
 
-    <span class="kd">public</span> <span class="nf">JToolBarExample</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">this</span><span class="o">.</span><span class="na">setTitle</span><span class="o">(</span><span class="s">"JToolBarExample"</span><span class="o">);</span>
-        <span class="k">this</span><span class="o">.</span><span class="na">setDefaultCloseOperation</span><span class="o">(</span><span class="nc">JFrame</span><span class="o">.</span><span class="na">EXIT_ON_CLOSE</span><span class="o">);</span>
-        <span class="k">this</span><span class="o">.</span><span class="na">setSize</span><span class="o">(</span><span class="mi">400</span><span class="o">,</span> <span class="mi">300</span><span class="o">);</span>
+<p>public class JToolBarExample extends JFrame {
+    private JMenuBar jMenuBar;
+    private JToolBar jToolBar;
+    private JButton btnNew, btnSave, btnCopy, btnPaste;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public JToolBarExample() {
+    this.setTitle("JToolBarExample");
+    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    this.setSize(400, 300);
+    
+    this.setJMenuBar(getJMenuBar());
+    this.getContentPane().add(getJToolBar(), BorderLayout.NORTH);
+}
+
+// 메뉴바 생성
+public JMenuBar getJMenuBar() {
+    if (jMenuBar == null) {
+        jMenuBar = new JMenuBar();
+        jMenuBar.add(new JMenu("파일"));
+        jMenuBar.add(new JMenu("도움말"));
+    }
+    return jMenuBar;
+}
+
+// 툴바 생성
+public JToolBar getJToolBar() {
+    if (jToolBar == null) {
+        jToolBar = new JToolBar();
+        // 툴바 이동 가능 여부 (false: 고정)
+        // jToolBar.setFloatable(false); 
         
-        <span class="k">this</span><span class="o">.</span><span class="na">setJMenuBar</span><span class="o">(</span><span class="n">getJMenuBar</span><span class="o">());</span>
-        <span class="k">this</span><span class="o">.</span><span class="na">getContentPane</span><span class="o">().</span><span class="na">add</span><span class="o">(</span><span class="n">getJToolBar</span><span class="o">(),</span> <span class="nc">BorderLayout</span><span class="o">.</span><span class="na">NORTH</span><span class="o">);</span>
-    <span class="o">}</span>
+        jToolBar.add(getBtnNew());
+        jToolBar.add(getBtnSave());
+        jToolBar.addSeparator(); // 구분선
+        jToolBar.add(getBtnCopy());
+        jToolBar.add(getBtnPaste());
+    }
+    return jToolBar;
+}
 
-    <span class="c1">// 메뉴바 생성</span>
-    <span class="kd">public</span> <span class="nc">JMenuBar</span> <span class="nf">getJMenuBar</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">if</span> <span class="o">(</span><span class="n">jMenuBar</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">jMenuBar</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JMenuBar</span><span class="o">();</span>
-            <span class="n">jMenuBar</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">JMenu</span><span class="o">(</span><span class="s">"파일"</span><span class="o">));</span>
-            <span class="n">jMenuBar</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">JMenu</span><span class="o">(</span><span class="s">"도움말"</span><span class="o">));</span>
-        <span class="o">}</span>
-        <span class="k">return</span> <span class="n">jMenuBar</span><span class="o">;</span>
-    <span class="o">}</span>
+public JButton getBtnNew() {
+    if (btnNew == null) {
+        btnNew = new JButton();
+        // 이미지 아이콘이 있다면 사용 (없으면 텍스트 대체 가능)
+        btnNew.setIcon(new ImageIcon(getClass().getResource("new.gif"))); 
+        btnNew.setText("New"); // 아이콘 없을 시 텍스트 표시
+        btnNew.setBorder(new SoftBevelBorder(SoftBevelBorder.RAISED));
+        btnNew.setToolTipText("새로 만들기");
+        btnNew.addActionListener(actionListener);
+    }
+    return btnNew;
+}
 
-    <span class="c1">// 툴바 생성</span>
-    <span class="kd">public</span> <span class="nc">JToolBar</span> <span class="nf">getJToolBar</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">if</span> <span class="o">(</span><span class="n">jToolBar</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">jToolBar</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JToolBar</span><span class="o">();</span>
-            <span class="c1">// 툴바 이동 가능 여부 (false: 고정)</span>
-            <span class="c1">// jToolBar.setFloatable(false); </span>
-            
-            <span class="n">jToolBar</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">getBtnNew</span><span class="o">());</span>
-            <span class="n">jToolBar</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">getBtnSave</span><span class="o">());</span>
-            <span class="n">jToolBar</span><span class="o">.</span><span class="na">addSeparator</span><span class="o">();</span> <span class="c1">// 구분선</span>
-            <span class="n">jToolBar</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">getBtnCopy</span><span class="o">());</span>
-            <span class="n">jToolBar</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">getBtnPaste</span><span class="o">());</span>
-        <span class="o">}</span>
-        <span class="k">return</span> <span class="n">jToolBar</span><span class="o">;</span>
-    <span class="o">}</span>
+public JButton getBtnSave() {
+    if (btnSave == null) {
+        btnSave = new JButton();
+        btnSave.setIcon(new ImageIcon(getClass().getResource("save.gif")));
+        btnSave.setText("Save");
+        btnSave.setBorder(new SoftBevelBorder(SoftBevelBorder.RAISED));
+        btnSave.setToolTipText("저장");
+        btnSave.addActionListener(actionListener);
+    }
+    return btnSave;
+}
 
-    <span class="kd">public</span> <span class="nc">JButton</span> <span class="nf">getBtnNew</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">if</span> <span class="o">(</span><span class="n">btnNew</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">btnNew</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JButton</span><span class="o">();</span>
-            <span class="c1">// 이미지 아이콘이 있다면 사용 (없으면 텍스트 대체 가능)</span>
-            <span class="n">btnNew</span><span class="o">.</span><span class="na">setIcon</span><span class="o">(</span><span class="k">new</span> <span class="nc">ImageIcon</span><span class="o">(</span><span class="n">getClass</span><span class="o">().</span><span class="na">getResource</span><span class="o">(</span><span class="s">"new.gif"</span><span class="o">)));</span> 
-            <span class="n">btnNew</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">"New"</span><span class="o">);</span> <span class="c1">// 아이콘 없을 시 텍스트 표시</span>
-            <span class="n">btnNew</span><span class="o">.</span><span class="na">setBorder</span><span class="o">(</span><span class="k">new</span> <span class="nc">SoftBevelBorder</span><span class="o">(</span><span class="nc">SoftBevelBorder</span><span class="o">.</span><span class="na">RAISED</span><span class="o">));</span>
-            <span class="n">btnNew</span><span class="o">.</span><span class="na">setToolTipText</span><span class="o">(</span><span class="s">"새로 만들기"</span><span class="o">);</span>
-            <span class="n">btnNew</span><span class="o">.</span><span class="na">addActionListener</span><span class="o">(</span><span class="n">actionListener</span><span class="o">);</span>
-        <span class="o">}</span>
-        <span class="k">return</span> <span class="n">btnNew</span><span class="o">;</span>
-    <span class="o">}</span>
+public JButton getBtnCopy() {
+    if (btnCopy == null) {
+        btnCopy = new JButton();
+        btnCopy.setIcon(new ImageIcon(getClass().getResource("copy.gif")));
+        btnCopy.setText("Copy");
+        btnCopy.setBorder(new SoftBevelBorder(SoftBevelBorder.RAISED));
+        btnCopy.setToolTipText("복사");
+        btnCopy.addActionListener(actionListener);
+    }
+    return btnCopy;
+}
 
-    <span class="kd">public</span> <span class="nc">JButton</span> <span class="nf">getBtnSave</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">if</span> <span class="o">(</span><span class="n">btnSave</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">btnSave</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JButton</span><span class="o">();</span>
-            <span class="n">btnSave</span><span class="o">.</span><span class="na">setIcon</span><span class="o">(</span><span class="k">new</span> <span class="nc">ImageIcon</span><span class="o">(</span><span class="n">getClass</span><span class="o">().</span><span class="na">getResource</span><span class="o">(</span><span class="s">"save.gif"</span><span class="o">)));</span>
-            <span class="n">btnSave</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">"Save"</span><span class="o">);</span>
-            <span class="n">btnSave</span><span class="o">.</span><span class="na">setBorder</span><span class="o">(</span><span class="k">new</span> <span class="nc">SoftBevelBorder</span><span class="o">(</span><span class="nc">SoftBevelBorder</span><span class="o">.</span><span class="na">RAISED</span><span class="o">));</span>
-            <span class="n">btnSave</span><span class="o">.</span><span class="na">setToolTipText</span><span class="o">(</span><span class="s">"저장"</span><span class="o">);</span>
-            <span class="n">btnSave</span><span class="o">.</span><span class="na">addActionListener</span><span class="o">(</span><span class="n">actionListener</span><span class="o">);</span>
-        <span class="o">}</span>
-        <span class="k">return</span> <span class="n">btnSave</span><span class="o">;</span>
-    <span class="o">}</span>
+public JButton getBtnPaste() {
+    if (btnPaste == null) {
+        btnPaste = new JButton();
+        btnPaste.setIcon(new ImageIcon(getClass().getResource("paste.gif")));
+        btnPaste.setText("Paste");
+        btnPaste.setBorder(new SoftBevelBorder(SoftBevelBorder.RAISED));
+        btnPaste.setToolTipText("붙여넣기");
+        btnPaste.addActionListener(actionListener);
+    }
+    return btnPaste;
+}
 
-    <span class="kd">public</span> <span class="nc">JButton</span> <span class="nf">getBtnCopy</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">if</span> <span class="o">(</span><span class="n">btnCopy</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">btnCopy</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JButton</span><span class="o">();</span>
-            <span class="n">btnCopy</span><span class="o">.</span><span class="na">setIcon</span><span class="o">(</span><span class="k">new</span> <span class="nc">ImageIcon</span><span class="o">(</span><span class="n">getClass</span><span class="o">().</span><span class="na">getResource</span><span class="o">(</span><span class="s">"copy.gif"</span><span class="o">)));</span>
-            <span class="n">btnCopy</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">"Copy"</span><span class="o">);</span>
-            <span class="n">btnCopy</span><span class="o">.</span><span class="na">setBorder</span><span class="o">(</span><span class="k">new</span> <span class="nc">SoftBevelBorder</span><span class="o">(</span><span class="nc">SoftBevelBorder</span><span class="o">.</span><span class="na">RAISED</span><span class="o">));</span>
-            <span class="n">btnCopy</span><span class="o">.</span><span class="na">setToolTipText</span><span class="o">(</span><span class="s">"복사"</span><span class="o">);</span>
-            <span class="n">btnCopy</span><span class="o">.</span><span class="na">addActionListener</span><span class="o">(</span><span class="n">actionListener</span><span class="o">);</span>
-        <span class="o">}</span>
-        <span class="k">return</span> <span class="n">btnCopy</span><span class="o">;</span>
-    <span class="o">}</span>
+// 공통 액션 리스너
+private ActionListener actionListener = new ActionListener() {
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        String command = "";
+        if (e.getSource() == btnNew) command = "[새로만들기]";
+        else if (e.getSource() == btnSave) command = "[저장]";
+        else if (e.getSource() == btnCopy) command = "[복사]";
+        else if (e.getSource() == btnPaste) command = "[붙여넣기]";
+        
+        JOptionPane.showMessageDialog(JToolBarExample.this, command + " 클릭");
+    }
+};
 
-    <span class="kd">public</span> <span class="nc">JButton</span> <span class="nf">getBtnPaste</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">if</span> <span class="o">(</span><span class="n">btnPaste</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">btnPaste</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JButton</span><span class="o">();</span>
-            <span class="n">btnPaste</span><span class="o">.</span><span class="na">setIcon</span><span class="o">(</span><span class="k">new</span> <span class="nc">ImageIcon</span><span class="o">(</span><span class="n">getClass</span><span class="o">().</span><span class="na">getResource</span><span class="o">(</span><span class="s">"paste.gif"</span><span class="o">)));</span>
-            <span class="n">btnPaste</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">"Paste"</span><span class="o">);</span>
-            <span class="n">btnPaste</span><span class="o">.</span><span class="na">setBorder</span><span class="o">(</span><span class="k">new</span> <span class="nc">SoftBevelBorder</span><span class="o">(</span><span class="nc">SoftBevelBorder</span><span class="o">.</span><span class="na">RAISED</span><span class="o">));</span>
-            <span class="n">btnPaste</span><span class="o">.</span><span class="na">setToolTipText</span><span class="o">(</span><span class="s">"붙여넣기"</span><span class="o">);</span>
-            <span class="n">btnPaste</span><span class="o">.</span><span class="na">addActionListener</span><span class="o">(</span><span class="n">actionListener</span><span class="o">);</span>
-        <span class="o">}</span>
-        <span class="k">return</span> <span class="n">btnPaste</span><span class="o">;</span>
-    <span class="o">}</span>
-
-    <span class="c1">// 공통 액션 리스너</span>
-    <span class="kd">private</span> <span class="nc">ActionListener</span> <span class="n">actionListener</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ActionListener</span><span class="o">()</span> <span class="o">{</span>
-        <span class="nd">@Override</span>
-        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">actionPerformed</span><span class="o">(</span><span class="nc">ActionEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-            <span class="nc">String</span> <span class="n">command</span> <span class="o">=</span> <span class="s">""</span><span class="o">;</span>
-            <span class="k">if</span> <span class="o">(</span><span class="n">e</span><span class="o">.</span><span class="na">getSource</span><span class="o">()</span> <span class="o">==</span> <span class="n">btnNew</span><span class="o">)</span> <span class="n">command</span> <span class="o">=</span> <span class="s">"[새로만들기]"</span><span class="o">;</span>
-            <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">e</span><span class="o">.</span><span class="na">getSource</span><span class="o">()</span> <span class="o">==</span> <span class="n">btnSave</span><span class="o">)</span> <span class="n">command</span> <span class="o">=</span> <span class="s">"[저장]"</span><span class="o">;</span>
-            <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">e</span><span class="o">.</span><span class="na">getSource</span><span class="o">()</span> <span class="o">==</span> <span class="n">btnCopy</span><span class="o">)</span> <span class="n">command</span> <span class="o">=</span> <span class="s">"[복사]"</span><span class="o">;</span>
-            <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">e</span><span class="o">.</span><span class="na">getSource</span><span class="o">()</span> <span class="o">==</span> <span class="n">btnPaste</span><span class="o">)</span> <span class="n">command</span> <span class="o">=</span> <span class="s">"[붙여넣기]"</span><span class="o">;</span>
-            
-            <span class="nc">JOptionPane</span><span class="o">.</span><span class="na">showMessageDialog</span><span class="o">(</span><span class="nc">JToolBarExample</span><span class="o">.</span><span class="na">this</span><span class="o">,</span> <span class="n">command</span> <span class="o">+</span> <span class="s">" 클릭"</span><span class="o">);</span>
-        <span class="o">}</span>
-    <span class="o">};</span>
-
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-        <span class="nc">SwingUtilities</span><span class="o">.</span><span class="na">invokeLater</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="o">{</span>
-            <span class="nc">JToolBarExample</span> <span class="n">jFrame</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JToolBarExample</span><span class="o">();</span>
-            <span class="n">jFrame</span><span class="o">.</span><span class="na">setVisible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
-        <span class="o">});</span>
-    <span class="o">}</span>
-<span class="o">}</span>
+public static void main(String[] args) {
+    SwingUtilities.invokeLater(() -&gt; {
+        JToolBarExample jFrame = new JToolBarExample();
+        jFrame.setVisible(true);
+    });
+} }
 </code></pre></div></div>
-
 
 
 

@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 350" width="100%" height="350">
+  <defs>
+    <!-- Drop Shadow Filter -->
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="1" dy="3" stdDeviation="3" flood-opacity="0.08" flood-color="#000000" />
+    </filter>
+    <!-- Inheritance Arrow Marker -->
+    <marker id="inheritance" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#FFFFFF" stroke="#4A5568" stroke-width="1.5" />
+    </marker>
+    <!-- Association Arrow Marker -->
+    <marker id="association" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10" fill="none" stroke="#718096" stroke-width="1.5" />
+    </marker>
+  </defs>
+
+  <style>
+    .class-name { font-family: system-ui, -apple-system, sans-serif; font-size: 13px; font-weight: bold; fill: #1A202C; text-anchor: middle; }
+    .interface-name { font-family: system-ui, -apple-system, sans-serif; font-size: 13px; font-weight: bold; font-style: italic; fill: #2C5282; text-anchor: middle; }
+    .member-text { font-family: system-ui, -apple-system, sans-serif; font-size: 11px; fill: #4A5568; }
+    .class-box { stroke-width: 2; }
+    .base-box { fill: #EDF2F7; stroke: #4A5568; }
+    .table-box { fill: #EBF8FF; stroke: #3182CE; }
+    .concrete-box { fill: #F0FDF4; stroke: #22C55E; }
+    .interface-box { fill: #EFF6FF; stroke: #3B82F6; stroke-dasharray: 4 4; }
+    .relation-line { stroke: #4A5568; stroke-width: 1.5; fill: none; }
+    .dashed-relation { stroke: #718096; stroke-width: 1.2; stroke-dasharray: 3 3; fill: none; }
+  </style>
+
+  <!-- Connectors -->
+  <!-- JComponent to JTable -->
+  <path class="relation-line" d="M 350 70 L 350 110" marker-end="url(#inheritance)" />
+
+  <!-- TableModel to DefaultTableModel -->
+  <path class="relation-line" d="M 145 170 L 145 220" marker-end="url(#inheritance)" />
+
+  <!-- TableCellRenderer to DefaultTableCellRenderer -->
+  <path class="relation-line" d="M 555 170 L 555 220" marker-end="url(#inheritance)" />
+
+  <!-- JTable Association with TableModel -->
+  <path class="dashed-relation" d="M 250 145 L 220 145" marker-end="url(#association)" />
+
+  <!-- JTable Association with TableCellRenderer -->
+  <path class="dashed-relation" d="M 450 145 L 480 145" marker-end="url(#association)" />
+
+  <!-- JComponent Node -->
+  <g transform="translate(250, 20)" filter="url(#shadow)">
+    <rect class="class-box base-box" width="200" height="50" rx="6" />
+    <text x="100" y="30" class="class-name">JComponent</text>
+  </g>
+
+  <!-- JTable Node -->
+  <g transform="translate(250, 110)" filter="url(#shadow)">
+    <rect class="class-box table-box" width="200" height="70" rx="6" />
+    <text x="100" y="25" class="class-name" fill="#1D4ED8">JTable</text>
+    <line x1="0" y1="35" x2="200" y2="35" stroke="#3182CE" stroke-width="1" />
+    <text x="15" y="52" class="member-text">+getModel() : TableModel</text>
+  </g>
+
+  <!-- TableModel Interface -->
+  <g transform="translate(40, 110)" filter="url(#shadow)">
+    <rect class="class-box interface-box" width="180" height="60" rx="6" />
+    <text x="90" y="24" class="interface-name">&lt;&lt;interface&gt;&gt;</text>
+    <text x="90" y="42" class="interface-name">TableModel</text>
+  </g>
+
+  <!-- DefaultTableModel Concrete Class -->
+  <g transform="translate(40, 220)" filter="url(#shadow)">
+    <rect class="class-box concrete-box" width="180" height="70" rx="6" />
+    <text x="90" y="22" class="class-name" fill="#15803D">DefaultTableModel</text>
+    <line x1="0" y1="32" x2="180" y2="32" stroke="#22C55E" stroke-width="1" />
+    <text x="10" y="48" class="member-text">+addRow(data: Object[])</text>
+    <text x="10" y="62" class="member-text">+removeRow(row: int)</text>
+  </g>
+
+  <!-- TableCellRenderer Interface -->
+  <g transform="translate(480, 110)" filter="url(#shadow)">
+    <rect class="class-box interface-box" width="180" height="60" rx="6" />
+    <text x="90" y="24" class="interface-name">&lt;&lt;interface&gt;&gt;</text>
+    <text x="90" y="42" class="interface-name">TableCellRenderer</text>
+  </g>
+
+  <!-- DefaultTableCellRenderer Concrete Class -->
+  <g transform="translate(480, 220)" filter="url(#shadow)">
+    <rect class="class-box concrete-box" width="180" height="60" rx="6" />
+    <text x="90" y="26" class="class-name" fill="#15803D">DefaultTableCellRenderer</text>
+    <line x1="0" y1="36" x2="180" y2="36" stroke="#22C55E" stroke-width="1" />
+    <text x="10" y="50" class="member-text">+getTableCellRendererComponent()</text>
+  </g>
+</svg>

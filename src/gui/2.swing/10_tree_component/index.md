@@ -9,6 +9,8 @@ keywords: "10. 트리 컴포넌트, 자바, Java, 프로그래밍, 백엔드, �
 
 `JTree`는 데이터를 계층적(Hierarchical)인 트리 구조로 표시하는 컴포넌트입니다.
 
+![트리 컴포넌트 구조](./img/tree_hierarchy.svg)
+
 ## 1. 트리 구조
 - **루트 노드(Root Node)**: 최상위 노드. 하나만 존재.
 - **부모 노드(Parent Node)**: 자식 노드를 가지는 노드.
@@ -32,6 +34,16 @@ JTree jTree = new JTree(root);
 ```
 
 ### 예제: 기본 JTree (`JTreeBasicExample`)
+
+* **실습 예제 파일**: [JTreeBasicExample.java](file:///d:/site/jinysite/java/src/gui/2.swing/10_tree_component/sample/sec10/exam01_jtree/JTreeBasicExample.java) (경로: `sample/sec10/exam01_jtree/JTreeBasicExample.java`)
+* **실행 방법**:
+  ```powershell
+  # 1. 10_tree_component 디렉토리로 이동 후 컴파일
+  javac -d sample sample/sec10/exam01_jtree/JTreeBasicExample.java
+  
+  # 2. 실행
+  java -cp sample sec10.exam01_jtree.JTreeBasicExample
+  ```
 
 ```java
 package sec10.exam01_jtree;
@@ -92,8 +104,18 @@ public class JTreeBasicExample extends JFrame {
 
 - `getTreeCellRendererComponent(...)`: 노드가 그려질 때 호출되어 해당 노드를 표현할 컴포넌트를 반환합니다.
 
-### 렌더러 예제 Code (`JTreeCellRendererExample`)
+### 렌더러 예제 Code (`JTreeCustomRendererExample`)
 이 예제는 리프 노드와 부모 노드의 아이콘을 다르게 설정하고, 선택 시 배경색을 변경합니다.
+
+* **실습 예제 파일**: [JTreeCustomRendererExample.java](file:///d:/site/jinysite/java/src/gui/2.swing/10_tree_component/sample/sec10/exam02_cellrenderer/JTreeCustomRendererExample.java) (경로: `sample/sec10/exam02_cellrenderer/JTreeCustomRendererExample.java`)
+* **실행 방법**:
+  ```powershell
+  # 1. 10_tree_component 디렉토리로 이동 후 컴파일
+  javac -d sample sample/sec10/exam02_cellrenderer/JTreeCustomRendererExample.java
+  
+  # 2. 실행 (실행 전 같은 패키지 폴더 내의 parentnode.gif, logon.gif, time.gif 리소스가 필요합니다)
+  java -cp sample sec10.exam02_cellrenderer.JTreeCustomRendererExample
+  ```
 
 ```java
 package sec10.exam02_cellrenderer;
@@ -193,6 +215,16 @@ public class JTreeCustomRendererExample extends JFrame {
 
 ### 이벤트 처리 예제 (`JTreeEventExample`)
 
+* **실습 예제 파일**: [JTreeEventExample.java](file:///d:/site/jinysite/java/src/gui/2.swing/10_tree_component/sample/sec10/exam03_eventhandling/JTreeEventExample.java) (경로: `sample/sec10/exam03_eventhandling/JTreeEventExample.java`)
+* **실행 방법**:
+  ```powershell
+  # 1. 10_tree_component 디렉토리로 이동 후 컴파일
+  javac -d sample sample/sec10/exam03_eventhandling/JTreeEventExample.java
+  
+  # 2. 실행
+  java -cp sample sec10.exam03_eventhandling.JTreeEventExample
+  ```
+
 ```java
 package sec10.exam03_eventhandling;
 
@@ -261,5 +293,3 @@ public class JTreeEventExample extends JFrame {
     }
 }
 ```
-
-

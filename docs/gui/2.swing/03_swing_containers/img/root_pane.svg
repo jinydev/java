@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 350" width="100%" height="350">
+  <defs>
+    <!-- Drop Shadow Filter -->
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="2" dy="4" stdDeviation="4" flood-opacity="0.08" flood-color="#000000" />
+    </filter>
+  </defs>
+
+  <style>
+    .title-text { font-family: system-ui, -apple-system, sans-serif; font-size: 15px; font-weight: bold; fill: #1A202C; }
+    .body-text { font-family: system-ui, -apple-system, sans-serif; font-size: 11px; fill: #4A5568; }
+    .root-box { fill: #F7FAFC; stroke: #CBD5E0; stroke-width: 2; }
+    .glass-box { fill: rgba(230, 255, 250, 0.7); stroke: #319795; stroke-width: 2; stroke-dasharray: 4; }
+    .layered-box { fill: #F5F3FF; stroke: #7C3AED; stroke-width: 2; }
+    .menu-box { fill: #FFF5F5; stroke: #E53E3E; stroke-width: 1.5; }
+    .content-box { fill: #FFF5F7; stroke: #D53F8C; stroke-width: 2; }
+  </style>
+
+  <!-- RootPane -->
+  <g transform="translate(20, 20)" filter="url(#shadow)">
+    <rect class="root-box" width="560" height="310" rx="12" />
+    <text x="20" y="30" class="title-text" fill="#2B6CB0">RootPane (최상위 루트)</text>
+    <text x="20" y="48" class="body-text" fill="#718096">JFrame, JDialog 등이 내부적으로 갖는 기본 구조</text>
+  </g>
+
+  <!-- GlassPane -->
+  <g transform="translate(50, 90)" filter="url(#shadow)">
+    <rect class="glass-box" width="220" height="210" rx="8" />
+    <text x="20" y="30" class="title-text" fill="#234E52">GlassPane</text>
+    <text x="20" y="55" class="body-text">
+      <tspan x="20" dy="0">가장 위에 위치하는 투명한 패널</tspan>
+      <tspan x="20" dy="18">마우스 이벤트를 가로채거나</tspan>
+      <tspan x="20" dy="18">화면 전체에 일시적인 그리기 효과</tspan>
+      <tspan x="20" dy="18">(예: 로딩 중 마우스 클릭 방지막)</tspan>
+    </text>
+  </g>
+
+  <!-- LayeredPane -->
+  <g transform="translate(300, 90)" filter="url(#shadow)">
+    <rect class="layered-box" width="250" height="210" rx="8" />
+    <text x="20" y="30" class="title-text" fill="#5B21B6">LayeredPane</text>
+    <text x="20" y="48" class="body-text" fill="#7C3AED">Z-Order (심도) 관리 레이어</text>
+    
+    <!-- JMenuBar inside LayeredPane -->
+    <g transform="translate(15, 65)">
+      <rect class="menu-box" width="220" height="40" rx="6" />
+      <text x="15" y="25" class="title-text" fill="#9B2C2C" font-size="13px">JMenuBar (선택 사항)</text>
+    </g>
+
+    <!-- ContentPane inside LayeredPane -->
+    <g transform="translate(15, 120)">
+      <rect class="content-box" width="220" height="75" rx="6" />
+      <text x="15" y="24" class="title-text" fill="#D53F8C" font-size="13px">ContentPane</text>
+      <text x="15" y="44" class="body-text">
+        <tspan x="15" dy="0">일반 컴포넌트(JButton, JPanel 등)가</tspan>
+        <tspan x="15" dy="16">실제 부착되어 화면에 보여지는 공간</tspan>
+      </text>
+    </g>
+  </g>
+</svg>

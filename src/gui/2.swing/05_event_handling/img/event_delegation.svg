@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 350" width="100%" height="350">
+  <defs>
+    <!-- Drop Shadow Filter -->
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="1" dy="3" stdDeviation="3" flood-opacity="0.08" flood-color="#000000" />
+    </filter>
+    <!-- Arrow Marker -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#4A5568" />
+    </marker>
+  </defs>
+
+  <style>
+    .actor-text { font-family: system-ui, -apple-system, sans-serif; font-size: 13px; font-weight: bold; fill: #2D3748; text-anchor: middle; }
+    .label-text { font-family: system-ui, -apple-system, sans-serif; font-size: 11px; fill: #4A5568; text-anchor: middle; font-weight: bold; }
+    .note-text { font-family: system-ui, -apple-system, sans-serif; font-size: 10px; fill: #718096; }
+    .lifeline { stroke: #CBD5E0; stroke-width: 1.5; stroke-dasharray: 4; }
+    .actor-box { stroke-width: 2; }
+    .user-box { fill: #FFF5F5; stroke: #FEB2B2; }
+    .source-box { fill: #EBF8FF; stroke: #90CDF4; }
+    .listener-box { fill: #F5F3FF; stroke: #C7D2FE; }
+    .activation-bar { fill: #EDF2F7; stroke: #CBD5E0; stroke-width: 1; }
+    .note-box { fill: #FFFDF5; stroke: #FEEBC8; stroke-width: 1; rx: 4; }
+  </style>
+
+  <!-- Lifelines -->
+  <line class="lifeline" x1="100" y1="80" x2="100" y2="300" />
+  <line class="lifeline" x1="300" y1="80" x2="300" y2="300" />
+  <line class="lifeline" x1="500" y1="80" x2="500" y2="300" />
+
+  <!-- Activation Bars -->
+  <rect class="activation-bar" x="295" y="115" width="10" height="100" />
+  <rect class="activation-bar" x="495" y="205" width="10" height="70" />
+
+  <!-- Actor Boxes -->
+  <g transform="translate(40, 30)" filter="url(#shadow)">
+    <rect class="actor-box user-box" width="120" height="40" rx="6" />
+    <text x="60" y="24" class="actor-text" fill="#C53030">사용자 (User)</text>
+  </g>
+  <g transform="translate(240, 30)" filter="url(#shadow)">
+    <rect class="actor-box source-box" width="120" height="40" rx="6" />
+    <text x="60" y="24" class="actor-text" fill="#2B6CB0">이벤트 소스</text>
+  </g>
+  <g transform="translate(440, 30)" filter="url(#shadow)">
+    <rect class="actor-box listener-box" width="120" height="40" rx="6" />
+    <text x="60" y="24" class="actor-text" fill="#5B21B6">이벤트 리스너</text>
+  </g>
+
+  <!-- Messages -->
+  <!-- User -> Source: Action (Click) -->
+  <path d="M 100 120 L 290 120" fill="none" stroke="#4A5568" stroke-width="1.5" marker-end="url(#arrow)" />
+  <text x="195" y="112" class="label-text">Action (Click)</text>
+
+  <!-- Source Note: Event Created -->
+  <g transform="translate(315, 135)">
+    <rect class="note-box" width="100" height="35" />
+    <text x="10" y="15" class="note-text" font-weight="bold" fill="#DD6B20">이벤트 객체 생성</text>
+    <text x="10" y="28" class="note-text">(Event Created)</text>
+  </g>
+
+  <!-- Source -> Listener: Event Fired -->
+  <path d="M 305 210 L 490 210" fill="none" stroke="#4A5568" stroke-width="1.5" marker-end="url(#arrow)" />
+  <text x="395" y="202" class="label-text">Event Fired (위임)</text>
+
+  <!-- Listener Note: actionPerformed() -->
+  <g transform="translate(370, 230)">
+    <rect class="note-box" width="120" height="35" />
+    <text x="10" y="15" class="note-text" font-weight="bold" fill="#744210">actionPerformed()</text>
+    <text x="10" y="28" class="note-text">이벤트 처리 코드 실행</text>
+  </g>
+</svg>

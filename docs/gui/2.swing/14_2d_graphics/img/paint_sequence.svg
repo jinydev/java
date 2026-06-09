@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 350" width="100%" height="350">
+  <defs>
+    <!-- Drop Shadow Filter -->
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="1" dy="3" stdDeviation="3" flood-opacity="0.08" flood-color="#000000" />
+    </filter>
+    <!-- Solid Arrow Marker -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2C3E50" />
+    </marker>
+    <!-- Dashed Arrow Marker -->
+    <marker id="dashed-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#7F8C8D" />
+    </marker>
+  </defs>
+
+  <style>
+    .actor-text { font-family: system-ui, -apple-system, sans-serif; font-size: 13px; font-weight: bold; fill: #1A202C; text-anchor: middle; }
+    .msg-text { font-family: system-ui, -apple-system, sans-serif; font-size: 11px; fill: #4A5568; font-weight: 500; }
+    .actor-box { fill: #EFF6FF; stroke: #3B82F6; stroke-width: 2; rx: 5; }
+    .lifeline { stroke: #BDC3C7; stroke-width: 1.5; stroke-dasharray: 4 4; fill: none; }
+    .msg-line { stroke: #2C3E50; stroke-width: 1.5; fill: none; }
+    .reply-line { stroke: #7F8C8D; stroke-width: 1.2; stroke-dasharray: 4 4; fill: none; }
+    .activation-box { fill: #EBF8FF; stroke: #3182CE; stroke-width: 1; }
+  </style>
+
+  <!-- Lifelines -->
+  <line x1="150" y1="60" x2="150" y2="310" class="lifeline" />
+  <line x1="350" y1="60" x2="350" y2="310" class="lifeline" />
+  <line x1="550" y1="60" x2="550" y2="310" class="lifeline" />
+
+  <!-- Activation Bars -->
+  <rect x="145" y="80" width="10" height="210" class="activation-box" />
+  <rect x="345" y="95" width="10" height="180" class="activation-box" />
+  <rect x="545" y="215" width="10" height="50" class="activation-box" />
+  
+  <!-- Self Activation on Canvas (paint execution) -->
+  <rect x="350" y="150" width="10" height="50" class="activation-box" style="fill: #EBF8FF; stroke: #3182CE;" />
+
+  <!-- Actors / Participants -->
+  <g transform="translate(100, 20)" filter="url(#shadow)">
+    <rect class="actor-box" width="100" height="40" />
+    <text x="50" y="25" class="actor-text">System</text>
+  </g>
+  <g transform="translate(300, 20)" filter="url(#shadow)">
+    <rect class="actor-box" width="100" height="40" style="fill: #F0FDF4; stroke: #22C55E;" />
+    <text x="50" y="25" class="actor-text" fill="#15803D">Canvas</text>
+  </g>
+  <g transform="translate(500, 20)" filter="url(#shadow)">
+    <rect class="actor-box" width="100" height="40" style="fill: #FFFBEB; stroke: #D97706;" />
+    <text x="50" y="25" class="actor-text" fill="#B45309">Graphics (g)</text>
+  </g>
+
+  <!-- Messages -->
+  <!-- 1. System -> Canvas: 드로잉 요청 -->
+  <path class="msg-line" d="M 155 100 L 340 100" marker-end="url(#arrow)" />
+  <text x="170" y="94" class="msg-text">1. 드로잉 요청 (최초 노출, 크기 변경 등)</text>
+
+  <!-- 2. Canvas -> Canvas: paint(Graphics g) 호출 -->
+  <path class="msg-line" d="M 355 140 L 380 140 L 380 160 L 362 160" marker-end="url(#arrow)" />
+  <text x="385" y="154" class="msg-text">2. paint(Graphics g) 호출</text>
+
+  <!-- 3. Canvas -> Graphics: 그림 그리기 메서드 호출 -->
+  <path class="msg-line" d="M 360 225 L 540 225" marker-end="url(#arrow)" />
+  <text x="380" y="219" class="msg-text">3. 그리기 메서드 호출 (drawOval, drawLine 등)</text>
+
+  <!-- 4. Graphics -> Canvas: 화면에 출력 -->
+  <path class="reply-line" d="M 545 255 L 360 255" marker-end="url(#dashed-arrow)" />
+  <text x="380" y="249" class="msg-text" style="fill: #7F8C8D;">4. 화면에 출력 (렌더링)</text>
+
+  <!-- 5. System 리포트 확인 -->
+  <path class="reply-line" d="M 345 285 L 155 285" marker-end="url(#dashed-arrow)" />
+  <text x="170" y="279" class="msg-text" style="fill: #7F8C8D;">5. 드로잉 완료 통보</text>
+</svg>

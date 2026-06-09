@@ -689,28 +689,13 @@
         
     </ol>
 </nav>
+
         <div class="bd-content ps-lg-2">
             <h1 id="06-버튼-컴포넌트">06. 버튼 컴포넌트</h1>
 
 <p>버튼 컴포넌트는 사용자가 클릭했을 때 이벤트를 발생시키는 가장 기본적인 컴포넌트입니다. Swing의 모든 버튼은 <code class="language-plaintext highlighter-rouge">AbstractButton</code> 클래스를 상속받습니다.</p>
 
-<pre><code class="language-mermaid">classDiagram
-    class AbstractButton {
-        +setText(String text)
-        +setIcon(Icon icon)
-        +addActionListener(ActionListener l)
-        +addItemListener(ItemListener l)
-    }
-    class JButton
-    class JToggleButton
-    class JCheckBox
-    class JRadioButton
-
-    AbstractButton &lt;|-- JButton
-    AbstractButton &lt;|-- JToggleButton
-    JToggleButton &lt;|-- JCheckBox
-    JToggleButton &lt;|-- JRadioButton
-</code></pre>
+<p><img src="./img/button_hierarchy.svg" alt="버튼 계층 구조" /></p>
 
 <ul>
   <li><strong>JButton</strong>: 일반적인 푸시 버튼.</li>
@@ -723,6 +708,18 @@
 
 <h2 id="1-jbutton">1. JButton</h2>
 <p><code class="language-plaintext highlighter-rouge">JButton</code>은 텍스트, 이미지, 또는 둘 다를 포함할 수 있는 버튼입니다. 클릭 시 <code class="language-plaintext highlighter-rouge">ActionEvent</code>가 발생합니다.</p>
+
+<ul>
+  <li><strong>실습 예제 파일</strong>: <a href="file:///d:/site/jinysite/java/src/gui/2.swing/06_button_component/sample/sec06/exam01_jbutton/JButtonExample.java">JButtonExample.java</a> (경로: <code class="language-plaintext highlighter-rouge">sample/sec06/exam01_jbutton/JButtonExample.java</code>)</li>
+  <li><strong>실행 방법</strong>:
+    <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 1. 06_button_component 디렉토리로 이동 후 컴파일</span><span class="w">
+</span><span class="n">javac</span><span class="w"> </span><span class="nt">-d</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sample/sec06/exam01_jbutton/JButtonExample.java</span><span class="w">
+  
+</span><span class="c"># 2. 실행</span><span class="w">
+</span><span class="n">java</span><span class="w"> </span><span class="nt">-cp</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sec06.exam01_jbutton.JButtonExample</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+</ul>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">sec06.exam01_jbutton</span><span class="o">;</span>
 
@@ -800,6 +797,18 @@
 <h2 id="2-jtogglebutton">2. JToggleButton</h2>
 <p><code class="language-plaintext highlighter-rouge">JToggleButton</code>은 토글(On/Off) 기능을 가진 버튼입니다. 클릭할 때마다 선택(Selected)/해제(Deselected) 상태가 바뀝니다.
 상태 변화를 감지하기 위해 <code class="language-plaintext highlighter-rouge">ItemListener</code>를 사용하는 것이 좋습니다.</p>
+
+<ul>
+  <li><strong>실습 예제 파일</strong>: <a href="file:///d:/site/jinysite/java/src/gui/2.swing/06_button_component/sample/sec06/exam02_jtogglebutton/JToggleButtonExample.java">JToggleButtonExample.java</a> (경로: <code class="language-plaintext highlighter-rouge">sample/sec06/exam02_jtogglebutton/JToggleButtonExample.java</code>)</li>
+  <li><strong>실행 방법</strong>:
+    <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 1. 06_button_component 디렉토리로 이동 후 컴파일</span><span class="w">
+</span><span class="n">javac</span><span class="w"> </span><span class="nt">-d</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sample/sec06/exam02_jtogglebutton/JToggleButtonExample.java</span><span class="w">
+  
+</span><span class="c"># 2. 실행</span><span class="w">
+</span><span class="n">java</span><span class="w"> </span><span class="nt">-cp</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sec06.exam02_jtogglebutton.JToggleButtonExample</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+</ul>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">sec06.exam02_jtogglebutton</span><span class="o">;</span>
 
@@ -898,6 +907,18 @@
 <h2 id="3-jradiobutton">3. JRadioButton</h2>
 <p><code class="language-plaintext highlighter-rouge">JRadioButton</code>은 여러 옵션 중 <strong>하나만 선택</strong>해야 할 때 사용합니다. 반드시 <code class="language-plaintext highlighter-rouge">ButtonGroup</code>으로 묶어주어야 배타적 선택이 동작합니다.</p>
 
+<ul>
+  <li><strong>실습 예제 파일</strong>: <a href="file:///d:/site/jinysite/java/src/gui/2.swing/06_button_component/sample/sec06/exam03_jradiobutton/JRadioButtonExample.java">JRadioButtonExample.java</a> (경로: <code class="language-plaintext highlighter-rouge">sample/sec06/exam03_jradiobutton/JRadioButtonExample.java</code>)</li>
+  <li><strong>실행 방법</strong>:
+    <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 1. 06_button_component 디렉토리로 이동 후 컴파일</span><span class="w">
+</span><span class="n">javac</span><span class="w"> </span><span class="nt">-d</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sample/sec06/exam03_jradiobutton/JRadioButtonExample.java</span><span class="w">
+  
+</span><span class="c"># 2. 실행</span><span class="w">
+</span><span class="n">java</span><span class="w"> </span><span class="nt">-cp</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sec06.exam03_jradiobutton.JRadioButtonExample</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+</ul>
+
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">sec06.exam03_jradiobutton</span><span class="o">;</span>
 
 <span class="kn">import</span> <span class="nn">java.awt.BorderLayout</span><span class="o">;</span>
@@ -981,6 +1002,18 @@
 
 <h2 id="4-jcheckbox">4. JCheckBox</h2>
 <p><code class="language-plaintext highlighter-rouge">JCheckBox</code>는 <strong>다중 선택</strong>이 가능한 버튼입니다. 각 체크박스는 독립적으로 선택/해제 상태를 가집니다. <code class="language-plaintext highlighter-rouge">isSelected()</code> 메서드로 상태를 확인할 수 있습니다.</p>
+
+<ul>
+  <li><strong>실습 예제 파일</strong>: <a href="file:///d:/site/jinysite/java/src/gui/2.swing/06_button_component/sample/sec06/exam04_jcheckbox/JCheckBoxExample.java">JCheckBoxExample.java</a> (경로: <code class="language-plaintext highlighter-rouge">sample/sec06/exam04_jcheckbox/JCheckBoxExample.java</code>)</li>
+  <li><strong>실행 방법</strong>:
+    <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 1. 06_button_component 디렉토리로 이동 후 컴파일</span><span class="w">
+</span><span class="n">javac</span><span class="w"> </span><span class="nt">-d</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sample/sec06/exam04_jcheckbox/JCheckBoxExample.java</span><span class="w">
+  
+</span><span class="c"># 2. 실행</span><span class="w">
+</span><span class="n">java</span><span class="w"> </span><span class="nt">-cp</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sec06.exam04_jcheckbox.JCheckBoxExample</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+</ul>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">sec06.exam04_jcheckbox</span><span class="o">;</span>
 
