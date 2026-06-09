@@ -697,6 +697,17 @@
 
 <p><img src="./img/tree_hierarchy.svg" alt="트리 컴포넌트 구조" /></p>
 
+<h3 id="-비주얼-개념-잡기-jtree의-구성-요소">💡 비주얼 개념 잡기: JTree의 구성 요소</h3>
+<p>JTree는 데이터를 마치 <strong>나무(Tree)</strong>처럼 계층적으로 관리하는 컴포넌트입니다.</p>
+
+<p><img src="./img/tree_concept.png" alt="JTree 개념도" /></p>
+
+<ul>
+  <li><strong>JTree (나무 구조틀)</strong>: 전체 노드가 뻗어나갈 수 있도록 튼튼하게 잡아주는 전체 나무 구조(틀)입니다.</li>
+  <li><strong>TreeNode (이름표/나뭇잎)</strong>: 나무 가지마다 걸려 있는 종이 이름표나 나뭇잎입니다. 실제 데이터(텍스트, 객체 등)를 보관하는 개별 노드를 의미합니다.</li>
+  <li><strong>TreeCellRenderer (꾸미기 스티커/물감)</strong>: 기본 폴더/파일 모양 아이콘 대신 노드의 상태나 데이터 형태에 맞게 예쁜 스티커를 붙이거나 색칠을 해주는 꾸미기 요정입니다.</li>
+</ul>
+
 <h2 id="1-트리-구조">1. 트리 구조</h2>
 <ul>
   <li><strong>루트 노드(Root Node)</strong>: 최상위 노드. 하나만 존재.</li>
@@ -723,7 +734,7 @@
 <h3 id="예제-기본-jtree-jtreebasicexample">예제: 기본 JTree (<code class="language-plaintext highlighter-rouge">JTreeBasicExample</code>)</h3>
 
 <ul>
-  <li><strong>실습 예제 파일</strong>: <a href="file:///d:/site/jinysite/java/src/gui/2.swing/10_tree_component/sample/sec10/exam01_jtree/JTreeBasicExample.java">JTreeBasicExample.java</a> (경로: <code class="language-plaintext highlighter-rouge">sample/sec10/exam01_jtree/JTreeBasicExample.java</code>)</li>
+  <li><strong>실습 예제 파일</strong>: <a href="sample/sec10/exam01_jtree/JTreeBasicExample.java">JTreeBasicExample.java</a> (경로: <code class="language-plaintext highlighter-rouge">sample/sec10/exam01_jtree/JTreeBasicExample.java</code>)</li>
   <li><strong>실행 방법</strong>:
     <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 1. 10_tree_component 디렉토리로 이동 후 컴파일</span><span class="w">
 </span><span class="n">javac</span><span class="w"> </span><span class="nt">-d</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sample/sec10/exam01_jtree/JTreeBasicExample.java</span><span class="w">
@@ -785,6 +796,9 @@
 <span class="o">}</span>
 </code></pre></div></div>
 
+<h4 id="실행-결과-화면">실행 결과 화면</h4>
+<p><img src="./img/treebasic_result.png" alt="JTree 기본 실행 결과" /></p>
+
 <hr />
 
 <h2 id="3-노드-렌더러-treecellrenderer">3. 노드 렌더러 (TreeCellRenderer)</h2>
@@ -798,7 +812,7 @@
 <p>이 예제는 리프 노드와 부모 노드의 아이콘을 다르게 설정하고, 선택 시 배경색을 변경합니다.</p>
 
 <ul>
-  <li><strong>실습 예제 파일</strong>: <a href="file:///d:/site/jinysite/java/src/gui/2.swing/10_tree_component/sample/sec10/exam02_cellrenderer/JTreeCustomRendererExample.java">JTreeCustomRendererExample.java</a> (경로: <code class="language-plaintext highlighter-rouge">sample/sec10/exam02_cellrenderer/JTreeCustomRendererExample.java</code>)</li>
+  <li><strong>실습 예제 파일</strong>: <a href="sample/sec10/exam02_cellrenderer/JTreeCustomRendererExample.java">JTreeCustomRendererExample.java</a> (경로: <code class="language-plaintext highlighter-rouge">sample/sec10/exam02_cellrenderer/JTreeCustomRendererExample.java</code>)</li>
   <li><strong>실행 방법</strong>:
     <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 1. 10_tree_component 디렉토리로 이동 후 컴파일</span><span class="w">
 </span><span class="n">javac</span><span class="w"> </span><span class="nt">-d</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sample/sec10/exam02_cellrenderer/JTreeCustomRendererExample.java</span><span class="w">
@@ -898,6 +912,9 @@
 <span class="o">}</span>
 </code></pre></div></div>
 
+<h4 id="실행-결과-화면-1">실행 결과 화면</h4>
+<p><img src="./img/treecustom_result.png" alt="JTree 커스텀 렌더러 실행 결과" /></p>
+
 <hr />
 
 <h2 id="4-이벤트-처리">4. 이벤트 처리</h2>
@@ -909,7 +926,7 @@
 <h3 id="이벤트-처리-예제-jtreeeventexample">이벤트 처리 예제 (<code class="language-plaintext highlighter-rouge">JTreeEventExample</code>)</h3>
 
 <ul>
-  <li><strong>실습 예제 파일</strong>: <a href="file:///d:/site/jinysite/java/src/gui/2.swing/10_tree_component/sample/sec10/exam03_eventhandling/JTreeEventExample.java">JTreeEventExample.java</a> (경로: <code class="language-plaintext highlighter-rouge">sample/sec10/exam03_eventhandling/JTreeEventExample.java</code>)</li>
+  <li><strong>실습 예제 파일</strong>: <a href="sample/sec10/exam03_eventhandling/JTreeEventExample.java">JTreeEventExample.java</a> (경로: <code class="language-plaintext highlighter-rouge">sample/sec10/exam03_eventhandling/JTreeEventExample.java</code>)</li>
   <li><strong>실행 방법</strong>:
     <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 1. 10_tree_component 디렉토리로 이동 후 컴파일</span><span class="w">
 </span><span class="n">javac</span><span class="w"> </span><span class="nt">-d</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sample/sec10/exam03_eventhandling/JTreeEventExample.java</span><span class="w">
@@ -988,10 +1005,11 @@
 <span class="o">}</span>
 </code></pre></div></div>
 
+<h4 id="실행-결과-화면-2">실행 결과 화면</h4>
+<p><img src="./img/treeevent_result.png" alt="JTree 이벤트 처리 실행 결과" /></p>
 
 
-<<<<<<< HEAD
-=======
+
 
             <!-- 다음/이전 학습 페이지네이션 -->
             
@@ -1148,7 +1166,6 @@
 </div>
 
 
->>>>>>> f06ad6aeea6428b1dcbcd8eb7feccf69341fcee5
             <div class="mt-10">
                 <!-- 구글 에스센스 광고 -->
                 <script async

@@ -11,6 +11,14 @@ keywords: "13. 다이얼로그, 자바, Java, 프로그래밍, 백엔드, 개발
 
 ![다이얼로그 계층 구조](./img/dialog_hierarchy.svg)
 
+### 💡 비주얼 개념 잡기: 모달(Modal)과 모달리스(Modeless)의 차이
+다이얼로그의 동작 방식은 업무 환경의 **서류**와 **포스트잇 메모**에 비유할 수 있습니다!
+
+![다이얼로그 개념도](./img/dialog_concept.png)
+
+* **모달 (Modal - 비서의 긴급 결재판)**: "사장님, 이 서류에 먼저 사인해 주셔야 다른 업무를 보실 수 있습니다!" 하고 불쑥 내미는 긴급 결재 서류와 같습니다. 다이얼로그를 확인하고 닫기 전까지는 뒤에 있는 주 화면(Owner Window)을 클릭하거나 조작할 수 없습니다 (입력 및 확인 강제).
+* **모달리스 (Modeless - 포스트잇 메모)**: 모니터 옆에 살짝 붙여 두는 포스트잇 메모지와 같습니다. 메모 창이 계속 열려 있어도 주 화면의 책을 읽거나 타이핑하는 등 원래 보던 업무(주 화면 조작)를 동시에 자유롭게 진행할 수 있습니다.
+
 ## 1. 다이얼로그 종류
 - **모달(Modal)**: 다이얼로그를 닫기 전까지 소유자 윈도우를 사용할 수 없음. (입력 강제)
 - **모달리스(Modeless)**: 다이얼로그가 떠 있어도 소유자 윈도우를 계속 사용할 수 있음.
@@ -71,7 +79,7 @@ Swing은 자주 사용되는 다이얼로그를 `JOptionPane` 클래스로 제�
 
 ### 예제 (`JOptionPaneExample`)
 
-* **실습 예제 파일**: [JOptionPaneExample.java](file:///d:/site/jinysite/java/src/gui/2.swing/13_dialog/sample/sec13/exam02_joptionpane/JOptionPaneExample.java) (경로: `sample/sec13/exam02_joptionpane/JOptionPaneExample.java`)
+* **실습 예제 파일**: [JOptionPaneExample.java](sample/sec13/exam02_joptionpane/JOptionPaneExample.java) (경로: `sample/sec13/exam02_joptionpane/JOptionPaneExample.java`)
 * **실행 방법**:
   ```powershell
   # 1. 13_dialog 디렉토리로 이동 후 컴파일
@@ -191,6 +199,9 @@ public class JOptionPaneExample extends JFrame {
 }
 ```
 
+#### 실행 결과 화면
+![JOptionPane 실행 결과](./img/joptionpane_result.png)
+
 ---
 
 ## 4. 파일 다이얼로그 (JFileChooser)
@@ -203,7 +214,7 @@ public class JOptionPaneExample extends JFrame {
 
 ### 예제 (`JFileChooserExample`)
 
-* **실습 예제 파일**: [JFileChooserExample.java](file:///d:/site/jinysite/java/src/gui/2.swing/13_dialog/sample/sec13/exam03_jfilechooser/JFileChooserExample.java) (경로: `sample/sec13/exam03_jfilechooser/JFileChooserExample.java`)
+* **실습 예제 파일**: [JFileChooserExample.java](sample/sec13/exam03_jfilechooser/JFileChooserExample.java) (경로: `sample/sec13/exam03_jfilechooser/JFileChooserExample.java`)
 * **실행 방법**:
   ```powershell
   # 1. 13_dialog 디렉토리로 이동 후 컴파일
@@ -274,6 +285,9 @@ public class JFileChooserExample extends JFrame {
     }
 }
 ```
+
+#### 실행 결과 화면
+![JFileChooser 실행 결과](./img/jfilechooser_result.png)
 
 ---
 

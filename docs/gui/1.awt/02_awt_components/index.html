@@ -693,111 +693,184 @@
         <div class="bd-content ps-lg-2">
             <h1 id="02-awt-컴포넌트">02. AWT 컴포넌트</h1>
 
-<h2 id="1-컴포넌트component란">1. 컴포넌트(Component)란?</h2>
-<p>AWT에서 화면을 구성하는 모든 요소를 <strong>컴포넌트</strong>라고 합니다.
-<code class="language-plaintext highlighter-rouge">java.awt.Component</code> 클래스를 상속받아 구현되어 있으며, 버튼, 라벨, 텍스트 필드 등이 모두 컴포넌트입니다.</p>
+<p>화면을 꽉 채울 다채로운 부품들을 만나볼 시간입니다! 🧰 자바 GUI 화면을 구성하는 핵심 컴포넌트와 그들을 담아주는 컨테이너를 자세히 알아보고 로그인 화면을 만들어봅시다.</p>
 
-<h3 id="1-1-컨테이너container">1-1. 컨테이너(Container)</h3>
-<p>컴포넌트를 담을 수 있는 특별한 컴포넌트를 <strong>컨테이너</strong>라고 합니다.</p>
+<hr />
+
+<h2 id="1-컴포넌트component와-컨테이너container">1. 컴포넌트(Component)와 컨테이너(Container)</h2>
+
+<p>자바 AWT에서 화면에 그려지는 모든 시각적 요소를 <strong>컴포넌트</strong>라고 부릅니다. 이들은 <code class="language-plaintext highlighter-rouge">java.awt.Component</code>라는 단 하나의 거대한 부모 클래스를 똑같이 물려받아 만들어졌습니다.</p>
+
+<h3 id="-학용품-상자-비유로-이해하기">💡 학용품 상자 비유로 이해하기</h3>
+
 <ul>
-  <li><strong>Frame</strong>: 독립적인 윈도우 창입니다. 프로그램의 메인 화면 역할을 합니다.</li>
-  <li><strong>Dialog</strong>: 대화 상자입니다.</li>
-  <li><strong>Panel</strong>: 여러 컴포넌트를 묶어서 관리하기 위한 사각형 영역입니다.</li>
+  <li><strong>컴포넌트 (Component)</strong>: 연필, 지우개, 자, 풀 등 <strong>필통 속에 쏙 들어가는 각각의 도구들</strong>입니다. 화면에 배치되는 버튼, 글씨 레이블, 텍스트 상자 등이 여기에 속해요.</li>
+  <li><strong>컨테이너 (Container)</strong>: 연필과 지우개들을 가지런히 보관하는 <strong>필통이나 서랍장</strong>입니다. 컴포넌트들을 일정한 자리에 가두고 모아주는 특별한 컴포넌트입니다.</li>
 </ul>
 
-<hr />
+<p><img src="./img/awt_components_concept.png" alt="AWT 컴포넌트 개념" /></p>
 
-<h2 id="2-주요-awt-컴포넌트">2. 주요 AWT 컴포넌트</h2>
-
-<h3 id="1-label-라벨">1) Label (라벨)</h3>
-<p>단순한 문자열을 표시하는 컴포넌트입니다. 사용자가 편집할 수 없습니다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Label</span> <span class="n">l1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"이름:"</span><span class="o">);</span>
-<span class="nc">Label</span> <span class="n">l2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"비밀번호:"</span><span class="o">,</span> <span class="nc">Label</span><span class="o">.</span><span class="na">RIGHT</span><span class="o">);</span> <span class="c1">// 정렬 지정</span>
-</code></pre></div></div>
-
-<h3 id="2-button-버튼">2) Button (버튼)</h3>
-<p>사용자가 클릭하여 이벤트를 발생시킬 수 있는 버튼입니다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Button</span> <span class="n">b</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Button</span><span class="o">(</span><span class="s">"가입하기"</span><span class="o">);</span>
-</code></pre></div></div>
-
-<h3 id="3-textfield-텍스트-필드">3) TextField (텍스트 필드)</h3>
-<p>한 줄의 텍스트를 입력받을 수 있는 컴포넌트입니다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">TextField</span> <span class="n">tf</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TextField</span><span class="o">(</span><span class="s">"기본값"</span><span class="o">,</span> <span class="mi">20</span><span class="o">);</span> <span class="c1">// 20은 글자 수(폭)</span>
-<span class="nc">TextField</span> <span class="n">pass</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TextField</span><span class="o">(</span><span class="mi">10</span><span class="o">);</span>
-<span class="n">pass</span><span class="o">.</span><span class="na">setEchoChar</span><span class="o">(</span><span class="sc">'*'</span><span class="o">);</span> <span class="c1">// 비밀번호 입력 시 '*'로 표시</span>
-</code></pre></div></div>
-
-<h3 id="4-textarea-텍스트-영역">4) TextArea (텍스트 영역)</h3>
-<p>여러 줄의 텍스트를 입력받을 수 있는 컴포넌트입니다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">TextArea</span> <span class="n">ta</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TextArea</span><span class="o">(</span><span class="s">"내용을 입력하세요"</span><span class="o">,</span> <span class="mi">5</span><span class="o">,</span> <span class="mi">30</span><span class="o">);</span> <span class="c1">// 5행 30열</span>
-</code></pre></div></div>
-
-<h3 id="5-checkbox-체크박스--checkboxgroup-라디오-버튼">5) Checkbox (체크박스) / CheckboxGroup (라디오 버튼)</h3>
-<p>선택 옵션을 제공하는 컴포넌트입니다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 다중 선택 가능 (체크박스)</span>
-<span class="nc">Checkbox</span> <span class="n">c1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Checkbox</span><span class="o">(</span><span class="s">"사과"</span><span class="o">);</span>
-<span class="nc">Checkbox</span> <span class="n">c2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Checkbox</span><span class="o">(</span><span class="s">"바나나"</span><span class="o">,</span> <span class="kc">true</span><span class="o">);</span> <span class="c1">// 선택된 상태</span>
-
-<span class="c1">// 단일 선택 (라디오 버튼) - CheckboxGroup 사용</span>
-<span class="nc">CheckboxGroup</span> <span class="n">group</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">CheckboxGroup</span><span class="o">();</span>
-<span class="nc">Checkbox</span> <span class="n">math</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Checkbox</span><span class="o">(</span><span class="s">"수학"</span><span class="o">,</span> <span class="n">group</span><span class="o">,</span> <span class="kc">true</span><span class="o">);</span>
-<span class="nc">Checkbox</span> <span class="n">eng</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Checkbox</span><span class="o">(</span><span class="s">"영어"</span><span class="o">,</span> <span class="n">group</span><span class="o">,</span> <span class="kc">false</span><span class="o">);</span>
-</code></pre></div></div>
-
-<h3 id="6-choice-초이스드롭다운">6) Choice (초이스/드롭다운)</h3>
-<p>클릭하면 목록이 펼쳐져 하나를 선택할 수 있는 컴포넌트입니다. (HTML의 <code class="language-plaintext highlighter-rouge">&lt;select&gt;</code>와 유사)</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Choice</span> <span class="n">day</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Choice</span><span class="o">();</span>
-<span class="n">day</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"MON"</span><span class="o">);</span>
-<span class="n">day</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"TUE"</span><span class="o">);</span>
-<span class="n">day</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"WED"</span><span class="o">);</span>
-</code></pre></div></div>
-
-<h3 id="7-list-리스트">7) List (리스트)</h3>
-<p>여러 항목을 보여주고 선택할 수 있는 컴포넌트입니다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">List</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">List</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="kc">true</span><span class="o">);</span> <span class="c1">// 3개 항목 보이기, 다중 선택 가능</span>
-<span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"Java"</span><span class="o">);</span>
-<span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"Python"</span><span class="o">);</span>
-<span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"C++"</span><span class="o">);</span>
-</code></pre></div></div>
+<h3 id="-주요-컨테이너의-종류">🧱 주요 컨테이너의 종류</h3>
+<ol>
+  <li><strong>Frame (프레임)</strong>: 가장 널리 쓰이는 <strong>독립된 윈도우 창</strong>입니다. 제목 바, 닫기/최소화 버튼, 크기 변경 테두리를 기본 제공하여 프로그램의 메인 도화지가 됩니다.</li>
+  <li><strong>Panel (패널)</strong>: 투명한 유리판과 같습니다. 단독으로 화면에 뜰 수는 없지만, 프레임 안에서 컴포넌트 여러 개를 깔끔하게 그룹으로 묶어 배치할 때 유용하게 쓰입니다.</li>
+  <li><strong>Dialog (다이얼로그)</strong>: 경고창이나 안내창처럼 사용자에게 메시지를 전달하고 확인을 유도하는 팝업 대화상자입니다.</li>
+</ol>
 
 <hr />
 
-<h2 id="3-예제-코드">3. 예제 코드</h2>
+<h2 id="2-주요-awt-컴포넌트-요약">2. 주요 AWT 컴포넌트 요약</h2>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.awt.*</span><span class="o">;</span>
+<p>화면을 구성할 7가지 단골 컴포넌트들을 만나봅시다!</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">컴포넌트 이름</th>
+      <th style="text-align: left">설명</th>
+      <th style="text-align: left">주요 메서드 및 팁</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>Label</strong> (라벨)</td>
+      <td style="text-align: left">화면에 고정된 텍스트 문자열을 표시합니다 (수정 불가).</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">new Label("텍스트", Label.CENTER)</code> (정렬 설정)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Button</strong> (버튼)</td>
+      <td style="text-align: left">사용자가 클릭하여 신호를 전달할 수 있는 누름단추입니다.</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">new Button("확인")</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>TextField</strong> (텍스트 필드)</td>
+      <td style="text-align: left">사용자로부터 한 줄의 글자를 입력받는 빈칸입니다.</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">tf.setEchoChar('*')</code> (비밀번호 가리기)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>TextArea</strong> (텍스트 영역)</td>
+      <td style="text-align: left">일기장처럼 여러 줄의 긴 글을 입력받는 입력란입니다.</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">new TextArea("초기값", 줄수, 글자수)</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Checkbox</strong> (체크박스)</td>
+      <td style="text-align: left">여러 항목 중에서 여러 개를 선택(Check)하거나 해제할 수 있습니다.</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">new Checkbox("사과", true)</code> (선택된 상태)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Choice</strong> (초이스)</td>
+      <td style="text-align: left">클릭하면 아래로 슥 펼쳐지며 목록 중 하나를 고르는 드롭다운 메뉴입니다.</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">day.add("MON"); day.add("TUE");</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>List</strong> (리스트)</td>
+      <td style="text-align: left">목록을 바깥에 넓게 띄워두고 그중 여러 개를 선택할 수 있게 합니다.</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">new List(보여줄줄수, 다중선택여부)</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="3-실습-예제-간단한-로그인login-화면-만들기">3. 실습 예제: 간단한 로그인(Login) 화면 만들기</h2>
+
+<p>AWT의 여러 컴포넌트를 사용하여 ID와 비밀번호를 입력하고 로그인 버튼을 누를 수 있는 클래식한 로그인 창을 만들어봅시다.</p>
+
+<h3 id="-실습-예제-소스-코드">📄 실습 예제 소스 코드</h3>
+<ul>
+  <li><strong>실습 예제 파일</strong>: <a href="sample/ComponentExam.java">ComponentExam.java</a> (경로: <code class="language-plaintext highlighter-rouge">sample/ComponentExam.java</code>)</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.awt.Frame</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.Label</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.TextField</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.Button</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.FlowLayout</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">ComponentExam</span> <span class="o">{</span>
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// 1. 메인 윈도우 창(Frame) 생성</span>
         <span class="nc">Frame</span> <span class="n">f</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Frame</span><span class="o">(</span><span class="s">"Login"</span><span class="o">);</span>
         <span class="n">f</span><span class="o">.</span><span class="na">setSize</span><span class="o">(</span><span class="mi">300</span><span class="o">,</span> <span class="mi">200</span><span class="o">);</span>
-        <span class="n">f</span><span class="o">.</span><span class="na">setLayout</span><span class="o">(</span><span class="k">new</span> <span class="nc">FlowLayout</span><span class="o">());</span> <span class="c1">// 컴포넌트를 순서대로 배치</span>
+        <span class="c1">// 물 흐르듯 순서대로 배치하는 레이아웃 매니저 설정</span>
+        <span class="n">f</span><span class="o">.</span><span class="na">setLayout</span><span class="o">(</span><span class="k">new</span> <span class="nc">FlowLayout</span><span class="o">());</span> 
 
+        <span class="c1">// 2. ID 입력 부분 생성</span>
         <span class="nc">Label</span> <span class="n">idLabel</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"ID :"</span><span class="o">);</span>
-        <span class="nc">TextField</span> <span class="n">idText</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TextField</span><span class="o">(</span><span class="mi">20</span><span class="o">);</span>
+        <span class="nc">TextField</span> <span class="n">idText</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TextField</span><span class="o">(</span><span class="mi">20</span><span class="o">);</span> <span class="c1">// 20글자 크기의 입력 공간</span>
         
+        <span class="c1">// 3. 비밀번호 입력 부분 생성 (입력 글자를 *로 숨깁니다)</span>
         <span class="nc">Label</span> <span class="n">pwLabel</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"PW :"</span><span class="o">);</span>
         <span class="nc">TextField</span> <span class="n">pwText</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TextField</span><span class="o">(</span><span class="mi">20</span><span class="o">);</span>
-        <span class="n">pwText</span><span class="o">.</span><span class="na">setEchoChar</span><span class="o">(</span><span class="sc">'*'</span><span class="o">);</span> <span class="c1">// 비밀번호 가리기</span>
+        <span class="n">pwText</span><span class="o">.</span><span class="na">setEchoChar</span><span class="o">(</span><span class="sc">'*'</span><span class="o">);</span> 
 
+        <span class="c1">// 4. 로그인 누름버튼 생성</span>
         <span class="nc">Button</span> <span class="n">loginBtn</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Button</span><span class="o">(</span><span class="s">"Login"</span><span class="o">);</span>
 
+        <span class="c1">// 5. 프레임(컨테이너)에 컴포넌트들을 차례대로 추가(add)</span>
         <span class="n">f</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">idLabel</span><span class="o">);</span>
         <span class="n">f</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">idText</span><span class="o">);</span>
         <span class="n">f</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">pwLabel</span><span class="o">);</span>
         <span class="n">f</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">pwText</span><span class="o">);</span>
         <span class="n">f</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">loginBtn</span><span class="o">);</span>
 
+        <span class="c1">// 6. 창 보이기</span>
         <span class="n">f</span><span class="o">.</span><span class="na">setVisible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div></div>
+
+<h3 id="-컴파일-및-실행-방법">💻 컴파일 및 실행 방법</h3>
+
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 1. 02_awt_components 디렉토리로 이동 후 컴파일</span><span class="w">
+</span><span class="n">javac</span><span class="w"> </span><span class="nt">-d</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sample/ComponentExam.java</span><span class="w">
+
+</span><span class="c"># 2. 실행</span><span class="w">
+</span><span class="n">java</span><span class="w"> </span><span class="nt">-cp</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">ComponentExam</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="️-실행-결과-화면">🖥️ 실행 결과 화면</h3>
+
+<p><img src="./img/components_result.png" alt="로그인 예제 실행 결과" /></p>
+
+<blockquote>
+  <p><strong>💡 미니 팁</strong>:
+ID와 PW 텍스트 상자 옆의 버튼이 둥글둥글하지 않고 고전적인 회색 평면 버튼이죠? 
+이것이 바로 사용하고 계신 운영체제(Windows 등)의 구형 기본 UI 부품을 직접 빌려 렌더링한 Heavyweight의 흔적입니다!</p>
+</blockquote>
+
+<hr />
+
+<h2 id="-코딩-영단어-학습">🔤 코딩 영단어 학습</h2>
+
+<p>컴포넌트 설계에 활용되는 주요 단어들의 뜻을 익혀봅시다.</p>
+
+<ul>
+  <li><strong>Component (컴포넌트)</strong>
+    <ul>
+      <li><strong>뜻</strong>: 구성 요소, 부품</li>
+      <li><strong>설명</strong>: 화면을 수놓는 버튼(<code class="language-plaintext highlighter-rouge">Button</code>), 입력란(<code class="language-plaintext highlighter-rouge">TextField</code>), 글자판(<code class="language-plaintext highlighter-rouge">Label</code>) 등 GUI 화면을 조립하는 최소한의 부품들을 지칭합니다.</li>
+    </ul>
+  </li>
+  <li><strong>Container (컨테이너)</strong>
+    <ul>
+      <li><strong>뜻</strong>: 그릇, 보관함</li>
+      <li><strong>설명</strong>: 다른 부품(컴포넌트)들을 안에 넣고 묶어주는 그릇 역할을 하는 특별한 컴포넌트입니다. <code class="language-plaintext highlighter-rouge">Frame</code>과 <code class="language-plaintext highlighter-rouge">Panel</code>이 대표적입니다.</li>
+    </ul>
+  </li>
+  <li><strong>Checkbox (체크박스)</strong>
+    <ul>
+      <li><strong>뜻</strong>: 확인 표시용 네모 상자</li>
+      <li><strong>설명</strong>: 네모난 상자 안에 V자 표시를 켰다 껐다 하며 다중 선택을 가능하게 하는 UI 도구입니다.</li>
+    </ul>
+  </li>
+  <li><strong>Choice (초이스)</strong>
+    <ul>
+      <li><strong>뜻</strong>: 선택, 대안</li>
+      <li><strong>설명</strong>: 한 줄만 보여주다가 클릭하면 밑으로 주르륵 선택 항목 목록을 내려주는 드롭다운 형태의 컴포넌트입니다.</li>
+    </ul>
+  </li>
+</ul>
 
 
 

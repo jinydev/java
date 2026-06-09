@@ -17,6 +17,17 @@ UI 프로그램은 사용자와 상호작용하며 코드를 실행합니다. �
 
 ![이벤트 처리 위임 모델](./img/event_delegation.svg)
 
+### 💡 그림으로 이해하기: 이벤트 처리 위임 모델 (초인종과 로봇 집사)
+
+이벤트 위임 모델의 복잡한 이름과 원리를 실생활 속 친숙한 초인종 작동 원리에 비유해 볼까요?
+* **이벤트 소스(Event Source)**는 벽에 부착되어 사용자가 누르기를 기다리는 **'초인종 버튼'**입니다.
+* **이벤트 객체(Event Object)**는 버튼이 눌렸을 때 발생하는 **'초인종 벨소리(띵동! 신호)'**입니다. 벨소리에는 언제 버튼이 눌렸는지 등의 정보가 담겨 있습니다.
+* **이벤트 리스너(Event Listener)**는 초인종 벨소리가 울리면 미리 정해진 행동(예: 문 열어주기)을 수행하도록 대기 중인 **'로봇 집사'**입니다.
+
+버튼 컴포넌트 스스로가 이벤트를 처리하는 것이 아니라, 이벤트가 발생했다는 신호(Event Object)를 리스너(Listener)에게 위임하여 처리하게 하는 것이 Swing 이벤트 처리의 기본 뼈대입니다!
+
+![이벤트 처리 개념 비유](./img/event_concept.png)
+
 1. **이벤트 소스 (Event Source)**: 이벤트가 발생하는 컴포넌트 (예: `JButton`, `JTextField`)
 2. **이벤트 객체 (Event Object)**: 발생한 이벤트에 대한 정보 (예: `ActionEvent`, `MouseEvent`)
 3. **이벤트 리스너 (Event Listener)**: 이벤트를 감지하고 처리하는 인터페이스 (예: `ActionListener`)
@@ -88,7 +99,7 @@ class MyWindowListener extends WindowAdapter {
 ### 예제: WindowListener와 ActionListener
 창 닫기 버튼을 눌렀을 때(`WindowListener`)와 "닫기" 버튼을 눌렀을 때(`ActionListener`) 프로그램을 종료하는 예제입니다.
 
-* **실습 예제 파일**: [ClosableExample1.java](file:///d:/site/jinysite/java/src/gui/2.swing/05_event_handling/sample/sec05/exam01_windowadpater/ClosableExample1.java) (경로: `sample/sec05/exam01_windowadpater/ClosableExample1.java`)
+* **실습 예제 파일**: [ClosableExample1.java](sample/sec05/exam01_windowadpater/ClosableExample1.java) (경로: `sample/sec05/exam01_windowadpater/ClosableExample1.java`)
 * **실행 방법**:
   ```powershell
   # 1. 05_event_handling 디렉토리로 이동 후 컴파일
@@ -97,6 +108,10 @@ class MyWindowListener extends WindowAdapter {
   # 2. 실행
   java -cp sample sec05.exam01_windowadpater.ClosableExample1
   ```
+
+* **실행 결과 화면**:
+  
+  ![ClosableExample1 실행 결과](./img/closable1_result.png)
 
 ```java
 package sec05.exam01_windowadpater;
@@ -162,7 +177,7 @@ public class ClosableExample1 extends JFrame {
 ## 익명 객체 (Anonymous Object)
 리스너 클래스를 별도로 만들지 않고, **익명 객체**를 사용하여 코드를 간결하게 작성하는 것이 일반적입니다. 특히 이벤트 처리 코드가 짧을 때 유용합니다.
 
-* **실습 예제 파일**: [ClosableExample2.java](file:///d:/site/jinysite/java/src/gui/2.swing/05_event_handling/sample/sec05/exam01_windowadpater/ClosableExample2.java) (경로: `sample/sec05/exam01_windowadpater/ClosableExample2.java`)
+* **실습 예제 파일**: [ClosableExample2.java](sample/sec05/exam01_windowadpater/ClosableExample2.java) (경로: `sample/sec05/exam01_windowadpater/ClosableExample2.java`)
 * **실행 방법**:
   ```powershell
   # 1. 05_event_handling 디렉토리로 이동 후 컴파일
@@ -171,6 +186,10 @@ public class ClosableExample1 extends JFrame {
   # 2. 실행
   java -cp sample sec05.exam01_windowadpater.ClosableExample2
   ```
+
+* **실행 결과 화면**:
+  
+  ![ClosableExample2 실행 결과](./img/closable2_result.png)
 
 ```java
 package sec05.exam01_windowadpater;
@@ -231,7 +250,7 @@ public class ClosableExample2 extends JFrame {
 ## 다중 컴포넌트 이벤트 처리
 하나의 리스너 객체로 여러 컴포넌트의 이벤트를 처리할 수도 있습니다. 이때는 `e.getSource()` 메서드를 사용하여 어떤 컴포넌트에서 이벤트가 발생했는지 확인합니다.
 
-* **실습 예제 파일**: [ActionListenerExample.java](file:///d:/site/jinysite/java/src/gui/2.swing/05_event_handling/sample/sec05/exam02_actionlistener/ActionListenerExample.java) (경로: `sample/sec05/exam02_actionlistener/ActionListenerExample.java`)
+* **실습 예제 파일**: [ActionListenerExample.java](sample/sec05/exam02_actionlistener/ActionListenerExample.java) (경로: `sample/sec05/exam02_actionlistener/ActionListenerExample.java`)
 * **실행 방법**:
   ```powershell
   # 1. 05_event_handling 디렉토리로 이동 후 컴파일
@@ -240,6 +259,10 @@ public class ClosableExample2 extends JFrame {
   # 2. 실행
   java -cp sample sec05.exam02_actionlistener.ActionListenerExample
   ```
+
+* **실행 결과 화면**:
+  
+  ![ActionListenerExample 실행 결과](./img/actionlistener_result.png)
 
 ```java
 package sec05.exam02_actionlistener;

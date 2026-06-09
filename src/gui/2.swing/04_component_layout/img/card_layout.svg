@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 180" width="100%" height="180">
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="1" dy="2" stdDeviation="2" flood-opacity="0.05" flood-color="#000000" />
+    </filter>
+    <linearGradient id="card1Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fffbeb" />
+      <stop offset="100%" stop-color="#fef3c7" />
+    </linearGradient>
+    <linearGradient id="card2Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f0f9ff" />
+      <stop offset="100%" stop-color="#e0f2fe" />
+    </linearGradient>
+    <linearGradient id="card3Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fdf2f8" />
+      <stop offset="100%" stop-color="#fce7f3" />
+    </linearGradient>
+    <marker id="nav-arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 10 5 L 0 8.5 z" fill="#4b5563" />
+    </marker>
+  </defs>
+
+  <style>
+    .container-title { font-family: system-ui, -apple-system, sans-serif; font-size: 13px; font-weight: bold; fill: #374151; }
+    .card-label { font-family: system-ui, -apple-system, sans-serif; font-size: 13px; font-weight: bold; fill: #1f2937; }
+    .card-desc { font-family: system-ui, -apple-system, sans-serif; font-size: 11px; fill: #4b5563; }
+    .nav-btn-text { font-family: system-ui, -apple-system, sans-serif; font-size: 11px; font-weight: bold; fill: #374151; text-anchor: middle; }
+    .card-box { stroke: #d1d5db; stroke-width: 1.5; filter: url(#shadow); }
+    .container-box { fill: #f9fafb; stroke: #d1d5db; stroke-width: 2; }
+    .connector { stroke: #4b5563; stroke-width: 1.5; fill: none; }
+  </style>
+
+  <!-- Container Box -->
+  <rect class="container-box" x="10" y="10" width="480" height="160" rx="8" />
+  <text x="25" y="32" class="container-title">CardLayout Container (Stacked Panels)</text>
+
+  <!-- Stacked Cards (Card 3 - Bottom-most) -->
+  <g transform="translate(230, 45)">
+    <rect class="card-box" width="220" height="100" rx="6" fill="url(#card3Grad)" stroke="#db2777" />
+    <text x="180" y="25" class="card-label" fill="#db2777" opacity="0.4">Card 3</text>
+  </g>
+
+  <!-- Stacked Cards (Card 2 - Middle) -->
+  <g transform="translate(210, 55)">
+    <rect class="card-box" width="220" height="100" rx="6" fill="url(#card2Grad)" stroke="#0284c7" />
+    <text x="180" y="25" class="card-label" fill="#0284c7" opacity="0.6">Card 2</text>
+  </g>
+
+  <!-- Stacked Cards (Card 1 - Top-most, Active) -->
+  <g transform="translate(190, 65)">
+    <rect class="card-box" width="220" height="100" rx="6" fill="url(#card1Grad)" stroke="#d97706" />
+    <text x="20" y="25" class="card-label" fill="#b45309">Card 1 (Active)</text>
+    <text x="20" y="55" class="card-desc">show("card1") 실행 시</text>
+    <text x="20" y="75" class="card-desc">화면 최상단에 노출됨</text>
+  </g>
+
+  <!-- Navigation Control Metaphor -->
+  <g transform="translate(30, 65)" filter="url(#shadow)">
+    <rect x="0" y="0" width="120" height="70" rx="6" fill="#fff" stroke="#9ca3af" stroke-width="1" />
+    <text x="60" y="22" class="nav-btn-text" fill="#374151">Card Controller</text>
+    
+    <!-- Previous Button -->
+    <rect x="10" y="35" width="45" height="25" rx="3" fill="#f3f4f6" stroke="#d1d5db" />
+    <text x="32" y="51" font-family="sans-serif" font-size="10" fill="#374151" text-anchor="middle">&lt;&lt; Prev</text>
+    
+    <!-- Next Button -->
+    <rect x="65" y="35" width="45" height="25" rx="3" fill="#f3f4f6" stroke="#d1d5db" />
+    <text x="87" y="51" font-family="sans-serif" font-size="10" fill="#374151" text-anchor="middle">Next &gt;&gt;</text>
+  </g>
+
+  <!-- Navigation Arrow pointing to Card stack -->
+  <path class="connector" d="M 155 100 L 180 100" marker-end="url(#nav-arrow)" />
+
+</svg>

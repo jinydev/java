@@ -15,12 +15,27 @@ JFC는 UI 프로그램을 만들기 위한 클래스들의 모음으로, **AWT(A
 
 AWT는 OS의 컴포넌트를 사용하므로 속도가 빠르지만 디자인이 OS에 종속적입니다. 반면 Swing은 자바가 직접 그리므로 모든 OS에서 동일한 디자인을 유지할 수 있고 다양한 컴포넌트를 제공하지만, AWT보다 리소스를 더 많이 사용할 수 있습니다.
 
+### 💡 그림으로 이해하기: 무거운 AWT vs 가벼운 Swing
+
+이해를 돕기 위해 실생활에 비유해 볼까요? 
+- **AWT(Heavyweight)**는 공장에서 이미 완성된 무거운 철제 버튼 부품을 OS에서 직접 빌려와 조립하는 것과 같습니다. 운영체제마다 버튼 모양이 다르고 변경하는 데 한계가 있습니다.
+- **Swing(Lightweight)**은 화가가 하얀 캔버스(화면) 위에 직접 붓과 물감으로 예쁘고 가벼운 단추를 그리는 것과 같습니다. 어떤 운영체제에서 실행하든 언제나 동일한 디자인을 보장합니다!
+
+![AWT와 Swing 개념 비유](./img/awt_swing_concept.png)
+
+위 그림처럼 OS의 리소스를 직접 빌려 빌드하는 AWT와 자바가 직접 그려내는 Swing의 직관적인 특징 차이를 확인할 수 있습니다.
+
+#### 시스템 구조적 흐름 비교
+다음 다이어그램은 두 툴킷이 실제로 화면에 컴포넌트를 렌더링하는 컴퓨터 내부 구조의 흐름 차이를 보여줍니다.
+
+![AWT와 Swing 구조 비교](./img/awt_vs_swing.svg)
+
 ---
 
 ## 1. AWT 예제
 다음은 AWT로 작성한 간단한 윈도우 프로그램입니다. `Frame`을 상속받아 윈도우를 만듭니다.
 
-* **실습 예제 파일**: [App.java (AWT)](file:///d:/site/jinysite/java/src/gui/2.swing/01_swing_intro/sample/sec01/exam01_awt/App.java) (경로: `sample/sec01/exam01_awt/App.java`)
+* **실습 예제 파일**: [App.java (AWT)](sample/sec01/exam01_awt/App.java) (경로: `sample/sec01/exam01_awt/App.java`)
 * **실행 방법**:
   ```powershell
   # 1. 01_swing_intro 디렉토리로 이동 후 컴파일
@@ -29,6 +44,11 @@ AWT는 OS의 컴포넌트를 사용하므로 속도가 빠르지만 디자인이
   # 2. 실행
   java -cp sample sec01.exam01_awt.App
   ```
+
+* **실행 결과 화면**:
+  
+  ![AWT 실행 결과](./img/awt_result.png)
+
 
 ```java
 package sec01.exam01_awt;
@@ -71,7 +91,7 @@ public class App extends Frame {
 ## 2. Swing 예제
 다음은 Swing으로 작성한 윈도우 프로그램입니다. AWT의 `Frame` 대신 `JFrame`을 상속받고, `Button` 대신 `JButton`을 사용합니다. Swing 컴포넌트는 클래스 이름 앞에 `J`가 붙는 것이 특징입니다.
 
-* **실습 예제 파일**: [App.java (Swing)](file:///d:/site/jinysite/java/src/gui/2.swing/01_swing_intro/sample/sec01/exam02_swing/App.java) (경로: `sample/sec01/exam02_swing/App.java`)
+* **실습 예제 파일**: [App.java (Swing)](sample/sec01/exam02_swing/App.java) (경로: `sample/sec01/exam02_swing/App.java`)
 * **실행 방법**:
   ```powershell
   # 1. 01_swing_intro 디렉토리로 이동 후 컴파일
@@ -80,6 +100,11 @@ public class App extends Frame {
   # 2. 실행
   java -cp sample sec01.exam02_swing.App
   ```
+
+* **실행 결과 화면**:
+  
+  ![Swing 실행 결과](./img/swing_result.png)
+
 
 ```java
 package sec01.exam02_swing;

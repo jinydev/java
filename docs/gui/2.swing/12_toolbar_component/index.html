@@ -697,6 +697,16 @@
 
 <p><img src="./img/toolbar_layout.svg" alt="툴바 컴포넌트 구조" /></p>
 
+<h3 id="-비주얼-개념-잡기-툴바의-편리함">💡 비주얼 개념 잡기: 툴바의 편리함</h3>
+<p>툴바의 기능은 히어로의 <strong>유틸리티 벨트</strong>나 책상 위 <strong>자주 쓰는 도구 트레이</strong>에 비유할 수 있습니다!</p>
+
+<p><img src="./img/toolbar_concept.png" alt="JToolBar 개념도" /></p>
+
+<ul>
+  <li><strong>JToolBar (즐겨찾기 도구함 / 퀵 트레이)</strong>: 깊은 드롭다운 메뉴를 헤매지 않고, 자주 쓰는 기능(새 파일, 저장, 복사 등)을 단 한 번의 클릭으로 신속히 실행할 수 있도록 주요 도구 버튼들을 모아놓은 전용 트레이(도구 벨트)입니다.</li>
+  <li><strong>Floating (이동식 수납카트)</strong>: 기본적으로는 프레임의 한쪽 경계(BorderLayout)에 고정되어 있지만, 사용자가 마우스로 드래그하면 화면 어디로든 분리해 독립된 창으로 떼어낼 수 있는 이동식 트레이 역할을 합니다.</li>
+</ul>
+
 <h2 id="1-jtoolbar">1. JToolBar</h2>
 <p>| 컴포넌트                 | 설명                        |
 | :———————– | :————————– |
@@ -730,7 +740,7 @@
 <p>이미지 아이콘이 있는 버튼들로 구성된 툴바를 만들고, 클릭 이벤트를 처리하는 예제입니다.</p>
 
 <ul>
-  <li><strong>실습 예제 파일</strong>: <a href="file:///d:/site/jinysite/java/src/gui/2.swing/12_toolbar_component/sample/sec12/exam01_jtoolbar/JToolBarExample.java">JToolBarExample.java</a> (경로: <code class="language-plaintext highlighter-rouge">sample/sec12/exam01_jtoolbar/JToolBarExample.java</code>)</li>
+  <li><strong>실습 예제 파일</strong>: <a href="sample/sec12/exam01_jtoolbar/JToolBarExample.java">JToolBarExample.java</a> (경로: <code class="language-plaintext highlighter-rouge">sample/sec12/exam01_jtoolbar/JToolBarExample.java</code>)</li>
   <li><strong>실행 방법</strong>:
     <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 1. 12_toolbar_component 디렉토리로 이동 후 컴파일</span><span class="w">
 </span><span class="n">javac</span><span class="w"> </span><span class="nt">-d</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sample/sec12/exam01_jtoolbar/JToolBarExample.java</span><span class="w">
@@ -868,10 +878,10 @@ public static void main(String[] args) {
 } }
 </code></pre></div></div>
 
+<h4 id="실행-결과-화면">실행 결과 화면</h4>
+<p><img src="./img/jtoolbar_result.png" alt="JToolBar 실행 결과" /></p>
 
 
-<<<<<<< HEAD
-=======
 
             <!-- 다음/이전 학습 페이지네이션 -->
             
@@ -1042,7 +1052,6 @@ public static void main(String[] args) {
 </div>
 
 
->>>>>>> f06ad6aeea6428b1dcbcd8eb7feccf69341fcee5
             <div class="mt-10">
                 <!-- 구글 에스센스 광고 -->
                 <script async

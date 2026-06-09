@@ -703,13 +703,30 @@
 
 <p>AWT는 OS의 컴포넌트를 사용하므로 속도가 빠르지만 디자인이 OS에 종속적입니다. 반면 Swing은 자바가 직접 그리므로 모든 OS에서 동일한 디자인을 유지할 수 있고 다양한 컴포넌트를 제공하지만, AWT보다 리소스를 더 많이 사용할 수 있습니다.</p>
 
+<h3 id="-그림으로-이해하기-무거운-awt-vs-가벼운-swing">💡 그림으로 이해하기: 무거운 AWT vs 가벼운 Swing</h3>
+
+<p>이해를 돕기 위해 실생활에 비유해 볼까요?</p>
+<ul>
+  <li><strong>AWT(Heavyweight)</strong>는 공장에서 이미 완성된 무거운 철제 버튼 부품을 OS에서 직접 빌려와 조립하는 것과 같습니다. 운영체제마다 버튼 모양이 다르고 변경하는 데 한계가 있습니다.</li>
+  <li><strong>Swing(Lightweight)</strong>은 화가가 하얀 캔버스(화면) 위에 직접 붓과 물감으로 예쁘고 가벼운 단추를 그리는 것과 같습니다. 어떤 운영체제에서 실행하든 언제나 동일한 디자인을 보장합니다!</li>
+</ul>
+
+<p><img src="./img/awt_swing_concept.png" alt="AWT와 Swing 개념 비유" /></p>
+
+<p>위 그림처럼 OS의 리소스를 직접 빌려 빌드하는 AWT와 자바가 직접 그려내는 Swing의 직관적인 특징 차이를 확인할 수 있습니다.</p>
+
+<h4 id="시스템-구조적-흐름-비교">시스템 구조적 흐름 비교</h4>
+<p>다음 다이어그램은 두 툴킷이 실제로 화면에 컴포넌트를 렌더링하는 컴퓨터 내부 구조의 흐름 차이를 보여줍니다.</p>
+
+<p><img src="./img/awt_vs_swing.svg" alt="AWT와 Swing 구조 비교" /></p>
+
 <hr />
 
 <h2 id="1-awt-예제">1. AWT 예제</h2>
 <p>다음은 AWT로 작성한 간단한 윈도우 프로그램입니다. <code class="language-plaintext highlighter-rouge">Frame</code>을 상속받아 윈도우를 만듭니다.</p>
 
 <ul>
-  <li><strong>실습 예제 파일</strong>: <a href="file:///d:/site/jinysite/java/src/gui/2.swing/01_swing_intro/sample/sec01/exam01_awt/App.java">App.java (AWT)</a> (경로: <code class="language-plaintext highlighter-rouge">sample/sec01/exam01_awt/App.java</code>)</li>
+  <li><strong>실습 예제 파일</strong>: <a href="sample/sec01/exam01_awt/App.java">App.java (AWT)</a> (경로: <code class="language-plaintext highlighter-rouge">sample/sec01/exam01_awt/App.java</code>)</li>
   <li><strong>실행 방법</strong>:
     <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 1. 01_swing_intro 디렉토리로 이동 후 컴파일</span><span class="w">
 </span><span class="n">javac</span><span class="w"> </span><span class="nt">-d</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sample/sec01/exam01_awt/App.java</span><span class="w">
@@ -717,6 +734,11 @@
 </span><span class="c"># 2. 실행</span><span class="w">
 </span><span class="n">java</span><span class="w"> </span><span class="nt">-cp</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sec01.exam01_awt.App</span><span class="w">
 </span></code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong>실행 결과 화면</strong>:</p>
+
+    <p><img src="./img/awt_result.png" alt="AWT 실행 결과" /></p>
   </li>
 </ul>
 
@@ -761,7 +783,7 @@
 <p>다음은 Swing으로 작성한 윈도우 프로그램입니다. AWT의 <code class="language-plaintext highlighter-rouge">Frame</code> 대신 <code class="language-plaintext highlighter-rouge">JFrame</code>을 상속받고, <code class="language-plaintext highlighter-rouge">Button</code> 대신 <code class="language-plaintext highlighter-rouge">JButton</code>을 사용합니다. Swing 컴포넌트는 클래스 이름 앞에 <code class="language-plaintext highlighter-rouge">J</code>가 붙는 것이 특징입니다.</p>
 
 <ul>
-  <li><strong>실습 예제 파일</strong>: <a href="file:///d:/site/jinysite/java/src/gui/2.swing/01_swing_intro/sample/sec01/exam02_swing/App.java">App.java (Swing)</a> (경로: <code class="language-plaintext highlighter-rouge">sample/sec01/exam02_swing/App.java</code>)</li>
+  <li><strong>실습 예제 파일</strong>: <a href="sample/sec01/exam02_swing/App.java">App.java (Swing)</a> (경로: <code class="language-plaintext highlighter-rouge">sample/sec01/exam02_swing/App.java</code>)</li>
   <li><strong>실행 방법</strong>:
     <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 1. 01_swing_intro 디렉토리로 이동 후 컴파일</span><span class="w">
 </span><span class="n">javac</span><span class="w"> </span><span class="nt">-d</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sample/sec01/exam02_swing/App.java</span><span class="w">
@@ -769,6 +791,11 @@
 </span><span class="c"># 2. 실행</span><span class="w">
 </span><span class="n">java</span><span class="w"> </span><span class="nt">-cp</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sec01.exam02_swing.App</span><span class="w">
 </span></code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong>실행 결과 화면</strong>:</p>
+
+    <p><img src="./img/swing_result.png" alt="Swing 실행 결과" /></p>
   </li>
 </ul>
 

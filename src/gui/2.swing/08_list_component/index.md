@@ -14,6 +14,14 @@ keywords: "08. 리스트 컴포넌트, 자바, Java, 프로그래밍, 백엔드,
 - **JList**: 목록이 펼쳐져 있는 형태. 다중 선택 가능. 스크롤바 미포함(별도 추가 필요).
 - **JComboBox**: 텍스트 필드와 화살표 버튼이 결합된 형태(콤보박스). 단일 선택만 가능.
 
+### 💡 그림으로 이해하기: 리스트 컴포넌트 비유 (세로 메뉴판 vs 접이식 롤 메뉴판)
+
+두 종류의 리스트 컴포넌트(`JList`와 `JComboBox`)의 차이점과 작동 방식을 재미있게 비교해 볼까요?
+* **JList (세로 메뉴판)**: 분식집 벽면에 모든 음식 메뉴들이 한 번에 주르륵 펼쳐져 있는 **세로 메뉴판**과 같습니다. 사용자는 이 중 김밥과 떡볶이를 동시에 선택(다중 선택)할 수 있습니다. 다만, 메뉴판이 너무 길어져 화면을 넘어가면 자동으로 굴러갈 수 있게 스크롤바 바퀴(`JScrollPane`)를 우리가 직접 달아주어야 합니다.
+* **JComboBox (접이식 롤 메뉴판)**: 화살표를 누르기 전에는 평소에 딱 한 칸만 보여주다가, 화살표를 클릭하는 순간 아래로 항목이 주르륵 풀려 내려오는 **접이식 메뉴판(롤스크린)**과 같습니다. 화면 공간을 엄청나게 아낄 수 있는 장점이 있지만, 여러 항목 중 오직 하나만 고르는 단일 선택 전용입니다.
+
+![리스트 컴포넌트 개념 비유](./img/list_concept.png)
+
 ---
 
 ## 1. JList
@@ -57,7 +65,7 @@ list.addListSelectionListener(e -> {
 ### JList 예제
 좌측 리스트에서 과일 이름을 선택하면 우측에 해당 이미지를 보여주는 예제입니다.
 
-* **실습 예제 파일**: [JListExample.java](file:///d:/site/jinysite/java/src/gui/2.swing/08_list_component/sample/sec08/exam01_jlist/JListExample.java) (경로: `sample/sec08/exam01_jlist/JListExample.java`)
+* **실습 예제 파일**: [JListExample.java](sample/sec08/exam01_jlist/JListExample.java) (경로: `sample/sec08/exam01_jlist/JListExample.java`)
 * **실행 방법**:
   ```powershell
   # 1. 08_list_component 디렉토리로 이동 후 컴파일
@@ -66,6 +74,10 @@ list.addListSelectionListener(e -> {
   # 2. 실행 (실행 전 같은 패키지 폴더 내의 fruit*.jpg 리소스가 필요합니다)
   java -cp sample sec08.exam01_jlist.JListExample
   ```
+
+* **실행 결과 화면**:
+  
+  ![JList 실행 결과](./img/jlist_result.png)
 
 ```java
 package sec08.exam01_jlist;
@@ -185,7 +197,7 @@ comboBox.addActionListener(e -> {
 ### JComboBox 예제
 상단의 콤보박스에서 과일을 선택하면 하단에 이미지를 표시하는 예제입니다.
 
-* **실습 예제 파일**: [JComboBoxExample.java](file:///d:/site/jinysite/java/src/gui/2.swing/08_list_component/sample/sec08/exam02_jcombobox/JComboBoxExample.java) (경로: `sample/sec08/exam02_jcombobox/JComboBoxExample.java`)
+* **실습 예제 파일**: [JComboBoxExample.java](sample/sec08/exam02_jcombobox/JComboBoxExample.java) (경로: `sample/sec08/exam02_jcombobox/JComboBoxExample.java`)
 * **실행 방법**:
   ```powershell
   # 1. 08_list_component 디렉토리로 이동 후 컴파일
@@ -194,6 +206,10 @@ comboBox.addActionListener(e -> {
   # 2. 실행 (실행 전 같은 패키지 폴더 내의 fruit*.jpg 리소스가 필요합니다)
   java -cp sample sec08.exam02_jcombobox.JComboBoxExample
   ```
+
+* **실행 결과 화면**:
+  
+  ![JComboBox 실행 결과](./img/jcombobox_result.png)
 
 ```java
 package sec08.exam02_jcombobox;

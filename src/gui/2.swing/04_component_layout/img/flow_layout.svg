@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 180" width="100%" height="180">
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="1" dy="2" stdDeviation="2" flood-opacity="0.05" flood-color="#000000" />
+    </filter>
+    <linearGradient id="btnGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f0fdf4" />
+      <stop offset="100%" stop-color="#dcfce7" />
+    </linearGradient>
+    <marker id="flow-arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 10 5 L 0 8.5 z" fill="#15803d" />
+    </marker>
+  </defs>
+
+  <style>
+    .container-title { font-family: system-ui, -apple-system, sans-serif; font-size: 13px; font-weight: bold; fill: #374151; }
+    .btn-label { font-family: system-ui, -apple-system, sans-serif; font-size: 12px; font-weight: bold; fill: #166534; text-anchor: middle; }
+    .desc-text { font-family: system-ui, -apple-system, sans-serif; font-size: 11px; fill: #4b5563; }
+    .btn-box { stroke: #22c55e; stroke-width: 1.5; filter: url(#shadow); }
+    .container-box { fill: #f9fafb; stroke: #d1d5db; stroke-width: 2; }
+    .flow-line { stroke: #22c55e; stroke-width: 1.5; stroke-dasharray: 4 3; fill: none; }
+  </style>
+
+  <!-- Container Box -->
+  <rect class="container-box" x="10" y="10" width="480" height="160" rx="8" />
+  <text x="25" y="32" class="container-title">JPanel Container (FlowLayout)</text>
+
+  <!-- Flow path dashed line -->
+  <path class="flow-line" d="M 125 75 L 210 75" marker-end="url(#flow-arrow)" />
+  <path class="flow-line" d="M 295 75 L 380 75" marker-end="url(#flow-arrow)" />
+  <path class="flow-line" d="M 400 95 L 400 110 L 80 110 L 80 135 L 125 135" marker-end="url(#flow-arrow)" />
+
+  <!-- Row 1 Components -->
+  <g transform="translate(30, 50)">
+    <rect class="btn-box" width="90" height="45" rx="5" fill="url(#btnGrad)" />
+    <text x="45" y="27" class="btn-label">Button 1</text>
+  </g>
+
+  <g transform="translate(200, 50)">
+    <rect class="btn-box" width="90" height="45" rx="5" fill="url(#btnGrad)" />
+    <text x="45" y="27" class="btn-label">Button 2</text>
+  </g>
+
+  <g transform="translate(370, 50)">
+    <rect class="btn-box" width="90" height="45" rx="5" fill="url(#btnGrad)" />
+    <text x="45" y="27" class="btn-label">Button 3</text>
+  </g>
+
+  <!-- Row 2 Component (Wrapped) -->
+  <g transform="translate(130, 115)">
+    <rect class="btn-box" width="90" height="45" rx="5" fill="url(#btnGrad)" />
+    <text x="45" y="27" class="btn-label">Button 4</text>
+  </g>
+
+  <!-- Explanation -->
+  <text x="235" y="142" class="desc-text">※ 공간 부족 시 다음 행으로 자동 줄바꿈 (Wrap)</text>
+</svg>

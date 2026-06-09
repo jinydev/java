@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" width="100%" height="450">
+  <defs>
+    <!-- Drop Shadow Filter -->
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="2" dy="4" stdDeviation="4" flood-opacity="0.1" flood-color="#000000" />
+    </filter>
+  </defs>
+
+  <style>
+    .title-text { font-family: system-ui, -apple-system, sans-serif; font-size: 15px; font-weight: bold; fill: #1A202C; }
+    .label-text { font-family: system-ui, -apple-system, sans-serif; font-size: 12px; font-weight: bold; }
+    .desc-text { font-family: system-ui, -apple-system, sans-serif; font-size: 11px; fill: #4A5568; }
+    
+    .plate-root { fill: #EDF2F7; stroke: #A0AEC0; stroke-width: 1.5; }
+    .plate-layered { fill: #F5F3FF; stroke: #7C3AED; stroke-width: 1.5; }
+    .plate-content { fill: #FFF5F7; stroke: #D53F8C; stroke-width: 1.5; }
+    .plate-menu { fill: #FFF5F5; stroke: #E53E3E; stroke-width: 1.5; }
+    .plate-glass { fill: rgba(230, 255, 250, 0.4); stroke: #319795; stroke-width: 1.5; stroke-dasharray: 4 3; }
+    
+    .guide-line { stroke: #718096; stroke-width: 1.2; stroke-dasharray: 3 3; fill: none; }
+  </style>
+
+  <text x="20" y="30" class="title-text" fill="#2B6CB0">Swing RootPane 3D 입체 계층 구조 (Exploded View)</text>
+  <text x="20" y="48" class="desc-text">최상위 컨테이너가 화면에 컴포넌트를 쌓아 렌더링하는 순서</text>
+
+  <!-- Dashed Guide Lines (Vertical alignment arrows) -->
+  <line class="guide-line" x1="120" y1="120" x2="120" y2="380" />
+  <line class="guide-line" x1="380" y1="120" x2="380" y2="380" />
+  <line class="guide-line" x1="480" y1="170" x2="480" y2="430" />
+  <line class="guide-line" x1="220" y1="170" x2="220" y2="430" />
+
+  <!-- 1. RootPane (Base - Layer 4) -->
+  <g transform="translate(0, 260)" filter="url(#shadow)">
+    <!-- Isometric Quadrilateral: (220,170), (480,170), (380,120), (120,120) offset -->
+    <polygon class="plate-root" points="120,120 380,120 480,170 220,170" />
+    <text x="280" y="145" class="label-text" fill="#4A5568" text-anchor="middle">RootPane (기본 프레임 베이스)</text>
+    <text x="495" y="160" class="desc-text" fill="#718096">Layer 4 (가장 아래)</text>
+  </g>
+
+  <!-- 2. LayeredPane (Layer 3) -->
+  <g transform="translate(0, 180)" filter="url(#shadow)">
+    <polygon class="plate-layered" points="120,120 380,120 480,170 220,170" />
+    <text x="280" y="145" class="label-text" fill="#7C3AED" text-anchor="middle">JLayeredPane (심도 레이어)</text>
+    <text x="495" y="160" class="desc-text" fill="#7C3AED">Layer 3</text>
+  </g>
+
+  <!-- 3. ContentPane & JMenuBar (Layer 2) -->
+  <!-- Split into MenuBar (North region equivalent) and ContentPane (Center equivalent) -->
+  <g transform="translate(0, 100)" filter="url(#shadow)">
+    <!-- Base container area boundary -->
+    <polygon stroke="#CBD5E0" stroke-width="1" stroke-dasharray="2 2" fill="none" points="120,120 380,120 480,170 220,170" />
+    
+    <!-- ContentPane -->
+    <polygon class="plate-content" points="120,135 380,135 480,170 220,170" />
+    <text x="300" y="157" class="label-text" fill="#D53F8C" text-anchor="middle">ContentPane (컴포넌트 부착 패널)</text>
+    
+    <!-- JMenuBar -->
+    <polygon class="plate-menu" points="120,120 380,120 380,132 120,132" />
+    <text x="250" y="129" class="label-text" fill="#E53E3E" font-size="10px" text-anchor="middle">JMenuBar</text>
+    
+    <text x="495" y="150" class="desc-text" fill="#D53F8C">Layer 2</text>
+  </g>
+
+  <!-- 4. GlassPane (Layer 1 - Top) -->
+  <g transform="translate(0, 10)" filter="url(#shadow)">
+    <polygon class="plate-glass" points="120,120 380,120 480,170 220,170" />
+    <text x="280" y="145" class="label-text" fill="#319795" text-anchor="middle">GlassPane (투명 오버레이 레이어)</text>
+    <text x="495" y="160" class="desc-text" fill="#319795">Layer 1 (가장 위)</text>
+  </g>
+
+  <!-- Explanatory Arrows -->
+  <path d="M 50 120 L 100 120" stroke="#718096" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 10 5 L 0 8.5 z" fill="#718096" />
+    </marker>
+  </defs>
+  
+  <text x="50" y="105" class="label-text" fill="#319795">화면 최상단 (이벤트 차단/그리기)</text>
+  <text x="50" y="295" class="label-text" fill="#D53F8C">실제 버튼, 라벨이 들어가는 위치</text>
+  <text x="50" y="385" class="label-text" fill="#4A5568">윈도우 기본 베이스</text>
+</svg>

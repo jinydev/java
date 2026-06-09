@@ -697,6 +697,17 @@
 
 <p><img src="./img/table_architecture.svg" alt="테이블 컴포넌트 구조" /></p>
 
+<h3 id="-비주얼-개념-잡기-jtable과-tablemodel의-관계">💡 비주얼 개념 잡기: JTable과 TableModel의 관계</h3>
+<p>JTable과 TableModel의 구조는 마치 <strong>진열장</strong>과 <strong>장부</strong>의 관계와 같습니다.</p>
+
+<p><img src="./img/table_concept.png" alt="JTable 개념도" /></p>
+
+<ul>
+  <li><strong>JTable (진열장 / 격자판)</strong>: 데이터를 화면에 격자 모양으로 보여주기만 하는 나무 틀(진열장)입니다. 스스로 데이터를 보관하지 않습니다.</li>
+  <li><strong>TableModel (원본 장부)</strong>: 실제 데이터가 한 땀 한 땀 기록되어 있는 원본 노트(장부)입니다. 데이터의 추가, 삭제, 수정은 모두 이 장부에서 일어나며, JTable은 단지 이 장부를 바탕으로 화면을 그릴 뿐입니다.</li>
+  <li><strong>Cell Renderer (선물 포장지)</strong>: 텍스트뿐만 아니라 체크박스, 아이콘, 배경색 등 셀을 예쁘게 포장해서 보여주는 역할을 합니다.</li>
+</ul>
+
 <h2 id="1-jtable-구조">1. JTable 구조</h2>
 <p>테이블은 <strong>컬럼 헤더(Column Header)</strong>, <strong>행(Row)</strong>, <strong>셀(Cell)</strong>로 구성됩니다.</p>
 <ul>
@@ -728,7 +739,7 @@
 <h2 id="3-예제-기본-jtable">3. 예제: 기본 JTable</h2>
 
 <ul>
-  <li><strong>실습 예제 파일</strong>: <a href="file:///d:/site/jinysite/java/src/gui/2.swing/09_table_component/sample/sec09/exam01_jtable/JTableBasicExample.java">JTableBasicExample.java</a> (경로: <code class="language-plaintext highlighter-rouge">sample/sec09/exam01_jtable/JTableBasicExample.java</code>)</li>
+  <li><strong>실습 예제 파일</strong>: <a href="sample/sec09/exam01_jtable/JTableBasicExample.java">JTableBasicExample.java</a> (경로: <code class="language-plaintext highlighter-rouge">sample/sec09/exam01_jtable/JTableBasicExample.java</code>)</li>
   <li><strong>실행 방법</strong>:
     <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 1. 09_table_component 디렉토리로 이동 후 컴파일</span><span class="w">
 </span><span class="n">javac</span><span class="w"> </span><span class="nt">-d</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sample/sec09/exam01_jtable/JTableBasicExample.java</span><span class="w">
@@ -788,6 +799,9 @@
 <span class="o">}</span>
 </code></pre></div></div>
 
+<h4 id="실행-결과-화면">실행 결과 화면</h4>
+<p><img src="./img/tablebasic_result.png" alt="JTable 기본 실행 결과" /></p>
+
 <hr />
 
 <h2 id="4-tablemodel">4. TableModel</h2>
@@ -828,7 +842,7 @@
 <h3 id="종합-예제-code-jtablecustomexample">종합 예제 Code (<code class="language-plaintext highlighter-rouge">JTableCustomExample</code>)</h3>
 
 <ul>
-  <li><strong>실습 예제 파일</strong>: <a href="file:///d:/site/jinysite/java/src/gui/2.swing/09_table_component/sample/sec09/exam03_cellrenderer/JTableCustomExample.java">JTableCustomExample.java</a> (경로: <code class="language-plaintext highlighter-rouge">sample/sec09/exam03_cellrenderer/JTableCustomExample.java</code>)</li>
+  <li><strong>실습 예제 파일</strong>: <a href="sample/sec09/exam03_cellrenderer/JTableCustomExample.java">JTableCustomExample.java</a> (경로: <code class="language-plaintext highlighter-rouge">sample/sec09/exam03_cellrenderer/JTableCustomExample.java</code>)</li>
   <li><strong>실행 방법</strong>:
     <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 1. 09_table_component 디렉토리로 이동 후 컴파일</span><span class="w">
 </span><span class="n">javac</span><span class="w"> </span><span class="nt">-d</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sample/sec09/exam03_cellrenderer/JTableCustomExample.java</span><span class="w">
@@ -958,6 +972,9 @@
 <span class="o">}</span>
 </code></pre></div></div>
 
+<h4 id="실행-결과-화면-1">실행 결과 화면</h4>
+<p><img src="./img/tablecustom_result.png" alt="JTable 셀 렌더러 커스텀 실행 결과" /></p>
+
 <hr />
 
 <h2 id="6-행-추가-수정-삭제-crud">6. 행 추가, 수정, 삭제 (CRUD)</h2>
@@ -973,7 +990,7 @@
 <h3 id="crud-예제-code-jtableeditorexample">CRUD 예제 Code (<code class="language-plaintext highlighter-rouge">JTableEditorExample</code>)</h3>
 
 <ul>
-  <li><strong>실습 예제 파일</strong>: <a href="file:///d:/site/jinysite/java/src/gui/2.swing/09_table_component/sample/sec09/exam04_eventhandling/JTableEditorExample.java">JTableEditorExample.java</a> (경로: <code class="language-plaintext highlighter-rouge">sample/sec09/exam04_eventhandling/JTableEditorExample.java</code>)</li>
+  <li><strong>실습 예제 파일</strong>: <a href="sample/sec09/exam04_eventhandling/JTableEditorExample.java">JTableEditorExample.java</a> (경로: <code class="language-plaintext highlighter-rouge">sample/sec09/exam04_eventhandling/JTableEditorExample.java</code>)</li>
   <li><strong>실행 방법</strong>:
     <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 1. 09_table_component 디렉토리로 이동 후 컴파일</span><span class="w">
 </span><span class="n">javac</span><span class="w"> </span><span class="nt">-d</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sample/sec09/exam04_eventhandling/JTableEditorExample.java</span><span class="w">
@@ -1111,6 +1128,9 @@
 <span class="o">}</span>
 </code></pre></div></div>
 
+<h4 id="실행-결과-화면-2">실행 결과 화면</h4>
+<p><img src="./img/tableeditor_result.png" alt="JTable CRUD 에디터 실행 결과" /></p>
+
 <h3 id="vector를-이용한-데이터-다이렉트-수정">Vector를 이용한 데이터 다이렉트 수정</h3>
 <p><code class="language-plaintext highlighter-rouge">DefaultTableModel</code> 내부에서 전체 행 데이터는 <code class="language-plaintext highlighter-rouge">Vector&lt;Vector&gt;</code> 형태로 보관됩니다. <code class="language-plaintext highlighter-rouge">getDataVector()</code> 메서드를 사용하면 이 벡터 데이터에 직접 접근할 수 있습니다.</p>
 
@@ -1142,7 +1162,7 @@
 <h3 id="vector-활용-종합-예제-jtableexample">Vector 활용 종합 예제 (<code class="language-plaintext highlighter-rouge">JTableExample</code>)</h3>
 
 <ul>
-  <li><strong>실습 예제 파일</strong>: <a href="file:///d:/site/jinysite/java/src/gui/2.swing/09_table_component/sample/sec09/exam05_row_add_update_delete/JTableExample.java">JTableExample.java</a> (경로: <code class="language-plaintext highlighter-rouge">sample/sec09/exam05_row_add_update_delete/JTableExample.java</code>)</li>
+  <li><strong>실습 예제 파일</strong>: <a href="sample/sec09/exam05_row_add_update_delete/JTableExample.java">JTableExample.java</a> (경로: <code class="language-plaintext highlighter-rouge">sample/sec09/exam05_row_add_update_delete/JTableExample.java</code>)</li>
   <li><strong>실행 방법</strong>:
     <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 1. 09_table_component 디렉토리로 이동 후 컴파일</span><span class="w">
 </span><span class="n">javac</span><span class="w"> </span><span class="nt">-d</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sample/sec09/exam05_row_add_update_delete/JTableExample.java</span><span class="w">
@@ -1329,6 +1349,9 @@
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div></div>
+
+<h4 id="실행-결과-화면-3">실행 결과 화면</h4>
+<p><img src="./img/tableexample_result.png" alt="JTable Vector 데이터 제어 실행 결과" /></p>
 
 
 

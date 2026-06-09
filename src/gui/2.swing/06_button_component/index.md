@@ -16,12 +16,22 @@ keywords: "06. 버튼 컴포넌트, 자바, Java, 프로그래밍, 백엔드, �
 - **JCheckBox**: 다중 선택이 가능한 체크 박스.
 - **JRadioButton**: 그룹 내에서 하나만 선택 가능한 라디오 버튼.
 
+### 💡 그림으로 이해하기: 버튼 컴포넌트 비유 (초인종, 전등 스위치, 뷔페, 선풍기)
+
+스윙이 제공하는 다양한 버튼의 성격 차이를 일상생활 속 도구나 상황에 빗대어 이해해 볼까요?
+* **JButton (초인종 버튼)**: 손가락으로 누르는 순간에만 딸깍 소리를 내며 작동하는 일반 초인종 버튼입니다. 누르면 즉각 신호(Event)를 보냅니다.
+* **JToggleButton (전등 스위치)**: 한 번 누르면 켜진(On) 채로 고정되고, 다시 누르면 꺼지는(Off) 거실 전등 스위치와 같습니다. 상태를 고정해서 유지합니다.
+* **JCheckBox (뷔페 그릇 선택)**: 김밥, 떡볶이, 만두 등 접시 위에 먹고 싶은 음식을 원하는 대로 다중 중복 선택하여 담는 체크 리스트 상황입니다.
+* **JRadioButton (선풍기 바람 세기 버튼)**: 미풍, 약풍, 강풍 버튼처럼 하나를 누르면 이전에 눌려 있던 다른 버튼이 튀어나오면서 해제되는 **배타적 단일 선택** 단추입니다.
+
+![버튼 컴포넌트 개념 비유](./img/buttons_concept.png)
+
 ---
 
 ## 1. JButton
 `JButton`은 텍스트, 이미지, 또는 둘 다를 포함할 수 있는 버튼입니다. 클릭 시 `ActionEvent`가 발생합니다.
 
-* **실습 예제 파일**: [JButtonExample.java](file:///d:/site/jinysite/java/src/gui/2.swing/06_button_component/sample/sec06/exam01_jbutton/JButtonExample.java) (경로: `sample/sec06/exam01_jbutton/JButtonExample.java`)
+* **실습 예제 파일**: [JButtonExample.java](sample/sec06/exam01_jbutton/JButtonExample.java) (경로: `sample/sec06/exam01_jbutton/JButtonExample.java`)
 * **실행 방법**:
   ```powershell
   # 1. 06_button_component 디렉토리로 이동 후 컴파일
@@ -30,6 +40,10 @@ keywords: "06. 버튼 컴포넌트, 자바, Java, 프로그래밍, 백엔드, �
   # 2. 실행
   java -cp sample sec06.exam01_jbutton.JButtonExample
   ```
+
+* **실행 결과 화면**:
+  
+  ![JButton 실행 결과](./img/jbutton_result.png)
 
 ```java
 package sec06.exam01_jbutton;
@@ -109,7 +123,7 @@ public class JButtonExample extends JFrame {
 `JToggleButton`은 토글(On/Off) 기능을 가진 버튼입니다. 클릭할 때마다 선택(Selected)/해제(Deselected) 상태가 바뀝니다.
 상태 변화를 감지하기 위해 `ItemListener`를 사용하는 것이 좋습니다.
 
-* **실습 예제 파일**: [JToggleButtonExample.java](file:///d:/site/jinysite/java/src/gui/2.swing/06_button_component/sample/sec06/exam02_jtogglebutton/JToggleButtonExample.java) (경로: `sample/sec06/exam02_jtogglebutton/JToggleButtonExample.java`)
+* **실습 예제 파일**: [JToggleButtonExample.java](sample/sec06/exam02_jtogglebutton/JToggleButtonExample.java) (경로: `sample/sec06/exam02_jtogglebutton/JToggleButtonExample.java`)
 * **실행 방법**:
   ```powershell
   # 1. 06_button_component 디렉토리로 이동 후 컴파일
@@ -118,6 +132,10 @@ public class JButtonExample extends JFrame {
   # 2. 실행
   java -cp sample sec06.exam02_jtogglebutton.JToggleButtonExample
   ```
+
+* **실행 결과 화면**:
+  
+  ![JToggleButton 실행 결과](./img/jtogglebutton_result.png)
 
 ```java
 package sec06.exam02_jtogglebutton;
@@ -217,7 +235,7 @@ public class JToggleButtonExample extends JFrame {
 ## 3. JRadioButton
 `JRadioButton`은 여러 옵션 중 **하나만 선택**해야 할 때 사용합니다. 반드시 `ButtonGroup`으로 묶어주어야 배타적 선택이 동작합니다.
 
-* **실습 예제 파일**: [JRadioButtonExample.java](file:///d:/site/jinysite/java/src/gui/2.swing/06_button_component/sample/sec06/exam03_jradiobutton/JRadioButtonExample.java) (경로: `sample/sec06/exam03_jradiobutton/JRadioButtonExample.java`)
+* **실습 예제 파일**: [JRadioButtonExample.java](sample/sec06/exam03_jradiobutton/JRadioButtonExample.java) (경로: `sample/sec06/exam03_jradiobutton/JRadioButtonExample.java`)
 * **실행 방법**:
   ```powershell
   # 1. 06_button_component 디렉토리로 이동 후 컴파일
@@ -226,6 +244,10 @@ public class JToggleButtonExample extends JFrame {
   # 2. 실행
   java -cp sample sec06.exam03_jradiobutton.JRadioButtonExample
   ```
+
+* **실행 결과 화면**:
+  
+  ![JRadioButton 실행 결과](./img/jradiobutton_result.png)
 
 ```java
 package sec06.exam03_jradiobutton;
@@ -312,7 +334,7 @@ public class JRadioButtonExample extends JFrame {
 ## 4. JCheckBox
 `JCheckBox`는 **다중 선택**이 가능한 버튼입니다. 각 체크박스는 독립적으로 선택/해제 상태를 가집니다. `isSelected()` 메서드로 상태를 확인할 수 있습니다.
 
-* **실습 예제 파일**: [JCheckBoxExample.java](file:///d:/site/jinysite/java/src/gui/2.swing/06_button_component/sample/sec06/exam04_jcheckbox/JCheckBoxExample.java) (경로: `sample/sec06/exam04_jcheckbox/JCheckBoxExample.java`)
+* **실습 예제 파일**: [JCheckBoxExample.java](sample/sec06/exam04_jcheckbox/JCheckBoxExample.java) (경로: `sample/sec06/exam04_jcheckbox/JCheckBoxExample.java`)
 * **실행 방법**:
   ```powershell
   # 1. 06_button_component 디렉토리로 이동 후 컴파일
@@ -321,6 +343,10 @@ public class JRadioButtonExample extends JFrame {
   # 2. 실행
   java -cp sample sec06.exam04_jcheckbox.JCheckBoxExample
   ```
+
+* **실행 결과 화면**:
+  
+  ![JCheckBox 실행 결과](./img/jcheckbox_result.png)
 
 ```java
 package sec06.exam04_jcheckbox;

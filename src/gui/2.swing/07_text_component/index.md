@@ -17,6 +17,17 @@ Swing에서 텍스트를 다루는 컴포넌트는 크게 **편집 불가능한 
 - **JTextArea**: 여러 줄 텍스트 입력.
 - **JEditorPane / JTextPane**: 서식 있는 텍스트(HTML 등) 지원.
 
+### 💡 그림으로 이해하기: 텍스트 컴포넌트 비유 (박물관 표지판, 한 줄 방명록, 가면 무도회, 편지봉투, 스크랩북)
+
+스윙이 제공하는 텍스트 컴포넌트들의 각기 다른 성격과 용도를 재미있는 물건에 빗대어 알아볼까요?
+* **JLabel (박물관 표지판)**: 유물(이미지) 옆에 부착되어 관람객이 낙서하거나 지울 수 없도록 고정된 **읽기 전용** 표지판입니다.
+* **JTextField (한 줄 방명록)**: 방명록에 이름이나 아이디처럼 짧고 굵게 딱 한 줄만 쓸 수 있는 입력 기입란입니다.
+* **JPasswordField (가면 무도회 방명록)**: 비밀번호를 적을 때 글자들 위에 검은 동그라미(●) 가면을 씌워서 뒤에 서 있는 다른 사람에게 보이지 않게 가려주는 칸입니다.
+* **JTextArea (여러 줄 편지봉투)**: 긴 편지나 일기처럼 여러 줄을 자유롭게 쓸 수 있는 큰 줄노트 공책입니다. 글이 너무 길어지면 옆에 스크롤바 바퀴(`JScrollPane`)를 달아 굴려가며 읽어야 합니다.
+* **JEditorPane (인터넷 신문 스크랩북)**: 단순한 글자뿐만 아니라 제목을 굵게 하거나, HTML 웹문서를 불러오고, 파란색 글씨의 링크를 클릭해 다른 곳으로 이동할 수 있는 종합 스크랩북입니다.
+
+![텍스트 컴포넌트 개념 비유](./img/text_concept.png)
+
 ---
 
 ## 1. JLabel
@@ -34,7 +45,7 @@ Swing에서 텍스트를 다루는 컴포넌트는 크게 **편집 불가능한 
 | `setIconTextGap(int)`            | 텍스트와 이미지 사이의 간격 (픽셀)           |
 | `setBorder(Border)`              | 경계선 설정 (예: `EtchedBorder`)             |
 
-* **실습 예제 파일**: [JLabelExample.java](file:///d:/site/jinysite/java/src/gui/2.swing/07_text_component/sample/sec07/exam01_jlabel/JLabelExample.java) (경로: `sample/sec07/exam01_jlabel/JLabelExample.java`)
+* **실습 예제 파일**: [JLabelExample.java](sample/sec07/exam01_jlabel/JLabelExample.java) (경로: `sample/sec07/exam01_jlabel/JLabelExample.java`)
 * **실행 방법**:
   ```powershell
   # 1. 07_text_component 디렉토리로 이동 후 컴파일
@@ -43,6 +54,10 @@ Swing에서 텍스트를 다루는 컴포넌트는 크게 **편집 불가능한 
   # 2. 실행
   java -cp sample sec07.exam01_jlabel.JLabelExample
   ```
+
+* **실행 결과 화면**:
+  
+  ![JLabel 실행 결과](./img/jlabel_result.png)
 
 ```java
 package sec07.exam01_jlabel;
@@ -136,7 +151,7 @@ public class JLabelExample extends JFrame {
     - `KeyEvent`: 키를 누를 때마다 발생 (`KeyListener` 사용).
     - `ActionEvent`: 입력 후 Enter 키를 누르면 발생 (`ActionListener` 사용).
 
-* **실습 예제 파일**: [JTextFieldJPasswordFieldExample.java](file:///d:/site/jinysite/java/src/gui/2.swing/07_text_component/sample/sec07/exam02_jtextfield_jpasswordfield/JTextFieldJPasswordFieldExample.java) (경로: `sample/sec07/exam02_jtextfield_jpasswordfield/JTextFieldJPasswordFieldExample.java`)
+* **실습 예제 파일**: [JTextFieldJPasswordFieldExample.java](sample/sec07/exam02_jtextfield_jpasswordfield/JTextFieldJPasswordFieldExample.java) (경로: `sample/sec07/exam02_jtextfield_jpasswordfield/JTextFieldJPasswordFieldExample.java`)
 * **실행 방법**:
   ```powershell
   # 1. 07_text_component 디렉토리로 이동 후 컴파일
@@ -145,6 +160,10 @@ public class JLabelExample extends JFrame {
   # 2. 실행 (실행 후 ID 필드에 키 입력 시 터미널 콘솔 로그가 표시되며, 패스워드 입력 후 Enter 키를 누르면 입력값 팝업이 뜹니다)
   java -cp sample sec07.exam02_jtextfield_jpasswordfield.JTextFieldJPasswordFieldExample
   ```
+
+* **실행 결과 화면**:
+  
+  ![JTextField & JPasswordField 실행 결과](./img/jtextfield_result.png)
 
 ```java
 package sec07.exam02_jtextfield_jpasswordfield;
@@ -235,7 +254,7 @@ JScrollPane jScrollPane = new JScrollPane(jTextArea);
 jTextArea.setCaretPosition(jTextArea.getText().length());
 ```
 
-* **실습 예제 파일**: [JTextAreaExample.java](file:///d:/site/jinysite/java/src/gui/2.swing/07_text_component/sample/sec07/exam03_jtextarea/JTextAreaExample.java) (경로: `sample/sec07/exam03_jtextarea/JTextAreaExample.java`)
+* **실습 예제 파일**: [JTextAreaExample.java](sample/sec07/exam03_jtextarea/JTextAreaExample.java) (경로: `sample/sec07/exam03_jtextarea/JTextAreaExample.java`)
 * **실행 방법**:
   ```powershell
   # 1. 07_text_component 디렉토리로 이동 후 컴파일
@@ -244,6 +263,10 @@ jTextArea.setCaretPosition(jTextArea.getText().length());
   # 2. 실행 (실행 후 하단 입력 필드에 텍스트를 넣고 전송/엔터키 입력 시 상단 화면에 텍스트가 누적 출력됩니다)
   java -cp sample sec07.exam03_jtextarea.JTextAreaExample
   ```
+
+* **실행 결과 화면**:
+  
+  ![JTextArea 실행 결과](./img/jtextarea_result.png)
 
 ```java
 package sec07.exam03_jtextarea;
@@ -334,7 +357,7 @@ public class JTextAreaExample extends JFrame {
 - HTML 로드: `setPage(URL)`
 - 링크 클릭 처리: `addHyperlinkListener`
 
-* **실습 예제 파일**: [JEditorPaneExample.java](file:///d:/site/jinysite/java/src/gui/2.swing/07_text_component/sample/sec07/exam04_jeditpane/JEditorPaneExample.java) (경로: `sample/sec07/exam04_jeditpane/JEditorPaneExample.java`)
+* **실습 예제 파일**: [JEditorPaneExample.java](sample/sec07/exam04_jeditpane/JEditorPaneExample.java) (경로: `sample/sec07/exam04_jeditpane/JEditorPaneExample.java`)
 * **실행 방법**:
   ```powershell
   # 1. 07_text_component 디렉토리로 이동 후 컴파일
@@ -343,6 +366,10 @@ public class JTextAreaExample extends JFrame {
   # 2. 실행 (실행 전 같은 패키지 폴더 내의 HTML 문서 리소스가 필요합니다)
   java -cp sample sec07.exam04_jeditpane.JEditorPaneExample
   ```
+
+* **실행 결과 화면**:
+  
+  ![JEditorPane 실행 결과](./img/jeditorpane_result.png)
 
 ```java
 package sec07.exam04_jeditpane;

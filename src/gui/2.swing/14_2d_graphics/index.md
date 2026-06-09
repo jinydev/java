@@ -14,6 +14,15 @@ UI 프로그램에서 윈도우, 버튼, 이미지 등은 모두 화면에 그�
 - **Canvas**: 그림이 그려지는 컴포넌트 (도화지)
 - **Graphics**: 그림을 그리는 도구 (붓)
 
+### 💡 비주얼 개념 잡기: Canvas와 Graphics의 관계
+자바에서 화면에 무언가를 그릴 때는 미술 시간의 **도화지**와 **붓**을 생각하면 아주 간단합니다!
+
+![Canvas와 Graphics 개념도](./img/graphics_concept.png)
+
+* **Canvas (도화지)**: 그림이 그려지는 실제 컴포넌트(도화지)입니다. 도화지는 스스로 화면에 나타날 때(`paint()`) 그림을 그릴 준비를 마칩니다.
+* **Graphics (붓과 팔레트)**: 도화지에 선(`drawLine`), 사각형(`drawRect`), 글자(`drawString`) 등을 직접 그려주는 도구(붓과 물감)입니다.
+* **Repaint (도화지 새로 바꿔 그리기)**: 이미 그려진 도화지(화면)를 깨끗이 지우고 새로운 내용으로 다시 그리는 요청을 뜻합니다.
+
 ### 그리기 매커니즘
 `Canvas`는 화면에 보일 준비가 되면 `paint(Graphics g)` 메서드를 호출하여 그림을 그립니다.
 
@@ -27,7 +36,7 @@ UI 프로그램에서 윈도우, 버튼, 이미지 등은 모두 화면에 그�
 
 ### 예제 (`CanvasPaintExample`)
 
-* **실습 예제 파일**: [CanvasPaintExample.java](file:///d:/site/jinysite/java/src/gui/2.swing/14_2d_graphics/sample/sec14/exam01_paint/CanvasPaintExample.java) (경로: `sample/sec14/exam01_paint/CanvasPaintExample.java`)
+* **실습 예제 파일**: [CanvasPaintExample.java](sample/sec14/exam01_paint/CanvasPaintExample.java) (경로: `sample/sec14/exam01_paint/CanvasPaintExample.java`)
 * **실행 방법**:
   ```powershell
   # 1. 14_2d_graphics 디렉토리로 이동 후 컴파일
@@ -71,6 +80,9 @@ public class CanvasPaintExample extends JFrame {
 }
 ```
 
+#### 실행 결과 화면
+![CanvasPaintExample 실행 결과](./img/paint_result.png)
+
 ---
 
 ## 2. 다시 그리기 (Repaint)
@@ -92,7 +104,7 @@ public void update(Graphics g) {
 
 ### 예제: 마우스 드래그로 그림 그리기 (`RepaintExample`)
 
-* **실습 예제 파일**: [RepaintExample.java](file:///d:/site/jinysite/java/src/gui/2.swing/14_2d_graphics/sample/sec14/exam02_repaint/RepaintExample.java) (경로: `sample/sec14/exam02_repaint/RepaintExample.java`)
+* **실습 예제 파일**: [RepaintExample.java](sample/sec14/exam02_repaint/RepaintExample.java) (경로: `sample/sec14/exam02_repaint/RepaintExample.java`)
 * **실행 방법**:
   ```powershell
   # 1. 14_2d_graphics 디렉토리로 이동 후 컴파일
@@ -155,6 +167,9 @@ public class RepaintExample extends JFrame {
 }
 ```
 
+#### 실행 결과 화면
+![RepaintExample 실행 결과](./img/repaint_result.png)
+
 ---
 
 ## 3. 그래픽 주요 메서드
@@ -182,7 +197,7 @@ public class RepaintExample extends JFrame {
 
 ### 예제 (`ShapeExample`)
 
-* **실습 예제 파일**: [ShapeExample.java](file:///d:/site/jinysite/java/src/gui/2.swing/14_2d_graphics/sample/sec14/exam03_shape/ShapeExample.java) (경로: `sample/sec14/exam03_shape/ShapeExample.java`)
+* **실습 예제 파일**: [ShapeExample.java](sample/sec14/exam03_shape/ShapeExample.java) (경로: `sample/sec14/exam03_shape/ShapeExample.java`)
 * **실행 방법**:
   ```powershell
   # 1. 14_2d_graphics 디렉토리로 이동 후 컴파일
@@ -232,6 +247,9 @@ public class ShapeExample extends JFrame {
     }
 }
 ```
+
+#### 실행 결과 화면
+![ShapeExample 실행 결과](./img/shape_result.png)
 
 ---
 
@@ -287,7 +305,7 @@ g.drawImage(img, 0, 0, this);
 
 ### 예제 (`BackgroundImageExample`)
 
-* **실습 예제 파일**: [BackgroundImageExample.java](file:///d:/site/jinysite/java/src/gui/2.swing/14_2d_graphics/sample/sec14/exam06_background/BackgroundImageExample.java) (경로: `sample/sec14/exam06_background/BackgroundImageExample.java`)
+* **실습 예제 파일**: [BackgroundImageExample.java](sample/sec14/exam06_background/BackgroundImageExample.java) (경로: `sample/sec14/exam06_background/BackgroundImageExample.java`)
 * **실행 방법**:
   ```powershell
   # 1. 14_2d_graphics 디렉토리로 이동 후 컴파일
@@ -344,4 +362,7 @@ public class BackgroundImageExample extends JFrame {
         SwingUtilities.invokeLater(() -> new BackgroundImageExample().setVisible(true));
     }
 }
+
+#### 실행 결과 화면
+![BackgroundImageExample 실행 결과](./img/background_result.png)
 ```

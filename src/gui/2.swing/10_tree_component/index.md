@@ -11,6 +11,15 @@ keywords: "10. 트리 컴포넌트, 자바, Java, 프로그래밍, 백엔드, �
 
 ![트리 컴포넌트 구조](./img/tree_hierarchy.svg)
 
+### 💡 비주얼 개념 잡기: JTree의 구성 요소
+JTree는 데이터를 마치 **나무(Tree)**처럼 계층적으로 관리하는 컴포넌트입니다.
+
+![JTree 개념도](./img/tree_concept.png)
+
+* **JTree (나무 구조틀)**: 전체 노드가 뻗어나갈 수 있도록 튼튼하게 잡아주는 전체 나무 구조(틀)입니다.
+* **TreeNode (이름표/나뭇잎)**: 나무 가지마다 걸려 있는 종이 이름표나 나뭇잎입니다. 실제 데이터(텍스트, 객체 등)를 보관하는 개별 노드를 의미합니다.
+* **TreeCellRenderer (꾸미기 스티커/물감)**: 기본 폴더/파일 모양 아이콘 대신 노드의 상태나 데이터 형태에 맞게 예쁜 스티커를 붙이거나 색칠을 해주는 꾸미기 요정입니다.
+
 ## 1. 트리 구조
 - **루트 노드(Root Node)**: 최상위 노드. 하나만 존재.
 - **부모 노드(Parent Node)**: 자식 노드를 가지는 노드.
@@ -35,7 +44,7 @@ JTree jTree = new JTree(root);
 
 ### 예제: 기본 JTree (`JTreeBasicExample`)
 
-* **실습 예제 파일**: [JTreeBasicExample.java](file:///d:/site/jinysite/java/src/gui/2.swing/10_tree_component/sample/sec10/exam01_jtree/JTreeBasicExample.java) (경로: `sample/sec10/exam01_jtree/JTreeBasicExample.java`)
+* **실습 예제 파일**: [JTreeBasicExample.java](sample/sec10/exam01_jtree/JTreeBasicExample.java) (경로: `sample/sec10/exam01_jtree/JTreeBasicExample.java`)
 * **실행 방법**:
   ```powershell
   # 1. 10_tree_component 디렉토리로 이동 후 컴파일
@@ -97,6 +106,9 @@ public class JTreeBasicExample extends JFrame {
 }
 ```
 
+#### 실행 결과 화면
+![JTree 기본 실행 결과](./img/treebasic_result.png)
+
 ---
 
 ## 3. 노드 렌더러 (TreeCellRenderer)
@@ -107,7 +119,7 @@ public class JTreeBasicExample extends JFrame {
 ### 렌더러 예제 Code (`JTreeCustomRendererExample`)
 이 예제는 리프 노드와 부모 노드의 아이콘을 다르게 설정하고, 선택 시 배경색을 변경합니다.
 
-* **실습 예제 파일**: [JTreeCustomRendererExample.java](file:///d:/site/jinysite/java/src/gui/2.swing/10_tree_component/sample/sec10/exam02_cellrenderer/JTreeCustomRendererExample.java) (경로: `sample/sec10/exam02_cellrenderer/JTreeCustomRendererExample.java`)
+* **실습 예제 파일**: [JTreeCustomRendererExample.java](sample/sec10/exam02_cellrenderer/JTreeCustomRendererExample.java) (경로: `sample/sec10/exam02_cellrenderer/JTreeCustomRendererExample.java`)
 * **실행 방법**:
   ```powershell
   # 1. 10_tree_component 디렉토리로 이동 후 컴파일
@@ -207,6 +219,9 @@ public class JTreeCustomRendererExample extends JFrame {
 }
 ```
 
+#### 실행 결과 화면
+![JTree 커스텀 렌더러 실행 결과](./img/treecustom_result.png)
+
 ---
 
 ## 4. 이벤트 처리
@@ -215,7 +230,7 @@ public class JTreeCustomRendererExample extends JFrame {
 
 ### 이벤트 처리 예제 (`JTreeEventExample`)
 
-* **실습 예제 파일**: [JTreeEventExample.java](file:///d:/site/jinysite/java/src/gui/2.swing/10_tree_component/sample/sec10/exam03_eventhandling/JTreeEventExample.java) (경로: `sample/sec10/exam03_eventhandling/JTreeEventExample.java`)
+* **실습 예제 파일**: [JTreeEventExample.java](sample/sec10/exam03_eventhandling/JTreeEventExample.java) (경로: `sample/sec10/exam03_eventhandling/JTreeEventExample.java`)
 * **실행 방법**:
   ```powershell
   # 1. 10_tree_component 디렉토리로 이동 후 컴파일
@@ -293,3 +308,7 @@ public class JTreeEventExample extends JFrame {
     }
 }
 ```
+
+#### 실행 결과 화면
+![JTree 이벤트 처리 실행 결과](./img/treeevent_result.png)
+

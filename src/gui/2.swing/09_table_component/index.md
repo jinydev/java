@@ -11,6 +11,15 @@ keywords: "09. 테이블 컴포넌트, 자바, Java, 프로그래밍, 백엔드,
 
 ![테이블 컴포넌트 구조](./img/table_architecture.svg)
 
+### 💡 비주얼 개념 잡기: JTable과 TableModel의 관계
+JTable과 TableModel의 구조는 마치 **진열장**과 **장부**의 관계와 같습니다.
+
+![JTable 개념도](./img/table_concept.png)
+
+* **JTable (진열장 / 격자판)**: 데이터를 화면에 격자 모양으로 보여주기만 하는 나무 틀(진열장)입니다. 스스로 데이터를 보관하지 않습니다.
+* **TableModel (원본 장부)**: 실제 데이터가 한 땀 한 땀 기록되어 있는 원본 노트(장부)입니다. 데이터의 추가, 삭제, 수정은 모두 이 장부에서 일어나며, JTable은 단지 이 장부를 바탕으로 화면을 그릴 뿐입니다.
+* **Cell Renderer (선물 포장지)**: 텍스트뿐만 아니라 체크박스, 아이콘, 배경색 등 셀을 예쁘게 포장해서 보여주는 역할을 합니다.
+
 ## 1. JTable 구조
 테이블은 **컬럼 헤더(Column Header)**, **행(Row)**, **셀(Cell)**로 구성됩니다.
 - **컬럼(Column)**: 열. 각 컬럼은 동일한 데이터 타입을 가집니다.
@@ -38,7 +47,7 @@ JTable table = new JTable(rowData, columnNames);
 
 ## 3. 예제: 기본 JTable
 
-* **실습 예제 파일**: [JTableBasicExample.java](file:///d:/site/jinysite/java/src/gui/2.swing/09_table_component/sample/sec09/exam01_jtable/JTableBasicExample.java) (경로: `sample/sec09/exam01_jtable/JTableBasicExample.java`)
+* **실습 예제 파일**: [JTableBasicExample.java](sample/sec09/exam01_jtable/JTableBasicExample.java) (경로: `sample/sec09/exam01_jtable/JTableBasicExample.java`)
 * **실행 방법**:
   ```powershell
   # 1. 09_table_component 디렉토리로 이동 후 컴파일
@@ -98,6 +107,9 @@ public class JTableBasicExample extends JFrame {
 }
 ```
 
+#### 실행 결과 화면
+![JTable 기본 실행 결과](./img/tablebasic_result.png)
+
 ---
 
 ## 4. TableModel
@@ -136,7 +148,7 @@ public class MyCellRenderer extends JLabel implements TableCellRenderer {
 
 ### 종합 예제 Code (`JTableCustomExample`)
 
-* **실습 예제 파일**: [JTableCustomExample.java](file:///d:/site/jinysite/java/src/gui/2.swing/09_table_component/sample/sec09/exam03_cellrenderer/JTableCustomExample.java) (경로: `sample/sec09/exam03_cellrenderer/JTableCustomExample.java`)
+* **실습 예제 파일**: [JTableCustomExample.java](sample/sec09/exam03_cellrenderer/JTableCustomExample.java) (경로: `sample/sec09/exam03_cellrenderer/JTableCustomExample.java`)
 * **실행 방법**:
   ```powershell
   # 1. 09_table_component 디렉토리로 이동 후 컴파일
@@ -266,6 +278,9 @@ public class JTableCustomExample extends JFrame {
 }
 ```
 
+#### 실행 결과 화면
+![JTable 셀 렌더러 커스텀 실행 결과](./img/tablecustom_result.png)
+
 ---
 
 ## 6. 행 추가, 수정, 삭제 (CRUD)
@@ -278,7 +293,7 @@ public class JTableCustomExample extends JFrame {
 
 ### CRUD 예제 Code (`JTableEditorExample`)
 
-* **실습 예제 파일**: [JTableEditorExample.java](file:///d:/site/jinysite/java/src/gui/2.swing/09_table_component/sample/sec09/exam04_eventhandling/JTableEditorExample.java) (경로: `sample/sec09/exam04_eventhandling/JTableEditorExample.java`)
+* **실습 예제 파일**: [JTableEditorExample.java](sample/sec09/exam04_eventhandling/JTableEditorExample.java) (경로: `sample/sec09/exam04_eventhandling/JTableEditorExample.java`)
 * **실행 방법**:
   ```powershell
   # 1. 09_table_component 디렉토리로 이동 후 컴파일
@@ -416,6 +431,9 @@ public class JTableEditorExample extends JFrame {
 }
 ```
 
+#### 실행 결과 화면
+![JTable CRUD 에디터 실행 결과](./img/tableeditor_result.png)
+
 ### Vector를 이용한 데이터 다이렉트 수정
 `DefaultTableModel` 내부에서 전체 행 데이터는 `Vector<Vector>` 형태로 보관됩니다. `getDataVector()` 메서드를 사용하면 이 벡터 데이터에 직접 접근할 수 있습니다.
 
@@ -451,7 +469,7 @@ tableModel.fireTableDataChanged();
 
 ### Vector 활용 종합 예제 (`JTableExample`)
 
-* **실습 예제 파일**: [JTableExample.java](file:///d:/site/jinysite/java/src/gui/2.swing/09_table_component/sample/sec09/exam05_row_add_update_delete/JTableExample.java) (경로: `sample/sec09/exam05_row_add_update_delete/JTableExample.java`)
+* **실습 예제 파일**: [JTableExample.java](sample/sec09/exam05_row_add_update_delete/JTableExample.java) (경로: `sample/sec09/exam05_row_add_update_delete/JTableExample.java`)
 * **실행 방법**:
   ```powershell
   # 1. 09_table_component 디렉토리로 이동 후 컴파일
@@ -638,3 +656,6 @@ public class JTableExample extends JFrame {
     }
 }
 ```
+
+#### 실행 결과 화면
+![JTable Vector 데이터 제어 실행 결과](./img/tableexample_result.png)

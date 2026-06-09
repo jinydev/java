@@ -11,6 +11,16 @@ UI 프로그램에서 메뉴는 필수적인 구성 요소입니다. Swing은 `j
 
 ![메뉴 컴포넌트 구조](./img/menu_hierarchy.svg)
 
+### 💡 비주얼 개념 잡기: 메뉴 컴포넌트의 구성 요소
+메뉴 컴포넌트의 구조는 레스토랑의 **메뉴판 구성**과 똑 닮아 있습니다!
+
+![JMenu 개념도](./img/menu_concept.png)
+
+* **JMenuBar (메뉴판 거치대)**: 테이블 위에 놓여 있는 나무 메뉴판 거치대(프레임 상단 고정 바)입니다.
+* **JMenu (분류별 메뉴판 책자)**: 클릭하면 열리는 스테이크류, 음료류 같은 대분류 책자입니다.
+* **JMenuItem (개별 요리 이름)**: 실제 고객이 콕 찝어 주문(클릭)할 수 있는 '안심 스테이크', '레몬 에이드' 같은 실제 주문 항목(메뉴 아이템)입니다.
+* **JCheckBoxMenuItem (토핑 추가 여부)**: '치즈 토핑 추가'와 같이 선택/해제 상태를 체크박스로 표시할 수 있는 메뉴 옵션입니다.
+
 | 컴포넌트                   | 설명                                                 |
 | :------------------------- | :--------------------------------------------------- |
 | **`JMenuBar`**             | 윈도우 상단에 위치하는 메뉴 바                       |
@@ -49,7 +59,7 @@ frame.setJMenuBar(menuBar);
 ## 2. 메뉴 예제 (`JMenuExample`)
 다음은 파일 및 도움말 메뉴를 구성하고, 체크박스 메뉴 아이템과 아이콘을 사용하는 예제입니다.
 
-* **실습 예제 파일**: [JMenuExample.java](file:///d:/site/jinysite/java/src/gui/2.swing/11_menu_component/sample/sec11/exam01_jmenu/JMenuExample.java) (경로: `sample/sec11/exam01_jmenu/JMenuExample.java`)
+* **실습 예제 파일**: [JMenuExample.java](sample/sec11/exam01_jmenu/JMenuExample.java) (경로: `sample/sec11/exam01_jmenu/JMenuExample.java`)
 * **실행 방법**:
   ```powershell
   # 1. 11_menu_component 디렉토리로 이동 후 컴파일
@@ -191,6 +201,9 @@ public class JMenuExample extends JFrame {
     }
 }
 ```
+
+#### 실행 결과 화면
+![JMenu 실행 결과](./img/jmenu_result.png)
 
 ---
 

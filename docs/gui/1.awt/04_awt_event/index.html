@@ -691,81 +691,125 @@
 </nav>
 
         <div class="bd-content ps-lg-2">
-            <h1 id="04-awt-이벤트-처리">04. AWT 이벤트 처리</h1>
+            <h1 id="04-awt-이벤트-처리-event-handling">04. AWT 이벤트 처리 (Event Handling)</h1>
+
+<p>사용자가 마우스로 버튼을 클릭하거나, 키보드로 글자를 입력하고, 창의 X 버튼을 눌러 창을 닫을 때 자바 프로그램은 어떻게 이를 알아차리고 반응할까요? ⚡ 자바의 핵심 소통 메커니즘인 <strong>위임형 이벤트 모델(Delegation Event Model)</strong>과 코드를 획기적으로 줄여주는 <strong>어댑터(Adapter)</strong> 클래스의 비밀을 파헤쳐 봅시다!</p>
+
+<hr />
 
 <h2 id="1-이벤트-위임-모델-event-delegation-model">1. 이벤트 위임 모델 (Event Delegation Model)</h2>
-<p>자바 AWT는 <strong>이벤트 위임 모델(Delegation Event Model)</strong>을 사용합니다.</p>
-<ul>
-  <li><strong>이벤트 소스(Event Source)</strong>: 이벤트가 발생하는 컴포넌트입니다 (예: 버튼).</li>
-  <li><strong>이벤트 리스너(Event Listener)</strong>: 이벤트가 발생했을 때 실행될 코드입니다 (인터페이스를 구현함).</li>
-  <li><strong>이벤트 객체(Event Object)</strong>: 발생한 이벤트에 대한 정보입니다 (예: 클릭된 버튼, 마우스 좌표 등).</li>
-</ul>
 
-<p>즉, <strong>이벤트 소스에 리스너를 등록(add)</strong>하고, 해당 이벤트가 발생하면 <strong>리스너의 메서드가 자동으로 호출</strong>되는 방식입니다.</p>
+<p>자바 AWT는 사용자의 행동에 반응하기 위해 <strong>이벤트 위임 모델</strong>이라는 약속된 규칙을 사용합니다.</p>
+
+<h3 id="-초인종과-로봇-집사-비유로-배우는-이벤트-구조">💡 초인종과 로봇 집사 비유로 배우는 이벤트 구조</h3>
+
+<p>초인종을 눌렀을 때 집안의 로봇 집사가 손님 마중을 나가는 상황에 빗대어 봅시다!</p>
+
+<ol>
+  <li><strong>이벤트 소스 (Event Source - 초인종 스위치)</strong>
+    <ul>
+      <li><strong>설명</strong>: 이벤트가 처음 발생하는 컴포넌트입니다. (예: 사용자가 누르는 <strong>Button</strong> 등)</li>
+    </ul>
+  </li>
+  <li><strong>이벤트 객체 (Event Object - 초인종 신호/음파)</strong>
+    <ul>
+      <li><strong>설명</strong>: 어떤 일(클릭, 키 입력)이 일어났는지에 대한 모든 상세 정보(발생 시간, 마우스 위치, 발생 위치)를 담아 날아가는 정보 패키지입니다. (예: <strong>ActionEvent</strong>, <strong>WindowEvent</strong>)</li>
+    </ul>
+  </li>
+  <li><strong>이벤트 리스너 (Event Listener - 귀를 쫑긋 세운 로봇 집사)</strong>
+    <ul>
+      <li><strong>설명</strong>: 신호를 기다리다가 신호가 감지되면 정해진 명령을 수행하는 로직 코드입니다. (예: <strong>ActionListener</strong>, <strong>WindowListener</strong> 인터페이스)</li>
+    </ul>
+  </li>
+</ol>
+
+<blockquote>
+  <p><strong>작동 흐름</strong>:
+사용자가 <strong>이벤트 소스(초인종)</strong>를 클릭하면, 정보가 든 <strong>이벤트 객체(음파)</strong>가 생성되어 <strong>이벤트 리스너(로봇 집사)</strong>에게 전송됩니다. 리스너 안에 작성해 둔 코드가 자동으로 호출되며 작동이 개시됩니다!</p>
+</blockquote>
+
+<p><img src="./img/awt_events_concept.png" alt="이벤트 위임 모델 개념" /></p>
 
 <hr />
 
 <h2 id="2-주요-이벤트와-리스너">2. 주요 이벤트와 리스너</h2>
 
+<p>자바 AWT에서 가장 자주 연동되는 대표 컴포넌트, 신호, 그리고 반응 리스너들의 맵입니다.</p>
+
 <table>
   <thead>
     <tr>
-      <th style="text-align: left">컴포넌트</th>
-      <th style="text-align: left">이벤트 클래스</th>
-      <th style="text-align: left">리스너 인터페이스</th>
-      <th style="text-align: left">주요 메서드</th>
+      <th style="text-align: left">컴포넌트 (Source)</th>
+      <th style="text-align: left">신호 클래스 (Event)</th>
+      <th style="text-align: left">들음이 리스너 (Listener)</th>
+      <th style="text-align: left">리스너 안의 핵심 액션 메서드</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Button</code></td>
+      <td style="text-align: left"><strong>Button</strong> (버튼 클릭)</td>
       <td style="text-align: left"><code class="language-plaintext highlighter-rouge">ActionEvent</code></td>
       <td style="text-align: left"><code class="language-plaintext highlighter-rouge">ActionListener</code></td>
       <td style="text-align: left"><code class="language-plaintext highlighter-rouge">actionPerformed(ActionEvent e)</code></td>
     </tr>
     <tr>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">List</code>, <code class="language-plaintext highlighter-rouge">Choice</code></td>
+      <td style="text-align: left"><strong>List, Choice</strong> (항목 선택)</td>
       <td style="text-align: left"><code class="language-plaintext highlighter-rouge">ItemEvent</code></td>
       <td style="text-align: left"><code class="language-plaintext highlighter-rouge">ItemListener</code></td>
       <td style="text-align: left"><code class="language-plaintext highlighter-rouge">itemStateChanged(ItemEvent e)</code></td>
     </tr>
     <tr>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">TextField</code></td>
+      <td style="text-align: left"><strong>TextField</strong> (글자 변경)</td>
       <td style="text-align: left"><code class="language-plaintext highlighter-rouge">TextEvent</code></td>
       <td style="text-align: left"><code class="language-plaintext highlighter-rouge">TextListener</code></td>
       <td style="text-align: left"><code class="language-plaintext highlighter-rouge">textValueChanged(TextEvent e)</code></td>
     </tr>
     <tr>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Frame</code> (Window)</td>
+      <td style="text-align: left"><strong>Frame</strong> (창 닫기 등)</td>
       <td style="text-align: left"><code class="language-plaintext highlighter-rouge">WindowEvent</code></td>
       <td style="text-align: left"><code class="language-plaintext highlighter-rouge">WindowListener</code></td>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">windowClosing(WindowEvent e)</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">windowClosing(WindowEvent e)</code> 등 7개</td>
     </tr>
     <tr>
-      <td style="text-align: left">마우스 (Mouse)</td>
+      <td style="text-align: left"><strong>Mouse</strong> (마우스 이동/클릭)</td>
       <td style="text-align: left"><code class="language-plaintext highlighter-rouge">MouseEvent</code></td>
       <td style="text-align: left"><code class="language-plaintext highlighter-rouge">MouseListener</code></td>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">mouseClicked</code>, <code class="language-plaintext highlighter-rouge">mousePressed</code>, …</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">mouseClicked</code>, <code class="language-plaintext highlighter-rouge">mousePressed</code> 등</td>
     </tr>
     <tr>
-      <td style="text-align: left">키보드 (Keyboard)</td>
+      <td style="text-align: left"><strong>Keyboard</strong> (키보드 타자)</td>
       <td style="text-align: left"><code class="language-plaintext highlighter-rouge">KeyEvent</code></td>
       <td style="text-align: left"><code class="language-plaintext highlighter-rouge">KeyListener</code></td>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">keyPressed</code>, <code class="language-plaintext highlighter-rouge">keyReleased</code>, …</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">keyPressed</code>, <code class="language-plaintext highlighter-rouge">keyReleased</code> 등</td>
     </tr>
   </tbody>
 </table>
 
 <hr />
 
-<h2 id="3-이벤트-처리-방법">3. 이벤트 처리 방법</h2>
+<h2 id="3-이벤트-처리-실습">3. 이벤트 처리 실습</h2>
 
-<h3 id="방법-1-리스너-인터페이스-직접-구현하기">방법 1: 리스너 인터페이스 직접 구현하기</h3>
-<p>클래스 자체가 리스너 역할을 하도록 인터페이스를 직접 구현하는 방식입니다.</p>
+<p>이벤트를 등록하고 동작시키는 대표적인 <strong>두 가지 방식</strong>을 예제로 마스터해 봅시다.</p>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.awt.*</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.awt.event.*</span><span class="o">;</span>
+<hr />
 
+<h3 id="방법-1-클래스에-리스너-인터페이스-직접-연결하기-implements">방법 1: 클래스에 리스너 인터페이스 직접 연결하기 (Implements)</h3>
+
+<p>자신이 만든 클래스 헤더에 <code class="language-plaintext highlighter-rouge">implements ActionListener</code>를 직접 붙여서 버튼 클릭 반응기 역할을 스스로 맡기는 정석적이고 고전적인 방식입니다.</p>
+
+<ul>
+  <li><strong>실습 예제 파일</strong>: <a href="sample/EventExam.java">EventExam.java</a> (경로: <code class="language-plaintext highlighter-rouge">sample/EventExam.java</code>)</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.awt.Frame</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.Button</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.FlowLayout</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.event.WindowAdapter</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.event.WindowEvent</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.event.ActionListener</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.event.ActionEvent</span><span class="o">;</span>
+
+<span class="c1">// 1. ActionListener(버튼 클릭 대기자) 인터페이스를 직접 구현합니다.</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">EventExam</span> <span class="kd">implements</span> <span class="nc">ActionListener</span> <span class="o">{</span>
     <span class="nc">Frame</span> <span class="n">f</span><span class="o">;</span>
     <span class="nc">Button</span> <span class="n">b</span><span class="o">;</span>
@@ -775,16 +819,27 @@
         <span class="n">f</span><span class="o">.</span><span class="na">setLayout</span><span class="o">(</span><span class="k">new</span> <span class="nc">FlowLayout</span><span class="o">());</span>
 
         <span class="n">b</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Button</span><span class="o">(</span><span class="s">"Click Me"</span><span class="o">);</span>
-        <span class="n">b</span><span class="o">.</span><span class="na">addActionListener</span><span class="o">(</span><span class="k">this</span><span class="o">);</span> <span class="c1">// 버튼에 리스너(자기 자신) 등록</span>
+        <span class="c1">// 2. 버튼에 클릭 신호 리스너로 '나 자신(this)'을 연결합니다.</span>
+        <span class="n">b</span><span class="o">.</span><span class="na">addActionListener</span><span class="o">(</span><span class="k">this</span><span class="o">);</span> 
 
         <span class="n">f</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">b</span><span class="o">);</span>
         <span class="n">f</span><span class="o">.</span><span class="na">setSize</span><span class="o">(</span><span class="mi">300</span><span class="o">,</span> <span class="mi">200</span><span class="o">);</span>
+
+        <span class="c1">// 창을 정상적으로 닫을 수 있게 설정</span>
+        <span class="n">f</span><span class="o">.</span><span class="na">addWindowListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">WindowAdapter</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">windowClosing</span><span class="o">(</span><span class="nc">WindowEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">exit</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+
         <span class="n">f</span><span class="o">.</span><span class="na">setVisible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
     <span class="o">}</span>
 
+    <span class="c1">// 3. 버튼 클릭 신호가 도착하면 자동으로 호출되는 이벤트 메서드입니다.</span>
     <span class="nd">@Override</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">actionPerformed</span><span class="o">(</span><span class="nc">ActionEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Button Clicked!"</span><span class="o">);</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Button Clicked!"</span><span class="o">);</span> <span class="c1">// 터미널 창에 출력됩니다</span>
     <span class="o">}</span>
 
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
@@ -793,11 +848,27 @@
 <span class="o">}</span>
 </code></pre></div></div>
 
-<h3 id="방법-2-익명-내부-클래스-anonymous-inner-class-사용하기">방법 2: 익명 내부 클래스 (Anonymous Inner Class) 사용하기</h3>
-<p>따로 클래스 구현을 정의하지 않고, 즉석에서 리스너를 구현하는 방식입니다. 가장 널리 사용되는 방법입니다.</p>
+<h4 id="️-eventexam-실행-결과-화면">🖥️ EventExam 실행 결과 화면</h4>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.awt.*</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.awt.event.*</span><span class="o">;</span>
+<p><img src="./img/event_result.png" alt="EventExam 실행 결과" /></p>
+
+<hr />
+
+<h3 id="방법-2-즉석에서-만드는-익명-내부-클래스-anonymous-inner-class-사용하기">방법 2: 즉석에서 만드는 익명 내부 클래스 (Anonymous Inner Class) 사용하기</h3>
+
+<p>버튼의 리스너를 위한 독립적인 메서드를 번거롭게 선언하지 않고, 버튼에 등록하는 괄호 안에서 즉석으로 리스너 코드를 정의하여 결합하는 방식입니다. <strong>실무 자바 GUI 코딩에서 가장 압도적으로 많이 활용되는 패턴</strong>입니다!</p>
+
+<ul>
+  <li><strong>실습 예제 파일</strong>: <a href="sample/AnonymousEventExam.java">AnonymousEventExam.java</a> (경로: <code class="language-plaintext highlighter-rouge">sample/AnonymousEventExam.java</code>)</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.awt.Frame</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.Button</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.FlowLayout</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.event.WindowAdapter</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.event.WindowEvent</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.event.ActionListener</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.event.ActionEvent</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">AnonymousEventExam</span> <span class="o">{</span>
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
@@ -807,17 +878,17 @@
 
         <span class="nc">Button</span> <span class="n">b</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Button</span><span class="o">(</span><span class="s">"Close Window"</span><span class="o">);</span>
 
-        <span class="c1">// 1. 버튼 클릭 처리 (ActionListener)</span>
+        <span class="c1">// 1. 버튼 클릭 반응기를 괄호 안에서 '즉석(익명)'으로 생성하여 등록합니다!</span>
         <span class="n">b</span><span class="o">.</span><span class="na">addActionListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">ActionListener</span><span class="o">()</span> <span class="o">{</span>
             <span class="nd">@Override</span>
             <span class="kd">public</span> <span class="kt">void</span> <span class="nf">actionPerformed</span><span class="o">(</span><span class="nc">ActionEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
                 <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Close button clicked"</span><span class="o">);</span>
-                <span class="nc">System</span><span class="o">.</span><span class="na">exit</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">exit</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span> <span class="c1">// 프로그램 즉시 종료</span>
             <span class="o">}</span>
         <span class="o">});</span>
 
-        <span class="c1">// 2. 윈도우 'X' 버튼 처리 (WindowListener -&gt; WindowAdapter)</span>
-        <span class="c1">// WindowListener는 구현해야 할 메서드가 7개나 되므로, 필요한 메서드만 재정의할 수 있게 어댑터 클래스를 사용합니다.</span>
+        <span class="c1">// 2. WindowListener 대신 WindowAdapter라는 고마운 도우미 클래스를 이용해 </span>
+        <span class="c1">// 7개의 귀찮은 메서드 중 'windowClosing' 딱 하나만 즉석 재정의합니다!</span>
         <span class="n">f</span><span class="o">.</span><span class="na">addWindowListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">WindowAdapter</span><span class="o">()</span> <span class="o">{</span>
             <span class="nd">@Override</span>
             <span class="kd">public</span> <span class="kt">void</span> <span class="nf">windowClosing</span><span class="o">(</span><span class="nc">WindowEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
@@ -831,13 +902,70 @@
 <span class="o">}</span>
 </code></pre></div></div>
 
-<h3 id="-어댑터adapter-클래스란">* 어댑터(Adapter) 클래스란?</h3>
-<p>인터페이스의 모든 메서드를 구현하는 것이 번거로울 때(예: <code class="language-plaintext highlighter-rouge">WindowListener</code>는 7개의 메서드가 있음), 빈 껍데기 메서드들로 미리 구현되어 있는 <strong>어댑터 클래스</strong>(예: <code class="language-plaintext highlighter-rouge">WindowAdapter</code>)를 상속받아 <strong>필요한 메서드만 재정의(Override)</strong>하여 사용할 수 있도록 제공되는 클래스입니다.</p>
+<h4 id="️-anonymouseventexam-실행-결과-화면">🖥️ AnonymousEventExam 실행 결과 화면</h4>
+
+<p><img src="./img/anonymous_event_result.png" alt="AnonymousEventExam 실행 결과" /></p>
+
+<hr />
+
+<h2 id="️-핵심-꿀팁-어댑터adapter-클래스가-왜-존재할까요">🛠️ 핵심 꿀팁: 어댑터(Adapter) 클래스가 왜 존재할까요?</h2>
+
+<p>자바의 <strong>WindowListener</strong>나 <strong>MouseListener</strong> 인터페이스는 창의 상태 변경(켜짐, 꺼짐, 최소화, 활성화 등)이나 마우스 움직임(클릭, 휠, 이동 등)을 전부 잡기 위해 내부에 구현해야 할 메서드가 5~7개씩 들어있습니다. 
+만약 우리가 ‘마우스 클릭 하나’ 또는 ‘창 닫기 하나’만 처리하고 싶어도, 인터페이스의 규칙 때문에 빈 껍데기 메서드를 전부 억지로 적어주어야 해서 코드가 아주 지저분해집니다.</p>
+
+<p>이를 해결하기 위해 자바는 <strong>빈 껍데기로 모든 메서드를 미리 채워둔 클래스인 어댑터(Adapter)</strong>를 선물로 제공합니다!</p>
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">WindowListener</code> -&gt; <code class="language-plaintext highlighter-rouge">WindowAdapter</code></li>
-  <li><code class="language-plaintext highlighter-rouge">MouseListener</code> -&gt; <code class="language-plaintext highlighter-rouge">MouseAdapter</code></li>
-  <li><code class="language-plaintext highlighter-rouge">KeyListener</code> -&gt; <code class="language-plaintext highlighter-rouge">KeyAdapter</code></li>
-  <li>(단, <code class="language-plaintext highlighter-rouge">ActionListener</code>는 구현할 메서드가 하나뿐이므로 별도의 어댑터가 존재하지 않습니다.)</li>
+  <li><code class="language-plaintext highlighter-rouge">WindowListener</code> 대신 ➡️ <code class="language-plaintext highlighter-rouge">WindowAdapter</code> 상속 사용</li>
+  <li><code class="language-plaintext highlighter-rouge">MouseListener</code> 대신 ➡️ <code class="language-plaintext highlighter-rouge">MouseAdapter</code> 상속 사용</li>
+  <li><code class="language-plaintext highlighter-rouge">KeyListener</code> 대신 ➡️ <code class="language-plaintext highlighter-rouge">KeyAdapter</code> 상속 사용</li>
+  <li><em>(주의: <code class="language-plaintext highlighter-rouge">ActionListener</code>는 구현해야 할 메서드가 <code class="language-plaintext highlighter-rouge">actionPerformed</code> 딱 1개뿐이므로 별도의 어댑터가 필요 없습니다!)</em></li>
+</ul>
+
+<hr />
+
+<h2 id="-컴파일-및-실행-방법">💻 컴파일 및 실행 방법</h2>
+
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 1. 04_awt_event 디렉토리로 이동 후 두 예제 파일 동시에 컴파일</span><span class="w">
+</span><span class="n">javac</span><span class="w"> </span><span class="nt">-d</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sample/EventExam.java</span><span class="w"> </span><span class="nx">sample/AnonymousEventExam.java</span><span class="w">
+
+</span><span class="c"># 2. EventExam 예제 실행</span><span class="w">
+</span><span class="n">java</span><span class="w"> </span><span class="nt">-cp</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">EventExam</span><span class="w">
+
+</span><span class="c"># 3. AnonymousEventExam 예제 실행</span><span class="w">
+</span><span class="n">java</span><span class="w"> </span><span class="nt">-cp</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">AnonymousEventExam</span><span class="w">
+</span></code></pre></div></div>
+
+<hr />
+
+<h2 id="-코딩-영단어-학습">🔤 코딩 영단어 학습</h2>
+
+<p>자바 이벤트 통신과 관련된 주요 영단어를 학습합니다.</p>
+
+<ul>
+  <li><strong>Delegation (델리게이션)</strong>
+    <ul>
+      <li><strong>뜻</strong>: 위임, 대리</li>
+      <li><strong>설명</strong>: 어떤 일(이벤트)을 자신이 직접 다 처리하는 대신, 미리 지정해 둔 반응 요원(리스너)에게 처리를 떠넘기는 이벤트 방식을 뜻합니다.</li>
+    </ul>
+  </li>
+  <li><strong>Source (소스)</strong>
+    <ul>
+      <li><strong>뜻</strong>: 원천, 시초, 출처</li>
+      <li><strong>설명</strong>: 이벤트가 태동한 컴포넌트입니다. 버튼 클릭 이벤트라면 버튼 객체가 소스가 됩니다.</li>
+    </ul>
+  </li>
+  <li><strong>Listener (리스너)</strong>
+    <ul>
+      <li><strong>뜻</strong>: 듣는 사람, 경청자</li>
+      <li><strong>설명</strong>: 이벤트 소스의 일거수일투족을 귀를 세우고 모니터링하다가 신호가 떨어지면 정해진 자바 로직을 일사불란하게 실행하는 클래스 요원입니다.</li>
+    </ul>
+  </li>
+  <li><strong>Adapter (어댑터)</strong>
+    <ul>
+      <li><strong>뜻</strong>: 변환 장치, 중개 조율 도구</li>
+      <li><strong>설명</strong>: 여러 개를 전부 오버라이딩해야 하는 리스너 인터페이스를 빈 메서드들의 세트로 선행 가공하여, 프로그래머가 손쉽게 오버라이딩하도록 징검다리 역할을 수행하는 유용한 클래스입니다.</li>
+    </ul>
+  </li>
 </ul>
 
 

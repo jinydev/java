@@ -697,6 +697,16 @@
 
 <p><img src="./img/dialog_hierarchy.svg" alt="다이얼로그 계층 구조" /></p>
 
+<h3 id="-비주얼-개념-잡기-모달modal과-모달리스modeless의-차이">💡 비주얼 개념 잡기: 모달(Modal)과 모달리스(Modeless)의 차이</h3>
+<p>다이얼로그의 동작 방식은 업무 환경의 <strong>서류</strong>와 <strong>포스트잇 메모</strong>에 비유할 수 있습니다!</p>
+
+<p><img src="./img/dialog_concept.png" alt="다이얼로그 개념도" /></p>
+
+<ul>
+  <li><strong>모달 (Modal - 비서의 긴급 결재판)</strong>: “사장님, 이 서류에 먼저 사인해 주셔야 다른 업무를 보실 수 있습니다!” 하고 불쑥 내미는 긴급 결재 서류와 같습니다. 다이얼로그를 확인하고 닫기 전까지는 뒤에 있는 주 화면(Owner Window)을 클릭하거나 조작할 수 없습니다 (입력 및 확인 강제).</li>
+  <li><strong>모달리스 (Modeless - 포스트잇 메모)</strong>: 모니터 옆에 살짝 붙여 두는 포스트잇 메모지와 같습니다. 메모 창이 계속 열려 있어도 주 화면의 책을 읽거나 타이핑하는 등 원래 보던 업무(주 화면 조작)를 동시에 자유롭게 진행할 수 있습니다.</li>
+</ul>
+
 <h2 id="1-다이얼로그-종류">1. 다이얼로그 종류</h2>
 <ul>
   <li><strong>모달(Modal)</strong>: 다이얼로그를 닫기 전까지 소유자 윈도우를 사용할 수 없음. (입력 강제)</li>
@@ -788,7 +798,7 @@
 <h3 id="예제-joptionpaneexample">예제 (<code class="language-plaintext highlighter-rouge">JOptionPaneExample</code>)</h3>
 
 <ul>
-  <li><strong>실습 예제 파일</strong>: <a href="file:///d:/site/jinysite/java/src/gui/2.swing/13_dialog/sample/sec13/exam02_joptionpane/JOptionPaneExample.java">JOptionPaneExample.java</a> (경로: <code class="language-plaintext highlighter-rouge">sample/sec13/exam02_joptionpane/JOptionPaneExample.java</code>)</li>
+  <li><strong>실습 예제 파일</strong>: <a href="sample/sec13/exam02_joptionpane/JOptionPaneExample.java">JOptionPaneExample.java</a> (경로: <code class="language-plaintext highlighter-rouge">sample/sec13/exam02_joptionpane/JOptionPaneExample.java</code>)</li>
   <li><strong>실행 방법</strong>:
     <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 1. 13_dialog 디렉토리로 이동 후 컴파일</span><span class="w">
 </span><span class="n">javac</span><span class="w"> </span><span class="nt">-d</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sample/sec13/exam02_joptionpane/JOptionPaneExample.java</span><span class="w">
@@ -908,6 +918,9 @@
 <span class="o">}</span>
 </code></pre></div></div>
 
+<h4 id="실행-결과-화면">실행 결과 화면</h4>
+<p><img src="./img/joptionpane_result.png" alt="JOptionPane 실행 결과" /></p>
+
 <hr />
 
 <h2 id="4-파일-다이얼로그-jfilechooser">4. 파일 다이얼로그 (JFileChooser)</h2>
@@ -923,7 +936,7 @@
 <h3 id="예제-jfilechooserexample">예제 (<code class="language-plaintext highlighter-rouge">JFileChooserExample</code>)</h3>
 
 <ul>
-  <li><strong>실습 예제 파일</strong>: <a href="file:///d:/site/jinysite/java/src/gui/2.swing/13_dialog/sample/sec13/exam03_jfilechooser/JFileChooserExample.java">JFileChooserExample.java</a> (경로: <code class="language-plaintext highlighter-rouge">sample/sec13/exam03_jfilechooser/JFileChooserExample.java</code>)</li>
+  <li><strong>실습 예제 파일</strong>: <a href="sample/sec13/exam03_jfilechooser/JFileChooserExample.java">JFileChooserExample.java</a> (경로: <code class="language-plaintext highlighter-rouge">sample/sec13/exam03_jfilechooser/JFileChooserExample.java</code>)</li>
   <li><strong>실행 방법</strong>:
     <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 1. 13_dialog 디렉토리로 이동 후 컴파일</span><span class="w">
 </span><span class="n">javac</span><span class="w"> </span><span class="nt">-d</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sample/sec13/exam03_jfilechooser/JFileChooserExample.java</span><span class="w">
@@ -995,6 +1008,9 @@
 <span class="o">}</span>
 </code></pre></div></div>
 
+<h4 id="실행-결과-화면-1">실행 결과 화면</h4>
+<p><img src="./img/jfilechooser_result.png" alt="JFileChooser 실행 결과" /></p>
+
 <hr />
 
 <h2 id="5-색상-다이얼로그-jcolorchooser">5. 색상 다이얼로그 (JColorChooser)</h2>
@@ -1013,9 +1029,6 @@
 </code></pre></div></div>
 
 
-
-<<<<<<< HEAD
-=======
 
             <!-- 다음/이전 학습 페이지네이션 -->
             
@@ -1193,7 +1206,6 @@
 </div>
 
 
->>>>>>> f06ad6aeea6428b1dcbcd8eb7feccf69341fcee5
             <div class="mt-10">
                 <!-- 구글 에스센스 광고 -->
                 <script async

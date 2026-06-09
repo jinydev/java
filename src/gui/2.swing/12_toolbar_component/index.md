@@ -11,6 +11,14 @@ keywords: "12. 툴바 컴포넌트, 자바, Java, 프로그래밍, 백엔드, �
 
 ![툴바 컴포넌트 구조](./img/toolbar_layout.svg)
 
+### 💡 비주얼 개념 잡기: 툴바의 편리함
+툴바의 기능은 히어로의 **유틸리티 벨트**나 책상 위 **자주 쓰는 도구 트레이**에 비유할 수 있습니다!
+
+![JToolBar 개념도](./img/toolbar_concept.png)
+
+* **JToolBar (즐겨찾기 도구함 / 퀵 트레이)**: 깊은 드롭다운 메뉴를 헤매지 않고, 자주 쓰는 기능(새 파일, 저장, 복사 등)을 단 한 번의 클릭으로 신속히 실행할 수 있도록 주요 도구 버튼들을 모아놓은 전용 트레이(도구 벨트)입니다.
+* **Floating (이동식 수납카트)**: 기본적으로는 프레임의 한쪽 경계(BorderLayout)에 고정되어 있지만, 사용자가 마우스로 드래그하면 화면 어디로든 분리해 독립된 창으로 떼어낼 수 있는 이동식 트레이 역할을 합니다.
+
 ## 1. JToolBar
 | 컴포넌트                 | 설명                        |
 | :----------------------- | :-------------------------- |
@@ -39,7 +47,7 @@ frame.add(toolBar, BorderLayout.NORTH);
 ## 2. 툴바 예제 (`JToolBarExample`)
 이미지 아이콘이 있는 버튼들로 구성된 툴바를 만들고, 클릭 이벤트를 처리하는 예제입니다.
 
-* **실습 예제 파일**: [JToolBarExample.java](file:///d:/site/jinysite/java/src/gui/2.swing/12_toolbar_component/sample/sec12/exam01_jtoolbar/JToolBarExample.java) (경로: `sample/sec12/exam01_jtoolbar/JToolBarExample.java`)
+* **실습 예제 파일**: [JToolBarExample.java](sample/sec12/exam01_jtoolbar/JToolBarExample.java) (경로: `sample/sec12/exam01_jtoolbar/JToolBarExample.java`)
 * **실행 방법**:
   ```powershell
   # 1. 12_toolbar_component 디렉토리로 이동 후 컴파일
@@ -175,3 +183,6 @@ public class JToolBarExample extends JFrame {
         });
     }
 }
+
+#### 실행 결과 화면
+![JToolBar 실행 결과](./img/jtoolbar_result.png)

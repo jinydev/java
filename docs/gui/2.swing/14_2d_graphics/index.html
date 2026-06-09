@@ -702,6 +702,17 @@
   <li><strong>Graphics</strong>: 그림을 그리는 도구 (붓)</li>
 </ul>
 
+<h3 id="-비주얼-개념-잡기-canvas와-graphics의-관계">💡 비주얼 개념 잡기: Canvas와 Graphics의 관계</h3>
+<p>자바에서 화면에 무언가를 그릴 때는 미술 시간의 <strong>도화지</strong>와 <strong>붓</strong>을 생각하면 아주 간단합니다!</p>
+
+<p><img src="./img/graphics_concept.png" alt="Canvas와 Graphics 개념도" /></p>
+
+<ul>
+  <li><strong>Canvas (도화지)</strong>: 그림이 그려지는 실제 컴포넌트(도화지)입니다. 도화지는 스스로 화면에 나타날 때(<code class="language-plaintext highlighter-rouge">paint()</code>) 그림을 그릴 준비를 마칩니다.</li>
+  <li><strong>Graphics (붓과 팔레트)</strong>: 도화지에 선(<code class="language-plaintext highlighter-rouge">drawLine</code>), 사각형(<code class="language-plaintext highlighter-rouge">drawRect</code>), 글자(<code class="language-plaintext highlighter-rouge">drawString</code>) 등을 직접 그려주는 도구(붓과 물감)입니다.</li>
+  <li><strong>Repaint (도화지 새로 바꿔 그리기)</strong>: 이미 그려진 도화지(화면)를 깨끗이 지우고 새로운 내용으로 다시 그리는 요청을 뜻합니다.</li>
+</ul>
+
 <h3 id="그리기-매커니즘">그리기 매커니즘</h3>
 <p><code class="language-plaintext highlighter-rouge">Canvas</code>는 화면에 보일 준비가 되면 <code class="language-plaintext highlighter-rouge">paint(Graphics g)</code> 메서드를 호출하여 그림을 그립니다.</p>
 
@@ -718,7 +729,7 @@
 <h3 id="예제-canvaspaintexample">예제 (<code class="language-plaintext highlighter-rouge">CanvasPaintExample</code>)</h3>
 
 <ul>
-  <li><strong>실습 예제 파일</strong>: <a href="file:///d:/site/jinysite/java/src/gui/2.swing/14_2d_graphics/sample/sec14/exam01_paint/CanvasPaintExample.java">CanvasPaintExample.java</a> (경로: <code class="language-plaintext highlighter-rouge">sample/sec14/exam01_paint/CanvasPaintExample.java</code>)</li>
+  <li><strong>실습 예제 파일</strong>: <a href="sample/sec14/exam01_paint/CanvasPaintExample.java">CanvasPaintExample.java</a> (경로: <code class="language-plaintext highlighter-rouge">sample/sec14/exam01_paint/CanvasPaintExample.java</code>)</li>
   <li><strong>실행 방법</strong>:
     <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 1. 14_2d_graphics 디렉토리로 이동 후 컴파일</span><span class="w">
 </span><span class="n">javac</span><span class="w"> </span><span class="nt">-d</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sample/sec14/exam01_paint/CanvasPaintExample.java</span><span class="w">
@@ -762,6 +773,9 @@
 <span class="o">}</span>
 </code></pre></div></div>
 
+<h4 id="실행-결과-화면">실행 결과 화면</h4>
+<p><img src="./img/paint_result.png" alt="CanvasPaintExample 실행 결과" /></p>
+
 <hr />
 
 <h2 id="2-다시-그리기-repaint">2. 다시 그리기 (Repaint)</h2>
@@ -785,7 +799,7 @@
 <h3 id="예제-마우스-드래그로-그림-그리기-repaintexample">예제: 마우스 드래그로 그림 그리기 (<code class="language-plaintext highlighter-rouge">RepaintExample</code>)</h3>
 
 <ul>
-  <li><strong>실습 예제 파일</strong>: <a href="file:///d:/site/jinysite/java/src/gui/2.swing/14_2d_graphics/sample/sec14/exam02_repaint/RepaintExample.java">RepaintExample.java</a> (경로: <code class="language-plaintext highlighter-rouge">sample/sec14/exam02_repaint/RepaintExample.java</code>)</li>
+  <li><strong>실습 예제 파일</strong>: <a href="sample/sec14/exam02_repaint/RepaintExample.java">RepaintExample.java</a> (경로: <code class="language-plaintext highlighter-rouge">sample/sec14/exam02_repaint/RepaintExample.java</code>)</li>
   <li><strong>실행 방법</strong>:
     <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 1. 14_2d_graphics 디렉토리로 이동 후 컴파일</span><span class="w">
 </span><span class="n">javac</span><span class="w"> </span><span class="nt">-d</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sample/sec14/exam02_repaint/RepaintExample.java</span><span class="w">
@@ -848,6 +862,9 @@
 <span class="o">}</span>
 </code></pre></div></div>
 
+<h4 id="실행-결과-화면-1">실행 결과 화면</h4>
+<p><img src="./img/repaint_result.png" alt="RepaintExample 실행 결과" /></p>
+
 <hr />
 
 <h2 id="3-그래픽-주요-메서드">3. 그래픽 주요 메서드</h2>
@@ -878,7 +895,7 @@
 <h3 id="예제-shapeexample">예제 (<code class="language-plaintext highlighter-rouge">ShapeExample</code>)</h3>
 
 <ul>
-  <li><strong>실습 예제 파일</strong>: <a href="file:///d:/site/jinysite/java/src/gui/2.swing/14_2d_graphics/sample/sec14/exam03_shape/ShapeExample.java">ShapeExample.java</a> (경로: <code class="language-plaintext highlighter-rouge">sample/sec14/exam03_shape/ShapeExample.java</code>)</li>
+  <li><strong>실습 예제 파일</strong>: <a href="sample/sec14/exam03_shape/ShapeExample.java">ShapeExample.java</a> (경로: <code class="language-plaintext highlighter-rouge">sample/sec14/exam03_shape/ShapeExample.java</code>)</li>
   <li><strong>실행 방법</strong>:
     <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 1. 14_2d_graphics 디렉토리로 이동 후 컴파일</span><span class="w">
 </span><span class="n">javac</span><span class="w"> </span><span class="nt">-d</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sample/sec14/exam03_shape/ShapeExample.java</span><span class="w">
@@ -928,6 +945,9 @@
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div></div>
+
+<h4 id="실행-결과-화면-2">실행 결과 화면</h4>
+<p><img src="./img/shape_result.png" alt="ShapeExample 실행 결과" /></p>
 
 <hr />
 
@@ -986,7 +1006,7 @@
 <h3 id="예제-backgroundimageexample">예제 (<code class="language-plaintext highlighter-rouge">BackgroundImageExample</code>)</h3>
 
 <ul>
-  <li><strong>실습 예제 파일</strong>: <a href="file:///d:/site/jinysite/java/src/gui/2.swing/14_2d_graphics/sample/sec14/exam06_background/BackgroundImageExample.java">BackgroundImageExample.java</a> (경로: <code class="language-plaintext highlighter-rouge">sample/sec14/exam06_background/BackgroundImageExample.java</code>)</li>
+  <li><strong>실습 예제 파일</strong>: <a href="sample/sec14/exam06_background/BackgroundImageExample.java">BackgroundImageExample.java</a> (경로: <code class="language-plaintext highlighter-rouge">sample/sec14/exam06_background/BackgroundImageExample.java</code>)</li>
   <li><strong>실행 방법</strong>:
     <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 1. 14_2d_graphics 디렉토리로 이동 후 컴파일</span><span class="w">
 </span><span class="n">javac</span><span class="w"> </span><span class="nt">-d</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sample/sec14/exam06_background/BackgroundImageExample.java</span><span class="w">
@@ -1043,12 +1063,12 @@
         <span class="nc">SwingUtilities</span><span class="o">.</span><span class="na">invokeLater</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="k">new</span> <span class="nc">BackgroundImageExample</span><span class="o">().</span><span class="na">setVisible</span><span class="o">(</span><span class="kc">true</span><span class="o">));</span>
     <span class="o">}</span>
 <span class="o">}</span>
+
+<span class="err">####</span> <span class="n">실행</span> <span class="n">결과</span> <span class="n">화면</span>
+<span class="o">![</span><span class="nc">BackgroundImageExample</span> <span class="n">실행</span> <span class="n">결과</span><span class="o">](./</span><span class="n">img</span><span class="o">/</span><span class="n">background_result</span><span class="o">.</span><span class="na">png</span><span class="o">)</span>
 </code></pre></div></div>
 
 
-
-<<<<<<< HEAD
-=======
 
             <!-- 다음/이전 학습 페이지네이션 -->
             
@@ -1233,7 +1253,6 @@
 </div>
 
 
->>>>>>> f06ad6aeea6428b1dcbcd8eb7feccf69341fcee5
             <div class="mt-10">
                 <!-- 구글 에스센스 광고 -->
                 <script async

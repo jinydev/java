@@ -5,16 +5,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- 기본 메타데이터 --><meta name="description" content="01. AWT 개요 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."><meta name="author" content="HojinLee"><!-- 제목 설정 --><title>01. AWT 개요</title>
-  <meta name="title" content="01. AWT 개요" /><!-- 키워드 설정 --><meta name="keywords" content="01. AWT 개요, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"><!-- Open Graph 메타데이터 --><meta property="og:title" content="01. AWT 개요"><meta property="og:description" content="01. AWT 개요 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."><meta property="og:type" content="website"><meta property="og:locale" content="ko">
+  <!-- 기본 메타데이터 --><meta name="description" content="01. AWT 개요 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."><meta name="author" content="HojinLee"><!-- 제목 설정 --><title>01. AWT 개요 및 첫 프로그램</title>
+  <meta name="title" content="01. AWT 개요 및 첫 프로그램" /><!-- 키워드 설정 --><meta name="keywords" content="01. AWT 개요, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"><!-- Open Graph 메타데이터 --><meta property="og:title" content="01. AWT 개요 및 첫 프로그램"><meta property="og:description" content="01. AWT 개요 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."><meta property="og:type" content="website"><meta property="og:locale" content="ko">
   <meta property="og:site_name" content="linux">
   <meta property="og:url" content="https://java.jiny.dev/gui/1.awt/01_awt_intro/">
   <!-- 대표 URL (캐노니컬) -->
   <link rel="canonical" href="https://java.jiny.dev/gui/1.awt/01_awt_intro/">
 
-  <!-- Twitter 카드 메타데이터 --><meta name="twitter:card" content="summary"><meta property="twitter:title" content="01. AWT 개요"><meta property="twitter:description" content="01. AWT 개요 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."><!-- Begin Jekyll SEO tag v2.8.0 -->
+  <!-- Twitter 카드 메타데이터 --><meta name="twitter:card" content="summary"><meta property="twitter:title" content="01. AWT 개요 및 첫 프로그램"><meta property="twitter:description" content="01. AWT 개요 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."><!-- Begin Jekyll SEO tag v2.8.0 -->
 <meta name="generator" content="Jekyll v4.4.1" />
-<meta property="og:title" content="AWT 개요" />
+<meta property="og:title" content="AWT 개요 및 첫 프로그램" />
 <meta name="author" content="Hojin" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="AWT 개요 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다." />
@@ -24,9 +24,9 @@
 <meta property="og:site_name" content="객체지향 자바 프로그래밍 (Object-Oriented Java Programming)" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="AWT 개요" />
+<meta property="twitter:title" content="AWT 개요 및 첫 프로그램" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"AWT 개요 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다.","headline":"AWT 개요","url":"https://java.jiny.dev/gui/1.awt/01_awt_intro/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"AWT 개요 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다.","headline":"AWT 개요 및 첫 프로그램","url":"https://java.jiny.dev/gui/1.awt/01_awt_intro/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -683,7 +683,7 @@
         
         
         
-        <li class="breadcrumb-item active" aria-current="page">01. AWT 개요</li>
+        <li class="breadcrumb-item active" aria-current="page">01. AWT 개요 및 첫 프로그램</li>
         
         
         
@@ -691,80 +691,90 @@
 </nav>
 
         <div class="bd-content ps-lg-2">
-            <h1 id="01-awt-개요">01. AWT 개요</h1>
+            <h1 id="01-awt-개요-및-첫-프로그램">01. AWT 개요 및 첫 프로그램</h1>
 
-<h2 id="1-awtabstract-window-toolkit란">1. AWT(Abstract Window Toolkit)란?</h2>
-<p>AWT는 자바가 처음 1.0 버전을 발표하면서 함께 배포된 <strong>자바의 기본 GUI 라이브러리</strong>입니다.</p>
-
-<h3 id="특징">특징</h3>
-<ol>
-  <li><strong>OS 네이티브 컴포넌트 사용 (Heavyweight)</strong>:
-    <ul>
-      <li>AWT 컴포넌트를 생성하면 운영체제(OS)의 해당 컴포넌트(Peer)가 실제로 생성됩니다.</li>
-      <li>예를 들어, AWT <code class="language-plaintext highlighter-rouge">Button</code>을 만들면 윈도우에서는 윈도우 버튼이, 맥에서는 맥 버튼이 생성됩니다.</li>
-      <li>따라서 <strong>OS에 따라 모양과 동작이 다를 수 있습니다.</strong></li>
-    </ul>
-  </li>
-  <li><strong>빠른 속도</strong>:
-    <ul>
-      <li>OS의 컴포넌트를 직접 사용하기 때문에 처리 속도가 빠릅니다.</li>
-    </ul>
-  </li>
-  <li><strong>제한적인 디자인</strong>:
-    <ul>
-      <li>OS마다 공통으로 존재하는 컴포넌트만 지원해야 하므로, 복잡하고 다양한 디자인을 구현하기 어렵습니다.</li>
-    </ul>
-  </li>
-</ol>
+<p>자바 GUI 프로그래밍의 역사가 시작된 곳, <strong>AWT</strong>에 오신 것을 환영합니다! 🚀 AWT가 무엇인지 알아보고, 화면에 멋진 자바 창을 띄워봅시다.</p>
 
 <hr />
 
-<h2 id="2-awt와-swing-비교">2. AWT와 Swing 비교</h2>
+<h2 id="1-awtabstract-window-toolkit란">1. AWT(Abstract Window Toolkit)란?</h2>
+
+<p>자바가 1.0 버전을 통해 세상에 처음 공개되었을 때 함께 포함되었던 <strong>자바 최초의 GUI 라이브러리</strong>입니다.</p>
+
+<h3 id="-그림으로-이해하는-awt의-핵심-특징-heavyweight-무거운-컴포넌트">💡 그림으로 이해하는 AWT의 핵심 특징: Heavyweight (무거운 컴포넌트)</h3>
+
+<p>AWT가 윈도우 창을 만들거나 버튼을 생성할 때, 내부적으로는 어떤 일이 일어날까요? 실생활의 비유를 통해 알아봅시다!</p>
+
+<blockquote>
+  <p><strong>AWT는 ‘OS 대여점’에서 물건을 빌려 쓰는 방식입니다.</strong> 🛠️</p>
+
+  <p>자바 프로그램이 직접 버튼을 깎아서 만드는 것이 아니라, 자바가 작동 중인 운영체제(Windows, macOS 등)에게 <strong>“버튼 하나만 대여해 주세요!”</strong> 하고 부탁합니다.</p>
+  <ul>
+    <li><strong>Windows</strong>에서 실행하면 <strong>Windows 스타일 버튼</strong>을 대여해 화면에 띄웁니다.</li>
+    <li><strong>macOS</strong>에서 실행하면 <strong>macOS 스타일 버튼</strong>을 대여해 화면에 띄웁니다.</li>
+  </ul>
+
+  <p>이렇게 운영체제의 실제 UI 부품(이를 <strong>Peer</strong>라고 불러요)을 빌려와 화면에 얹어놓기 때문에, AWT 컴포넌트는 굉장히 무겁고 운영체제에 종속적이라서 <strong>‘Heavyweight(무거운) 컴포넌트’</strong>라고 불립니다.</p>
+</blockquote>
+
+<p><img src="./img/awt_concept.png" alt="AWT Heavyweight 개념" /></p>
+
+<h3 id="awt의-핵심-장단점">AWT의 핵심 장단점</h3>
+<ul>
+  <li><strong>👍 장점: 빠른 렌더링 속도</strong>
+운영체제(OS)가 이미 만들어둔 부품을 직접 가져와 화면에 바로 그리므로, 처리 속도가 매우 빠르고 컴퓨터 리소스를 덜 소모합니다.</li>
+  <li><strong>👎 단점: 운영체제 종속적 디자인</strong>
+Windows에서 만든 프로그램이 macOS로 가면 디자인과 레이아웃이 삐뚤어지거나 다르게 보일 수 있습니다. OS마다 대여해 주는 버튼의 두께나 크기가 조금씩 다르기 때문입니다. 또한, OS들이 공통으로 가지고 있지 않은 특이하고 화려한 컴포넌트는 만들 수가 없습니다.</li>
+</ul>
+
+<hr />
+
+<h2 id="2-awt와-swing-한눈에-비교하기">2. AWT와 Swing 한눈에 비교하기</h2>
+
+<p>AWT의 단점(OS 종속성)을 극복하기 위해 등장한 것이 바로 <strong>Swing</strong>입니다. 두 기술의 성격은 다음과 같이 다릅니다.</p>
 
 <table>
   <thead>
     <tr>
       <th style="text-align: left">구분</th>
-      <th style="text-align: left">AWT</th>
-      <th style="text-align: left">Swing</th>
+      <th style="text-align: left">AWT (<code class="language-plaintext highlighter-rouge">java.awt</code>)</th>
+      <th style="text-align: left">Swing (<code class="language-plaintext highlighter-rouge">javax.swing</code>)</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td style="text-align: left"><strong>패키지</strong></td>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">java.awt</code></td>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">javax.swing</code></td>
+      <td style="text-align: left"><strong>작동 원리</strong></td>
+      <td style="text-align: left">OS의 네이티브 부품을 대여함 (<strong>Heavyweight</strong>)</td>
+      <td style="text-align: left">자바 캔버스 위에 직접 그림 (<strong>Lightweight</strong>)</td>
     </tr>
     <tr>
-      <td style="text-align: left"><strong>컴포넌트 타입</strong></td>
-      <td style="text-align: left">Heavyweight (운영체제 의존)</td>
-      <td style="text-align: left">Lightweight (Pure Java)</td>
+      <td style="text-align: left"><strong>디자인 일관성</strong></td>
+      <td style="text-align: left">OS에 따라 화면 모양이 달라짐 (OS 의존성 높음)</td>
+      <td style="text-align: left">모든 OS에서 항상 일관되고 예쁜 디자인 유지</td>
     </tr>
     <tr>
-      <td style="text-align: left"><strong>OS 의존성</strong></td>
-      <td style="text-align: left">높음 (OS마다 모양 다름)</td>
-      <td style="text-align: left">낮음 (모든 OS에서 동일한 모양)</td>
+      <td style="text-align: left"><strong>렌더링 속도</strong></td>
+      <td style="text-align: left">OS 직접 제어로 매우 빠름</td>
+      <td style="text-align: left">상대적으로 컴퓨터 리소스를 더 소모함</td>
     </tr>
     <tr>
-      <td style="text-align: left"><strong>속도</strong></td>
-      <td style="text-align: left">빠름</td>
-      <td style="text-align: left">상대적으로 느림 (JVM이 그림)</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><strong>확장성</strong></td>
-      <td style="text-align: left">낮음</td>
-      <td style="text-align: left">높음 (다양한 컴포넌트 제공)</td>
+      <td style="text-align: left"><strong>디자인 자유도</strong></td>
+      <td style="text-align: left">기본 제공하는 것 외의 세밀한 커스텀이 어려움</td>
+      <td style="text-align: left">자유롭고 화려한 스킨(Look &amp; Feel) 설정 가능</td>
     </tr>
   </tbody>
 </table>
 
 <hr />
 
-<h2 id="3-awt-애플리케이션-구조">3. AWT 애플리케이션 구조</h2>
+<h2 id="3-첫-awt-프로그램-hello-awt">3. 첫 AWT 프로그램: Hello AWT!</h2>
 
-<p>AWT 프로그램은 기본적으로 <code class="language-plaintext highlighter-rouge">Frame</code>을 컨테이너로 사용하여 그 안에 <code class="language-plaintext highlighter-rouge">Button</code>, <code class="language-plaintext highlighter-rouge">Label</code> 등의 컴포넌트를 배치하는 방식으로 작성합니다.</p>
+<p>AWT 프로그램의 기본 캔버스가 되는 <code class="language-plaintext highlighter-rouge">Frame</code>(창)을 만들고, 그 위에 클릭할 수 있는 <code class="language-plaintext highlighter-rouge">Button</code>을 하나 얹어보겠습니다.</p>
 
-<h3 id="예제-코드-hello-awt">예제 코드: Hello AWT</h3>
+<h3 id="-실습-예제-소스-코드">📄 실습 예제 소스 코드</h3>
+<ul>
+  <li><strong>실습 예제 파일</strong>: <a href="sample/AwtExample.java">AwtExample.java</a> (경로: <code class="language-plaintext highlighter-rouge">sample/AwtExample.java</code>)</li>
+</ul>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.awt.Frame</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">java.awt.Button</span><span class="o">;</span>
@@ -772,26 +782,78 @@
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">AwtExample</span> <span class="o">{</span>
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-        <span class="c1">// 1. 프레임(윈도우) 생성</span>
+        <span class="c1">// 1. 프레임(윈도우 창) 생성 - 창 제목을 지정합니다</span>
         <span class="nc">Frame</span> <span class="n">f</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Frame</span><span class="o">(</span><span class="s">"Hello AWT"</span><span class="o">);</span>
 
-        <span class="c1">// 2. 레이아웃 설정 (컴포넌트 배치 방식)</span>
+        <span class="c1">// 2. 레이아웃 설정 (컴포넌트를 물 흐르듯 순서대로 배치하는 FlowLayout 사용)</span>
         <span class="n">f</span><span class="o">.</span><span class="na">setLayout</span><span class="o">(</span><span class="k">new</span> <span class="nc">FlowLayout</span><span class="o">());</span>
 
-        <span class="c1">// 3. 버튼 생성 및 추가</span>
+        <span class="c1">// 3. 버튼 컴포넌트 생성 및 프레임에 추가</span>
         <span class="nc">Button</span> <span class="n">b</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Button</span><span class="o">(</span><span class="s">"Click Me"</span><span class="o">);</span>
         <span class="n">f</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">b</span><span class="o">);</span>
 
-        <span class="c1">// 4. 프레임 크기 설정 및 보이기</span>
+        <span class="c1">// 4. 프레임의 크기 설정 (너비 300픽셀, 높이 200픽셀)</span>
         <span class="n">f</span><span class="o">.</span><span class="na">setSize</span><span class="o">(</span><span class="mi">300</span><span class="o">,</span> <span class="mi">200</span><span class="o">);</span>
+        
+        <span class="c1">// 5. 프레임을 화면에 표시 (이 코드가 없으면 눈에 보이지 않아요)</span>
         <span class="n">f</span><span class="o">.</span><span class="na">setVisible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div></div>
 
+<h3 id="-컴파일-및-실행-방법">💻 컴파일 및 실행 방법</h3>
+<p>터미널에서 아래 명령어를 차례대로 입력하여 첫 AWT 프로그램을 실행해 봅시다.</p>
+
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 1. 01_awt_intro 디렉토리로 이동 후 컴파일 (클래스 파일을 sample 폴더 안에 생성)</span><span class="w">
+</span><span class="n">javac</span><span class="w"> </span><span class="nt">-d</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">sample/AwtExample.java</span><span class="w">
+
+</span><span class="c"># 2. 클래스패스를 지정하여 실행</span><span class="w">
+</span><span class="n">java</span><span class="w"> </span><span class="nt">-cp</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="nx">AwtExample</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="️-실행-결과-화면">🖥️ 실행 결과 화면</h3>
+
+<p><img src="./img/awt_result.png" alt="AwtExample 실행 결과" /></p>
+
 <blockquote>
-  <p><strong>주의</strong>: 위 코드는 윈도우 닫기 버튼을 눌러도 닫히지 않습니다. AWT는 이벤트 처리를 직접 구현해야 하기 때문입니다. (04. 이벤트 처리 챕터에서 학습합니다.)</p>
+  <p><strong>⚠️ 아주 중요한 주의 사항!</strong>
+이 프로그램을 실행한 뒤 오른쪽 위의 <strong>닫기 버튼(X)</strong>을 눌러도 창이 닫히지 않아 당황하셨을 겁니다! 
+그 이유는 AWT는 창을 닫는 사건(Window Closing Event)을 직접 코드로 감지하고 처리해 주어야 하기 때문입니다. 프로그램 종료를 원하시면 터미널 창에서 <strong><code class="language-plaintext highlighter-rouge">Ctrl + C</code></strong>를 눌러 강제 종료해 주세요. 
+창을 우아하게 닫는 마법은 <strong>[04. AWT 이벤트 처리]</strong> 챕터에서 친절하게 배웁니다!</p>
 </blockquote>
+
+<hr />
+
+<h2 id="-코딩-영단어-학습">🔤 코딩 영단어 학습</h2>
+
+<p>자바 GUI 프로그래밍을 더 깊게 이해하기 위해 필수 단어들을 익혀둡니다.</p>
+
+<ul>
+  <li><strong>Toolkit (툴킷)</strong>
+    <ul>
+      <li><strong>뜻</strong>: 도구 상자</li>
+      <li><strong>설명</strong>: 화면을 그리는 데 쓰이는 버튼, 텍스트 상자 등의 유용한 클래스 도구들을 모아놓은 패키지를 의미합니다.</li>
+    </ul>
+  </li>
+  <li><strong>Heavyweight (헤비웨이트)</strong>
+    <ul>
+      <li><strong>뜻</strong>: 무거운, 중량의</li>
+      <li><strong>설명</strong>: 자바 자체적으로 그리는 대신 OS에 직접 요청하여 물리적인 UI 리소스를 통째로 끌고 와야 하므로 ‘무겁다’고 부릅니다.</li>
+    </ul>
+  </li>
+  <li><strong>Native (네이티브)</strong>
+    <ul>
+      <li><strong>뜻</strong>: 태어난 곳의, 원래의</li>
+      <li><strong>설명</strong>: 컴퓨터 분야에서는 ‘특정 운영체제(Windows, macOS)에 기본으로 갖춰진 것’을 의미합니다. AWT 버튼은 OS 네이티브 버튼입니다.</li>
+    </ul>
+  </li>
+  <li><strong>Peer (피어)</strong>
+    <ul>
+      <li><strong>뜻</strong>: 동료, 대응자</li>
+      <li><strong>설명</strong>: 자바 내부의 Button 객체와 실제 연결되어 동작하는 Windows나 macOS의 진짜 OS 버튼 부품을 지칭하는 용어입니다.</li>
+    </ul>
+  </li>
+</ul>
 
 
 
