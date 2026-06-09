@@ -693,51 +693,31 @@
         <div class="bd-content ps-lg-2">
             <h1 id="06-javafx-속성-감시와-바인딩">06. JavaFX 속성 감시와 바인딩</h1>
 
-<p>JavaFX는 컨트롤의 <strong>속성(Property)</strong>을 감시하는 리스너를 설정할 수 있습니다. 예를 들어 <code class="language-plaintext highlighter-rouge">Slider</code>의 <code class="language-plaintext highlighter-rouge">value</code> 속성값을 감시하여, 값이 변경되면 <code class="language-plaintext highlighter-rouge">Label</code>의 폰트 크기나 이미지의 크기를 실시간으로 변경할 수 있습니다.</p>
+<p>매번 자바 코드로 값을 확인해서 변경 값을 손수 대입하던 방식에서 벗어나, 데이터와 화면을 톱니바퀴처럼 엮어 자동으로 값이 전파되게 돕는 JavaFX의 꽃인 <strong>속성(Property)</strong>과 <strong>바인딩(Binding)</strong>에 대해 학습해 봅시다! 🔗</p>
 
 <hr />
 
 <h2 id="1-속성-감시-property-monitoring">1. 속성 감시 (Property Monitoring)</h2>
 
-<p>JavaFX 컨트롤의 모든 속성은 <code class="language-plaintext highlighter-rouge">XXXProperty</code> 객체로 생성됩니다. 이는 Getter/Setter 외에도 속성 객체 자체를 리턴하는 <code class="language-plaintext highlighter-rouge">xxxProperty()</code> 메소드를 제공합니다.</p>
+<p>자바 JavaFX 컨트롤러의 수많은 변수(폰트 크기, 텍스트 글자 등)는 모두 단순 타입이 아니라 <code class="language-plaintext highlighter-rouge">SimpleStringProperty</code>, <code class="language-plaintext highlighter-rouge">SimpleIntegerProperty</code> 등의 <strong>Property 속성 객체</strong>로 한 겹 포장되어 관리됩니다.
+덕분에 우리는 속성 값이 변하는 모든 찰나의 순간을 감시하는 <strong>리스너(Listener)</strong>를 달아줄 수 있습니다.</p>
 
-<h3 id="예-textfield의-text-속성">예: TextField의 text 속성</h3>
-<p><code class="language-plaintext highlighter-rouge">TextField</code>의 <code class="language-plaintext highlighter-rouge">text</code> 속성은 <code class="language-plaintext highlighter-rouge">StringProperty</code> 타입입니다.</p>
+<h3 id="-톱니바퀴-바인딩-비유">💡 톱니바퀴 바인딩 비유</h3>
+<blockquote>
+  <p><strong>단방향 바인딩(Uni-directional)</strong>: 구동 기어(A)가 돌면 피구동 기어(B)가 벨트에 엮여서 똑같이 돌지만, B를 손으로 억지로 돌릴 수는 없는 구조입니다.
+<strong>양방향 바인딩(Bi-directional)</strong>: 두 기어 A와 B가 완전히 맞물려 맞물린 기어 형태로 도는 것과 같아서, A를 돌리든 B를 돌리든 양쪽 모두 똑같은 값으로 회전합니다.</p>
+</blockquote>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// StringProperty 타입의 text 속성 선언</span>
-<span class="kd">private</span> <span class="nc">StringProperty</span> <span class="n">text</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">SimpleStringProperty</span><span class="o">();</span>
+<p><img src="./img/javafx_properties_binding.png" alt="JavaFX 속성 바인딩 개념" /></p>
 
-<span class="c1">// Getter와 Setter</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setText</span><span class="o">(</span><span class="nc">String</span> <span class="n">newValue</span><span class="o">)</span> <span class="o">{</span> <span class="n">text</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="n">newValue</span><span class="o">);</span> <span class="o">}</span>
-<span class="kd">public</span> <span class="nc">String</span> <span class="nf">getText</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="n">text</span><span class="o">.</span><span class="na">get</span><span class="o">();</span> <span class="o">}</span>
+<hr />
 
-<span class="c1">// StringProperty 객체를 리턴하는 메소드</span>
-<span class="kd">public</span> <span class="nc">StringProperty</span> <span class="nf">textProperty</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="n">text</span><span class="o">;</span> <span class="o">}</span>
-</code></pre></div></div>
+<h2 id="2-속성-변경-감시-실습-changelistener">2. 속성 변경 감시 실습: ChangeListener</h2>
 
-<h3 id="리스너-등록-changelistener">리스너 등록 (<code class="language-plaintext highlighter-rouge">ChangeListener</code>)</h3>
-<p><code class="language-plaintext highlighter-rouge">addListener()</code> 메소드를 사용하여 속성 변경 시 실행될 코드를 등록할 수 있습니다.</p>
+<p><code class="language-plaintext highlighter-rouge">Slider</code>(볼륨 조절 슬라이더 등)를 마우스로 조작해 값이 바뀌면, 리스너가 이를 캐치하여 <code class="language-plaintext highlighter-rouge">Label</code>의 폰트 크기를 연동해 키워주는 반응형 화면을 제작할 수 있습니다.</p>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">slider</span><span class="o">.</span><span class="na">valueProperty</span><span class="o">().</span><span class="na">addListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">ChangeListener</span><span class="o">&lt;</span><span class="nc">Number</span><span class="o">&gt;()</span> <span class="o">{</span>
-    <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">changed</span><span class="o">(</span><span class="nc">ObservableValue</span><span class="o">&lt;?</span> <span class="kd">extends</span> <span class="nc">Number</span><span class="o">&gt;</span> <span class="n">observable</span><span class="o">,</span> 
-                        <span class="nc">Number</span> <span class="n">oldValue</span><span class="o">,</span> <span class="nc">Number</span> <span class="n">newValue</span><span class="o">)</span> <span class="o">{</span>
-        <span class="c1">// 속성값이 변경되었을 때 실행되는 코드</span>
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"변경전: "</span> <span class="o">+</span> <span class="n">oldValue</span> <span class="o">+</span> <span class="s">", 변경후: "</span> <span class="o">+</span> <span class="n">newValue</span><span class="o">);</span>
-    <span class="o">}</span>
-<span class="o">});</span>
-</code></pre></div></div>
-
-<ul>
-  <li><strong>oldValue</strong>: 변경 전 값</li>
-  <li><strong>newValue</strong>: 변경 후 값 (새로운 값)</li>
-</ul>
-
-<h3 id="예제-slider-값에-따른-폰트-크기-변경">예제: Slider 값에 따른 폰트 크기 변경</h3>
-
-<p><strong>root.fxml</strong></p>
+<h3 id="1-fxml-설계-rootfxml">1) FXML 설계 (<code class="language-plaintext highlighter-rouge">root.fxml</code>)</h3>
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-
 <span class="cp">&lt;?import javafx.scene.layout.BorderPane?&gt;</span>
 <span class="cp">&lt;?import javafx.scene.control.Label?&gt;</span>
 <span class="cp">&lt;?import javafx.scene.text.Font?&gt;</span>
@@ -745,21 +725,23 @@
 
 <span class="nt">&lt;BorderPane</span> <span class="na">xmlns:fx=</span><span class="s">"http://javafx.com/fxml"</span>
             <span class="na">fx:controller=</span><span class="s">"sec06.exam01_property_listener.RootController"</span>
-            <span class="na">prefHeight=</span><span class="s">"250.0"</span> <span class="na">prefWidth=</span><span class="s">"350.0"</span><span class="nt">&gt;</span>
+            <span class="na">prefHeight=</span><span class="s">"150.0"</span> <span class="na">prefWidth=</span><span class="s">"300.0"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;center&gt;</span>
-        <span class="nt">&lt;Label</span> <span class="na">fx:id=</span><span class="s">"label"</span> <span class="na">text=</span><span class="s">"JavaFX"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;Label</span> <span class="na">fx:id=</span><span class="s">"label"</span> <span class="na">text=</span><span class="s">"자바스크립트"</span><span class="nt">&gt;</span>
             <span class="nt">&lt;font&gt;</span>
-                <span class="nt">&lt;Font</span> <span class="na">size=</span><span class="s">"0"</span><span class="nt">/&gt;</span>
+                <span class="c">&lt;!-- 초기 폰트 크기 0 --&gt;</span>
+                <span class="nt">&lt;Font</span> <span class="na">size=</span><span class="s">"10.0"</span><span class="nt">/&gt;</span>
             <span class="nt">&lt;/font&gt;</span>
         <span class="nt">&lt;/Label&gt;</span>
     <span class="nt">&lt;/center&gt;</span>
     <span class="nt">&lt;bottom&gt;</span>
-        <span class="nt">&lt;Slider</span> <span class="na">fx:id=</span><span class="s">"slider"</span><span class="nt">/&gt;</span>
+        <span class="c">&lt;!-- 값 조절용 슬라이더 바 --&gt;</span>
+        <span class="nt">&lt;Slider</span> <span class="na">fx:id=</span><span class="s">"slider"</span> <span class="na">min=</span><span class="s">"10"</span> <span class="na">max=</span><span class="s">"60"</span> <span class="na">showTickLabels=</span><span class="s">"true"</span> <span class="nt">/&gt;</span>
     <span class="nt">&lt;/bottom&gt;</span>
 <span class="nt">&lt;/BorderPane&gt;</span>
 </code></pre></div></div>
 
-<p><strong>RootController.java</strong></p>
+<h3 id="2-제어기-구현-rootcontrollerjava">2) 제어기 구현 (<code class="language-plaintext highlighter-rouge">RootController.java</code>)</h3>
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">sec06.exam01_property_listener</span><span class="o">;</span>
 
 <span class="kn">import</span> <span class="nn">java.net.URL</span><span class="o">;</span>
@@ -778,12 +760,12 @@
 
     <span class="nd">@Override</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">initialize</span><span class="o">(</span><span class="no">URL</span> <span class="n">location</span><span class="o">,</span> <span class="nc">ResourceBundle</span> <span class="n">resources</span><span class="o">)</span> <span class="o">{</span>
-        <span class="c1">// Slider의 value 속성 감시 설정</span>
+        <span class="c1">// Slider의 value 속성에 ChangeListener(변화 대기자) 등록</span>
         <span class="n">slider</span><span class="o">.</span><span class="na">valueProperty</span><span class="o">().</span><span class="na">addListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">ChangeListener</span><span class="o">&lt;</span><span class="nc">Number</span><span class="o">&gt;()</span> <span class="o">{</span>
             <span class="nd">@Override</span>
             <span class="kd">public</span> <span class="kt">void</span> <span class="nf">changed</span><span class="o">(</span><span class="nc">ObservableValue</span><span class="o">&lt;?</span> <span class="kd">extends</span> <span class="nc">Number</span><span class="o">&gt;</span> <span class="n">observable</span><span class="o">,</span> 
                                 <span class="nc">Number</span> <span class="n">oldValue</span><span class="o">,</span> <span class="nc">Number</span> <span class="n">newValue</span><span class="o">)</span> <span class="o">{</span>
-                <span class="c1">// Label의 폰트 크기를 Slider의 값으로 변경</span>
+                <span class="c1">// 슬라이더 값이 변하면 라벨 폰트 크기에 실시간 적용!</span>
                 <span class="n">label</span><span class="o">.</span><span class="na">setFont</span><span class="o">(</span><span class="k">new</span> <span class="nc">Font</span><span class="o">(</span><span class="n">newValue</span><span class="o">.</span><span class="na">doubleValue</span><span class="o">()));</span>
             <span class="o">}</span>
         <span class="o">});</span>
@@ -793,145 +775,78 @@
 
 <hr />
 
-<h2 id="2-속성-바인딩-property-binding">2. 속성 바인딩 (Property Binding)</h2>
+<h2 id="3-속성-바인딩-property-binding">3. 속성 바인딩 (Property Binding)</h2>
 
-<p>속성 바인딩은 <strong>한 속성의 값이 변경되면 다른 속성의 값도 자동으로 변경</strong>되도록 연결하는 기능입니다.</p>
+<p>리스너 코드마저 타이핑하지 않고 아예 두 개의 변수 통로를 끈으로 연결해 묶는 방식입니다.</p>
 
-<h3 id="1-단방향-바인딩-unidirectional-binding">1) 단방향 바인딩 (Unidirectional Binding)</h3>
-<p>한쪽 속성이 변경될 때 다른 쪽 속성도 따라서 변경되지만, 반대는 성립하지 않습니다.</p>
+<h3 id="1-단방향-바인딩-unidirectional">1) 단방향 바인딩 (Unidirectional)</h3>
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">target.bind(source)</code>: source가 변하면 target도 변함.</li>
+  <li><strong>자바 식</strong>: <code class="language-plaintext highlighter-rouge">target.bind(source);</code> (source가 바뀌면 target은 강제로 따라 바뀝니다. 단, target을 강제 코드로 바꾸려 하면 에러가 납니다.)</li>
+  <li><strong>사용 예</strong>:
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">TextArea</span> <span class="n">txt1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TextArea</span><span class="o">();</span>
+<span class="nc">TextArea</span> <span class="n">txt2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TextArea</span><span class="o">();</span>
+<span class="c1">// txt1에 타이핑을 치면 txt2에 똑같이 복사되어 기입됩니다.</span>
+<span class="n">txt2</span><span class="o">.</span><span class="na">textProperty</span><span class="o">().</span><span class="na">bind</span><span class="o">(</span><span class="n">txt1</span><span class="o">.</span><span class="na">textProperty</span><span class="o">());</span>
+</code></pre></div>    </div>
+  </li>
 </ul>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">TextArea</span> <span class="n">textArea1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TextArea</span><span class="o">();</span>
-<span class="nc">TextArea</span> <span class="n">textArea2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TextArea</span><span class="o">();</span>
-<span class="c1">// textArea1이 변경되면 textArea2도 변경됨 (textArea2는 직접 수정 불가)</span>
-<span class="n">textArea2</span><span class="o">.</span><span class="na">textProperty</span><span class="o">().</span><span class="na">bind</span><span class="o">(</span><span class="n">textArea1</span><span class="o">.</span><span class="na">textProperty</span><span class="o">());</span>
-</code></pre></div></div>
-
-<h3 id="2-양방향-바인딩-bidirectional-binding">2) 양방향 바인딩 (Bidirectional Binding)</h3>
-<p>어느 한쪽이 변경되면 다른 쪽도 함께 변경됩니다.</p>
+<h3 id="2-양방향-바인딩-bidirectional">2) 양방향 바인딩 (Bidirectional)</h3>
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">target.bindBidirectional(source)</code></li>
+  <li><strong>자바 식</strong>: <code class="language-plaintext highlighter-rouge">target.bindBidirectional(source);</code> (어느 한쪽을 수정하든 양측이 똑같은 값을 공유하여 동시 업데이트됩니다.)</li>
+  <li><strong>사용 예</strong>:
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">txt2</span><span class="o">.</span><span class="na">textProperty</span><span class="o">().</span><span class="na">bindBidirectional</span><span class="o">(</span><span class="n">txt1</span><span class="o">.</span><span class="na">textProperty</span><span class="o">());</span>
+</code></pre></div>    </div>
+  </li>
 </ul>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 방법 1</span>
-<span class="n">textArea2</span><span class="o">.</span><span class="na">textProperty</span><span class="o">().</span><span class="na">bindBidirectional</span><span class="o">(</span><span class="n">textArea1</span><span class="o">.</span><span class="na">textProperty</span><span class="o">());</span>
+<hr />
 
-<span class="c1">// 방법 2 (Bindings 클래스 사용)</span>
-<span class="nc">Bindings</span><span class="o">.</span><span class="na">bindBidirectional</span><span class="o">(</span><span class="n">textArea1</span><span class="o">.</span><span class="na">textProperty</span><span class="o">(),</span> <span class="n">textArea2</span><span class="o">.</span><span class="na">textProperty</span><span class="o">());</span>
-</code></pre></div></div>
+<h2 id="️-bindings-클래스의-연산-지원">🛠️ Bindings 클래스의 연산 지원</h2>
 
-<blockquote>
-  <p><strong>바인딩 해제</strong>: <code class="language-plaintext highlighter-rouge">unbind()</code> 또는 <code class="language-plaintext highlighter-rouge">unbindBidirectional()</code> 메소드 사용.</p>
-</blockquote>
+<p><code class="language-plaintext highlighter-rouge">Bindings</code> 유틸리티 클래스를 사용하면 단순 대입 바인딩뿐 아니라, 곱하기, 더하기, 화면 중앙 구하기 같은 복합 사칙 연산 결과를 엮어 바인딩할 수 있습니다.</p>
 
-<h3 id="예제-양방향-바인딩">예제: 양방향 바인딩</h3>
+<h3 id="예-원circle을-창-한가운데에-고정하기-반응형-창">예: 원(Circle)을 창 한가운데에 고정하기 (반응형 창)</h3>
+<p>창의 너비(<code class="language-plaintext highlighter-rouge">width</code>)와 높이(<code class="language-plaintext highlighter-rouge">height</code>)를 마우스로 늘릴 때, 원의 가로세로 중심축을 항상 창의 <strong>절반(2로 나누기)</strong> 크기로 바인딩해 두면, 원이 알아서 화면 중앙을 찾아 고정됩니다.</p>
 
-<p><strong>RootController.java</strong></p>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Override</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">initialize</span><span class="o">(</span><span class="no">URL</span> <span class="n">location</span><span class="o">,</span> <span class="nc">ResourceBundle</span> <span class="n">resources</span><span class="o">)</span> <span class="o">{</span>
-    <span class="c1">// 두 TextArea의 text 속성을 양방향 바인딩</span>
-    <span class="nc">Bindings</span><span class="o">.</span><span class="na">bindBidirectional</span><span class="o">(</span><span class="n">textArea1</span><span class="o">.</span><span class="na">textProperty</span><span class="o">(),</span> <span class="n">textArea2</span><span class="o">.</span><span class="na">textProperty</span><span class="o">());</span>
-<span class="o">}</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Circle의 centerX를 root 너비의 절반 값으로 실시간 묶기</span>
+<span class="n">circle</span><span class="o">.</span><span class="na">centerXProperty</span><span class="o">().</span><span class="na">bind</span><span class="o">(</span><span class="nc">Bindings</span><span class="o">.</span><span class="na">divide</span><span class="o">(</span><span class="n">root</span><span class="o">.</span><span class="na">widthProperty</span><span class="o">(),</span> <span class="mi">2</span><span class="o">));</span>
+<span class="c1">// Circle의 centerY를 root 높이의 절반 값으로 실시간 묶기</span>
+<span class="n">circle</span><span class="o">.</span><span class="na">centerYProperty</span><span class="o">().</span><span class="na">bind</span><span class="o">(</span><span class="nc">Bindings</span><span class="o">.</span><span class="na">divide</span><span class="o">(</span><span class="n">root</span><span class="o">.</span><span class="na">heightProperty</span><span class="o">(),</span> <span class="mi">2</span><span class="o">));</span>
 </code></pre></div></div>
 
 <hr />
 
-<h2 id="3-bindings-클래스">3. Bindings 클래스</h2>
+<h2 id="-코딩-영단어-학습">🔤 코딩 영단어 학습</h2>
 
-<p><code class="language-plaintext highlighter-rouge">Bindings</code> 클래스는 속성값의 연산, 변환, 조건문 등을 처리하여 바인딩할 수 있는 다양한 정적 메소드를 제공합니다.</p>
+<p>데이터와 뷰의 자동 동기화를 위한 핵심 용어들을 공부합니다.</p>
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: left">메소드</th>
-      <th style="text-align: left">설명</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">add</code>, <code class="language-plaintext highlighter-rouge">subtract</code>, <code class="language-plaintext highlighter-rouge">multiply</code>, <code class="language-plaintext highlighter-rouge">divide</code></td>
-      <td style="text-align: left">사칙연산 수행 후 바인딩</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">max</code>, <code class="language-plaintext highlighter-rouge">min</code></td>
-      <td style="text-align: left">최대/최소값 바인딩</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">greaterThan</code>, <code class="language-plaintext highlighter-rouge">greaterThanOrEqual</code></td>
-      <td style="text-align: left">크기 비교 (true/false) 바인딩</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">lessThan</code>, <code class="language-plaintext highlighter-rouge">lessThanOrEqual</code></td>
-      <td style="text-align: left">크기 비교 (true/false) 바인딩</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">equal</code>, <code class="language-plaintext highlighter-rouge">notEqual</code></td>
-      <td style="text-align: left">동등 비교 (true/false) 바인딩</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">isEmpty</code>, <code class="language-plaintext highlighter-rouge">isNotEmpty</code></td>
-      <td style="text-align: left">비어있는지 여부 확인</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">isNull</code>, <code class="language-plaintext highlighter-rouge">isNotNull</code></td>
-      <td style="text-align: left">Null 여부 확인</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">length</code></td>
-      <td style="text-align: left">문자열 길이 바인딩</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">size</code></td>
-      <td style="text-align: left">컬렉션(List, Map 등) 요소 수 바인딩</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">and</code>, <code class="language-plaintext highlighter-rouge">or</code>, <code class="language-plaintext highlighter-rouge">not</code></td>
-      <td style="text-align: left">논리 연산 바인딩</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">convert</code></td>
-      <td style="text-align: left">문자열로 변환하여 바인딩</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">select</code></td>
-      <td style="text-align: left">중첩된 속성 탐색 및 바인딩</td>
-    </tr>
-  </tbody>
-</table>
-
-<h3 id="예제-원을-항상-화면-중앙에-유지하기">예제: 원을 항상 화면 중앙에 유지하기</h3>
-<p><code class="language-plaintext highlighter-rouge">Cannot divide by zero</code> 등의 예외를 방지하고 반응형 UI를 만들기 위해 <code class="language-plaintext highlighter-rouge">Bindings.divide()</code>를 사용합니다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Circle의 중심 좌표(centerX, centerY)를 Root 컨테이너의 너비/높이의 절반으로 바인딩</span>
-<span class="n">circle</span><span class="o">.</span><span class="na">centerXProperty</span><span class="o">().</span><span class="na">bind</span><span class="o">(</span><span class="nc">Bindings</span><span class="o">.</span><span class="na">divide</span><span class="o">(</span><span class="n">root</span><span class="o">.</span><span class="na">widthProperty</span><span class="o">(),</span> <span class="mi">2</span><span class="o">));</span>
-<span class="n">circle</span><span class="o">.</span><span class="na">centerYProperty</span><span class="o">().</span><span class="na">bind</span><span class="o">(</span><span class="nc">Bindings</span><span class="o">.</span><span class="na">divide</span><span class="o">(</span><span class="n">root</span><span class="o">.</span><span class="na">heightProperty</span><span class="o">(),</span> <span class="mi">2</span><span class="o">));</span>
-</code></pre></div></div>
-
-<p><strong>RootController.java</strong></p>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">sec06.exam03_bindings</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">java.net.URL</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.util.ResourceBundle</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">javafx.beans.binding.Bindings</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">javafx.fxml.FXML</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">javafx.fxml.Initializable</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">javafx.scene.layout.AnchorPane</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">javafx.scene.shape.Circle</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">RootController</span> <span class="kd">implements</span> <span class="nc">Initializable</span> <span class="o">{</span>
-    <span class="nd">@FXML</span> <span class="kd">private</span> <span class="nc">AnchorPane</span> <span class="n">root</span><span class="o">;</span>
-    <span class="nd">@FXML</span> <span class="kd">private</span> <span class="nc">Circle</span> <span class="n">circle</span><span class="o">;</span>
-
-    <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">initialize</span><span class="o">(</span><span class="no">URL</span> <span class="n">location</span><span class="o">,</span> <span class="nc">ResourceBundle</span> <span class="n">resources</span><span class="o">)</span> <span class="o">{</span>
-        <span class="c1">// 화면 크기가 변해도 항상 중앙에 위치하도록 바인딩</span>
-        <span class="n">circle</span><span class="o">.</span><span class="na">centerXProperty</span><span class="o">().</span><span class="na">bind</span><span class="o">(</span><span class="nc">Bindings</span><span class="o">.</span><span class="na">divide</span><span class="o">(</span><span class="n">root</span><span class="o">.</span><span class="na">widthProperty</span><span class="o">(),</span> <span class="mi">2</span><span class="o">));</span>
-        <span class="n">circle</span><span class="o">.</span><span class="na">centerYProperty</span><span class="o">().</span><span class="na">bind</span><span class="o">(</span><span class="nc">Bindings</span><span class="o">.</span><span class="na">divide</span><span class="o">(</span><span class="n">root</span><span class="o">.</span><span class="na">heightProperty</span><span class="o">(),</span> <span class="mi">2</span><span class="o">));</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
+<ul>
+  <li><strong>Observable (옵저버블)</strong>
+    <ul>
+      <li><strong>뜻</strong>: 관찰 가능한, 눈에 보이는</li>
+      <li><strong>설명</strong>: 자바에서는 ‘내부 값이 변했을 때 감시 중인 리스너들에게 알림 신호를 보낼 수 있는 상태 객체’를 가리킵니다.</li>
+    </ul>
+  </li>
+  <li><strong>Binding (바인딩)</strong>
+    <ul>
+      <li><strong>뜻</strong>: 묶기, 결속, 일체화</li>
+      <li><strong>설명</strong>: 두 개의 다른 부품 속성들을 체인처럼 연결해, 한쪽의 상태가 변경되면 다른 쪽도 코딩 없이 자동으로 동기화되게끔 제어하는 기술입니다.</li>
+    </ul>
+  </li>
+  <li><strong>Bidirectional (바이디렉셔널)</strong>
+    <ul>
+      <li><strong>뜻</strong>: 양방향의</li>
+      <li><strong>설명</strong>: 한 방향으로만 물결이 흐르는 단방향(<code class="language-plaintext highlighter-rouge">Unidirectional</code>)과 달리, 양쪽 방향 모두에서 변경과 피드백을 수용하여 일체화하는 형태를 뜻합니다.</li>
+    </ul>
+  </li>
+  <li><strong>Listener (리스너)</strong>
+    <ul>
+      <li><strong>뜻</strong>: 들어주는 사람, 대기 수신원</li>
+      <li><strong>설명</strong>: 감시 대상 속성에 딱 달라붙어 값이 오르내리는 변화가 감지되면 정해진 동작 메서드를 기동시키는 신호 대기 인터페이스입니다.</li>
+    </ul>
+  </li>
+</ul>
 
 
 

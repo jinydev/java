@@ -693,37 +693,20 @@
         <div class="bd-content ps-lg-2">
             <h1 id="02-javafx-프로젝트-생성-및-실행">02. JavaFX 프로젝트 생성 및 실행</h1>
 
-<p>JavaFX 애플리케이션 개발을 위한 프로젝트 생성 방법과 실행 구조를 학습합니다.</p>
-
-<h2 id="1-프로젝트-생성">1. 프로젝트 생성</h2>
-
-<h3 id="java-project로-생성-권장">Java Project로 생성 (권장)</h3>
-<p>처음 학습할 때는 일반 <strong>Java Project</strong>로 생성하고, 추후 익숙해지면 JavaFX Project 마법사를 사용하는 것이 좋습니다.</p>
-
-<ol>
-  <li><strong>File &gt; New &gt; Java Project</strong> 선택.</li>
-  <li><strong>Project name</strong>: <code class="language-plaintext highlighter-rouge">thisisjava_appendix_javafx</code></li>
-  <li><strong>Create module-info.java file</strong>: 체크 (Java 9+ 모듈 시스템 사용).</li>
-  <li><strong>Finish</strong>.</li>
-</ol>
-
-<h3 id="라이브러리-추가-build-path">라이브러리 추가 (Build Path)</h3>
-<ol>
-  <li>프로젝트 우클릭 &gt; <strong>Build Path &gt; Configure Build Path</strong>.</li>
-  <li><strong>Libraries</strong> 탭 &gt; <strong>Modulepath</strong> 선택.</li>
-  <li><strong>Add External JARs</strong> 클릭.</li>
-  <li>JavaFX SDK의 <code class="language-plaintext highlighter-rouge">lib</code> 폴더 내의 모든 <code class="language-plaintext highlighter-rouge">.jar</code> 파일 선택 및 추가.
-    <ul>
-      <li>경로 예: <code class="language-plaintext highlighter-rouge">C:\ThisisJava\javafx-sdk-21.0.1\lib</code></li>
-    </ul>
-  </li>
-</ol>
+<p>자바 환경에서 첫 번째 JavaFX 프로젝트를 만들고, 프로그램이 시작되고 끝날 때까지의 <strong>생명주기(Lifecycle)</strong> 원리를 해부해 봅시다! ⚙️</p>
 
 <hr />
 
-<h2 id="2-모듈-의존성-설정-module-infojava">2. 모듈 의존성 설정 (<code class="language-plaintext highlighter-rouge">module-info.java</code>)</h2>
+<h2 id="1-첫-javafx-프로젝트-빌드하기">1. 첫 JavaFX 프로젝트 빌드하기</h2>
 
-<p>프로젝트에서 사용할 JavaFX 모듈들을 <code class="language-plaintext highlighter-rouge">requires</code> 키워드로 선언해야 합니다. 또한, JavaFX 런타임이 리플렉션을 통해 애플리케이션 클래스에 접근할 수 있도록 <code class="language-plaintext highlighter-rouge">open</code> 키워드를 사용하거나 패키지를 <code class="language-plaintext highlighter-rouge">opens</code> 해야 합니다.</p>
+<p>처음 배울 때는 복잡한 마법사 도구 대신 기본 <strong>Java Project</strong>를 생성한 뒤, 외부 라이브러리를 직접 끌고 오는 방식으로 설정하면 구조를 명확히 배울 수 있어 권장합니다.</p>
+
+<h3 id="️-이클립스-기준-3단계-설정법">🛠️ 이클립스 기준 3단계 설정법</h3>
+<ol>
+  <li><strong>프로젝트 생성</strong>: <code class="language-plaintext highlighter-rouge">File &gt; New &gt; Java Project</code>를 누르고, 모듈식 자바를 위한 <code class="language-plaintext highlighter-rouge">Create module-info.java</code>를 꼭 체크합니다.</li>
+  <li><strong>라이브러리(JARs) 추가</strong>: 프로젝트 우클릭 &gt; <code class="language-plaintext highlighter-rouge">Build Path &gt; Configure Build Path</code>로 갑니다. <strong>Libraries</strong> 탭의 <strong>Modulepath</strong>를 선택하고 <code class="language-plaintext highlighter-rouge">Add External JARs</code>를 클릭해 다운로드한 JavaFX SDK의 <code class="language-plaintext highlighter-rouge">lib</code> 폴더 안의 모든 <code class="language-plaintext highlighter-rouge">.jar</code> 파일들을 통째로 추가합니다.</li>
+  <li><strong>모듈 등록</strong>: 아래처럼 <code class="language-plaintext highlighter-rouge">module-info.java</code> 파일에 JavaFX를 열고 허용하도록 코드를 입력합니다.</li>
+</ol>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">open</span> <span class="n">module</span> <span class="n">thisisjava_appendix_javafx</span> <span class="o">{</span>
     <span class="n">requires</span> <span class="n">java</span><span class="o">.</span><span class="na">se</span><span class="o">;</span>
@@ -732,21 +715,54 @@
     <span class="n">requires</span> <span class="n">javafx</span><span class="o">.</span><span class="na">media</span><span class="o">;</span>
 <span class="o">}</span>
 </code></pre></div></div>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">open</code>: 모듈 내부의 모든 패키지에 대해 리플렉션 허용 (JavaFX가 FXML 로딩, 컨트롤러 주입 등을 위해 필요).</li>
-  <li><code class="language-plaintext highlighter-rouge">requires java.se</code>: JDK의 기본 모듈 사용.</li>
-  <li><code class="language-plaintext highlighter-rouge">requires javafx.*</code>: 필요한 JavaFX 모듈 명시.</li>
-</ul>
+<blockquote>
+  <p><strong>💡 여기서 잠깐! <code class="language-plaintext highlighter-rouge">open</code> 키워드를 왜 쓸까요?</strong>
+JavaFX는 FXML 설계도를 읽어서 내 자바 클래스의 변수에 자동으로 값을 꽂아주는 <strong>리플렉션(Reflection)</strong>이라는 마법 같은 기능을 씁니다. 그러려면 내 방(패키지)의 내부 정보를 JavaFX 모듈이 훤히 들여다볼 수 있게 열어주어야 하므로 모듈명 앞에 <code class="language-plaintext highlighter-rouge">open</code>을 꼭 적어주어야 합니다!</p>
+</blockquote>
 
 <hr />
 
-<h2 id="3-메인-클래스-작성-appmainjava">3. 메인 클래스 작성 (<code class="language-plaintext highlighter-rouge">AppMain.java</code>)</h2>
+<h2 id="2-javafx-애플리케이션-생명주기-lifecycle">2. JavaFX 애플리케이션 생명주기 (Lifecycle)</h2>
 
-<p>JavaFX 애플리케이션의 진입점(Entry Point)입니다.</p>
+<p>모든 JavaFX 메인 클래스는 자바 런타임의 안전 관리를 위해 반드시 <code class="language-plaintext highlighter-rouge">javafx.application.Application</code> 클래스를 부모로 삼아 태어납니다. 그리고 다음과 같이 명확한 연극 진행 단계(Lifecycle)를 거쳐 가동됩니다.</p>
+
+<h3 id="-배우와-연극-무대로-비유하는-생명주기-흐름">🎭 배우와 연극 무대로 비유하는 생명주기 흐름</h3>
+
+<p><img src="./img/javafx_lifecycle.png" alt="JavaFX 라이프사이클" /></p>
+
+<ol>
+  <li><strong><code class="language-plaintext highlighter-rouge">launch(args)</code> (기획사 호출)</strong>
+    <ul>
+      <li>자바 <code class="language-plaintext highlighter-rouge">main</code> 메서드에서 이 호출 신호를 받으면, 자바가 JavaFX 전용 스레드를 소환하고 윈도우 무대를 차릴 준비를 끝냅니다.</li>
+    </ul>
+  </li>
+  <li><strong><code class="language-plaintext highlighter-rouge">init()</code> (배우 분장 및 소품 준비) 💄</strong>
+    <ul>
+      <li>연극 시작 전, 대기실(Backstage)에서 실행 매개값 처리 등 사전 데이터를 로드하는 초기화 단계입니다.</li>
+      <li><em>주의</em>: 이 단계는 아직 스크린 무대가 가동되지 않은 백스테이지이므로, UI 창을 조작하거나 그리는 코드를 넣으면 오류가 납니다!</li>
+    </ul>
+  </li>
+  <li><strong><code class="language-plaintext highlighter-rouge">start(Stage primaryStage)</code> (공연 시작! Curtain Up) 🌟</strong>
+    <ul>
+      <li>드디어 무대(Stage) 장막이 걷히며 진짜 UI를 그려서 창을 띄우는 단계입니다. 우리가 반드시 화면 설계 코드로 채워넣어야 하는 핵심 오버라이딩 메서드입니다.</li>
+    </ul>
+  </li>
+  <li><strong><code class="language-plaintext highlighter-rouge">stop()</code> (폐막 및 무대 정리) 🧹</strong>
+    <ul>
+      <li>사용자가 창의 닫기(X) 버튼을 누르면 연극이 끝나면서 열린 파일이나 DB 접속 같은 컴퓨터 자원들을 안전하게 수거하고 끝내는 뒷정리 단계입니다.</li>
+    </ul>
+  </li>
+</ol>
+
+<hr />
+
+<h2 id="3-첫-프로그램-코드-살펴보기-appmainjava">3. 첫 프로그램 코드 살펴보기 (<code class="language-plaintext highlighter-rouge">AppMain.java</code>)</h2>
+
+<p>화면에 제목이 깔끔하게 표시되는 심플한 빈 창을 하나 띄우는 완전한 소스 코드입니다.</p>
+
+<h3 id="-실습-예제-소스-코드">📄 실습 예제 소스 코드</h3>
 <ul>
-  <li><strong>상속</strong>: <code class="language-plaintext highlighter-rouge">javafx.application.Application</code> 클래스를 상속받아야 합니다.</li>
-  <li><strong>start()</strong>: 메인 윈도우(Stage)를 설정하고 보여주는 메서드로, 반드시 재정의해야 합니다.</li>
-  <li><strong>main()</strong>: <code class="language-plaintext highlighter-rouge">launch(args)</code>를 호출하여 애플리케이션을 시작합니다.</li>
+  <li><strong>실습 예제 파일</strong>: <a href="sample/sec02/exam01_application_start/AppMain.java">AppMain.java</a></li>
 </ul>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">sec02.exam01_application_start</span><span class="o">;</span>
@@ -755,142 +771,64 @@
 <span class="kn">import</span> <span class="nn">javafx.stage.Stage</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">AppMain</span> <span class="kd">extends</span> <span class="nc">Application</span> <span class="o">{</span>
+    <span class="c1">// 1. 생명주기 중 '배우 분장 단계' (생략 가능)</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"init() 호출 - 초기화 대기실!"</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="c1">// 2. 생명주기 중 '진짜 연극 무대(Stage) 개막!' (필수 구현)</span>
     <span class="nd">@Override</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">start</span><span class="o">(</span><span class="nc">Stage</span> <span class="n">primaryStage</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
-        <span class="n">primaryStage</span><span class="o">.</span><span class="na">show</span><span class="o">();</span>   <span class="c1">// 윈도우 보여주기</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"start() 호출 - 무대 오픈!"</span><span class="o">);</span>
+        <span class="n">primaryStage</span><span class="o">.</span><span class="na">setTitle</span><span class="o">(</span><span class="s">"My First JavaFX"</span><span class="o">);</span> <span class="c1">// 창의 제목 설정</span>
+        <span class="n">primaryStage</span><span class="o">.</span><span class="na">show</span><span class="o">();</span>   <span class="c1">// 윈도우를 화면에 투영!</span>
+    <span class="o">}</span>
+
+    <span class="c1">// 3. 생명주기 중 '연극이 끝나고 테두리 수거' (생략 가능)</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">stop</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"stop() 호출 - 청소하고 퇴장!"</span><span class="o">);</span>
     <span class="o">}</span>
 
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">launch</span><span class="o">(</span><span class="n">args</span><span class="o">);</span>   <span class="c1">// AppMain 객체 생성 및 메인 윈도우 생성 -&gt; start() 호출</span>
+        <span class="n">launch</span><span class="o">(</span><span class="n">args</span><span class="o">);</span>   <span class="c1">// JavaFX 엔진 가동 및 AppMain 객체 생성!</span>
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div></div>
 
 <hr />
 
-<h2 id="4-javafx-라이프사이클">4. JavaFX 라이프사이클</h2>
+<h2 id="-코딩-영단어-학습">🔤 코딩 영단어 학습</h2>
 
-<p>JavaFX 애플리케이션은 <code class="language-plaintext highlighter-rouge">launch()</code> 메서드 호출부터 종료까지 명확한 생명주기를 가집니다.</p>
-
-<pre><code class="language-mermaid">graph TD
-    Launch[launch 호출] --&gt; Init[init 실행]
-    Init --&gt; Start[start 실행]
-    Start --&gt; Run[사용자 상호작용]
-    Run --&gt; Stop[stop 실행]
-    Stop --&gt; Exit[종료]
-
-    subgraph Threads
-    Init -.-&gt; |JavaFX-Launcher 스레드| Init
-    Start -.-&gt; |JavaFX Application 스레드| Start
-    Stop -.-&gt; |JavaFX Application 스레드| Stop
-    end
-</code></pre>
-
-<h3 id="단계별-설명">단계별 설명</h3>
-<ol>
-  <li><strong>init()</strong>: 애플리케이션 초기화. (JavaFX-Launcher 스레드)
-    <ul>
-      <li>실행 매개값 처리 등에 사용.</li>
-      <li><strong>주의</strong>: UI 생성/변경 코드를 작성하면 안 됨.</li>
-    </ul>
-  </li>
-  <li><strong>start()</strong>: UI 생성 및 메인 윈도우 출력. (JavaFX Application 스레드)
-    <ul>
-      <li><code class="language-plaintext highlighter-rouge">primaryStage</code>가 매개값으로 전달됨.</li>
-    </ul>
-  </li>
-  <li><strong>stop()</strong>: 애플리케이션 종료 시 자원 정리. (JavaFX Application 스레드)
-    <ul>
-      <li><code class="language-plaintext highlighter-rouge">Platform.exit()</code> 호출 또는 마지막 윈도우가 닫힐 때 실행됨.</li>
-    </ul>
-  </li>
-</ol>
-
-<h3 id="실행-매개값-얻기-init-메서드-내">실행 매개값 얻기 (<code class="language-plaintext highlighter-rouge">init</code> 메서드 내)</h3>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Override</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">()</span> <span class="o">{</span>
-    <span class="nc">Parameters</span> <span class="n">params</span> <span class="o">=</span> <span class="n">getParameters</span><span class="o">();</span>
-    <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">String</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="na">getNamed</span><span class="o">();</span>
-    <span class="nc">String</span> <span class="n">ip</span> <span class="o">=</span> <span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"ip"</span><span class="o">);</span> <span class="c1">// --ip=... 값</span>
-    <span class="nc">String</span> <span class="n">port</span> <span class="o">=</span> <span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"port"</span><span class="o">);</span> <span class="c1">// --port=... 값</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<hr />
-
-<h2 id="5-무대stage와-장면scene">5. 무대(Stage)와 장면(Scene)</h2>
-
-<p>JavaFX는 연극 무대 용어를 사용하여 UI 구조를 표현합니다.</p>
+<p>프로젝트 설정과 생명주기 단계에 필요한 IT 영단어를 학습합니다.</p>
 
 <ul>
-  <li><strong>Stage (무대)</strong>: 윈도우(Window) 자체를 의미합니다. 한 번에 하나의 장면(Scene)을 보여줍니다.</li>
-  <li><strong>Scene (장면)</strong>: 윈도우 안에 배치되는 UI의 내용입니다. 루트 컨테이너(Parent)를 포함합니다.</li>
-  <li><strong>Parent (루트 컨테이너)</strong>: 실제 컨트롤(버튼, 라벨 등)을 담는 그릇입니다.</li>
+  <li><strong>Lifecycle (라이프사이클)</strong>
+    <ul>
+      <li><strong>뜻</strong>: 생명주기, 수명 주기</li>
+      <li><strong>설명</strong>: 어떤 프로그램 객체가 메모리에 적재되어 생성되고(init), 활성화되고(start), 소멸하기(stop)까지 거치는 일생의 고유 단계를 일컫는 용어입니다.</li>
+    </ul>
+  </li>
+  <li><strong>Initialize (이니셜라이즈)</strong>
+    <ul>
+      <li><strong>뜻</strong>: 초기화하다, 시작 준비를 하다</li>
+      <li><strong>설명</strong>: 변수나 시스템이 구동을 시작하기 직전, 초기 값을 알맞게 채워주고 소품을 세팅하는 사전 준비 동작을 말합니다.</li>
+    </ul>
+  </li>
+  <li><strong>Reflection (리플렉션)</strong>
+    <ul>
+      <li><strong>뜻</strong>: 반사, 투영, 거울 비침</li>
+      <li><strong>설명</strong>: 코딩에서는 ‘런타임 도중에 소스 코드 자체를 거울 비추듯 훤히 분석하여 속성이나 메서드를 동적으로 실행해 주는 자바의 고급 분석 기법’을 지칭합니다.</li>
+    </ul>
+  </li>
+  <li><strong>Dependency (디펜던시)</strong>
+    <ul>
+      <li><strong>뜻</strong>: 의존성, 종속성</li>
+      <li><strong>설명</strong>: 어떤 라이브러리가 굴러가기 위해 다른 추가 라이브러리나 JAR 파일의 도움을 반드시 받아야 하는 관계성을 가리킵니다.</li>
+    </ul>
+  </li>
 </ul>
-
-<pre><code class="language-mermaid">graph TD
-    Stage[Stage (Window)]
-    Scene[Scene]
-    Parent[Parent (Root Container)]
-    Ctrl1[Control (Label)]
-    Ctrl2[Control (Button)]
-
-    Stage --&gt; Scene
-    Scene --&gt; Parent
-    Parent --&gt; Ctrl1
-    Parent --&gt; Ctrl2
-</code></pre>
-
-<h3 id="예제-코드-stage와-scene-설정">예제 코드 (<code class="language-plaintext highlighter-rouge">Stage</code>와 <code class="language-plaintext highlighter-rouge">Scene</code> 설정)</h3>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">sec02.exam03_stage_scene</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">javafx.application.Application</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">javafx.application.Platform</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">javafx.geometry.Pos</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">javafx.scene.Scene</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">javafx.scene.control.Button</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">javafx.scene.control.Label</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">javafx.scene.layout.VBox</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">javafx.scene.text.Font</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">javafx.stage.Stage</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">AppMain</span> <span class="kd">extends</span> <span class="nc">Application</span> <span class="o">{</span>
-    <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">start</span><span class="o">(</span><span class="nc">Stage</span> <span class="n">primaryStage</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
-        <span class="c1">// 1. 루트 컨테이너(Parent) 생성 - VBox (수직 배치)</span>
-        <span class="nc">VBox</span> <span class="n">root</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">VBox</span><span class="o">();</span>
-        <span class="n">root</span><span class="o">.</span><span class="na">setPrefWidth</span><span class="o">(</span><span class="mi">350</span><span class="o">);</span>
-        <span class="n">root</span><span class="o">.</span><span class="na">setPrefHeight</span><span class="o">(</span><span class="mi">150</span><span class="o">);</span>
-        <span class="n">root</span><span class="o">.</span><span class="na">setAlignment</span><span class="o">(</span><span class="nc">Pos</span><span class="o">.</span><span class="na">CENTER</span><span class="o">);</span>
-        <span class="n">root</span><span class="o">.</span><span class="na">setSpacing</span><span class="o">(</span><span class="mi">20</span><span class="o">);</span>
-
-        <span class="c1">// 2. 컨트롤 생성 및 추가</span>
-        <span class="nc">Label</span> <span class="n">label</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Label</span><span class="o">();</span>
-        <span class="n">label</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">"Hello, JavaFX"</span><span class="o">);</span>
-        <span class="n">label</span><span class="o">.</span><span class="na">setFont</span><span class="o">(</span><span class="k">new</span> <span class="nc">Font</span><span class="o">(</span><span class="mi">50</span><span class="o">));</span>
-
-        <span class="nc">Button</span> <span class="n">button</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Button</span><span class="o">();</span>
-        <span class="n">button</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">"확인"</span><span class="o">);</span>
-        <span class="n">button</span><span class="o">.</span><span class="na">setOnAction</span><span class="o">(</span><span class="n">event</span> <span class="o">-&gt;</span> <span class="nc">Platform</span><span class="o">.</span><span class="na">exit</span><span class="o">());</span> <span class="c1">// 종료 이벤트</span>
-
-        <span class="n">root</span><span class="o">.</span><span class="na">getChildren</span><span class="o">().</span><span class="na">add</span><span class="o">(</span><span class="n">label</span><span class="o">);</span>
-        <span class="n">root</span><span class="o">.</span><span class="na">getChildren</span><span class="o">().</span><span class="na">add</span><span class="o">(</span><span class="n">button</span><span class="o">);</span>
-
-        <span class="c1">// 3. 장면(Scene) 생성</span>
-        <span class="nc">Scene</span> <span class="n">scene</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scene</span><span class="o">(</span><span class="n">root</span><span class="o">);</span>
-
-        <span class="c1">// 4. 무대(Stage)에 장면 설정 및 출력</span>
-        <span class="n">primaryStage</span><span class="o">.</span><span class="na">setTitle</span><span class="o">(</span><span class="s">"AppMain"</span><span class="o">);</span>
-        <span class="n">primaryStage</span><span class="o">.</span><span class="na">setScene</span><span class="o">(</span><span class="n">scene</span><span class="o">);</span>
-        <span class="n">primaryStage</span><span class="o">.</span><span class="na">show</span><span class="o">();</span>
-    <span class="o">}</span>
-
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">launch</span><span class="o">(</span><span class="n">args</span><span class="o">);</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
 
 
 

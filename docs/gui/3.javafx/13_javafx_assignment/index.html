@@ -5,16 +5,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- 기본 메타데이터 --><meta name="description" content="13. JavaFX 과제 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."><meta name="author" content="HojinLee"><!-- 제목 설정 --><title>13. JavaFX 과제</title>
-  <meta name="title" content="13. JavaFX 과제" /><!-- 키워드 설정 --><meta name="keywords" content="13. JavaFX 과제, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"><!-- Open Graph 메타데이터 --><meta property="og:title" content="13. JavaFX 과제"><meta property="og:description" content="13. JavaFX 과제 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."><meta property="og:type" content="website"><meta property="og:locale" content="ko">
+  <!-- 기본 메타데이터 --><meta name="description" content="13. JavaFX 과제 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."><meta name="author" content="HojinLee"><!-- 제목 설정 --><title>13. JavaFX 종합 과제</title>
+  <meta name="title" content="13. JavaFX 종합 과제" /><!-- 키워드 설정 --><meta name="keywords" content="13. JavaFX 과제, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"><!-- Open Graph 메타데이터 --><meta property="og:title" content="13. JavaFX 종합 과제"><meta property="og:description" content="13. JavaFX 과제 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."><meta property="og:type" content="website"><meta property="og:locale" content="ko">
   <meta property="og:site_name" content="linux">
   <meta property="og:url" content="https://java.jiny.dev/gui/3.javafx/13_javafx_assignment/">
   <!-- 대표 URL (캐노니컬) -->
   <link rel="canonical" href="https://java.jiny.dev/gui/3.javafx/13_javafx_assignment/">
 
-  <!-- Twitter 카드 메타데이터 --><meta name="twitter:card" content="summary"><meta property="twitter:title" content="13. JavaFX 과제"><meta property="twitter:description" content="13. JavaFX 과제 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."><!-- Begin Jekyll SEO tag v2.8.0 -->
+  <!-- Twitter 카드 메타데이터 --><meta name="twitter:card" content="summary"><meta property="twitter:title" content="13. JavaFX 종합 과제"><meta property="twitter:description" content="13. JavaFX 과제 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다."><!-- Begin Jekyll SEO tag v2.8.0 -->
 <meta name="generator" content="Jekyll v4.4.1" />
-<meta property="og:title" content="JavaFX 과제" />
+<meta property="og:title" content="JavaFX 종합 과제" />
 <meta name="author" content="Hojin" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="JavaFX 과제 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다." />
@@ -24,9 +24,9 @@
 <meta property="og:site_name" content="객체지향 자바 프로그래밍 (Object-Oriented Java Programming)" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="JavaFX 과제" />
+<meta property="twitter:title" content="JavaFX 종합 과제" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"JavaFX 과제 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다.","headline":"JavaFX 과제","url":"https://java.jiny.dev/gui/3.javafx/13_javafx_assignment/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"JavaFX 과제 에 대한 자바(Java) 기초 및 실전 프로그래밍 문서입니다.","headline":"JavaFX 종합 과제","url":"https://java.jiny.dev/gui/3.javafx/13_javafx_assignment/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -683,7 +683,7 @@
         
         
         
-        <li class="breadcrumb-item active" aria-current="page">13. JavaFX 과제</li>
+        <li class="breadcrumb-item active" aria-current="page">13. JavaFX 종합 과제</li>
         
         
         
@@ -691,114 +691,146 @@
 </nav>
 
         <div class="bd-content ps-lg-2">
-            <h1 id="13-javafx-과제">13. JavaFX 과제</h1>
+            <h1 id="13-javafx-종합-과제-grading-system-app">13. JavaFX 종합 과제 (Grading System App)</h1>
 
-<p>지금까지 학습한 내용을 기반으로 5가지 과제를 수행해 보자.</p>
+<p>지금까지 배운 JavaFX의 FXML 레이아웃, TableView 컨트롤, 다이얼로그 띄우기, Chart(그래프) 드로잉 등 모든 퍼즐 조각을 맞춰 하나의 멋진 <strong>‘학생 점수 관리 시스템 애플리케이션’</strong>을 완성해 봅시다! 🎓💻</p>
 
-<h2 id="과제-1-학생-점수-관리-메인-화면">과제 1: 학생 점수 관리 메인 화면</h2>
+<p>이 과제는 점진적인 5개 단계를 거쳐 완성하게 됩니다.</p>
 
-<p>학생들의 점수를 보여주는 애플리케이션의 메인 윈도우를 만든다.</p>
+<hr />
 
-<p><strong>생성해야 할 파일과 역할</strong>
-| 파일명                  | 역할                 |
-| :———————- | :——————- |
-| <strong>AppMain.java</strong>        | 메인 클래스          |
-| <strong>root.fxml</strong>           | 메인 윈도우 레이아웃 |
-| <strong>RootController.java</strong> | 컨트롤러 클래스      |</p>
+<h2 id="-최종-완성작-미리보기">🎯 최종 완성작 미리보기</h2>
+<p>우리가 만들 프로그램은 다음과 같은 기능을 수행합니다:</p>
+<ol>
+  <li><strong>메인 화면</strong>: 학생들의 국어/영어/수학 점수를 <code class="language-plaintext highlighter-rouge">TableView</code> 표에 리스팅합니다.</li>
+  <li><strong>학생 추가</strong>: [학생 추가] 버튼을 누르면 팝업 대화상자(<code class="language-plaintext highlighter-rouge">form.fxml</code>)가 떠서 새 학생의 점수를 입력받아 표에 꽂아줍니다.</li>
+  <li><strong>막대 차트</strong>: [학생별 평균 막대 그래프] 버튼을 누르면 전체 학생의 과목별 평균 막대를 보여줍니다.</li>
+  <li><strong>파이 차트</strong>: 표의 특정 학생 행을 <strong>더블 클릭</strong>하면 그 학생의 과목별 점수 비중을 <code class="language-plaintext highlighter-rouge">PieChart</code>로 시각화합니다.</li>
+</ol>
+
+<hr />
+
+<h2 id="-과제-1-학생-점수-관리-메인-화면-설계">🧱 과제 1: 학생 점수 관리 메인 화면 설계</h2>
+
+<h3 id="-목표">📌 목표</h3>
+<p>프로그램의 얼굴이 되는 메인 윈도우 프레임을 빌드합니다.</p>
 
 <ul>
-  <li><strong>root.fxml</strong>:
+  <li><strong>필수 생성 파일</strong>:
     <ul>
-      <li><code class="language-plaintext highlighter-rouge">BorderPane</code>을 루트로 사용.</li>
-      <li>중앙(Center): <code class="language-plaintext highlighter-rouge">TableView</code> 배치 (이름, 국어, 수학, 영어 컬럼 추가).</li>
-      <li>하단(Bottom): <code class="language-plaintext highlighter-rouge">HBox</code> 배치 후 [추가] 버튼 추가.</li>
+      <li><code class="language-plaintext highlighter-rouge">AppMain.java</code> (런타임 메인 구동 클래스)</li>
+      <li><code class="language-plaintext highlighter-rouge">root.fxml</code> (전체 화면 설계 레이아웃)</li>
+      <li><code class="language-plaintext highlighter-rouge">RootController.java</code> (화면 제어 컨트롤러 클래스)</li>
+    </ul>
+  </li>
+  <li><strong>세부 요건 (<code class="language-plaintext highlighter-rouge">root.fxml</code>)</strong>:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">BorderPane</code>을 루트 레이아웃 박스로 삼습니다.</li>
+      <li><strong>중앙(Center)</strong>: <code class="language-plaintext highlighter-rouge">TableView</code>를 얹고 <code class="language-plaintext highlighter-rouge">이름</code>, <code class="language-plaintext highlighter-rouge">국어</code>, <code class="language-plaintext highlighter-rouge">수학</code>, <code class="language-plaintext highlighter-rouge">영어</code> 칼럼을 디자인합니다.</li>
+      <li><strong>하단(Bottom)</strong>: <code class="language-plaintext highlighter-rouge">HBox</code> 컨테이너 안에 [학생 추가] 및 [학생별 막대 그래프] 버튼을 가지런히 배치합니다.</li>
     </ul>
   </li>
 </ul>
 
 <hr />
 
-<h2 id="과제-2-학생-정보-추가-다이얼로그">과제 2: 학생 정보 추가 다이얼로그</h2>
+<h2 id="-과제-2-학생-정보-입력용-다이얼로그-제작">🧱 과제 2: 학생 정보 입력용 다이얼로그 제작</h2>
 
-<p>메인 윈도우에서 [추가] 버튼을 클릭하면 학생 정보 추가 다이얼로그가 실행되도록 만든다.</p>
-
-<p><strong>생성해야 할 파일과 역할</strong>
-| 파일명        | 역할                               |
-| :———— | :——————————— |
-| <strong>form.fxml</strong> | 학생 정보 추가 다이얼로그 레이아웃 |</p>
+<h3 id="-목표-1">📌 목표</h3>
+<p>[학생 추가] 버튼을 클릭했을 때 새로운 윈도우 창이 팝업으로 나타나게 만듭니다.</p>
 
 <ul>
-  <li><strong>form.fxml</strong>:
+  <li><strong>필수 생성 파일</strong>:
     <ul>
-      <li><code class="language-plaintext highlighter-rouge">BorderPane</code>을 루트로 사용.</li>
-      <li>중앙(Center): <code class="language-plaintext highlighter-rouge">GridPane</code>에 4개의 <code class="language-plaintext highlighter-rouge">Label</code>과 4개의 <code class="language-plaintext highlighter-rouge">TextField</code> 배치.</li>
-      <li>하단(Bottom): <code class="language-plaintext highlighter-rouge">HBox</code>에 [저장], [취소] 버튼 배치.</li>
+      <li><code class="language-plaintext highlighter-rouge">form.fxml</code> (입력 양식용 레이아웃)</li>
     </ul>
   </li>
-  <li><strong>기능</strong>: [취소] 버튼 클릭 시 다이얼로그 닫기.</li>
+  <li><strong>세부 요건 (<code class="language-plaintext highlighter-rouge">form.fxml</code>)</strong>:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">BorderPane</code>을 루트로 삼습니다.</li>
+      <li><strong>중앙(Center)</strong>: <code class="language-plaintext highlighter-rouge">GridPane</code>을 쓰고 4행 2열 격자를 나눠 <code class="language-plaintext highlighter-rouge">이름</code>, <code class="language-plaintext highlighter-rouge">국어</code>, <code class="language-plaintext highlighter-rouge">수학</code>, <code class="language-plaintext highlighter-rouge">영어</code> 입력용 라벨과 텍스트 필드를 가지런히 배치합니다.</li>
+      <li><strong>하단(Bottom)</strong>: <code class="language-plaintext highlighter-rouge">HBox</code> 안에 [저장]과 [취소] 버튼을 놓습니다.</li>
+    </ul>
+  </li>
+  <li><strong>동작 기능</strong>:
+    <ul>
+      <li>[취소] 버튼을 클릭하면 팝업 창이 깔끔하게 닫히도록 코딩합니다.</li>
+    </ul>
+  </li>
 </ul>
 
 <hr />
 
-<h2 id="과제-3-테이블에-데이터-추가">과제 3: 테이블에 데이터 추가</h2>
+<h2 id="-과제-3-입력-데이터를-메인-테이블에-적재하기">🧱 과제 3: 입력 데이터를 메인 테이블에 적재하기</h2>
 
-<p>다이얼로그에서 정보를 입력하고 [저장] 버튼을 클릭하면 메인 윈도우의 <code class="language-plaintext highlighter-rouge">TableView</code>에 행이 추가되도록 한다.</p>
-
-<p><strong>생성해야 할 파일과 역할</strong>
-| 파일명           | 역할                                         |
-| :————— | :——————————————- |
-| <strong>Student.java</strong> | 테이블 행의 데이터를 가지고 있는 모델 클래스 |</p>
-
-<hr />
-
-<h2 id="과제-4-막대-그래프-barchart-연동">과제 4: 막대 그래프 (BarChart) 연동</h2>
-
-<p>메인 윈도우 하단에 [학생별 막대 그래프] 버튼을 추가하고, 클릭 시 막대 그래프 다이얼로그가 실행되도록 한다.</p>
-
-<p><strong>생성해야 할 파일과 역할</strong>
-| 파일명            | 역할                              |
-| :—————- | :——————————– |
-| <strong>barchart.fxml</strong> | 막대 그래프 다이얼로그의 레이아웃 |</p>
+<h3 id="-목표-2">📌 목표</h3>
+<p>추가 팝업창에서 데이터를 입력하고 [저장]을 누르면, 메인 화면의 <code class="language-plaintext highlighter-rouge">TableView</code>에 실제로 한 행이 실시간 추가되게 묶어줍니다.</p>
 
 <ul>
-  <li><strong>barchart.fxml</strong>:
+  <li><strong>필수 생성 파일</strong>:
     <ul>
-      <li><code class="language-plaintext highlighter-rouge">BorderPane</code>을 루트로 사용.</li>
-      <li>중앙(Center): <code class="language-plaintext highlighter-rouge">BarChart</code> 배치.</li>
-      <li>하단(Bottom): <code class="language-plaintext highlighter-rouge">HBox</code>에 [닫기] 버튼 배치.</li>
+      <li><code class="language-plaintext highlighter-rouge">Student.java</code> (이름, 국어, 수학, 영어 변수와 Getter/Setter를 가진 자바 빈 모델 클래스)</li>
     </ul>
   </li>
-  <li><strong>기능</strong>: [닫기] 버튼 클릭 시 다이얼로그 닫기.</li>
+  <li><strong>💡 핵심 힌트</strong>:
+    <ul>
+      <li>테이블 뷰와 바인딩할 리스트는 반드시 일반 <code class="language-plaintext highlighter-rouge">ArrayList</code>가 아닌 실시간 감시가 통하는 <strong><code class="language-plaintext highlighter-rouge">ObservableList&lt;Student&gt;</code></strong> 타입을 활용해야 합니다.</li>
+      <li>다이얼로그의 컨트롤러와 메인 화면의 컨트롤러가 데이터를 주고받을 수 있도록 생성자나 인스턴스 주입 설정을 세팅해 줍니다.</li>
+    </ul>
+  </li>
 </ul>
 
 <hr />
 
-<h2 id="과제-5-파이-그래프-piechart-이벤트-처리">과제 5: 파이 그래프 (PieChart) 이벤트 처리</h2>
+<h2 id="-과제-4-과목별-평균-막대-그래프-barchart-연동">🧱 과제 4: 과목별 평균 막대 그래프 (BarChart) 연동</h2>
 
-<p><code class="language-plaintext highlighter-rouge">TableView</code>에서 한 행을 <strong>더블 클릭</strong>하면, 해당 학생의 과목 점수를 보여주는 파이 그래프 다이얼로그가 실행되도록 한다.</p>
-
-<p><strong>생성해야 할 파일과 역할</strong>
-| 파일명            | 역할                              |
-| :—————- | :——————————– |
-| <strong>piechart.fxml</strong> | 파이 그래프 다이얼로그의 레이아웃 |</p>
+<h3 id="-목표-3">📌 목표</h3>
+<p>[학생별 막대 그래프] 버튼을 클릭하면 새로운 다이얼로그 창에 과목별 평균 점수를 보여주는 막대 그래프가 그려집니다.</p>
 
 <ul>
-  <li><strong>piechart.fxml</strong>:
+  <li><strong>필수 생성 파일</strong>:
     <ul>
-      <li><code class="language-plaintext highlighter-rouge">BorderPane</code>을 루트로 사용.</li>
-      <li>중앙(Center): <code class="language-plaintext highlighter-rouge">PieChart</code> 배치.</li>
-      <li>하단(Bottom): <code class="language-plaintext highlighter-rouge">HBox</code>에 [닫기] 버튼 배치.</li>
+      <li><code class="language-plaintext highlighter-rouge">barchart.fxml</code> (막대차트 화면 설계도)</li>
     </ul>
   </li>
-  <li><strong>기능</strong>:
+  <li><strong>세부 요건 (<code class="language-plaintext highlighter-rouge">barchart.fxml</code>)</strong>:
     <ul>
-      <li><code class="language-plaintext highlighter-rouge">TableView.setOnMouseClicked()</code>로 핸들러 등록.</li>
-      <li><code class="language-plaintext highlighter-rouge">MouseEvent.getClickCount() == 2</code>일 때만 다이얼로그 실행.</li>
-      <li>[닫기] 버튼 클릭 시 다이얼로그 닫기.</li>
+      <li><code class="language-plaintext highlighter-rouge">BorderPane</code> 중앙(Center)에 <code class="language-plaintext highlighter-rouge">BarChart</code>를 배치하고 하단(Bottom)에 [닫기] 버튼을 배치합니다.</li>
+    </ul>
+  </li>
+  <li><strong>💡 핵심 힌트</strong>:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">XYChart.Series</code> 객체를 생성해 테이블 리스트의 모든 학생 국어/수학/영어 점수를 다 긁어모아 평균을 낸 뒤 차트에 데이터를 주입합니다.</li>
     </ul>
   </li>
 </ul>
 
+<hr />
+
+<h2 id="-과제-5-더블-클릭-시-학생-개별-과목-파이-차트-piechart-팝업">🧱 과제 5: 더블 클릭 시 학생 개별 과목 파이 차트 (PieChart) 팝업</h2>
+
+<h3 id="-목표-4">📌 목표</h3>
+<p>메인 화면의 <code class="language-plaintext highlighter-rouge">TableView</code> 표에서 임의의 학생 행을 <strong>마우스로 더블 클릭</strong>하면, 해당 학생 한 명의 과목별 점수 점유율을 나타내는 원형 파이 그래프 다이얼로그가 가동됩니다.</p>
+
+<ul>
+  <li><strong>필수 생성 파일</strong>:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">piechart.fxml</code> (파이차트 화면 설계도)</li>
+    </ul>
+  </li>
+  <li><strong>세부 요건 (<code class="language-plaintext highlighter-rouge">piechart.fxml</code>)</strong>:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">BorderPane</code> 중앙(Center)에 <code class="language-plaintext highlighter-rouge">PieChart</code>를 배치하고 하단(Bottom)에 [닫기] 버튼을 배치합니다.</li>
+    </ul>
+  </li>
+  <li><strong>💡 핵심 힌트</strong>:
+    <ul>
+      <li>테이블 뷰에 마우스 클릭 리스너(<code class="language-plaintext highlighter-rouge">setOnMouseClicked</code>)를 연동합니다.</li>
+      <li>이벤트 객체에서 <strong><code class="language-plaintext highlighter-rouge">event.getClickCount() == 2</code></strong> 조건을 걸어 더블 클릭일 때만 작동하도록 가두어 줍니다.</li>
+      <li>더블 클릭으로 선택된 행의 <code class="language-plaintext highlighter-rouge">Student</code> 모델 데이터를 확보한 뒤, 그 학생의 점수를 <code class="language-plaintext highlighter-rouge">PieChart.Data</code> 리스트로 변환해 차트에 바인딩합니다.</li>
+    </ul>
+  </li>
+</ul>
 
 
 

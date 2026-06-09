@@ -693,149 +693,138 @@
         <div class="bd-content ps-lg-2">
             <h1 id="10-javafx-css-스타일">10. JavaFX CSS 스타일</h1>
 
-<p>JavaFX UI를 담당하는 컨테이너 및 컨트롤은 <strong>CSS (Cascading Style Sheets)</strong>를 적용해서 모양 및 색상 등을 변경할 수 있습니다. HTML에 CSS를 적용하는 것과 유사하며, W3C CSS 버전 2.1 스펙을 따릅니다.
-단, JavaFX CSS 속성명은 W3C CSS 속성명 앞에 <code class="language-plaintext highlighter-rouge">-fx-</code> 접두어가 붙습니다.</p>
+<p>자바 코드를 수정하거나 다시 컴파일할 필요 없이, 웹 문서처럼 화면 디자인을 멋지게 꾸미고 테마를 바꿀 수 있게 돕는 <strong>CSS (Cascading Style Sheets)</strong> 적용 기법을 정복합시다! 🎨</p>
 
 <hr />
 
-<h2 id="1-css-적용-방식">1. CSS 적용 방식</h2>
+<h2 id="1-javafx-css-스타일-기초">1. JavaFX CSS 스타일 기초</h2>
+
+<p>JavaFX의 CSS 문법은 웹 표준 CSS(W3C CSS 2.1) 스펙과 거의 흡사합니다.</p>
+<ul>
+  <li>단 한 가지 큰 차이점은 자바 컴포넌트 전용 속성임을 명시하기 위해 모든 CSS 속성명 앞에 <strong><code class="language-plaintext highlighter-rouge">-fx-</code></strong> 접두사가 붙는다는 점입니다 (예: <code class="language-plaintext highlighter-rouge">background-color</code> ➡️ <code class="language-plaintext highlighter-rouge">-fx-background-color</code>).</li>
+</ul>
+
+<h3 id="-인형-옷-입히기-비유로-보는-선택자-selectors">💡 인형 옷 입히기 비유로 보는 선택자 (Selectors)</h3>
+<p>여러 컴포넌트에 디자인 옷을 입힐 때, 옷을 매칭하는 세 가지 기본 규칙이 있습니다.</p>
+
+<ol>
+  <li><strong>Type 선택자 (Label, Button) 🧥</strong>: 라벨이나 버튼이라는 종류의 모든 위젯에게 일괄적으로 똑같은 교복을 입힙니다.</li>
+  <li><strong>id 선택자 (#welcome-text) 🏷️</strong>: 특정 아이디 명찰(id=”welcome-text”)을 단 단 하나의 위젯에게만 개별 맞춤 정장을 입힙니다.</li>
+  <li><strong>class 선택자 (.lblClass) 👒</strong>: 특수 분대 마크(styleClass=”lblClass”)를 붙인 여러 종류의 위젯들에게 단체복을 세트로 입힙니다.</li>
+</ol>
+
+<p><img src="./img/javafx_css_concept.png" alt="JavaFX CSS 스타일링 개념" /></p>
+
+<hr />
+
+<h2 id="2-css-적용-방식">2. CSS 적용 방식</h2>
 
 <h3 id="1-인라인-스타일-inline-style">1) 인라인 스타일 (Inline Style)</h3>
-<p>컨테이너 또는 컨트롤의 <code class="language-plaintext highlighter-rouge">style</code> 속성값으로 직접 CSS를 작성하는 방식입니다.</p>
-<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;Label</span> <span class="na">style=</span><span class="s">"-fx-background-color: black; -fx-text-fill: yellow; -fx-padding: 5;"</span> <span class="nt">/&gt;</span>
+<p>FXML 파일 태그 안에 <code class="language-plaintext highlighter-rouge">style</code> 속성으로 디자인 코드를 직접 주입합니다. 간편하지만 재사용이 불가능해 추천하지 않습니다.</p>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;Label</span> <span class="na">style=</span><span class="s">"-fx-background-color: black; -fx-text-fill: yellow; -fx-padding: 8.0;"</span> <span class="nt">/&gt;</span>
 </code></pre></div></div>
 
-<h3 id="2-외부-css-파일-external-css-file">2) 외부 CSS 파일 (External CSS File)</h3>
-<p>CSS를 별도 파일(<code class="language-plaintext highlighter-rouge">app.css</code>)에 작성하고, <code class="language-plaintext highlighter-rouge">Scene</code> 또는 <code class="language-plaintext highlighter-rouge">Parent</code>에 적용하는 방식입니다. 유지보수와 재사용성에 유리합니다.</p>
+<h3 id="2-외부-css-파일-적용-external-css---권장">2) 외부 CSS 파일 적용 (External CSS - 권장)</h3>
+<p>별도의 스타일시트 파일(<code class="language-plaintext highlighter-rouge">app.css</code>)을 만들어 한곳에서 디자인을 제어하고, 자바 코드나 FXML에서 이를 링크하여 로드합니다.</p>
 
-<p><strong>선택자 종류</strong>
-| 선택자           | 작성 방법        | 설명                                                                 |
-| :————— | :————— | :——————————————————————- |
-| <strong>Type 선택자</strong>  | <code class="language-plaintext highlighter-rouge">Type { ... }</code>   | 같은 타입의 모든 컨트롤 선택 (예: <code class="language-plaintext highlighter-rouge">Label { ... }</code>)                   |
-| <strong>id 선택자</strong>    | <code class="language-plaintext highlighter-rouge">#id { ... }</code>    | <code class="language-plaintext highlighter-rouge">id</code> 속성값이 일치하는 컨트롤 선택 (예: <code class="language-plaintext highlighter-rouge">#lblId { ... }</code>)            |
-| <strong>class 선택자</strong> | <code class="language-plaintext highlighter-rouge">.class { ... }</code> | <code class="language-plaintext highlighter-rouge">styleClass</code> 속성값이 일치하는 컨트롤 선택 (예: <code class="language-plaintext highlighter-rouge">.lblClass { ... }</code>) |</p>
+<p><strong>선택자 적용 규칙 (CSS):</strong></p>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">/* 1. Type 선택자: 모든 Label에 적용 */</span>
+<span class="nt">Label</span> <span class="p">{</span>
+    <span class="py">-fx-font-size</span><span class="p">:</span> <span class="m">14px</span><span class="p">;</span>
+    <span class="py">-fx-font-family</span><span class="p">:</span> <span class="s1">"Malgun Gothic"</span><span class="p">;</span>
+<span class="p">}</span>
 
-<p><strong>상태별 선택자 (Pseudo-class)</strong>
-| 상태        | 선택자                 | 설명                           |
-| :———- | :——————— | :—————————– |
-| <strong>focus</strong>   | <code class="language-plaintext highlighter-rouge">Type:focused { ... }</code> | 입력 포커스를 가진 상태        |
-| <strong>hover</strong>   | <code class="language-plaintext highlighter-rouge">Type:hover { ... }</code>   | 마우스가 컨트롤 위에 있는 상태 |
-| <strong>pressed</strong> | <code class="language-plaintext highlighter-rouge">Type:pressed { ... }</code> | 마우스로 클릭한 상태           |</p>
+<span class="c">/* 2. id 선택자: 특정 아이디를 가진 노드에만 적용 */</span>
+<span class="nf">#welcome-text</span> <span class="p">{</span>
+    <span class="py">-fx-font-size</span><span class="p">:</span> <span class="m">30px</span><span class="p">;</span>
+    <span class="py">-fx-text-fill</span><span class="p">:</span> <span class="nf">linear-gradient</span><span class="p">(</span><span class="n">to</span> <span class="nb">right</span><span class="p">,</span> <span class="nx">navy</span><span class="p">,</span> <span class="nx">blue</span><span class="p">);</span>
+<span class="p">}</span>
 
-<h4 id="외부-css-적용-코드">외부 CSS 적용 코드</h4>
+<span class="c">/* 3. class 선택자: 해당 styleClass를 가진 노드군에 적용 */</span>
+<span class="nc">.button-custom</span> <span class="p">{</span>
+    <span class="py">-fx-background-color</span><span class="p">:</span> <span class="nx">#2e7d32</span><span class="p">;</span>
+    <span class="py">-fx-text-fill</span><span class="p">:</span> <span class="nx">white</span><span class="p">;</span>
+    <span class="py">-fx-background-radius</span><span class="p">:</span> <span class="m">10.0</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.button-custom</span><span class="nd">:hover</span> <span class="p">{</span>
+    <span class="py">-fx-background-color</span><span class="p">:</span> <span class="nx">#4caf50</span><span class="p">;</span> <span class="c">/* 마우스를 올렸을 때 색 변경 */</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>자바 코드에서 CSS 파일 연결하기:</strong></p>
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Scene</span> <span class="n">scene</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scene</span><span class="o">(</span><span class="n">root</span><span class="o">);</span>
+<span class="c1">// app.css 파일을 화면 전체에 스타일 카드로 주입!</span>
 <span class="n">scene</span><span class="o">.</span><span class="na">getStylesheets</span><span class="o">().</span><span class="na">add</span><span class="o">(</span><span class="n">getClass</span><span class="o">().</span><span class="na">getResource</span><span class="o">(</span><span class="s">"app.css"</span><span class="o">).</span><span class="na">toString</span><span class="o">());</span>
 </code></pre></div></div>
 
 <hr />
 
-<h2 id="2-주요-css-속성">2. 주요 CSS 속성</h2>
+<h2 id="3-대표적인-javafx-css-주요-속성들">3. 대표적인 JavaFX CSS 주요 속성들</h2>
 
-<h3 id="border-속성-경계선">border 속성 (경계선)</h3>
-<p>| 속성                | 설명                                           |
-| :—————— | :——————————————— |
-| <code class="language-plaintext highlighter-rouge">-fx-border-color</code>  | 경계선 색상                                    |
-| <code class="language-plaintext highlighter-rouge">-fx-border-width</code>  | 경계선 두께 (top right bottom left 순서 가능)  |
-| <code class="language-plaintext highlighter-rouge">-fx-border-style</code>  | 경계선 스타일 (<code class="language-plaintext highlighter-rouge">solid</code>, <code class="language-plaintext highlighter-rouge">dotted</code>, <code class="language-plaintext highlighter-rouge">dashed</code> 등) |
-| <code class="language-plaintext highlighter-rouge">-fx-border-radius</code> | 모서리 둥글기 반지름                           |
-| <code class="language-plaintext highlighter-rouge">-fx-border-insets</code> | 내부 경계선 위치 (여러 겹 테두리 가능)         |</p>
-
-<h3 id="background-속성-배경">background 속성 (배경)</h3>
-<p>| 속성                      | 설명                                          |
-| :———————— | :——————————————– |
-| <code class="language-plaintext highlighter-rouge">-fx-background-color</code>    | 배경 색상 (단색, 그라디언트)                  |
-| <code class="language-plaintext highlighter-rouge">-fx-background-image</code>    | 배경 이미지 URL                               |
-| <code class="language-plaintext highlighter-rouge">-fx-background-repeat</code>   | 이미지 반복 여부 (<code class="language-plaintext highlighter-rouge">no-repeat</code>, <code class="language-plaintext highlighter-rouge">repeat-x</code> 등) |
-| <code class="language-plaintext highlighter-rouge">-fx-background-position</code> | 이미지 위치 (<code class="language-plaintext highlighter-rouge">center</code>, <code class="language-plaintext highlighter-rouge">top left</code> 등)         |</p>
-
-<p><strong>그라디언트 예시</strong></p>
-<ul>
-  <li><strong>선형(Linear)</strong>: <code class="language-plaintext highlighter-rouge">linear-gradient(to right, black, white)</code></li>
-  <li><strong>원형(Radial)</strong>: <code class="language-plaintext highlighter-rouge">radial-gradient(center 50% 50%, radius 50%, white, black)</code></li>
-</ul>
-
-<h3 id="font-속성-글꼴">font 속성 (글꼴)</h3>
-<p>| 속성              | 설명                         |
-| :—————- | :————————— |
-| <code class="language-plaintext highlighter-rouge">-fx-font-family</code> | 폰트 종류 (예: “Arial”)      |
-| <code class="language-plaintext highlighter-rouge">-fx-font-size</code>   | 폰트 크기 (예: 12px)         |
-| <code class="language-plaintext highlighter-rouge">-fx-font-weight</code> | 폰트 굵기 (<code class="language-plaintext highlighter-rouge">bold</code>, <code class="language-plaintext highlighter-rouge">normal</code>) |
-| <code class="language-plaintext highlighter-rouge">-fx-text-fill</code>   | 글자 색상                    |</p>
-
-<h3 id="effect-속성-그림자-효과">effect 속성 (그림자 효과)</h3>
-<ul>
-  <li><strong>DropShadow</strong>: 바깥 그림자 (튀어나오는 느낌)
-    <div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">-fx-effect</span><span class="o">:</span> <span class="nt">dropshadow</span><span class="o">(</span><span class="nt">three-pass-box</span><span class="o">,</span> <span class="nt">rgba</span><span class="o">(</span><span class="err">0</span><span class="o">,</span><span class="err">0</span><span class="o">,</span><span class="err">0</span><span class="o">,</span><span class="err">0</span><span class="o">.</span><span class="err">8</span><span class="o">),</span> <span class="err">10</span><span class="o">,</span> <span class="err">0</span><span class="o">,</span> <span class="err">0</span><span class="o">,</span> <span class="err">0</span><span class="o">);</span>
-</code></pre></div>    </div>
-  </li>
-  <li><strong>InnerShadow</strong>: 안쪽 그림자 (움푹 들어간 느낌)
-    <div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">-fx-effect</span><span class="o">:</span> <span class="nt">innershadow</span><span class="o">(</span><span class="nt">three-pass-box</span><span class="o">,</span> <span class="nt">rgba</span><span class="o">(</span><span class="err">0</span><span class="o">,</span><span class="err">0</span><span class="o">,</span><span class="err">0</span><span class="o">,</span><span class="err">0</span><span class="o">.</span><span class="err">5</span><span class="o">),</span> <span class="err">10</span><span class="o">,</span> <span class="err">0</span><span class="o">,</span> <span class="err">0</span><span class="o">,</span> <span class="err">0</span><span class="o">);</span>
-</code></pre></div>    </div>
-  </li>
-</ul>
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">속성 분류</th>
+      <th style="text-align: left">JavaFX CSS 속성명</th>
+      <th style="text-align: left">기능 및 사용 예시</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>테두리 (Border)</strong></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">-fx-border-color</code><br /><code class="language-plaintext highlighter-rouge">-fx-border-width</code><br /><code class="language-plaintext highlighter-rouge">-fx-border-radius</code></td>
+      <td style="text-align: left">테두리 색상, 굵기 및 모서리 둥글기 픽셀 설정<br />예: <code class="language-plaintext highlighter-rouge">-fx-border-radius: 5;</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>배경 (Background)</strong></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">-fx-background-color</code><br /><code class="language-plaintext highlighter-rouge">-fx-background-image</code></td>
+      <td style="text-align: left">단색, 그라디언트 배경 설정 및 배경 이미지 링크<br />예: <code class="language-plaintext highlighter-rouge">-fx-background-color: linear-gradient(white, gray);</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>텍스트 (Text/Font)</strong></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">-fx-font-family</code><br /><code class="language-plaintext highlighter-rouge">-fx-font-size</code><br /><code class="language-plaintext highlighter-rouge">-fx-text-fill</code></td>
+      <td style="text-align: left">폰트 종류, 크기(px), 글씨 색상 설정<br />예: <code class="language-plaintext highlighter-rouge">-fx-text-fill: red;</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>그림자 (Shadow)</strong></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">-fx-effect</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">dropshadow</code>나 <code class="language-plaintext highlighter-rouge">innershadow</code>로 입체감 부여</td>
+    </tr>
+  </tbody>
+</table>
 
 <hr />
 
-<h2 id="3-예제-로그인-폼-스킨-입히기">3. 예제: 로그인 폼 스킨 입히기</h2>
+<h2 id="-코딩-영단어-학습">🔤 코딩 영단어 학습</h2>
 
-<p><strong>root.fxml</strong></p>
-<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<p>디자인 코드 작성에 유용한 영단어 모음입니다.</p>
 
-<span class="cp">&lt;?import javafx.scene.layout.AnchorPane?&gt;</span>
-<span class="cp">&lt;?import javafx.scene.control.Label?&gt;</span>
-<span class="cp">&lt;?import javafx.scene.control.TextField?&gt;</span>
-<span class="cp">&lt;?import javafx.scene.control.PasswordField?&gt;</span>
-<span class="cp">&lt;?import javafx.scene.control.Button?&gt;</span>
-
-<span class="nt">&lt;AnchorPane</span> <span class="na">styleClass=</span><span class="s">"root"</span> <span class="na">xmlns:fx=</span><span class="s">"http://javafx.com/fxml"</span>
-            <span class="na">prefHeight=</span><span class="s">"194.0"</span> <span class="na">prefWidth=</span><span class="s">"300.0"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;children&gt;</span>
-        <span class="nt">&lt;Label</span> <span class="na">id=</span><span class="s">"welcome-text"</span> <span class="na">layoutX=</span><span class="s">"40.0"</span> <span class="na">layoutY=</span><span class="s">"14.0"</span> <span class="na">text=</span><span class="s">"Welcome"</span> <span class="nt">/&gt;</span>
-        <span class="nt">&lt;Label</span> <span class="na">layoutX=</span><span class="s">"42.0"</span> <span class="na">layoutY=</span><span class="s">"80.0"</span> <span class="na">text=</span><span class="s">"아이디"</span> <span class="nt">/&gt;</span>
-        <span class="nt">&lt;Label</span> <span class="na">layoutX=</span><span class="s">"42.0"</span> <span class="na">layoutY=</span><span class="s">"118.0"</span> <span class="na">text=</span><span class="s">"패스워드"</span> <span class="nt">/&gt;</span>
-        <span class="nt">&lt;TextField</span> <span class="na">layoutX=</span><span class="s">"120.0"</span> <span class="na">layoutY=</span><span class="s">"76.0"</span> <span class="nt">/&gt;</span>
-        <span class="nt">&lt;PasswordField</span> <span class="na">layoutX=</span><span class="s">"120.0"</span> <span class="na">layoutY=</span><span class="s">"114.0"</span> <span class="nt">/&gt;</span>
-        <span class="nt">&lt;Button</span> <span class="na">layoutX=</span><span class="s">"97.0"</span> <span class="na">layoutY=</span><span class="s">"158.0"</span> <span class="na">styleClass=</span><span class="s">"button"</span> <span class="na">text=</span><span class="s">"로그인"</span> <span class="nt">/&gt;</span>
-        <span class="nt">&lt;Button</span> <span class="na">layoutX=</span><span class="s">"164.0"</span> <span class="na">layoutY=</span><span class="s">"158.0"</span> <span class="na">styleClass=</span><span class="s">"button"</span> <span class="na">text=</span><span class="s">"취소"</span> <span class="nt">/&gt;</span>
-    <span class="nt">&lt;/children&gt;</span>
-<span class="nt">&lt;/AnchorPane&gt;</span>
-</code></pre></div></div>
-
-<p><strong>app.css</strong></p>
-<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.root</span> <span class="p">{</span>
-    <span class="py">-fx-background-image</span><span class="p">:</span> <span class="nf">url</span><span class="p">(</span><span class="s1">"images/background.jpg"</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="nt">Label</span> <span class="p">{</span>
-    <span class="py">-fx-font-size</span><span class="p">:</span> <span class="m">12px</span><span class="p">;</span>
-    <span class="py">-fx-font-weight</span><span class="p">:</span> <span class="nb">bold</span><span class="p">;</span>
-    <span class="py">-fx-text-fill</span><span class="p">:</span> <span class="nx">#333333</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="nf">#welcome-text</span> <span class="p">{</span>
-    <span class="py">-fx-font-size</span><span class="p">:</span> <span class="m">35px</span><span class="p">;</span>
-    <span class="py">-fx-font-family</span><span class="p">:</span> <span class="s1">"Arial Black"</span><span class="p">;</span>
-    <span class="py">-fx-text-fill</span><span class="p">:</span> <span class="nf">linear-gradient</span><span class="p">(</span><span class="nx">darkgray</span><span class="p">,</span> <span class="n">lightgray</span><span class="p">);</span>
-    <span class="py">-fx-effect</span><span class="p">:</span> <span class="n">innershadow</span><span class="p">(</span><span class="n">three-pass-box</span><span class="p">,</span> <span class="nf">rgba</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0.7</span><span class="p">),</span> <span class="m">3</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">2.1</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="nc">.button</span> <span class="p">{</span>
-    <span class="py">-fx-text-fill</span><span class="p">:</span> <span class="nx">white</span><span class="p">;</span>
-    <span class="py">-fx-font-family</span><span class="p">:</span> <span class="s1">"Arial Narrow"</span><span class="p">;</span>
-    <span class="py">-fx-font-weight</span><span class="p">:</span> <span class="nb">bold</span><span class="p">;</span>
-    <span class="py">-fx-background-color</span><span class="p">:</span> <span class="nf">linear-gradient</span><span class="p">(</span><span class="nx">#61a2b1</span><span class="p">,</span> <span class="nx">#2A5058</span><span class="p">);</span>
-    <span class="py">-fx-effect</span><span class="p">:</span> <span class="n">dropshadow</span><span class="p">(</span><span class="n">three-pass-box</span><span class="p">,</span> <span class="nf">rgba</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0.6</span><span class="p">),</span> <span class="m">10</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="nc">.button</span><span class="nd">:hover</span> <span class="p">{</span>
-    <span class="py">-fx-background-color</span><span class="p">:</span> <span class="nf">linear-gradient</span><span class="p">(</span><span class="nx">#2A5058</span><span class="p">,</span> <span class="nx">#61a2b1</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="nc">.button</span><span class="nd">:pressed</span> <span class="p">{</span>
-    <span class="py">-fx-background-color</span><span class="p">:</span> <span class="nf">linear-gradient</span><span class="p">(</span><span class="nx">yellow</span><span class="p">,</span> <span class="nx">#61a2b1</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
+<ul>
+  <li><strong>Style (스타일)</strong>
+    <ul>
+      <li><strong>뜻</strong>: 모양, 양식, 장식</li>
+      <li><strong>설명</strong>: 폰트, 테두리, 배경 등 시각적인 데코레이션을 묶어서 칭하는 용어입니다.</li>
+    </ul>
+  </li>
+  <li><strong>Inline (인라인)</strong>
+    <ul>
+      <li><strong>뜻</strong>: 일렬로 늘어선, 코드 내부에 직접 쓴</li>
+      <li><strong>설명</strong>: 별도 파일을 분리하지 않고 FXML 태그 안의 한 줄 속성(<code class="language-plaintext highlighter-rouge">style="..."</code>)으로 바로 우겨넣는 방식을 뜻합니다.</li>
+    </ul>
+  </li>
+  <li><strong>Selector (선택자)</strong>
+    <ul>
+      <li><strong>뜻</strong>: 선택하는 도구/식별자</li>
+      <li><strong>설명</strong>: CSS 파일 안에서 “어떤 컴포넌트들에게 이 옷을 입힐 것인가?”를 지목하여 지정해 주는 주소 표기법(Type, id, class)입니다.</li>
+    </ul>
+  </li>
+  <li><strong>Gradient (그라디언트)</strong>
+    <ul>
+      <li><strong>뜻</strong>: 점진적인 변화, 점강법</li>
+      <li><strong>설명</strong>: 색상이 한쪽에서 다른 쪽으로 뚝 끊기지 않고 물 흐르듯 자연스럽고 예쁘게 물들며 변해가는 시각 효과를 의미합니다.</li>
+    </ul>
+  </li>
+</ul>
 
 
 

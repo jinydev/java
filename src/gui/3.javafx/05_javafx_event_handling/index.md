@@ -5,175 +5,86 @@ description: "05. JavaFX 이벤트 처리 에 대한 자바(Java) 기초 및 실
 keywords: "05. JavaFX 이벤트 처리, 자바, Java, 프로그래밍, 백엔드, 개발, jinydev"
 ---
 
-# 05. JavaFX 이벤트 처리
+# 05. JavaFX 이벤트 처리 (Event Handling)
 
-UI 애플리케이션은 사용자와 상호작용하면서 코드를 실행한다. 사용자가 UI 컨트롤을 사용하면 이
+사용자가 버튼을 탭하고, 마우스를 클릭하고, 자판을 누를 때 화면이 생명력을 얻어 움직이게 만드는 마법인 **이벤트 처리(Event Handling)**를 마스터해 봅시다! ⚡
 
-벤트event가 발생하고, 프로그램은 이벤트를 처리하기 위해 코드를 실행한다.
+---
 
-이벤트 핸들러
+## 1. JavaFX 위임형 이벤트 모델
 
-JavaFX는 이벤트 발생 컨트롤과 이벤트 처리를 분리하기 위해 위임형Delegation 방식을 사용한다. 위
+JavaFX는 화면(FXML)과 비즈니스 로직(자바 코드)을 격리시키기 위해 **위임형 이벤트 처리 모델(Delegation Event Model)**을 정식으로 채택하고 있습니다. 
 
-임형 방식이란 컨트롤에서 이벤트가 발생하면 컨트롤이 직접 처리하지 않고 이벤트 핸들러에게 이벤
-
-트 처리를 위임하는 방식이다.
-
-
-
-
-예를 들어 사용자가 Button을 클릭하면 ActionEvent가 발생하고, Button에 등록된 EventHandler
-
-가 ActionEvent를 처리한다.
-
-이벤트 발생 컨트롤
-(Button)
-
-①
-
-②
-
-ActionEvent
-이벤트 발생
-
-④ 이벤트 처리 효과
-
-1. 윈도우 닫기
-2. 컨트롤 내용 변경
-3. 다이얼로그 띄우기
-
-이벤트 핸들러
-(EventHandler)
-
-이벤트 처리 메소드
-실행
-
-(cid:81)(cid:86)(cid:67)(cid:77)(cid:74)(cid:68)(cid:1)(cid:87)(cid:80)(cid:74)(cid:69)(cid:1)(cid:73)(cid:66)(cid:79)(cid:69)(cid:77)(cid:70)(cid:9)(cid:106)(cid:10)(cid:1)(cid:92)(cid:1)
-
-③ 이벤트 처리
-
-(cid:94)
-
-EventHandler는 컨트롤에서 이벤트가 발생하면 자신의 handle ( ) 메소드를 실행시킨다. handle ( )
-
-메소드에는 윈도우 닫기, 컨트롤 내용 변경, 다이얼로그 띄우기 등의 코드를 작성할 수 있다.
-
-EventHandler는 제네릭 타입이기 때문에 타입 파라미터는 발생된 이벤트의 타입이 된다. 예를 들
-
-어 ActionEvent를 처리하는 핸들러는 EventHandler<ActionEvent>가 되고, MouseEvent를
-
-처리하는 핸들러는 EventHandler<MouseEvent>가 된다.
-
-EventHandler가 컨트롤에서 발생된 이벤트를 처리하려면 먼저 컨트롤에 EventHandler를 등록
-
-해야 한다. 컨트롤은 발생되는 이벤트에 따라서 EventHandler를 등록하는 다양한 메소드가 있는
-
-데, 이 메소드들은 setOnXXX ( ) 이름을 가지고 있다. XXX는 보통 이벤트 이름과 동일하다.
-
-몇 가지 예를 들어보자. Button을 클릭할 때 발생하는 ActionEvent를 처리하는 EventHandler
-
-<ActionEvent>를 등록하려면 다음과 같이 setOnAction ( ) 메소드를 사용한다.
-
-Button button  =  new Button();
-button.setOnAction(new EventHandler<ActionEvent>() {
-```java
-@Override
-public void handle(ActionEvent event) { … }
-
-});
-```
-
-TableView의 행을 클릭할 때 발생하는 MouseEvent를 처리하는 EventHandler<MouseEvent>
-
-를 등록하려면 다음과 같이 setOnMouseClicked ( ) 메소드를 사용한다.
-
-
-
-TableView tableView  =  new TableView();
-tableView.setOnMouseClicked(new EventHandler<MouseEvent>() {
-```java
-@Override
-public void handle(MouseEvent event) { … }
-
-});
-```
-
-윈도우Stage의 우측 상단 닫기(×) 버튼을 클릭했을 때 발생하는 WindowEvent를 처리하는
-
-EventHandler<WindowEvent>를 등록하려면 다음과 같이 setOnCloseRequest ( ) 메소드를
-
-사용한다.
-
-stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-```java
-@Override
-public void handle(WindowEvent event) { … }
-
-});
-```
-
-JavaFX는 **위임형 이벤트 처리 모델(Delegation Event Model)**을 사용합니다. 이는 이벤트가 발생한 **소스(Source)**가 이벤트를 직접 처리하지 않고, 별도의 **핸들러(Handler)** 객체에게 처리를 위임하는 방식입니다.
+### 💡 집사와 버튼 비유로 복습하기
+사용자가 버튼을 클릭하면 `ActionEvent` 신호 객체가 생성됩니다. 버튼 자체가 직접 처리를 다 하는 대신, 미리 등록된 반응 전문가인 **이벤트 핸들러(EventHandler)**에게 이벤트를 안전하게 넘겨(위임) 처리합니다.
 
 ```mermaid
 sequenceDiagram
-    participant User
-    participant Button as "Source (Button)"
-    participant Handler as EventHandler
+    participant User as 사용자
+    participant Button as 이벤트 소스 (Button)
+    participant Handler as 이벤트 핸들러 (EventHandler)
     
-    User->>Button: Click
-    Button->>Handler: handle(ActionEvent)
-    Handler-->>Button: 처리 완료
+    User->>Button: 버튼 클릭 (Click)
+    Button->>Handler: handle(ActionEvent) 메서드 위임 호출
+    Handler-->>Button: 처리 및 UI 반응 완료
 ```
 
 ---
 
-## 1. 이벤트 핸들러 등록
+## 2. 코드에서 이벤트 핸들러를 등록하는 두 가지 기본 방식
 
-이벤트 핸들러를 등록하려면 `setOn...` 메소드를 사용합니다. 예를 들어 버튼 클릭 시 발생하는 `ActionEvent`를 처리하려면 `setOnAction()` 메소드를 사용합니다.
+자바 코드로 개별 위젯에 이벤트를 매칭하는 기본 작성법입니다.
 
-### 1) 익명 구현 객체 사용
+### 1) 익명 구현 객체 사용법
+자바의 전통적인 오버라이딩 등록 방식입니다.
 ```java
-Button btn = new Button("버튼");
+Button btn = new Button("확인");
 btn.setOnAction(new EventHandler<ActionEvent>() {
     @Override
     public void handle(ActionEvent event) {
-        System.out.println("버튼 클릭됨");
+        System.out.println("확인 버튼이 클릭되었습니다.");
     }
 });
 ```
 
-### 2) 람다식 사용 (Java 8+)
-`EventHandler`는 함수형 인터페이스이므로 람다식으로 간결하게 표현할 수 있습니다.
+### 2) 람다(Lambda) 식 사용법 (Java 8 이상 권장)
+`EventHandler` 인터페이스는 구현해야 할 메서드가 `handle()` 오직 1개뿐인 **함수형 인터페이스**이므로, 화살표(`->`) 하나로 대폭 축소하여 코드를 눈부시게 깨끗하게 적을 수 있습니다.
 ```java
-btn.setOnAction(event -> {
-    System.out.println("버튼 클릭됨");
-});
+Button btn = new Button("확인");
+btn.setOnAction(event -> System.out.println("확인 버튼 클릭됨 (람다)"));
 ```
 
 ---
 
-## 2. FXML과 이벤트 처리 (Controller)
+## 3. FXML과 이벤트 처리의 정석: 컨트롤러 (Controller)
 
-FXML로 UI를 구성할 경우, 이벤트 처리 코드는 **컨트롤러(Controller)**라는 별도의 클래스에서 담당합니다.
+FXML로 디자인 뼈대를 만들 때는 자바 코드로 이벤트를 일일이 `setOnAction` 하는 대신, **컨트롤러(Controller)**라는 로직 보드 클래스를 매핑하여 자동으로 배선을 연결합니다.
 
-### 1) FXML 설정 (`root.fxml`)
-- 루트 컨테이너에 `fx:controller` 속성으로 컨트롤러 클래스를 지정합니다.
-- 이벤트가 발생할 컨트롤에 `onAction` 속성으로 컨트롤러의 메소드를 지정합니다 (예: `#handleBtnAction`).
-- 컨트롤러에서 참조해야 할 컨트롤에는 `fx:id`를 부여합니다.
+### 1) FXML 설계도 작성 (`root.fxml`)
+- 루트 레이아웃 태그에 `fx:controller` 속성으로 이 화면을 전담 제어할 컨트롤러 자바 클래스 경로를 명시합니다.
+- 동작시킬 컨트롤에 `onAction` 속성값으로 `#메서드명`을 지정해 줍니다.
+- 자바 코드에서 꺼내 써야 할 위젯들에는 고유식별자 `fx:id`를 붙여줍니다.
 
 ```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Button?>
+
+<!-- 1. 컨트롤러 클래스 배선 연결 -->
 <HBox xmlns:fx="http://javafx.com/fxml" 
-      fx:controller="sec05.exam01.RootController">
-      
-    <Button fx:id="btn1" text="버튼1" onAction="#handleBtn1Action" />
-    <Button fx:id="btn2" text="버튼2" onAction="#handleBtn2Action" />
-    
+      fx:controller="sec05.exam01.RootController"
+      spacing="20.0" alignment="CENTER" prefHeight="100.0" prefWidth="300.0">
+    <children>
+        <!-- 2. 아이디 부여 및 메서드 매핑 -->
+        <Button fx:id="btn1" text="버튼 1" onAction="#handleBtn1Action" />
+        <Button fx:id="btn2" text="버튼 2" onAction="#handleBtn2Action" />
+    </children>
 </HBox>
 ```
 
-### 2) 컨트롤러 구현 (`RootController.java`)
-- `Initializable` 인터페이스를 구현하여 초기화 작업(`initialize`)을 수행할 수 있습니다.
-- `@FXML` 어노테이션을 사용하여 FXML에 정의된 컨트롤(`fx:id`)과 메소드(`onAction`)를 연결합니다.
+### 2) 제어용 컨트롤러 구현 (`RootController.java`)
+- `Initializable` 인터페이스를 상속받으면, FXML이 로딩될 때 초기 세팅을 진행하는 `initialize()` 메서드가 자동 가동됩니다.
+- `@FXML` 어노테이션을 변수와 메서드 위에 얹으면, FXML의 `fx:id` 및 `onAction` 이름과 자바의 변수/메서드명이 마법처럼 서로 묶여 자동으로 동작합니다.
 
 ```java
 package sec05.exam01;
@@ -186,55 +97,27 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 
 public class RootController implements Initializable {
-직접 EventHandler
-생성 후 등록
+    // FXML 파일의 fx:id="btn1", fx:id="btn2" 컴포넌트를 주입받습니다.
+    @FXML private Button btn1;
+    @FXML private Button btn2;
 
-}
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        // 필요시 FXML에서 자동 매핑하는 대신, 
+        // 여기서 자바 코드로 동적 이벤트 처리를 한 번 더 묶어줄 수도 있습니다.
+        btn1.setText("바뀐 버튼 1");
+    }
 
-});
-btn2.setOnAction(event->handleBtn2Action(event));
-btn3.setOnAction(event->handleBtn3Action(event));
+    // FXML에서 설정한 onAction="#handleBtn1Action"과 자동 동기화되는 동작 메서드
+    @FXML
+    public void handleBtn1Action(ActionEvent event) {
+        System.out.println("첫 번째 버튼이 클릭되었습니다!");
+    }
 
-람다식 이용
-
-
-
-}
-
-```java
-public void handleBtn1Action(ActionEvent event) {
-System.out.println("버튼1 클릭");
-
-}
-public void handleBtn2Action(ActionEvent event) {
-System.out.println("버튼2 클릭");
-
-}
-public void handleBtn3Action(ActionEvent event) {
-System.out.println("버튼3 클릭");
-
-}
-
+    // FXML에서 설정한 onAction="#handleBtn2Action"과 자동 동기화되는 동작 메서드
+    @FXML
+    public void handleBtn2Action(ActionEvent event) {
+        System.out.println("두 번째 버튼이 클릭되었습니다!");
+    }
 }
 ```
-
-4) 이벤트 처리 메소드 매핑
-
-컨트롤러에서 EventHandler를 생성하지 않고도 바로 이벤트 처리 메소드와 연결할 수 있는 방법
-
-이 있다. Button 컨트롤을 작성할 때 다음과 같이 onAction 속성값으로 "#메소드명"을 주면 내부
-
-적으로 EventHandler 객체가 생성되기 때문에 컨트롤러에서는 해당 메소드만 작성하면 된다.
-
-FXML 파일
-
-```java
-<Button fx:id = "btn" text =  "버튼" onAction =  "#handleBtnAction"/>
-```
-
-Controller 클래스
-
-```java
-public void handleBtnAction(ActionEvent event) { … }
-```
-

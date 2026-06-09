@@ -1075,13 +1075,6 @@
   
     
       <url>
-        <loc>https://java.jiny.dev/gui/3.javafx/integrated-source/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
         <loc>https://java.jiny.dev/gui/3.javafx/</loc>
         
       </url>
@@ -1229,14 +1222,14 @@
   
     
       <url>
-        <loc>https://java.jiny.dev/</loc>
+        <loc>https://java.jiny.dev/oop/collection/stack-queue/</loc>
         
       </url>
     
   
     
       <url>
-        <loc>https://java.jiny.dev/oop/collection/synchronized/</loc>
+        <loc>https://java.jiny.dev/part03/</loc>
         
       </url>
     
@@ -1264,7 +1257,7 @@
   
     
       <url>
-        <loc>https://java.jiny.dev/oop/collection/stack-queue/</loc>
+        <loc>https://java.jiny.dev/oop/collection/synchronized/</loc>
         
       </url>
     
@@ -2440,7 +2433,7 @@
   
     
       <url>
-        <loc>https://java.jiny.dev/part03/</loc>
+        <loc>https://java.jiny.dev/</loc>
         
       </url>
     

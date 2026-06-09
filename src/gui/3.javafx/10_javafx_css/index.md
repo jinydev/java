@@ -7,147 +7,95 @@ keywords: "10. JavaFX CSS 스타일, 자바, Java, 프로그래밍, 백엔드, �
 
 # 10. JavaFX CSS 스타일
 
-JavaFX UI를 담당하는 컨테이너 및 컨트롤은 **CSS (Cascading Style Sheets)**를 적용해서 모양 및 색상 등을 변경할 수 있습니다. HTML에 CSS를 적용하는 것과 유사하며, W3C CSS 버전 2.1 스펙을 따릅니다.
-단, JavaFX CSS 속성명은 W3C CSS 속성명 앞에 `-fx-` 접두어가 붙습니다.
+자바 코드를 수정하거나 다시 컴파일할 필요 없이, 웹 문서처럼 화면 디자인을 멋지게 꾸미고 테마를 바꿀 수 있게 돕는 **CSS (Cascading Style Sheets)** 적용 기법을 정복합시다! 🎨
 
 ---
 
-## 1. CSS 적용 방식
+## 1. JavaFX CSS 스타일 기초
+
+JavaFX의 CSS 문법은 웹 표준 CSS(W3C CSS 2.1) 스펙과 거의 흡사합니다. 
+- 단 한 가지 큰 차이점은 자바 컴포넌트 전용 속성임을 명시하기 위해 모든 CSS 속성명 앞에 **`-fx-`** 접두사가 붙는다는 점입니다 (예: `background-color` ➡️ `-fx-background-color`).
+
+### 💡 인형 옷 입히기 비유로 보는 선택자 (Selectors)
+여러 컴포넌트에 디자인 옷을 입힐 때, 옷을 매칭하는 세 가지 기본 규칙이 있습니다.
+
+1. **Type 선택자 (Label, Button) 🧥**: 라벨이나 버튼이라는 종류의 모든 위젯에게 일괄적으로 똑같은 교복을 입힙니다.
+2. **id 선택자 (#welcome-text) 🏷️**: 특정 아이디 명찰(id="welcome-text")을 단 단 하나의 위젯에게만 개별 맞춤 정장을 입힙니다.
+3. **class 선택자 (.lblClass) 👒**: 특수 분대 마크(styleClass="lblClass")를 붙인 여러 종류의 위젯들에게 단체복을 세트로 입힙니다.
+
+![JavaFX CSS 스타일링 개념](./img/javafx_css_concept.png)
+
+---
+
+## 2. CSS 적용 방식
 
 ### 1) 인라인 스타일 (Inline Style)
-컨테이너 또는 컨트롤의 `style` 속성값으로 직접 CSS를 작성하는 방식입니다.
+FXML 파일 태그 안에 `style` 속성으로 디자인 코드를 직접 주입합니다. 간편하지만 재사용이 불가능해 추천하지 않습니다.
 ```xml
-<Label style="-fx-background-color: black; -fx-text-fill: yellow; -fx-padding: 5;" />
+<Label style="-fx-background-color: black; -fx-text-fill: yellow; -fx-padding: 8.0;" />
 ```
 
-### 2) 외부 CSS 파일 (External CSS File)
-CSS를 별도 파일(`app.css`)에 작성하고, `Scene` 또는 `Parent`에 적용하는 방식입니다. 유지보수와 재사용성에 유리합니다.
+### 2) 외부 CSS 파일 적용 (External CSS - 권장)
+별도의 스타일시트 파일(`app.css`)을 만들어 한곳에서 디자인을 제어하고, 자바 코드나 FXML에서 이를 링크하여 로드합니다.
 
-**선택자 종류**
-| 선택자           | 작성 방법        | 설명                                                                 |
-| :--------------- | :--------------- | :------------------------------------------------------------------- |
-| **Type 선택자**  | `Type { ... }`   | 같은 타입의 모든 컨트롤 선택 (예: `Label { ... }`)                   |
-| **id 선택자**    | `#id { ... }`    | `id` 속성값이 일치하는 컨트롤 선택 (예: `#lblId { ... }`)            |
-| **class 선택자** | `.class { ... }` | `styleClass` 속성값이 일치하는 컨트롤 선택 (예: `.lblClass { ... }`) |
+**선택자 적용 규칙 (CSS):**
+```css
+/* 1. Type 선택자: 모든 Label에 적용 */
+Label {
+    -fx-font-size: 14px;
+    -fx-font-family: "Malgun Gothic";
+}
 
-**상태별 선택자 (Pseudo-class)**
-| 상태        | 선택자                 | 설명                           |
-| :---------- | :--------------------- | :----------------------------- |
-| **focus**   | `Type:focused { ... }` | 입력 포커스를 가진 상태        |
-| **hover**   | `Type:hover { ... }`   | 마우스가 컨트롤 위에 있는 상태 |
-| **pressed** | `Type:pressed { ... }` | 마우스로 클릭한 상태           |
+/* 2. id 선택자: 특정 아이디를 가진 노드에만 적용 */
+#welcome-text {
+    -fx-font-size: 30px;
+    -fx-text-fill: linear-gradient(to right, navy, blue);
+}
 
-#### 외부 CSS 적용 코드
+/* 3. class 선택자: 해당 styleClass를 가진 노드군에 적용 */
+.button-custom {
+    -fx-background-color: #2e7d32;
+    -fx-text-fill: white;
+    -fx-background-radius: 10.0;
+}
+.button-custom:hover {
+    -fx-background-color: #4caf50; /* 마우스를 올렸을 때 색 변경 */
+}
+```
+
+**자바 코드에서 CSS 파일 연결하기:**
 ```java
 Scene scene = new Scene(root);
+// app.css 파일을 화면 전체에 스타일 카드로 주입!
 scene.getStylesheets().add(getClass().getResource("app.css").toString());
 ```
 
 ---
 
-## 2. 주요 CSS 속성
+## 3. 대표적인 JavaFX CSS 주요 속성들
 
-### border 속성 (경계선)
-| 속성                | 설명                                           |
-| :------------------ | :--------------------------------------------- |
-| `-fx-border-color`  | 경계선 색상                                    |
-| `-fx-border-width`  | 경계선 두께 (top right bottom left 순서 가능)  |
-| `-fx-border-style`  | 경계선 스타일 (`solid`, `dotted`, `dashed` 등) |
-| `-fx-border-radius` | 모서리 둥글기 반지름                           |
-| `-fx-border-insets` | 내부 경계선 위치 (여러 겹 테두리 가능)         |
-
-### background 속성 (배경)
-| 속성                      | 설명                                          |
-| :------------------------ | :-------------------------------------------- |
-| `-fx-background-color`    | 배경 색상 (단색, 그라디언트)                  |
-| `-fx-background-image`    | 배경 이미지 URL                               |
-| `-fx-background-repeat`   | 이미지 반복 여부 (`no-repeat`, `repeat-x` 등) |
-| `-fx-background-position` | 이미지 위치 (`center`, `top left` 등)         |
-
-**그라디언트 예시**
-- **선형(Linear)**: `linear-gradient(to right, black, white)`
-- **원형(Radial)**: `radial-gradient(center 50% 50%, radius 50%, white, black)`
-
-### font 속성 (글꼴)
-| 속성              | 설명                         |
-| :---------------- | :--------------------------- |
-| `-fx-font-family` | 폰트 종류 (예: "Arial")      |
-| `-fx-font-size`   | 폰트 크기 (예: 12px)         |
-| `-fx-font-weight` | 폰트 굵기 (`bold`, `normal`) |
-| `-fx-text-fill`   | 글자 색상                    |
-
-### effect 속성 (그림자 효과)
-- **DropShadow**: 바깥 그림자 (튀어나오는 느낌)
-  ```css
-  -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
-  ```
-- **InnerShadow**: 안쪽 그림자 (움푹 들어간 느낌)
-  ```css
-  -fx-effect: innershadow(three-pass-box, rgba(0,0,0,0.5), 10, 0, 0, 0);
-  ```
+| 속성 분류 | JavaFX CSS 속성명 | 기능 및 사용 예시 |
+| :--- | :--- | :--- |
+| **테두리 (Border)** | `-fx-border-color`<br>`-fx-border-width`<br>`-fx-border-radius` | 테두리 색상, 굵기 및 모서리 둥글기 픽셀 설정<br>예: `-fx-border-radius: 5;` |
+| **배경 (Background)** | `-fx-background-color`<br>`-fx-background-image` | 단색, 그라디언트 배경 설정 및 배경 이미지 링크<br>예: `-fx-background-color: linear-gradient(white, gray);` |
+| **텍스트 (Text/Font)** | `-fx-font-family`<br>`-fx-font-size`<br>`-fx-text-fill` | 폰트 종류, 크기(px), 글씨 색상 설정<br>예: `-fx-text-fill: red;` |
+| **그림자 (Shadow)** | `-fx-effect` | `dropshadow`나 `innershadow`로 입체감 부여 |
 
 ---
 
-## 3. 예제: 로그인 폼 스킨 입히기
+## 🔤 코딩 영단어 학습
 
-**root.fxml**
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
+디자인 코드 작성에 유용한 영단어 모음입니다.
 
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.Button?>
-
-<AnchorPane styleClass="root" xmlns:fx="http://javafx.com/fxml"
-            prefHeight="194.0" prefWidth="300.0">
-    <children>
-        <Label id="welcome-text" layoutX="40.0" layoutY="14.0" text="Welcome" />
-        <Label layoutX="42.0" layoutY="80.0" text="아이디" />
-        <Label layoutX="42.0" layoutY="118.0" text="패스워드" />
-        <TextField layoutX="120.0" layoutY="76.0" />
-        <PasswordField layoutX="120.0" layoutY="114.0" />
-        <Button layoutX="97.0" layoutY="158.0" styleClass="button" text="로그인" />
-        <Button layoutX="164.0" layoutY="158.0" styleClass="button" text="취소" />
-    </children>
-</AnchorPane>
-```
-
-**app.css**
-```css
-.root {
-    -fx-background-image: url("images/background.jpg");
-}
-
-Label {
-    -fx-font-size: 12px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #333333;
-}
-
-#welcome-text {
-    -fx-font-size: 35px;
-    -fx-font-family: "Arial Black";
-    -fx-text-fill: linear-gradient(darkgray, lightgray);
-    -fx-effect: innershadow(three-pass-box, rgba(0,0,0,0.7), 3, 0, 2, 2.1);
-}
-
-.button {
-    -fx-text-fill: white;
-    -fx-font-family: "Arial Narrow";
-    -fx-font-weight: bold;
-    -fx-background-color: linear-gradient(#61a2b1, #2A5058);
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 2, 2);
-}
-
-.button:hover {
-    -fx-background-color: linear-gradient(#2A5058, #61a2b1);
-}
-
-.button:pressed {
-    -fx-background-color: linear-gradient(yellow, #61a2b1);
-}
-```
-
-
+* **Style (스타일)**
+  * **뜻**: 모양, 양식, 장식
+  * **설명**: 폰트, 테두리, 배경 등 시각적인 데코레이션을 묶어서 칭하는 용어입니다.
+* **Inline (인라인)**
+  * **뜻**: 일렬로 늘어선, 코드 내부에 직접 쓴
+  * **설명**: 별도 파일을 분리하지 않고 FXML 태그 안의 한 줄 속성(`style="..."`)으로 바로 우겨넣는 방식을 뜻합니다.
+* **Selector (선택자)**
+  * **뜻**: 선택하는 도구/식별자
+  * **설명**: CSS 파일 안에서 "어떤 컴포넌트들에게 이 옷을 입힐 것인가?"를 지목하여 지정해 주는 주소 표기법(Type, id, class)입니다.
+* **Gradient (그라디언트)**
+  * **뜻**: 점진적인 변화, 점강법
+  * **설명**: 색상이 한쪽에서 다른 쪽으로 뚝 끊기지 않고 물 흐르듯 자연스럽고 예쁘게 물들며 변해가는 시각 효과를 의미합니다.
