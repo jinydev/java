@@ -11,7 +11,1736 @@
   
     
       <url>
-        <loc>https://java.jiny.dev/backend/boot/01_intro/</loc>
+        <loc>https://java.jiny.dev/database/jdbc/transaction/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/database/jdbc/insert/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/database/jdbc/install-dbms/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/database/jdbc/intro/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/database/jdbc/update/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/database/jdbc/delete/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/database/jdbc/board/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/database/jdbc/quiz/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/database/jdbc/install-tool/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/database/jdbc/procedure/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/database/jdbc/config-db/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/database/jdbc/select/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/database/jdbc/connect-db/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/database/jdbc/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/database/project/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/database/mysql/transaction/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/database/mysql/install/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/database/mysql/insert/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/database/mysql/intro/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/database/mysql/update/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/database/mysql/delete/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/database/mysql/board/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/database/mysql/config/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/database/mysql/client-tool/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/database/mysql/select/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/database/mysql/connect/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/database/mysql/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/database/client/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/database/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/variable/promotion/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/variable/boolean-type/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/variable/char-type/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/variable/string-conversion/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/variable/quiz/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/variable/scope/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/variable/float-type/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/variable/string-type/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/variable/operation-promotion/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/variable/keyboard-input/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/variable/console-output/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/variable/casting/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/variable/integer-type/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/variable/declaration/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/variable/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/setup/eclipse-installation/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/setup/eclipse-project/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/setup/intellij-installation/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/setup/eclipse-execution/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/setup/environment-variable/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/setup/jdk-installation/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/setup/vscode-installation/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/setup/antigravity/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/setup/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/start/comments/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/start/code-terminology/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/start/execution-process/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/start/quiz/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/start/statements/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/start/java21-overview/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/start/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/java/features/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/java/jvm/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/java/history/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/java/programming-language/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/java/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/condition/if/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/condition/quiz/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/condition/flow-control/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/condition/switch/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/condition/switch-pattern/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/condition/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/operator/ternary/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/operator/bit-shift/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/operator/quiz/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/operator/accurate-calculation/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/operator/assignment/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/operator/overflow-underflow/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/operator/nan-infinity/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/operator/logical/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/operator/arithmetic/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/operator/comparison/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/operator/bit-logical/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/operator/sign-increment/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/operator/precedence/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/operator/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/reference/classification/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/reference/array-copy/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/reference/multidimensional-array/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/reference/enhanced-for/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/reference/array/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/reference/enum/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/reference/quiz/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/reference/equality/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/reference/null/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/reference/object-array/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/reference/string/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/reference/main-arguments/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/reference/memory-area/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/reference/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/loop/quiz/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/loop/do-while/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/loop/for/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/loop/break/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/loop/continue/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/loop/while/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/loop/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/basic/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/interface/role/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/interface/constant-field/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/interface/instanceof/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/interface/abstract-method/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/interface/private-method/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/interface/quiz/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/interface/default-method/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/interface/polymorphism/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/interface/multiple-implementation/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/interface/static-method/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/interface/inheritance/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/interface/sealed-interface/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/interface/casting/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/interface/declaration/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/interface/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/extends/instanceof/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/extends/method-overriding/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/extends/quiz/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/extends/polymorphism/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/extends/inheritance/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/extends/super-constructor/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/extends/class-inheritance/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/extends/sealed-class/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/extends/final/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/extends/protected/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/extends/casting/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/extends/abstract-class/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/extends/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/collection/tree/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/collection/framework/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/collection/synchronized/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/collection/quiz/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/collection/unmodifiable/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/collection/map/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/collection/list/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/collection/stack-queue/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/collection/set/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/collection/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/uml/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/module/standard-modules/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/module/aggregator-module/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/module/package-hiding/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/module/module/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/module/transitive-dependency/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/module/quiz/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/module/library/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/module/application-modularity/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/module/modular-jar/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/module/reflection/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/module/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/oop/record/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/oop/static-member/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/oop/object-class/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/oop/final-constant/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/oop/oop/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/oop/quiz/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/oop/instance-member/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/oop/field/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/oop/access-modifier/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/oop/singleton/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/oop/instance-creation/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/oop/class-declaration/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/oop/getter-setter/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/oop/method/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/oop/package/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/oop/constructor/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/oop/class-members/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/oop/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/lambda/intro/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/lambda/method-reference/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/lambda/quiz/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/lambda/return/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/lambda/no-parameter/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/lambda/constructor-reference/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/lambda/parameter/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/lambda/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/api/documentation/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/api/date-time/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/api/wrapper/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/api/java-base/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/api/quiz/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/api/annotation/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/api/regex/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/api/math/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/api/system/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/api/object/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/api/format/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/api/string/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/api/reflection/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/api/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/generic/generic-method/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/generic/generic-type/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/generic/intro/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/generic/bounded-type/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/generic/quiz/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/generic/type/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/generic/wildcard/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/generic/method/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/generic/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/pattern/interpreter/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/pattern/proxy/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/pattern/decorator/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/pattern/factory-method/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/pattern/bridge/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/pattern/facade/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/pattern/observer/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/pattern/memento/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/pattern/adapter/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/pattern/prototype/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/pattern/state/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/pattern/composite/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/pattern/iterator/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/pattern/template-method/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/pattern/visitor/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/pattern/singleton/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/pattern/abstract-factory/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/pattern/command/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/pattern/chain-of-responsibility/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/pattern/flyweight/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/pattern/builder/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/pattern/mediator/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/pattern/strategy/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/pattern/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/nested/instance-member-class/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/nested/anonymous-object/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/nested/quiz/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/nested/local-class/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/nested/nested-interface/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/nested/static-member-class/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/nested/nested-class/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/nested/access-outer/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/nested/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/exception/handling-by-type/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/exception/try-with-resources/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/exception/handling-code/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/exception/custom-exception/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/exception/throws/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/exception/quiz/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/exception/exception-class/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/exception/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/oop/</loc>
         
       </url>
     
@@ -25,7 +1754,7 @@
   
     
       <url>
-        <loc>https://java.jiny.dev/backend/boot/03_crud/</loc>
+        <loc>https://java.jiny.dev/backend/boot/01_intro/</loc>
         
       </url>
     
@@ -39,7 +1768,7 @@
   
     
       <url>
-        <loc>https://java.jiny.dev/backend/jsp/01_intro/</loc>
+        <loc>https://java.jiny.dev/backend/boot/03_crud/</loc>
         
       </url>
     
@@ -47,6 +1776,13 @@
     
       <url>
         <loc>https://java.jiny.dev/backend/jsp/02_setup/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/backend/jsp/01_intro/</loc>
         
       </url>
     
@@ -81,756 +1817,7 @@
   
     
       <url>
-        <loc>https://java.jiny.dev/basic/condition/flow-control/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/condition/if/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/condition/quiz/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/condition/switch/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/condition/switch-pattern/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/condition/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/java/features/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/java/history/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/java/jvm/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/java/programming-language/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/java/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/loop/break/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/loop/continue/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/loop/do-while/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/loop/for/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/loop/quiz/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/loop/while/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/loop/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/operator/accurate-calculation/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/operator/arithmetic/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/operator/assignment/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/operator/bit-logical/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/operator/bit-shift/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/operator/comparison/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/operator/logical/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/operator/nan-infinity/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/operator/overflow-underflow/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/operator/precedence/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/operator/quiz/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/operator/sign-increment/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/operator/ternary/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/operator/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/reference/array/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/reference/array-copy/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/reference/classification/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/reference/enhanced-for/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/reference/enum/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/reference/equality/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/reference/main-arguments/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/reference/memory-area/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/reference/multidimensional-array/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/reference/null/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/reference/object-array/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/reference/quiz/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/reference/string/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/reference/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/setup/antigravity/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/setup/eclipse-execution/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/setup/eclipse-installation/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/setup/eclipse-project/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/setup/environment-variable/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/setup/intellij-installation/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/setup/jdk-installation/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/setup/vscode-installation/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/setup/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/start/code-terminology/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/start/comments/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/start/execution-process/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/start/java21-overview/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/start/quiz/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/start/statements/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/start/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/variable/boolean-type/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/variable/casting/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/variable/char-type/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/variable/console-output/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/variable/declaration/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/variable/float-type/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/variable/integer-type/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/variable/keyboard-input/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/variable/operation-promotion/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/variable/promotion/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/variable/quiz/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/variable/scope/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/variable/string-conversion/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/variable/string-type/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/variable/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/basic/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/database/client/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/database/jdbc/board/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/database/jdbc/config-db/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/database/jdbc/connect-db/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/database/jdbc/delete/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/database/jdbc/insert/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/database/jdbc/install-dbms/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/database/jdbc/install-tool/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/database/jdbc/intro/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/database/jdbc/procedure/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/database/jdbc/quiz/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/database/jdbc/select/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/database/jdbc/transaction/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/database/jdbc/update/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/database/jdbc/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/database/mysql/board/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/database/mysql/client-tool/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/database/mysql/config/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/database/mysql/connect/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/database/mysql/delete/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/database/mysql/insert/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/database/mysql/install/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/database/mysql/intro/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/database/mysql/select/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/database/mysql/transaction/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/database/mysql/update/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/database/mysql/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/database/oracle/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/database/project/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/database/</loc>
+        <loc>https://java.jiny.dev/gui/1.awt/04_awt_event/</loc>
         
       </url>
     
@@ -844,13 +1831,6 @@
   
     
       <url>
-        <loc>https://java.jiny.dev/gui/1.awt/02_awt_components/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
         <loc>https://java.jiny.dev/gui/1.awt/03_awt_layout/</loc>
         
       </url>
@@ -858,7 +1838,7 @@
   
     
       <url>
-        <loc>https://java.jiny.dev/gui/1.awt/04_awt_event/</loc>
+        <loc>https://java.jiny.dev/database/oracle/</loc>
         
       </url>
     
@@ -872,133 +1852,7 @@
   
     
       <url>
-        <loc>https://java.jiny.dev/gui/2.swing/01_swing_intro/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/gui/2.swing/02_event_dispatching_thread/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/gui/2.swing/03_swing_containers/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/gui/2.swing/04_component_layout/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/gui/2.swing/05_event_handling/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/gui/2.swing/06_button_component/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/gui/2.swing/07_text_component/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/gui/2.swing/08_list_component/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/gui/2.swing/09_table_component/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/gui/2.swing/10_tree_component/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/gui/2.swing/11_menu_component/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/gui/2.swing/12_toolbar_component/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/gui/2.swing/13_dialog/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/gui/2.swing/14_2d_graphics/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/gui/2.swing/15_swing_assignment/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/gui/2.swing/integrated-source/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/gui/2.swing/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/gui/3.javafx/01_javafx_intro/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/gui/3.javafx/02_javafx_project/</loc>
+        <loc>https://java.jiny.dev/gui/3.javafx/integrated-source/</loc>
         
       </url>
     
@@ -1012,49 +1866,7 @@
   
     
       <url>
-        <loc>https://java.jiny.dev/gui/3.javafx/04_javafx_containers/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/gui/3.javafx/05_javafx_event_handling/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/gui/3.javafx/06_javafx_property_binding/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/gui/3.javafx/07_javafx_controls/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/gui/3.javafx/08_javafx_menubar_toolbar/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/gui/3.javafx/09_javafx_dialog/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/gui/3.javafx/10_javafx_css/</loc>
+        <loc>https://java.jiny.dev/gui/3.javafx/02_javafx_project/</loc>
         
       </url>
     
@@ -1068,7 +1880,49 @@
   
     
       <url>
+        <loc>https://java.jiny.dev/gui/3.javafx/07_javafx_controls/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/gui/3.javafx/05_javafx_event_handling/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/gui/3.javafx/10_javafx_css/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/gui/3.javafx/09_javafx_dialog/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
         <loc>https://java.jiny.dev/gui/3.javafx/12_scene_transition_animation/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/gui/3.javafx/01_javafx_intro/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/gui/3.javafx/04_javafx_containers/</loc>
         
       </url>
     
@@ -1082,7 +1936,14 @@
   
     
       <url>
-        <loc>https://java.jiny.dev/gui/3.javafx/integrated-source/</loc>
+        <loc>https://java.jiny.dev/gui/3.javafx/08_javafx_menubar_toolbar/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/gui/3.javafx/06_javafx_property_binding/</loc>
         
       </url>
     
@@ -1096,6 +1957,125 @@
   
     
       <url>
+        <loc>https://java.jiny.dev/gui/2.swing/integrated-source/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/gui/2.swing/09_table_component/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/gui/2.swing/12_toolbar_component/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/gui/2.swing/06_button_component/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/gui/2.swing/11_menu_component/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/gui/2.swing/07_text_component/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/gui/2.swing/13_dialog/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/gui/2.swing/05_event_handling/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/gui/2.swing/15_swing_assignment/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/gui/2.swing/04_component_layout/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/gui/2.swing/02_event_dispatching_thread/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/gui/2.swing/08_list_component/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/gui/2.swing/01_swing_intro/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/gui/2.swing/03_swing_containers/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/gui/2.swing/14_2d_graphics/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/gui/2.swing/10_tree_component/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/gui/2.swing/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
         <loc>https://java.jiny.dev/gui/</loc>
         
       </url>
@@ -1103,126 +2083,14 @@
   
     
       <url>
-        <loc>https://java.jiny.dev/oop/api/annotation/</loc>
+        <loc>https://java.jiny.dev/gui/1.awt/02_awt_components/</loc>
         
       </url>
     
   
     
       <url>
-        <loc>https://java.jiny.dev/oop/api/date-time/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/api/documentation/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/api/format/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/api/java-base/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/api/math/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/api/object/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/api/quiz/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/api/reflection/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/api/regex/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/api/string/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/api/system/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/api/wrapper/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/api/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/collection/framework/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/collection/list/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/collection/map/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/collection/quiz/</loc>
+        <loc>https://java.jiny.dev/part03/</loc>
         
       </url>
     
@@ -1236,980 +2104,49 @@
   
     
       <url>
-        <loc>https://java.jiny.dev/oop/collection/stack-queue/</loc>
+        <loc>https://java.jiny.dev/part03/stream/intro/</loc>
         
       </url>
     
   
     
       <url>
-        <loc>https://java.jiny.dev/oop/collection/synchronized/</loc>
+        <loc>https://java.jiny.dev/part03/stream/file/</loc>
         
       </url>
     
   
     
       <url>
-        <loc>https://java.jiny.dev/oop/collection/tree/</loc>
+        <loc>https://java.jiny.dev/part03/stream/primitive/</loc>
         
       </url>
     
   
     
       <url>
-        <loc>https://java.jiny.dev/oop/collection/unmodifiable/</loc>
+        <loc>https://java.jiny.dev/part03/stream/char-io/</loc>
         
       </url>
     
   
     
       <url>
-        <loc>https://java.jiny.dev/oop/collection/</loc>
+        <loc>https://java.jiny.dev/part03/stream/quiz/</loc>
         
       </url>
     
   
     
       <url>
-        <loc>https://java.jiny.dev/oop/collection/set/</loc>
+        <loc>https://java.jiny.dev/part03/stream/print/</loc>
         
       </url>
     
   
     
       <url>
-        <loc>https://java.jiny.dev/oop/exception/custom-exception/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/exception/exception-class/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/exception/handling-by-type/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/exception/handling-code/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/exception/quiz/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/exception/throws/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/exception/try-with-resources/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/exception/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/extends/abstract-class/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/extends/casting/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/extends/class-inheritance/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/extends/final/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/extends/inheritance/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/extends/instanceof/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/extends/method-overriding/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/extends/polymorphism/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/extends/protected/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/extends/quiz/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/extends/sealed-class/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/extends/super-constructor/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/extends/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/generic/bounded-type/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/generic/generic-method/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/generic/generic-type/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/generic/intro/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/generic/method/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/generic/quiz/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/generic/type/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/generic/wildcard/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/generic/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/interface/abstract-method/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/interface/casting/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/interface/constant-field/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/interface/declaration/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/interface/default-method/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/interface/inheritance/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/interface/instanceof/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/interface/multiple-implementation/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/interface/polymorphism/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/interface/private-method/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/interface/quiz/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/interface/role/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/interface/sealed-interface/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/interface/static-method/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/interface/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/lambda/constructor-reference/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/lambda/intro/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/lambda/method-reference/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/lambda/no-parameter/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/lambda/parameter/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/lambda/quiz/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/lambda/return/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/lambda/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/module/aggregator-module/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/module/application-modularity/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/module/library/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/module/modular-jar/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/module/module/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/module/package-hiding/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/module/quiz/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/module/reflection/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/module/standard-modules/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/module/transitive-dependency/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/module/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/nested/access-outer/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/nested/anonymous-object/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/nested/instance-member-class/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/nested/local-class/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/nested/nested-class/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/nested/nested-interface/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/nested/quiz/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/nested/static-member-class/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/nested/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/oop/access-modifier/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/oop/class-declaration/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/oop/class-members/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/oop/constructor/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/oop/field/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/oop/final-constant/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/oop/getter-setter/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/oop/instance-creation/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/oop/instance-member/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/oop/method/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/oop/object-class/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/oop/oop/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/oop/package/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/oop/quiz/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/oop/record/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/oop/singleton/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/oop/static-member/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/oop/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/pattern/abstract-factory/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/pattern/adapter/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/pattern/bridge/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/pattern/builder/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/pattern/chain-of-responsibility/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/pattern/command/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/pattern/composite/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/pattern/decorator/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/pattern/facade/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/pattern/factory-method/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/pattern/flyweight/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/pattern/interpreter/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/pattern/iterator/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/pattern/mediator/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/pattern/memento/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/pattern/observer/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/pattern/prototype/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/pattern/proxy/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/pattern/singleton/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/pattern/state/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/pattern/strategy/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/pattern/template-method/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/pattern/visitor/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/pattern/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/uml/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/oop/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/part03/io/basic-aggregate/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/part03/io/collect/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/part03/io/custom-aggregate/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/part03/io/filtering/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/part03/io/intermediate-terminal/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/part03/io/internal-iterator/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/part03/io/intro/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/part03/io/looping/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/part03/io/mapping/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/part03/io/matching/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/part03/io/parallel/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/part03/io/quiz/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/part03/io/resource/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/part03/io/sorting/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/part03/io/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/part03/nio/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/part03/stream/buffer/</loc>
+        <loc>https://java.jiny.dev/part03/stream/object/</loc>
         
       </url>
     
@@ -2237,34 +2174,6 @@
   
     
       <url>
-        <loc>https://java.jiny.dev/part03/stream/char-io/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/part03/stream/file/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/part03/stream/intro/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/part03/stream/object/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
         <loc>https://java.jiny.dev/part03/stream/performance/</loc>
         
       </url>
@@ -2272,21 +2181,7 @@
   
     
       <url>
-        <loc>https://java.jiny.dev/part03/stream/primitive/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/part03/stream/print/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/part03/stream/quiz/</loc>
+        <loc>https://java.jiny.dev/part03/stream/buffer/</loc>
         
       </url>
     
@@ -2300,7 +2195,105 @@
   
     
       <url>
-        <loc>https://java.jiny.dev/part03/tcp/basic/</loc>
+        <loc>https://java.jiny.dev/part03/io/matching/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/part03/io/mapping/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/part03/io/collect/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/part03/io/parallel/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/part03/io/internal-iterator/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/part03/io/intro/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/part03/io/filtering/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/part03/io/looping/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/part03/io/quiz/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/part03/io/intermediate-terminal/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/part03/io/custom-aggregate/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/part03/io/sorting/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/part03/io/basic-aggregate/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/part03/io/resource/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/part03/io/</loc>
         
       </url>
     
@@ -2314,14 +2307,14 @@
   
     
       <url>
-        <loc>https://java.jiny.dev/part03/tcp/ip/</loc>
+        <loc>https://java.jiny.dev/part03/tcp/udp/</loc>
         
       </url>
     
   
     
       <url>
-        <loc>https://java.jiny.dev/part03/tcp/json/</loc>
+        <loc>https://java.jiny.dev/part03/tcp/basic/</loc>
         
       </url>
     
@@ -2342,6 +2335,13 @@
   
     
       <url>
+        <loc>https://java.jiny.dev/part03/tcp/json/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
         <loc>https://java.jiny.dev/part03/tcp/tcp/</loc>
         
       </url>
@@ -2349,7 +2349,7 @@
   
     
       <url>
-        <loc>https://java.jiny.dev/part03/tcp/udp/</loc>
+        <loc>https://java.jiny.dev/part03/tcp/ip/</loc>
         
       </url>
     
@@ -2363,70 +2363,84 @@
   
     
       <url>
-        <loc>https://java.jiny.dev/part03/thread/concept/</loc>
+        <loc>https://java.jiny.dev/part03/nio/</loc>
         
       </url>
     
   
     
       <url>
-        <loc>https://java.jiny.dev/part03/thread/daemon/</loc>
+        <loc>https://java.jiny.dev/part03/thread/02_main-thread/</loc>
         
       </url>
     
   
     
       <url>
-        <loc>https://java.jiny.dev/part03/thread/main-thread/</loc>
+        <loc>https://java.jiny.dev/part03/thread/04_thread-name/</loc>
         
       </url>
     
   
     
       <url>
-        <loc>https://java.jiny.dev/part03/thread/quiz/</loc>
+        <loc>https://java.jiny.dev/part03/thread/06_synchronization/</loc>
         
       </url>
     
   
     
       <url>
-        <loc>https://java.jiny.dev/part03/thread/safe-stop/</loc>
+        <loc>https://java.jiny.dev/part03/thread/07_safe-stop/</loc>
         
       </url>
     
   
     
       <url>
-        <loc>https://java.jiny.dev/part03/thread/synchronization/</loc>
+        <loc>https://java.jiny.dev/part03/thread/05_thread-state/</loc>
         
       </url>
     
   
     
       <url>
-        <loc>https://java.jiny.dev/part03/thread/thread-name/</loc>
+        <loc>https://java.jiny.dev/part03/thread/09_thread-pool/</loc>
         
       </url>
     
   
     
       <url>
-        <loc>https://java.jiny.dev/part03/thread/thread-pool/</loc>
+        <loc>https://java.jiny.dev/part03/thread/08_daemon/</loc>
         
       </url>
     
   
     
       <url>
-        <loc>https://java.jiny.dev/part03/thread/thread-state/</loc>
+        <loc>https://java.jiny.dev/part03/thread/03_worker-thread/</loc>
         
       </url>
     
   
     
       <url>
-        <loc>https://java.jiny.dev/part03/thread/worker-thread/</loc>
+        <loc>https://java.jiny.dev/part03/thread/10_virtual-thread/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/part03/thread/11_quiz/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://java.jiny.dev/part03/thread/01_concept/</loc>
         
       </url>
     
@@ -2434,13 +2448,6 @@
     
       <url>
         <loc>https://java.jiny.dev/part03/thread/</loc>
-        
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://java.jiny.dev/part03/</loc>
         
       </url>
     
@@ -2456,14 +2463,14 @@
   
     
       <url>
-        <loc>https://java.jiny.dev/robots.txt</loc>
+        <loc>https://java.jiny.dev/feed.xml</loc>
         
       </url>
     
   
     
       <url>
-        <loc>https://java.jiny.dev/feed.xml</loc>
+        <loc>https://java.jiny.dev/robots.txt</loc>
         
       </url>
     

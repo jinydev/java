@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 450" width="100%" height="100%">
+  <!-- Background -->
+  <rect width="850" height="450" fill="#fcfcfc" rx="15" />
+  
+  <text x="425" y="40" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#0277bd" text-anchor="middle">방법 2-2. 상태 확인 방식 (실행 중일 때)</text>
+
+  <!-- Worker Area (Running) -->
+  <rect x="50" y="100" width="300" height="280" fill="#fff" stroke="#0277bd" stroke-width="4" rx="10"/>
+  <text x="200" y="130" font-family="Arial" font-size="18" font-weight="bold" fill="#0277bd" text-anchor="middle">일꾼 스레드 (실행 중 - RUNNABLE)</text>
+
+  <!-- Working Worker -->
+  <circle cx="150" cy="240" r="40" fill="#e1f5fe" stroke="#0277bd" stroke-width="3"/>
+  <text x="150" y="245" font-family="Arial" font-size="16" font-weight="bold" fill="#0277bd" text-anchor="middle">열일 중</text>
+  <path d="M 120 180 Q 150 160 180 180" fill="none" stroke="#0277bd" stroke-width="3"/>
+  <text x="150" y="300" font-family="Arial" font-size="14" fill="#666" text-anchor="middle">잠들지 않아서 예외 안 터짐!</text>
+
+  <!-- Boss Interrupting -->
+  <circle cx="450" cy="150" r="40" fill="#ffebee" stroke="#c62828" stroke-width="3"/>
+  <text x="450" y="155" font-family="Arial" font-size="16" font-weight="bold" fill="#c62828" text-anchor="middle">메인 스레드</text>
+  
+  <path d="M 400 160 L 250 200" fill="none" stroke="#c62828" stroke-width="4" marker-end="url(#arrow-red)"/>
+  <rect x="270" y="155" width="120" height="30" fill="#fff" stroke="#c62828" stroke-width="2" rx="5"/>
+  <text x="330" y="175" font-family="monospace" font-size="14" font-weight="bold" fill="#c62828" text-anchor="middle">interrupt()</text>
+  <text x="330" y="145" font-family="Arial" font-size="14" font-weight="bold" fill="#c62828" text-anchor="middle">어깨 툭 치기</text>
+
+  <!-- Checking Status -->
+  <path d="M 200 240 Q 300 260 400 320" fill="none" stroke="#1565c0" stroke-width="3" marker-end="url(#arrow-blue)"/>
+  <text x="300" y="260" font-family="Arial" font-size="14" font-weight="bold" fill="#1565c0" text-anchor="middle">스스로 상태 확인</text>
+
+  <!-- If Block & Exit -->
+  <rect x="420" y="290" width="180" height="80" fill="#e3f2fd" stroke="#1565c0" stroke-width="3" rx="10"/>
+  <text x="510" y="320" font-family="monospace" font-size="14" font-weight="bold" fill="#1565c0" text-anchor="middle">Thread.interrupted()</text>
+  <text x="510" y="340" font-family="Arial" font-size="14" fill="#666" text-anchor="middle">"누가 나 쳤어? (true)"</text>
+
+  <path d="M 600 330 L 650 330" fill="none" stroke="#2e7d32" stroke-width="3" marker-end="url(#arrow-green)"/>
+  
+  <rect x="660" y="300" width="140" height="60" fill="#e8f5e9" stroke="#2e7d32" stroke-width="3" rx="10"/>
+  <text x="730" y="325" font-family="Arial" font-size="14" font-weight="bold" fill="#2e7d32" text-anchor="middle">루프 break (짐 싸기)</text>
+  <text x="730" y="345" font-family="Arial" font-size="16" font-weight="bold" fill="#2e7d32" text-anchor="middle">안전 퇴근</text>
+
+  <defs>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2e7d32" />
+    </marker>
+    <marker id="arrow-red" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#c62828" />
+    </marker>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#1565c0" />
+    </marker>
+  </defs>
+</svg>

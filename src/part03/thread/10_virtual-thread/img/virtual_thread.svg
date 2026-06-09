@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%">
+  <!-- Background -->
+  <rect width="800" height="450" fill="#f8f9fa" rx="15" />
+  
+  <text x="400" y="40" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#333" text-anchor="middle">플랫폼 스레드 vs 가상 스레드 (정규직 vs 단기 알바생)</text>
+
+  <!-- Left: Platform Thread (1:1 Mapping) -->
+  <g transform="translate(50, 80)">
+    <rect width="320" height="320" fill="#fff" stroke="#1e88e5" stroke-width="2" rx="10"/>
+    <rect width="320" height="40" fill="#e3f2fd" rx="10" />
+    <path d="M 0 30 L 320 30 L 320 40 L 0 40 Z" fill="#e3f2fd" />
+    <text x="160" y="26" font-family="Arial" font-size="16" font-weight="bold" fill="#1565c0" text-anchor="middle">기존: 플랫폼 스레드 (1:1 매핑)</text>
+
+    <!-- OS Layer -->
+    <rect x="20" y="230" width="280" height="60" fill="#bbdefb" rx="5"/>
+    <text x="160" y="265" font-family="Arial" font-size="16" font-weight="bold" fill="#1565c0" text-anchor="middle">운영체제 (OS) 스레드</text>
+
+    <!-- Java Layer -->
+    <rect x="20" y="80" width="280" height="100" fill="#fff9c4" rx="5"/>
+    <text x="160" y="105" font-family="Arial" font-size="14" font-weight="bold" fill="#f57f17" text-anchor="middle">자바 스레드 (정규직)</text>
+
+    <!-- Threads mapping -->
+    <circle cx="90" cy="140" r="25" fill="#fbc02d" stroke="#f57f17" stroke-width="2"/>
+    <text x="90" y="145" font-family="Arial" font-size="14" font-weight="bold" fill="#fff" text-anchor="middle">T1</text>
+    <path d="M 90 170 L 90 225" fill="none" stroke="#1565c0" stroke-width="3" marker-end="url(#arrow-blue)"/>
+    <circle cx="90" cy="260" r="15" fill="#1e88e5"/>
+
+    <circle cx="160" cy="140" r="25" fill="#fbc02d" stroke="#f57f17" stroke-width="2"/>
+    <text x="160" y="145" font-family="Arial" font-size="14" font-weight="bold" fill="#fff" text-anchor="middle">T2</text>
+    <path d="M 160 170 L 160 225" fill="none" stroke="#1565c0" stroke-width="3" marker-end="url(#arrow-blue)"/>
+    <circle cx="160" cy="260" r="15" fill="#1e88e5"/>
+
+    <circle cx="230" cy="140" r="25" fill="#fbc02d" stroke="#f57f17" stroke-width="2"/>
+    <text x="230" y="145" font-family="Arial" font-size="14" font-weight="bold" fill="#fff" text-anchor="middle">T3</text>
+    <path d="M 230 170 L 230 225" fill="none" stroke="#1565c0" stroke-width="3" marker-end="url(#arrow-blue)"/>
+    <circle cx="230" cy="260" r="15" fill="#1e88e5"/>
+
+    <text x="160" y="310" font-family="Arial" font-size="12" fill="#d32f2f" text-anchor="middle">단점: OS 스레드는 무거워서 많이 못 만듦</text>
+  </g>
+
+  <!-- Right: Virtual Thread (M:1 Mapping) -->
+  <g transform="translate(430, 80)">
+    <rect width="320" height="320" fill="#fff" stroke="#43a047" stroke-width="2" rx="10"/>
+    <rect width="320" height="40" fill="#e8f5e9" rx="10" />
+    <path d="M 0 30 L 320 30 L 320 40 L 0 40 Z" fill="#e8f5e9" />
+    <text x="160" y="26" font-family="Arial" font-size="16" font-weight="bold" fill="#2e7d32" text-anchor="middle">자바 21: 가상 스레드 (N:1 매핑)</text>
+
+    <!-- OS Layer -->
+    <rect x="20" y="230" width="280" height="60" fill="#bbdefb" rx="5"/>
+    <text x="160" y="265" font-family="Arial" font-size="16" font-weight="bold" fill="#1565c0" text-anchor="middle">OS 스레드 (Carrier)</text>
+
+    <!-- Java Layer -->
+    <rect x="20" y="60" width="280" height="120" fill="#c8e6c9" rx="5"/>
+    <text x="160" y="80" font-family="Arial" font-size="14" font-weight="bold" fill="#2e7d32" text-anchor="middle">가상 스레드 (초경량 단기 알바생)</text>
+
+    <!-- Virtual Threads -->
+    <circle cx="60" cy="110" r="15" fill="#81c784" stroke="#388e3c" stroke-width="2"/>
+    <circle cx="100" cy="110" r="15" fill="#81c784" stroke="#388e3c" stroke-width="2"/>
+    <circle cx="140" cy="110" r="15" fill="#81c784" stroke="#388e3c" stroke-width="2"/>
+    <circle cx="180" cy="110" r="15" fill="#81c784" stroke="#388e3c" stroke-width="2"/>
+    <circle cx="220" cy="110" r="15" fill="#81c784" stroke="#388e3c" stroke-width="2"/>
+    <circle cx="260" cy="110" r="15" fill="#81c784" stroke="#388e3c" stroke-width="2"/>
+    
+    <circle cx="80" cy="150" r="15" fill="#81c784" stroke="#388e3c" stroke-width="2"/>
+    <circle cx="120" cy="150" r="15" fill="#81c784" stroke="#388e3c" stroke-width="2"/>
+    <circle cx="160" cy="150" r="15" fill="#81c784" stroke="#388e3c" stroke-width="2"/>
+    <circle cx="200" cy="150" r="15" fill="#81c784" stroke="#388e3c" stroke-width="2"/>
+    <circle cx="240" cy="150" r="15" fill="#81c784" stroke="#388e3c" stroke-width="2"/>
+
+    <!-- Mapping Funnel -->
+    <path d="M 60 180 L 140 225 L 180 225 L 260 180 Z" fill="#e8f5e9" opacity="0.8"/>
+    <path d="M 160 180 L 160 225" fill="none" stroke="#2e7d32" stroke-width="3" marker-end="url(#arrow-green)"/>
+    <circle cx="160" cy="260" r="15" fill="#1e88e5"/>
+
+    <text x="160" y="310" font-family="Arial" font-size="12" font-weight="bold" fill="#2e7d32" text-anchor="middle">장점: OS 스레드 1개로 수백만 명 커버 가능!</text>
+  </g>
+
+  <defs>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#1565c0" />
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2e7d32" />
+    </marker>
+  </defs>
+</svg>

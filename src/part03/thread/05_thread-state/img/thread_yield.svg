@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 450" width="100%" height="100%">
+  <!-- Background -->
+  <rect width="950" height="450" fill="#fcfcfc" rx="15" />
+  
+  <text x="475" y="40" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#333" text-anchor="middle">스레드 yield() 전체 흐름도 (양보 후 다시 복귀하는 과정)</text>
+
+  <!-- Labels for Time -->
+  <text x="475" y="420" font-family="Arial" font-size="14" fill="#666" text-anchor="middle">시간의 흐름 (Time) ➔</text>
+
+  <!-- Thread A Line (y=150) -->
+  <text x="80" y="155" font-family="Arial" font-size="16" font-weight="bold" fill="#e53935" text-anchor="end">스레드 A</text>
+  <!-- Phase 1: Running -->
+  <line x1="100" y1="150" x2="300" y2="150" stroke="#e53935" stroke-width="6"/>
+  <!-- Phase 2: Yielded (Runnable) -->
+  <line x1="300" y1="150" x2="650" y2="150" stroke="#ffcdd2" stroke-width="6" stroke-dasharray="8,8"/>
+  <!-- Phase 3: Resumed (Running) -->
+  <line x1="650" y1="150" x2="850" y2="150" stroke="#e53935" stroke-width="6" marker-end="url(#arrow-red)"/>
+
+  <!-- Thread B Line (y=320) -->
+  <text x="80" y="325" font-family="Arial" font-size="16" font-weight="bold" fill="#43a047" text-anchor="end">스레드 B</text>
+  <!-- Phase 1: Runnable -->
+  <line x1="100" y1="320" x2="300" y2="320" stroke="#c8e6c9" stroke-width="6" stroke-dasharray="8,8"/>
+  <!-- Phase 2: Running (Given CPU by A) -->
+  <line x1="300" y1="320" x2="650" y2="320" stroke="#43a047" stroke-width="6"/>
+  <!-- Phase 3: Runnable (OS switches back) -->
+  <line x1="650" y1="320" x2="850" y2="320" stroke="#c8e6c9" stroke-width="6" stroke-dasharray="8,8" marker-end="url(#arrow-green)"/>
+
+  <!-- 1. Thread A Running -->
+  <rect x="150" y="90" width="130" height="40" fill="#ffebee" stroke="#e53935" stroke-width="2" rx="5"/>
+  <text x="215" y="115" font-family="Arial" font-size="14" font-weight="bold" fill="#c62828" text-anchor="middle">1. A 실행</text>
+
+  <!-- 2. Yield Point -->
+  <circle cx="300" cy="150" r="6" fill="#e53935"/>
+  <rect x="230" y="190" width="140" height="30" fill="#fff" stroke="#999" stroke-width="1" rx="4"/>
+  <text x="300" y="210" font-family="monospace" font-size="13" font-weight="bold" fill="#d32f2f" text-anchor="middle">Thread.yield()</text>
+  
+  <text x="300" y="80" font-family="Arial" font-size="14" font-weight="bold" fill="#d32f2f" text-anchor="middle">2. "일이 없네? 양보!"</text>
+  <path d="M 300 90 L 300 140" fill="none" stroke="#e53935" stroke-width="2" marker-end="url(#arrow-red)"/>
+
+  <!-- Switch A -> B -->
+  <path d="M 300 150 C 300 240, 300 240, 300 310" fill="none" stroke="#666" stroke-width="3" stroke-dasharray="5,5" marker-end="url(#arrow-dark)"/>
+
+  <!-- 3. B Running -->
+  <rect x="400" y="340" width="180" height="40" fill="#e8f5e9" stroke="#43a047" stroke-width="2" rx="5"/>
+  <text x="490" y="365" font-family="Arial" font-size="14" font-weight="bold" fill="#2e7d32" text-anchor="middle">3. B 실행 (A는 대기열로)</text>
+
+  <!-- 4. Switch B -> A -->
+  <circle cx="650" cy="320" r="6" fill="#43a047"/>
+  <path d="M 650 320 C 650 240, 650 240, 650 160" fill="none" stroke="#666" stroke-width="3" stroke-dasharray="5,5" marker-end="url(#arrow-dark)"/>
+  <rect x="580" y="240" width="140" height="30" fill="#f5f5f5" rx="4"/>
+  <text x="650" y="260" font-family="Arial" font-size="13" font-weight="bold" fill="#333" text-anchor="middle">4. OS 스케줄링</text>
+
+  <!-- 5. A Resumed -->
+  <circle cx="650" cy="150" r="6" fill="#e53935"/>
+  <rect x="680" y="90" width="180" height="40" fill="#ffebee" stroke="#e53935" stroke-width="2" rx="5"/>
+  <text x="770" y="115" font-family="Arial" font-size="14" font-weight="bold" fill="#c62828" text-anchor="middle">5. A 복귀 및 실행</text>
+  <text x="770" y="80" font-family="Arial" font-size="14" font-weight="bold" fill="#d32f2f" text-anchor="middle">"이제 일(work)이 생겼군!"</text>
+
+  <defs>
+    <marker id="arrow-dark" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#666" />
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#c8e6c9" />
+    </marker>
+    <marker id="arrow-red" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#e53935" />
+    </marker>
+  </defs>
+</svg>
